@@ -3,9 +3,7 @@ node_modules/
 .vscode/*
 
 .yarn
-yarn.lock
 yarn-error.log
-package-lock.json
 
 .eslintcache
 .docusaurus/
