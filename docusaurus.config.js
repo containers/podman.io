@@ -65,9 +65,13 @@ const config = {
             type: "doc",
             docId: "README",
             position: "left",
-            label: "Tutorial",
+            label: "Documentation",
           },
-          { to: "/blog", label: "Blog", position: "left" },
+          {
+            to: "https://docs.podman.io/",
+            label: "Blog",
+            position: "left",
+          },
           {
             href: "https://github.com/facebook/docusaurus",
             label: "GitHub",
@@ -82,7 +86,7 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
+                label: "Documentation",
                 href: "https://docs.podman.io/en/latest/",
               },
             ],
