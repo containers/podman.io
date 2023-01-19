@@ -1,7 +1,11 @@
 {
+  "bracketSpacing": true,
   "bracketSameLine": true,
+  "printWidth": 120,
+  "tabWidth": 2,
+  "quoteProps": "preserve",
   "singleQuote": true,
   "arrowParens": "avoid",
-  "printWidth": 120,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "plugins": ["prettier-plugin-tailwindcss"]
 }
