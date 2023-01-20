@@ -11,7 +11,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'images/favicon.ico',
 
   organizationName: 'containers',
   projectName: 'website-new',
@@ -21,7 +21,7 @@ const config = {
     locales: ['en'],
   },
   plugins: [
-    async function tailwindPlugin(context, options) {
+    async function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
         configurePostCss(postcssOptions) {
@@ -59,7 +59,7 @@ const config = {
         title: '',
         logo: {
           alt: 'Podman Logo',
-          src: 'img/podman.svg',
+          src: 'images/logos/podman.svg',
         },
         items: [
           {

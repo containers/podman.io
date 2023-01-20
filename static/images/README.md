@@ -9,6 +9,7 @@ _organization of images directory_
 
 ## Storage
 
-- logos: all brands and logo `.png`, `.webp`, and `.svg`
+- logos: all brands and logo `.png`, and `.svg`
+  - **note** `.svg` files for best practice
 - original: unedited and unoptimized non-logo image `.png` or `.jpg`
 - optimized: `.webp` optimized versions of images from original
