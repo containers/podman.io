@@ -46,7 +46,7 @@ const config = {
           editUrl: 'https://github.com/containers/website-new',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/main.css'),
         },
       }),
     ],

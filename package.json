@@ -19,6 +19,7 @@
   "dependencies": {
     "@docusaurus/core": "2.2.0",
     "@docusaurus/preset-classic": "2.2.0",
+    "@iconify/react": "^4.0.1",
     "@mdx-js/react": "^1.6.22",
     "autoprefixer": "^10.4.13",
     "clsx": "^1.2.1",
