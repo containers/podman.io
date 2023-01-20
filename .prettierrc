@@ -4,7 +4,7 @@
   "printWidth": 120,
   "tabWidth": 2,
   "quoteProps": "preserve",
-  "singleQuote": true,
+  "singleQuote": false,
   "arrowParens": "avoid",
   "trailingComma": "all",
   "plugins": ["prettier-plugin-tailwindcss"]
