@@ -1,51 +1,52 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const lightCodeTheme = require('prism-react-renderer/themes/github');
+const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Podman.io",
-  tagline: "INSERT TAGLINE",
-  url: "http://localhost:3000/",
-  baseUrl: "/",
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  title: 'Podman.io',
+  tagline: 'INSERT TAGLINE',
+  url: 'http://localhost:3000/',
+  baseUrl: '/',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/favicon.ico',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "Red Hat",
-  projectName: "website-new", // Usually your repo name.
+  organizationName: 'containers',
+  projectName: 'website-new',
 
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
+    defaultLocale: 'en',
+    locales: ['en'],
   },
-
+  plugins: [
+    async function tailwindPlugin(context, options) {
+      return {
+        name: 'docusaurus-tailwindcss',
+        configurePostCss(postcssOptions) {
+          postcssOptions.plugins.push(require('tailwindcss'));
+          postcssOptions.plugins.push(require('autoprefixer'));
+          return postcssOptions;
+        },
+      };
+    },
+  ],
   presets: [
     [
-      "classic",
+      'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/containers/website-new",
+          sidebarPath: require.resolve('./sidebars.js'),
+          editUrl: 'https://github.com/containers/website-new',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/containers/website-new",
+          editUrl: 'https://github.com/containers/website-new',
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
@@ -55,61 +56,61 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "",
+        title: '',
         logo: {
-          alt: "Podman Logo",
-          src: "img/podman.svg",
+          alt: 'Podman Logo',
+          src: 'img/podman.svg',
         },
         items: [
           {
-            type: "doc",
-            docId: "README",
-            position: "left",
-            label: "Documentation",
+            type: 'doc',
+            docId: 'README',
+            position: 'left',
+            label: 'Documentation',
           },
           {
-            to: "https://docs.podman.io/",
-            label: "Blog",
-            position: "left",
+            to: 'https://docs.podman.io/',
+            label: 'Blog',
+            position: 'left',
           },
           {
-            href: "https://github.com/facebook/docusaurus",
-            label: "GitHub",
-            position: "right",
+            href: 'https://github.com/facebook/docusaurus',
+            label: 'GitHub',
+            position: 'right',
           },
         ],
       },
       footer: {
-        style: "dark",
+        style: 'dark',
         links: [
           {
-            title: "Docs",
+            title: 'Docs',
             items: [
               {
-                label: "Documentation",
-                href: "https://docs.podman.io/en/latest/",
+                label: 'Documentation',
+                href: 'https://docs.podman.io/en/latest/',
               },
             ],
           },
           {
-            title: "Community",
+            title: 'Community',
             items: [
               {
-                label: "Discord",
-                href: "https://discord.com/invite/x5GzFF6QH4",
+                label: 'Discord',
+                href: 'https://discord.com/invite/x5GzFF6QH4',
               },
             ],
           },
           {
-            title: "More",
+            title: 'More',
             items: [
               {
-                label: "Blog",
-                href: "https://podman.io/blogs/",
+                label: 'Blog',
+                href: 'https://podman.io/blogs/',
               },
               {
-                label: "GitHub",
-                href: "https://github.com/containers/website-new",
+                label: 'GitHub',
+                href: 'https://github.com/containers/website-new',
               },
             ],
           },
