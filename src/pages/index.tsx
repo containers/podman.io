@@ -24,7 +24,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout>
       <main>
-        <p className="font-display text-5xl">This should be Montserrat</p>
+        <p className="font-display text-5xl text-blue-500">This should be Montserrat</p>
         <p className="font-text"> This should be Source Sans Pro</p>
         <p className="font-mono">This should be Source Code Pro</p>
       </main>

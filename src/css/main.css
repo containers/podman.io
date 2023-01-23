@@ -41,7 +41,7 @@
   h2,
   h3,
   h4,
-  h5 h6 {
+  h5 {
     @apply font-display;
   }
   /* main text */
@@ -55,10 +55,28 @@
   li,
   figcaption,
   blockquote {
-    @apply font-text;
+    @apply font-text text-lg lg:text-xl;
   }
   /* monospace */
-  code {
-    @apply font-mono;
+  code,
+  pre {
+    @apply font-mono text-lg lg:text-xl;
   }
+}
+
+/* headings size and weight */
+h1 {
+  @apply text-4xl font-extrabold lg:text-5xl;
+}
+h2 {
+  @apply text-3xl font-bold lg:text-4xl;
+}
+h3 {
+  @apply text-2xl font-semibold lg:text-3xl;
+}
+h4 {
+  @apply text-xl font-semibold lg:text-2xl;
+}
+h5 {
+  @apply text-lg font-semibold lg:text-xl;
 }
