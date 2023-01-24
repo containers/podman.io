@@ -6,34 +6,26 @@
 @import 'fonts/source-sans-pro.css';
 @import 'fonts/source-code-pro.css';
 
-/* --- infima design colors --- */
-/* TODO: get color variations for lm and dm */
 :root {
   --ifm-color-primary: #892ca0;
-  --ifm-color-primary-dark: #892ca0;
-  --ifm-color-primary-darker: #892ca0;
-  --ifm-color-primary-darkest: #892ca0;
-  --ifm-color-primary-light: #892ca0;
-  --ifm-color-primary-lighter: #892ca0;
-  --ifm-color-primary-lightest: #892ca0;
+  --ifm-color-primary-darkest: #5f246b;
+  --ifm-color-primary-light: #bd58dd;
+  --ifm-color-primary-lightest: #e3b4f3;
   --ifm-code-fonts-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(43, 39, 53, 0.1);
 }
 
 /* for readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #892ca0;
-  --ifm-color-primary-dark: #892ca0;
-  --ifm-color-primary-darker: #892ca0;
-  --ifm-color-primary-darkest: #892ca0;
-  --ifm-color-primary-light: #892ca0;
-  --ifm-color-primary-lighter: #892ca0;
-  --ifm-color-primary-lightest: #892ca0;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #893ca0;
+  --ifm-color-primary-darkest: #6f246b;
+  --ifm-color-primary-light: #bd59dd;
+  --ifm-color-primary-lightest: #e4b4f3;
+  --docusaurus-highlighted-code-line-bg: rgba(44, 39, 53, 0.3);
 }
 
 /* -------------- */
-/* Font Families */
+/* Font Configuration */
 /* ------------- */
 @layer base {
   /* headings */
@@ -66,7 +58,7 @@
 
 /* headings size and weight */
 h1 {
-  @apply text-4xl font-extrabold lg:text-5xl;
+  @apply text-4xl font-bold lg:text-5xl;
 }
 h2 {
   @apply text-3xl font-bold lg:text-4xl;
