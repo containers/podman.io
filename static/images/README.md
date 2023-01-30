@@ -11,5 +11,5 @@ _organization of images directory_
 
 - logos: all brands and logo `.png`, and `.svg`
   - **note** `.svg` files for best practice
-- original: unedited and unoptimized non-logo image `.png` or `.jpg`
+- raw: unedited and unoptimized non-logo image `.png` or `.jpg`
 - optimized: `.webp` optimized versions of images from original
