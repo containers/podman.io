@@ -14,6 +14,7 @@ module.exports = {
         700: '#009FFF',
         900: '#0D569B',
       },
+      /* podman desktop purple */
       'deep-purple': {
         50: '#F5F4FA',
         100: '#E1C5FF',
@@ -30,6 +31,7 @@ module.exports = {
         700: '#514C5C',
         900: '#2B2735',
       },
+      /* podman purple */
       purple: {
         50: '#FBF5F3',
         100: '#F7EAFD',
