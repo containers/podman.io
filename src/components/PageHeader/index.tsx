@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function PageHeader(props): JSX.Element {
   return (
-    <header className="h-98 bg-blue-900 bg-water-texture bg-cover bg-bottom mix-blend-darken xl:h-100">
+    <header className="text-blue- h-98 bg-blue-900 bg-water-texture bg-cover bg-bottom mix-blend-darken xl:h-100">
       <div className="mx-6 grid h-full gap-4 md:grid-cols-2 lg:mx-auto xl:max-w-7xl">
         <div className="-mt-24 flex flex-col justify-center md:mt-0">
           <h1 className="mb-6 max-w-sm text-white lg:max-w-lg">{props.title}</h1>
