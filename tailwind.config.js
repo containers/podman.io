@@ -50,7 +50,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'water-texture': "url('/images/original/water-background-1370w-605h.png')",
+        'water-texture': "url('/images/raw/water-background-1370w-605h.png')",
       },
       spacing: {
         '98': '26rem',

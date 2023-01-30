@@ -9,7 +9,7 @@ export default function PageHeader(props): JSX.Element {
           <p className="max-w-xs text-white md:max-w-prose xl:text-2xl">{props.description}</p>
         </div>
         <div className="absolute -z-50 flex self-end justify-self-end md:static md:z-0 lg:items-center lg:justify-center">
-          <img src="/images/original/podman-selkie-385w-358h.png" alt="Podman Logo" className="h-48 w-auto lg:h-5/6" />
+          <img src="/images/raw/podman-selkie-385w-358h.png" alt="Podman Logo" className="h-48 w-auto lg:h-5/6" />
         </div>
       </div>
     </header>
