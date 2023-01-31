@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import PageHeader from '../components/PageHeader';
+import Card from '../components/Card';
 
 const headerInfo = {
   title: 'The daemonless container manager',
@@ -13,6 +14,10 @@ export default function Home(): JSX.Element {
     <Layout>
       <main>
         <PageHeader title={headerInfo.title} description={headerInfo.description} />
+        <div className="my-12 flex justify-center">
+          <Card />
+          <Card />
+        </div>
       </main>
     </Layout>
   );
