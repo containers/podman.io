@@ -34,7 +34,7 @@
   h3,
   h4,
   h5 {
-    @apply font-display;
+    @apply font-display dark:text-gray-300;
   }
   /* main text */
   a,
@@ -47,12 +47,12 @@
   li,
   figcaption,
   blockquote {
-    @apply font-text text-lg lg:text-xl;
+    @apply font-text text-lg dark:text-gray-300 lg:text-xl;
   }
   /* monospace */
   code,
   pre {
-    @apply font-mono text-lg lg:text-xl;
+    @apply font-mono text-lg dark:text-gray-100 lg:text-xl;
   }
 }
 
