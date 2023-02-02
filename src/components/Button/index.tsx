@@ -6,7 +6,7 @@ function ButtonBase(props) {
   return (
     <Element
       {...restProps}
-      className={`my-2 block max-w-fit rounded-md px-6 py-2 font-semibold transition duration-150 ease-in-out hover:no-underline hover:shadow-md ${buttonStyles}`}
+      className={`my-2 block max-w-fit cursor-pointer rounded-md px-6 py-2 font-semibold transition duration-150 ease-in-out hover:no-underline hover:shadow-md ${buttonStyles}`}
     />
   );
 }
