@@ -36,7 +36,7 @@ export default function Card(props): JSX.Element {
     <article className="m-4 rounded-md p-4 shadow-xl lg:m-2">
       <CardHeader {...props} />
       <CardBody {...props} />
-      <Card {...props} />
+      <CardButtons {...props} />
     </article>
   );
 }
