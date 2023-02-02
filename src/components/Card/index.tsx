@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Button';
+import Button from '@site/src/components/Button';
 
 function CardHeader(props) {
   const { title, subtitle, details } = props;
@@ -19,8 +19,8 @@ function CardBody(props) {
     </div>
   );
 }
-function CardButtons(props) {
-  const data = props.data;
+// TODO: use render props to make the button feature flexible fallback text here is temporary
+function CardButtons({ data = [{ text: 'card text' }] }) {
   return (
     <div className=" mx-2 mb-4 flex justify-center gap-2 lg:mb-8">
       {data.map(item => (
