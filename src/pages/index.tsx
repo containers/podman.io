@@ -11,6 +11,8 @@ const headerInfo = {
     'Manage containers, pods, and images with Podman. Podman provides a simple command line interface as well as a socket activated API which is mostly backwards compatible with Docker. ',
 };
 
+const testButtons = [{ text: 'hey', variant: 'outline', as: 'a', url: '#' }];
+
 export default function Home(): JSX.Element {
   return (
     <Layout>
@@ -32,6 +34,7 @@ export default function Home(): JSX.Element {
                 <Link text="Containers Repository" url="https://github.com" /> on GitHub.
               </>
             }
+            data={testButtons}
           />
           <Card
             title="card two"
@@ -41,6 +44,7 @@ export default function Home(): JSX.Element {
               </>
             }
             details="11 AM US ET / 5 PM CET"
+            data={testButtons}
           />
         </div>
       </main>
