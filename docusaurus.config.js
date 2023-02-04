@@ -21,6 +21,7 @@ const config = {
     locales: ['en'],
   },
   plugins: [
+    '@docusaurus/theme-live-codeblock',
     async function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
@@ -65,13 +66,13 @@ const config = {
           {
             type: 'doc',
             docId: 'README',
-            position: 'left',
             label: 'Documentation',
+            position: 'right',
           },
           {
             to: 'https://docs.podman.io/',
             label: 'Blog',
-            position: 'left',
+            position: 'right',
           },
           {
             href: 'https://github.com/facebook/docusaurus',
@@ -120,6 +121,9 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      liveCodeBlock: {
+        playgroundPosition: 'bottom',
       },
     }),
 };
