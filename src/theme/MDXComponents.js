@@ -1,11 +1,15 @@
-import React from 'react';
-// Import the original mapper
 import MDXComponents from '@theme-original/MDXComponents';
+// Layout Components
 import Main from '@site/src/components/layout/Main';
-
+import Section from '@site/src/components/layout/Section';
+import CardGrid from '@site/src/components/layout/CardGrid';
+// Element Components
+import Card from '@site/src/components/Card';
 export default {
-  // Re-use the default mapping
   ...MDXComponents,
-  // map Main to the Main component
-  Main: Main,
+  // layout components
+  main: Main,
+  section: Section,
+  cardGrid: CardGrid,
+  card: Card,
 };
