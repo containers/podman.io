@@ -8,7 +8,7 @@ const header = {
     'Manage containers, pods, and images with Podman. Seamlessly work with containers and Kubernetes from your local environment.',
 };
 
-export default function Demo() {
+export default function IndexPage() {
   return (
     <Layout>
       <HeroHeader title={header.title} subtitle={header.subtitle} />
