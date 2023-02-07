@@ -52,15 +52,14 @@ const config = {
       }),
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: '',
+        title: 'Podman',
         logo: {
           alt: 'Podman Logo',
-          src: 'images/logos/podman.svg',
+          src: 'images/logos/podman-3-logo-95w-90h.webp',
         },
         items: [
           {
@@ -70,12 +69,12 @@ const config = {
             position: 'right',
           },
           {
-            to: 'https://docs.podman.io/',
+            to: 'https://podman.io/blogs',
             label: 'Blog',
             position: 'right',
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/containers/website-new',
             label: 'GitHub',
             position: 'right',
           },
@@ -89,7 +88,7 @@ const config = {
             items: [
               {
                 label: 'Documentation',
-                href: 'https://docs.podman.io/en/latest/',
+                href: 'https://docs.podman.io/',
               },
             ],
           },
