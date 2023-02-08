@@ -21,17 +21,21 @@ const Image = ({
     </div>
   );
 };
+const Banner = ({}) => {
+  return <section></section>;
+};
 export default function PageHeader({ title, description, image, children }) {
   return (
     <header className="h-5/6 xl:h-96">
       <div className="bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-700 dark:to-blue-900">
         <WaveBorder />
       </div>
-      <div className="container grid h-full content-center justify-items-center gap-3  md:grid-cols-2">
+      <div className="container grid justify-items-center gap-3 md:grid-cols-2">
         <TextBox title={title} description={description} layout="mt-12 lg:mt-0" />
         <Image image={image} layout="mb-8 lg:mb-0" />
         <div>{children}</div>
       </div>
+      <Banner />
     </header>
   );
 }
