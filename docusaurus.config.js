@@ -63,17 +63,21 @@ const config = {
           src: 'images/logos/podman-3-logo-95w-90h.webp',
         },
         items: [
+          { to: 'features', label: 'Features', position: 'right' },
+          { to: 'get-started', label: 'Get Started', position: 'right' },
+          { to: 'community', label: 'Community', position: 'right' },
+          {
+            to: 'https://podman.io/blogs',
+            label: 'Development Blog',
+            position: 'right',
+          },
           {
             type: 'doc',
             docId: 'README',
             label: 'Documentation',
             position: 'right',
           },
-          {
-            to: 'https://podman.io/blogs',
-            label: 'Blog',
-            position: 'right',
-          },
+
           {
             href: 'https://github.com/containers/website-new',
             label: 'GitHub',
