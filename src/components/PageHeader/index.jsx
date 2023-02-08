@@ -1,4 +1,6 @@
 import React from 'react';
+import WaveBorder from '@site/src/components/svgShapes/WaveBorder';
+
 const TextBox = ({ grid, display, layout, title = 'Default Title', description = 'Just some Text' }) => {
   return (
     <div className={`${grid} ${display} ${layout}`}>
@@ -22,6 +24,7 @@ const Image = ({
 export default function PageHeader({ title, description, image, children }) {
   return (
     <header className="h-5/6 xl:h-96">
+      <WaveBorder />
       <div className="container grid h-full content-center justify-items-center gap-3  md:grid-cols-2">
         <TextBox title={title} description={description} layout="mt-12 lg:mt-0" />
         <Image image={image} layout="mb-8 lg:mb-0" />
