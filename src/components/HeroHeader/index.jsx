@@ -9,7 +9,7 @@ const TextBox = ({ grid, display, layout, title, subtitle }) => {
   return (
     <div className={`${grid} ${display} ${layout} container`}>
       <h1 className="mb-4 text-white dark:text-gray-100 lg:mb-8">{title}</h1>
-      <p className="max-w-sm text-white dark:text-gray-100 lg:max-w-3xl">{subtitle}</p>
+      <p className="max-w-sm text-white dark:text-gray-100 lg:max-w-prose">{subtitle}</p>
       <Buttons layout="flex  max-w-sm gap-8 my-3" />
       <p className="flex gap-4 text-white dark:text-gray-100">
         <span>
@@ -64,18 +64,18 @@ const Image = ({ grid, display, layout }) => {
 export default function HeroHeader({ title, subtitle }) {
   return (
     <header className="bg-blue-700 dark:bg-blue-900">
-      <div className="grid md:grid-cols-2 md:gap-8">
+      <div className="grid md:grid-cols-2 md:gap-12">
         <TextBox
           title={title}
           subtitle={subtitle}
-          grid="row-span-2 row-start-1  place-self-center"
-          layout="mb-4 lg:ml-24 lg:mb-0"
+          grid="row-span-2 place-self-center"
+          layout="mt-12 mb-4 md:ml-10 xl:ml-24 md:mb-0"
         />
-        <div className="row-span-2 self-end md:col-start-2 md:row-start-2 lg:mr-24">
-          <PlatformIcons layout="max-w-lg" display="flex flex-col items-end md:items-start" />
-          <Image display="flex justify-end" layout="lg:mb-12" />
+        <div className="self-end md:col-start-2 md:row-span-3 lg:row-span-2 lg:row-start-2 lg:mr-24">
+          <PlatformIcons layout="md:max-w-lg lg:max-w-full mb-12 md:mb-0" display="flex flex-col" />
+          <Image display="hidden md:block flex justify-end" layout="-mb-24 lg:mb-12" />
         </div>
-        <WaveBorder grid="col-span-full row-start-3" layout="" />
+        <WaveBorder grid="col-span-full lg:row-start-3" layout="" />
       </div>
     </header>
   );
