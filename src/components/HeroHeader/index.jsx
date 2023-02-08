@@ -63,7 +63,7 @@ const Image = ({ grid, display, layout }) => {
 
 export default function HeroHeader({ title, subtitle }) {
   return (
-    <header className="bg-blue-700 dark:bg-blue-900">
+    <header className="bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-700 dark:to-blue-900">
       <div className="grid md:grid-cols-2 md:gap-12">
         <TextBox
           title={title}
