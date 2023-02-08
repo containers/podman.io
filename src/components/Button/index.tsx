@@ -25,7 +25,7 @@ function Button(props) {
   return (
     <ButtonBase
       {...restProps}
-      buttonStyles={`${bgColor} ${textColor} dark:text-gray-50 py-3 px-7 hover:bg-purple-900 hover:text-white hover:no-underline hover:shadow-md`}>
+      buttonStyles={`${bgColor} ${textColor} py-3 px-7 hover:bg-purple-900 hover:text-white hover:no-underline hover:shadow-md`}>
       {text}
     </ButtonBase>
   );

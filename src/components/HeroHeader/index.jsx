@@ -56,7 +56,7 @@ const PlatformIcons = ({ grid, display, layout }) => {
 const Image = ({ grid, display, layout }) => {
   return (
     <div className={`${grid} ${display} ${layout}`}>
-      <img src={heroImage} alt="Screenshots of podman ui" className="" />
+      <img src={heroImage} alt="Screenshots of podman ui" className="object-cover" />
     </div>
   );
 };
@@ -71,9 +71,9 @@ export default function HeroHeader({ title, subtitle }) {
           grid="row-span-2 place-self-center"
           layout="mt-12 mb-4 md:ml-10 xl:ml-24 md:mb-0"
         />
-        <div className="self-end md:col-start-2 md:row-span-3 lg:row-span-2 lg:row-start-2 lg:mr-24">
-          <PlatformIcons layout="md:max-w-lg lg:max-w-full mb-12 md:mb-0" display="flex flex-col" />
-          <Image display="hidden md:block flex justify-end" layout="-mb-24 lg:mb-12" />
+        <div className="flex flex-col justify-end self-end md:col-start-2 md:row-span-3 lg:row-span-2 lg:row-start-2">
+          <PlatformIcons layout="md:max-w-lg 2xl:pr-8 lg:max-w-full mb-12 md:mb-0" display="flex flex-col items-end" />
+          <Image display="hidden md:flex justify-end lg:w-[510px] 2xl:w-full" layout="-mb-24 lg:mb-12" />
         </div>
         <WaveBorder grid="col-span-full lg:row-start-3" layout="" />
       </div>

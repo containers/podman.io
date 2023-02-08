@@ -5,8 +5,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Podman.io',
-  tagline: 'INSERT TAGLINE',
+  title: 'Podman',
+  tagline:
+    ' Podman is a daemonless container engine for developing, managing, and running OCI Containers on your Linux System',
   url: 'http://localhost:3000/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
