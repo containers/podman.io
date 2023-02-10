@@ -60,7 +60,7 @@ const config = {
         title: 'Podman',
         logo: {
           alt: 'Podman Logo',
-          src: 'images/logos/podman-3-logo-95w-90h.webp',
+          src: 'logos/raw/podman-3-logo-95w-90h.webp',
         },
         items: [
           { to: 'features', label: 'Features', position: 'right' },
