@@ -50,6 +50,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'water-texture': "url('/images/raw/water-background-1370w-605h.png')",
       },
       spacing: {
