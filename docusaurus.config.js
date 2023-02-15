@@ -8,7 +8,7 @@ const config = {
   title: 'Podman',
   tagline:
     ' Podman is a daemonless container engine for developing, managing, and running OCI Containers on your Linux System',
-  url: 'http://localhost:3000/',
+  url: 'https://containers.io/website-new',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -16,7 +16,7 @@ const config = {
 
   organizationName: 'containers',
   projectName: 'website-new',
-
+  trailingSlash: false,
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
