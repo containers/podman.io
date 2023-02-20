@@ -5,9 +5,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Podman.io',
-  tagline: 'INSERT TAGLINE',
-  url: 'http://localhost:3000/',
+  title: 'Podman',
+  tagline:
+    ' Podman is a daemonless container engine for developing, managing, and running OCI Containers on your Linux System',
+  url: 'https://containers.github.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -15,12 +16,12 @@ const config = {
 
   organizationName: 'containers',
   projectName: 'website-new',
-
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
   plugins: [
+    '@docusaurus/theme-live-codeblock',
     async function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
@@ -51,30 +52,33 @@ const config = {
       }),
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: '',
+        title: 'Podman',
         logo: {
           alt: 'Podman Logo',
-          src: 'images/logos/podman.svg',
+          src: 'logos/raw/podman-3-logo-95w-90h.webp',
         },
         items: [
+          { to: 'features', label: 'Features', position: 'right' },
+          { to: 'get-started', label: 'Get Started', position: 'right' },
+          { to: 'community', label: 'Community', position: 'right' },
+          {
+            to: 'https://podman.io/blogs',
+            label: 'Development Blog',
+            position: 'right',
+          },
           {
             type: 'doc',
             docId: 'README',
-            position: 'left',
             label: 'Documentation',
+            position: 'right',
           },
+
           {
-            to: 'https://docs.podman.io/',
-            label: 'Blog',
-            position: 'left',
-          },
-          {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/containers/website-new',
             label: 'GitHub',
             position: 'right',
           },
@@ -88,7 +92,7 @@ const config = {
             items: [
               {
                 label: 'Documentation',
-                href: 'https://docs.podman.io/en/latest/',
+                href: 'https://docs.podman.io/',
               },
             ],
           },
@@ -120,6 +124,9 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      liveCodeBlock: {
+        playgroundPosition: 'bottom',
       },
     }),
 };
