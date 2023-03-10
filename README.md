@@ -22,7 +22,11 @@ _If you are using GitHub pages for hosting, this command is a convenient way to 
 
 ## Configuration Information
 
-_links and files for plugins, libraries, and dev dependencies_
+### Page Content Plan
+
+- Page data (text and images) can be found in `static/data/`
+  - this content is then rendered in landing pages in `src/pages/`
+- Docs and blog content would be written in `.mdx` or `.md` files in `docs/`, and `blog/` respectively
 
 ### Plugins and Libraries
 
@@ -33,3 +37,5 @@ _links and files for plugins, libraries, and dev dependencies_
 - Wordpress Blog Integration: [Wordpress to Docusaurus Plugin](https://github.com/mark-tate/wordpress-to-docusaurus-plugin)
 - Code Formatting: [Prettier](https://prettier.io/) (see `.prettierrc`, `.prettierignore`)
 - Linting: [Eslint](https://eslint.org/) (see `.eslintrc`, `.eslintignore`)
+- Rendering html from js strings: [html-react-parser](https://github.com/remarkablemark/html-react-parser)
+  - wrap strings that contain html markup with `parse(<inset code>)`
