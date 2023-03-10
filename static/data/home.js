@@ -13,7 +13,7 @@ const featureList = [
   {
     title: 'Secure.',
     description:
-      'Rootless containers allow you to contain privileges without compromising functionality. Trusted by US government agencies for secure HPC at scale (case study.) ',
+      'Rootless containers allow you to contain privileges without compromising functionality. Trusted by US government agencies for secure HPC at scale (<a href="#">case study</a>.) ',
   },
   {
     title: 'Open.',
@@ -23,7 +23,7 @@ const featureList = [
   {
     title: 'Compatible.',
     description:
-      'Compatible with other OCI compliant container formats including Docker. Run your legacy Docker containers (including docker-compose files) on Podman. (Learn more)',
+      'Compatible with other OCI compliant container formats including Docker. Run your legacy Docker containers (including docker-compose files) on Podman. (<a href="#">Learn more</a>)',
   },
 ];
 
@@ -60,4 +60,70 @@ const compatibleTools = [
   },
 ];
 
-export { header, featureList, kubernetesBanner, compatibleTools };
+const coloringBook = {
+  title: 'Have fun coloring and learn about Podman!',
+  subtitle:
+    "A decentralized team of open source container tool superheroes comes to the rescue when an asteroid storm threatens the planet. Learn about each tool—Podman, CRI-O, Buildah, Skopeo, and OpenShift—as they redesign the planet's protective shields' container deployment to protect Earth.",
+  link: {
+    text: 'Download',
+    path: '#',
+  },
+  images: [
+    {
+      path: '#',
+      altText: 'Container Commandos coloring book cover',
+    },
+    {
+      path: '#',
+      altText: 'Four examples of coloring book pages from the Container Commandos coloring book.',
+    },
+  ],
+};
+
+const containerTools = {
+  text: 'Podman is one of a family of open source container tools',
+  toolList: [
+    {
+      image: {
+        path: '#',
+        altText: 'Podman',
+      },
+      link: {
+        text: 'podman.io',
+        path: '#',
+      },
+    },
+    {
+      image: {
+        path: '#',
+        altText: 'Buildah',
+      },
+      link: {
+        text: 'buildah.io',
+        path: '#',
+      },
+    },
+    {
+      image: {
+        path: '#',
+        altText: 'Cri-o',
+      },
+      link: {
+        text: 'cri-o.io',
+        path: '#',
+      },
+    },
+    {
+      image: {
+        path: '#',
+        altText: 'Skopeo',
+      },
+      link: {
+        text: 'github.com/containers/skopeo',
+        path: '#',
+      },
+    },
+  ],
+};
+
+export { header, featureList, kubernetesBanner, compatibleTools, coloringBook };
