@@ -16,7 +16,7 @@ const header = {
 const communityChat = {
   title: 'Chat with the Podman community',
   subtitle:
-    'The Podman developerss are generally around during CEST and Eastern Time business hours, so please be patient if you’re in another time zone!',
+    'The Podman developers are generally around during CEST and Eastern Time business hours, so please be patient if you’re in another time zone!',
   links: [
     {
       text: '#podman:matrix.org',

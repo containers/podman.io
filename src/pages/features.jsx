@@ -1,14 +1,11 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import PageHeader from '@site/src/components/PageHeader';
+import { header } from '@site/static/data/features';
 export default function Community() {
-  const headerInfo = {
-    title: 'Features',
-  };
-
   return (
     <Layout>
-      <PageHeader title={headerInfo.title} />
+      <PageHeader title={header.title} description={header.subtitle} />
     </Layout>
   );
 }
