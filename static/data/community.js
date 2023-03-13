@@ -95,11 +95,11 @@ const mailingList = {
   subscribeInfo: {
     title: 'Subscribe or post to the mailing list',
     subtitle:
-      'Simply visit <a href="#">the Podman mailing list</a> website to browse or search previous postings to the Podman mailing list.',
+      'Simply visit  href="#">the Podman mailing list</a> website to browse or search previous postings to the Podman mailing list.',
     options: [
       {
         title: 'Option 1',
-        subtitle: 'Send an email to <a href="#">podman-join@lists.podman.io with the word "Subscribe" in the subject.',
+        subtitle: 'Send an email to  href="#">podman-join@lists.podman.io with the word "Subscribe" in the subject.',
         button: {
           text: 'Send email',
           path: '#',
@@ -115,21 +115,21 @@ const mailingList = {
       },
     ],
     description:
-      "Regardless of which method you use, a confirmation email will be sent to you. After you reply back to that confirmation email, you'll then be able to send mail directly to <a href='#'>podman@lists.podman.io</a>. You can then also go to <a href='#'>the list's web page</a> and manage your subscription.",
+      "Regardless of which method you use, a confirmation email will be sent to you. After you reply back to that confirmation email, you'll then be able to send mail directly to  href='#'>podman@lists.podman.io</a>. You can then also go to <a href='#'>the list's web page</a> and manage your subscription.",
   },
 };
 
 const submittingIssues = {
   title: 'Submitting Issues & Pull Requests',
   subtitle:
-    'The following is a quick cheat-sheet of sorts on how to submit issues and pull requests to the Podman project. For the most up-to-date and more comprehensive information, please take a look at <a href="#">CONTRIBUTING.md</a> in the Podman repo.',
+    'The following is a quick cheat-sheet of sorts on how to submit issues and pull requests to the Podman project. For the most up-to-date and more comprehensive information, please take a look at  href="#">CONTRIBUTING.md</a> in the Podman repo.',
   sections: [
     {
       title: 'Submitting Issues',
       subtitle: "Don't include private / sensitive info in issues!",
       sections: [
         {
-          text: '<strong>Before reporting an issue</strong>, <a href="#">check our backlog of open issues</a> to see if someone else has already reported it. If so:',
+          text: '**Before reporting an issue**, [check our backlog of open issues](#) to see if someone else has already reported it. If so:',
           checkList: [
             'Feel free to add your scenario, or additional information, to the discussion.',
             'Subscribe to the issue to be notified when it is updated.',
@@ -140,7 +140,7 @@ const submittingIssues = {
           },
         },
         {
-          text: "<strong>If you find a new issue</strong>, we'd love to hear about it! The most important aspect of a bug report is that it includes enough information for us to reproduce it. So, please:",
+          text: "**If you find a new issue**, we'd love to hear about it! The most important aspect of a bug report is that it includes enough information for us to reproduce it. So, please:",
           checkList: [
             'Include as much detail as possible',
             "Try to remove any extra stuff that doesn't really relate to the issue itself",
