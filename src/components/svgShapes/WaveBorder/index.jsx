@@ -4,7 +4,7 @@ export default function WaveBorder({
   grid,
   layout,
   lightFill = 'fill-white',
-  darkFill = 'dark:fill-[#1b1b1d]',
+  darkFill = 'dark:fill-gray-900',
   width = '100%',
   height = '130',
 }) {

@@ -1,11 +1,18 @@
 import React from 'react';
 import WaveBorder from '@site/src/components/svgShapes/WaveBorder';
+import ReactMarkdown from 'react-markdown';
 
-const TextBox = ({ grid, display, layout, title = 'Default Title', description = 'Just some Text' }) => {
+const TextBox = ({
+  grid,
+  display,
+  layout,
+  title = 'Default Title',
+  description = '[This is a link](http://google.ca)',
+}) => {
   return (
     <div className={`${grid} ${display} ${layout}`}>
       <h1 className="mb-6 max-w-sm text-purple-700 dark:text-purple-500 lg:max-w-lg ">{title}</h1>
-      <p className="leading-relaxed">{description}</p>
+      <p className="leading-relaxed">{<ReactMarkdown children={description} />}</p>
     </div>
   );
 };
@@ -22,11 +29,11 @@ const Image = ({
   );
 };
 
-export default function PageHeader({ title, description, image }) {
+export default function PageHeader({ title, description, image, lightColor = 'white', darkColor = 'gray-900' }) {
   return (
-    <header className="h-5/6 xl:h-96">
+    <header className={`h-5/6  xl:h-96 bg-${lightColor} dark:bg-${darkColor}`}>
       <div className="bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-700 dark:to-blue-900">
-        <WaveBorder />
+        <WaveBorder lightFill={`fill-${lightColor} dark:fill-${darkColor}`} />
       </div>
       <div className="container grid justify-items-center gap-3 md:grid-cols-2">
         <TextBox title={title} description={description} layout="mt-12 lg:mt-0" />

@@ -47,7 +47,6 @@
     @apply font-display dark:text-gray-300;
   }
   /* main text */
-  a,
   p,
   dl,
   dt,
@@ -58,6 +57,9 @@
   figcaption,
   blockquote {
     @apply font-text text-lg dark:text-gray-300 lg:text-xl;
+  }
+  a {
+    @apply font-text text-lg text-blue-500 underline underline-offset-4 transition duration-150 ease-linear hover:text-purple-500 dark:text-blue-300 hover:dark:text-purple-300 lg:text-xl;
   }
   /* monospace */
   code,
