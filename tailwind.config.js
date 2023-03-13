@@ -5,6 +5,8 @@ module.exports = {
   darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
       black: '#000000',
       blue: {
         50: '#EDFDFF',
