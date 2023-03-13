@@ -22,18 +22,18 @@ function DateTimeBox() {
   ];
 
   return (
-    <article className="max-w-lg rounded-lg bg-[#f2f9f9] shadow-md">
-      <div className="m-8 grid gap-2 md:grid-cols-2">
-        <div className="col-span-full text-center">
-          <h3 className="text-gray-300">Current Time</h3>
+    <article className="mb-10 max-w-lg rounded-lg bg-[#f2f9f9] shadow-md">
+      <div className="m-4 grid grid-cols-2 gap-x-4 lg:m-8">
+        <div className="col-span-full mb-5 text-center">
+          <h3 className="font-bold text-gray-300">Current Time</h3>
         </div>
-        <div>
-          <p>{currentTime}</p>
-          <p>{userTimeZone}</p>
+        <div className="text-center">
+          <h4 className="mb-2 text-3xl font-extrabold text-purple-500">{currentTime}</h4>
+          <p className="w-40 font-bold text-blue-900">{userTimeZone}</p>
         </div>
-        <div>
-          <p>{centralTime[0]}</p>
-          <p>{centralTime[1]}</p>
+        <div className="text-center">
+          <h4 className="mb-2 text-3xl font-extrabold text-purple-500">{centralTime[0]}</h4>
+          <p className="w-40 font-bold text-blue-900">{centralTime[1]}</p>
         </div>
       </div>
     </article>
@@ -46,9 +46,9 @@ export default function Community() {
       <PageHeader title={header.title} description={header.subtitle} />
       <section className="mt-8 bg-gray-50">
         <SectionHeader title={communityChat.title} />
-        <div className="container flex justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-12 xl:gap-40">
           <div>
-            <p className="max-w-prose">{communityChat.subtitle}</p>
+            <p className="max-w-sm text-center text-gray-700 md:max-w-md md:text-start">{communityChat.subtitle}</p>
           </div>
           <DateTimeBox />
         </div>
