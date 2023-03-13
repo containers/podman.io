@@ -14,7 +14,7 @@ const knowPodman = {
     {
       title: 'Quick dive into Podman',
       description:
-        'Hop on over to our <a href="#">Podman Quickstart Guide</a> and we\'ll lead you through basic Podman commands Guide and give you pointers to more learning materials and guides.',
+        "Hop on over to our [Podman Quickstart Guide](#) and we'll lead you through basic Podman commands Guide and give you pointers to more learning materials and guides.",
       image: {
         path: '#',
         altText: '#',
@@ -32,7 +32,7 @@ const knowPodman = {
     {
       title: 'Need some help?',
       description:
-        'Check out the <a href="#">Podman Troubleshooting Guide</a>, search our <a href="#">Documentation</a>, or file an issue in our <a href="#">issue tracker</a>.',
+        'Check out the [Podman Troubleshooting Guide](#), search our [Documentation](#), or file an issue in our [issue tracker](#).',
       image: {
         path: '#',
         altText: '#',
