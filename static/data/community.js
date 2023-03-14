@@ -7,7 +7,7 @@ const header = {
     text: 'To help ensure all feel welcome in the Podman community, we expect all who participate to adhere to our [Code of Conduct]()',
     link: {
       text: 'Code of Conduct',
-      path: 'https://github.com/containers/common/blob/main/CODE-OF-CONDUCT.md',
+      src: 'https://github.com/containers/common/blob/main/CODE-OF-CONDUCT.md',
       icon: 'fa6-regular:handshake',
     },
   },
@@ -20,33 +20,33 @@ const communityChat = {
   links: [
     {
       text: '#podman:matrix.org',
-      path: '#',
+      src: '#',
       image: {
-        path: '',
+        src: 'logos/raw/element-56w-59h.png',
         alt: 'Element Matrix Logo',
       },
     },
     {
       text: '#podman on libera.chat',
-      path: '#',
+      src: '',
       image: {
-        path: '',
+        src: '/logos/raw/irc-64w-61h.png',
         alt: 'IRC Logo',
       },
     },
     {
       text: 'Podman Discord',
-      path: '#',
+      src: '#',
       image: {
-        path: '',
+        src: '/logos/raw/discord-114w-64h.png',
         alt: 'Discord Logo',
       },
     },
     {
       text: '#CRIO on Kubernetes',
-      path: '#',
+      src: '#',
       image: {
-        path: '',
+        src: '/logos/raw/slack-96w-54h.png',
         alt: 'Slack Logo',
       },
     },
@@ -65,8 +65,8 @@ const communityMeetings = {
       date: '1st Tuesday every month',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
-        { text: 'Join Meeting', path: '#' },
-        { text: 'Meeting Agenda', path: '#' },
+        { text: 'Join Meeting', src: '#' },
+        { text: 'Meeting Agenda', src: '#' },
       ],
     },
     {
@@ -76,8 +76,8 @@ const communityMeetings = {
       date: '3rd Thursday every month',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
-        { text: 'Join Meeting', path: '#' },
-        { text: 'Meeting Agenda', path: '#' },
+        { text: 'Join Meeting', src: '#' },
+        { text: 'Meeting Agenda', src: '#' },
       ],
     },
   ],
@@ -102,7 +102,7 @@ const mailingList = {
         subtitle: 'Send an email to  href="#">podman-join@lists.podman.io with the word "Subscribe" in the subject.',
         button: {
           text: 'Send email',
-          path: '#',
+          src: '#',
         },
       },
       {
@@ -110,7 +110,7 @@ const mailingList = {
         subtitle: 'Enter your email at the bottom of the mailing list sign up page, and hit the "Subscribe" button.',
         button: {
           text: 'Sign up page',
-          path: '#',
+          src: '#',
         },
       },
     ],
@@ -136,7 +136,7 @@ const submittingIssues = {
           ],
           button: {
             text: 'Check Open Issues',
-            path: '#',
+            src: '#',
           },
         },
         {
@@ -147,7 +147,7 @@ const submittingIssues = {
           ],
           button: {
             text: 'File a New Issue',
-            path: '#',
+            src: '#',
           },
         },
       ],
@@ -163,7 +163,7 @@ const submittingIssues = {
       ],
       button: {
         text: 'More PR Submission Details',
-        path: '#',
+        src: '#',
       },
     },
   ],

@@ -45,12 +45,14 @@ function CommunityLinks() {
   return (
     <div className="container my-8">
       <ul className="mb-12 flex flex-wrap justify-around gap-8 lg:gap-16">
-        {links.map(link => {
+        {links.map((link, index) => {
           return (
-            <li>
-              <a href={link.path} className="mx-auto block text-center">
-                <img src={link.image.path} alt={link.image.alt} />
-                <span className="underline-offset-6 duration-149 mt-2 block text-blue-700 underline transition ease-linear hover:text-blue-900">
+            <li key={index}>
+              <a href={link.src} className="mx-auto  flex flex-col items-center text-center">
+                <div className="max-w-fit rounded-full bg-white p-5">
+                  <img src={link.image.src} alt={link.image.alt} />
+                </div>
+                <span className="underline-offset-6 duration-149 mt-4 block text-blue-700 underline transition ease-linear hover:text-blue-900">
                   {link.text}
                 </span>
               </a>
