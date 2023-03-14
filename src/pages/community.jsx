@@ -2,11 +2,13 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import PageHeader from '@site/src/components/PageHeader';
 import SectionHeader from '@site/src/components/SectionHeader';
+import Card from '@site/src/components/Card';
 import WaveBorder from '@site/src/components/svgShapes/WaveBorder';
 
-import { header, communityChat } from '@site/static/data/community';
+import { header, communityChat, communityMeetings } from '@site/static/data/community';
 
 function DateTimeBox() {
+  // TODO: Optimize this code
   const date = new Date();
   const currentTime = `${date.getHours()}:${date.getMinutes()}`;
   const userTimeZone = new Intl.DateTimeFormat('en-US', { timeZoneName: 'long' }).format().split(',')[1];
@@ -64,21 +66,57 @@ function CommunityLinks() {
   );
 }
 
+function CardSection() {
+  const cards = communityMeetings.cards.map(card => card);
+  return (
+    <div>
+      {cards.map((card, index) => {
+        return (
+          <Card
+            key={index}
+            title={card.title}
+            subtitle={card.date}
+            details={card.timeZone}
+            text={card.subtitle}
+            data={card.buttons}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
 export default function Community() {
   return (
     <Layout>
       <PageHeader title={header.title} description={header.subtitle} />
       <section className="mt-8 bg-gray-50 lg:mt-16">
         <SectionHeader title={communityChat.title} />
-        <div className="flex flex-wrap justify-around gap-4 lg:gap-12">
+        <div className="mx-4 flex flex-wrap justify-around gap-4 sm:mx-8 lg:mx-auto lg:max-w-6xl">
           <div>
-            <p className="max-w-sm text-center text-gray-700 md:max-w-md md:text-start">{communityChat.subtitle}</p>
+            <p className="max-w-sm text-center text-gray-700 md:max-w-md md:text-start lg:max-w-xl">
+              {communityChat.subtitle}
+            </p>
           </div>
           <DateTimeBox />
         </div>
-
         <CommunityLinks />
         <WaveBorder />
+      </section>
+      <section>
+        <div className="container flex flex-col">
+          <SectionHeader
+            title={communityMeetings.title}
+            description={communityMeetings.subtitle}
+            textColor="from-purple-500 to-purple-700"
+          />
+          <img
+            src={communityMeetings.image.src}
+            alt={communityMeetings.image.alt}
+            className="order-first mx-auto max-w-lg"
+          />
+          <CardSection />
+        </div>
       </section>
     </Layout>
   );
