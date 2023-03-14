@@ -10,7 +10,7 @@ const TextBox = ({ grid, display, layout, title, subtitle }) => {
     <div className={`${grid} ${display} ${layout} container`}>
       <h1 className="mb-4 text-white dark:text-gray-100 lg:mb-8">{title}</h1>
       <p className="max-w-sm text-white dark:text-gray-100 lg:max-w-prose">{subtitle}</p>
-      <Buttons layout="flex  max-w-sm gap-8 my-3" />
+      <Buttons layout="flex max-w-sm gap-8 my-3" />
       <p className="flex gap-4 text-white dark:text-gray-100">
         <span>
           Latest stable <Link text="v4.3.0" textColor="text-white dark:text-gray-100" />

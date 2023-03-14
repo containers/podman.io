@@ -3,9 +3,10 @@ import Layout from '@theme/Layout';
 import PageHeader from '@site/src/components/PageHeader';
 import SectionHeader from '@site/src/components/SectionHeader';
 import Card from '@site/src/components/Card';
+import Button from '../components/Button';
 import WaveBorder from '@site/src/components/svgShapes/WaveBorder';
-
-import { header, communityChat, communityMeetings } from '@site/static/data/community';
+import ReactMarkdown from 'react-markdown';
+import { header, communityChat, communityMeetings, mailingList } from '@site/static/data/community';
 
 function DateTimeBox() {
   // TODO: Optimize this code
@@ -45,31 +46,29 @@ function DateTimeBox() {
 function CommunityLinks() {
   const links = communityChat.links.map(x => x);
   return (
-    <div className="container my-8">
-      <ul className="mb-12 flex flex-wrap justify-around gap-8 lg:gap-16">
-        {links.map((link, index) => {
-          return (
-            <li key={index}>
-              <a href={link.src} className="mx-auto  flex flex-col items-center text-center">
-                <div className="max-w-fit rounded-full bg-white p-5">
-                  <img src={link.image.src} alt={link.image.alt} />
-                </div>
-                <span className="underline-offset-6 duration-149 mt-4 block text-blue-700 underline transition ease-linear hover:text-blue-900">
-                  {link.text}
-                </span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <ul className="mb-12 flex flex-wrap justify-around gap-8 lg:gap-16">
+      {links.map((link, index) => {
+        return (
+          <li key={index}>
+            <a href={link.src} className="mx-auto  flex flex-col items-center text-center">
+              <div className="max-w-fit rounded-full bg-white p-5">
+                <img src={link.image.src} alt={link.image.alt} />
+              </div>
+              <span className="underline-offset-6 duration-149 mt-4 block text-blue-700 underline transition ease-linear hover:text-blue-900">
+                {link.text}
+              </span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 
 function CardSection() {
   const cards = communityMeetings.cards.map(card => card);
   return (
-    <div>
+    <div className="mb-8 flex flex-wrap justify-center gap-4 lg:mb-12 lg:gap-8">
       {cards.map((card, index) => {
         return (
           <Card
@@ -100,7 +99,9 @@ export default function Community() {
           </div>
           <DateTimeBox />
         </div>
-        <CommunityLinks />
+        <div className="container my-8">
+          <CommunityLinks />
+        </div>
         <WaveBorder />
       </section>
       <section>
@@ -116,6 +117,34 @@ export default function Community() {
             className="order-first mx-auto max-w-lg"
           />
           <CardSection />
+        </div>
+      </section>
+      <section>
+        {/* TODO: Make multi column layout */}
+        <div className="container">
+          <SectionHeader title={mailingList.title} description={mailingList.subtitle} />
+          <section>
+            <h3 className="font-medium text-purple-700">{mailingList.browseInfo.title}</h3>
+            <p className="text-gray-500">{mailingList.browseInfo.subtitle}</p>
+          </section>
+          <section>
+            <h3 className="font-medium text-purple-700">{mailingList.subscribeInfo.title}</h3>
+            <ReactMarkdown children={mailingList.subscribeInfo.subtitle} className="text-gray-500" />
+            <div className="flex flex-wrap gap-4">
+              {mailingList.subscribeInfo.options.map(item => {
+                return (
+                  <article className="my-4 max-w-xs">
+                    <h4 className="text-gray-700">{item.title}</h4>
+                    <ReactMarkdown children={item.subtitle} className="my-3 text-gray-500" />
+                    <Button variant="outline" bgColor="white" text={item.button.text} src={item.button.src} />
+                  </article>
+                );
+              })}
+            </div>
+            <div className="my-4 max-w-prose text-gray-500">
+              <p>{mailingList.subscribeInfo.description}</p>
+            </div>
+          </section>
         </div>
       </section>
     </Layout>
