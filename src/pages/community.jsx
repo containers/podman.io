@@ -40,18 +40,42 @@ function DateTimeBox() {
   );
 }
 
+function CommunityLinks() {
+  const links = communityChat.links.map(x => x);
+  return (
+    <div className="container my-8">
+      <ul className="mb-12 flex flex-wrap justify-around gap-8 lg:gap-16">
+        {links.map(link => {
+          return (
+            <li>
+              <a href={link.path} className="mx-auto block text-center">
+                <img src={link.image.path} alt={link.image.alt} />
+                <span className="underline-offset-6 duration-149 mt-2 block text-blue-700 underline transition ease-linear hover:text-blue-900">
+                  {link.text}
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+
 export default function Community() {
   return (
     <Layout>
       <PageHeader title={header.title} description={header.subtitle} />
-      <section className="mt-8 bg-gray-50">
+      <section className="mt-8 bg-gray-50 lg:mt-16">
         <SectionHeader title={communityChat.title} />
-        <div className="flex flex-wrap justify-center gap-12 xl:gap-40">
+        <div className="flex flex-wrap justify-around gap-4 lg:gap-12">
           <div>
             <p className="max-w-sm text-center text-gray-700 md:max-w-md md:text-start">{communityChat.subtitle}</p>
           </div>
           <DateTimeBox />
         </div>
+
+        <CommunityLinks />
         <WaveBorder />
       </section>
     </Layout>
