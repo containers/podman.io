@@ -56,13 +56,17 @@ const communityChat = {
 const communityMeetings = {
   title: 'Podman Community Meetings',
   subtitle:
-    "Many of the maintainers for the Podman project attend both of these meetings, so it's a great chance for community members like you to ask them questions or address concerns directly. If you have a topic that you’d like to propose for either meeting, please send a note to the Mailing List.",
+    "Many of the maintainers for the Podman project attend both of these meetings, so it's a great chance for community members like you to ask them questions or address concerns directly. If you have a topic that you’d like to propose for either meeting, please send a note to the [Mailing List]().",
+  image: {
+    src: 'images/optimized/community-call-554w-219h.webp',
+    alt: 'An image of podman team members in a virtual meeting',
+  },
   cards: [
     {
       title: 'Podman Community Meeting',
       subtitle:
         'This meeting is used to show demos for or to have general discussions about Podman or other related container technologies. It is also used to make announcements about Podman and the other projects in the Containers repository on GitHub.',
-      date: '1st Tuesday every month',
+      date: '**1st Tuesday** every month',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
         { text: 'Join Meeting', src: '#' },
@@ -73,7 +77,7 @@ const communityMeetings = {
       title: 'Podman Community Cabal',
       subtitle:
         'The focus of the cabal meeting is the planning and discussion of possible future changes to Podman or the related Containers projects and discussing any outstanding issues that might need solving.',
-      date: '3rd Thursday every month',
+      date: '**3rd Thursday** every month',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
         { text: 'Join Meeting', src: '#' },
