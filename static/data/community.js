@@ -22,7 +22,7 @@ const communityChat = {
       text: '#podman:matrix.org',
       path: '#',
       image: {
-        path: '#',
+        path: '',
         alt: 'Element Matrix Logo',
       },
     },
@@ -38,7 +38,7 @@ const communityChat = {
       text: 'Podman Discord',
       path: '#',
       image: {
-        path: '#',
+        path: '',
         alt: 'Discord Logo',
       },
     },
@@ -46,7 +46,7 @@ const communityChat = {
       text: '#CRIO on Kubernetes',
       path: '#',
       image: {
-        path: '#',
+        path: '',
         alt: 'Slack Logo',
       },
     },
