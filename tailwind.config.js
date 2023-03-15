@@ -7,6 +7,8 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
+      // TODO: Get feedback from Mo on using this aqua color tag
+      aqua: '#f2f9f9',
       black: '#000000',
       blue: {
         50: '#EDFDFF',
