@@ -25,7 +25,7 @@ function DateTimeBox() {
   ];
 
   return (
-    <article className="mb-10 max-w-lg rounded-lg bg-[#f2f9f9] shadow-md">
+    <article className="mb-10 max-w-lg rounded-lg bg-aqua shadow-md">
       <div className="m-4 grid grid-cols-2 gap-x-4 lg:m-8">
         <div className="col-span-full mb-5 text-center">
           <h3 className="font-bold text-gray-300">Current Time</h3>
@@ -104,7 +104,7 @@ export default function Community() {
         </div>
         <WaveBorder />
       </section>
-      <section>
+      <section className="bg-gradient-to-b from-white via-gray-50 to-gray-100 pb-8">
         <div className="container flex flex-col">
           <SectionHeader
             title={communityMeetings.title}
@@ -114,36 +114,51 @@ export default function Community() {
           <img
             src={communityMeetings.image.src}
             alt={communityMeetings.image.alt}
-            className="order-first mx-auto max-w-lg"
+            className="order-first mx-auto object-cover lg:max-w-lg"
           />
+          {/* TODO: Add card background color support */}
           <CardSection />
         </div>
       </section>
       <section>
-        {/* TODO: Make multi column layout */}
-        <div className="container">
-          <SectionHeader title={mailingList.title} description={mailingList.subtitle} />
-          <section>
+        {/* TODO: optimize  single to multi column layouts */}
+        <div className="container grid gap-4 lg:grid-cols-2">
+          <SectionHeader title={mailingList.title} description={mailingList.subtitle} layout="col-span-full" />
+          <section className="container mb-8">
             <h3 className="font-medium text-purple-700">{mailingList.browseInfo.title}</h3>
-            <p className="text-gray-500">{mailingList.browseInfo.subtitle}</p>
+            <p className="max-w-prose text-gray-500">{mailingList.browseInfo.subtitle}</p>
           </section>
-          <section>
+          <section className="container mb-8">
             <h3 className="font-medium text-purple-700">{mailingList.subscribeInfo.title}</h3>
-            <ReactMarkdown children={mailingList.subscribeInfo.subtitle} className="text-gray-500" />
-            <div className="flex flex-wrap gap-4">
+            <ReactMarkdown children={mailingList.subscribeInfo.subtitle} className="max-w-prose text-gray-500" />
+            <div className="flex gap-4">
               {mailingList.subscribeInfo.options.map(item => {
                 return (
                   <article className="my-4 max-w-xs">
                     <h4 className="text-gray-700">{item.title}</h4>
-                    <ReactMarkdown children={item.subtitle} className="my-3 text-gray-500" />
+                    <ReactMarkdown children={item.subtitle} className="mb-4 mt-2 w-48 text-gray-500 md:w-64" />
                     <Button variant="outline" bgColor="white" text={item.button.text} src={item.button.src} />
                   </article>
                 );
               })}
             </div>
-            <div className="my-4 max-w-prose text-gray-500">
+            <div className="my-4 max-w-prose text-gray-700">
               <p>{mailingList.subscribeInfo.description}</p>
             </div>
+          </section>
+          <section className="mb-8 lg:col-start-2 lg:row-span-2 lg:row-start-2">
+            <div>
+              <img
+                src={mailingList.extraInfo.image.src}
+                alt={mailingList.extraInfo.image.alt}
+                className="w-full object-cover"
+              />
+            </div>
+            {/* TODO: create a new component called InfoBox with this */}
+            <aside className="container rounded-lg bg-aqua p-8 text-gray-700 shadow-xl lg:ml-10 lg:max-w-xl">
+              <h4 className="mb-2 font-bold">{mailingList.extraInfo.note.title}</h4>
+              <p>{mailingList.extraInfo.note.text}</p>
+            </aside>
           </section>
         </div>
       </section>
