@@ -13,9 +13,10 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'images/favicon.ico',
-
+  trailingSlash: true,
   organizationName: 'containers',
-  projectName: 'website-new',
+  projectName: 'containers.github.io',
+  deploymentBranch: 'sprint-1',
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
