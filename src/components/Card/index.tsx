@@ -31,6 +31,7 @@ function CardButtons({ data = [{ text: 'card text' }] }) {
   );
 }
 
+// TODO: improve prop handling. this approach is limited
 export default function Card(props): JSX.Element {
   return (
     <article className="m-4 rounded-md p-4 shadow-xl lg:m-2">
