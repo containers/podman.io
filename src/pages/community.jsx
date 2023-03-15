@@ -5,8 +5,9 @@ import SectionHeader from '@site/src/components/SectionHeader';
 import Card from '@site/src/components/Card';
 import Button from '../components/Button';
 import WaveBorder from '@site/src/components/svgShapes/WaveBorder';
+import { Icon } from '@iconify/react';
 import ReactMarkdown from 'react-markdown';
-import { header, communityChat, communityMeetings, mailingList } from '@site/static/data/community';
+import { header, communityChat, communityMeetings, mailingList, submittingIssues } from '@site/static/data/community';
 
 function DateTimeBox() {
   // TODO: Optimize this code
@@ -89,6 +90,7 @@ export default function Community() {
   return (
     <Layout>
       <PageHeader title={header.title} description={header.subtitle} />
+      {/* Community Chat */}
       <section className="mt-8 bg-gray-50 lg:mt-16">
         <SectionHeader title={communityChat.title} />
         <div className="mx-4 flex flex-wrap justify-around gap-4 sm:mx-8 lg:mx-auto lg:max-w-6xl">
@@ -104,6 +106,7 @@ export default function Community() {
         </div>
         <WaveBorder />
       </section>
+      {/* Community Meetings */}
       <section className="bg-gradient-to-b from-white via-gray-50 to-gray-100 pb-8">
         <div className="container flex flex-col">
           <SectionHeader
@@ -120,6 +123,7 @@ export default function Community() {
           <CardSection />
         </div>
       </section>
+      {/* Mailing Lists */}
       <section>
         {/* TODO: optimize  single to multi column layouts */}
         <div className="container grid gap-4 lg:grid-cols-2">
@@ -131,7 +135,7 @@ export default function Community() {
           <section className="container mb-8">
             <h3 className="font-medium text-purple-700">{mailingList.subscribeInfo.title}</h3>
             <ReactMarkdown children={mailingList.subscribeInfo.subtitle} className="max-w-prose text-gray-500" />
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               {mailingList.subscribeInfo.options.map(item => {
                 return (
                   <article className="my-4 max-w-xs">
@@ -161,6 +165,59 @@ export default function Community() {
             </aside>
           </section>
         </div>
+      </section>
+      {/* Submit Pull Requests */}
+      <section className="bg-gray-50">
+        <SectionHeader
+          title={submittingIssues.title}
+          description={submittingIssues.subtitle}
+          textColor="from-purple-500 to-purple-700"
+        />
+        {/* TODO: Mobile accordions */}
+        <div className="container flex flex-wrap justify-center gap-4">
+          {/* TODO: split up articles into a separate local component */}
+          {submittingIssues.sections.map((section, index) => {
+            return (
+              <article className="mt-4 mb-8 w-full rounded-sm bg-white p-8 shadow-xl lg:w-1/3" key={index}>
+                <header>
+                  <h4 className="text-center text-blue-700 md:text-xl">{section.title}</h4>
+                  {/* TODO: make dynamic so that it only uses the colored box when told to */}
+                  <aside className="my-4 flex items-center justify-center gap-2 rounded-md bg-aqua p-2">
+                    <Icon icon="fa6-solid:circle-exclamation" className="text-purple-700" />
+                    <p>{section.subtitle}</p>
+                  </aside>
+                </header>
+                <div>
+                  {submittingIssues.sections[0].sections.map((section, index) => {
+                    return (
+                      <section key={index} className="flex flex-col items-center">
+                        <ReactMarkdown children={section.text} className="max-w-sm" />
+                        <ul className="my-2 ml-10 list-disc">
+                          {section.checkList.map(item => {
+                            return (
+                              <li key={index} className="my-3">
+                                {item}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                        <div className="mb-8">
+                          <Button
+                            text={section.button.text}
+                            src={section.button.src}
+                            variant="outline"
+                            bgColor="white"
+                          />
+                        </div>
+                      </section>
+                    );
+                  })}
+                </div>
+              </article>
+            );
+          })}
+        </div>
+        {/*  TODO: Add Aside Box */}
       </section>
     </Layout>
   );
