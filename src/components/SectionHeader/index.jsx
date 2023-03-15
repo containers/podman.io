@@ -5,9 +5,10 @@ export default function SectionHeader({
   title = 'Test Title',
   description,
   textColor = ' from-blue-500 to-blue-900 ',
+  layout,
 }) {
   return (
-    <header className="container mx-auto my-8 text-center lg:my-12">
+    <header className={`container mx-auto my-8 text-center lg:my-12 ${layout}`}>
       <h2 className={`${textColor} bg-gradient-radial bg-clip-text text-transparent`}>{title}</h2>
       <ReactMarkdown children={description} className="my-4 text-gray-700" />
     </header>
