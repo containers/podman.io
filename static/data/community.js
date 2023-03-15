@@ -100,6 +100,8 @@ const mailingList = {
     title: 'Subscribe or post to the mailing list',
     subtitle:
       'Simply visit [the Podman mailing list website]() to browse or search previous postings to the Podman mailing list.',
+    description:
+      "Regardless of which method you use, a confirmation email will be sent to you. After you reply back to that confirmation email, you'll then be able to send mail directly to  href='#'>podman@lists.podman.io</a>. You can then also go to <a href='#'>the list's web page</a> and manage your subscription.",
     options: [
       {
         title: 'Option 1',
@@ -119,8 +121,16 @@ const mailingList = {
         },
       },
     ],
-    description:
-      "Regardless of which method you use, a confirmation email will be sent to you. After you reply back to that confirmation email, you'll then be able to send mail directly to  href='#'>podman@lists.podman.io</a>. You can then also go to <a href='#'>the list's web page</a> and manage your subscription.",
+  },
+  extraInfo: {
+    image: {
+      src: 'images/optimized/mailing-list-screenshot-580w-376h.webp',
+      alt: 'A screenshot of the Podman mailing list home screen.',
+    },
+    note: {
+      title: 'Please note:',
+      text: 'If you have a bug that you’d like to report, it’s best to report it here by creating a “New issue” rather than sending an email to the list.',
+    },
   },
 };
 
