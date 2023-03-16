@@ -86,6 +86,28 @@ function CardSection() {
   );
 }
 
+function MultiSectionCard({ content }) {
+  const section = content;
+  console.log(section);
+  return (
+    <article className="mt-4 mb-8 w-full rounded-sm bg-white p-8 shadow-xl lg:w-1/3">
+      <header>
+        <h4 className="text-center text-blue-700 md:text-xl">{section.title}</h4>
+        <aside className="my-4 flex items-center justify-center gap-2 rounded-md bg-aqua p-2">
+          <Icon icon="fa6-solid:circle-exclamation" className="text-purple-700" />
+          <p>{}</p>
+        </aside>
+      </header>
+      <section className="flex flex-col items-center">
+        {/* <ReactMarkdown children={} className="max-w-sm" /> */}
+        <ul className="my-2 ml-10 list-disc">
+          <li className="my-3"></li>
+        </ul>
+        <div className="mb-8">{/* <Button text={} src={} variant="outline" bgColor="white" /> */}</div>
+      </section>
+    </article>
+  );
+}
 export default function Community() {
   return (
     <Layout>
@@ -136,9 +158,9 @@ export default function Community() {
             <h3 className="font-medium text-purple-700">{mailingList.subscribeInfo.title}</h3>
             <ReactMarkdown children={mailingList.subscribeInfo.subtitle} className="max-w-prose text-gray-500" />
             <div className="flex flex-wrap gap-4">
-              {mailingList.subscribeInfo.options.map(item => {
+              {mailingList.subscribeInfo.options.map((item, index) => {
                 return (
-                  <article className="my-4 max-w-xs">
+                  <article className="my-4 max-w-xs" key={index}>
                     <h4 className="text-gray-700">{item.title}</h4>
                     <ReactMarkdown children={item.subtitle} className="mb-4 mt-2 w-48 text-gray-500 md:w-64" />
                     <Button variant="outline" bgColor="white" text={item.button.text} src={item.button.src} />
@@ -173,48 +195,9 @@ export default function Community() {
           description={submittingIssues.subtitle}
           textColor="from-purple-500 to-purple-700"
         />
-        {/* TODO: Mobile accordions */}
         <div className="container flex flex-wrap justify-center gap-4">
-          {/* TODO: split up articles into a separate local component */}
-          {submittingIssues.sections.map((section, index) => {
-            return (
-              <article className="mt-4 mb-8 w-full rounded-sm bg-white p-8 shadow-xl lg:w-1/3" key={index}>
-                <header>
-                  <h4 className="text-center text-blue-700 md:text-xl">{section.title}</h4>
-                  {/* TODO: make dynamic so that it only uses the colored box when told to */}
-                  <aside className="my-4 flex items-center justify-center gap-2 rounded-md bg-aqua p-2">
-                    <Icon icon="fa6-solid:circle-exclamation" className="text-purple-700" />
-                    <p>{section.subtitle}</p>
-                  </aside>
-                </header>
-                <div>
-                  {submittingIssues.sections[0].sections.map((section, index) => {
-                    return (
-                      <section key={index} className="flex flex-col items-center">
-                        <ReactMarkdown children={section.text} className="max-w-sm" />
-                        <ul className="my-2 ml-10 list-disc">
-                          {section.checkList.map(item => {
-                            return (
-                              <li key={index} className="my-3">
-                                {item}
-                              </li>
-                            );
-                          })}
-                        </ul>
-                        <div className="mb-8">
-                          <Button
-                            text={section.button.text}
-                            src={section.button.src}
-                            variant="outline"
-                            bgColor="white"
-                          />
-                        </div>
-                      </section>
-                    );
-                  })}
-                </div>
-              </article>
-            );
+          {submittingIssues.sections.map((item, index) => {
+            return <MultiSectionCard content={item} key={index} />;
           })}
         </div>
         {/*  TODO: Add Aside Box */}
