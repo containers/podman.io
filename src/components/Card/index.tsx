@@ -24,8 +24,10 @@ function CardBody(props) {
 function CardButtons({ data = [{ text: 'card text' }] }) {
   return (
     <div className=" mx-2 mb-4 flex justify-center gap-2 lg:mb-8">
-      {data.map(item => (
-        <Button {...item} />
+      {data.map((item, index) => (
+        <div key={index}>
+          <Button {...item} />
+        </div>
       ))}
     </div>
   );
