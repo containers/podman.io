@@ -2,8 +2,9 @@ import React from 'react';
 
 export default function InfoBanner({ title, description, image }) {
   return (
-    <section className={`mx-auto mb-12 w-full bg-gradient-radial from-blue-100/50  to-blue-300/25`}>
-      <div className="container mx-auto flex flex-wrap items-center gap-8 py-4">
+    <section
+      className={`dark:via-blue-700/35 mx-auto mb-12 w-full bg-gradient-radial  from-blue-100/50 to-blue-300/25 dark:from-blue-700/50 dark:to-blue-900/25`}>
+      <div className="container mx-auto flex flex-wrap items-center gap-8 py-4 md:py-8 lg:py-12">
         <div className="mx-auto md:mx-0">
           {/* TODO: support both images and iconify icons */}
           {image.src ? <img src={image.src} alt={image.alt} /> : <p>no image</p>}

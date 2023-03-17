@@ -12,7 +12,7 @@ const TextBox = ({
   return (
     <div className={`${grid} ${display} ${layout}`}>
       <h1 className="mb-6 max-w-sm text-purple-700 dark:text-purple-500 lg:max-w-lg ">{title}</h1>
-      {<ReactMarkdown className="leading-relaxed" children={description} />}
+      <ReactMarkdown className="leading-relaxed" children={description} />
     </div>
   );
 };
