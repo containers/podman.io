@@ -2,7 +2,9 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import PageHeader from '@site/src/components/PageHeader';
 import SectionHeader from '@site/src/components/SectionHeader';
-import Card from '@site/src/components/Card';
+import CardSection from '@site/src/components/CardSection';
+import DateTimeBox from '@site/src/components/DateTimeBox';
+import InfoBox from '@site/src/components/InfoBox';
 import Button from '../components/Button';
 import WaveBorder from '@site/src/components/svgShapes/WaveBorder';
 import { Icon } from '@iconify/react';
@@ -14,41 +16,6 @@ const extractObjects = arr => {
     return structuredClone(item);
   });
 };
-
-function DateTimeBox() {
-  // TODO: Optimize this code
-  const date = new Date();
-  const currentTime = `${date.getHours()}:${date.getMinutes()}`;
-  const userTimeZone = new Intl.DateTimeFormat('en-US', { timeZoneName: 'long' }).format().split(',')[1];
-
-  const centralTime = [
-    date.toLocaleString('en-US', {
-      timeZone: 'America/New_York',
-      hour: 'numeric',
-      minute: 'numeric',
-      hour12: false,
-    }),
-    Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', timeZoneName: 'long' }).format().split(',')[1],
-  ];
-
-  return (
-    <article className="mb-10 max-w-lg rounded-lg bg-aqua shadow-md dark:bg-purple-900">
-      <div className="m-4 grid grid-cols-2 gap-x-4 lg:m-8">
-        <div className="col-span-full mb-5 text-center">
-          <h3 className="font-bold text-gray-300 dark:text-gray-100">Current Time</h3>
-        </div>
-        <div className="text-center">
-          <h4 className="mb-2 text-3xl font-extrabold text-purple-500 dark:text-gray-100">{currentTime}</h4>
-          <p className="w-40 font-bold text-blue-900">{userTimeZone}</p>
-        </div>
-        <div className="text-center">
-          <h4 className="mb-2 text-3xl font-extrabold text-purple-500 dark:text-gray-100">{centralTime[0]}</h4>
-          <p className="w-40 font-bold text-blue-900">{centralTime[1]}</p>
-        </div>
-      </div>
-    </article>
-  );
-}
 
 function CommunityLinks() {
   const links = communityChat.links.map(x => x);
@@ -69,62 +36,6 @@ function CommunityLinks() {
         );
       })}
     </ul>
-  );
-}
-
-function CardSection() {
-  const cards = communityMeetings.cards.map(card => card);
-  return (
-    <div className="mb-8 flex flex-wrap justify-center gap-4 lg:mb-12 lg:gap-8">
-      {cards.map((card, index) => {
-        return (
-          <Card
-            key={index}
-            title={card.title}
-            subtitle={card.date}
-            details={card.timeZone}
-            text={card.subtitle}
-            data={card.buttons}
-          />
-        );
-      })}
-    </div>
-  );
-}
-
-function InfoBox({ title, text, darkBg = 'bg-purple-900' }) {
-  return (
-    <aside
-      className={`container rounded-lg bg-aqua ${darkBg} p-8 text-gray-700 shadow-xl dark:shadow-md dark:shadow-gray-700 lg:ml-10 lg:max-w-xl`}>
-      <h4 className="mb-2 font-bold dark:text-gray-50">{title}</h4>
-      <p className="dark:text-gray-100">{text}</p>
-    </aside>
-  );
-}
-
-// TODO: This still needs work but getting it to work right will be useful for other complex data structures
-function MultiSectionCard(props) {
-  const title = props.title;
-  const subtitle = props.subtitle;
-  const sections = props.sections;
-
-  return (
-    <article className="mt-4 mb-8 w-full rounded-sm bg-white p-8 shadow-xl lg:w-1/3">
-      <header>
-        <h4 className="text-center text-blue-700 md:text-xl">{}</h4>
-        <aside className="my-4 flex items-center justify-center gap-2 rounded-md bg-aqua p-2">
-          <Icon icon="fa6-solid:circle-exclamation" className="text-2xl text-purple-700" />
-          <p>{}</p>
-        </aside>
-      </header>
-      <section className="flex flex-col items-center">
-        {/* return <ReactMarkdown children={card.title} className="max-w-sm" />; */}
-        <ul className="my-2 ml-10 list-disc">
-          <li className="my-3"></li>
-        </ul>
-        <div className="mb-8">{/* <Button text={} src={} variant="outline" bgColor="white" /> */}</div>
-      </section>
-    </article>
   );
 }
 
@@ -161,13 +72,11 @@ export default function Community() {
             alt={communityMeetings.image.alt}
             className="order-first mx-auto object-cover lg:max-w-lg"
           />
-          {/* TODO: Add card background color support */}
-          <CardSection />
+          <CardSection cards={communityMeetings.cards} />
         </div>
       </section>
       {/* Mailing Lists */}
       <section>
-        {/* TODO: optimize  single to multi column layouts */}
         <div className="container grid gap-4 lg:grid-cols-2">
           <SectionHeader
             title={mailingList.title}
@@ -214,7 +123,7 @@ export default function Community() {
         </div>
       </section>
       {/* Submit Pull Requests */}
-      <section className="bg-gray-50 dark:bg-gray-900">
+      <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-900">
         <SectionHeader
           title={submittingIssues.title}
           description={submittingIssues.subtitle}
