@@ -5,6 +5,7 @@ import SectionHeader from '@site/src/components/SectionHeader';
 import CardSection from '@site/src/components/CardSection';
 import DateTimeBox from '@site/src/components/DateTimeBox';
 import InfoBox from '@site/src/components/InfoBox';
+import InfoBanner from '@site/src/components/InfoBanner';
 import Button from '../components/Button';
 import WaveBorder from '@site/src/components/svgShapes/WaveBorder';
 import { Icon } from '@iconify/react';
@@ -47,6 +48,7 @@ export default function Community() {
   return (
     <Layout>
       <PageHeader title={header.title} description={header.subtitle} />
+      <InfoBanner description={header.banner.text} icon={header.banner.icon} />
       {/* Community Chat */}
       <section className="mt-8 bg-gray-50 dark:bg-gradient-to-tl dark:from-gray-700 dark:via-gray-900 dark:to-gray-900 lg:mt-16">
         <SectionHeader title={communityChat.title} textColor="dark:text-blue-700" />

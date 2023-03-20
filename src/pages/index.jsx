@@ -40,7 +40,7 @@ export default function IndexPage() {
         title={kubernetesBanner.title}
         description={kubernetesBanner.description}
         image={kubernetesBanner.image}
-        bgColor="bg-gradient-radial from-blue-100 to-blue-500"
+        bgColor="bg-gradient-radial bg-gradient-radial  from-blue-100/50 to-blue-300/25 dark:from-blue-700/50 dark:to-blue-900/25"
       />
       <section>
         <header className="my-4">
