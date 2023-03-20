@@ -20,13 +20,17 @@ const extractObjects = arr => {
 function CommunityLinks() {
   const links = communityChat.links.map(x => x);
   return (
-    <ul className="mb-12 flex flex-wrap justify-around gap-8 lg:gap-16">
+    <ul className="mb-12 flex flex-wrap items-end justify-around gap-8 lg:gap-16">
       {links.map((link, index) => {
         return (
           <li key={index}>
-            <a href={link.src} className="mx-auto  flex flex-col items-center text-center">
-              <div className="max-w-fit rounded-full bg-white p-5 dark:bg-gray-700">
-                <img src={link.image.src} alt={link.image.alt} />
+            <a href={link.src} className="mx-auto flex flex-col items-center text-center">
+              <div className="max-w-fit rounded-full bg-white p-8 shadow-sm dark:bg-gradient-to-br dark:from-gray-700 dark:to-gray-900">
+                {link.icon ? (
+                  <Icon icon={link.icon} className="text-5xl" />
+                ) : (
+                  <img src={link.image.src} alt={link.image.alt} className="w-16" />
+                )}
               </div>
               <span className="underline-offset-6 duration-149 mt-4 block text-blue-700 underline transition ease-linear hover:text-blue-900">
                 {link.text}

@@ -30,25 +30,19 @@ const communityChat = {
       text: '#podman on libera.chat',
       src: '',
       image: {
-        src: '/logos/raw/irc-64w-61h.png',
+        src: '/logos/optimized/irc-64wh.webp',
         alt: 'IRC Logo',
       },
     },
     {
       text: 'Podman Discord',
       src: '#',
-      image: {
-        src: '/logos/raw/discord-114w-64h.png',
-        alt: 'Discord Logo',
-      },
+      icon: 'logos:discord-icon',
     },
     {
-      text: '#CRIO on Kubernetes',
+      text: 'Slack',
       src: '#',
-      image: {
-        src: '/logos/raw/slack-96w-54h.png',
-        alt: 'Slack Logo',
-      },
+      icon: 'logos:slack-icon',
     },
   ],
 };
