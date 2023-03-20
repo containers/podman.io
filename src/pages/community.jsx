@@ -50,8 +50,8 @@ export default function Community() {
       <PageHeader title={header.title} description={header.subtitle} />
       <InfoBanner description={header.banner.text} icon={header.banner.icon} />
       {/* Community Chat */}
-      <section className="mt-8 bg-gray-50 dark:bg-gradient-to-tl dark:from-gray-700 dark:via-gray-900 dark:to-gray-900 lg:mt-16">
-        <SectionHeader title={communityChat.title} textColor="dark:text-blue-700" />
+      <section className="bg-gray-50 dark:bg-gradient-to-tl dark:from-gray-700 dark:via-gray-900 dark:to-gray-900 ">
+        <SectionHeader title={communityChat.title} />
         <div className="mx-4 flex flex-wrap justify-around gap-4 sm:mx-8 lg:mx-auto lg:max-w-6xl">
           <div>
             <p className="max-w-sm text-center text-gray-700 md:max-w-md md:text-start lg:max-w-xl">
