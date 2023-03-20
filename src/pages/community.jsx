@@ -106,7 +106,7 @@ export default function Community() {
                 );
               })}
             </div>
-            <div className="my-4 max-w-prose text-gray-700">
+            <div className="my-4 max-w-prose">
               <ReactMarkdown children={mailingList.subscribeInfo.description} />
             </div>
           </section>
@@ -118,11 +118,7 @@ export default function Community() {
                 className="w-full object-cover"
               />
             </div>
-            <InfoBox
-              title={mailingList.extraInfo.note.title}
-              text={mailingList.extraInfo.note.text}
-              darkBg="bg-purple-900"
-            />
+            <InfoBox title={mailingList.extraInfo.note.title} text={mailingList.extraInfo.note.text} />
           </section>
         </div>
       </section>
