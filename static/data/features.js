@@ -41,4 +41,25 @@ const knowPodman = {
   ],
 };
 
+const carouselContent = {
+  steps: [
+    {
+      title: 'Find',
+      commands: ['podman search', 'podman pull'],
+    },
+    {
+      title: 'Run',
+      commands: ['podman run'],
+    },
+    {
+      title: 'Build',
+      commands: ['podman build'],
+    },
+    {
+      title: 'Share',
+      commands: ['podman push'],
+    },
+  ],
+};
+
 export { header, knowPodman };
