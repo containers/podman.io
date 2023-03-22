@@ -26,7 +26,7 @@ const Buttons = ({ grid, display, layout, buttonOne, buttonTwo }) => {
   return (
     <div className={`${grid} ${display} ${layout}`}>
       <Button text="Get Started" />
-      <Button text="Downloads" bgColor="bg-white" textColor="text-purple-700" />
+      <Button text="Downloads" bgColor="bg-white dark:bg-transparent dark:outline" textColor="text-purple-700" />
     </div>
   );
 };
