@@ -127,8 +127,8 @@ export default function Community() {
       {/* Submit Pull Requests */}
       <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-900">
         <SectionHeader
-          title={submittingIssues.title}
-          description={submittingIssues.subtitle}
+          title={submittingIssues[0].title}
+          description={submittingIssues[0].subtitle}
           textColor="from-purple-500 to-purple-700 dark:text-blue-700"
         />
       </section>

@@ -16,12 +16,7 @@ const TextBox = ({
     </div>
   );
 };
-const Image = ({
-  grid,
-  display,
-  layout,
-  image = { src: '/images/raw/podman-2-196w-172h.png', alt: 'Podman Logo' },
-}) => {
+const Image = ({ grid, display, layout, image = { src: 'images/raw/podman-2-196w-172h.png', alt: 'Podman Logo' } }) => {
   return (
     <div>
       <img src={image.src} alt={image.alt} className={`${grid} ${display} ${layout}`} />

@@ -18,7 +18,7 @@ const communityChat = {
       text: '#podman:matrix.org',
       src: '#',
       image: {
-        src: '/logos/raw/element-56w-59h.png',
+        src: 'logos/raw/element-56w-59h.png',
         alt: 'Element Matrix Logo',
       },
     },
@@ -26,7 +26,7 @@ const communityChat = {
       text: '#podman on libera.chat',
       src: '',
       image: {
-        src: '/logos/optimized/irc-64wh.webp',
+        src: 'logos/optimized/irc-64wh.webp',
         alt: 'IRC Logo',
       },
     },
@@ -48,7 +48,7 @@ const communityMeetings = {
   subtitle:
     "Many of the maintainers for the Podman project attend both of these meetings, so it's a great chance for community members like you to ask them questions or address concerns directly. If you have a topic that you’d like to propose for either meeting, please send a note to the [Mailing List]().",
   image: {
-    src: '/images/optimized/community-call-554w-219h.webp',
+    src: 'images/optimized/community-call-554w-219h.webp',
     alt: 'An image of podman team members in a virtual meeting',
   },
   cards: [
@@ -114,7 +114,7 @@ const mailingList = {
   },
   extraInfo: {
     image: {
-      src: '/images/optimized/mailing-list-screenshot-580w-376h.webp',
+      src: 'images/optimized/mailing-list-screenshot-580w-376h.webp',
       alt: 'A screenshot of the Podman mailing list home screen.',
     },
     note: {
