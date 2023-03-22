@@ -123,10 +123,12 @@ export default function Community() {
               <img
                 src={mailingList.extraInfo.image.src}
                 alt={mailingList.extraInfo.image.alt}
-                className="w-full object-cover"
+                className="w-full  object-cover"
               />
             </div>
-            <InfoBox title={mailingList.extraInfo.note.title} text={mailingList.extraInfo.note.text} />
+            <div className="ml-8 xl:ml-10">
+              <InfoBox title={mailingList.extraInfo.note.title} text={mailingList.extraInfo.note.text} />
+            </div>
           </section>
         </div>
       </section>
