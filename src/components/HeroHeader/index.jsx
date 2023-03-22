@@ -8,8 +8,8 @@ const latestVersion = '4.3.0';
 const TextBox = ({ grid, display, layout, title, subtitle }) => {
   return (
     <div className={`${grid} ${display} ${layout} container`}>
-      <h1 className="mb-4 text-white dark:text-gray-100 lg:mb-8">{title}</h1>
-      <p className="max-w-sm text-white dark:text-gray-100 lg:max-w-prose">{subtitle}</p>
+      <h1 className="mb-4 text-white dark:text-gray-50 lg:mb-8">{title}</h1>
+      <p className="max-w-sm text-white dark:text-gray-50 lg:max-w-prose">{subtitle}</p>
       <Buttons layout="flex max-w-sm gap-8 my-3" />
       <p className="flex gap-4 text-white dark:text-gray-100">
         <span>
@@ -22,7 +22,7 @@ const TextBox = ({ grid, display, layout, title, subtitle }) => {
   );
 };
 
-const Buttons = ({ grid, display, layout, buttonOne, buttonTwo }) => {
+const Buttons = ({ grid, display, layout }) => {
   return (
     <div className={`${grid} ${display} ${layout}`}>
       <Button text="Get Started" />

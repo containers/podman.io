@@ -3,6 +3,7 @@ import Layout from '@theme/Layout';
 import { Icon } from '@iconify/react';
 import PageHeader from '@site/src/components/PageHeader';
 import SectionHeader from '@site/src/components/SectionHeader';
+import ColoringBookSection from '@site/src/components/ColoringBookSection';
 import ReactMarkdown from 'react-markdown';
 import { header, knowPodman, carouselContent, learnMore } from '@site/static/data/features';
 
@@ -37,7 +38,7 @@ export default function Community() {
       <section></section>
       {/* Learn More */}
       <section>
-        <SectionHeader title={learnMore.title} textColor="from-purple-500 to-purple-900" />
+        <SectionHeader title={learnMore.title} textGradient="true" textGradientStops="from-purple-500 to-purple-900" />
         <div className="container grid gap-4 lg:grid-cols-2">
           <section>
             <header className="container mb-4 text-center lg:mb-8 lg:text-start">
@@ -70,6 +71,7 @@ export default function Community() {
         </div>
       </section>
       {/* Coloring Book */}
+      <ColoringBookSection />
     </Layout>
   );
 }

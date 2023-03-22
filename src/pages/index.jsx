@@ -3,6 +3,7 @@ import Layout from '@theme/Layout';
 import HeroHeader from '@site/src/components/HeroHeader';
 import SectionHeader from '@site/src/components/SectionHeader';
 import InfoBanner from '@site/src/components/InfoBanner';
+import ColoringBookSection from '@site/src/components/ColoringBookSection';
 /* PAGE DATA */
 import { header, featureList, kubernetesBanner, compatibleTools } from '/data/home.js';
 
@@ -51,6 +52,7 @@ export default function IndexPage() {
           })}
         </div>
       </section>
+      <ColoringBookSection />
     </Layout>
   );
 }
