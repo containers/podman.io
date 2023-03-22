@@ -7,13 +7,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Podman',
   tagline:
-    ' Podman is a daemonless container engine for developing, managing, and running OCI Containers on your Linux System',
+    'Podman is a daemonless container engine for developing, managing, and running OCI Containers on your Linux System',
   url: 'https://containers.github.io',
-  baseUrl: '/',
+  baseUrl: '/websites-new/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'images/favicon.ico',
-
+  trailingSlash: false,
+  deploymentBranch: 'production',
   organizationName: 'containers',
   projectName: 'website-new',
   i18n: {
