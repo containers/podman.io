@@ -89,13 +89,13 @@ const mailingList = {
   subscribeInfo: {
     title: 'Subscribe or post to the mailing list',
     subtitle:
-      'Simply visit [the Podman mailing list website]() to browse or search previous postings to the Podman mailing list.',
+      'Simply visit [the Podman mailing list website](#) to browse or search previous postings to the Podman mailing list.',
     description:
       "Regardless of which method you use, a confirmation email will be sent to you. After you reply back to that confirmation email, you'll then be able to send mail directly to [podman@lists.podman.io](). You can then also go to [the list's web page]() and manage your subscription.",
     options: [
       {
         title: 'Option 1',
-        subtitle: 'Send an email to [podman-join@lists.podman.io]() with the word "Subscribe" in the subject.',
+        subtitle: 'Send an email to [podman-join@lists.podman.io](#) with the word "Subscribe" in the subject.',
         button: {
           text: 'Send email',
           src: '#',
@@ -104,7 +104,7 @@ const mailingList = {
       {
         title: 'Option 2',
         subtitle:
-          'Enter your email at the bottom of [the mailing list sign up page](), and hit the "Subscribe" button.',
+          'Enter your email at the bottom of [the mailing list sign up page](#), and hit the "Subscribe" button.',
         button: {
           text: 'Sign up page',
           src: '#',
