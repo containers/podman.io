@@ -29,6 +29,8 @@ function CommunityLinks() {
               <div className="max-w-fit rounded-full bg-white p-8 shadow-sm  dark:bg-gray-900">
                 {link.icon ? (
                   <Icon icon={link.icon} className="text-5xl" />
+                ) : link.textLogo ? (
+                  <span className="block py-2 font-display text-4xl font-extrabold">{link.textLogo}</span>
                 ) : (
                   <img src={link.image.src} alt={link.image.alt} className="w-16" />
                 )}

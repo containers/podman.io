@@ -2,13 +2,7 @@ import React from 'react';
 import WaveBorder from '@site/src/components/svgShapes/WaveBorder';
 import ReactMarkdown from 'react-markdown';
 
-const TextBox = ({
-  grid,
-  display,
-  layout,
-  title = 'Default Title',
-  description = '[This is a link](http://google.ca)',
-}) => {
+const TextBox = ({ grid, display, layout, title = 'Default Title', description = '[This is a link]()' }) => {
   return (
     <div className={`${grid} ${display} ${layout}`}>
       <h1 className="mb-6 max-w-sm text-purple-700 dark:text-purple-500 lg:max-w-lg ">{title}</h1>

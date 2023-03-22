@@ -25,10 +25,7 @@ const communityChat = {
     {
       text: '#podman on libera.chat',
       src: '',
-      image: {
-        src: 'logos/optimized/irc-64wh.webp',
-        alt: 'IRC Logo',
-      },
+      textLogo: 'IRC',
     },
     {
       text: 'Podman Discord',
