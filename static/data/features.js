@@ -41,7 +41,7 @@ const knowPodman = {
   ],
 };
 
-const carouselContent = {
+const carouselTabs = {
   steps: [
     {
       title: 'Find',
@@ -61,7 +61,51 @@ const carouselContent = {
     },
   ],
 };
-
+const carouselContent = [
+  {
+    title: 'Find',
+    commands: ['podman search', 'podman pull'],
+    subtitle: 'Find and pull down containers no matter what they are',
+    description:
+      'Find and pull down containers whether they are on dockerhub.io or quay.io, an internal registry server, or direct from a vendor.',
+    image: {
+      src: '@site/static/images/optimize/cli-screens/cli-find-image.webp',
+      alt: 'A screenshot of the commandline while using the search and pull commands',
+    },
+  },
+  {
+    title: 'Run',
+    commands: ['podman run'],
+    subtitle: 'Run pre-built application or distro containers.',
+    description:
+      'Find and pull down containers whether they are on dockerhub.io or quay.io, an internal registry server, or direct from a vendor.',
+    image: {
+      src: '@site/static/images/optimize/cli-screens/cli-run-image.webp',
+      alt: 'A screenshot of the commandline while using the run command',
+    },
+  },
+  {
+    title: 'Build',
+    commands: ['podman build'],
+    subtitle: 'Podman Troubleshooting Guide',
+    description: 'Creating new layers with small tweaks or major overhauls is easy with podman build',
+    image: {
+      src: '@site/static/images/optimize/cli-screens/cli-build-image.webp',
+      alt: 'A screenshot of the commandline while using the build command',
+    },
+  },
+  {
+    title: 'Share',
+    commands: ['podman push'],
+    subtitle: "Share the containers you've built",
+    description:
+      'Podman lets you push your newly-built containers anywhere you want with a single podman push command.',
+    image: {
+      src: '@site/static/images/optimize/cli-screens/cli-share-image.webp',
+      alt: 'A screenshot of the commandline while using the push command',
+    },
+  },
+];
 const learnMore = {
   title: 'Want to learn more?',
   resources: {
@@ -89,4 +133,4 @@ const learnMore = {
   },
 };
 
-export { header, knowPodman, carouselContent, learnMore };
+export { header, knowPodman, carouselTabs, learnMore };
