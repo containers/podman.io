@@ -26,7 +26,7 @@ function CommunityLinks() {
         return (
           <li key={index}>
             <a href={link.src} className="mx-auto flex flex-col items-center text-center">
-              <div className="max-w-fit rounded-full bg-white p-8 shadow-sm dark:bg-gradient-to-br dark:from-gray-700 dark:to-gray-900">
+              <div className="max-w-fit rounded-full bg-white p-8 shadow-sm  dark:bg-gray-900">
                 {link.icon ? (
                   <Icon icon={link.icon} className="text-5xl" />
                 ) : (
@@ -48,19 +48,23 @@ export default function Community() {
   return (
     <Layout>
       <PageHeader title={header.title} description={header.subtitle} />
-      <InfoBanner description={header.banner.text} icon={header.banner.icon} />
+      <InfoBanner
+        description={header.banner.text}
+        icon={header.banner.icon}
+        bgColor="bg-purple-500 dark:bg-purple-700"
+      />
       {/* Community Chat */}
-      <section className="bg-gray-50 dark:bg-gradient-to-tl dark:from-gray-700 dark:via-gray-900 dark:to-gray-900 ">
+      <section className="bg-gray-50 dark:bg-gradient-to-t dark:from-gray-700 dark:via-gray-900 dark:to-gray-900 ">
         <SectionHeader title={communityChat.title} />
-        <div className="mx-4 flex flex-wrap justify-around gap-4 sm:mx-8 lg:mx-auto lg:max-w-6xl">
-          <div>
+        <div className="mx-4 mt-8 flex flex-wrap justify-around gap-4 sm:mx-8 lg:mx-auto lg:mt-16 lg:max-w-6xl">
+          <div className="">
             <p className="max-w-sm text-center text-gray-700 md:max-w-md md:text-start lg:max-w-xl">
               {communityChat.subtitle}
             </p>
           </div>
           <DateTimeBox />
         </div>
-        <div className="container my-8">
+        <div className="container pt-12 lg:pt-20">
           <CommunityLinks />
         </div>
         <WaveBorder />

@@ -57,7 +57,7 @@ export default function Community() {
                     <li key={index}>
                       <a
                         href={card.path}
-                        className="mx-auto flex max-w-lg items-center gap-4 rounded-md bg-gray-100 p-4 text-purple-700 transition duration-150 ease-linear hover:bg-blue-50 hover:shadow-md dark:bg-gray-700 dark:hover:bg-purple-900 dark:hover:text-white">
+                        className="mx-auto flex max-w-lg items-center gap-4 rounded-md bg-gray-100 p-4 text-purple-700 underline-offset-4 transition duration-150 ease-linear hover:bg-purple-700 hover:text-purple-50 hover:shadow-md dark:bg-gray-700 dark:hover:bg-purple-900 dark:hover:text-white">
                         <span>{card.text}</span>
                         <Icon icon={card.icon} className="order-first" />
                       </a>
