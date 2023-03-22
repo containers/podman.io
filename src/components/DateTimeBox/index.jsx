@@ -4,8 +4,16 @@ export default function DateTimeBox() {
   const date = new Date();
   const currentTime = `${date.getHours()}:${date.getMinutes()}`;
   const userTimeZone = new Intl.DateTimeFormat('en-US', { timeZoneName: 'long' }).format().split(',')[1];
-
-  const centralTime = [
+  const centralEuropeTime = [
+    date.toLocaleString('en-US', {
+      timeZone: 'Europe/Paris',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: false,
+    }),
+    Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Paris', timeZoneName: 'long' }).format().split(',')[1],
+  ];
+  const easternTime = [
     date.toLocaleString('en-US', {
       timeZone: 'America/New_York',
       hour: 'numeric',
@@ -22,12 +30,12 @@ export default function DateTimeBox() {
           <h3 className="font-bold text-gray-300 dark:text-gray-100">Current Time</h3>
         </div>
         <div className="text-center">
-          <h4 className="mb-2 text-3xl font-extrabold text-purple-500 dark:text-gray-100">{currentTime}</h4>
-          <p className="w-40 font-bold text-blue-900">{userTimeZone}</p>
+          <h4 className="mb-2 text-3xl font-extrabold text-purple-500 dark:text-gray-100">{centralEuropeTime[0]}</h4>
+          <p className="w-40 font-bold text-blue-900">{centralEuropeTime[1]}</p>
         </div>
         <div className="text-center">
-          <h4 className="mb-2 text-3xl font-extrabold text-purple-500 dark:text-gray-100">{centralTime[0]}</h4>
-          <p className="w-40 font-bold text-blue-900">{centralTime[1]}</p>
+          <h4 className="mb-2 text-3xl font-extrabold text-purple-500 dark:text-gray-100">{easternTime[0]}</h4>
+          <p className="w-40 font-bold text-blue-900">{easternTime[1]}</p>
         </div>
       </div>
     </article>
