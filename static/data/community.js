@@ -124,56 +124,56 @@ const mailingList = {
   },
 };
 
-const submittingIssues = {
-  title: 'Submitting Issues & Pull Requests',
-  subtitle:
-    'The following is a quick cheat-sheet of sorts on how to submit issues and pull requests to the Podman project. For the most up-to-date and more comprehensive information, please take a look at  [CONTRIBUTING.md]() in the Podman repo.',
-  sections: [
-    {
-      title: 'Submitting Issues',
-      subtitle: "Don't include private / sensitive info in issues!",
-      sections: [
-        {
-          text: '**Before reporting an issue**, [check our backlog of open issues](#) to see if someone else has already reported it. If so:',
-          checkList: [
-            'Feel free to add your scenario, or additional information, to the discussion.',
-            'Subscribe to the issue to be notified when it is updated.',
-          ],
-          button: {
-            text: 'Check Open Issues',
-            src: '#',
-          },
+const submittingIssues = [
+  {
+    title: 'Submitting Issues & Pull Requests',
+    subtitle:
+      'The following is a quick cheat-sheet of sorts on how to submit issues and pull requests to the Podman project. For the most up-to-date and more comprehensive information, please take a look at  [CONTRIBUTING.md]() in the Podman repo.',
+  },
+  {
+    title: 'Submitting Issues',
+    subtitle: "Don't include private / sensitive info in issues!",
+    sections: [
+      {
+        text: '**Before reporting an issue**, [check our backlog of open issues](#) to see if someone else has already reported it. If so:',
+        checkList: [
+          'Feel free to add your scenario, or additional information, to the discussion.',
+          'Subscribe to the issue to be notified when it is updated.',
+        ],
+        button: {
+          text: 'Check Open Issues',
+          src: '#',
         },
-        {
-          text: "**If you find a new issue**, we'd love to hear about it! The most important aspect of a bug report is that it includes enough information for us to reproduce it. So, please:",
-          checkList: [
-            'Include as much detail as possible',
-            "Try to remove any extra stuff that doesn't really relate to the issue itself",
-          ],
-          button: {
-            text: 'File a New Issue',
-            src: '#',
-          },
-        },
-      ],
-    },
-    {
-      title: 'Submitting Pull Requets',
-      subtitle:
-        "No Pull Request (PR) is too small! Typos, additional comments in the code, new test cases, bug fixes, new features, more documentation, ... it's all welcome! ",
-      description:
-        'If you have a bug that you’d like to report, it’s best to report it here by creating a “New issue” rather than sending an email to the list.',
-      checkList: [
-        'Well-documented code changes.',
-        'Additional testcases. Ideally m they should fail w/o your code change applied.',
-        'Documentation changes.',
-      ],
-      button: {
-        text: 'More PR Submission Details',
-        src: '#',
       },
+      {
+        text: "**If you find a new issue**, we'd love to hear about it! The most important aspect of a bug report is that it includes enough information for us to reproduce it. So, please:",
+        checkList: [
+          'Include as much detail as possible',
+          "Try to remove any extra stuff that doesn't really relate to the issue itself",
+        ],
+        button: {
+          text: 'File a New Issue',
+          src: '#',
+        },
+      },
+    ],
+  },
+  {
+    title: 'Submitting Pull Requets',
+    subtitle:
+      "No Pull Request (PR) is too small! Typos, additional comments in the code, new test cases, bug fixes, new features, more documentation, ... it's all welcome! ",
+    description:
+      'If you have a bug that you’d like to report, it’s best to report it here by creating a “New issue” rather than sending an email to the list.',
+    checkList: [
+      'Well-documented code changes.',
+      'Additional testcases. Ideally m they should fail w/o your code change applied.',
+      'Documentation changes.',
+    ],
+    button: {
+      text: 'More PR Submission Details',
+      src: '#',
     },
-  ],
-};
+  },
+];
 
 export { header, communityChat, communityMeetings, mailingList, submittingIssues };

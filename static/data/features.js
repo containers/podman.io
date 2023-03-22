@@ -41,26 +41,6 @@ const knowPodman = {
   ],
 };
 
-const carouselTabs = {
-  steps: [
-    {
-      title: 'Find',
-      commands: ['podman search', 'podman pull'],
-    },
-    {
-      title: 'Run',
-      commands: ['podman run'],
-    },
-    {
-      title: 'Build',
-      commands: ['podman build'],
-    },
-    {
-      title: 'Share',
-      commands: ['podman push'],
-    },
-  ],
-};
 const carouselContent = [
   {
     title: 'Find',
@@ -133,4 +113,4 @@ const learnMore = {
   },
 };
 
-export { header, knowPodman, carouselTabs, learnMore };
+export { header, knowPodman, carouselContent, learnMore };
