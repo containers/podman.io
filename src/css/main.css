@@ -57,8 +57,9 @@
   li,
   figcaption,
   blockquote {
-    @apply font-text text-lg dark:text-gray-300 lg:text-xl;
+    @apply font-text text-lg dark:text-gray-100 lg:text-xl;
   }
+
   /* monospace */
   code,
   pre {
@@ -71,14 +72,14 @@ h1 {
   @apply text-4xl font-bold lg:text-5xl;
 }
 h2 {
-  @apply text-3xl font-bold lg:text-4xl;
+  @apply text-2xl font-bold lg:text-3xl;
 }
 h3 {
-  @apply text-2xl font-semibold lg:text-3xl;
-}
-h4 {
   @apply text-xl font-semibold lg:text-2xl;
 }
-h5 {
+h4 {
   @apply text-lg font-semibold lg:text-xl;
+}
+h5 {
+  @apply text-base font-semibold lg:text-lg;
 }

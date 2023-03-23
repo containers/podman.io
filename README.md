@@ -37,5 +37,6 @@ _If you are using GitHub pages for hosting, this command is a convenient way to 
 - Wordpress Blog Integration: [Wordpress to Docusaurus Plugin](https://github.com/mark-tate/wordpress-to-docusaurus-plugin)
 - Code Formatting: [Prettier](https://prettier.io/) (see `.prettierrc`, `.prettierignore`)
 - Linting: [Eslint](https://eslint.org/) (see `.eslintrc`, `.eslintignore`)
-- Rendering html from js strings: [html-react-parser](https://github.com/remarkablemark/html-react-parser)
-  - wrap strings that contain html markup with `parse(<inset code>)`
+- Rendering markdown from js strings: [react markdown parser](https://github.com/remarkjs/react-markdown)
+  - Use the react markdown component like so: `<ReactMarkdown children={inputMarkdown} />`
+    - note that plugins can be used for advanced markdown syntax

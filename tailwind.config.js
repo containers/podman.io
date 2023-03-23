@@ -5,6 +5,10 @@ module.exports = {
   darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      // TODO: Get feedback from Mo on using this aqua color tag
+      aqua: '#f2f9f9',
       black: '#000000',
       blue: {
         50: '#EDFDFF',
@@ -29,7 +33,8 @@ module.exports = {
         300: '#A5A0B1',
         500: '#7A7485',
         700: '#514C5C',
-        900: '#2B2735',
+        // 900: '#2B2735',
+        900: '#1B1B1D',
       },
       /* podman purple */
       purple: {

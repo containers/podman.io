@@ -1,13 +1,14 @@
 import React from 'react';
 import Button from '@site/src/components/Button';
+import ReactMarkdown from 'react-markdown';
 
 function CardHeader(props) {
   const { title, subtitle, details } = props;
   return (
-    <div className="mx-2">
-      <h3 className="mb-3 font-bold text-gray-700">{title}</h3>
-      <p className="text-gray-700">{subtitle}</p>
-      <p className="text-gray-700">{details}</p>
+    <div className="mx-2 mt-4">
+      <h3 className="mb-3 font-bold text-gray-700 dark:text-gray-50">{title}</h3>
+      <ReactMarkdown children={subtitle} className="text-gray-700" />
+      <ReactMarkdown children={details} className="text-gray-700" />
     </div>
   );
 }
@@ -15,7 +16,7 @@ function CardBody(props) {
   const { text } = props;
   return (
     <div className="my-6 mx-2 lg:my-8">
-      <p className="max-w-sm text-gray-700">{text}</p>
+      <p className="max-w-sm text-gray-700 dark:text-gray-100">{text}</p>
     </div>
   );
 }
@@ -23,17 +24,19 @@ function CardBody(props) {
 function CardButtons({ data = [{ text: 'card text' }] }) {
   return (
     <div className=" mx-2 mb-4 flex justify-center gap-2 lg:mb-8">
-      {data.map(item => (
-        <Button {...item} />
+      {data.map((item, index) => (
+        <div key={index}>
+          <Button {...item} />
+        </div>
       ))}
     </div>
   );
 }
 
+// TODO: improve prop handling. this approach is limited
 export default function Card(props): JSX.Element {
-  const data = props.data;
   return (
-    <article className="m-4 rounded-md p-4 shadow-xl lg:m-2">
+    <article className="m-4 flex flex-col justify-between rounded-lg bg-gray-50 p-4 shadow-xl dark:bg-gray-700 dark:shadow-none lg:m-2">
       <CardHeader {...props} />
       <CardBody {...props} />
       <CardButtons {...props} />

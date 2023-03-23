@@ -1,7 +1,9 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import HeroHeader from '@site/src/components/HeroHeader';
+import SectionHeader from '@site/src/components/SectionHeader';
 import InfoBanner from '@site/src/components/InfoBanner';
+import ColoringBookSection from '@site/src/components/ColoringBookSection';
 /* PAGE DATA */
 import { header, featureList, kubernetesBanner, compatibleTools } from '/data/home.js';
 
@@ -40,18 +42,17 @@ export default function IndexPage() {
         title={kubernetesBanner.title}
         description={kubernetesBanner.description}
         image={kubernetesBanner.image}
-        bgColor="bg-gradient-radial from-blue-100 to-blue-500"
+        // bgColor="bg-gradient-radial from-blue-100/50 to-blue-300/25 dark:from-blue-700/25 dark:to-blue-700/45"
       />
       <section>
-        <header className="my-4">
-          <h2 className="text-center text-2xl font-medium">A growing set of Podman-compatible tools</h2>
-        </header>
+        <SectionHeader title={compatibleTools.title} fontWeight="font-light" />
         <div className="mx-auto flex flex-wrap justify-center gap-4">
-          {compatibleTools.map(tool => {
+          {compatibleTools.tools.map(tool => {
             return <CompatibleTool key={tool.title} description={tool.description} image={tool.image} />;
           })}
         </div>
       </section>
+      <ColoringBookSection />
     </Layout>
   );
 }

@@ -16,7 +16,7 @@ const config = {
   trailingSlash: false,
   deploymentBranch: 'production',
   organizationName: 'containers',
-  projectName: 'website-new',
+  projectName: 'containers.github.io',
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -60,7 +60,7 @@ const config = {
         title: 'Podman',
         logo: {
           alt: 'Podman Logo',
-          src: 'logos/raw/podman-3-logo-95w-90h.webp',
+          src: 'logos/optimized/podman-3-logo-95w-90h.webp',
         },
         items: [
           { to: 'features', label: 'Features', position: 'right' },
