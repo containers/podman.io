@@ -1,7 +1,21 @@
 import React from 'react';
+import Card from '@site/src/components/ui/Card';
 
-// TODO: use props to set 3 vs 4 column layouts
-
-export default function CardGrid({ children }) {
-  return <section className="my-4 flex justify-center gap-8 xl:gap-12">{children}</section>;
+export default function CardGrid({ cards }) {
+  return (
+    <div className="mb-8 flex flex-wrap justify-center gap-4 lg:mb-12 lg:gap-8">
+      {cards.map((card, index) => {
+        return (
+          <Card
+            key={index}
+            title={card.title}
+            subtitle={card.date}
+            details={card.timeZone}
+            text={card.subtitle}
+            data={card.buttons}
+          />
+        );
+      })}
+    </div>
+  );
 }
