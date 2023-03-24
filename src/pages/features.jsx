@@ -1,14 +1,13 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import { Icon } from '@iconify/react';
-import PageHeader from '@site/src/components/PageHeader';
-import SectionHeader from '@site/src/components/SectionHeader';
-import ColoringBookSection from '@site/src/components/ColoringBookSection';
+import PageHeader from '@site/src/components/layout/PageHeader';
+import SectionHeader from '@site/src/components/layout/SectionHeader';
+import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
 import ReactMarkdown from 'react-markdown';
-import { header, knowPodman, carouselContent, learnMore } from '@site/static/data/features';
+import { header, knowPodman, learnMore } from '@site/static/data/features';
 
 function KnowPodmanCards() {
-  // TODO: Work this in relation to the CardSection component for different card types
   return (
     <div className="container flex flex-wrap justify-center gap-4 lg:gap-8">
       {knowPodman.cards.map((card, index) => {

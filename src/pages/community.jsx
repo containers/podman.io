@@ -1,22 +1,16 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import PageHeader from '@site/src/components/PageHeader';
-import SectionHeader from '@site/src/components/SectionHeader';
-import CardSection from '@site/src/components/CardSection';
-import DateTimeBox from '@site/src/components/DateTimeBox';
-import InfoBox from '@site/src/components/InfoBox';
-import InfoBanner from '@site/src/components/InfoBanner';
-import Button from '../components/Button';
-import WaveBorder from '@site/src/components/svgShapes/WaveBorder';
+import PageHeader from '@site/src/components/layout/PageHeader';
+import SectionHeader from '@site/src/components/layout/SectionHeader';
+import CardGrid from '@site/src/components/layout/CardGrid';
+import DateTimeBox from '@site/src/components/content/DateTimeBox';
+import InfoBox from '@site/src/components/ui/InfoBox';
+import InfoBanner from '@site/src/components/ui/InfoBanner';
+import Button from '../components/utilities/Button';
+import WaveBorder from '@site/src/components/shapes/WaveBorder';
 import { Icon } from '@iconify/react';
 import ReactMarkdown from 'react-markdown';
 import { header, communityChat, communityMeetings, mailingList, submittingIssues } from '@site/static/data/community';
-
-const extractObjects = arr => {
-  return arr.map(item => {
-    return structuredClone(item);
-  });
-};
 
 function CommunityLinks() {
   const links = communityChat.links.map(x => x);
@@ -84,7 +78,7 @@ export default function Community() {
             alt={communityMeetings.image.alt}
             className="order-first mx-auto object-cover lg:max-w-lg"
           />
-          <CardSection cards={communityMeetings.cards} />
+          <CardGrid cards={communityMeetings.cards} />
         </div>
       </section>
       {/* Mailing Lists */}
