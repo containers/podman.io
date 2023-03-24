@@ -1,5 +1,5 @@
 import React from 'react';
-import WaveBorder from '@site/src/components/svgShapes/WaveBorder';
+import WaveBorder from '@site/src/components/shapes/WaveBorder';
 import ReactMarkdown from 'react-markdown';
 
 const TextBox = ({ grid, display, layout, title = 'Default Title', description = '[This is a link]()' }) => {
