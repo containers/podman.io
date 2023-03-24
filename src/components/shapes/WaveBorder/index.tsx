@@ -1,13 +1,15 @@
 import React from 'react';
 
-export default function WaveBorder({
-  grid,
-  layout,
-  lightFill = 'fill-white',
-  darkFill = 'dark:fill-gray-900',
-  width = '100%',
-  height = '130',
-}) {
+type shapeProps = {
+  grid: string;
+  layout: string;
+  lightFill: 'fill-white';
+  darkFill: 'dark:fill-gray-900';
+  width: '100%';
+  height: '130';
+};
+
+export default function WaveBorder({ grid, layout, height, width, lightFill, darkFill }: shapeProps): JSX.Element {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
