@@ -1,9 +1,9 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import HeroHeader from '@site/src/components/HeroHeader';
-import SectionHeader from '@site/src/components/SectionHeader';
-import InfoBanner from '@site/src/components/InfoBanner';
-import ColoringBookSection from '@site/src/components/ColoringBookSection';
+import HeroHeader from '@site/src/components/layout/HeroHeader';
+import SectionHeader from '@site/src/components/layout/SectionHeader';
+import InfoBanner from '@site/src/components/ui/InfoBanner';
+import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
 /* PAGE DATA */
 import { header, featureList, kubernetesBanner, compatibleTools } from '/data/home.js';
 

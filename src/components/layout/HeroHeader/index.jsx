@@ -1,7 +1,7 @@
 import React from 'react';
 import heroImage from '@site/static/images/optimized/podman-ui-679w-592h.webp';
 import { Icon } from '@iconify/react';
-import Button from '@site/src/components/utilies/Button';
+import Button from '@site/src/components/utilities/Button';
 import Link from '@site/src/components/utilities/Link';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
 const TextBox = ({ grid, display, layout, title, subtitle }) => {
