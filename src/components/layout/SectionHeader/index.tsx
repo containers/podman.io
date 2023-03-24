@@ -1,16 +1,31 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
+type SectionHeaderProps = {
+  title: string;
+  description: string;
+  textGradientStops: 'from-blue-700 via-blue-700 to-blue-900 dark:from-blue-500  dark:to-blue-700';
+  textGradient: false;
+  textColor: 'text-gray-900';
+  fontWeight: string;
+  layout: string;
+  bgColor: string;
+};
+
+/** TODO: Standardize Color pattern along with other headers (no bg- passed to prop)
+ * TODO: reduce some of the prop needs if possible (ie: instead of a text color and bg color, pass a light color and a dark color if possible)
+ */
+
 export default function SectionHeader({
-  title = 'Test Title',
+  title,
   description,
-  textGradientStops = 'from-blue-700 via-blue-700 to-blue-900 dark:from-blue-500  dark:to-blue-700',
-  textGradient = false,
-  textColor = 'text-gray-900',
+  textGradientStops,
+  textGradient,
+  textColor,
   fontWeight,
   layout,
-  bgColor = '',
-}) {
+  bgColor,
+}: SectionHeaderProps): JSX.Element {
   const applyTextColor = textGradient
     ? `bg-gradient-radial bg-clip-text text-transparent dark:bg-gradient-radial dark:text-transparent ${textGradientStops}`
     : `${textColor}`;
