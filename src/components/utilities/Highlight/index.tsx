@@ -1,10 +1,10 @@
 import React from 'react';
 type highlightProps = {
   text: string;
-  color?: 'white dark:gray-100';
-  bgColor?: 'purple-500 dark:purple-300';
-  fontWeight?: 'regular';
+  textColor?: 'text-white dark:text-gray-100';
+  bgColor?: 'bg-purple-500 dark:bg-purple-300';
+  fontWeight?: 'font-regular';
 };
-export const Highlight = ({ text, color, bgColor, fontWeight }: highlightProps) => {
-  return <span className={`text-${color} bg-${bgColor} font-${fontWeight}`}>{text}</span>;
+export const Highlight = ({ text, textColor, bgColor, fontWeight }: highlightProps) => {
+  return <span className={`${textColor} ${bgColor} ${fontWeight}`}>{text}</span>;
 };
