@@ -1,19 +1,18 @@
 import React from 'react';
-
+/** Inline Text Link */
 type LinkProps = {
   text: string;
-  url: string;
-  textColor?: 'text-blue-700';
+  href: string;
+  fontSize?: 'text-base';
+  textColor?: 'text-blue-700 dark:text-blue-500';
+  hoverColor?: 'hover:text-purple-700 hover:dark:text-purple-500';
 };
-/** Inline Text Link
- * TODO: for call to actions, pass this into a wrapper component that will handle bg color styles and outline
- */
 
-export default function Link({ text, url, textColor }: LinkProps): JSX.Element {
+export default function Link({ text, href, fontSize, textColor, hoverColor }: LinkProps): JSX.Element {
   return (
     <a
-      href={url}
-      className={`${textColor} cursor-pointer underline underline-offset-4 transition duration-150 ease-in hover:text-purple-700 dark:text-blue-900`}>
+      href={href}
+      className={`${fontSize} ${textColor} ${hoverColor} cursor-pointer underline underline-offset-4 transition duration-150 ease-in`}>
       {text}
     </a>
   );
