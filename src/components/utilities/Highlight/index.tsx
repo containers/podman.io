@@ -1,15 +1,10 @@
 import React from 'react';
-
-export const Highlight = ({ children, color }) => {
-  return (
-    <span
-      style={{
-        backgroundColor: color,
-        borderRadius: '2px',
-        color: '#fff',
-        padding: '0.2rem',
-      }}>
-      {children}
-    </span>
-  );
+type highlightProps = {
+  text: string;
+  color?: 'white dark:gray-100';
+  bgColor?: 'purple-500 dark:purple-300';
+  fontWeight?: 'regular';
+};
+export const Highlight = ({ text, color, bgColor, fontWeight }: highlightProps) => {
+  return <span className={`text-${color} bg-${bgColor} font-${fontWeight}`}>{text}</span>;
 };
