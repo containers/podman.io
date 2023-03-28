@@ -5,6 +5,6 @@ type highlightProps = {
   bgColor?: 'bg-purple-500 dark:bg-purple-300';
   fontWeight?: 'font-regular';
 };
-export const Highlight = ({ text, textColor, bgColor, fontWeight }: highlightProps) => {
+export const Highlight = ({ text, textColor, bgColor, fontWeight }: highlightProps): JSX.Element => {
   return <span className={`${textColor} ${bgColor} ${fontWeight}`}>{text}</span>;
 };
