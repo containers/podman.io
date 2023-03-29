@@ -13,7 +13,7 @@ const featureList = [
   {
     title: 'Secure.',
     description:
-      'Rootless containers allow you to contain privileges without compromising functionality. Trusted by US government agencies for secure HPC at scale (<a href="#">case study</a>.) ',
+      'Rootless containers allow you to contain privileges without compromising functionality. Trusted by US government agencies for secure HPC at scale [case study](). ',
   },
   {
     title: 'Open.',
@@ -23,7 +23,7 @@ const featureList = [
   {
     title: 'Compatible.',
     description:
-      'Compatible with other OCI compliant container formats including Docker. Run your legacy Docker containers (including docker-compose files) on Podman. (<a href="#">Learn more</a>)',
+      'Compatible with other OCI compliant container formats including Docker. Run your legacy Docker containers (including docker-compose files) on Podman. [Learn more](#)',
   },
 ];
 
