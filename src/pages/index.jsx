@@ -4,15 +4,17 @@ import HeroHeader from '@site/src/components/layout/HeroHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import InfoBanner from '@site/src/components/ui/InfoBanner';
 import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
+import ReactMarkdown from 'react-markdown';
+
 /* PAGE DATA */
-import { header, featureList, kubernetesBanner, compatibleTools } from '/data/home.js';
+import { header, featureList, kubernetesBanner, compatibleTools } from '/data/home';
 
 /* PAGE COMPONENTS */
-const FeatureItem = ({ title = 'Placeholder Title', description = 'This is a bit of placeholder text' }) => {
+const FeatureItem = ({ title, description }) => {
   return (
     <li className="m-6 rounded-md bg-gray-50 p-12 text-center dark:bg-gray-900 lg:w-1/3">
       <h3 className="mx-auto mb-4 text-3xl font-bold text-purple-700 dark:text-purple-500">{title}</h3>
-      <p className="mx-auto max-w-md leading-relaxed text-gray-700">{description}</p>
+      <ReactMarkdown children={description} className="mx-auto max-w-md leading-relaxed text-gray-700" />
     </li>
   );
 };
