@@ -4,7 +4,7 @@
         <title>Podman Blog</title>
         <link>https://containers.github.io/website-new/blog</link>
         <description>Podman Blog</description>
-        <lastBuildDate>Thu, 30 Mar 2023 21:02:34 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 30 Mar 2023 21:08:34 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,7 +12,7 @@
             <title><![CDATA[Blog README]]></title>
             <link>https://containers.github.io/website-new/blog/README</link>
             <guid>https://containers.github.io/website-new/blog/README</guid>
-            <pubDate>Thu, 30 Mar 2023 21:02:34 GMT</pubDate>
+            <pubDate>Thu, 30 Mar 2023 21:08:34 GMT</pubDate>
             <description><![CDATA[This content will be fetched from the Podman Wordpress Instance]]></description>
             <content:encoded><![CDATA[<p>This content will be fetched from the Podman Wordpress Instance</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="resources">Resources<a href="#resources" class="hash-link" aria-label="Direct link to Resources" title="Direct link to Resources">​</a></h2><ul><li>Use the <a href="https://wordpress.org/plugins/import-markdown/" target="_blank" rel="noopener noreferrer">import markdown plugin</a> to migrate blog content from podman.io</li><li><a href="https://www.wpgraphql.com/" target="_blank" rel="noopener noreferrer">Wp Graphl</a> for creating queries and endpoints</li><li>Potential ways to import the content on the docusaurus side:<ul><li><a href="https://www.npmjs.com/package/wordpress-to-docusaurus-plugin" target="_blank" rel="noopener noreferrer">wordpress-to-docusaurus</a></li><li><a href="https://www.npmjs.com/package/docusaurus-graphql-plugin" target="_blank" rel="noopener noreferrer">docusaurus-graphql-plugin</a></li></ul></li></ul>]]></content:encoded>
         </item>
