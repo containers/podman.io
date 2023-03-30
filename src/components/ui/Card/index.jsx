@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@site/src/components/utilities/Button/_index';
+import Button from '@site/src/components/utilities/Button/';
 import ReactMarkdown from 'react-markdown';
 
 function CardHeader(props) {
@@ -15,7 +15,7 @@ function CardHeader(props) {
 function CardBody(props) {
   const { text } = props;
   return (
-    <div className="my-6 mx-2 lg:my-8">
+    <div className="mx-2 my-6 lg:my-8">
       <p className="max-w-sm text-gray-700 dark:text-gray-100">{text}</p>
     </div>
   );
