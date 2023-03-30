@@ -14,7 +14,7 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'images/favicon.ico',
   trailingSlash: false,
-  deploymentBranch: 'production',
+  deploymentBranch: 'gh-pages',
   organizationName: 'containers',
   projectName: 'containers.github.io',
   i18n: {
