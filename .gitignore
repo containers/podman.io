@@ -2,7 +2,7 @@
 node_modules/
 .vscode/*
 
-.yarn
+# .yarn
 yarn-error.log
 
 .eslintcache
