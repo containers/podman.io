@@ -25,7 +25,7 @@ function KnowPodmanCards() {
   );
 }
 
-export default function Community() {
+export default function Features() {
   return (
     <Layout>
       <PageHeader title={header.title} description={header.subtitle} />
@@ -37,7 +37,7 @@ export default function Community() {
       <section></section>
       {/* Learn More */}
       <section>
-        <SectionHeader title={learnMore.title} textGradient="true" textGradientStops="from-purple-500 to-purple-900" />
+        <SectionHeader title={learnMore.title} textGradient={true} textGradientStops="from-purple-500 to-purple-900" />
         <div className="container grid gap-4 lg:grid-cols-2">
           <section>
             <header className="container mb-4 text-center lg:mb-8 lg:text-start">
@@ -51,7 +51,7 @@ export default function Community() {
               <h3 className="font-medium text-blue-700 dark:text-blue-500">{learnMore.resources.title}</h3>
             </header>
             <div>
-              <ul className="container mt-4 mb-12 flex flex-col gap-4 lg:mt-8 lg:mb-16">
+              <ul className="container mb-12 mt-4 flex flex-col gap-4 lg:mb-16 lg:mt-8">
                 {learnMore.resources.cards.map((card, index) => {
                   return (
                     <li key={index}>
