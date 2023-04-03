@@ -6,7 +6,7 @@ import CardGrid from '@site/src/components/layout/CardGrid';
 import DateTimeBox from '@site/src/components/content/DateTimeBox';
 import InfoBox from '@site/src/components/ui/InfoBox';
 import InfoBanner from '@site/src/components/ui/InfoBanner';
-import Button from '../components/utilities/Button';
+import SmallCard from '@site/src/components/ui/SmallCard';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
 import { Icon } from '@iconify/react';
 import ReactMarkdown from 'react-markdown';
@@ -98,13 +98,15 @@ export default function Community() {
             <h3 className="mb-2 font-medium text-purple-700 dark:text-purple-500">{mailingList.subscribeInfo.title}</h3>
             <ReactMarkdown children={mailingList.subscribeInfo.subtitle} className="max-w-prose " />
             <div className="flex flex-wrap gap-6">
-              {mailingList.subscribeInfo.options.map((item, index) => {
+              {mailingList.subscribeInfo.options.map((card, index) => {
                 return (
-                  <article className=" my-4 flex max-w-xs flex-col justify-between" key={index}>
-                    <h4 className="text-gray-700">{item.title}</h4>
-                    <ReactMarkdown children={item.subtitle} className="mb-4 mt-2 w-[198px] md:w-64" />
-                    <Button variant="outline" bgColor="white" text={item.button.text} src={item.button.src} />
-                  </article>
+                  <SmallCard
+                    title={card.title}
+                    subtitle={card.subtitle}
+                    buttonText={card.button.text}
+                    ButtonPath={card.button.src}
+                    key={index}
+                  />
                 );
               })}
             </div>
