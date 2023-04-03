@@ -104,7 +104,7 @@ export default function Community() {
                     title={card.title}
                     subtitle={card.subtitle}
                     buttonText={card.button.text}
-                    ButtonPath={card.button.src}
+                    buttonPath={card.button.src}
                     key={index}
                   />
                 );
