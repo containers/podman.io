@@ -4,10 +4,11 @@ import HeroHeader from '@site/src/components/layout/HeroHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import InfoBanner from '@site/src/components/ui/InfoBanner';
 import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
+import ThumbCard from '@site/src/components/ui/ThumbCard';
 import ReactMarkdown from 'react-markdown';
 
 /* PAGE DATA */
-import { header, featureList, kubernetesBanner, compatibleTools } from '/data/home';
+import { header, featureList, kubernetesBanner, compatibleTools } from '@site/static/data/home';
 
 /* PAGE COMPONENTS */
 const FeatureItem = ({ title, description }) => {
@@ -19,15 +20,6 @@ const FeatureItem = ({ title, description }) => {
   );
 };
 
-const CompatibleTool = ({ title, description, image }) => {
-  return (
-    <article className="flex max-w-xs flex-col items-center justify-center rounded-md p-6 shadow-md lg:m-4">
-      <h3 className="hidden">{title}</h3>
-      <p className="w-48 text-center">{description}</p>
-      <img src={image.src} alt={image.alt} className="order-first my-8 h-20" />
-    </article>
-  );
-};
 /* PAGE CONTENT */
 export default function IndexPage() {
   return (
@@ -44,13 +36,12 @@ export default function IndexPage() {
         title={kubernetesBanner.title}
         description={kubernetesBanner.description}
         image={kubernetesBanner.image}
-        // bgColor="bg-gradient-radial from-blue-100/50 to-blue-300/25 dark:from-blue-700/25 dark:to-blue-700/45"
       />
       <section>
         <SectionHeader title={compatibleTools.title} fontWeight="font-light" />
         <div className="mx-auto flex flex-wrap justify-center gap-4">
           {compatibleTools.tools.map(tool => {
-            return <CompatibleTool key={tool.title} description={tool.description} image={tool.image} />;
+            return <ThumbCard key={tool.title} description={tool.description} image={tool.image} />;
           })}
         </div>
       </section>
