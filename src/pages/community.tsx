@@ -6,9 +6,9 @@ import CardGrid from '@site/src/components/layout/CardGrid';
 import DateTimeBox from '@site/src/components/content/DateTimeBox';
 import InfoBox from '@site/src/components/ui/InfoBox';
 import InfoBanner from '@site/src/components/ui/InfoBanner';
+import IconLink from '@site/src/components/utilities/IconLink';
 import SmallCard from '@site/src/components/ui/SmallCard';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
-import { Icon } from '@iconify/react';
 import ReactMarkdown from 'react-markdown';
 import { header, communityChat, communityMeetings, mailingList, submittingIssues } from '@site/static/data/community';
 
@@ -19,20 +19,7 @@ function CommunityLinks() {
       {links.map((link, index) => {
         return (
           <li key={index}>
-            <a href={link.src} className="mx-auto flex flex-col items-center text-center">
-              <div className="max-w-fit rounded-full bg-white p-8 shadow-sm  dark:bg-gray-900">
-                {link.icon ? (
-                  <Icon icon={link.icon} className="text-5xl" />
-                ) : link.textLogo ? (
-                  <span className="block py-2 font-display text-4xl font-extrabold">{link.textLogo}</span>
-                ) : (
-                  <img src={link.image.src} alt={link.image.alt} className="w-16" />
-                )}
-              </div>
-              <span className="underline-offset-6 duration-149 mt-4 block text-blue-700 underline transition ease-linear hover:text-blue-900">
-                {link.text}
-              </span>
-            </a>
+            <IconLink text={link.text} path={link.src} icon={link.icon} textLogo={link.textLogo} image={link.image} />
           </li>
         );
       })}
@@ -99,15 +86,7 @@ export default function Community() {
             <ReactMarkdown children={mailingList.subscribeInfo.subtitle} className="max-w-prose " />
             <div className="flex flex-wrap gap-6">
               {mailingList.subscribeInfo.options.map((card, index) => {
-                return (
-                  <SmallCard
-                    title={card.title}
-                    subtitle={card.subtitle}
-                    buttonText={card.button.text}
-                    buttonPath={card.button.src}
-                    key={index}
-                  />
-                );
+                return <SmallCard title={card.title} subtitle={card.subtitle} button={card.button} key={index} />;
               })}
             </div>
             <div className="my-4 max-w-prose">

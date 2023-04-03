@@ -3,16 +3,16 @@ import ReactMarkdown from 'react-markdown';
 import { Icon } from '@iconify/react';
 
 type BannerProps = {
-  title: string;
+  title?: string;
   description: string;
   image?: {
     src: string;
     alt: string;
   };
   icon?: string;
-  bgColor: 'bg-blue-500/25 dark:bg-blue-900';
-  titleColor: 'text-purple-700 dark:text-purple-500';
-  marginHeight: 'mt-8 lg:mt-16';
+  bgColor?: string;
+  titleColor?: string;
+  marginHeight?: string;
 };
 
 export default function InfoBanner({
@@ -20,9 +20,9 @@ export default function InfoBanner({
   description,
   image,
   icon,
-  bgColor,
-  titleColor,
-  marginHeight,
+  bgColor = 'from-blue-700 via-blue-700 to-blue-900 dark:from-blue-500  dark:to-blue-700',
+  titleColor = 'text-purple-700 dark:text-purple-500',
+  marginHeight = 'mt-8 lg:mt-16',
 }: BannerProps): JSX.Element {
   return (
     <section className={`${bgColor} ${marginHeight} mx-auto w-full`}>

@@ -3,9 +3,9 @@ import ReactMarkdown from 'react-markdown';
 
 type SectionHeaderProps = {
   title: string;
-  description: string;
+  description?: string;
   textGradientStops?: string;
-  textGradient?: false;
+  textGradient?: boolean;
   textColor?: string;
   fontWeight?: string;
   layout?: string;
@@ -16,7 +16,7 @@ export default function SectionHeader({
   title,
   description,
   textGradientStops = 'from-blue-700 via-blue-700 to-blue-900 dark:from-blue-500  dark:to-blue-700',
-  textGradient,
+  textGradient = false,
   textColor = 'text-gray-900',
   fontWeight,
   layout,
