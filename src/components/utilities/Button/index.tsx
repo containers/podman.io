@@ -1,35 +1,43 @@
 import React from 'react';
-
-type ButtonProps = Button & {
+import { Icon } from '@iconify/react';
+export type ButtonProps = Button & {
   outline: boolean;
   icon: string;
-  solidColors: string | undefined;
-  outlineColors: string | undefined;
+  colors?: Colors;
 };
 
-export default function Button(
-  {
-    as = 'a',
-    solidColors = 'bg-purple-700 dark:bg-purple-500 text-white dark:text-gray-50 hover:bg-purple-900 hover:dark-purple-700',
-    outlineColors = 'outline-purple-700 dark:outline-purple-500 text-purple-700 dark:text-purple-700 hover:bg-gray-50 hover:dark-bg-gray-100',
-  },
-  props: ButtonProps,
-) {
+export default function Button({ as = 'link', outline, colors, icon, text, method, path }: ButtonProps) {
   const baseStyles =
     'my-2 block max-w-fit cursor-pointer rounded-md px-6 py-2 font-semibold transition duration-150 ease-in-out hover:no-underline hover:shadow-md';
-  const variantStyles = props.outline ? `bg-transparent outline outline-2 ${outlineColors}` : `${solidColors}`;
+  const solidColors = 'bg-purple-700 text-white dark:text-gray-50 hover:bg-purple-900 hover:dark-purple-700';
+  const outlineColors =
+    'outline-purple-700 text-purple-700 dark:text-purple-700 hover:bg-gray-50 hover:dark-bg-gray-100';
+  /* Set Colors */
+  const variantStyles = outline ? ` outline outline-2 ${outlineColors} ${colors}` : `${solidColors} ${colors}`;
 
-  /** Render the component with style variations */
+  /** Render the component with styl variations */
   if (as === 'button') {
     return (
-      <button onClick={props.method} className={`${baseStyles} ${variantStyles}`}>
-        {props.icon ? props.icon : ''} {props.text}
+      <button onClick={method} className={`${baseStyles} ${variantStyles}`}>
+        {!icon ? (
+          <span>{text}</span>
+        ) : (
+          <span className="flex items-center gap-2">
+            {text} <Icon icon={icon} />
+          </span>
+        )}
       </button>
     );
   }
   return (
-    <a href={props.path} className={`${baseStyles} ${variantStyles}`}>
-      {props.icon ? props.icon : ''} {props.text}
+    <a href={path} className={`${baseStyles} ${variantStyles}`}>
+      {!icon ? (
+        <span>{text}</span>
+      ) : (
+        <span className="flex items-center gap-2">
+          {text} <Icon icon={icon} />
+        </span>
+      )}
     </a>
   );
 }
