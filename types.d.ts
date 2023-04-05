@@ -14,19 +14,19 @@ type Colors = {
 
 type Link = {
   text: string;
-  path: string | undefined;
+  path: string;
 };
 
 type Button = {
   readonly text: string;
   readonly as: 'button' | 'link';
-  readonly method: () => void | undefined;
+  readonly method?: () => void;
   readonly path?: string;
 };
 
 type Shape = {
-  readonly height: string;
-  readonly width: string;
-  readonly light: string;
-  readonly dark: string;
+  readonly height?: string;
+  readonly width?: string;
+  readonly light?: string;
+  readonly dark?: string;
 };
