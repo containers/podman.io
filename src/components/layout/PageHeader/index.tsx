@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
-import ReactMarkdown from 'react-markdown';
+const ReactMarkdown = lazy(() => import('react-markdown'));
 interface textBoxProps {
   description: string;
   display?: string;
@@ -10,14 +10,14 @@ interface textBoxProps {
 }
 
 interface ImageSectionProps {
-  image: ImageProps;
+  image: Image;
   display?: string;
   grid?: string;
   layout?: string;
 }
 interface PageHeaderProps {
   description: string;
-  image?: ImageProps;
+  image?: Image;
   title: string;
   darkColor?: string;
   lightColor?: string;
@@ -26,7 +26,9 @@ const TextBox = ({ grid, display, layout, title, description }: textBoxProps): J
   return (
     <div className={`${grid} ${display} ${layout}`}>
       <h1 className="mb-6 max-w-sm text-purple-700 dark:text-purple-500 lg:max-w-lg ">{title}</h1>
-      <ReactMarkdown className="leading-relaxed" children={description} />
+      <Suspense fallback={<div>loading</div>}>
+        <ReactMarkdown children={description} className="leading-relaxed" />
+      </Suspense>
     </div>
   );
 };
@@ -34,11 +36,11 @@ const Image = ({
   grid,
   display,
   layout,
-  image = { src: 'images/raw/podman-2-196w-172h.png', alt: 'Podman Logo' },
+  image = { path: 'images/raw/podman-2-196w-172h.png', alt: 'Podman Logo' },
 }: ImageSectionProps) => {
   return (
     <div>
-      <img src={image.src} alt={image.alt} className={`${grid} ${display} ${layout}`} />
+      <img {...image} className={`${grid} ${display} ${layout}`} />
     </div>
   );
 };

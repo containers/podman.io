@@ -26,7 +26,13 @@ const FeatureItem = ({ title, description }) => {
 export default function IndexPage() {
   return (
     <Layout>
-      <HeroHeader title={header.title} subtitle={header.subtitle} />
+      <HeroHeader
+        title={header.title}
+        subtitle={header.subtitle}
+        release={header.release}
+        image={header.image}
+        platforms={header.platforms}
+      />
       <section className="mb-12">
         <ul className="flex flex-wrap justify-center gap-4">
           {featureList.map(feature => {

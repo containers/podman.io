@@ -2,6 +2,21 @@ const header = {
   title: 'The best free & open source container tools',
   subtitle:
     'Manage containers, pods, and images with Podman. Seamlessly work with containers and Kubernetes from your local environment.',
+  image: {
+    path: 'images/optimized/podman-ui-679w-592h.webp',
+    alt: 'Two screenshots of the Podman Desktop user interface',
+  },
+  release: {
+    text: 'v4.3.0',
+    path: 'https://podman.io/releases/',
+  },
+  platforms: [
+    'Supported Platforms',
+    'fa6-brands:redhat',
+    'fa6-brands:apple',
+    'fa6-brands:microsoft',
+    'fa6-brands:linux',
+  ],
 };
 
 const featureList = [
