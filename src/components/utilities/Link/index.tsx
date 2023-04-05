@@ -1,17 +1,21 @@
 import React from 'react';
 /** Inline Text Link */
-type LinkProps = {
-  text: string;
-  href: string;
-  fontSize?: 'text-base';
-  textColor?: 'text-blue-700 dark:text-blue-500';
-  hoverColor?: 'hover:text-purple-700 hover:dark:text-purple-500';
+type LinkProps = Link & {
+  fontSize?: string;
+  textColor?: string;
+  hoverColor?: string;
 };
 
-export default function Link({ text, href, fontSize, textColor, hoverColor }: LinkProps): JSX.Element {
+export default function Link({
+  text,
+  path,
+  fontSize,
+  textColor = 'text-blue-700 dark:text-blue-500',
+  hoverColor = 'hover:text-purple-700 hover:dark:text-purple-700',
+}: LinkProps): JSX.Element {
   return (
     <a
-      href={href}
+      href={path}
       className={`${fontSize} ${textColor} ${hoverColor} cursor-pointer underline underline-offset-4 transition duration-150 ease-in`}>
       {text}
     </a>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 export type ButtonProps = Button & {
-  outline: boolean;
-  icon: string;
-  colors?: Colors;
+  outline?: boolean;
+  icon?: string;
+  colors?: string;
 };
 
 export default function Button({ as = 'link', outline, colors, icon, text, method, path }: ButtonProps) {
