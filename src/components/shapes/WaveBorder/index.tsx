@@ -1,8 +1,8 @@
 import React from 'react';
 
-export type ShapeProps = Shape & {
-  grid: string | undefined;
-  layout: string | undefined;
+type ShapeProps = Shape & {
+  grid?: string;
+  layout?: string;
 };
 export default function WaveBorder({
   light = 'fill-white',
