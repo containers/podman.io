@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-const ReactMarkdown = lazy(() => import('react-markdown'));
+import ReactMarkdown from 'react-markdown';
 import { Icon } from '@iconify/react';
 
 type BannerProps = HeaderProps & {
@@ -38,9 +38,7 @@ export default function InfoBanner({
         {title ? (
           <div className="mx-auto text-center md:text-start lg:pl-4">
             <h3 className={`mx-auto mb-4 text-3xl font-bold ${titleColor}`}>{title}</h3>
-            <Suspense fallback={<div>loading</div>}>
-              <ReactMarkdown children={description} className={`mx-auto max-w-4xl leading-relaxed text-gray-700`} />
-            </Suspense>
+            <ReactMarkdown children={description} className={`mx-auto max-w-4xl leading-relaxed text-gray-700`} />
           </div>
         ) : (
           <ReactMarkdown children={description} className={`mx-auto leading-relaxed`} />

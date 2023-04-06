@@ -12,7 +12,7 @@ export default function Button({ as = 'link', outline, colors, icon, text, metho
   const solidColors =
     'bg-purple-700 dark:bg-purple-900 text-white dark:text-gray-50 hover:bg-purple-900 hover:dark:bg-purple-700';
   const outlineColors =
-    'outline-purple-700 dark:bg-gray-300 dark:outline-purple-900 text-purple-700 dark:text-purple-900 hover:dark:bg-gray-100';
+    'outline-purple-700 dark:bg-white dark:outline-purple-900 text-purple-700 dark:text-purple-900 hover:dark:bg-purple-900 hover:dark:text-white';
   /* Set Colors */
   const variantStyles = outline ? ` outline outline-2 ${outlineColors} ${colors}` : `${solidColors} ${colors}`;
 
