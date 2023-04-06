@@ -58,22 +58,22 @@ const compatibleTools = {
     {
       title: 'VS Code',
       description: 'Visual Studio code includes Podman support',
-      image: { src: 'logos/optimized/vscode-logo-75w-75h.webp', alt: 'VS Code Logo' },
+      image: { path: 'logos/optimized/vscode-logo-75w-75h.webp', alt: 'VS Code Logo' },
     },
     {
       title: 'Cirrus',
       description: 'Cirrus CLI allows you to reproducibly run containerized tasks with Podman',
-      image: { src: 'logos/optimized/cirrus-logo-75w-75h.webp', alt: 'Cirrus Logo' },
+      image: { path: 'logos/optimized/cirrus-logo-75w-75h.webp', alt: 'Cirrus Logo' },
     },
     {
       title: 'Github Actions',
       description: 'GitHub Actions include support for Podman, as well as friends buildah and skopeo',
-      image: { src: 'logos/optimized/github-logo-115w-115h.webp', alt: 'Github Logo' },
+      image: { path: 'logos/optimized/github-logo-115w-115h.webp', alt: 'Github Logo' },
     },
     {
       title: 'Kind',
       description: "Kind's ability to run local Kubernetes clusters via container nodes includes support for Podman.",
-      image: { src: 'logos/optimized/kind-logo-165w-95h.webp', alt: 'Kind Logo' },
+      image: { path: 'logos/optimized/kind-logo-165w-95h.webp', alt: 'Kind Logo' },
     },
   ],
 };

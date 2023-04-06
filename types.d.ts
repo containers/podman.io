@@ -3,7 +3,7 @@ declare module '*.png';
 
 type Card = {
   title: string;
-  subtitle: string;
+  subtitle?: string;
 };
 
 type Image = {
@@ -25,7 +25,7 @@ type LayoutProps = {
 };
 
 type HeaderProps = {
-  title: string;
+  title?: string;
   description?: string;
 };
 

@@ -1,10 +1,10 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import Layout from '@theme/Layout';
 import { Icon } from '@iconify/react';
 import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
-const ReactMarkdown = lazy(() => import('react-markdown'));
+import ReactMarkdown from 'react-markdown';
 import { header, knowPodman, learnMore } from '@site/static/data/features';
 
 function KnowPodmanCards() {
@@ -15,11 +15,9 @@ function KnowPodmanCards() {
           <article key={index} className="flex flex-col justify-start rounded-md p-4 text-center">
             <div>
               <h3 className="mb-4 font-medium dark:text-blue-500 xl:mb-6">{card.title}</h3>
-              <Suspense fallback={<div>loading</div>}>
-                <ReactMarkdown children={card.description} className="max-w-xs" />
-              </Suspense>
+              <ReactMarkdown children={card.description} className="max-w-xs" />
             </div>
-            <img src={card.image.src} alt={card.image.alt} className="order-first my-2" />
+            <img src={card.image.path} alt={card.image.alt} className="order-first my-2" />
           </article>
         );
       })}

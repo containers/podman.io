@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import Layout from '@theme/Layout';
 import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
@@ -9,7 +9,7 @@ import InfoBanner from '@site/src/components/ui/InfoBanner';
 import IconLink from '@site/src/components/utilities/IconLink';
 import SmallCard from '@site/src/components/ui/SmallCard';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
-const ReactMarkdown = lazy(() => import('react-markdown'));
+import ReactMarkdown from 'react-markdown';
 import { header, communityChat, communityMeetings, mailingList, submittingIssues } from '@site/static/data/community';
 
 function CommunityLinks() {
@@ -83,18 +83,14 @@ export default function Community() {
           </section>
           <section className="container mb-8">
             <h3 className="mb-2 font-medium text-purple-700 dark:text-purple-500">{mailingList.subscribeInfo.title}</h3>
-            <Suspense fallback={<div>loading</div>}>
-              <ReactMarkdown children={mailingList.subscribeInfo.subtitle} className="max-w-prose " />
-            </Suspense>
+            <ReactMarkdown children={mailingList.subscribeInfo.subtitle} className="max-w-prose " />
             <div className="flex flex-wrap gap-6">
               {mailingList.subscribeInfo.options.map((card, index) => {
                 return <SmallCard {...card} />;
               })}
             </div>
             <div className="my-4 max-w-prose">
-              <Suspense fallback={<div>loading</div>}>
-                <ReactMarkdown children={mailingList.subscribeInfo.description} />
-              </Suspense>
+              <ReactMarkdown children={mailingList.subscribeInfo.description} />
             </div>
           </section>
           <section className="mb-8 lg:col-start-2 lg:row-span-2 lg:row-start-2">

@@ -1,6 +1,6 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
-const ReactMarkdown = lazy(() => import('react-markdown'));
+import ReactMarkdown from 'react-markdown';
 
 type ImageSectionProps = LayoutProps & {
   image: Image;
@@ -17,9 +17,7 @@ const TextBox = ({ grid, display, layout, title, description }: PageHeaderProps)
   return (
     <div className={`${grid} ${display} ${layout}`}>
       <h1 className="mb-6 max-w-sm text-purple-700 dark:text-purple-500 lg:max-w-lg ">{title}</h1>
-      <Suspense fallback={<div>loading</div>}>
-        <ReactMarkdown children={description} className="leading-relaxed" />
-      </Suspense>
+      <ReactMarkdown children={description} className="leading-relaxed" />
     </div>
   );
 };

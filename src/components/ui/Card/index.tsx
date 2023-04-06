@@ -1,18 +1,13 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import Button from '@site/src/components/utilities/Button/';
-const ReactMarkdown = lazy(() => import('react-markdown'));
-
+import ReactMarkdown from 'react-markdown';
 function CardHeader(props) {
   const { title, subtitle, details } = props;
   return (
     <div className="mx-2 mt-4">
       <h3 className="mb-3 font-bold text-gray-700 dark:text-gray-50">{title}</h3>
-      <Suspense fallback={<div>loading</div>}>
-        <ReactMarkdown children={subtitle} className="text-gray-700" />
-      </Suspense>
-      <Suspense fallback={<div>loading</div>}>
-        <ReactMarkdown children={details} className="text-gray-700" />
-      </Suspense>
+      <ReactMarkdown children={subtitle} className="text-gray-700" />
+      <ReactMarkdown children={details} className="text-gray-700" />
     </div>
   );
 }
