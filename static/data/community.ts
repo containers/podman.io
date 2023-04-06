@@ -158,9 +158,11 @@ const submittingIssues = [
   {
     title: 'Submitting Pull Requets',
     subtitle:
-      "No Pull Request (PR) is too small! Typos, additional comments in the code, new test cases, bug fixes, new features, more documentation, ... it's all welcome! ",
-    description:
-      'If you have a bug that you’d like to report, it’s best to report it here by creating a “New issue” rather than sending an email to the list.',
+      "No Pull Request (PR) is too small! Typos, additional comments in the code, new test cases, bug fixes, new features, more documentation, **...it's all welcome!** ",
+    description: [
+      'While bug fixes can first be identified via an "issue", that is not required. It\'s ok to just open up a PR with the fix, but make sure you include the same information you would have included in an issue - like how to reproduce it.',
+      "PRs for new features should include some background on what use cases the new code is trying to address. When possible and when it makes sense, try to break-up larger PRs into smaller ones - it's easier to review smaller code changes. But only if those smaller ones make sense as stand-alone PRs. Regardless of the type of PR, all PRs should include:",
+    ],
     checkList: [
       'Well-documented code changes.',
       'Additional testcases. Ideally m they should fail w/o your code change applied.',

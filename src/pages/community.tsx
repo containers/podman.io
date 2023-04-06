@@ -7,9 +7,11 @@ import DateTimeBox from '@site/src/components/content/DateTimeBox';
 import InfoBox from '@site/src/components/ui/InfoBox';
 import InfoBanner from '@site/src/components/ui/InfoBanner';
 import IconLink from '@site/src/components/utilities/IconLink';
+import Button from '@site/src/components/utilities/Button';
 import SmallCard from '@site/src/components/ui/SmallCard';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
 import ReactMarkdown from 'react-markdown';
+import { Icon } from '@iconify/react';
 import { header, communityChat, communityMeetings, mailingList, submittingIssues } from '@site/static/data/community';
 
 function CommunityLinks() {
@@ -108,12 +110,59 @@ export default function Community() {
         </div>
       </section>
       {/* Submit Pull Requests */}
+      {/* TODO: smaller section variable names */}
       <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-900">
+        {/* TODO: This title should be purple in light mode */}
         <SectionHeader
           title={submittingIssues[0].title}
           description={submittingIssues[0].subtitle}
           textColor="from-purple-500 to-purple-700 dark:text-blue-700"
         />
+        <div>
+          <section>
+            <header>
+              <h3>{submittingIssues[1].title}</h3>
+              <div>
+                <p className="flex items-center gap-2">
+                  <Icon icon="fa-solid:exclamation-circle" />
+                  <span>{submittingIssues[1].subtitle}</span>
+                </p>
+              </div>
+            </header>
+            <div>
+              {submittingIssues[1].sections.map((section, index) => {
+                return (
+                  <div key={index}>
+                    <ReactMarkdown children={section.text} />
+                    <ul>
+                      {section.checkList.map((item, index) => {
+                        return <li key={index}>{item}</li>;
+                      })}
+                    </ul>
+                    <Button as="link" outline={true} text={section.button.text} />
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+          <section>
+            <header>
+              <h3>{submittingIssues[2].title}</h3>
+              <ReactMarkdown children={submittingIssues[2].subtitle} />
+            </header>
+            <div>
+              {submittingIssues[2].description.map((paragraph, index) => {
+                return <p key={index}>{paragraph}</p>;
+              })}
+              <ul>
+                {submittingIssues[2].checkList.map((item, index) => {
+                  return <li key={index}>{item}</li>;
+                })}
+              </ul>
+              <Button as="link" outline={true} text={submittingIssues[2].button.text} />
+            </div>
+          </section>
+        </div>
       </section>
     </Layout>
   );
