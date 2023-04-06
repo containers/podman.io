@@ -120,9 +120,9 @@ export default function Community() {
           textGradient={true}
         />
         <div className="lg:-containe mb-20 mt-16 flex flex-wrap justify-center gap-20 px-8">
-          <section className=" max-w-lg rounded-md bg-white p-10 shadow-lg">
-            <header className="mx-auto mb-8">
-              <h3 className="mb-3 text-center text-blue-700 dark:text-blue-500">{submittingIssues[1].title}</h3>
+          <section className="max-w-lg rounded-md bg-white px-10 pt-10 shadow-lg">
+            <header className="mb-10">
+              <h3 className="mb-4 text-center text-blue-700 dark:text-blue-500">{submittingIssues[1].title}</h3>
               <div className="bg-blue-100/25 px-3 py-2">
                 <p className="flex items-center gap-2 rounded-md">
                   <Icon icon="fa-solid:exclamation-circle" className="text-purple-700" />
@@ -133,9 +133,9 @@ export default function Community() {
             <div>
               {submittingIssues[1].sections.map((section, index) => {
                 return (
-                  <div key={index}>
+                  <div key={index} className="mb-12">
                     <ReactMarkdown children={section.text} />
-                    <ul>
+                    <ul className="mb-8 ml-5 mt-4 list-disc">
                       {section.checkList.map((item, index) => {
                         return <li key={index}>{item}</li>;
                       })}
@@ -153,9 +153,13 @@ export default function Community() {
             </header>
             <div>
               {submittingIssues[2].description.map((paragraph, index) => {
-                return <p key={index}>{paragraph}</p>;
+                return (
+                  <p key={index} className="my-3">
+                    {paragraph}
+                  </p>
+                );
               })}
-              <ul>
+              <ul className="my-4 ml-5 list-disc">
                 {submittingIssues[2].checkList.map((item, index) => {
                   return <li key={index}>{item}</li>;
                 })}
