@@ -4,7 +4,7 @@ const header = {
     'Podman is an open source container, pod, and container image management engine. Podman makes it easy to find, run, build, and share containers.',
   image: {
     path: 'images/raw/podman-2-196w,172h.png',
-    altText: 'Podman Seal Image',
+    alt: 'Podman Seal Image',
   },
 };
 
@@ -16,7 +16,7 @@ const knowPodman = {
       description:
         "Hop on over to our [Podman Quickstart Guide](#) and we'll lead you through basic Podman commands Guide and give you pointers to more learning materials and guides.",
       image: {
-        src: '#',
+        path: '#',
         alt: 'A seal diving into the water',
       },
     },
@@ -25,7 +25,7 @@ const knowPodman = {
       description:
         'Podman has an active chat and mailing list, and regular open community meetings. Users and aspiring contributors are most welcome in all of these venues. Join us!',
       image: {
-        src: '#',
+        path: '#',
         alt: 'A group of seals swimming.',
       },
     },
@@ -34,7 +34,7 @@ const knowPodman = {
       description:
         'Check out the [Podman Troubleshooting Guide](#), search our [Documentation](#), or file an issue in our [issue tracker](#).',
       image: {
-        src: '#',
+        path: '#',
         alt: 'A confused seal.',
       },
     },
@@ -49,7 +49,7 @@ const carouselContent = [
     description:
       'Find and pull down containers whether they are on dockerhub.io or quay.io, an internal registry server, or direct from a vendor.',
     image: {
-      src: '@site/static/images/optimize/cli-screens/cli-find-image.webp',
+      path: 'images/optimize/cli-screens/cli-find-image.webp',
       alt: 'A screenshot of the commandline while using the search and pull commands',
     },
   },
@@ -60,7 +60,7 @@ const carouselContent = [
     description:
       'Find and pull down containers whether they are on dockerhub.io or quay.io, an internal registry server, or direct from a vendor.',
     image: {
-      src: '@site/static/images/optimize/cli-screens/cli-run-image.webp',
+      path: 'images/optimize/cli-screens/cli-run-image.webp',
       alt: 'A screenshot of the commandline while using the run command',
     },
   },
@@ -70,7 +70,7 @@ const carouselContent = [
     subtitle: 'Podman Troubleshooting Guide',
     description: 'Creating new layers with small tweaks or major overhauls is easy with podman build',
     image: {
-      src: '@site/static/images/optimize/cli-screens/cli-build-image.webp',
+      path: 'images/optimize/cli-screens/cli-build-image.webp',
       alt: 'A screenshot of the commandline while using the build command',
     },
   },
@@ -81,7 +81,7 @@ const carouselContent = [
     description:
       'Podman lets you push your newly-built containers anywhere you want with a single podman push command.',
     image: {
-      src: '@site/static/images/optimize/cli-screens/cli-share-image.webp',
+      path: 'images/optimize/cli-screens/cli-share-image.webp',
       alt: 'A screenshot of the commandline while using the push command',
     },
   },

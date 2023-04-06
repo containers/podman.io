@@ -19,7 +19,7 @@ function CommunityLinks() {
       {links.map((link, index) => {
         return (
           <li key={index}>
-            <IconLink text={link.text} path={link.src} icon={link.icon} textLogo={link.textLogo} image={link.image} />
+            <IconLink {...link} />
           </li>
         );
       })}
@@ -61,7 +61,7 @@ export default function Community() {
             textColor="from-purple-500 to-purple-700 dark:text-purple-500"
           />
           <img
-            src={communityMeetings.image.src}
+            src={communityMeetings.image.path}
             alt={communityMeetings.image.alt}
             className="order-first mx-auto object-cover lg:max-w-lg"
           />
@@ -88,17 +88,19 @@ export default function Community() {
             </Suspense>
             <div className="flex flex-wrap gap-6">
               {mailingList.subscribeInfo.options.map((card, index) => {
-                return <SmallCard title={card.title} subtitle={card.subtitle} button={card.button} key={index} />;
+                return <SmallCard {...card} />;
               })}
             </div>
             <div className="my-4 max-w-prose">
-              <ReactMarkdown children={mailingList.subscribeInfo.description} />
+              <Suspense fallback={<div>loading</div>}>
+                <ReactMarkdown children={mailingList.subscribeInfo.description} />
+              </Suspense>
             </div>
           </section>
           <section className="mb-8 lg:col-start-2 lg:row-span-2 lg:row-start-2">
             <div>
               <img
-                src={mailingList.extraInfo.image.src}
+                src={mailingList.extraInfo.image.path}
                 alt={mailingList.extraInfo.image.alt}
                 className="w-full  object-cover"
               />

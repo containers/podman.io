@@ -1,6 +1,6 @@
 import React from 'react';
 /** Inline Text Link */
-type LinkProps = Link & {
+export type LinkProps = Link & {
   fontSize?: string;
   textColor?: string;
   hoverColor?: string;

@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import Button from '@site/src/components/utilities/Button/';
-import ReactMarkdown from 'react-markdown';
+const ReactMarkdown = lazy(() => import('react-markdown'));
 
 function CardHeader(props) {
   const { title, subtitle, details } = props;
   return (
     <div className="mx-2 mt-4">
       <h3 className="mb-3 font-bold text-gray-700 dark:text-gray-50">{title}</h3>
-      <ReactMarkdown children={subtitle} className="text-gray-700" />
-      <ReactMarkdown children={details} className="text-gray-700" />
+      <Suspense fallback={<div>loading</div>}>
+        <ReactMarkdown children={subtitle} className="text-gray-700" />
+      </Suspense>
+      <Suspense fallback={<div>loading</div>}>
+        <ReactMarkdown children={details} className="text-gray-700" />
+      </Suspense>
     </div>
   );
 }
@@ -20,19 +24,18 @@ function CardBody(props) {
     </div>
   );
 }
-function CardButtons({ data = [{ text: 'card text' }] }) {
+function CardButtons({ data = [{ text: 'button text' }] }) {
   return (
     <div className=" mx-2 mb-4 flex justify-center gap-2 lg:mb-8">
-      {data.map((item, index) => (
+      {data.map((button, index) => (
         <div key={index}>
-          <Button {...item} />
+          {index == 0 ? <Button as="link" {...button} /> : <Button as="link" outline={true} {...button} />}
         </div>
       ))}
     </div>
   );
 }
 
-// TODO: improve prop handling. this approach is limited
 export default function Card(props) {
   return (
     <article className="m-4 flex flex-col justify-between rounded-lg bg-gray-50 p-4 shadow-xl dark:bg-gray-700 dark:shadow-none lg:m-2">

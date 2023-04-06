@@ -16,25 +16,25 @@ const communityChat = {
   links: [
     {
       text: '#podman:matrix.org',
-      src: '#',
+      path: '#',
       image: {
-        src: 'logos/raw/element-56w-59h.png',
+        path: 'logos/raw/element-56w-59h.png',
         alt: 'Element Matrix Logo',
       },
     },
     {
       text: '#podman on libera.chat',
-      src: '',
+      path: '',
       textLogo: 'IRC',
     },
     {
       text: 'Podman Discord',
-      src: '#',
+      path: '#',
       icon: 'logos:discord-icon',
     },
     {
       text: 'Slack',
-      src: '#',
+      path: '#',
       icon: 'logos:slack-icon',
     },
   ],
@@ -45,7 +45,7 @@ const communityMeetings = {
   subtitle:
     "Many of the maintainers for the Podman project attend both of these meetings, so it's a great chance for community members like you to ask them questions or address concerns directly. If you have a topic that you’d like to propose for either meeting, please send a note to the [Mailing List]().",
   image: {
-    src: 'images/optimized/community-call-554w-219h.webp',
+    path: 'images/optimized/community-call-554w-219h.webp',
     alt: 'An image of podman team members in a virtual meeting',
   },
   cards: [
@@ -56,8 +56,8 @@ const communityMeetings = {
       date: '**1st Tuesday** every month',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
-        { text: 'Join Meeting', src: '#' },
-        { text: 'Meeting Agenda', src: '#' },
+        { text: 'Join Meeting', path: '#' },
+        { text: 'Meeting Agenda', path: '#' },
       ],
     },
     {
@@ -67,8 +67,8 @@ const communityMeetings = {
       date: '**3rd Thursday** every month',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
-        { text: 'Join Meeting', src: '#' },
-        { text: 'Meeting Agenda', src: '#' },
+        { text: 'Join Meeting', path: '#' },
+        { text: 'Meeting Agenda', path: '#' },
       ],
     },
   ],
@@ -95,7 +95,7 @@ const mailingList = {
         subtitle: 'Send an email to [podman-join@lists.podman.io](#) with the word "Subscribe" in the subject.',
         button: {
           text: 'Send email',
-          src: '#',
+          path: '#',
         },
       },
       {
@@ -104,14 +104,14 @@ const mailingList = {
           'Enter your email at the bottom of [the mailing list sign up page](#), and hit the "Subscribe" button.',
         button: {
           text: 'Sign up page',
-          src: '#',
+          path: '#',
         },
       },
     ],
   },
   extraInfo: {
     image: {
-      src: 'images/optimized/mailing-list-screenshot-580w-376h.webp',
+      path: 'images/optimized/mailing-list-screenshot-580w-376h.webp',
       alt: 'A screenshot of the Podman mailing list home screen.',
     },
     note: {
@@ -139,7 +139,7 @@ const submittingIssues = [
         ],
         button: {
           text: 'Check Open Issues',
-          src: '#',
+          path: '#',
         },
       },
       {
@@ -150,7 +150,7 @@ const submittingIssues = [
         ],
         button: {
           text: 'File a New Issue',
-          src: '#',
+          path: '#',
         },
       },
     ],
@@ -168,7 +168,7 @@ const submittingIssues = [
     ],
     button: {
       text: 'More PR Submission Details',
-      src: '#',
+      path: '#',
     },
   },
 ];

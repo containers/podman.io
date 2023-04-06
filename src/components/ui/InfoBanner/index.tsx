@@ -2,9 +2,7 @@ import React, { lazy, Suspense } from 'react';
 const ReactMarkdown = lazy(() => import('react-markdown'));
 import { Icon } from '@iconify/react';
 
-type BannerProps = {
-  title?: string;
-  description: string;
+type BannerProps = HeaderProps & {
   image?: {
     src: string;
     alt: string;

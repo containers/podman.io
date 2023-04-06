@@ -1,28 +1,19 @@
 import React, { lazy, Suspense } from 'react';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
 const ReactMarkdown = lazy(() => import('react-markdown'));
-interface textBoxProps {
-  description: string;
-  display?: string;
-  grid?: string;
-  layout?: string;
-  title: string;
-}
 
-interface ImageSectionProps {
+type ImageSectionProps = LayoutProps & {
   image: Image;
-  display?: string;
-  grid?: string;
-  layout?: string;
-}
-interface PageHeaderProps {
-  description: string;
-  image?: Image;
-  title: string;
-  darkColor?: string;
-  lightColor?: string;
-}
-const TextBox = ({ grid, display, layout, title, description }: textBoxProps): JSX.Element => {
+};
+
+type PageHeaderProps = LayoutProps &
+  HeaderProps & {
+    image?: Image;
+    colors?: Colors;
+    darkColor?: string;
+    lightColor?: string;
+  };
+const TextBox = ({ grid, display, layout, title, description }: PageHeaderProps): JSX.Element => {
   return (
     <div className={`${grid} ${display} ${layout}`}>
       <h1 className="mb-6 max-w-sm text-purple-700 dark:text-purple-500 lg:max-w-lg ">{title}</h1>
@@ -40,7 +31,7 @@ const Image = ({
 }: ImageSectionProps) => {
   return (
     <div>
-      <img {...image} className={`${grid} ${display} ${layout}`} />
+      <img src={image.path} alt={image.alt} className={`${grid} ${display} ${layout}`} />
     </div>
   );
 };

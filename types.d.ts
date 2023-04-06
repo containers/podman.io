@@ -1,4 +1,10 @@
 declare module '*.webp';
+declare module '*.png';
+
+type Card = {
+  title: string;
+  subtitle: string;
+};
 
 type Image = {
   path: string | undefined;
@@ -12,6 +18,17 @@ type Colors = {
   secondary: string;
 };
 
+type LayoutProps = {
+  display?: string;
+  grid?: string;
+  layout?: string;
+};
+
+type HeaderProps = {
+  title: string;
+  description?: string;
+};
+
 type Link = {
   text: string;
   path: string;
@@ -19,7 +36,7 @@ type Link = {
 
 type Button = {
   readonly text: string;
-  readonly as: 'button' | 'link';
+  readonly as?: 'button' | 'link';
   readonly method?: () => void;
   readonly path?: string;
 };
