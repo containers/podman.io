@@ -116,7 +116,8 @@ export default function Community() {
         <SectionHeader
           title={submittingIssues[0].title}
           description={submittingIssues[0].subtitle}
-          textColor="from-purple-500 to-purple-700 dark:text-blue-700"
+          textGradientStops="from-purple-500 to-purple-700 dark:text-blue-700"
+          textGradient={true}
         />
         <div className="lg:-containe mb-20 mt-16 flex flex-wrap justify-center gap-20 px-8">
           <section className=" max-w-lg rounded-md bg-white p-10 shadow-lg">
