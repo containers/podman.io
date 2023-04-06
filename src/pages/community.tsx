@@ -118,13 +118,13 @@ export default function Community() {
           description={submittingIssues[0].subtitle}
           textColor="from-purple-500 to-purple-700 dark:text-blue-700"
         />
-        <div>
-          <section>
-            <header>
-              <h3>{submittingIssues[1].title}</h3>
-              <div>
-                <p className="flex items-center gap-2">
-                  <Icon icon="fa-solid:exclamation-circle" />
+        <div className="lg:-containe mb-20 mt-16 flex flex-wrap justify-center gap-20 px-8">
+          <section className=" max-w-lg rounded-md bg-white p-10 shadow-lg">
+            <header className="mx-auto mb-8">
+              <h3 className="mb-3 text-center text-blue-700 dark:text-blue-500">{submittingIssues[1].title}</h3>
+              <div className="bg-blue-100/25 px-3 py-2">
+                <p className="flex items-center gap-2 rounded-md">
+                  <Icon icon="fa-solid:exclamation-circle" className="text-purple-700" />
                   <span>{submittingIssues[1].subtitle}</span>
                 </p>
               </div>
@@ -145,9 +145,9 @@ export default function Community() {
               })}
             </div>
           </section>
-          <section>
-            <header>
-              <h3>{submittingIssues[2].title}</h3>
+          <section className="max-w-lg rounded-md bg-white p-10 shadow-lg">
+            <header className="mx-auto mb-10">
+              <h3 className="mb-3 text-center text-blue-700 dark:text-blue-500">{submittingIssues[2].title}</h3>
               <ReactMarkdown children={submittingIssues[2].subtitle} />
             </header>
             <div>
