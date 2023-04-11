@@ -9,6 +9,7 @@ import ReactMarkdown from 'react-markdown';
 import ArticleCard from '@site/src/components/ui/ArticleCard';
 /* PAGE DATA */
 import { header, featureList, kubernetesBanner, compatibleTools } from '@site/static/data/home';
+import Testimonial from '../components/ui/Testimonial';
 
 /* PAGE COMPONENTS */
 const FeatureItem = ({ title, description }) => {
@@ -43,6 +44,19 @@ const LatestNews = () => {
     </section>
   );
 };
+
+const testimonialTest = {
+  name: 'Shakeel Ahmad Minhas',
+  handle: '@Ahmad_Shakeel77',
+  description:
+    'Looking for a lightweight and efficient way to run containers on your Mac? Give Podman a try! This open-source container engine can help you manage your containerized applications easily on macOS.  #Mac #Podman #Containers',
+  social: 'twitter',
+  path: '#',
+  date: 'Mar 9, 2023',
+};
+const TestimonialSection = () => {
+  return <Testimonial {...testimonialTest} />;
+};
 /* PAGE CONTENT */
 export default function IndexPage() {
   return (
@@ -73,6 +87,14 @@ export default function IndexPage() {
             return <ThumbCard key={tool.title} title={tool.description} image={tool.image} />;
           })}
         </div>
+      </section>
+      <section className="bg-gradient-to-b from-white to-purple-100">
+        <SectionHeader
+          title="What people are saying about Podman"
+          textGradient={true}
+          textGradientStops="from-blue-700 to-blue-500"
+        />
+        <TestimonialSection />
       </section>
       <LatestNews />
       <ColoringBookSection />
