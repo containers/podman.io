@@ -61,13 +61,7 @@ const TestimonialSection = () => {
 export default function IndexPage() {
   return (
     <Layout>
-      <HeroHeader
-        title={header.title}
-        subtitle={header.subtitle}
-        release={header.release}
-        image={header.image}
-        platforms={header.platforms}
-      />
+      <HeroHeader {...header} />
       <section className="mb-12">
         <ul className="flex flex-wrap justify-center gap-4">
           {featureList.map(feature => {
@@ -75,11 +69,7 @@ export default function IndexPage() {
           })}
         </ul>
       </section>
-      <InfoBanner
-        title={kubernetesBanner.title}
-        description={kubernetesBanner.description}
-        image={kubernetesBanner.image}
-      />
+      <InfoBanner {...kubernetesBanner} />
       <section>
         <SectionHeader title={compatibleTools.title} fontWeight="font-light" />
         <div className="mx-auto flex flex-wrap justify-center gap-4">
