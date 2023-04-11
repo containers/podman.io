@@ -6,9 +6,10 @@ import InfoBanner from '@site/src/components/ui/InfoBanner';
 import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
 import ThumbCard from '@site/src/components/ui/ThumbCard';
 import ReactMarkdown from 'react-markdown';
-
+import ArticleCard from '@site/src/components/ui/ArticleCard';
 /* PAGE DATA */
 import { header, featureList, kubernetesBanner, compatibleTools } from '@site/static/data/home';
+import Testimonial from '../components/ui/Testimonial';
 
 /* PAGE COMPONENTS */
 const FeatureItem = ({ title, description }) => {
@@ -19,7 +20,43 @@ const FeatureItem = ({ title, description }) => {
     </li>
   );
 };
+const testCard = {
+  title: { text: 'Build Kubernetes pods with Podman play kube', path: 'https://podman.io' },
+  date: ' Oct 25, 2021',
+  image: { src: 'images/article-thumb.png', alt: 'article thumbnail' },
+  subtitle:
+    'The podman play kube command has docker compose features in it to make it easier to transition your compose workloads',
+  author: {
+    path: '#',
+    text: 'Brent Baude',
+  },
+};
+const LatestNews = () => {
+  return (
+    <section>
+      <SectionHeader title="Latest Podman News" textColor="text-purple-700" />
+      <div className="flex flex-wrap justify-center gap-4">
+        <ArticleCard {...testCard} />
+        <ArticleCard {...testCard} />
+        <ArticleCard {...testCard} />
+        <ArticleCard {...testCard} />
+      </div>
+    </section>
+  );
+};
 
+const testimonialTest = {
+  name: 'Shakeel Ahmad Minhas',
+  handle: '@Ahmad_Shakeel77',
+  description:
+    'Looking for a lightweight and efficient way to run containers on your Mac? Give Podman a try! This open-source container engine can help you manage your containerized applications easily on macOS.  #Mac #Podman #Containers',
+  social: 'twitter',
+  path: '#',
+  date: 'Mar 9, 2023',
+};
+const TestimonialSection = () => {
+  return <Testimonial {...testimonialTest} />;
+};
 /* PAGE CONTENT */
 export default function IndexPage() {
   return (
@@ -47,10 +84,21 @@ export default function IndexPage() {
         <SectionHeader title={compatibleTools.title} fontWeight="font-light" />
         <div className="mx-auto flex flex-wrap justify-center gap-4">
           {compatibleTools.tools.map(tool => {
-            return <ThumbCard key={tool.title} title={tool.description} image={tool.image} />;
+            return <ThumbCard key={tool.title} subtitle={tool.description} image={tool.image} />;
           })}
         </div>
       </section>
+      <section className="bg-gradient-to-b from-white to-purple-100">
+        <SectionHeader
+          title="What people are saying about Podman"
+          textGradient={true}
+          textGradientStops="from-blue-700 to-blue-500"
+        />
+        <div className="container">
+          <TestimonialSection />
+        </div>
+      </section>
+      <LatestNews />
       <ColoringBookSection />
     </Layout>
   );
