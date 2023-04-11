@@ -6,7 +6,7 @@ import InfoBanner from '@site/src/components/ui/InfoBanner';
 import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
 import ThumbCard from '@site/src/components/ui/ThumbCard';
 import ReactMarkdown from 'react-markdown';
-
+import ArticleCard from '@site/src/components/ui/ArticleCard';
 /* PAGE DATA */
 import { header, featureList, kubernetesBanner, compatibleTools } from '@site/static/data/home';
 
@@ -19,7 +19,30 @@ const FeatureItem = ({ title, description }) => {
     </li>
   );
 };
-
+const testCard = {
+  title: { text: 'Build Kubernetes pods with Podman play kube', path: 'https://podman.io' },
+  date: ' Oct 25, 2021',
+  image: { src: 'images/article-thumb.png', alt: 'article thumbnail' },
+  subtitle:
+    'The podman play kube command has docker compose features in it to make it easier to transition your compose workloads',
+  author: {
+    path: '#',
+    text: 'Brent Baude',
+  },
+};
+const LatestNews = () => {
+  return (
+    <section>
+      <SectionHeader title="Latest Podman News" textColor="text-purple-700" />
+      <div className="flex flex-wrap justify-center gap-4">
+        <ArticleCard {...testCard} />
+        <ArticleCard {...testCard} />
+        <ArticleCard {...testCard} />
+        <ArticleCard {...testCard} />
+      </div>
+    </section>
+  );
+};
 /* PAGE CONTENT */
 export default function IndexPage() {
   return (
@@ -51,6 +74,7 @@ export default function IndexPage() {
           })}
         </div>
       </section>
+      <LatestNews />
       <ColoringBookSection />
     </Layout>
   );
