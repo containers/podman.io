@@ -84,7 +84,7 @@ export default function IndexPage() {
         <SectionHeader title={compatibleTools.title} fontWeight="font-light" />
         <div className="mx-auto flex flex-wrap justify-center gap-4">
           {compatibleTools.tools.map(tool => {
-            return <ThumbCard key={tool.title} title={tool.description} image={tool.image} />;
+            return <ThumbCard key={tool.title} subtitle={tool.description} image={tool.image} />;
           })}
         </div>
       </section>
@@ -94,7 +94,9 @@ export default function IndexPage() {
           textGradient={true}
           textGradientStops="from-blue-700 to-blue-500"
         />
-        <TestimonialSection />
+        <div className="container">
+          <TestimonialSection />
+        </div>
       </section>
       <LatestNews />
       <ColoringBookSection />
