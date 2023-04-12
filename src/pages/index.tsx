@@ -10,6 +10,7 @@ import ArticleCard from '@site/src/components/ui/ArticleCard';
 /* PAGE DATA */
 import { header, featureList, kubernetesBanner, compatibleTools } from '@site/static/data/home';
 import Testimonial from '../components/ui/Testimonial';
+import DropdownButton from '@site/src/components/utilities/DropdownButton';
 
 /* PAGE COMPONENTS */
 const FeatureItem = ({ title, description }) => {
@@ -57,11 +58,19 @@ const testimonialTest = {
 const TestimonialSection = () => {
   return <Testimonial {...testimonialTest} />;
 };
+const buttonTestData = {
+  selectName: 'test-button',
+  initialText: 'Initial Text',
+  options: ['select one', 'select two', 'select three'],
+};
 /* PAGE CONTENT */
 export default function IndexPage() {
   return (
     <Layout>
       <HeroHeader {...header} />
+      <section className="container">
+        <DropdownButton {...buttonTestData} />
+      </section>
       <section className="mb-12">
         <ul className="flex flex-wrap justify-center gap-4">
           {featureList.map(feature => {
