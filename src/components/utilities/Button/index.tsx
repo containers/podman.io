@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
+
 export type ButtonProps = Button & {
   outline?: boolean;
   icon?: string;
@@ -12,11 +13,11 @@ export default function Button({ as = 'link', outline, colors, icon, text, metho
   const solidColors =
     'bg-purple-700 dark:bg-purple-900 text-white dark:text-gray-50 hover:bg-purple-900 hover:dark:bg-purple-700';
   const outlineColors =
-    'outline-purple-700 dark:bg-white dark:outline-purple-900 text-purple-700 dark:text-purple-900 hover:dark:bg-purple-900 hover:dark:text-white';
+    'dark:bg-white text-purple-700 dark:text-purple-900 hover:dark:bg-purple-900 hover:dark:text-white';
   /* Set Colors */
-  const variantStyles = outline ? ` outline outline-2 ${outlineColors} ${colors}` : `${solidColors} ${colors}`;
+  const variantStyles = outline ? ` ${outlineColors} ${colors}` : `${solidColors} ${colors}`;
 
-  /** Render the component with styl variations */
+  /** Render the component with style variations */
   if (as === 'button') {
     return (
       <button onClick={method} className={`${baseStyles} ${variantStyles}`}>
