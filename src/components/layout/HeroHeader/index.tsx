@@ -52,15 +52,31 @@ export default function HeroHeader({ title, subtitle, release, image, platforms 
       icon: 'material-symbols:arrow-circle-right-rounded',
     },
   };
-  const InstallOption = (os): JSX.Element => {
+  type InstallOptionProps = Card & {
+    icon: string;
+    options: Link[];
+    path: string;
+    other: { path: string; text: string; subtext: string; icon: string };
+  };
+  const InstallOption = (props: InstallOptionProps): JSX.Element => {
     return (
       <section>
         <div>
-          <Icon icon="fa-brands:windows" />
-          <h3>Download for Windows</h3>
-          <p>Install on Desktop</p>
+          <a href={props.path}>
+            <Icon icon={props.icon} />
+            <h3>{props.title}</h3>
+            <p>{props.subtitle}</p>
+          </a>
         </div>
-        <div></div>
+        <div>
+          <a href={props.other.path}>
+            <div>
+              <h4>{props.other.text}</h4>
+              <Icon icon={props.other.icon} />
+            </div>
+            <p>{props.other.subtext}</p>
+          </a>
+        </div>
       </section>
     );
   };
@@ -77,7 +93,7 @@ export default function HeroHeader({ title, subtitle, release, image, platforms 
           <p className="max-w-sm text-white dark:text-gray-50 lg:max-w-prose">{subtitle}</p>
           <div className="my-3 flex max-w-sm gap-8">
             <Button as="link" text="Get Started" path="#" />
-            <DropdownButton {...downloadData} />
+            <DropdownButton />
           </div>
           <p className="flex gap-4 text-white dark:text-gray-100">
             <span>
