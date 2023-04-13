@@ -9,7 +9,7 @@ export type ButtonProps = Button & {
 
 export default function Button({ as = 'link', outline, colors, icon, text, method, path }: ButtonProps) {
   const baseStyles =
-    'my-2 block max-w-fit cursor-pointer rounded-md px-6 py-2 font-semibold transition duration-150 ease-in-out hover:no-underline hover:shadow-md';
+    'h-fit my-2 block max-w-fit cursor-pointer rounded-md px-6 py-2 font-semibold transition duration-150 ease-in-out hover:no-underline hover:shadow-md';
   const solidColors =
     'bg-purple-700 dark:bg-purple-900 text-white dark:text-gray-50 hover:bg-purple-900 hover:dark:bg-purple-700 hover:text-white';
   const outlineColors =

@@ -5,16 +5,16 @@ import DropdownButton from '@site/src/components/utilities/DropdownButton';
 import Link from '@site/src/components/utilities/Link';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
 
-const DownloadOption = (): JSX.Element => {
-  return <div>placeholder text</div>;
-};
-
 export default function HeroHeader({ title, subtitle, release, image, platforms }) {
   const detectOperatingSystem = () => {
-    const userData = window.navigator.userAgent.toLowerCase().split(' ');
-    return userData.filter(item => item.includes('windows' || 'linux' || 'macos'));
+    return window.navigator.userAgent
+      .toLowerCase()
+      .split(' ')
+      .filter(item => item.includes('linux' || 'windows' || 'macos'));
   };
-
+  const DownloadOption = (): JSX.Element => {
+    return <div>you are running {detectOperatingSystem()}</div>;
+  };
   const downloadData = {
     buttonText: 'Downloads',
     Options: [DownloadOption],
