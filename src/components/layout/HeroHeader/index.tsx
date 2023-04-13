@@ -12,12 +12,62 @@ export default function HeroHeader({ title, subtitle, release, image, platforms 
       .split(' ')
       .filter(item => item.includes('linux' || 'windows' || 'macos'));
   };
-  const DownloadOption = (): JSX.Element => {
-    return <div>you are running {detectOperatingSystem()}</div>;
+
+  const windows = {
+    title: 'Download for Windows',
+    subtitle: 'Install on Desktop',
+    icon: 'fa-brands:windows',
+    options: [],
+    path: 'https://github.com/containers/podman-desktop/releases/download/v0.13.0/podman-desktop-0.13.0-setup.exe',
+    other: {
+      path: 'https://podman-desktop.io/downloads',
+      text: 'Other Install Options',
+      subtext: '(Including Windows portable executable and other OS options)',
+      icon: 'material-symbols:arrow-circle-right-rounded',
+    },
   };
+  const mac = {
+    title: 'Download for macOS',
+    subtitle: 'Universal *.dmg',
+    icon: 'fa-brands:apple',
+    options: [],
+    path: 'https://github.com/containers/podman-desktop/releases/download/v0.13.0/podman-desktop-0.13.0-universal.dmg',
+    other: {
+      path: 'https://podman-desktop.io/downloads',
+      text: 'Other Install Options',
+      subtext: '(Including macOS Intel & Arm builds and other Os options)',
+      icon: 'material-symbols:arrow-circle-right-rounded',
+    },
+  };
+  const linux = {
+    title: 'Download for Linux',
+    subtitle: 'Install on Desktop',
+    icon: 'fa-brands:linux',
+    options: [{ path: 'https://podman.io/getting-started/installation#installing-on-linux', text: 'CLI Install' }],
+    path: 'https://github.com/containers/podman-desktop/releases/download/v0.13.0/podman-desktop-0.13.0.flatpak',
+    other: {
+      path: 'https://podman-desktop.io/downloads',
+      text: 'Other Install Options',
+      subtext: '(Including binary tar.gz and other OS options)',
+      icon: 'material-symbols:arrow-circle-right-rounded',
+    },
+  };
+  const InstallOption = (os): JSX.Element => {
+    return (
+      <section>
+        <div>
+          <Icon icon="fa-brands:windows" />
+          <h3>Download for Windows</h3>
+          <p>Install on Desktop</p>
+        </div>
+        <div></div>
+      </section>
+    );
+  };
+
   const downloadData = {
     buttonText: 'Downloads',
-    Options: [DownloadOption],
+    Options: [InstallOption(windows), InstallOption(mac), InstallOption(linux)],
   };
   return (
     <header className="bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-700 dark:to-blue-900">
