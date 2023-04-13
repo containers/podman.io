@@ -1,10 +1,24 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import Button from '@site/src/components/utilities/Button';
+import DropdownButton from '@site/src/components/utilities/DropdownButton';
 import Link from '@site/src/components/utilities/Link';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
 
+const DownloadOption = (): JSX.Element => {
+  return <div>placeholder text</div>;
+};
+
 export default function HeroHeader({ title, subtitle, release, image, platforms }) {
+  const detectOperatingSystem = () => {
+    const userData = window.navigator.userAgent.toLowerCase().split(' ');
+    return userData.filter(item => item.includes('windows' || 'linux' || 'macos'));
+  };
+
+  const downloadData = {
+    buttonText: 'Downloads',
+    Options: [DownloadOption],
+  };
   return (
     <header className="bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-700 dark:to-blue-900">
       <div className="grid md:grid-cols-2 md:gap-12">
@@ -13,7 +27,7 @@ export default function HeroHeader({ title, subtitle, release, image, platforms 
           <p className="max-w-sm text-white dark:text-gray-50 lg:max-w-prose">{subtitle}</p>
           <div className="my-3 flex max-w-sm gap-8">
             <Button as="link" text="Get Started" path="#" />
-            <Button as="button" text="Downloads" outline={true} colors="bg-white" icon="fa6-solid:chevron-down" />
+            <DropdownButton {...downloadData} />
           </div>
           <p className="flex gap-4 text-white dark:text-gray-100">
             <span>
