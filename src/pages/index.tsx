@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '@theme/Layout';
+import Papa from 'papaparse';
 import HeroHeader from '@site/src/components/layout/HeroHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import InfoBanner from '@site/src/components/ui/InfoBanner';
@@ -10,6 +11,21 @@ import ArticleCard from '@site/src/components/ui/ArticleCard';
 /* PAGE DATA */
 import { header, featureList, kubernetesBanner, compatibleTools } from '@site/static/data/home';
 import Testimonial from '../components/ui/Testimonial';
+import TestimonialData from '@site/static/data/testimonials.csv';
+
+function TestimonialDataReader() {
+  useEffect(() => {
+    const fetchParseData = async () => {
+      Papa.parse(TestimonialData, {
+        download: true,
+        complete: result => {
+          console.log(result.data);
+        },
+      });
+      fetchParseData();
+    };
+  });
+}
 
 /* PAGE COMPONENTS */
 const FeatureItem = ({ title, description }) => {
