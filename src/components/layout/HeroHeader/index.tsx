@@ -28,7 +28,7 @@ export default function HeroHeader({ title, subtitle, release, image, platforms 
         <div>
           <a
             href={props.path}
-            className="block rounded-t-md transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline">
+            className="block rounded-t-md transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:hover:bg-purple-900">
             <div className="flex items-center gap-2 px-4 pb-6 pt-4">
               <div>
                 <h3>{props.title}</h3>
@@ -41,7 +41,7 @@ export default function HeroHeader({ title, subtitle, release, image, platforms 
         <div>
           <a
             href={props.other.path}
-            className="block rounded-b-md bg-gray-50 transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline">
+            className="block rounded-b-md bg-gray-50 transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:bg-gray-700 dark:hover:bg-purple-900">
             <div className="px-4 py-2">
               <div className="flex items-center gap-2">
                 <h4 className="row-start-1">{props.other.text}</h4>
