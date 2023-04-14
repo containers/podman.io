@@ -8,7 +8,6 @@ const windows = {
     path: 'https://podman-desktop.io/downloads',
     text: 'Other Install Options',
     subtext: '(Including Windows portable executable and other OS options)',
-    icon: 'material-symbols:arrow-circle-right-rounded',
   },
 };
 const mac = {
@@ -21,7 +20,6 @@ const mac = {
     path: 'https://podman-desktop.io/downloads',
     text: 'Other Install Options',
     subtext: '(Including macOS Intel & Arm builds and other Os options)',
-    icon: 'material-symbols:arrow-circle-right-rounded',
   },
 };
 const linux = {
@@ -34,7 +32,6 @@ const linux = {
     path: 'https://podman-desktop.io/downloads',
     text: 'Other Install Options',
     subtext: '(Including binary tar.gz and other OS options)',
-    icon: 'material-symbols:arrow-circle-right-rounded',
   },
 };
 

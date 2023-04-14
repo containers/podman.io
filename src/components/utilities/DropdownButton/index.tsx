@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Icon } from '@iconify/react';
 
 type DropdownProps = {
   text: string;
-  options?: (React.ReactNode | string)[];
+  options?: React.ReactNode | Link[];
   option: React.ReactNode;
 };
 
@@ -12,6 +12,7 @@ export default function DropdownButton(props: DropdownProps) {
   const toggleDropdown = state => {
     setOpen(!state);
   };
+
   return (
     <div>
       <button
@@ -24,11 +25,9 @@ export default function DropdownButton(props: DropdownProps) {
       </button>
       {open && (
         <div id="dropdown" className="absolute mt-2 max-w-fit rounded-md bg-white shadow-md dark:bg-gray-900">
-          <ul aria-labelledby="dropdownButton" className="">
-            {props.options.map((ListItem, index) => {
-              return <li key={index}>{ListItem}</li>;
-            })}
-          </ul>
+          {props.options.map((ListItem, index) => {
+            return <li key={index}>{ListItem}</li>;
+          })}
         </div>
       )}
     </div>
