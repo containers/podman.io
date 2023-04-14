@@ -24,10 +24,9 @@ export default function Community() {
                 <p className="text-white dark:text-gray-100">For more details, you can review the manpages:</p>
               </div>
               <div>
+                {/* prettier-ignore */}
                 <CodeBlock language="bash" showLineNumbers>
                   $ podman --help # get a list of all commands
-                </CodeBlock>
-                <CodeBlock language="bash" showLineNumbers>
                   $ podman subcommand --help # get info on a command
                 </CodeBlock>
               </div>
@@ -39,10 +38,9 @@ export default function Community() {
                 </p>
               </div>
               <div>
+                {/* prettier-ignore */}
                 <CodeBlock language="bash" showLineNumbers>
-                  man podman
-                </CodeBlock>
-                <CodeBlock language="bash" showLineNumbers>
+                  man podman 
                   man podman-subcommand
                 </CodeBlock>
               </div>
