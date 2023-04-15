@@ -25,9 +25,10 @@ export default function DropdownButton(props: DropdownProps) {
       </button>
       {open && (
         <div id="dropdown" className="absolute mt-2 max-w-fit rounded-md bg-white shadow-md dark:bg-gray-900">
-          {props.options.map((ListItem, index) => {
+          {/* {props.options.map((ListItem, index) => {
             return <li key={index}>{ListItem}</li>;
-          })}
+          })} */}
+          {props.option}
         </div>
       )}
     </div>
