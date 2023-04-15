@@ -65,12 +65,39 @@ export default function Community() {
       {/* Searching, Pulling, and listing images */}
       <section>
         <SectionHeader title="Searching, pulling, and listing images" />
-        <div className="container mx-auto my-8 lg:my-12">
-          <img
-            src="images/raw/cli-screens/cli-multi-commands.png"
-            alt="example output of searching, pulling, and listing images"
-            className="mx-auto rounded-lg"
-          />
+        <div>
+          {/* prettier-ignore */}
+          <CodeBlock language="bash" showLineNumbers>
+            $ podman search httpd
+            INDEX       NAME                                  DESCRIPTION                    STARS OFFICIAL AUTOMATED
+            docker.io   docker.io/library/httpd               The Apache HTTP Server Project  3762    [OK]
+            docker.io   docker.io/centos/httpd-24-centos7     Platform for running Apache h... 40              
+            docker.io   docker.io/centos/httpd                                                 34              [OK]
+            quay.io     quay.io/centos7/httpd-24-centos-7     Platform for running Apache h... 0               [OK]
+            quay.io     quay.io/redhattraining/httpd-parent                                    0               [OK]
+            redhat.com  registry.access.redhat.com/ubi8/httpd                                  0          
+
+            $ podman search httpd --filter=is-official
+            INDEX       NAME                                  DESCRIPTION                    STARS OFFICIAL AUTOMATED
+            docker.io   docker.io/library/httpd               The Apache HTTP Server Project  3762    [OK]
+            $ podman pull docker.io/library/httpd
+            Trying to pull docker.io/library/httpd:latest...
+            Getting image source signatures
+            Copying blob ab86dc02235d done  
+            Copying blob ba1caf8ba86c done  
+            Copying blob eff15d958d66 done  
+            Copying blob 635a49ba2501 done  
+            Copying blob 600feb748d3c done  
+            Copying config d294bb32c2 done  
+            Writing manifest to image destination
+            Storing signatures
+            d294bb32c2073ecb5fb27e7802a1e5bec334af69cac361c27e6cb8546fdd14e7
+
+            $ podman images
+            REPOSITORY               TAG         IMAGE ID      CREATED       SIZE
+            docker.io/library/httpd  latest      d294bb32c207  12 hours ago  148 MB
+            $
+          </CodeBlock>
         </div>
       </section>
       {/* TODO: Add content to data file */}

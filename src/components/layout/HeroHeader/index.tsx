@@ -1,10 +1,90 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import Button from '@site/src/components/utilities/Button';
+import DropdownButton from '@site/src/components/utilities/DropdownButton';
 import Link from '@site/src/components/utilities/Link';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
 
 export default function HeroHeader({ title, subtitle, release, image, platforms }) {
+  const detectOperatingSystem = () => {
+    return window.navigator.userAgent
+      .toLowerCase()
+      .split(' ')
+      .filter(item => item.includes('linux' || 'windows' || 'macos'));
+  };
+
+  const windows = {
+    title: 'Download for Windows',
+    subtitle: 'Install on Desktop',
+    icon: 'fa-brands:windows',
+    options: [],
+    path: 'https://github.com/containers/podman-desktop/releases/download/v0.13.0/podman-desktop-0.13.0-setup.exe',
+    other: {
+      path: 'https://podman-desktop.io/downloads',
+      text: 'Other Install Options',
+      subtext: '(Including Windows portable executable and other OS options)',
+      icon: 'material-symbols:arrow-circle-right-rounded',
+    },
+  };
+  const mac = {
+    title: 'Download for macOS',
+    subtitle: 'Universal *.dmg',
+    icon: 'fa-brands:apple',
+    options: [],
+    path: 'https://github.com/containers/podman-desktop/releases/download/v0.13.0/podman-desktop-0.13.0-universal.dmg',
+    other: {
+      path: 'https://podman-desktop.io/downloads',
+      text: 'Other Install Options',
+      subtext: '(Including macOS Intel & Arm builds and other Os options)',
+      icon: 'material-symbols:arrow-circle-right-rounded',
+    },
+  };
+  const linux = {
+    title: 'Download for Linux',
+    subtitle: 'Install on Desktop',
+    icon: 'fa-brands:linux',
+    options: [{ path: 'https://podman.io/getting-started/installation#installing-on-linux', text: 'CLI Install' }],
+    path: 'https://github.com/containers/podman-desktop/releases/download/v0.13.0/podman-desktop-0.13.0.flatpak',
+    other: {
+      path: 'https://podman-desktop.io/downloads',
+      text: 'Other Install Options',
+      subtext: '(Including binary tar.gz and other OS options)',
+      icon: 'material-symbols:arrow-circle-right-rounded',
+    },
+  };
+  type InstallOptionProps = Card & {
+    icon: string;
+    options: Link[];
+    path: string;
+    other: { path: string; text: string; subtext: string; icon: string };
+  };
+  const InstallOption = (props: InstallOptionProps): JSX.Element => {
+    return (
+      <section>
+        <div>
+          <a href={props.path}>
+            <Icon icon={props.icon} />
+            <h3>{props.title}</h3>
+            <p>{props.subtitle}</p>
+          </a>
+        </div>
+        <div>
+          <a href={props.other.path}>
+            <div>
+              <h4>{props.other.text}</h4>
+              <Icon icon={props.other.icon} />
+            </div>
+            <p>{props.other.subtext}</p>
+          </a>
+        </div>
+      </section>
+    );
+  };
+
+  const downloadData = {
+    buttonText: 'Downloads',
+    Options: [InstallOption(windows), InstallOption(mac), InstallOption(linux)],
+  };
   return (
     <header className="bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-700 dark:to-blue-900">
       <div className="grid md:grid-cols-2 md:gap-12">
@@ -13,7 +93,7 @@ export default function HeroHeader({ title, subtitle, release, image, platforms 
           <p className="max-w-sm text-white dark:text-gray-50 lg:max-w-prose">{subtitle}</p>
           <div className="my-3 flex max-w-sm gap-8">
             <Button as="link" text="Get Started" path="#" />
-            <Button as="button" text="Downloads" outline={true} colors="bg-white" icon="fa6-solid:chevron-down" />
+            <DropdownButton />
           </div>
           <p className="flex gap-4 text-white dark:text-gray-100">
             <span>

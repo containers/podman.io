@@ -11,21 +11,8 @@ import ArticleCard from '@site/src/components/ui/ArticleCard';
 /* PAGE DATA */
 import { header, featureList, kubernetesBanner, compatibleTools } from '@site/static/data/home';
 import Testimonial from '../components/ui/Testimonial';
-import TestimonialData from '@site/static/data/testimonials.csv';
-
-function TestimonialDataReader() {
-  useEffect(() => {
-    const fetchParseData = async () => {
-      Papa.parse(TestimonialData, {
-        download: true,
-        complete: result => {
-          console.log(result.data);
-        },
-      });
-      fetchParseData();
-    };
-  });
-}
+import DropdownButton from '@site/src/components/utilities/DropdownButton';
+import { Icon } from '@iconify/react';
 
 /* PAGE COMPONENTS */
 const FeatureItem = ({ title, description }) => {
@@ -73,11 +60,20 @@ const testimonialTest = {
 const TestimonialSection = () => {
   return <Testimonial {...testimonialTest} />;
 };
+const TestElement: React.FC = () => {
+  return (
+    <div>
+      <span>Does it work?</span>
+    </div>
+  );
+};
+
 /* PAGE CONTENT */
 export default function IndexPage() {
   return (
     <Layout>
       <HeroHeader {...header} />
+      <section className="container"></section>
       <section className="mb-12">
         <ul className="flex flex-wrap justify-center gap-4">
           {featureList.map(feature => {
