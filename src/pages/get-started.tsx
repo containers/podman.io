@@ -42,7 +42,7 @@ export default function Community() {
               <div>
                 {/* prettier-ignore */}
                 <CodeBlock language="bash" showLineNumbers>
-                  <pre>
+                  <pre className="bg-transparent">
                     man podman {'/n'}
                     man podman -subcommand
                   </pre>
