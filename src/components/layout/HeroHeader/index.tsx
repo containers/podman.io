@@ -1,8 +1,63 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import Button from '@site/src/components/utilities/Button';
+import DropdownButton from '@site/src/components/utilities/DropdownButton';
 import Link from '@site/src/components/utilities/Link';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
+import operatingSystemData from './installOptions';
+type InstallOptionProps = Card & {
+  icon: string;
+  options?: Link[];
+  path: string;
+  other?: { path: string; text: string; subtext: string };
+};
+
+/* TODO: use find instead of filter */
+const detectOperatingSystem = () => {
+  return window.navigator.userAgent
+    .toLowerCase()
+    .split(' ')
+    .filter(item => item.includes('linux' || 'windows' || 'macos'))
+    .toString();
+};
+
+/* this should return an object that matches InstallOptionProps */
+function returnOperatingSystemData() {
+  return operatingSystemData.find(os => os.id === detectOperatingSystem());
+}
+const InstallOption = (): JSX.Element => {
+  const data = returnOperatingSystemData();
+  return (
+    <section>
+      <div>
+        <a
+          href={data.path}
+          className="block rounded-t-md transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:hover:bg-purple-900">
+          <div className="flex items-center gap-2 px-4 pb-6 pt-4">
+            <div>
+              <h3>{data.title}</h3>
+              <p>{data.subtitle}</p>
+            </div>
+            <Icon icon={data.icon} className="order-first text-4xl" />
+          </div>
+        </a>
+      </div>
+      <div>
+        <a
+          href={data.other.path}
+          className="block rounded-b-md bg-gray-50 transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:bg-gray-700 dark:hover:bg-purple-900">
+          <div className="px-4 py-2">
+            <div className="flex items-center gap-2">
+              <h4 className="row-start-1">{data.other.text}</h4>
+              <Icon icon="material-symbols:arrow-circle-right-rounded" className="row-start-1 text-xl" />
+            </div>
+            <p>{data.other.subtext}</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  );
+};
 
 export default function HeroHeader({ title, subtitle, release, image, platforms }) {
   return (
@@ -13,7 +68,7 @@ export default function HeroHeader({ title, subtitle, release, image, platforms 
           <p className="max-w-sm text-white dark:text-gray-50 lg:max-w-prose">{subtitle}</p>
           <div className="my-3 flex max-w-sm gap-8">
             <Button as="link" text="Get Started" path="#" />
-            <Button as="button" text="Downloads" outline={true} colors="bg-white" icon="fa6-solid:chevron-down" />
+            <DropdownButton text="download" option={InstallOption()} />
           </div>
           <p className="flex gap-4 text-white dark:text-gray-100">
             <span>
