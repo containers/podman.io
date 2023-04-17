@@ -3,7 +3,6 @@ import { Icon } from '@iconify/react';
 
 type DropdownProps = {
   text: string;
-  options?: React.ReactNode | Link[];
   option: React.ReactNode;
 };
 
