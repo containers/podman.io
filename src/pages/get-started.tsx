@@ -26,11 +26,9 @@ export default function Community() {
               <div>
                 {/* prettier-ignore */}
                 <CodeBlock language="bash" showLineNumbers>
-                  <pre className="bg-transparent">
-                    $ podman --help # get a list of all commands {'/n'}
-                    $ podman subcommand --help # get info on a command
-                  </pre>
+                    $ podman --help # get a list of all commands
                 </CodeBlock>
+                <CodeBlock>$ podman subcommand --help # get info on a command</CodeBlock>
               </div>
             </div>
             <div className="flex gap-8">
