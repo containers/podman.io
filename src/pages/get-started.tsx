@@ -9,7 +9,6 @@ import { header, getHelp } from '@site/static/data/get-started';
 export default function Community() {
   return (
     <Layout>
-      {/* TODO: Add List to the header using ListItem Component */}
       <PageHeader title={header.title} description={header.subtitle} />
       {/* Getting Help */}
       <section className="my-12 bg-gradient-to-b from-purple-300 to-purple-700 dark:from-purple-500 dark:to-purple-900">
@@ -71,13 +70,6 @@ export default function Community() {
           />
         </div>
       </section>
-      {/* TODO: Add content to data file */}
-      {/* TODO: Animate slide in text boxes on side, use shadowing */}
-      {/* TODO: See about using the infobox component for this and ones in following section */}
-      {/* TODO: also follow up with terminal component */}
-      {/* Running a container and listing running containers */}
-      {/* TODO: Add content to data file */}
-      {/* TODO: See if they want the Want to learn more section on this page too  */}
     </Layout>
   );
 }
