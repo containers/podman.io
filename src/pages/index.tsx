@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import Papa from 'papaparse';
 import HeroHeader from '@site/src/components/layout/HeroHeader';
@@ -11,21 +11,6 @@ import ArticleCard from '@site/src/components/ui/ArticleCard';
 /* PAGE DATA */
 import { header, featureList, kubernetesBanner, compatibleTools } from '@site/static/data/home';
 import Testimonial from '../components/ui/Testimonial';
-import TestimonialData from '@site/static/data/testimonials.csv';
-
-function TestimonialDataReader() {
-  useEffect(() => {
-    const fetchParseData = async () => {
-      Papa.parse(TestimonialData, {
-        download: true,
-        complete: result => {
-          console.log(result.data);
-        },
-      });
-      fetchParseData();
-    };
-  });
-}
 
 /* PAGE COMPONENTS */
 const FeatureItem = ({ title, description }) => {
@@ -75,6 +60,16 @@ const TestimonialSection = () => {
 };
 /* PAGE CONTENT */
 export default function IndexPage() {
+  const [parsedData, setParsedData] = useState([]);
+  const fetchData = async () => {
+    return await fetch('static/data/testimonials.csv');
+  };
+  fetchData();
+  useEffect(() => {
+    const fetchParseDate = async () => {
+      Papa.parse;
+    };
+  });
   return (
     <Layout>
       <HeroHeader {...header} />
