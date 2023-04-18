@@ -88,7 +88,7 @@ function MailingListSection(): JSX.Element {
           <ReactMarkdown children={mailingList.subscribeInfo.subtitle} className="max-w-prose " />
           <div className="flex flex-wrap gap-6">
             {mailingList.subscribeInfo.options.map((card, index) => {
-              return <SmallCard {...card} />;
+              return <SmallCard {...card} key={index} />;
             })}
           </div>
           <div className="my-4 max-w-prose">
@@ -114,7 +114,7 @@ function MailingListSection(): JSX.Element {
 
 function SubmitIssuesSection(): JSX.Element {
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-900">
+    <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
       {/* TODO: This title should be purple in light mode */}
       <SectionHeader
         title={submittingIssues[0].title}
@@ -123,7 +123,7 @@ function SubmitIssuesSection(): JSX.Element {
         textGradient={true}
       />
       <div className="lg:-containe mb-20 mt-16 flex flex-wrap justify-center gap-20 px-8">
-        <section className="max-w-lg rounded-md bg-white px-10 pt-10 shadow-lg">
+        <section className="max-w-lg rounded-md bg-white px-10 pt-10 shadow-lg dark:bg-gray-900">
           <header className="mb-10">
             <h3 className="mb-4 text-center text-blue-700 dark:text-blue-500">{submittingIssues[1].title}</h3>
             <div className="bg-blue-100/25 px-3 py-2">
@@ -149,7 +149,7 @@ function SubmitIssuesSection(): JSX.Element {
             })}
           </div>
         </section>
-        <section className="max-w-lg rounded-md bg-white p-10 shadow-lg">
+        <section className="max-w-lg rounded-md bg-white p-10 shadow-lg dark:bg-gray-900">
           <header className="mx-auto mb-10">
             <h3 className="mb-3 text-center text-blue-700 dark:text-blue-500">{submittingIssues[2].title}</h3>
             <ReactMarkdown children={submittingIssues[2].subtitle} />
