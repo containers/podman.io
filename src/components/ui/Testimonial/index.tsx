@@ -13,7 +13,7 @@ type TestimonialProps = {
 
 export default function Testimonial(props: TestimonialProps) {
   return (
-    <article className="my-4 max-w-sm  rounded-sm bg-white p-4 shadow-lg">
+    <article className="my-4 max-w-sm  rounded-sm bg-white p-4 shadow-lg dark:bg-gray-900">
       <div className="flex items-center gap-2">
         <div>
           <div className="flex items-center gap-2">
@@ -29,7 +29,7 @@ export default function Testimonial(props: TestimonialProps) {
         </div>
       </div>
       <div className="my-2 max-w-sm">
-        <p>{props.description}</p>
+        <p className="text-gray-900 dark:text-gray-300">{props.description}</p>
       </div>
       <div className="self-start text-gray-500">
         <p>{props.date}</p>
