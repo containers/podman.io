@@ -1,6 +1,5 @@
 declare module '*.webp';
 declare module '*.png';
-
 type Card = {
   title?: string;
   subtitle?: string;
