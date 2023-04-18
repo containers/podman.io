@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
-import Papa from 'papaparse';
+import { usePapaParse } from 'react-papaparse';
 import HeroHeader from '@site/src/components/layout/HeroHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import InfoBanner from '@site/src/components/ui/InfoBanner';
@@ -55,21 +55,33 @@ const testimonialTest = {
   path: '#',
   date: 'Mar 9, 2023',
 };
+
 const TestimonialSection = () => {
   return <Testimonial {...testimonialTest} />;
 };
 /* PAGE CONTENT */
 export default function IndexPage() {
-  const [parsedData, setParsedData] = useState([]);
-  const fetchData = async () => {
-    return await fetch('static/data/testimonials.csv');
+  const { readString } = usePapaParse();
+  const csvData = `user,handle,platform,link,date,description
+Shakeel Ahmad Minhas,@Ahmad_Shakeel77,twitter,,2023-03-09,"Looking for a lightweight and efficient way to run containers on your Mac? Give Podman a try! This open-source container engine can help you manage your containerized applications easily on macOS. #Mac #Podman #Containers"""
+Marco Mornati,@mmornati@techhub.social,mastadon,,2023-02-19,"Just getting back to test #podman-desktop I used a bit after the I think this became THE replacement for what we knew... #docker-desktop payment announcement.Changes are incredible and on #macosx all looks pretty smooth right now: docker API, host folder sharing, port sharing with hosts, privileged access (I test with https://github.com/mmornati/docker-mock-rpmbuilder), ..."
+John Hammond,@_JohnHammond,youtube,,2022-11-18,
+@snonu,@snonux,twitter,,2023-03-07,
+,,,,,https://matduggafinally-delete-doc
+,,,,,#docker #podman #k8s #kubernetes
+
+  `;
+  const handleReadString = () => {
+    readString(csvData, {
+      worker: true,
+      complete: results => {
+        console.log('---------------------------');
+        console.log(results);
+        console.log('---------------------------');
+      },
+    });
   };
-  fetchData();
-  useEffect(() => {
-    const fetchParseDate = async () => {
-      Papa.parse;
-    };
-  });
+  handleReadString();
   return (
     <Layout>
       <HeroHeader {...header} />
