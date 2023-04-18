@@ -62,7 +62,7 @@ const InstallOption = (): JSX.Element => {
 
 export default function HeroHeader({ title, subtitle, release, image, platforms }) {
   return (
-    <header className="bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-700 dark:to-blue-900">
+    <header className="bg-gradient-to-r from-blue-500 to-blue-700 dark:from-purple-700 dark:to-blue-900">
       <div className="grid md:grid-cols-2 md:gap-12">
         <div className="container row-span-2 mb-4 mt-12 place-self-center md:mb-0 md:ml-10 xl:ml-24">
           <h1 className="mb-4 text-white dark:text-gray-50 lg:mb-8">{title}</h1>
@@ -70,7 +70,6 @@ export default function HeroHeader({ title, subtitle, release, image, platforms 
           <div className="my-3 flex max-w-sm gap-8">
             <Button as="link" text="Get Started" path="#" />
             <BrowserOnly>{() => <DropdownButton text="Download" option={InstallOption()} />}</BrowserOnly>
-
           </div>
           <p className="flex gap-4 text-white dark:text-gray-100">
             <span>
