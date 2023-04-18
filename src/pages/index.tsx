@@ -57,7 +57,14 @@ const testimonialTest = {
   date: 'Mar 9, 2023',
 };
 const TestimonialSection = () => {
-  return <Testimonial {...testimonialTest} />;
+  return (
+    <div className="container flex flex-wrap justify-center gap-4">
+      <Testimonial {...testimonialTest} />
+      <Testimonial {...testimonialTest} />
+      <Testimonial {...testimonialTest} />
+      <Testimonial {...testimonialTest} />
+    </div>
+  );
 };
 const TestElement: React.FC = () => {
   return (
