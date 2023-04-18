@@ -88,7 +88,7 @@ function MailingListSection(): JSX.Element {
           <ReactMarkdown children={mailingList.subscribeInfo.subtitle} className="max-w-prose " />
           <div className="flex flex-wrap gap-6">
             {mailingList.subscribeInfo.options.map((card, index) => {
-              return <SmallCard {...card} />;
+              return <SmallCard {...card} key={index} />;
             })}
           </div>
           <div className="my-4 max-w-prose">
