@@ -60,7 +60,7 @@ export default function ArticleCard(props: ArticleCardProps) {
   // Normal Layout
   else
     return (
-      <article className="my-4 w-72">
+      <article className="my-4 w-72 p-4">
         <div className="grid">
           <TitleLink {...props.title} />
           {/* TODO: Set a max length and add ... to end */}

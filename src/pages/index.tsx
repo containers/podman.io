@@ -8,11 +8,9 @@ import ThumbCard from '@site/src/components/ui/ThumbCard';
 import ReactMarkdown from 'react-markdown';
 import ArticleCard from '@site/src/components/ui/ArticleCard';
 /* PAGE DATA */
-import { header, featureList, kubernetesBanner, compatibleTools } from '@site/static/data/home';
+import { header, featureList, kubernetesBanner, compatibleTools, testimonials } from '@site/static/data/home';
 import Testimonial from '../components/ui/Testimonial';
-import DropdownButton from '@site/src/components/utilities/DropdownButton';
-import { Icon } from '@iconify/react';
-
+import newsLocal from '@site/static/data/newsLocal';
 /* PAGE COMPONENTS */
 const FeatureItem = ({ title, description }) => {
   return (
@@ -22,54 +20,25 @@ const FeatureItem = ({ title, description }) => {
     </li>
   );
 };
-const testCard = {
-  title: { text: 'Build Kubernetes pods with Podman play kube', path: 'https://podman.io' },
-  date: ' Oct 25, 2021',
-  image: { src: 'images/article-thumb.png', alt: 'article thumbnail' },
-  subtitle:
-    'The podman play kube command has docker compose features in it to make it easier to transition your compose workloads',
-  author: {
-    path: '#',
-    text: 'Brent Baude',
-  },
-};
 const LatestNews = () => {
   return (
     <section>
       <SectionHeader title="Latest Podman News" textColor="text-purple-700" />
       <div className="flex flex-wrap justify-center gap-4">
-        <ArticleCard {...testCard} />
-        <ArticleCard {...testCard} />
-        <ArticleCard {...testCard} />
-        <ArticleCard {...testCard} />
+        {newsLocal.map((article, index) => {
+          return <ArticleCard {...article} key={index} />;
+        })}
       </div>
     </section>
   );
 };
 
-const testimonialTest = {
-  name: 'Shakeel Ahmad Minhas',
-  handle: '@Ahmad_Shakeel77',
-  description:
-    'Looking for a lightweight and efficient way to run containers on your Mac? Give Podman a try! This open-source container engine can help you manage your containerized applications easily on macOS.  #Mac #Podman #Containers',
-  social: 'twitter',
-  path: '#',
-  date: 'Mar 9, 2023',
-};
 const TestimonialSection = () => {
   return (
-    <div className="container flex flex-wrap justify-center gap-4">
-      <Testimonial {...testimonialTest} />
-      <Testimonial {...testimonialTest} />
-      <Testimonial {...testimonialTest} />
-      <Testimonial {...testimonialTest} />
-    </div>
-  );
-};
-const TestElement: React.FC = () => {
-  return (
-    <div>
-      <span>Does it work?</span>
+    <div className="container flex flex-wrap justify-center gap-4 md:gap-6">
+      {testimonials.map((testimonial, index) => {
+        return <Testimonial key={index} {...testimonial} />;
+      })}
     </div>
   );
 };
