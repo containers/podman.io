@@ -36,8 +36,6 @@ const header = {
 const getHelp = {
   title: 'Getting Help',
   subtitle: 'Help & manpages',
-  extraHelp:
-    'Please also reference the <a href="#"><strong>Podman Troubleshooting Guide</strong></a> to find known issues and tips on how to solve common configuration mistakes.',
 };
 
 export { header, getHelp };
