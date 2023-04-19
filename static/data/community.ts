@@ -139,7 +139,19 @@ const submittingIssues = [
         ],
         button: {
           text: 'Check Open Issues',
-          path: '#',
+          links: [
+            {
+              text: 'Check open Podman issues',
+              path: 'https://github.com/containers/podman/issues',
+            },
+            {
+              text: 'Check open Podman Desktop issues',
+              path: 'https://github.com/containers/podman-desktop/issues',
+            },
+            { text: 'Check open Buildah issues', path: 'https://github.com/containers/buildah/issues' },
+            { text: 'Check open Skopeo issues', path: 'https://github.com/containers/skopeo/issues' },
+            { text: 'Check open Cri-o issues', path: '#' },
+          ],
         },
       },
       {
@@ -150,7 +162,16 @@ const submittingIssues = [
         ],
         button: {
           text: 'File a New Issue',
-          path: '#',
+          links: [
+            { text: 'File a new Podman issue', path: 'https://github.com/containers/podman/issues/new/choose' },
+            {
+              text: 'File a new Podman Desktop issue',
+              path: 'https://github.com/containers/podman-desktop/issues/new/choose',
+            },
+            { text: 'File a new Buildah issue', path: 'https://github.com/containers/buildah/issues/new/choose' },
+            { text: 'File a new Skopeo issue', path: 'https://github.com/containers/skopeo/issues/new/choose' },
+            { text: 'File a new Cri-o issue', path: '#' },
+          ],
         },
       },
     ],
