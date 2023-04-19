@@ -2,8 +2,6 @@ import React from 'react';
 
 export default function DateTimeBox(): JSX.Element {
   const date = new Date();
-  const currentTime = `${date.getHours()}:${date.getMinutes()}`;
-  const userTimeZone = new Intl.DateTimeFormat('en-US', { timeZoneName: 'long' }).format().split(',')[1];
   const centralEuropeTime = [
     date.toLocaleString('en-US', {
       timeZone: 'Europe/Paris',
