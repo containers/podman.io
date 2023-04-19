@@ -17,7 +17,7 @@ import WaveBorder from '@site/src/components/shapes/WaveBorder';
 /* PAGE DATA */
 import { header, communityChat, communityMeetings, mailingList, submittingIssues } from '@site/static/data/community';
 
-function CommunityLinks() {
+const CommunityLinks = () => {
   const links = communityChat.links.map(x => x);
   return (
     <ul className="mb-12 flex flex-wrap items-end justify-around gap-8 lg:gap-16">
@@ -30,9 +30,9 @@ function CommunityLinks() {
       })}
     </ul>
   );
-}
+};
 
-function CommunityChatSection(): JSX.Element {
+const CommunityChatSection = (): JSX.Element => {
   return (
     <section className="bg-gray-50 dark:bg-gradient-to-t dark:from-gray-700 dark:via-gray-900 dark:to-gray-900 ">
       <SectionHeader title={communityChat.title} />
@@ -50,9 +50,9 @@ function CommunityChatSection(): JSX.Element {
       <WaveBorder />
     </section>
   );
-}
+};
 
-function CommunityMeetingSection(): JSX.Element {
+const CommunityMeetingSection = (): JSX.Element => {
   return (
     <section className="bg-gradient-to-b from-white via-gray-50 to-gray-100 pb-8 dark:from-gray-900 dark:to-gray-900">
       <div className="container flex flex-col">
@@ -70,9 +70,9 @@ function CommunityMeetingSection(): JSX.Element {
       </div>
     </section>
   );
-}
+};
 
-function MailingListSection(): JSX.Element {
+const MailingListSection = (): JSX.Element => {
   return (
     <section>
       <div className="container grid gap-4 lg:grid-cols-2">
@@ -113,7 +113,7 @@ function MailingListSection(): JSX.Element {
       </div>
     </section>
   );
-}
+};
 
 const DropdownContent = (props): JSX.Element => {
   return (
@@ -132,86 +132,94 @@ const DropdownContent = (props): JSX.Element => {
     </div>
   );
 };
-function SubmitIssuesSection(): JSX.Element {
+const IssuesSection = () => {
+  return (
+    <section className="max-w-lg rounded-md bg-white px-10 pt-10 shadow-lg dark:bg-gray-900">
+      <header className="mb-10">
+        <h3 className="mb-4 text-center text-blue-700 dark:text-blue-500">{submittingIssues[1].title}</h3>
+        <div className="bg-blue-100/25 px-3 py-2">
+          <p className="flex items-center gap-2 rounded-md">
+            <Icon icon="fa-solid:exclamation-circle" className="text-purple-700" />
+            <span>{submittingIssues[1].subtitle}</span>
+          </p>
+        </div>
+      </header>
+      <div>
+        {submittingIssues[1].sections.map((section, index) => {
+          return (
+            <div key={index} className="mb-12">
+              <Markdown text={section.text} />
+              <ul className="mb-8 ml-5 mt-4 list-disc">
+                {section.checkList.map((item, index) => {
+                  return <li key={index}>{item}</li>;
+                })}
+              </ul>
+              <DropdownButton text={section.button.text} option={DropdownContent(section.button.links)} />
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
+const PullRequestSection = () => {
+  return (
+    <section className="max-w-lg rounded-md bg-white p-10 shadow-lg dark:bg-gray-900">
+      <header className="mx-auto mb-10">
+        <h3 className="mb-3 text-center text-blue-700 dark:text-blue-500">{submittingIssues[2].title}</h3>
+        <Markdown text={submittingIssues[2].subtitle} />
+      </header>
+      <div>
+        {submittingIssues[2].description.map((paragraph, index) => {
+          return (
+            <p key={index} className="my-3">
+              {paragraph}
+            </p>
+          );
+        })}
+        <ul className="my-4 ml-5 list-disc">
+          {submittingIssues[2].checkList.map((item, index) => {
+            return <li key={index}>{item}</li>;
+          })}
+        </ul>
+        <Button as="link" outline={true} text={submittingIssues[2].button.text} />
+      </div>
+    </section>
+  );
+};
+const SubmitIssuesSection = () => {
   return (
     <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
-      {/* TODO: This title should be purple in light mode */}
       <SectionHeader
         title={submittingIssues[0].title}
         description={submittingIssues[0].subtitle}
         textGradientStops="from-purple-500 to-purple-700 dark:text-blue-700"
         textGradient={true}
       />
-      <div className="lg:-containe mb-20 mt-16 flex flex-wrap justify-center gap-20 px-8">
-        <section className="max-w-lg rounded-md bg-white px-10 pt-10 shadow-lg dark:bg-gray-900">
-          <header className="mb-10">
-            <h3 className="mb-4 text-center text-blue-700 dark:text-blue-500">{submittingIssues[1].title}</h3>
-            <div className="bg-blue-100/25 px-3 py-2">
-              <p className="flex items-center gap-2 rounded-md">
-                <Icon icon="fa-solid:exclamation-circle" className="text-purple-700" />
-                <span>{submittingIssues[1].subtitle}</span>
-              </p>
-            </div>
-          </header>
-          <div>
-            {submittingIssues[1].sections.map((section, index) => {
-              return (
-                <div key={index} className="mb-12">
-                  <Markdown text={section.text} />
-                  <ul className="mb-8 ml-5 mt-4 list-disc">
-                    {section.checkList.map((item, index) => {
-                      return <li key={index}>{item}</li>;
-                    })}
-                  </ul>
-                  <DropdownButton text={section.button.text} option={DropdownContent(section.button.links)} />
-                </div>
-              );
-            })}
-          </div>
-        </section>
-        <section className="max-w-lg rounded-md bg-white p-10 shadow-lg dark:bg-gray-900">
-          <header className="mx-auto mb-10">
-            <h3 className="mb-3 text-center text-blue-700 dark:text-blue-500">{submittingIssues[2].title}</h3>
-            <Markdown text={submittingIssues[2].subtitle} />
-          </header>
-          <div>
-            {submittingIssues[2].description.map((paragraph, index) => {
-              return (
-                <p key={index} className="my-3">
-                  {paragraph}
-                </p>
-              );
-            })}
-            <ul className="my-4 ml-5 list-disc">
-              {submittingIssues[2].checkList.map((item, index) => {
-                return <li key={index}>{item}</li>;
-              })}
-            </ul>
-            <Button as="link" outline={true} text={submittingIssues[2].button.text} />
-          </div>
-        </section>
+      <div className="mb-20 mt-16 flex flex-wrap justify-center gap-20 px-8 lg:container">
+        <IssuesSection />
+        <PullRequestSection />
       </div>
     </section>
   );
-}
+};
 
-export default function Community() {
+/* PAGE Content */
+function Community() {
   return (
     <Layout>
       <PageHeader title={header.title} description={header.subtitle} />
       <InfoBanner
         description={header.banner.text}
         icon={header.banner.icon}
-        bgColor="bg-purple-500 dark:bg-purple-700"
+        styles="bg-purple-500 dark:bg-purple-700 text-white"
       />
-      {/* Community Chat */}
       <CommunityChatSection />
-      {/* Community Meetings */}
       <CommunityMeetingSection />
-      {/* Mailing Lists */}
       <MailingListSection />
-      {/* Submit Issues Section */}
       <SubmitIssuesSection />
     </Layout>
   );
 }
+
+export default Community;

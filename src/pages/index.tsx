@@ -22,6 +22,31 @@ const FeatureItem = ({ title, description }) => {
     </li>
   );
 };
+
+const FeatureSection = () => {
+  return (
+    <section className="mb-12">
+      <ul className="flex flex-wrap justify-center gap-4">
+        {featureList.map(feature => {
+          return <FeatureItem key={feature.title} title={feature.title} description={feature.description} />;
+        })}
+      </ul>
+    </section>
+  );
+};
+
+const CompatibleToolSection = () => {
+  return (
+    <section>
+      <SectionHeader title={compatibleTools.title} fontWeight="font-light" />
+      <div className="mx-auto flex flex-wrap justify-center gap-4">
+        {compatibleTools.tools.map(tool => {
+          return <ThumbCard key={tool.title} subtitle={tool.description} image={tool.image} />;
+        })}
+      </div>
+    </section>
+  );
+};
 const LatestNews = () => {
   return (
     <section>
@@ -37,46 +62,33 @@ const LatestNews = () => {
 
 const TestimonialSection = () => {
   return (
-    <div className="container flex flex-wrap justify-center gap-4 md:gap-6">
-      {testimonials.map((testimonial, index) => {
-        return <Testimonial key={index} {...testimonial} />;
-      })}
-    </div>
+    <section className="bg-gradient-to-b from-white to-purple-100 dark:from-gray-900 dark:via-gray-900 dark:to-purple-900">
+      <SectionHeader
+        title="What people are saying about Podman"
+        textGradient={true}
+        textGradientStops="from-blue-700 to-blue-500"
+      />
+      <div className="container flex flex-wrap justify-center gap-4 md:gap-6">
+        {testimonials.map((testimonial, index) => {
+          return <Testimonial key={index} {...testimonial} />;
+        })}
+      </div>
+    </section>
   );
 };
-
 /* PAGE CONTENT */
-export default function IndexPage() {
+function IndexPage() {
   return (
     <Layout>
       <HeroHeader {...header} />
-      <section className="container"></section>
-      <section className="mb-12">
-        <ul className="flex flex-wrap justify-center gap-4">
-          {featureList.map(feature => {
-            return <FeatureItem key={feature.title} title={feature.title} description={feature.description} />;
-          })}
-        </ul>
-      </section>
+      <FeatureSection />
       <InfoBanner {...kubernetesBanner} />
-      <section>
-        <SectionHeader title={compatibleTools.title} fontWeight="font-light" />
-        <div className="mx-auto flex flex-wrap justify-center gap-4">
-          {compatibleTools.tools.map(tool => {
-            return <ThumbCard key={tool.title} subtitle={tool.description} image={tool.image} />;
-          })}
-        </div>
-      </section>
-      <section className="bg-gradient-to-b from-white to-purple-100 dark:from-gray-900 dark:via-gray-900 dark:to-purple-900">
-        <SectionHeader
-          title="What people are saying about Podman"
-          textGradient={true}
-          textGradientStops="from-blue-700 to-blue-500"
-        />
-        <TestimonialSection />
-      </section>
+      <CompatibleToolSection />
+      <TestimonialSection />
       <LatestNews />
       <ColoringBookSection />
     </Layout>
   );
 }
+
+export default IndexPage;
