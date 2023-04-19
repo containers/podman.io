@@ -5,6 +5,7 @@ import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
 import ReactMarkdown from 'react-markdown';
+import ArticleCard from '@site/src/components/ui/ArticleCard';
 import { header, knowPodman, learnMore } from '@site/static/data/features';
 
 function KnowPodmanCards() {
@@ -24,6 +25,26 @@ function KnowPodmanCards() {
     </div>
   );
 }
+const testCard = {
+  title: { text: 'Build Kubernetes pods with Podman play kube', path: 'https://podman.io' },
+  date: ' Oct 25, 2021',
+  image: { src: 'images/article-thumb.png', alt: 'article thumbnail' },
+  subtitle:
+    'The podman play kube command has docker compose features in it to make it easier to transition your compose workloads',
+  author: {
+    path: '#',
+    text: 'Brent Baude',
+  },
+};
+const LearnMoreSection = () => {
+  return (
+    <div>
+      <ArticleCard {...testCard} altLayout={true} />
+      <ArticleCard {...testCard} altLayout={true} />
+      <ArticleCard {...testCard} altLayout={true} />
+    </div>
+  );
+};
 
 export default function Features() {
   return (
@@ -43,8 +64,8 @@ export default function Features() {
             <header className="container mb-4 text-center lg:mb-8 lg:text-start">
               <h3 className="font-medium text-blue-700 dark:text-blue-500">{learnMore.blogPosts.title}</h3>
             </header>
-            {/* TODO: Dynamically Paginate Blogposts from API */}
-            <div className="container"></div>
+
+            <LearnMoreSection />
           </section>
           <section>
             <header className="container mb-4 text-center lg:text-start xl:mb-8">

@@ -2,7 +2,7 @@ declare module '*.webp';
 declare module '*.png';
 
 type Card = {
-  title: string;
+  title?: string;
   subtitle?: string;
 };
 

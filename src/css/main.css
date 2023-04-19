@@ -25,7 +25,7 @@
 }
 .navbar {
   box-shadow: none;
-  @apply bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-700 dark:to-blue-900;
+  @apply bg-gradient-to-r from-blue-500 to-blue-700 dark:from-purple-700 dark:to-blue-900;
 }
 
 .navbar__title,
