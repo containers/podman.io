@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import Layout from '@theme/Layout';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import { Icon } from '@iconify/react';
+const ReactMarkdown = lazy(() => import('react-markdown'));
+/* COMPONENTS */
 import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
-import ReactMarkdown from 'react-markdown';
 import ArticleCard from '@site/src/components/ui/ArticleCard';
+/* PAGE DATA */
 import { header, knowPodman, learnMore } from '@site/static/data/features';
 
 function KnowPodmanCards() {
@@ -16,7 +19,7 @@ function KnowPodmanCards() {
           <article key={index} className="flex flex-col justify-start rounded-md p-4 text-center">
             <div>
               <h3 className="mb-4 font-medium dark:text-blue-500 xl:mb-6">{card.title}</h3>
-              <ReactMarkdown children={card.description} className="max-w-xs" />
+              <BrowserOnly>{() => <ReactMarkdown children={card.description} className="max-w-xs" />}</BrowserOnly>
             </div>
             <img src={card.image.path} alt={card.image.alt} className="order-first my-2" />
           </article>

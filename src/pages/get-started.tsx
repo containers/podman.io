@@ -1,10 +1,11 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import CodeBlock from '@theme/CodeBlock';
+/* COMPONENTS */
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import PageHeader from '@site/src/components/layout/PageHeader';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
-import ReactMarkdown from 'react-markdown';
+/* PAGE DATA */
 import { header, getHelp } from '@site/static/data/get-started';
 export default function Community() {
   return (

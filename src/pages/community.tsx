@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import Layout from '@theme/Layout';
+import { Icon } from '@iconify/react';
+const ReactMarkdown = lazy(() => import('react-markdown'));
+/* COMPONENTS */
 import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import CardGrid from '@site/src/components/layout/CardGrid';
+import SmallCard from '@site/src/components/ui/SmallCard';
 import DateTimeBox from '@site/src/components/content/DateTimeBox';
 import InfoBox from '@site/src/components/ui/InfoBox';
 import InfoBanner from '@site/src/components/ui/InfoBanner';
 import IconLink from '@site/src/components/utilities/IconLink';
 import Button from '@site/src/components/utilities/Button';
 import DropdownButton from '@site/src/components/utilities/DropdownButton';
-import SmallCard from '@site/src/components/ui/SmallCard';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
-import ReactMarkdown from 'react-markdown';
-import { Icon } from '@iconify/react';
+/* PAGE DATA */
 import { header, communityChat, communityMeetings, mailingList, submittingIssues } from '@site/static/data/community';
-import { library } from 'webpack';
 
 function CommunityLinks() {
   const links = communityChat.links.map(x => x);
@@ -88,14 +89,16 @@ function MailingListSection(): JSX.Element {
         </section>
         <section className="container mb-8">
           <h3 className="mb-2 font-medium text-purple-700 dark:text-purple-500">{mailingList.subscribeInfo.title}</h3>
-          <ReactMarkdown children={mailingList.subscribeInfo.subtitle} className="max-w-prose " />
+          <BrowserOnly>
+            {() => <ReactMarkdown children={mailingList.subscribeInfo.subtitle} className="max-w-prose " />}
+          </BrowserOnly>
           <div className="flex flex-wrap gap-6">
             {mailingList.subscribeInfo.options.map((card, index) => {
               return <SmallCard {...card} key={index} />;
             })}
           </div>
           <div className="my-4 max-w-prose">
-            <ReactMarkdown children={mailingList.subscribeInfo.description} />
+            <BrowserOnly>{() => <ReactMarkdown children={mailingList.subscribeInfo.description} />}</BrowserOnly>
           </div>
         </section>
         <section className="mb-8 lg:col-start-2 lg:row-span-2 lg:row-start-2">
@@ -157,7 +160,7 @@ function SubmitIssuesSection(): JSX.Element {
             {submittingIssues[1].sections.map((section, index) => {
               return (
                 <div key={index} className="mb-12">
-                  <ReactMarkdown children={section.text} />
+                  <BrowserOnly>{() => <ReactMarkdown children={section.text} />}</BrowserOnly>
                   <ul className="mb-8 ml-5 mt-4 list-disc">
                     {section.checkList.map((item, index) => {
                       return <li key={index}>{item}</li>;
@@ -174,7 +177,7 @@ function SubmitIssuesSection(): JSX.Element {
         <section className="max-w-lg rounded-md bg-white p-10 shadow-lg dark:bg-gray-900">
           <header className="mx-auto mb-10">
             <h3 className="mb-3 text-center text-blue-700 dark:text-blue-500">{submittingIssues[2].title}</h3>
-            <ReactMarkdown children={submittingIssues[2].subtitle} />
+            <BrowserOnly>{() => <ReactMarkdown children={submittingIssues[2].subtitle} />}</BrowserOnly>
           </header>
           <div>
             {submittingIssues[2].description.map((paragraph, index) => {

@@ -1,23 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { lazy } from 'react';
 import Layout from '@theme/Layout';
-import Papa from 'papaparse';
+import BrowserOnly from '@docusaurus/BrowserOnly';
+const ReactMarkdown = lazy(() => import('react-markdown'));
+/* COMPONENTS */
 import HeroHeader from '@site/src/components/layout/HeroHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import InfoBanner from '@site/src/components/ui/InfoBanner';
-import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
 import ThumbCard from '@site/src/components/ui/ThumbCard';
-import ReactMarkdown from 'react-markdown';
 import ArticleCard from '@site/src/components/ui/ArticleCard';
+import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
+import Testimonial from '@site/src/components/ui/Testimonial';
 /* PAGE DATA */
-import { header, featureList, kubernetesBanner, compatibleTools, testimonials } from '@site/static/data/home';
-import Testimonial from '../components/ui/Testimonial';
 import newsLocal from '@site/static/data/newsLocal';
+import { header, featureList, kubernetesBanner, compatibleTools, testimonials } from '@site/static/data/home';
+
 /* PAGE COMPONENTS */
 const FeatureItem = ({ title, description }) => {
   return (
     <li className="m-6 rounded-md bg-gray-50 p-12 text-center dark:bg-gray-900 lg:w-1/3">
       <h3 className="mx-auto mb-4 text-3xl font-bold text-purple-700 dark:text-purple-500">{title}</h3>
-      <ReactMarkdown children={description} className="mx-auto max-w-md leading-relaxed text-gray-700" />
+      <BrowserOnly>
+        {() => <ReactMarkdown children={description} className="mx-auto max-w-md leading-relaxed text-gray-700" />}
+      </BrowserOnly>
     </li>
   );
 };
