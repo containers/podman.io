@@ -1,7 +1,6 @@
-import React, { lazy, Suspense } from 'react';
-import ReactMarkdown from 'react-markdown';
+import React from 'react';
 import { Icon } from '@iconify/react';
-
+import Markdown from '@site/src/components/utilities/Markdown';
 type BannerProps = HeaderProps & {
   image?: {
     src: string;
@@ -12,8 +11,7 @@ type BannerProps = HeaderProps & {
   titleColor?: string;
   marginHeight?: string;
 };
-
-export default function InfoBanner({
+function InfoBanner({
   title,
   description,
   image,
@@ -38,12 +36,14 @@ export default function InfoBanner({
         {title ? (
           <div className="mx-auto text-center md:text-start lg:pl-4">
             <h3 className={`mx-auto mb-4 text-3xl font-bold ${titleColor}`}>{title}</h3>
-            <ReactMarkdown children={description} className={`mx-auto max-w-4xl leading-relaxed text-gray-700`} />
+            <Markdown text={description} styles="mx-auto max-w-4xl leading-relaxed text-gray-700" />
           </div>
         ) : (
-          <ReactMarkdown children={description} className={`mx-auto leading-relaxed`} />
+          <Markdown text={description} styles="mx-auto leading-relaxed" />
         )}
       </div>
     </section>
   );
 }
+
+export default InfoBanner;

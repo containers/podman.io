@@ -1,13 +1,13 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 
-export type ButtonProps = Button & {
+type ButtonProps = Button & {
   outline?: boolean;
   icon?: string;
   colors?: string;
 };
 
-export default function Button({ as = 'link', outline, colors, icon, text, method, path }: ButtonProps) {
+function Button({ as = 'link', outline, colors, icon, text, method, path }: ButtonProps) {
   const baseStyles =
     'h-fit my-2 block max-w-fit cursor-pointer rounded-md px-6 py-2 font-semibold transition duration-150 ease-in-out hover:no-underline hover:shadow-md';
   const solidColors =
@@ -43,3 +43,5 @@ export default function Button({ as = 'link', outline, colors, icon, text, metho
     </a>
   );
 }
+
+export default Button;

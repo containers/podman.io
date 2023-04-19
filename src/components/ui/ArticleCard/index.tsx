@@ -33,7 +33,8 @@ const Author = (props: Link) => {
     </p>
   );
 };
-export default function ArticleCard(props: ArticleCardProps) {
+
+function ArticleCard(props: ArticleCardProps) {
   if (props.altLayout) {
     return (
       <article className="container my-4 shadow-lg">
@@ -72,3 +73,5 @@ export default function ArticleCard(props: ArticleCardProps) {
       </article>
     );
 }
+
+export default ArticleCard;

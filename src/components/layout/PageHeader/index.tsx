@@ -1,7 +1,6 @@
 import React from 'react';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
-import ReactMarkdown from 'react-markdown';
-
+import Markdown from '@site/src/components/utilities/Markdown';
 type ImageSectionProps = LayoutProps & {
   image: Image;
 };
@@ -17,7 +16,7 @@ const TextBox = ({ grid, display, layout, title, description }: PageHeaderProps)
   return (
     <div className={`${grid} ${display} ${layout}`}>
       <h1 className="mb-6 max-w-sm text-purple-700 dark:text-purple-500 lg:max-w-lg ">{title}</h1>
-      <ReactMarkdown children={description} className="leading-relaxed" />
+      <Markdown text={description} styles="leading-relaxed" />
     </div>
   );
 };
@@ -34,13 +33,7 @@ const Image = ({
   );
 };
 
-export default function PageHeader({
-  title,
-  description,
-  image,
-  lightColor = 'white',
-  darkColor = 'gray-900',
-}: PageHeaderProps) {
+function PageHeader({ title, description, image, lightColor = 'white', darkColor = 'gray-900' }: PageHeaderProps) {
   return (
     <header className={`h-5/6  xl:h-96 bg-${lightColor} dark:bg-${darkColor}`}>
       <div className="bg-gradient-to-r from-blue-500 to-blue-700 pt-2 dark:from-purple-700 dark:to-blue-900 lg:pt-8">
@@ -53,3 +46,5 @@ export default function PageHeader({
     </header>
   );
 }
+
+export default PageHeader;

@@ -58,7 +58,7 @@ const InstallOption = (): JSX.Element => {
   );
 };
 
-export default function HeroHeader({ title, subtitle, release, image, platforms }) {
+function HeroHeader({ title, subtitle, release, image, platforms }) {
   return (
     <header className="bg-gradient-to-r from-blue-500 to-blue-700 dark:from-purple-700 dark:to-blue-900">
       <div className="grid md:grid-cols-2 md:gap-12">
@@ -104,3 +104,5 @@ export default function HeroHeader({ title, subtitle, release, image, platforms 
     </header>
   );
 }
+
+export default HeroHeader;

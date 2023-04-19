@@ -1,7 +1,7 @@
 import React from 'react';
 import data from './data';
 
-export default function ColoringBookSection() {
+function ColoringBookSection() {
   return (
     <section className="container my-12 flex flex-wrap justify-center gap-4 lg:justify-start xl:my-20">
       <div className="flex">
@@ -24,3 +24,5 @@ export default function ColoringBookSection() {
     </section>
   );
 }
+
+export default ColoringBookSection;

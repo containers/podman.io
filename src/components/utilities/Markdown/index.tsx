@@ -4,7 +4,7 @@ const ReactMarkdown = lazy(() => import('react-markdown'));
 
 interface Props {
   text: string;
-  styles: string;
+  styles?: string;
 }
 
 const fallBackComponent = () => {

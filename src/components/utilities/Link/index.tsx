@@ -5,8 +5,7 @@ export type LinkProps = Link & {
   textColor?: string;
   hoverColor?: string;
 };
-
-export default function Link({
+function Link({
   text,
   path,
   fontSize,
@@ -21,3 +20,5 @@ export default function Link({
     </a>
   );
 }
+
+export default Link;

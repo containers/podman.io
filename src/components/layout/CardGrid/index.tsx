@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '@site/src/components/ui/Card';
 
-export default function CardGrid({ cards }) {
+function CardGrid({ cards }) {
   return (
     <div className="mb-8 flex flex-wrap justify-center gap-4 lg:mb-12 lg:gap-8">
       {cards.map((card, index) => {
@@ -19,3 +19,5 @@ export default function CardGrid({ cards }) {
     </div>
   );
 }
+
+export default CardGrid;

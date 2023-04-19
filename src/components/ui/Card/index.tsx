@@ -1,13 +1,13 @@
 import React from 'react';
 import Button from '@site/src/components/utilities/Button/';
-import ReactMarkdown from 'react-markdown';
+import Markdown from '@site/src/components/utilities/Markdown';
 function CardHeader(props) {
   const { title, subtitle, details } = props;
   return (
     <div className="mx-2 mt-4">
       <h3 className="mb-3 font-bold text-gray-700 dark:text-gray-50">{title}</h3>
-      <ReactMarkdown children={subtitle} className="text-gray-700" />
-      <ReactMarkdown children={details} className="text-gray-700" />
+      <Markdown text={subtitle} styles="text-gray-700" />
+      <Markdown text={details} styles="text-gray-700" />
     </div>
   );
 }
@@ -31,7 +31,7 @@ function CardButtons({ data = [{ text: 'button text' }] }) {
   );
 }
 
-export default function Card(props) {
+function Card(props) {
   return (
     <article className="m-4 flex flex-col justify-between rounded-lg bg-gray-50 p-4 shadow-xl dark:bg-gray-700 dark:shadow-none lg:m-2">
       <CardHeader {...props} />
@@ -40,3 +40,5 @@ export default function Card(props) {
     </article>
   );
 }
+
+export default Card;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function DateTimeBox(): JSX.Element {
+function DateTimeBox(): JSX.Element {
   const date = new Date();
   const centralEuropeTime = [
     date.toLocaleString('en-US', {
@@ -39,3 +39,5 @@ export default function DateTimeBox(): JSX.Element {
     </article>
   );
 }
+
+export default DateTimeBox;

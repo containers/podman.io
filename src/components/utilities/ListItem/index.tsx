@@ -5,7 +5,7 @@ export type ListItemProps = Link & {
   icon?: string;
 };
 
-export default function ListItem({ text, path, icon = 'fa6-solid:book' }: ListItemProps) {
+function ListItem({ text, path, icon = 'fa6-solid:book' }: ListItemProps) {
   const baseStyles =
     'my-4 flex max-w-sm text-xl dark:bg-gray-700 dark:text-purple-300 lg:text-2xl items-center gap-4 rounded-md bg-gray-50 text-purple-700 px-4 py-2';
   return (
@@ -26,3 +26,4 @@ export default function ListItem({ text, path, icon = 'fa6-solid:book' }: ListIt
     </li>
   );
 }
+export default ListItem;
