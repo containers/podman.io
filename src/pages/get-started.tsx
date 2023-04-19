@@ -8,6 +8,7 @@ import WaveBorder from '@site/src/components/shapes/WaveBorder';
 /* PAGE DATA */
 import { header, getHelp } from '@site/static/data/get-started';
 
+/* PAGE COMPONENTS */
 const GetHelpSection = () => {
   return (
     <section className="my-12 bg-gradient-to-b from-purple-300 to-purple-700 dark:from-purple-500 dark:to-purple-900">
@@ -112,7 +113,7 @@ const ImagesHelp = () => {
   );
 };
 
-/* Page Content */
+/* PAGE CONTENT */
 function GetStarted() {
   return (
     <Layout>

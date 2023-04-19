@@ -11,6 +11,7 @@ import ArticleCard from '@site/src/components/ui/ArticleCard';
 import newsLocal from '@site/static/data/newsLocal';
 import { header, knowPodman, learnMore } from '@site/static/data/features';
 
+/* PAGE COMPONENTS */
 function GetToKnowPodmanSection() {
   return (
     <section className="mb-8 mt-4 lg:mt-8 xl:mb-12">

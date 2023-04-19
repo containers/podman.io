@@ -17,6 +17,7 @@ import WaveBorder from '@site/src/components/shapes/WaveBorder';
 /* PAGE DATA */
 import { header, communityChat, communityMeetings, mailingList, submittingIssues } from '@site/static/data/community';
 
+/* PAGE COMPONENTS */
 const CommunityLinks = () => {
   const links = communityChat.links.map(x => x);
   return (
