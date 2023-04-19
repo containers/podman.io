@@ -1,4 +1,5 @@
 import React from 'react';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import Layout from '@theme/Layout';
 import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
@@ -8,11 +9,13 @@ import InfoBox from '@site/src/components/ui/InfoBox';
 import InfoBanner from '@site/src/components/ui/InfoBanner';
 import IconLink from '@site/src/components/utilities/IconLink';
 import Button from '@site/src/components/utilities/Button';
+import DropdownButton from '@site/src/components/utilities/DropdownButton';
 import SmallCard from '@site/src/components/ui/SmallCard';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
 import ReactMarkdown from 'react-markdown';
 import { Icon } from '@iconify/react';
 import { header, communityChat, communityMeetings, mailingList, submittingIssues } from '@site/static/data/community';
+import { library } from 'webpack';
 
 function CommunityLinks() {
   const links = communityChat.links.map(x => x);
@@ -112,6 +115,23 @@ function MailingListSection(): JSX.Element {
   );
 }
 
+const DropdownContent = (props): JSX.Element => {
+  return (
+    <div className="rounded-md p-4 shadow-md">
+      <ul>
+        {props.map((link, index) => {
+          return (
+            <li className="my-2 rounded-md px-2 transition duration-150 ease-linear hover:bg-purple-700 hover:text-white">
+              <a href={link.path} className=" w-full hover:no-underline">
+                {link.text}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
 function SubmitIssuesSection(): JSX.Element {
   return (
     <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
@@ -143,7 +163,9 @@ function SubmitIssuesSection(): JSX.Element {
                       return <li key={index}>{item}</li>;
                     })}
                   </ul>
-                  <Button as="link" outline={true} text={section.button.text} />
+                  <BrowserOnly>
+                    {() => <DropdownButton text={section.button.text} option={DropdownContent(section.button.links)} />}
+                  </BrowserOnly>
                 </div>
               );
             })}
