@@ -1,14 +1,14 @@
-import React, { lazy } from 'react';
+import React from 'react';
 import Layout from '@theme/Layout';
-import BrowserOnly from '@docusaurus/BrowserOnly';
 import { Icon } from '@iconify/react';
-const ReactMarkdown = lazy(() => import('react-markdown'));
 /* COMPONENTS */
+import Markdown from '@site/src/components/utilities/Markdown';
 import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
 import ArticleCard from '@site/src/components/ui/ArticleCard';
 /* PAGE DATA */
+import newsLocal from '@site/static/data/newsLocal';
 import { header, knowPodman, learnMore } from '@site/static/data/features';
 
 function KnowPodmanCards() {
@@ -19,7 +19,7 @@ function KnowPodmanCards() {
           <article key={index} className="flex flex-col justify-start rounded-md p-4 text-center">
             <div>
               <h3 className="mb-4 font-medium dark:text-blue-500 xl:mb-6">{card.title}</h3>
-              <BrowserOnly>{() => <ReactMarkdown children={card.description} className="max-w-xs" />}</BrowserOnly>
+              <Markdown text={card.description} styles="max-w-xs" />
             </div>
             <img src={card.image.path} alt={card.image.alt} className="order-first my-2" />
           </article>
@@ -28,23 +28,13 @@ function KnowPodmanCards() {
     </div>
   );
 }
-const testCard = {
-  title: { text: 'Build Kubernetes pods with Podman play kube', path: 'https://podman.io' },
-  date: ' Oct 25, 2021',
-  image: { src: 'images/article-thumb.png', alt: 'article thumbnail' },
-  subtitle:
-    'The podman play kube command has docker compose features in it to make it easier to transition your compose workloads',
-  author: {
-    path: '#',
-    text: 'Brent Baude',
-  },
-};
+
 const LearnMoreSection = () => {
   return (
     <div>
-      <ArticleCard {...testCard} altLayout={true} />
-      <ArticleCard {...testCard} altLayout={true} />
-      <ArticleCard {...testCard} altLayout={true} />
+      {newsLocal.map((card, index) => {
+        return <ArticleCard {...card} altLayout={true} />;
+      })}
     </div>
   );
 };

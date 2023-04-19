@@ -1,8 +1,7 @@
-import React, { lazy } from 'react';
+import React from 'react';
 import Layout from '@theme/Layout';
-import BrowserOnly from '@docusaurus/BrowserOnly';
-const ReactMarkdown = lazy(() => import('react-markdown'));
 /* COMPONENTS */
+import Markdown from '@site/src/components/utilities/Markdown';
 import HeroHeader from '@site/src/components/layout/HeroHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import InfoBanner from '@site/src/components/ui/InfoBanner';
@@ -19,9 +18,7 @@ const FeatureItem = ({ title, description }) => {
   return (
     <li className="m-6 rounded-md bg-gray-50 p-12 text-center dark:bg-gray-900 lg:w-1/3">
       <h3 className="mx-auto mb-4 text-3xl font-bold text-purple-700 dark:text-purple-500">{title}</h3>
-      <BrowserOnly>
-        {() => <ReactMarkdown children={description} className="mx-auto max-w-md leading-relaxed text-gray-700" />}
-      </BrowserOnly>
+      <Markdown text={description} styles="mx-auto max-w-md leading-relaxed text-gray-700" />
     </li>
   );
 };

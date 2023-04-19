@@ -1,9 +1,8 @@
-import React, { lazy } from 'react';
-import BrowserOnly from '@docusaurus/BrowserOnly';
+import React from 'react';
 import Layout from '@theme/Layout';
 import { Icon } from '@iconify/react';
-const ReactMarkdown = lazy(() => import('react-markdown'));
 /* COMPONENTS */
+import Markdown from '@site/src//components/utilities/Markdown';
 import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import CardGrid from '@site/src/components/layout/CardGrid';
@@ -89,16 +88,14 @@ function MailingListSection(): JSX.Element {
         </section>
         <section className="container mb-8">
           <h3 className="mb-2 font-medium text-purple-700 dark:text-purple-500">{mailingList.subscribeInfo.title}</h3>
-          <BrowserOnly>
-            {() => <ReactMarkdown children={mailingList.subscribeInfo.subtitle} className="max-w-prose " />}
-          </BrowserOnly>
+          <Markdown text={mailingList.subscribeInfo.subtitle} styles="max-w-prose " />
           <div className="flex flex-wrap gap-6">
             {mailingList.subscribeInfo.options.map((card, index) => {
               return <SmallCard {...card} key={index} />;
             })}
           </div>
           <div className="my-4 max-w-prose">
-            <BrowserOnly>{() => <ReactMarkdown children={mailingList.subscribeInfo.description} />}</BrowserOnly>
+            <Markdown text={mailingList.subscribeInfo.description} />
           </div>
         </section>
         <section className="mb-8 lg:col-start-2 lg:row-span-2 lg:row-start-2">
@@ -160,15 +157,13 @@ function SubmitIssuesSection(): JSX.Element {
             {submittingIssues[1].sections.map((section, index) => {
               return (
                 <div key={index} className="mb-12">
-                  <BrowserOnly>{() => <ReactMarkdown children={section.text} />}</BrowserOnly>
+                  <Markdown text={section.text} />
                   <ul className="mb-8 ml-5 mt-4 list-disc">
                     {section.checkList.map((item, index) => {
                       return <li key={index}>{item}</li>;
                     })}
                   </ul>
-                  <BrowserOnly>
-                    {() => <DropdownButton text={section.button.text} option={DropdownContent(section.button.links)} />}
-                  </BrowserOnly>
+                  <DropdownButton text={section.button.text} option={DropdownContent(section.button.links)} />
                 </div>
               );
             })}
@@ -177,7 +172,7 @@ function SubmitIssuesSection(): JSX.Element {
         <section className="max-w-lg rounded-md bg-white p-10 shadow-lg dark:bg-gray-900">
           <header className="mx-auto mb-10">
             <h3 className="mb-3 text-center text-blue-700 dark:text-blue-500">{submittingIssues[2].title}</h3>
-            <BrowserOnly>{() => <ReactMarkdown children={submittingIssues[2].subtitle} />}</BrowserOnly>
+            <Markdown text={submittingIssues[2].subtitle} />
           </header>
           <div>
             {submittingIssues[2].description.map((paragraph, index) => {
