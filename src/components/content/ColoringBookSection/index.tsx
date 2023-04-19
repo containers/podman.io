@@ -1,21 +1,5 @@
 import React from 'react';
-const data = {
-  title: 'Have fun coloring and learn about Podman!',
-  description:
-    "A decentralized team of open source container tool superheroes comes to the rescue when an asteroid storm threatens the planet. Learn about each tool—Podman, CRI-O, Buildah, Skopeo, and OpenShift—as they redesign the planet's protective shields' container deployment to protect Earth.",
-  button: {
-    text: 'Download',
-    src: '#',
-  },
-  featureImage: {
-    src: 'images/raw/comic-cover-224w-288h.png',
-    alt: 'Container Commandos coloring book cover',
-  },
-  collageImages: {
-    src: 'images/raw/coloring-pages.png',
-    alt: 'A collection of pages from the Podman coloring book.',
-  },
-};
+import data from './data';
 
 export default function ColoringBookSection() {
   return (
@@ -26,7 +10,7 @@ export default function ColoringBookSection() {
           <p className="mb-4 max-w-prose lg:mb-10">{data.description}</p>
           <a
             href={data.button.src}
-            className="mx-auto block max-w-fit rounded-md py-2 px-6 text-purple-700 outline outline-1 transition duration-150 ease-linear hover:bg-gray-50 dark:text-purple-500 dark:hover:bg-gray-100 lg:mx-0">
+            className="mx-auto block max-w-fit rounded-md px-6 py-2 text-purple-700 outline outline-1 transition duration-150 ease-linear hover:bg-gray-50 dark:text-purple-500 dark:hover:bg-gray-100 lg:mx-0">
             {data.button.text}{' '}
           </a>
         </div>
