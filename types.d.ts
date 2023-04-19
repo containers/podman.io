@@ -7,8 +7,27 @@ type Card = {
 };
 
 type Image = {
-  path: string | undefined;
+  path: string;
   alt: string;
+};
+
+type Link = {
+  readonly text: string;
+  readonly path: string;
+};
+
+type Button = {
+  readonly text: string;
+  readonly as?: 'button' | 'link';
+  readonly method?: () => void;
+  readonly path?: string;
+};
+
+type Shape = {
+  readonly height?: string;
+  readonly width?: string;
+  readonly light?: string;
+  readonly dark?: string;
 };
 
 type Colors = {
@@ -25,25 +44,6 @@ type LayoutProps = {
 };
 
 type HeaderProps = {
-  title?: string;
-  description?: string;
-};
-
-type Link = {
-  text: string;
-  path: string;
-};
-
-type Button = {
-  readonly text: string;
-  readonly as?: 'button' | 'link';
-  readonly method?: () => void;
-  readonly path?: string;
-};
-
-type Shape = {
-  readonly height?: string;
-  readonly width?: string;
-  readonly light?: string;
-  readonly dark?: string;
+  readonly title?: string;
+  readonly description?: string;
 };
