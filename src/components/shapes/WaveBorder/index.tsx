@@ -4,7 +4,7 @@ type ShapeProps = Shape & {
   grid?: string;
   layout?: string;
 };
-export default function WaveBorder({
+function WaveBorder({
   light = 'fill-white',
   dark = 'dark:fill-gray-900',
   width = '100',
@@ -25,3 +25,5 @@ export default function WaveBorder({
     </svg>
   );
 }
+
+export default WaveBorder;

@@ -11,7 +11,7 @@ type TestimonialProps = {
   date: string;
 };
 
-export default function Testimonial(props: TestimonialProps) {
+function Testimonial(props: TestimonialProps) {
   return (
     <article className="my-4 max-w-xs rounded-sm bg-white p-4 shadow-lg dark:bg-gray-900">
       <div className="flex items-center gap-2">
@@ -37,3 +37,5 @@ export default function Testimonial(props: TestimonialProps) {
     </article>
   );
 }
+
+export default Testimonial;

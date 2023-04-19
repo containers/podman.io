@@ -7,7 +7,7 @@ export type IconLinkProps = Link & {
   image?: Image;
 };
 
-export default function IconLink({ text, path, icon, image, textLogo }: IconLinkProps) {
+function IconLink({ text, path, icon, image, textLogo }: IconLinkProps) {
   return (
     <a href={path} className="mx-auto flex flex-col items-center text-center">
       <div className="max-w-fit rounded-full bg-white p-8 shadow-sm  dark:bg-gray-900">
@@ -25,3 +25,5 @@ export default function IconLink({ text, path, icon, image, textLogo }: IconLink
     </a>
   );
 }
+
+export default IconLink;

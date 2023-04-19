@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
-
+import Markdown from '@site/src/components/utilities/Markdown';
 type SectionHeaderProps = {
   title: string;
   description?: string;
@@ -12,7 +11,7 @@ type SectionHeaderProps = {
   bgColor?: string;
 };
 
-export default function SectionHeader({
+function SectionHeader({
   title,
   description,
   textGradientStops = 'from-blue-700 via-blue-700 to-blue-900 dark:from-blue-500  dark:to-blue-700',
@@ -29,11 +28,10 @@ export default function SectionHeader({
     <header className={`${bgColor}  ${layout}`}>
       <div className="container mx-auto mb-4 mt-12 text-center  lg:mt-16">
         <h2 className={`${applyTextColor} ${fontWeight}`}>{title}</h2>
-        <ReactMarkdown
-          children={description}
-          className="mx-auto my-4 max-w-4xl leading-relaxed text-gray-700 dark:text-gray-100"
-        />
+        <Markdown text={description} styles="mx-auto my-4 max-w-4xl leading-relaxed text-gray-700 dark:text-gray-100" />
       </div>
     </header>
   );
 }
+
+export default SectionHeader;

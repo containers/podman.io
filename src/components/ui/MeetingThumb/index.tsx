@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon } from '@iconify/react';
 import Button from '@site/src/components/utilities/Button';
 
-export default function MeetingThumb(props) {
+function MeetingThumb(props) {
   return (
     <section className="rounded-md bg-white shadow-md">
       <div className="flex flex-col items-center justify-center p-4">
@@ -21,3 +21,5 @@ export default function MeetingThumb(props) {
     </section>
   );
 }
+
+export default MeetingThumb;

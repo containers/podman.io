@@ -6,7 +6,7 @@ type BoxProps = {
   darkBg?: string;
 };
 
-export default function InfoBox({ title, text, darkBg = 'dark:bg-purple-900' }: BoxProps): JSX.Element {
+function InfoBox({ title, text, darkBg = 'dark:bg-purple-900' }: BoxProps): JSX.Element {
   return (
     <aside
       className={`rounded-lg bg-aqua ${darkBg} max-w-lg px-6 py-8 text-gray-700 shadow-xl dark:shadow-md dark:shadow-gray-900`}>
@@ -15,3 +15,5 @@ export default function InfoBox({ title, text, darkBg = 'dark:bg-purple-900' }: 
     </aside>
   );
 }
+
+export default InfoBox;
