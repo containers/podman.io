@@ -8,24 +8,22 @@ import WaveBorder from '@site/src/components/shapes/WaveBorder';
 import operatingSystemData from './installOptions';
 type InstallOptionProps = Card & {
   icon: string;
-  options?: Link[];
+  option?: React.ReactNode;
   path: string;
   other?: { path: string; text: string; subtext: string };
 };
 
-/* TODO: use find instead of filter */
 const detectOperatingSystem = () => {
   return window.navigator.userAgent
     .toLowerCase()
     .split(' ')
-    .filter(item => item.includes('linux' || 'windows' || 'macos'))
-    .toString();
+    .find(item => item.includes('linux' || 'windows' || 'macos'));
 };
 
-/* this should return an object that matches InstallOptionProps */
 function returnOperatingSystemData() {
   return operatingSystemData.find(os => os.id === detectOperatingSystem());
 }
+
 const InstallOption = (): JSX.Element => {
   const data = returnOperatingSystemData();
   return (
