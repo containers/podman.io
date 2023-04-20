@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const FindTabContent = (): JSX.Element => {
   return (
@@ -60,9 +60,13 @@ interface TabProps {
   label: string;
 }
 function Tab(props) {
-  const { label, method } = props;
+  const { label, method, isActive } = props;
   return (
-    <button onClick={method} className="rounded-lg bg-white p-4 shadow-md">
+    <button
+      onClick={method}
+      className={`rounded-lg  p-4 shadow-md ${
+        isActive ? 'bg-gradient-radial from-purple-500 to-purple-700' : 'bg-white'
+      }`}>
       {label}
     </button>
   );
@@ -70,7 +74,6 @@ function Tab(props) {
 
 function FeaturesCarousel() {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
-  const tabRef = useRef([]);
 
   // render content
   return (
@@ -78,7 +81,9 @@ function FeaturesCarousel() {
       <div className="container flex justify-center gap-4">
         {/* Loop through Tab data and generate tab buttons for each */}
         {tabsData.map((tab, index) => {
-          return <Tab {...tab} method={() => setActiveTabIndex(index)} key={index} />;
+          return (
+            <Tab {...tab} method={() => setActiveTabIndex(index)} isActive={activeTabIndex === index} key={index} />
+          );
         })}
       </div>
       <div>{tabsData[activeTabIndex].content()}</div>
