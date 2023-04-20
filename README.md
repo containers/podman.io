@@ -38,5 +38,6 @@ _If you are using GitHub pages for hosting, this command is a convenient way to 
 - Code Formatting: [Prettier](https://prettier.io/) (see `.prettierrc`, `.prettierignore`)
 - Linting: [Eslint](https://eslint.org/) (see `.eslintrc`, `.eslintignore`)
 - Rendering markdown from js strings: [react markdown parser](https://github.com/remarkjs/react-markdown)
-  - Use the react markdown component like so: `<ReactMarkdown children={inputMarkdown} />`
-    - note that plugins can be used for advanced markdown syntax
+  - Use the custom `<Markdown text="..." styles="..." /> component for any markdown strings
+    - This component wraps the markdown parser in `<BrowserOnly>{() => <ReactMarkdown />}</BrowserOnly>` and handles the lazy loading and imports, reducing the amount of code needed on each instance.
+    - Reasons for this is that the reactmarkdown component needed to by dynamically imported to avoid import error. Being async on a ssg page caused hydration isues without the other code. the reactmarkdown component works fine without the extra code, but it does throw errors
