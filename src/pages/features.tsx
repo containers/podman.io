@@ -42,7 +42,7 @@ const LearnArticles = () => {
       </header>
       <div>
         {newsLocal.map((card, index) => {
-          return <ArticleCard {...card} altLayout={true} />;
+          return <ArticleCard {...card} altLayout={true} key={index} />;
         })}
       </div>
     </section>
