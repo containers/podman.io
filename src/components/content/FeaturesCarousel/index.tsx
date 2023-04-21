@@ -71,7 +71,7 @@ function FeaturesCarousel() {
   // render content
   return (
     <section>
-      <div className="container -mb-6 flex justify-center gap-4 md:-mb-10 md:gap-8">
+      <div className="container -mb-6 flex justify-center gap-5 md:-mb-10 md:gap-8">
         {/* Loop through Tab data and generate tab buttons for each */}
         {tabData.map((tab, index) => {
           return (
