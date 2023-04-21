@@ -86,14 +86,29 @@ const tabsData = [
 ];
 
 function Tab(props) {
-  const { label, method, isActive } = props;
+  const { label, commands, method, isActive } = props;
   return (
     <button
       onClick={method}
-      className={`rounded-lg  p-4 shadow-md ${
-        isActive ? 'bg-gradient-radial from-purple-500 to-purple-700 text-white' : 'bg-white'
+      className={`rounded-lg  p-4 shadow-md transition duration-150 hover:bg-purple-300 dark:hover:bg-purple-900  ${
+        isActive
+          ? 'bg-gradient-radial from-purple-500 to-purple-700 text-white dark:from-purple-700 dark:to-purple-900 dark:shadow-purple-900'
+          : '0 bg-white dark:bg-gray-900 dark:text-gray-100 dark:shadow-gray-700 '
       }`}>
-      {label}
+      <h4 className="text-blue-500 dark:text-blue-500">
+        {label}
+        <ul>
+          {commands.map((command, index) => {
+            return (
+              <li
+                key={index}
+                className={`font-mono text-sm  ${isActive ? 'text-white' : 'text-purple-700 dark:text-gray-700'}`}>
+                {command}
+              </li>
+            );
+          })}
+        </ul>
+      </h4>
     </button>
   );
 }
@@ -104,7 +119,7 @@ function FeaturesCarousel() {
   // render content
   return (
     <section>
-      <div>
+      <div className="container -mb-3 flex justify-center gap-4 md:gap-8">
         {/* Loop through Tab data and generate tab buttons for each */}
         {tabsData.map((tab, index) => {
           return (
