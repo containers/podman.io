@@ -16,7 +16,7 @@ const knowPodman = {
       description:
         "Hop on over to our [Podman Quickstart Guide](#) and we'll lead you through basic Podman commands Guide and give you pointers to more learning materials and guides.",
       image: {
-        path: '#',
+        path: 'images/raw/characters/seal-diving.png',
         alt: 'A seal diving into the water',
       },
     },
@@ -25,7 +25,7 @@ const knowPodman = {
       description:
         'Podman has an active chat and mailing list, and regular open community meetings. Users and aspiring contributors are most welcome in all of these venues. Join us!',
       image: {
-        path: '#',
+        path: 'images/raw/characters/seals-swimming.png',
         alt: 'A group of seals swimming.',
       },
     },
@@ -34,7 +34,7 @@ const knowPodman = {
       description:
         'Check out the [Podman Troubleshooting Guide](#), search our [Documentation](#), or file an issue in our [issue tracker](#).',
       image: {
-        path: '#',
+        path: 'images/raw/characters/confused-seal.png',
         alt: 'A confused seal.',
       },
     },
