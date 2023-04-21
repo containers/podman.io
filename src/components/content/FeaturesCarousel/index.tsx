@@ -29,27 +29,34 @@ const Tab = (props): JSX.Element => {
   );
 };
 const TabContent = (props): JSX.Element => {
-  const { title, commands, image, description, index } = props;
-  const bgColor = () => {
-    const applyColors = (color, secondColor = 'gray') =>
-      `bg-gradient-to-br from-${color}-500 to-${color}-700 dark:from-${secondColor}-900 via-${color}-700 to-${color}-900`;
-    return index === 0 ? applyColors('purple') : index === 2 ? applyColors('blue') : 'bg-white dar:bg-gray-900';
-  };
+  const { title, commands, image, description, isActive } = props;
   return (
-    <section className={`${bgColor} my-8 lg:my-16`}>
+    <section
+      className={`py-10 md:py-16 ${
+        isActive % 2 === 1
+          ? 'bg-white dark:bg-gray-900'
+          : isActive === 2
+          ? 'bg-gradient-to-br from-blue-300 via-blue-500 to-blue-900'
+          : 'bg-gradient-to-br from-purple-300 via-purple-700 to-purple-900'
+      }`}>
       <div className="container flex gap-4">
         <div className="max-w-sm">
-          <h3 className="text-3xl">{title}</h3>
+          <h3
+            className={`text-3xl ${
+              isActive % 2 === 0 ? 'text-white' : isActive === 1 ? 'text-blue-700' : 'text-purple-700'
+            }`}>
+            {title}
+          </h3>
           <ul className="my-4 lg:my-12">
             {commands.map((command, index) => (
-              <li key={index} className="font-mono">
+              <li key={index} className="font-mono text-blue-500">
                 {command}
               </li>
             ))}
           </ul>
-          <p>{description}</p>
+          <p className={isActive % 2 === 0 ? 'text-white' : 'text-gray-900 dark:text-white'}>{description}</p>
         </div>
-        <div className={`${index % 2 === 1 && `order-first`}`}>
+        <div className={`${isActive % 2 === 1 && 'order-first'}`}>
           <img src={image.path} alt={image.text} />
         </div>
       </div>
@@ -70,7 +77,9 @@ function FeaturesCarousel() {
           );
         })}
       </div>
-      <div>{TabContent(tabData[activeTabIndex])}</div>
+      <div>
+        <TabContent {...tabData[activeTabIndex]} isActive={activeTabIndex} />
+      </div>
     </section>
   );
 }
