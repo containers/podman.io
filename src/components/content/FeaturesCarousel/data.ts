@@ -6,7 +6,7 @@ const tabData = [
     description:
       'Find and pull down containers whether they are on dockerhub.io or quay.io, an internal registry server, or direct from a vendor.',
     image: {
-      src: '',
+      src: 'images/raw/cli-screens/cli-find-image.png',
       alt: 'example of podman commands',
     },
   },
@@ -17,7 +17,7 @@ const tabData = [
     description:
       'Find and pull down containers whether they are on dockerhub.io or quay.io, an internal registry server, or direct from a vendor.',
     image: {
-      src: '',
+      src: 'images/raw/cli-screens/cli-run-image.png',
       alt: 'example of podman commands',
     },
   },
@@ -28,7 +28,7 @@ const tabData = [
     description:
       'Find and pull down containers whether they are on dockerhub.io or quay.io, an internal registry server, or direct from a vendor.',
     image: {
-      src: '',
+      src: 'images/raw/cli-screens/cli-build-image.png',
       alt: 'example of podman commands',
     },
   },
@@ -39,7 +39,7 @@ const tabData = [
     description:
       'Podman lets you push your newly-built containers anywhere you want with a single podman push command.',
     image: {
-      src: '',
+      src: 'images/raw/cli-screens/cli-share-image.png',
       alt: 'example of podman commands',
     },
   },
