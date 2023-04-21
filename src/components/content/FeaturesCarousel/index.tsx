@@ -36,19 +36,20 @@ const TabContent = (props): JSX.Element => {
     return index === 0 ? applyColors('purple') : index === 2 ? applyColors('blue') : 'bg-white dar:bg-gray-900';
   };
   return (
-    <section className={` ${bgColor}`}>
-      <div className="flex gap-4">
-        <div>
-          <h3>{title}</h3>
-          <ul>
+    <section className={`${bgColor} my-8 lg:my-16`}>
+      <div className="container flex gap-4">
+        <div className="max-w-sm">
+          <h3 className="text-3xl">{title}</h3>
+          <ul className="my-4 lg:my-12">
             {commands.map((command, index) => (
-              <li key={index}>{command}</li>
+              <li key={index} className="font-mono">
+                {command}
+              </li>
             ))}
           </ul>
           <p>{description}</p>
         </div>
         <div className={`${index % 2 === 1 && `order-first`}`}>
-          {/* TODO: use codeblock if component isn't annoying */}
           <img src={image.path} alt={image.text} />
         </div>
       </div>
