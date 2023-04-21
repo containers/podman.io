@@ -7,6 +7,7 @@ import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
 import ArticleCard from '@site/src/components/ui/ArticleCard';
+import FeaturesCarousel from '@site/src/components/content/FeaturesCarousel';
 /* PAGE DATA */
 import newsLocal from '@site/static/data/newsLocal';
 import { header, knowPodman, learnMore } from '@site/static/data/features';
@@ -41,7 +42,7 @@ const LearnArticles = () => {
       </header>
       <div>
         {newsLocal.map((card, index) => {
-          return <ArticleCard {...card} altLayout={true} />;
+          return <ArticleCard {...card} altLayout={true} key={index} />;
         })}
       </div>
     </section>
@@ -91,7 +92,7 @@ function Features() {
     <Layout>
       <PageHeader title={header.title} description={header.subtitle} />
       <GetToKnowPodmanSection />
-      <section></section>
+      <FeaturesCarousel />
       <LearnMoreSection />
       <ColoringBookSection />
     </Layout>
