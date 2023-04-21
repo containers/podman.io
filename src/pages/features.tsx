@@ -20,12 +20,12 @@ function GetToKnowPodmanSection() {
       <div className="container flex flex-wrap justify-center gap-4 lg:gap-8">
         {knowPodman.cards.map((card, index) => {
           return (
-            <article key={index} className="flex flex-col justify-start rounded-md p-4 text-center">
+            <article key={index} className="mt-2 flex flex-col justify-start rounded-md p-4 text-center lg:mt-4">
               <div>
                 <h3 className="mb-4 font-medium dark:text-blue-500 xl:mb-6">{card.title}</h3>
                 <Markdown text={card.description} styles="max-w-xs" />
               </div>
-              <img src={card.image.path} alt={card.image.alt} className="order-first my-2" />
+              <img src={card.image.path} alt={card.image.alt} className="order-first my-2 h-52 w-auto object-contain" />
             </article>
           );
         })}
