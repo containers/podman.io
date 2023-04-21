@@ -7,8 +7,7 @@ const Tab = (props): JSX.Element => {
   return (
     <button
       onClick={method}
-      className={`rounded-lg p-4 shadow-sm transition duration-150 hover:bg-purple-700 hover:text-white dark:hover:bg-purple-900 dark:hover:text-gray-50 md:h-36 md:w-52
-       
+      className={`rounded-lg p-4 shadow-sm transition duration-150 hover:bg-purple-700 hover:text-white dark:hover:bg-purple-900 dark:hover:text-gray-50 md:h-36 md:w-56
       ${
         isActive
           ? 'bg-gradient-radial from-purple-500 to-purple-700 text-white dark:from-purple-700 dark:to-purple-900 dark:shadow-purple-900'
