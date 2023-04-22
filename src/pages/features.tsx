@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '@theme/Layout';
 import { Icon } from '@iconify/react';
 /* COMPONENTS */
@@ -88,6 +88,16 @@ const LearnMoreSection = () => {
 };
 
 function Features() {
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch(
+        'https://blog.podman.io/wp-json/wp/v2/posts?_embed_fields=id,author,date,featured_media,excerpt,link',
+      );
+      const json = data.json();
+      console.log(json);
+    };
+    fetchData().catch(console.error);
+  }, []);
   return (
     <Layout>
       <PageHeader title={header.title} description={header.subtitle} />
