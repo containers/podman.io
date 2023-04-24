@@ -1,13 +1,19 @@
 import React from 'react';
+import Markdown from '@site/src/components/utilities/Markdown';
 type ArticleCardProps = {
   title: Link;
   subtitle: string;
+  testAuthor: {
+    display_name: string;
+    author_link: string;
+  };
   author: Link;
   date: string;
-  image: {
+  image?: {
     src: string;
     alt: string;
   };
+  imgSrc?: string;
   altLayout?: boolean;
 };
 
@@ -19,19 +25,8 @@ const PublishDate = ({ date, styles }: { date: string; styles?: string }) => {
     </div>
   );
 };
-const TitleLink = (props: Link) => {
-  return (
-    <h3 className="text-purple-700">
-      <a href={props.path}>{props.text}</a>
-    </h3>
-  );
-};
-const Author = (props: Link) => {
-  return (
-    <p className="text-purple-700">
-      By: <a href={props.path}>{props.text}</a>
-    </p>
-  );
+const Title = (title: string) => {
+  return <h3 className="text-purple-700">{title}</h3>;
 };
 
 function ArticleCard(props: ArticleCardProps) {
@@ -42,17 +37,20 @@ function ArticleCard(props: ArticleCardProps) {
           <div className="grid items-end xl:basis-5/12">
             <div className="z-10 col-start-1 row-start-1">
               <h3 className="w-10/12 bg-gradient-radial from-purple-700 to-purple-900 px-2 py-1 text-white shadow-sm">
-                <a href={props.title.path} className="hover:text-gray-50">
-                  {props.title.text}
-                </a>
+                {props.title}
               </h3>
               <PublishDate date={props.date} styles="col-start-1 order-1 row-start-1 z-10" />
             </div>
-            <img {...props.image} className=" col-start-1 row-start-1 h-full w-full rounded-sm object-cover lg:w-80" />
+            <img
+              src={props.imgSrc}
+              className=" col-start-1 row-start-1 h-full w-full rounded-sm object-cover lg:w-80"
+            />
           </div>
           <div className="max-w-sm items-center gap-2 self-center">
-            <p className="text-gray-700">{props.subtitle}</p>
-            <Author {...props.author} />
+            <Markdown text={props.subtitle} />
+            <p className="text-purple-700">
+              By: <a href={props.author_link}>{props.display_name}</a>
+            </p>
           </div>
         </div>
       </article>
@@ -63,12 +61,16 @@ function ArticleCard(props: ArticleCardProps) {
     return (
       <article className="my-4 w-72 p-4">
         <div className="grid">
-          <TitleLink {...props.title} />
+          <h3 className="w-10/12 bg-gradient-radial from-purple-700 to-purple-900 px-2 py-1 text-white shadow-sm">
+            {props.title}
+          </h3>
           {/* TODO: Set a max length and add ... to end */}
-          <p className="my-2">{props.subtitle}</p>
+          <Markdown text={props.subtitle} />
           <PublishDate date={props.date} styles="row-start-1 col-start-1 z-10" />
-          <img {...props.image} className="object-fit col-start-1 row-start-1 rounded-sm" />
-          <Author {...props.author} />
+          <img src={props.imgSrc} className="object-fit col-start-1 row-start-1 rounded-sm" />
+          <p className="text-purple-700">
+            By: <a href={props.author_link}>{props.display_name}</a>
+          </p>
         </div>
       </article>
     );

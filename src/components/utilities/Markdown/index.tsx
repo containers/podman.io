@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import rehypeRaw from 'rehype-raw';
 const ReactMarkdown = lazy(() => import('react-markdown'));
-
 interface Props {
   text: string;
   styles?: string;
@@ -16,7 +16,7 @@ function Markdown({ text, styles }: Props): JSX.Element {
     <BrowserOnly>
       {() => (
         <Suspense fallback={fallBackComponent()}>
-          <ReactMarkdown children={text} className={styles} />
+          <ReactMarkdown children={text} className={styles} rehypePlugins={[rehypeRaw]} />
         </Suspense>
       )}
     </BrowserOnly>
