@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '@theme/Layout';
 import { Icon } from '@iconify/react';
 /* COMPONENTS */
@@ -9,7 +9,6 @@ import ColoringBookSection from '@site/src/components/content/ColoringBookSectio
 import ArticleCard from '@site/src/components/ui/ArticleCard';
 import FeaturesCarousel from '@site/src/components/content/FeaturesCarousel';
 /* PAGE DATA */
-import newsLocal from '@site/static/data/newsLocal';
 import { header, knowPodman, learnMore } from '@site/static/data/features';
 
 /* PAGE COMPONENTS */
@@ -35,14 +34,37 @@ function GetToKnowPodmanSection() {
 }
 
 const LearnArticles = () => {
+  const [blogData, setBlogData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const rawData = await fetch(
+        'https://blog.podman.io/wp-json/wp/v2/posts?per_page=4&_fields=id, author_info, title, wbDate, jetpack_featured_media_url, link, excerpt',
+      );
+      const jsonData = await rawData.json();
+      setBlogData(jsonData);
+    };
+    fetchData().catch(console.error);
+  }, []);
   return (
     <section>
       <header className="container mb-4 text-center lg:mb-8 lg:text-start">
         <h3 className="font-medium text-blue-700 dark:text-blue-500">{learnMore.blogPosts.title}</h3>
       </header>
       <div>
-        {newsLocal.map((card, index) => {
-          return <ArticleCard {...card} altLayout={true} key={index} />;
+        {blogData.map((card, index) => {
+          return (
+            <ArticleCard
+              title={card.title.rendered}
+              author_link={card.author_info.author_link}
+              display_name={card.author_info.display_name}
+              subtitle={card.excerpt.rendered}
+              date={card.wbDate}
+              imgSrc={card.jetpack_featured_media_url}
+              altLayout
+              key={card.id}
+            />
+          );
         })}
       </div>
     </section>
@@ -88,16 +110,6 @@ const LearnMoreSection = () => {
 };
 
 function Features() {
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetch(
-        'https://blog.podman.io/wp-json/wp/v2/posts?_embed_fields=id,author,date,featured_media,excerpt,link',
-      );
-      const json = data.json();
-      console.log(json);
-    };
-    fetchData().catch(console.error);
-  }, []);
   return (
     <Layout>
       <PageHeader title={header.title} description={header.subtitle} />

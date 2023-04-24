@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 /* COMPONENTS */
 import Markdown from '@site/src/components/utilities/Markdown';
@@ -10,7 +10,6 @@ import ArticleCard from '@site/src/components/ui/ArticleCard';
 import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
 import Testimonial from '@site/src/components/ui/Testimonial';
 /* PAGE DATA */
-import newsLocal from '@site/static/data/newsLocal';
 import { header, featureList, kubernetesBanner, compatibleTools, testimonials } from '@site/static/data/home';
 
 /* PAGE COMPONENTS */
@@ -48,12 +47,35 @@ const CompatibleToolSection = () => {
   );
 };
 const LatestNews = () => {
+  const [blogData, setBlogData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const rawData = await fetch(
+        'https://blog.podman.io/wp-json/wp/v2/posts?per_page=4&_fields=id, author_info, title, wbDate, jetpack_featured_media_url, link, excerpt',
+      );
+      const jsonData = await rawData.json();
+      setBlogData(jsonData);
+    };
+    fetchData().catch(console.error);
+  }, []);
   return (
     <section>
       <SectionHeader title="Latest Podman News" textColor="text-purple-700" />
       <div className="flex flex-wrap justify-center gap-4">
-        {newsLocal.map((article, index) => {
-          return <ArticleCard {...article} key={index} />;
+        {blogData.map((card, index) => {
+          return (
+            <ArticleCard
+              title={card.title.rendered}
+              author_link={card.author_info.author_link}
+              display_name={card.author_info.display_name}
+              subtitle={card.excerpt.rendered}
+              date={card.wbDate}
+              imgSrc={card.jetpack_featured_media_url}
+              key={card.id}
+              key={index}
+            />
+          );
         })}
       </div>
     </section>
