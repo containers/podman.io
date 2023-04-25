@@ -16,7 +16,7 @@ const communityChat = {
   links: [
     {
       text: '#podman:matrix.org',
-      path: '#',
+      path: 'https://www.redhat.com/architect/hpc-containers-scale-using-podman',
       image: {
         path: 'logos/raw/element-56w-59h.png',
         alt: 'Element Matrix Logo',
@@ -24,17 +24,17 @@ const communityChat = {
     },
     {
       text: '#podman on libera.chat',
-      path: '',
+      path: 'https://web.libera.chat/#podman-desktop',
       textLogo: 'IRC',
     },
     {
       text: 'Podman Discord',
-      path: '#',
+      path: 'https://discord.gg/vwpj7K6gW5',
       icon: 'logos:discord-icon',
     },
     {
       text: 'Slack',
-      path: '#',
+      path: 'https://slack.k8s.io/',
       icon: 'logos:slack-icon',
     },
   ],
@@ -52,7 +52,7 @@ const communityMeetings = {
     {
       title: 'Podman Community Meeting',
       subtitle:
-        'This meeting is used to show demos for or to have general discussions about Podman or other related container technologies. It is also used to make announcements about Podman and the other projects in the Containers repository on GitHub.',
+        'This meeting is used to show demos for or to have general discussions about Podman or other related container technologies. It is also used to make announcements about Podman and the other projects in the [Containers repository on GitHub](https://github.com/containers).',
       date: '**1st Tuesday** every month',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
@@ -63,7 +63,7 @@ const communityMeetings = {
     {
       title: 'Podman Community Cabal',
       subtitle:
-        'The focus of the cabal meeting is the planning and discussion of possible future changes to Podman or the related Containers projects and discussing any outstanding issues that might need solving.',
+        'The focus of the cabal meeting is the planning and discussion of possible future changes to Podman or the [related Containers projects](https://github.com/containers) and discussing any outstanding issues that might need solving.',
       date: '**3rd Thursday** every month',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
@@ -72,7 +72,6 @@ const communityMeetings = {
       ],
     },
   ],
-  // TODO: Past Meetings - find out where this data is stored and if it can be auto updated on the site
 };
 
 const mailingList = {
@@ -81,7 +80,7 @@ const mailingList = {
   browseInfo: {
     title: 'Browse the mailing list',
     subtitle:
-      'Simply visit the Podman mailing list website to browse or search previous postings to the Podman mailing list.',
+      'Simply visit [the Podman mailing list website](https://lists.podman.io/archives/list/podman@lists.podman.io/) to browse or search previous postings to the Podman mailing list.',
   },
   subscribeInfo: {
     title: 'Subscribe or post to the mailing list',
@@ -92,19 +91,20 @@ const mailingList = {
     options: [
       {
         title: 'Option 1',
-        subtitle: 'Send an email to [podman-join@lists.podman.io](#) with the word "Subscribe" in the subject.',
+        subtitle:
+          'Send an email to [podman-join@lists.podman.io](mailto:podman-join@lists.podman.io) with the word "Subscribe" in the subject.',
         button: {
           text: 'Send email',
-          path: '#',
+          path: 'mailto:podman-join@lists.podman.io',
         },
       },
       {
         title: 'Option 2',
         subtitle:
-          'Enter your email at the bottom of [the mailing list sign up page](#), and hit the "Subscribe" button.',
+          'Enter your email at the bottom of [the mailing list sign up page](https://lists.podman.io/admin/lists/podman.lists.podman.io/), and hit the "Subscribe" button.',
         button: {
           text: 'Sign up page',
-          path: '#',
+          path: 'https://lists.podman.io/admin/lists/podman.lists.podman.io/',
         },
       },
     ],
@@ -125,7 +125,7 @@ const submittingIssues = [
   {
     title: 'Submitting Issues & Pull Requests',
     subtitle:
-      'The following is a quick cheat-sheet of sorts on how to submit issues and pull requests to the Podman project. For the most up-to-date and more comprehensive information, please take a look at  [CONTRIBUTING.md]() in the Podman repo.',
+      'The following is a quick cheat-sheet of sorts on how to submit issues and pull requests to the Podman project. For the most up-to-date and more comprehensive information, please take a look at  [CONTRIBUTING.md](https://github.com/containers/common/blob/main/CONTRIBUTING.md) in the Podman repo.',
   },
   {
     title: 'Submitting Issues',
