@@ -9289,6 +9289,7 @@ __metadata:
     react-dom: ^17.0.2
     react-markdown: ^8.0.5
     rehype-raw: ^6.1.1
+    tailwind-scrollbar: ^3.0.0
     tailwindcss: ^3.2.4
     typescript: ^4.9.4
   languageName: unknown
@@ -11626,6 +11627,15 @@ __metadata:
   bin:
     svgo: bin/svgo
   checksum: b92f71a8541468ffd0b81b8cdb36b1e242eea320bf3c1a9b2c8809945853e9d8c80c19744267eb91cabf06ae9d5fff3592d677df85a31be4ed59ff78534fa420
+  languageName: node
+  linkType: hard
+
+"tailwind-scrollbar@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "tailwind-scrollbar@npm:3.0.0"
+  peerDependencies:
+    tailwindcss: 3.x
+  checksum: b5e406bcbf62ac25abe81dc6d708a1209c2b636918711e315542845022a9a3a68a0a135c3bb24ae00d07dad3f0725c6587b2fd0b0fb57d20fcc105cf40adb3ca
   languageName: node
   linkType: hard
 
