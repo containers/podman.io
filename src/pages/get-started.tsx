@@ -113,6 +113,14 @@ const ImagesHelp = () => {
   );
 };
 
+const SearchPullListSection = () => {
+  return (
+    <section>
+      <SectionHeader title="Searching, pulling, and listing images" />
+    </section>
+  );
+};
+
 /* PAGE CONTENT */
 function GetStarted() {
   return (
