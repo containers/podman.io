@@ -198,7 +198,7 @@ const SubmitIssuesSection = () => {
         textGradientStops="from-purple-500 to-purple-700 dark:text-blue-700"
         textGradient={true}
       />
-      <div className="mb-20 mt-16 flex flex-wrap justify-center gap-20 px-8 lg:container">
+      <div className="mx-auto mb-20 mt-16 flex flex-wrap justify-center gap-20 px-8 lg:container">
         <IssuesSection />
         <PullRequestSection />
       </div>
