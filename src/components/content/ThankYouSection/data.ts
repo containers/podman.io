@@ -17,12 +17,14 @@ const sponsorData = [
     src: 'logos/raw/amadeus-171w-22h.png',
     alt: 'Amadeus Logo',
   },
+  /*
   {
     label: 'Motorola',
     href: 'https://www.motorola.com/',
     src: 'logos/raw/motorola-221w-105h.png',
     alt: 'Motorola Logo',
   },
+  */
   {
     label: 'Suse',
     href: 'https://www.suse.com',
@@ -41,12 +43,14 @@ const sponsorData = [
     src: 'logos/raw/ibm-92w-37h.png',
     alt: 'IBM Logo',
   },
+  /*
   {
     label: 'Fujitsu',
     href: 'https://www.fujitsu.com',
     src: 'logos/raw/fujitsu-122w-58h.png',
     alt: 'Fujitsu Logo',
   },
+  */
 ];
 
 export default sponsorData;
