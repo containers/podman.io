@@ -61,6 +61,7 @@ const LearnArticles = () => {
               subtitle={card.excerpt.rendered}
               date={card.wbDate}
               imgSrc={card.jetpack_featured_media_url}
+              path={card.link}
               altLayout
               key={card.id}
             />

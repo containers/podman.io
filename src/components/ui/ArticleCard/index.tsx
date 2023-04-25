@@ -1,20 +1,14 @@
 import React from 'react';
 import Markdown from '@site/src/components/utilities/Markdown';
 type ArticleCardProps = {
-  title: Link;
+  title: string;
   subtitle: string;
-  testAuthor: {
-    display_name: string;
-    author_link: string;
-  };
-  author: Link;
+  display_name: string;
+  author_link: string;
   date: string;
-  image?: {
-    src: string;
-    alt: string;
-  };
   imgSrc?: string;
   altLayout?: boolean;
+  path: string;
 };
 
 const PublishDate = ({ date, styles }: { date: string; styles?: string }) => {
@@ -37,7 +31,9 @@ function ArticleCard(props: ArticleCardProps) {
           <div className="grid items-end xl:basis-5/12">
             <div className="z-10 col-start-1 row-start-1">
               <h3 className="w-10/12 bg-gradient-radial from-purple-700 to-purple-900 px-2 py-1 text-white shadow-sm">
-                {props.title}
+                <a href={props.path} target="_blank">
+                  {props.title}
+                </a>
               </h3>
               <PublishDate date={props.date} styles="col-start-1 order-1 row-start-1 z-10" />
             </div>
@@ -62,7 +58,9 @@ function ArticleCard(props: ArticleCardProps) {
       <article className="my-4 w-72 p-4">
         <div className="grid">
           <h3 className="w-10/12 bg-gradient-radial from-purple-700 to-purple-900 px-2 py-1 text-white shadow-sm">
-            {props.title}
+            <a href={props.path} target="_blank">
+              {props.title}
+            </a>
           </h3>
           {/* TODO: Set a max length and add ... to end */}
           <Markdown text={props.subtitle} />
