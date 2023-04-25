@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '@theme/Layout';
 import { Icon } from '@iconify/react';
 /* COMPONENTS */
@@ -208,9 +208,22 @@ const SubmitIssuesSection = () => {
 
 /* PAGE Content */
 function Community() {
+  const [communityMeetings, setCommunityMeetings] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const rawData = await fetch('https://www.youtube.com/playlist?list=PLdYKU4HjyLFRk0SdDWvkZlGMI5OnVfTM-');
+      const jsonData = await rawData.json();
+      console.log(jsonData);
+    };
+  });
+
   return (
     <Layout>
       <PageHeader title={header.title} description={header.subtitle} />
+      <div className="my-24">
+        <h2>Youtube Fetch Render Test</h2>
+      </div>
       <InfoBanner
         description={header.banner.text}
         icon={header.banner.icon}
