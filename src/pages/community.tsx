@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react';
 import Markdown from '@site/src//components/utilities/Markdown';
 import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
+import ThankYouSection from '@site/src/components/content/ThankYouSection';
 import CardGrid from '@site/src/components/layout/CardGrid';
 import SmallCard from '@site/src/components/ui/SmallCard';
 import DateTimeBox from '@site/src/components/content/DateTimeBox';
@@ -219,6 +220,7 @@ function Community() {
       <CommunityMeetingSection />
       <MailingListSection />
       <SubmitIssuesSection />
+      <ThankYouSection />
     </Layout>
   );
 }
