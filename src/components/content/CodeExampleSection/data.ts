@@ -1,6 +1,7 @@
-const searchExample = `$ podman search httpd{'\n'}`;
-// prettier-ignore
-const searchExampleOutput = `
+const searchExample = [
+  `$ podman search httpd{'\n'}`,
+  // prettier-ignore
+  `
   INDEX       NAME                                  DESCRIPTION                    STARS OFFICIAL AUTOMATED{'\n'}
   docker.io   docker.io/library/httpd               The Apache HTTP Server Project  3762    [OK]{'\n'}
   docker.io   docker.io/centos/httpd-24-centos7     Platform for running Apache h... 40{'\n'}
@@ -8,10 +9,13 @@ const searchExampleOutput = `
   docker.io   docker.io/centos/httpd                                                 34              [OK]{'\n'}
   redhat.com  registry.access.redhat.com/ubi8/httpd                                  0{'\n'}
   quay.io     quay.io/redhattraining/httpd-parent                                    0               [OK]{'\n'}
-`
-const searchFilterExample = `$podman search httpd --filter=is-official`;
-// prettier-ignore
-const searchFilterExampleOutput = `
+`,
+  `Podman can search for images on remote registries with some simple keywords.`,
+];
+const searchFilterExample = [
+  `$podman search httpd --filter=is-official`,
+  // prettier-ignore
+  `
 INDEX       NAME                                  DESCRIPTION                    STARS OFFICIAL AUTOMATED{'\n'}
 docker.io   docker.io/library/httpd               The Apache HTTP Server Project  3762    [OK]{'\n'}
 $ podman pull docker.io/library/httpd{'\n'}
@@ -26,19 +30,23 @@ Copying config d294bb32c2 done  {'\n'}
 Writing manifest to image destination{'\n'}
 Storing signatures{'\n'}
 d294bb32c2073ecb5fb27e7802a1e5bec334af69cac361c27e6cb8546fdd14e7{'\n'}
-`
-const imagesExample = `$ podman images{'\n'}`;
-// prettier-ignore
-const imagesExampleOutput = `
+`,
+  `You can also enhance your search with filters.`,
+  `Downloading (pulling) an image is easy, too.`,
+];
+const imagesExample = [
+  `$ podman images{'\n'}`,
+  // prettier-ignore
+  `
 REPOSITORY               TAG         IMAGE ID      CREATED       SIZE{'\n'}
 docker.io/library/httpd  latest      d294bb32c207  12 hours ago  148 MB{'\n'}
-`
+`,
+  `Podman can search for images on remote registries with some simple keywords. 
+  **Note**: Podman searches in different registries. Therefore it is recommend to use the full image name (docker.io/library/httpd instead of httpd) to ensure that you are using the correct image.`,
+];
 
 export default {
   searchExample,
-  searchExampleOutput,
   searchFilterExample,
-  searchFilterExampleOutput,
   imagesExample,
-  imagesExampleOutput,
 };
