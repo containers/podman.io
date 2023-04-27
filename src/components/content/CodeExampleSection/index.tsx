@@ -32,7 +32,6 @@ const RenderLabelledCode = (props: CodeProps) => {
 };
 
 const DesktopCodeBlock = ({ className }: string) => {
-  console.log(className);
   return (
     <div className={`container hidden md:block ${className}`}>
       <CodeBlock language="bash" showLineNumbers>
