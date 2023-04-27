@@ -52,9 +52,7 @@
   dl,
   dt,
   dd,
-  ul,
   ol,
-  li,
   figcaption,
   blockquote {
     @apply font-text text-lg dark:text-gray-100 lg:text-xl;

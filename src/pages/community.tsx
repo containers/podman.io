@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react';
 import Markdown from '@site/src//components/utilities/Markdown';
 import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
+import ThankYouSection from '@site/src/components/content/ThankYouSection';
 import CardGrid from '@site/src/components/layout/CardGrid';
 import SmallCard from '@site/src/components/ui/SmallCard';
 import DateTimeBox from '@site/src/components/content/DateTimeBox';
@@ -197,7 +198,7 @@ const SubmitIssuesSection = () => {
         textGradientStops="from-purple-500 to-purple-700 dark:text-blue-700"
         textGradient={true}
       />
-      <div className="mb-20 mt-16 flex flex-wrap justify-center gap-20 px-8 lg:container">
+      <div className="mx-auto mb-20 mt-16 flex flex-wrap justify-center gap-20 px-8 lg:container">
         <IssuesSection />
         <PullRequestSection />
       </div>
@@ -219,6 +220,7 @@ function Community() {
       <CommunityMeetingSection />
       <MailingListSection />
       <SubmitIssuesSection />
+      <ThankYouSection />
     </Layout>
   );
 }

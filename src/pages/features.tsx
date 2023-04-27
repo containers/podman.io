@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '@theme/Layout';
 import { Icon } from '@iconify/react';
 /* COMPONENTS */
@@ -7,8 +7,8 @@ import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
 import ArticleCard from '@site/src/components/ui/ArticleCard';
+import FeaturesCarousel from '@site/src/components/content/FeaturesCarousel';
 /* PAGE DATA */
-import newsLocal from '@site/static/data/newsLocal';
 import { header, knowPodman, learnMore } from '@site/static/data/features';
 
 /* PAGE COMPONENTS */
@@ -19,12 +19,12 @@ function GetToKnowPodmanSection() {
       <div className="container flex flex-wrap justify-center gap-4 lg:gap-8">
         {knowPodman.cards.map((card, index) => {
           return (
-            <article key={index} className="flex flex-col justify-start rounded-md p-4 text-center">
+            <article key={index} className="mt-2 flex flex-col justify-start rounded-md p-4 text-center lg:mt-4">
               <div>
                 <h3 className="mb-4 font-medium dark:text-blue-500 xl:mb-6">{card.title}</h3>
                 <Markdown text={card.description} styles="max-w-xs" />
               </div>
-              <img src={card.image.path} alt={card.image.alt} className="order-first my-2" />
+              <img src={card.image.path} alt={card.image.alt} className="order-first my-2 h-52 w-auto object-contain" />
             </article>
           );
         })}
@@ -34,14 +34,38 @@ function GetToKnowPodmanSection() {
 }
 
 const LearnArticles = () => {
+  const [blogData, setBlogData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const rawData = await fetch(
+        'https://blog.podman.io/wp-json/wp/v2/posts?per_page=4&_fields=id, author_info, title, wbDate, jetpack_featured_media_url, link, excerpt',
+      );
+      const jsonData = await rawData.json();
+      setBlogData(jsonData);
+    };
+    fetchData().catch(console.error);
+  }, []);
   return (
     <section>
       <header className="container mb-4 text-center lg:mb-8 lg:text-start">
         <h3 className="font-medium text-blue-700 dark:text-blue-500">{learnMore.blogPosts.title}</h3>
       </header>
       <div>
-        {newsLocal.map((card, index) => {
-          return <ArticleCard {...card} altLayout={true} />;
+        {blogData.map((card, index) => {
+          return (
+            <ArticleCard
+              title={card.title.rendered}
+              author_link={card.author_info.author_link}
+              display_name={card.author_info.display_name}
+              subtitle={card.excerpt.rendered}
+              date={card.wbDate}
+              imgSrc={card.jetpack_featured_media_url}
+              path={card.link}
+              altLayout
+              key={card.id}
+            />
+          );
         })}
       </div>
     </section>
@@ -91,7 +115,7 @@ function Features() {
     <Layout>
       <PageHeader title={header.title} description={header.subtitle} />
       <GetToKnowPodmanSection />
-      <section></section>
+      <FeaturesCarousel />
       <LearnMoreSection />
       <ColoringBookSection />
     </Layout>
