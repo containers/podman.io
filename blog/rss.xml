@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Podman Blog</title>
-        <link>https://containers.github.io/blog</link>
+        <link>https://containers.github.io/websites-new/blog</link>
         <description>Podman Blog</description>
-        <lastBuildDate>Thu, 27 Apr 2023 19:24:48 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 27 Apr 2023 19:33:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
             <title><![CDATA[Blog README]]></title>
-            <link>https://containers.github.io/blog/README</link>
-            <guid>https://containers.github.io/blog/README</guid>
-            <pubDate>Thu, 27 Apr 2023 19:24:48 GMT</pubDate>
+            <link>https://containers.github.io/websites-new/blog/README</link>
+            <guid>https://containers.github.io/websites-new/blog/README</guid>
+            <pubDate>Thu, 27 Apr 2023 19:33:00 GMT</pubDate>
             <description><![CDATA[This content will be fetched from the Podman Wordpress Instance]]></description>
             <content:encoded><![CDATA[<p>This content will be fetched from the Podman Wordpress Instance</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="resources">Resources<a href="#resources" class="hash-link" aria-label="Direct link to Resources" title="Direct link to Resources">​</a></h2><ul><li>Use the <a href="https://wordpress.org/plugins/import-markdown/" target="_blank" rel="noopener noreferrer">import markdown plugin</a> to migrate blog content from podman.io</li><li><a href="https://www.wpgraphql.com/" target="_blank" rel="noopener noreferrer">Wp Graphl</a> for creating queries and endpoints</li><li>Potential ways to import the content on the docusaurus side:<ul><li><a href="https://www.npmjs.com/package/wordpress-to-docusaurus-plugin" target="_blank" rel="noopener noreferrer">wordpress-to-docusaurus</a></li><li><a href="https://www.npmjs.com/package/docusaurus-graphql-plugin" target="_blank" rel="noopener noreferrer">docusaurus-graphql-plugin</a></li></ul></li></ul>]]></content:encoded>
         </item>
