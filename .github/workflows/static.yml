@@ -24,8 +24,6 @@ concurrency:
 
 jobs:
   deploy:
-    permissions:
-      contents: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
