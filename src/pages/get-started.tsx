@@ -12,7 +12,7 @@ import { header, getHelp } from '@site/static/data/get-started';
 /* PAGE COMPONENTS */
 const GetHelpSection = () => {
   return (
-    <section className="my-12 bg-gradient-to-b from-purple-300 to-purple-700 dark:from-purple-500 dark:to-purple-900">
+    <section className=" mt-12 bg-gradient-to-b from-purple-300 to-purple-700 dark:from-purple-500 dark:to-purple-900 lg:mt-20">
       <SectionHeader title={getHelp.title} textColor="text-blue-700 dark:text-gray-900" />
       <div className="container">
         <header className="my-4 text-center text-blue-300 dark:text-blue-100">
@@ -66,9 +66,7 @@ const SearchPullListSection = () => {
   return (
     <section>
       <SectionHeader textColor="text-purple-700 dark:text-purple-500" title="Searching, pulling, and listing images" />
-      <div>
-        <CodeExampleSection />
-      </div>
+      <CodeExampleSection />
     </section>
   );
 };
