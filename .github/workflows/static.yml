@@ -3,6 +3,8 @@ name: Deploy static content to Pages
 
 on:
   # Runs on pushes targeting the default branch
+  pull_request:
+    branches: [main]
   push:
     branches: [main]
 
@@ -22,7 +24,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
