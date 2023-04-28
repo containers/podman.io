@@ -80,7 +80,7 @@ Are you sure you want to continue? [y/N] y
 
 ## SEE ALSO
 
-**[podman(1)](podman.1.md)**, **[podman-ps(1)](podman-ps.1.md)**
+**[podman(1)](podman.md)**, **[podman-ps(1)](podman-ps.md)**
 
 ## HISTORY
 

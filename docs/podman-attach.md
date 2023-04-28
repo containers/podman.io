@@ -1,4 +1,6 @@
-% podman-attach 1
+---
+label: Podman Attach
+---
 
 ## NAME
 
@@ -57,4 +59,4 @@ $ podman attach --no-stdin foobar
 
 ## SEE ALSO
 
-**[podman(1)](podman.1.md)**, **[podman-exec(1)](podman-exec.1.md)**, **[podman-run(1)](podman-run.1.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**
+**[podman(1)](podman.md)**, **[podman-exec(1)](podman-exec.md)**, **[podman-run(1)](podman-run.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**

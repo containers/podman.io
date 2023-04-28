@@ -118,11 +118,11 @@ with **--import, -i**._
 
 Restore a container into the pod _name_. The destination pod for this restore
 has to have the same namespaces shared as the pod this container was checkpointed
-from (see **[podman pod create --share](podman-pod-create.1.md#--share)**).\
+from (see **[podman pod create --share](podman-pod-create.md#--share)**).\
 _IMPORTANT: This OPTION is only available for a checkpoint image or in combination
 with **--import, -i**._
 
-This option requires at least CRIU 3.16.
+This option requires at least CRIU 36.
 
 #### **--print-stats**
 
@@ -153,7 +153,7 @@ The default is **false**.
 Replaces the ports that the _container_ publishes, as configured during the
 initial _container_ start, with a new set of port forwarding rules.
 
-For more details please see **[podman run --publish](podman-run.1.md#--publish)**.
+For more details please see **[podman run --publish](podman-run.md#--publish)**.
 
 #### **--tcp-established**
 
@@ -198,7 +198,7 @@ Start a container with the name "foobar-1". Create a checkpoint image "foobar-ch
 
 ## SEE ALSO
 
-**[podman(1)](podman.1.md)**, **[podman-container-checkpoint(1)](podman-container-checkpoint.1.md)**, **[podman-run(1)](podman-run.1.md)**, **[podman-pod-create(1)](podman-pod-create.1.md)**, **criu(8)**
+**[podman(1)](podman.md)**, **[podman-container-checkpoint(1)](podman-container-checkpoint.md)**, **[podman-run(1)](podman-run.md)**, **[podman-pod-create(1)](podman-pod-create.md)**, **criu(8)**
 
 ## HISTORY
 

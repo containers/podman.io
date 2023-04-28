@@ -61,7 +61,7 @@ Print the numeric IDs only (default _false_).
 $ podman history debian
 ID              CREATED       CREATED BY                                      SIZE       COMMENT
 b676ca55e4f2c   9 weeks ago   /bin/sh -c #(nop) CMD ["bash"]                  0 B
-<missing>       9 weeks ago   /bin/sh -c #(nop) ADD file:ebba725fb97cea4...   45.14 MB
+<missing>       9 weeks ago   /bin/sh -c #(nop) ADD file:ebba725fb97cea4...   454 MB
 ```
 
 ```
@@ -82,7 +82,7 @@ $ podman history --format json debian
 [
     {
 	"id": "b676ca55e4f2c0ce53d0636438c5372d3efeb5ae99b676fa5a5d1581bad46060",
-	"created": "2017-07-24T16:52:55.195062314Z",
+	"created": "2017-07-24T16:52:5595062314Z",
 	"createdBy": "/bin/sh -c #(nop)  CMD [\"bash\"]",
 	"size": 0,
 	"comment": ""
@@ -99,7 +99,7 @@ $ podman history --format json debian
 
 ## SEE ALSO
 
-**[podman(1)](podman.1.md)**
+**[podman(1)](podman.md)**
 
 ## HISTORY
 

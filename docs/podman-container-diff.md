@@ -49,7 +49,7 @@ $ podman container diff --format json container1 container2
 
 ## SEE ALSO
 
-**[podman(1)](podman.1.md)**, **[podman-container(1)](podman-container.1.md)**
+**[podman(1)](podman.md)**, **[podman-container(1)](podman-container.md)**
 
 ## HISTORY
 

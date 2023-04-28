@@ -110,7 +110,7 @@ Valid values could be:
 
 - Local directory – e.g. --build-context project2=../path/to/project2/src (This option is not available with the remote Podman client. On Podman machine setup (i.e macOS and Winows) path must exists on the machine VM)
 - HTTP URL to a tarball – e.g. --build-context src=https://example.org/releases/src.tar
-- Container image – specified with a container-image:// prefix, e.g. --build-context alpine=container-image://alpine:3.15, (also accepts docker://, docker-image://)
+- Container image – specified with a container-image:// prefix, e.g. --build-context alpine=container-image://alpine:35, (also accepts docker://, docker-image://)
 
 On the Containerfile side, reference the build context on all
 commands that accept the “from” parameter. Here’s how that might look:
@@ -234,7 +234,7 @@ omitted otherwise.
 @@option device
 
 Note: if the user only has access rights via a group, accessing the device
-from inside a rootless container will fail. The **[crun(1)](https://github.com/containers/crun/tree/main/crun.1.md)** runtime offers a
+from inside a rootless container will fail. The **[crun(1)](https://github.com/containers/crun/tree/main/crun.md)** runtime offers a
 workaround for this by adding the option
 **--annotation run.oci.keep_original_groups=1**.
 
@@ -329,7 +329,7 @@ Print usage statement
 
 #### **--hooks-dir**=_path_
 
-Each \*.json file in the path configures a hook for buildah build containers. For more details on the syntax of the JSON files and the semantics of hook injection. Buildah currently support both the 1.0.0 and 0.1.0 hook schemas, although the 0.1.0 schema is deprecated.
+Each \*.json file in the path configures a hook for buildah build containers. For more details on the syntax of the JSON files and the semantics of hook injection. Buildah currently support both the 1.0.0 and 0.0 hook schemas, although the 0.0 schema is deprecated.
 
 This option may be set multiple times; paths from later options have higher precedence.
 
@@ -996,7 +996,7 @@ Podman will download the Containerfile to a temporary location and then use
 it as the build context.
 
 ```
-$ podman build https://10.10.10.1/podman/Containerfile
+$ podman build https://1000/podman/Containerfile
 ```
 
 #### Building an image using a Git repository
@@ -1020,7 +1020,7 @@ archive will get used as the context of the build. Passing the
 inside the contents of the archive.
 
 ```
-$ podman build -f dev/Containerfile https://10.10.10.1/podman/context.tar.gz
+$ podman build -f dev/Containerfile https://1000/podman/context.tar.gz
 ```
 
 Note: supported compression formats are 'xz', 'bzip2', 'gzip' and 'identity'
@@ -1103,7 +1103,7 @@ useradd to stop creating the lastlog file.
 
 ## SEE ALSO
 
-**[podman(1)](podman.1.md)**, **[buildah(1)](https://github.com/containers/buildah/blob/main/docs/buildah.1.md)**, **[containers-certs.d(5)](https://github.com/containers/image/blob/main/docs/containers-certs.d.5.md)**, **[containers-registries.conf(5)](https://github.com/containers/image/blob/main/docs/containers-registries.conf.5.md)**, **[crun(1)](https://github.com/containers/crun/blob/main/crun.1.md)**, **[runc(8)](https://github.com/opencontainers/runc/blob/main/man/runc.8.md)**, **[useradd(8)](https://www.unix.com/man-page/redhat/8/useradd)**, **[podman-ps(1)](podman-ps.1.md)**, **[podman-rm(1)](podman-rm.1.md)**, **[Containerfile(5)](https://github.com/containers/common/blob/main/docs/Containerfile.5.md)**, **[containerignore(5)](https://github.com/containers/common/blob/main/docs/containerignore.5.md)**
+**[podman(1)](podman.md)**, **[buildah(1)](https://github.com/containers/buildah/blob/main/docs/buildah.1.md)**, **[containers-certs.d(5)](https://github.com/containers/image/blob/main/docs/containers-certs.d.5.md)**, **[containers-registries.conf(5)](https://github.com/containers/image/blob/main/docs/containers-registries.conf.5.md)**, **[crun(1)](https://github.com/containers/crun/blob/main/crun.1.md)**, **[runc(8)](https://github.com/opencontainers/runc/blob/main/man/runc.8.md)**, **[useradd(8)](https://www.unix.com/man-page/redhat/8/useradd)**, **[podman-ps(1)](podman-ps.1.md)**, **[podman-rm(1)](podman-rm.1.md)**, **[Containerfile(5)](https://github.com/containers/common/blob/main/docs/Containerfile.5.md)**, **[containerignore(5)](https://github.com/containers/common/blob/main/docs/containerignore.5.md)**
 
 ## HISTORY
 

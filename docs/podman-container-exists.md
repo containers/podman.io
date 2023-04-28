@@ -53,7 +53,7 @@ $ echo $?
 
 ## SEE ALSO
 
-**[podman(1)](podman.1.md)**
+**[podman(1)](podman.md)**
 
 ## HISTORY
 

@@ -76,7 +76,7 @@ Allow directories to be overwritten with non-directories and vice versa. By defa
 
 Podman has much stronger capabilities than just `podman cp` to achieve copying files between the host and containers.
 
-Using standard **[podman-mount(1)](podman-mount.1.md)** and **[podman-unmount(1)](podman-unmount.1.md)** takes advantage of the entire linux tool chain, rather than just cp.
+Using standard **[podman-mount(1)](podman-mount.md)** and **[podman-unmount(1)](podman-unmount.md)** takes advantage of the entire linux tool chain, rather than just cp.
 
 copying contents out of a container or into a container, can be achieved with a few simple commands. For example:
 
@@ -143,4 +143,4 @@ the cp command.
 
 ## SEE ALSO
 
-**[podman(1)](podman.1.md)**, **[podman-mount(1)](podman-mount.1.md)**, **[podman-unmount(1)](podman-unmount.1.md)**
+**[podman(1)](podman.md)**, **[podman-mount(1)](podman-mount.md)**, **[podman-unmount(1)](podman-unmount.md)**

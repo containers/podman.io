@@ -51,7 +51,7 @@ Write the image ID to the file.
 
 #### **--include-volumes**
 
-Include in the committed image any volumes added to the container by the **--volume** or **--mount** OPTIONS to the **[podman create](podman-create.1.md)** and **[podman run](podman-run.1.md)** commands.\
+Include in the committed image any volumes added to the container by the **--volume** or **--mount** OPTIONS to the **[podman create](podman-create.md)** and **[podman run](podman-run.md)** commands.\
 The default is **false**.
 
 #### **--message**, **-m**=_message_
@@ -128,7 +128,7 @@ $ podman commit -q --change LABEL=io.containers.capabilities=setuid,setgid epic_
 
 ## SEE ALSO
 
-**[podman(1)](podman.1.md)**, **[podman-run(1)](podman-run.1.md)**, **[podman-create(1)](podman-create.1.md)**
+**[podman(1)](podman.md)**, **[podman-run(1)](podman-run.md)**, **[podman-create(1)](podman-create.md)**
 
 ## HISTORY
 
