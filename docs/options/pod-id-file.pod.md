@@ -5,4 +5,4 @@
 
 #### **--pod-id-file**=_file_
 
-Read pod ID from the specified _file_ and <<subcommand>> the pod. Can be specified multiple times.
+Read pod ID from the specified _file_ and `<subcommand>` the pod. Can be specified multiple times.

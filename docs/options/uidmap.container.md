@@ -15,7 +15,7 @@ The _from_uid_ value is based upon the user running the command, either rootful 
 - rootful user: _container_uid_:_host_uid_:_amount_
 - rootless user: _container_uid_:_intermediate_uid_:_amount_
 
-When **podman <<subcommand>>** is called by a privileged user, the option **--uidmap**
+When **`podman <subcommand>`** is called by a privileged user, the option **--uidmap**
 works as a direct mapping between host UIDs and container UIDs.
 
 host UID -> container UID
@@ -30,7 +30,7 @@ If for example _amount_ is **4** the mapping would look like:
 | _from_uid_ + 2 | _container_uid_ + 2 |
 | _from_uid_ + 3 | _container_uid_ + 3 |
 
-When **podman <<subcommand>>** is called by an unprivileged user (i.e. running rootless),
+When **`podman <subcommand>`** is called by an unprivileged user (i.e. running rootless),
 the value _from_uid_ is interpreted as an "intermediate UID". In the rootless
 case, host UIDs are not mapped directly to container UIDs. Instead the mapping
 happens over two mapping steps:

@@ -5,5 +5,5 @@
 
 #### **--cidfile**=_file_
 
-Read container ID from the specified _file_ and <<subcommand>> the container.
+Read container ID from the specified _file_ and `<subcommand>` the container.
 Can be specified multiple times.
