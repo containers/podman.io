@@ -67,7 +67,7 @@ const config = {
           { to: 'get-started', label: 'Get Started', position: 'right' },
           { to: 'community', label: 'Community', position: 'right' },
           {
-            to: 'https://podman.io/blogs',
+            to: 'https://blog.podman.io',
             label: 'Development Blog',
             position: 'right',
           },
