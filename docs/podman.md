@@ -1,5 +1,3 @@
-% podman 1
-
 ## NAME
 
 podman - Simple management tool for pods, containers and images

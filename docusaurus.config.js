@@ -73,7 +73,7 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'README',
+            docId: 'podman',
             label: 'Documentation',
             position: 'right',
           },
