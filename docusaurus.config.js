@@ -111,7 +111,7 @@ const config = {
             items: [
               {
                 label: 'Blog',
-                href: 'https://podman.io/blogs/',
+                href: 'https://blog.podman.io/',
               },
               {
                 label: 'GitHub',
