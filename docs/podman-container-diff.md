@@ -1,21 +1,24 @@
 % podman-container-diff 1
 
 ## NAME
+
 podman\-container\-diff - Inspect changes on a container's filesystem
 
 ## SYNOPSIS
-**podman container diff** [*options*] *container* [*container*]
+
+**podman container diff** [*options*] _container_ [*container*]
 
 ## DESCRIPTION
+
 Displays changes on a container's filesystem. The container will be compared to its parent layer or the second argument when given.
 
 The output is prefixed with the following symbols:
 
-| Symbol | Description |
-|--------|-------------|
-| A | A file or directory was added.   |
-| D | A file or directory was deleted. |
-| C | A file or directory was changed. |
+| Symbol | Description                      |
+| ------ | -------------------------------- |
+| A      | A file or directory was added.   |
+| D      | A file or directory was deleted. |
+| C      | A file or directory was changed. |
 
 ## OPTIONS
 
@@ -45,7 +48,9 @@ $ podman container diff --format json container1 container2
 ```
 
 ## SEE ALSO
+
 **[podman(1)](podman.1.md)**, **[podman-container(1)](podman-container.1.md)**
 
 ## HISTORY
+
 July 2021, Originally compiled by Paul Holzinger <pholzing@redhat.com>

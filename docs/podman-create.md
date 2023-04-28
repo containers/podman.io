@@ -1,19 +1,21 @@
 % podman-create 1
 
 ## NAME
+
 podman\-create - Create a new container
 
 ## SYNOPSIS
-**podman create** [*options*] *image* [*command* [*arg* ...]]
 
-**podman container create** [*options*] *image* [*command* [*arg* ...]]
+**podman create** [*options*] _image_ [_command_ [*arg* ...]]
+
+**podman container create** [*options*] _image_ [_command_ [*arg* ...]]
 
 ## DESCRIPTION
 
 Creates a writable container layer over the specified image and prepares it for
 running the specified command. The container ID is then printed to STDOUT. This
 is similar to **podman run -d** except the container is never started. Use the
-**podman start** *container* command to start the container at any point.
+**podman start** _container_ command to start the container at any point.
 
 The initial status of the container created with **podman create** is 'created'.
 
@@ -23,18 +25,18 @@ man pages.
 
 ## IMAGE
 
-  The image is specified using transport:path format. If no transport is specified, the `docker` (container registry)
+The image is specified using transport:path format. If no transport is specified, the `docker` (container registry)
 transport will be used by default. For remote Podman, including Mac and Windows (excluding WSL2) machines, `docker` is the only allowed transport.
 
-  **dir:**_path_
-  An existing local directory _path_ storing the manifest, layer tarballs and signatures as individual files. This
+**dir:**_path_
+An existing local directory _path_ storing the manifest, layer tarballs and signatures as individual files. This
 is a non-standardized format, primarily useful for debugging or noninvasive container inspection.
 
     $ podman save --format docker-dir fedora -o /tmp/fedora
     $ podman create dir:/tmp/fedora echo hello
 
-  **docker://**_docker-reference_ (Default)
-  An image reference stored in  a remote container image registry. Example: "quay.io/podman/stable:latest".
+**docker://**_docker-reference_ (Default)
+An image reference stored in a remote container image registry. Example: "quay.io/podman/stable:latest".
 The reference can include a path to a specific registry; if it does not, the
 registries listed in registries.conf will be queried to find a matching image.
 By default, credentials from `podman login` (stored at
@@ -43,21 +45,21 @@ otherwise it falls back to using credentials in $HOME/.docker/config.json.
 
     $ podman create registry.fedoraproject.org/fedora:latest echo hello
 
-  **docker-archive:**_path_[**:**_docker-reference_]
+**docker-archive:**_path_[**:**_docker-reference_]
 An image stored in the `docker save` formatted file. _docker-reference_ is only used when creating such a
 file, and it must not contain a digest.
 
     $ podman save --format docker-archive fedora -o /tmp/fedora
     $ podman create docker-archive:/tmp/fedora echo hello
 
-  **docker-daemon:**_docker-reference_
-  An image in _docker-reference_ format stored in the docker daemon internal storage. The _docker-reference_ can also be an image ID (docker-daemon:algo:digest).
+**docker-daemon:**_docker-reference_
+An image in _docker-reference_ format stored in the docker daemon internal storage. The _docker-reference_ can also be an image ID (docker-daemon:algo:digest).
 
     $ sudo docker pull fedora
     $ sudo podman create docker-daemon:docker.io/library/fedora echo hello
 
-  **oci-archive:**_path_**:**_tag_
-  An image in a directory compliant with the "Open Container Image Layout Specification" at the specified _path_
+**oci-archive:**_path_**:**_tag_
+An image in a directory compliant with the "Open Container Image Layout Specification" at the specified _path_
 and specified with a _tag_.
 
     $ podman save --format oci-archive fedora -o /tmp/fedora
@@ -199,19 +201,19 @@ Print usage statement
 
 @@option init
 
-#### **--init-ctr**=*type*
+#### **--init-ctr**=_type_
 
 (Pods only).
 When using pods, create an init style container, which is run after the infra container is started
-but before regular pod containers are started.  Init containers are useful for running
+but before regular pod containers are started. Init containers are useful for running
 setup operations for the pod's applications.
 
-Valid values for `init-ctr` type are *always* or *once*.  The *always* value
-means the container will run with each and every `pod start`, whereas the *once*
+Valid values for `init-ctr` type are _always_ or _once_. The _always_ value
+means the container will run with each and every `pod start`, whereas the _once_
 value means the container will only run once when the pod is started and then the container is removed.
 
-Init containers are only run on pod `start`.  Restarting a pod will not execute any init
-containers should they be present.  Furthermore, init containers can only be created in a
+Init containers are only run on pod `start`. Restarting a pod will not execute any init
+containers should they be present. Furthermore, init containers can only be created in a
 pod when that pod is not running.
 
 @@option init-path
@@ -484,7 +486,7 @@ without either, containers need to be run with the --network=host flag.
 
 ## ENVIRONMENT
 
-Environment variables within containers can be set using multiple different options:  This section describes the precedence.
+Environment variables within containers can be set using multiple different options: This section describes the precedence.
 
 Precedence order (later entries override earlier entries):
 
@@ -494,8 +496,8 @@ Precedence order (later entries override earlier entries):
 - **--env-file** : Any environment variables specified via env-files. If multiple files specified, then they override each other in order of entry.
 - **--env** : Any environment variables specified will override previous settings.
 
-Create containers and set the environment ending with a __*__.
-The trailing __*__ glob functionality is only active when no value is specified:
+Create containers and set the environment ending with a **\***.
+The trailing **\*** glob functionality is only active when no value is specified:
 
 ```
 $ export ENV1=a
@@ -510,15 +512,15 @@ ENV*=b
 ## CONMON
 
 When Podman starts a container it actually executes the conmon program, which
-then executes the OCI Runtime.  Conmon is the container monitor.  It is a small
+then executes the OCI Runtime. Conmon is the container monitor. It is a small
 program whose job is to watch the primary process of the container, and if the
-container dies, save the exit code.  It also holds open the tty of the
+container dies, save the exit code. It also holds open the tty of the
 container, so that it can be attached to later. This is what allows Podman to
 run in detached mode (backgrounded), so Podman can exit but conmon continues to
-run.  Each container has their own instance of conmon. Conmon waits for the
+run. Each container has their own instance of conmon. Conmon waits for the
 container to exit, gathers and saves the exit code, and then launches a Podman
 process to complete the container cleanup, by shutting down the network and
-storage.   For more information on conmon, please reference the conmon(8) man
+storage. For more information on conmon, please reference the conmon(8) man
 page.
 
 ## FILES
@@ -529,9 +531,11 @@ page.
 NOTE: Use the environment variable `TMPDIR` to change the temporary storage location of downloaded container images. Podman defaults to use `/var/tmp`.
 
 ## SEE ALSO
+
 **[podman(1)](podman.1.md)**, **[podman-save(1)](podman-save.1.md)**, **[podman-ps(1)](podman-ps.1.md)**, **[podman-attach(1)](podman-attach.1.md)**, **[podman-pod-create(1)](podman-pod-create.1.md)**, **[podman-port(1)](podman-port.1.md)**, **[podman-start(1)](podman-start.1.md)**, **[podman-kill(1)](podman-kill.1.md)**, **[podman-stop(1)](podman-stop.1.md)**, **[podman-generate-systemd(1)](podman-generate-systemd.1.md)**, **[podman-rm(1)](podman-rm.1.md)**, **[subgid(5)](https://www.unix.com/man-page/linux/5/subgid)**, **[subuid(5)](https://www.unix.com/man-page/linux/5/subuid)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**, **[systemd.unit(5)](https://www.freedesktop.org/software/systemd/man/systemd.unit.html)**, **[setsebool(8)](https://man7.org/linux/man-pages/man8/setsebool.8.html)**, **[slirp4netns(1)](https://github.com/rootless-containers/slirp4netns/blob/master/slirp4netns.1.md)**, **[pasta(1)](https://passt.top/builds/latest/web/passt.1.html)**, **[fuse-overlayfs(1)](https://github.com/containers/fuse-overlayfs/blob/main/fuse-overlayfs.1.md)**, **proc(5)**, **[conmon(8)](https://github.com/containers/conmon/blob/main/docs/conmon.8.md)**, **personality(2)**
 
 ## HISTORY
+
 October 2017, converted from Docker documentation to Podman by Dan Walsh for Podman `<dwalsh@redhat.com>`
 
 November 2014, updated by Sven Dowideit `<SvenDowideit@home.org.au>`
@@ -541,4 +545,5 @@ September 2014, updated by Sven Dowideit `<SvenDowideit@home.org.au>`
 August 2014, updated by Sven Dowideit `<SvenDowideit@home.org.au>`
 
 ## FOOTNOTES
+
 <a name="Footnote1">1</a>: The Podman project is committed to inclusivity, a core value of open source. The `master` and `slave` mount propagation terminology used here is problematic and divisive, and should be changed. However, these terms are currently used within the Linux kernel and must be used as-is at this time. When the kernel maintainers rectify this usage, Podman will follow suit immediately.

@@ -1,12 +1,15 @@
 % podman-container-clone 1
 
 ## NAME
+
 podman\-container\-clone - Creates a copy of an existing container
 
 ## SYNOPSIS
-**podman container clone** [*options*] *container* *name* *image*
+
+**podman container clone** [*options*] _container_ _name_ _image_
 
 ## DESCRIPTION
+
 **podman container clone** creates a copy of a container, recreating the original with an identical configuration. This command takes three arguments: the first being the container ID or name to clone, the second argument in this command can change the name of the clone from the default of $ORIGINAL_NAME-clone, and the third is a new image to use in the cloned container.
 
 ## OPTIONS
@@ -80,10 +83,10 @@ the swap value.
 
 Set a custom name for the cloned container. The default if not specified is of the syntax: **<ORIGINAL_NAME>-clone**
 
-#### **--pod**=*name*
+#### **--pod**=_name_
 
-Clone the container in an existing pod.  It is helpful to move a container to an
-existing pod.  The container will join the pod shared namespaces, losing its configuration
+Clone the container in an existing pod. It is helpful to move a container to an
+existing pod. The container will join the pod shared namespaces, losing its configuration
 that conflicts with the shared namespaces.
 
 #### **--run**
@@ -92,6 +95,7 @@ When set to true, this flag runs the newly created container after the
 clone process has completed, this specifies a detached running mode.
 
 ## EXAMPLES
+
 ```
 # podman container clone d0cf1f782e2ed67e8c0050ff92df865a039186237a4df24d7acba5b1fa8cc6e7
 6b2c73ff8a1982828c9ae2092954bcd59836a131960f7e05221af9df5939c584
@@ -118,8 +122,11 @@ Writing manifest to image destination
 Storing signatures
 5a9b7851013d326aa4ac4565726765901b3ecc01fcbc0f237bc7fd95588a24f9
 ```
+
 ## SEE ALSO
+
 **[podman-create(1)](podman-create.1.md)**, **[cgroups(7)](https://man7.org/linux/man-pages/man7/cgroups.7.html)**
 
 ## HISTORY
+
 January 2022, Originally written by Charlie Doern <cdoern@redhat.com>

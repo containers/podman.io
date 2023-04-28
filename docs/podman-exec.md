@@ -1,14 +1,17 @@
 % podman-exec 1
 
 ## NAME
+
 podman\-exec - Execute a command in a running container
 
 ## SYNOPSIS
-**podman exec** [*options*] *container* [*command* [*arg* ...]]
 
-**podman container exec** [*options*] *container* [*command* [*arg* ...]]
+**podman exec** [*options*] _container_ [_command_ [*arg* ...]]
+
+**podman container exec** [*options*] _container_ [_command_ [*arg* ...]]
 
 ## DESCRIPTION
+
 **podman exec** executes a command in a running container.
 
 ## OPTIONS
@@ -39,28 +42,28 @@ Start the exec session, but do not attach to it. The command will run in the bac
 
 ## Exit Status
 
-The exit code from `podman exec` gives information about why the command within the container failed to run or why it exited.  When `podman exec` exits with a
+The exit code from `podman exec` gives information about why the command within the container failed to run or why it exited. When `podman exec` exits with a
 non-zero code, the exit codes follow the `chroot` standard, see below:
 
-  **125** The error is with Podman itself
+**125** The error is with Podman itself
 
     $ podman exec --foo ctrID /bin/sh; echo $?
     Error: unknown flag: --foo
     125
 
-  **126** The _contained command_ cannot be invoked
+**126** The _contained command_ cannot be invoked
 
     $ podman exec ctrID /etc; echo $?
     Error: container_linux.go:346: starting container process caused "exec: \"/etc\": permission denied": OCI runtime error
     126
 
-  **127** The _contained command_ cannot be found
+**127** The _contained command_ cannot be found
 
     $ podman exec ctrID foo; echo $?
     Error: container_linux.go:346: starting container process caused "exec: \"foo\": executable file not found in $PATH": OCI runtime error
     127
 
-  **Exit code** The _contained command_ exit code
+**Exit code** The _contained command_ exit code
 
     $ podman exec ctrID /bin/sh -c 'exit 3'; echo $?
     3
@@ -74,7 +77,9 @@ $ podman exec --user root ctrID ls
 ```
 
 ## SEE ALSO
+
 **[podman(1)](podman.1.md)**, **[podman-run(1)](podman-run.1.md)**
 
 ## HISTORY
+
 December 2017, Originally compiled by Brent Baude<bbaude@redhat.com>

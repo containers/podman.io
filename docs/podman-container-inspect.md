@@ -1,10 +1,12 @@
 % podman-container-inspect 1
 
 ## NAME
+
 podman\-container\-inspect - Display a container's configuration
 
 ## SYNOPSIS
-**podman container inspect** [*options*] *container* [*container* ...]
+
+**podman container inspect** [*options*] _container_ [*container* ...]
 
 ## DESCRIPTION
 
@@ -13,7 +15,7 @@ all results in a JSON array. If a format is specified, the given template will b
 
 ## OPTIONS
 
-#### **--format**, **-f**=*format*
+#### **--format**, **-f**=_format_
 
 Format the output using the given Go template.
 The keys of the returned JSON can be used as the values for the --format flag (see examples below).
@@ -21,7 +23,7 @@ The keys of the returned JSON can be used as the values for the --format flag (s
 Valid placeholders for the Go template are listed below:
 
 | **Placeholder**      | **Description**                                    |
-| -----------------    | ------------------                                 |
+| -------------------- | -------------------------------------------------- |
 | .AppArmorProfile     | AppArmor profile (string)                          |
 | .Args                | Command-line arguments (array of strings)          |
 | .BoundingCaps        | Bounding capability set (array of strings)         |
@@ -68,7 +70,6 @@ Valid placeholders for the Go template are listed below:
 #### **--size**, **-s**
 
 In addition to normal output, display the total file size if the type is a container.
-
 
 ## EXAMPLE
 
@@ -319,7 +320,9 @@ $ podman container inspect --latest --format {{.EffectiveCaps}}
 ```
 
 ## SEE ALSO
+
 **[podman(1)](podman.1.md)**, **[podman-container(1)](podman-container.1.md)**, **[podman-inspect(1)](podman-inspect.1.md)**
 
 ## HISTORY
+
 Sep 2021, Originally compiled by Dan Walsh <dwalsh@redhat.com>
