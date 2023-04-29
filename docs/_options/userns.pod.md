@@ -20,11 +20,11 @@ Valid _mode_ values are:
 
 - _auto[:__OPTIONS,...__]_: automatically create a namespace. It is possible to specify these options to `auto`:
 
-- _gidmapping=__CONTAINER_GID:HOST_GID:SIZE_ to force a GID mapping to be present in the user namespace.
+- _gidmapping=\_\_CONTAINER_GID:HOST_GID:SIZE_ to force a GID mapping to be present in the user namespace.
 
-- _size=__SIZE_: to specify an explicit size for the automatic user namespace. e.g. `--userns=auto:size=8192`. If `size` is not specified, `auto` will estimate a size for the user namespace.
+- _size=\_\_SIZE_: to specify an explicit size for the automatic user namespace. e.g. `--userns=auto:size=8192`. If `size` is not specified, `auto` will estimate a size for the user namespace.
 
-- _uidmapping=__CONTAINER_UID:HOST_UID:SIZE_ to force a UID mapping to be present in the user namespace.
+- _uidmapping=\_\_CONTAINER_UID:HOST_UID:SIZE_ to force a UID mapping to be present in the user namespace.
 
 - _host_: run in the user namespace of the caller. The processes running in the container will have the same privileges on the host as any other process launched by the calling user (default).
 
