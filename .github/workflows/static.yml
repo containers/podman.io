@@ -45,7 +45,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Install dependencies
-        run: yarn install --immutable-cache
+        run: yarn install
       - name: Build
         run: yarn build
       - name: Setup Pages
