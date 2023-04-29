@@ -22,7 +22,7 @@ const config = {
     locales: ['en'],
   },
   plugins: [
-    '@docusaurus/theme-live-codeblock',
+    require.resolve('@docusaurus/theme-live-codeblock'),
     async function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
