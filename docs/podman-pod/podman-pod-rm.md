@@ -78,7 +78,7 @@ podman pod rm --pod-id-file /path/to/id/file
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-pod(1)](podman-pod.md)**
+**[podman(1)](podman.md)**, **[podman-pod(1)](podman-pod/podman-pod.md)**
 
 ## HISTORY
 

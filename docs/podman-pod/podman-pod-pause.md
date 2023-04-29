@@ -38,7 +38,7 @@ podman pod pause 860a4b23
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-pod(1)](podman-pod.md)**, **[podman-pod-unpause(1)](podman-pod-unpause.md)**, **[podman-pause(1)](podman-pause.md)**
+**[podman(1)](podman.md)**, **[podman-pod(1)](podman-pod/podman-pod.md)**, **[podman-pod-unpause(1)](podman-pod/podman-pod-unpause.md)**, **[podman-pause(1)](podman-pause.md)**
 
 ## HISTORY
 

@@ -57,7 +57,7 @@ podman pod start --pod-id-file /path/to/id/file
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-pod(1)](podman-pod.md)**, **[podman-pod-stop(1)](podman-pod-stop.md)**
+**[podman(1)](podman.md)**, **[podman-pod(1)](podman-pod/podman-pod.md)**, **[podman-pod-stop(1)](podman-pod/podman-pod-stop.md)**
 
 ## HISTORY
 

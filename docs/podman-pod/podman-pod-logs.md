@@ -76,4 +76,4 @@ podman pod logs --until 30m myserver-pod-1
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-pod(1)](podman-pod.md)**, **[podman-pod-rm(1)](podman-pod-rm.md)**, **[podman-logs(1)](podman-logs.md)**
+**[podman(1)](podman.md)**, **[podman-pod(1)](podman-pod/podman-pod.md)**, **[podman-pod-rm(1)](podman-pod/podman-pod-rm.md)**, **[podman-logs(1)](podman-logs.md)**

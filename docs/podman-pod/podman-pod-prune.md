@@ -33,7 +33,7 @@ $ sudo podman pod prune
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-pod(1)](podman-pod.md)**
+**[podman(1)](podman.md)**, **[podman-pod(1)](podman-pod/podman-pod.md)**
 
 ## HISTORY
 
