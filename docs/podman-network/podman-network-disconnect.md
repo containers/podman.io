@@ -30,7 +30,7 @@ podman network disconnect test web
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-network(1)](podman-network.md)**, **[podman-network-connect(1)](podman-network-connect.md)**
+**[podman(1)](podman.md)**, **[podman-network(1)](podman-network/podman-network.md)**, **[podman-network-connect(1)](podman-network/podman-network-connect.md)**
 
 ## HISTORY
 

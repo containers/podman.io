@@ -56,7 +56,7 @@ podman network connect --ip 10.893 test web
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-network(1)](podman-network.md)**, **[podman-network-inspect(1)](podman-network-inspect.md)**, **[podman-network-disconnect(1)](podman-network-disconnect.md)**
+**[podman(1)](podman.md)**, **[podman-network(1)](podman-network/podman-network.md)**, **[podman-network-inspect(1)](podman-network/podman-network-inspect.md)**, **[podman-network-disconnect(1)](podman-network/podman-network-disconnect.md)**
 
 ## HISTORY
 

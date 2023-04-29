@@ -53,7 +53,7 @@ fe7e8eca56f844ec33af10f0aa3b31b44a172776e3277b9550a623ed5d96e72b
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-network(1)](podman-network.md)**
+**[podman(1)](podman.md)**, **[podman-network(1)](podman-network/podman-network.md)**
 
 ## HISTORY
 
