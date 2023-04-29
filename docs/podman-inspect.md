@@ -16,11 +16,11 @@ So, if a container has the same name as an image, then the container JSON will b
 If a format is specified, the given template will be executed for each result.
 
 For more inspection options, see also
-[podman-container-inspect(1)](podman-container-inspect.md),
-[podman-image-inspect(1)](podman-image-inspect.md),
-[podman-network-inspect(1)](podman-network-inspect.md),
-[podman-pod-inspect(1)](podman-pod-inspect.md), and
-[podman-volume-inspect(1)](podman-volume-inspect.md).
+[podman-container-inspect(1)](podman-container/podman-container-inspect.md),
+[podman-image-inspect(1)](podman-image/podman-image-inspect.md),
+[podman-network-inspect(1)](podman-network/podman-network-inspect.md),
+[podman-pod-inspect(1)](podman-pod/podman-pod-inspect.md), and
+[podman-volume-inspect(1)](podman-volume/podman-volume-inspect.md).
 
 ## OPTIONS
 
@@ -160,7 +160,7 @@ myNetwork
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-container-inspect(1)](podman-container-inspect.md)**, **[podman-image-inspect(1)](podman-image-inspect.md)**, **[podman-network-inspect(1)](podman-network-inspect.md)**, **[podman-pod-inspect(1)](podman-pod-inspect.md)**, **[podman-volume-inspect(1)](podman-volume-inspect.md)**
+**[podman(1)](podman.md)**, **[podman-container-inspect(1)](podman-container/podman-container-inspect.md)**, **[podman-image-inspect(1)](podman-image/podman-image-inspect.md)**, **[podman-network-inspect(1)](podman-network/podman-network-inspect.md)**, **[podman-pod-inspect(1)](podman-pod/podman-pod-inspect.md)**, **[podman-volume-inspect(1)](podman-volume/podman-volume-inspect.md)**
 
 ## HISTORY
 
