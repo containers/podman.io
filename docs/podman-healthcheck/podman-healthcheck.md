@@ -14,9 +14,9 @@ podman healthcheck is a set of subcommands that manage container healthchecks
 
 ## SUBCOMMANDS
 
-| Command | Man Page                                               | Description                 |
-| ------- | ------------------------------------------------------ | --------------------------- |
-| run     | [podman-healthcheck-run(1)](podman-healthcheck-run.md) | Run a container healthcheck |
+| Command | Man Page                                                                  | Description                 |
+| ------- | ------------------------------------------------------------------------- | --------------------------- |
+| run     | [podman-healthcheck-run(1)](podman-healthcheck/podman-healthcheck-run.md) | Run a container healthcheck |
 
 ## SEE ALSO
 

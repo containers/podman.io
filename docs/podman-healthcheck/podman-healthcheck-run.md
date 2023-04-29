@@ -37,7 +37,7 @@ $ podman healthcheck run mywebapp
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-healthcheck(1)](podman-healthcheck.md)**
+**[podman(1)](podman.md)**, **[podman-healthcheck(1)](podman-healthcheck/podman-healthcheck.md)**
 
 ## HISTORY
 
