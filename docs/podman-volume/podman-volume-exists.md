@@ -42,7 +42,7 @@ $
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-volume(1)](podman-volume.md)**
+**[podman(1)](podman.md)**, **[podman-volume(1)](podman-volume/podman-volume.md)**
 
 ## HISTORY
 

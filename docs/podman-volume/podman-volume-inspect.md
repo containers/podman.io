@@ -93,11 +93,14 @@ $ podman volume inspect --all
 $ podman volume inspect --format "{{.Driver}} {{.Scope}}" myvol
 local local
 
-```
-
 ## SEE ALSO
-**[podman(1)](podman.md)**, **[podman-volume(1)](podman-volume.md)**, **[podman-inspect(1)](podman-inspect.md)**
+
+**[podman(1)](podman.md)**, **[podman-volume(1)](podman-volume/podman-volume.md)**, **[podman-inspect(1)](podman-inspect.md)**
 
 ## HISTORY
+
 November 2018, Originally compiled by Urvashi Mohnani <umohnani@redhat.com>
+
+```
+
 ```

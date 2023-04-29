@@ -36,4 +36,4 @@ podman volume unmount volumeID1 volumeID2 volumeID3
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-volume(1)](podman-volume.md)**, **[podman-volume-mount(1)](podman-volume-mount.md)**
+**[podman(1)](podman.md)**, **[podman-volume(1)](podman-volume/podman-volume.md)**, **[podman-volume-mount(1)](podman-volume/podman-volume-mount.md)**
