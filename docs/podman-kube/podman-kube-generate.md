@@ -242,7 +242,7 @@ status:
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-container(1)](podman-container.md)**, **[podman-pod(1)](podman-pod.md)**, **[podman-kube-play(1)](podman-kube-play.md)**, **[podman-kube-down(1)](podman-kube-down.md)**
+**[podman(1)](podman.md)**, **[podman-container(1)](podman-container/podman-container.md)**, **[podman-pod(1)](podman-pod/podman-pod.md)**, **[podman-kube-play(1)](podman-kube/podman-kube-play.md)**, **[podman-kube-down(1)](podman-kube/podman-kube-down.md)**
 
 ## HISTORY
 

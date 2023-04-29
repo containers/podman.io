@@ -77,4 +77,4 @@ or altered since it was used to create the pods and containers.
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-kube(1)](podman-kube.md)**, **[podman-kube-play(1)](podman-kube-play.md)**, **[podman-kube-generate(1)](podman-kube-generate.md)**, **[containers-certs.d(5)](https://github.com/containers/image/blob/main/docs/containers-certs.d.5.md)**
+**[podman(1)](podman.md)**, **[podman-kube(1)](podman-kube/podman-kube.md)**, **[podman-kube-play(1)](podman-kube/podman-kube-play.md)**, **[podman-kube-generate(1)](podman-kube/podman-kube-generate.md)**, **[containers-certs.d(5)](https://github.com/containers/image/blob/main/docs/containers-certs.d.5.md)**
