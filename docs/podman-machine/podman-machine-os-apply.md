@@ -38,7 +38,7 @@ $ podman machine os apply quay.io/podman_next podman-machine-defualt
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-machine(1)](podman-machine.md)**, **[podman-machine-os(1)](podman-machine-os.md)**
+**[podman(1)](podman.md)**, **[podman-machine(1)](podman-machine/podman-machine.md)**, **[podman-machine-os(1)](podman-machine/podman-machine-os.md)**
 
 ## HISTORY
 
