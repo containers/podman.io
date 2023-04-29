@@ -67,13 +67,13 @@ const config = {
           { to: 'get-started', label: 'Get Started', position: 'right' },
           { to: 'community', label: 'Community', position: 'right' },
           {
-            to: 'https://podman.io/blogs',
+            to: 'https://blog.podman.io',
             label: 'Development Blog',
             position: 'right',
           },
           {
             type: 'doc',
-            docId: 'README',
+            docId: 'podman',
             label: 'Documentation',
             position: 'right',
           },
@@ -111,7 +111,7 @@ const config = {
             items: [
               {
                 label: 'Blog',
-                href: 'https://podman.io/blogs/',
+                href: 'https://blog.podman.io/',
               },
               {
                 label: 'GitHub',

@@ -1,0 +1,63 @@
+% podman-volume-rm 1
+
+## NAME
+
+podman\-volume\-rm - Remove one or more volumes
+
+## SYNOPSIS
+
+**podman volume rm** [*options*] _volume_ [...]
+
+## DESCRIPTION
+
+Removes one or more volumes. Only volumes that are not being used will be removed.
+If a volume is being used by a container, an error will be returned unless the **--force**
+flag is being used. To remove all volumes, use the **--all** flag.
+Volumes can be removed individually by providing their full name or a unique partial name.
+
+## OPTIONS
+
+#### **--all**, **-a**
+
+Remove all volumes.
+
+#### **--force**, **-f**
+
+Remove a volume by force.
+If it is being used by containers, the containers will be removed first.
+
+#### **--help**
+
+Print usage statement
+
+#### **--time**, **-t**=_seconds_
+
+Seconds to wait before forcibly stopping running containers that are using the specified volume. The --force option must be specified to use the --time option.
+
+## EXAMPLES
+
+```
+$ podman volume rm myvol1 myvol2
+
+$ podman volume rm --all
+
+$ podman volume rm --force myvol
+```
+
+## Exit Status
+
+**0** All specified volumes removed
+
+**1** One of the specified volumes did not exist, and no other failures
+
+**2** One of the specified volumes is being used by a container
+
+**125** The command fails for any other reason
+
+## SEE ALSO
+
+**[podman(1)](podman.md)**, **[podman-volume(1)](podman-volume/podman-volume.md)**
+
+## HISTORY
+
+November 2018, Originally compiled by Urvashi Mohnani <umohnani@redhat.com>
