@@ -321,7 +321,7 @@ $ podman container inspect --latest --format {{.EffectiveCaps}}
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-container(1)](podman-container.md)**, **[podman-inspect(1)](podman-inspect.md)**
+**[podman(1)](podman.md)**, **[podman-container(1)](podman-container/podman-container.md)**, **[podman-inspect(1)](podman-inspect.md)**
 
 ## HISTORY
 

@@ -118,7 +118,7 @@ with **--import, -i**._
 
 Restore a container into the pod _name_. The destination pod for this restore
 has to have the same namespaces shared as the pod this container was checkpointed
-from (see **[podman pod create --share](podman-pod-create.md#--share)**).\
+from (see **[podman pod create --share](podman-pod/podman-pod-create.md#--share)**).\
 _IMPORTANT: This OPTION is only available for a checkpoint image or in combination
 with **--import, -i**._
 
@@ -198,7 +198,7 @@ Start a container with the name "foobar-1". Create a checkpoint image "foobar-ch
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-container-checkpoint(1)](podman-container-checkpoint.md)**, **[podman-run(1)](podman-run.md)**, **[podman-pod-create(1)](podman-pod-create.md)**, **criu(8)**
+**[podman(1)](podman.md)**, **[podman-container-checkpoint(1)](podman-container/podman-container-checkpoint.md)**, **[podman-run(1)](podman-run.md)**, **[podman-pod-create(1)](podman-pod/podman-pod-create.md)**, **criu(8)**
 
 ## HISTORY
 
