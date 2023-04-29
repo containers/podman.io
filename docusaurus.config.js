@@ -25,7 +25,7 @@ const config = {
     require.resolve('@docusaurus/theme-live-codeblock'),
     async function tailwindPlugin() {
       return {
-        name: require.resolve('docusaurus-tailwindcss'),
+        name: 'docusaurus-tailwindcss',
         configurePostCss(postcssOptions) {
           postcssOptions.plugins.push(require('tailwindcss'));
           postcssOptions.plugins.push(require('autoprefixer'));
