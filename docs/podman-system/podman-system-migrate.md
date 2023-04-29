@@ -37,7 +37,7 @@ There are no guarantees that the containers will continue to work under the new 
 
 ## SEE ALSO
 
-**[podman(1)](podman.1.md)**, **[podman-system(1)](podman-system.1.md)**, **usermod(8)**
+**[podman(1)](podman.md)**, **[podman-system(1)](podman-system/podman-system.md)**, **usermod(8)**
 
 ## HISTORY
 

@@ -59,7 +59,7 @@ podman system service --time 5
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-system-connection(1)](podman-system-connection.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**
+**[podman(1)](podman.md)**, **[podman-system-connection(1)](podman-system-connection/podman-system-connection.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**
 
 ## HISTORY
 

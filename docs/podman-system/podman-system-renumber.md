@@ -24,7 +24,7 @@ If possible, avoid calling **podman system renumber** while there are other Podm
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-system(1)](podman-system.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**
+**[podman(1)](podman.md)**, **[podman-system(1)](podman-system/podman-system.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**
 
 ## HISTORY
 
