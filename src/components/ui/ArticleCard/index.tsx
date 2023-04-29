@@ -43,7 +43,7 @@ function ArticleCard(props: ArticleCardProps) {
             />
           </div>
           <div className="max-w-sm items-center gap-2 self-center">
-            {/* {parse(props.subtitle)} */}
+            {parse(props.subtitle)}
             <p className="text-purple-700">
               By: <a href={props.author_link}>{props.display_name}</a>
             </p>
@@ -63,7 +63,7 @@ function ArticleCard(props: ArticleCardProps) {
             </a>
           </h3>
           {/* TODO: Set a max length and add ... to end */}
-          {/* {parse(props.subtitle)} */}
+          {parse(props.subtitle)}
           <PublishDate date={props.date} styles="row-start-1 col-start-1 z-10" />
           <img src={props.imgSrc} className="object-fit col-start-1 row-start-1 rounded-sm" />
           <p className="text-purple-700">
