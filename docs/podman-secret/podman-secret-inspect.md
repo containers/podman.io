@@ -50,7 +50,7 @@ $ podman secret inspect --format "{{.Name} {{.Scope}}" mysecret
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-secret(1)](podman-secret.md)**
+**[podman(1)](podman.md)**, **[podman-secret(1)](podman-secret/podman-secret.md)**
 
 ## HISTORY
 
