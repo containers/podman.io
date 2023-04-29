@@ -67,4 +67,4 @@ podman unmount --all
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-mount(1)](podman-mount.md)**, **[podman-image-mount(1)](podman-image-mount.md)**
+**[podman(1)](podman.md)**, **[podman-mount(1)](podman-mount.md)**, **[podman-image-mount(1)](podman-image/podman-image-mount.md)**
