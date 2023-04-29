@@ -31,9 +31,12 @@ const RenderLabelledCode = (props: CodeProps) => {
   );
 };
 
-const DesktopCodeBlock = ({ className }: string) => {
+interface DeskProps {
+  className: string;
+}
+const DesktopCodeBlock = (props: DeskProps) => {
   return (
-    <div className={`container hidden md:block ${className}`}>
+    <div className={`container hidden md:block ${props.className}`}>
       <CodeBlock language="bash" showLineNumbers>
         {searchExample.command}
         {searchExample.code}
