@@ -34,6 +34,19 @@
   @apply text-white dark:text-gray-50;
 }
 
+.navbar__title {
+  font-family: Montserrat;
+  font-weight: 500 !important;
+  font-size: 200%;
+  padding: 8px 0px;
+  letter-spacing: -1.5px !important;
+  font-kerning: normal !important;
+}
+
+.navbar__logo {
+  height: 40px;
+}
+
 /* -------------- */
 /* Font Configuration */
 /* ------------- */

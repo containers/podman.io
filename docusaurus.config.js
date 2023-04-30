@@ -57,7 +57,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Podman',
+        title: 'podman',
         logo: {
           alt: 'Podman Logo',
           src: 'logos/optimized/podman-3-logo-95w-90h.webp',
