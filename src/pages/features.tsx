@@ -139,7 +139,7 @@ const DeployToKubernetesUISection = () => {
 
 const PodmanCLISection = () => {
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-900  pb-5">
+    <section className="bg-gradient-to-b from-gray-50 to-gray-100  dark:from-gray-700/25 dark:to-gray-900  pb-5">
       <div className="container flex justify-center align-center">
         <div className="flex-row content-center">
          <h2 className="text-white dark:text-white bg-blue-700 pl-5 pr-5 mb-5 content-center">Podman Command-Line</h2>
