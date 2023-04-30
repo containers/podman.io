@@ -35,10 +35,10 @@ function GetToKnowPodmanSection() {
 
 const PodmanDesktopSection = () => {
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 pb-5">
+    <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:bg-gray-900 dark:from-gray-700/25 dark:to-gray-900 pb-5">
       <div className="container flex justify-center align-center">
         <div className="flex-row content-center">
-         <h2 className="text-white bg-blue-500 pl-5 pr-5 mb-5 content-center">Podman Desktop</h2>
+         <h2 className="text-white dark:text-white bg-blue-500 dark:bg-blue-700 pl-5 pr-5 mb-5 content-center">Podman Desktop</h2>
         </div>
       </div>
       <div className="container grid gap-2 lg:grid-cols-3 mb-4">
@@ -55,14 +55,14 @@ const PodmanDesktopSection = () => {
 
 const ManageContainersUISection = () => {
   return (
-    <section className="bg-gradient-to-b from-purple-100 to-purple-300 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 pb-5">    >
+    <section className="bg-gradient-to-b from-purple-100 to-purple-300 dark:from-purple-900 dark:to-blue-900 pb-5">
       <div className="container grid gap-4 md:grid-cols-3 justify-center align-center">
-        <div className="my-8 rounded-md bg-white shadow-md h-fit">
-          <div className="flex flex-col items-center justify-center p-8">
+        <div className="my-8 rounded-md bg-white/50 shadow-md h-fit">
+          <div className="flex flex-col items-center justify-center p-8 dark:text-black">
             <div>
-              <h3 className="mb-5">Manage containers (not just Podman.)</h3>
-              <p className="mb-3">Podman Desktop allows you to list, view, and manage containers from multiple supported container engines* in a single unified view.</p>
-              <p className="mb-3">Gain easy access to a shell inside the container, logs, and basic controls.</p>
+              <h3 className="mb-5 dark:text-black">Manage containers (not just Podman.)</h3>
+              <p className="mb-3 dark:text-black">Podman Desktop allows you to list, view, and manage containers from multiple supported container engines* in a single unified view.</p>
+              <p className="mb-3 dark:text-black">Gain easy access to a shell inside the container, logs, and basic controls.</p>
               <em className="block mt-10">* Supported engines and orchestrators include Podman, Docker, Lima, kind, Red Hat OpenShift, Red Hat OpenShift Developer Sandbox.</em>
             </div>
           </div>
@@ -77,17 +77,17 @@ const ManageContainersUISection = () => {
 
 const BuildImagesUISection = () => {
   return (
-    <section className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 pb-5">    >
+    <section className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-purple-900 pb-5">
     <div className="container grid gap-4 md:grid-cols-3 justify-center align-center">
       <div className="col-span-2 w-full">
             <img className="w-full" src="images/raw/podman-desktop-ui-679w-592h.png" />
       </div>
-      <div className="my-8 rounded-md bg-white shadow-md h-fit">
+      <div className="my-8 rounded-md bg-white/50 shadow-md h-fit">
         <div className="flex flex-col items-center justify-center p-8">
           <div>
-            <h3 className="mb-5">Build, pull, and push images.</h3>
-            <p>Build containers from a Dockerfile / Containerfile, or pull images from remote repositories to run.</p>
-            <p>Manage accounts for and push your images to multiple container registries.</p>
+            <h3 className="mb-5 dark:text-black">Build, pull, and push images.</h3>
+            <p className="dark:text-black">Build containers from a Dockerfile / Containerfile, or pull images from remote repositories to run.</p>
+            <p className="dark:text-black">Manage accounts for and push your images to multiple container registries.</p>
           </div>
         </div>
       </div>
@@ -98,14 +98,14 @@ const BuildImagesUISection = () => {
 
 const CreatePodsUISection = () => {
   return (
-    <section className="bg-gradient-to-b from-blue-100 to-blue-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 pb-5">    >
+    <section className="bg-gradient-to-b from-blue-100 to-blue-50 dark:from-gray-700 dark:to-gray-900 pb-5">
       <div className="container grid gap-4 md:grid-cols-3 justify-center align-center">
-        <div className="my-8 rounded-md bg-white shadow-md h-fit">
+        <div className="my-8 rounded-md bg-white/50 shadow-md h-fit">
           <div className="flex flex-col items-center justify-center p-8">
         <div>
-          <h3 className="mb-5">Create pods.</h3>
-          <p>Create pods by selecting containers to run together. View unified logs for your pods and inspect the containers inside each.</p>
-          <p>Play Kubernetes YAML locally, without Kubernetes, and generate Kubernetes YAML from Pods.</p>
+          <h3 className="mb-5 dark:text-black">Create pods.</h3>
+          <p className="dark:text-black">Create pods by selecting containers to run together. View unified logs for your pods and inspect the containers inside each.</p>
+          <p className="dark:text-black">Play Kubernetes YAML locally, without Kubernetes, and generate Kubernetes YAML from Pods.</p>
       </div>
     </div>
   </div>
@@ -119,16 +119,16 @@ const CreatePodsUISection = () => {
 
 const DeployToKubernetesUISection = () => {
   return (
-    <section className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 pb-5">    >
+    <section className="bg-gradient-to-b from-white to-gray-100 dark:from-blue-900 dark:to-gray-900 pb-5">
       <div className="container grid gap-4 md:grid-cols-3 justify-center align-center">
         <div className="col-span-2 w-full">
           <img className="w-full" src="images/raw/podman-desktop-ui-679w-592h.png" />
         </div>
-        <div className="my-8 rounded-md bg-white shadow-md h-fit">
+        <div className="my-8 rounded-md bg-white/50 shadow-md h-fit">
           <div className="flex flex-col items-center justify-center p-8">
             <div>
-             <h3 className="mb-5">Deploy to Kubernetes.</h3>
-             <p>Deploy pods from Podman Desktop to local or remote Kubernetes contexts using automatically-generated YAML config.</p>
+             <h3 className="mb-5 dark:text-black">Deploy to Kubernetes.</h3>
+             <p className="dark:text-black">Deploy pods from Podman Desktop to local or remote Kubernetes contexts using automatically-generated YAML config.</p>
             </div>
           </div>
         </div>
@@ -139,10 +139,10 @@ const DeployToKubernetesUISection = () => {
 
 const PodmanCLISection = () => {
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 pb-5">
+    <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-900  pb-5">
       <div className="container flex justify-center align-center">
         <div className="flex-row content-center">
-         <h2 className="text-white bg-blue-500 pl-5 pr-5 mb-5 content-center">Podman Command-Line</h2>
+         <h2 className="text-white dark:text-white bg-blue-700 pl-5 pr-5 mb-5 content-center">Podman Command-Line</h2>
         </div>
       </div>
       <div className="container grid gap-2 lg:grid-cols-3 mb-4">

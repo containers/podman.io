@@ -11,7 +11,7 @@ const Tab = (props): JSX.Element => {
       ${
         isActive
           ? 'bg-gradient-radial from-purple-500 to-purple-700 text-white dark:from-purple-700 dark:to-purple-900 dark:shadow-purple-900'
-          : '0 bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-500 dark:shadow-gray-700'
+          : '0 bg-white text-gray-700 dark:bg-gray-700 dark:text-gray-300 dark:shadow-gray-700'
       }`}>
       <h4 className="text-blue-500 dark:text-blue-500">{label}</h4>
       <ul>
@@ -66,7 +66,7 @@ function FeaturesCarousel() {
 
   // render content
   return (
-    <section className="bg-gray-100">
+    <section className="bg-gray-100 dark:bg-gray-900">
       <div className="container -mb-6 flex justify-center gap-5 md:-mb-10 md:gap-8">
         {/* Loop through Tab data and generate tab buttons for each */}
         {tabData.map((tab, index) => {
@@ -78,9 +78,9 @@ function FeaturesCarousel() {
       <section
         className={`flex py-10 md:py-16 ${
           activeTabIndex % 2 === 1
-            ? 'bg-white dark:bg-gray-900'
+            ? 'bg-white dark:bg-gray-900 dark:bg-gradient-to-b dark:from-purple-900 dark:to-purple-900/50'
             : activeTabIndex === 2
-            ? 'bg-gradient-to-br from-blue-300 via-blue-500 to-blue-900'
+            ? 'bg-gradient-to-br from-blue-300 via-blue-500 to-blue-900 dark:from-blue-900 dark:to-gray-700/50'
             : 'bg-gradient-to-br from-purple-300 via-purple-700 to-purple-900'
         }`}>
         <div className=" relative ml-20 self-center">
@@ -88,7 +88,7 @@ function FeaturesCarousel() {
             <Icon
               icon="fa-solid:arrow-circle-left"
               className={`text-3xl transition duration-150 ease-linear hover:text-purple-900 dark:hover:text-purple-700  ${
-                activeTabIndex % 2 === 0 ? 'text-white' : 'text-gray-900 dark:text-gray-50'
+                activeTabIndex % 2 === 0 ? 'text-white' : 'text-gray-700 dark:text-gray-50'
               }`}
             />
           </button>
@@ -99,7 +99,7 @@ function FeaturesCarousel() {
             <Icon
               icon="fa-solid:arrow-circle-right"
               className={`text-3xl transition duration-150 ease-linear hover:text-purple-900 dark:hover:text-purple-700 ${
-                activeTabIndex % 2 === 0 ? 'text-white' : 'text-gray-900 dark:text-gray-50'
+                activeTabIndex % 2 === 0 ? 'text-white' : 'text-gray-700 dark:text-gray-50'
               }`}
             />
           </button>
