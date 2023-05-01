@@ -12,7 +12,7 @@ const config = {
   baseUrl: '/website-new',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'images/favicon.ico',
+  favicon: 'favicon.ico',
   trailingSlash: false,
   deploymentBranch: 'gh-pages',
   organizationName: 'containers',

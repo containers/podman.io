@@ -46,6 +46,11 @@
 .navbar__logo {
   height: 40px;
 }
+.navbar__link svg,
+.footer__item svg {
+  display: inline;
+  margin-left: 12px;
+}
 
 /* -------------- */
 /* Font Configuration */
