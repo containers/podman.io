@@ -34,6 +34,12 @@
   @apply text-white dark:text-gray-50;
 }
 
+.navbar__link svg,
+.footer__item svg {
+  display: inline;
+  margin-left: 12px;
+}
+
 /* -------------- */
 /* Font Configuration */
 /* ------------- */
