@@ -24,6 +24,7 @@ const Title = (title: string) => {
 };
 
 function ArticleCard(props: ArticleCardProps) {
+  const abbrSubtitle = props.subtitle.trim().split(' ').slice(0, 32).join(' ').concat('...');
   if (props.altLayout) {
     return (
       <article className="container my-4 shadow-lg">
@@ -43,7 +44,7 @@ function ArticleCard(props: ArticleCardProps) {
             />
           </div>
           <div className="max-w-sm items-center gap-2 self-center">
-            {parse(props.subtitle)}
+            {parse(abbrSubtitle)}
             <p className="text-purple-700">
               By: <a href={props.author_link}>{props.display_name}</a>
             </p>
@@ -55,15 +56,15 @@ function ArticleCard(props: ArticleCardProps) {
   // Normal Layout
   else
     return (
-      <article className="my-4 w-72 p-4">
+      <article className="my-4 max-w-sm p-4">
         <div className="grid">
-          <h3 className="w-10/12 bg-gradient-radial from-purple-700 to-purple-900 px-2 py-1 text-white shadow-sm">
+          <h3 className="w-10/12 rounded-sm bg-gradient-radial from-purple-700 to-purple-900 px-2 py-1 text-white shadow-sm">
             <a href={props.path} target="_blank">
               {props.title}
             </a>
           </h3>
           {/* TODO: Set a max length and add ... to end */}
-          {parse(props.subtitle)}
+          <p className="mb-2 mt-4">{parse(abbrSubtitle)}</p>
           <PublishDate date={props.date} styles="row-start-1 col-start-1 z-10" />
           <img src={props.imgSrc} className="object-fit col-start-1 row-start-1 rounded-sm" />
           <p className="text-purple-700">
