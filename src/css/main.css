@@ -46,6 +46,7 @@
 .navbar__logo {
   height: 40px;
 }
+
 .navbar__link svg,
 .footer__item svg {
   display: inline;
@@ -65,7 +66,7 @@
     @apply font-display dark:text-gray-300;
   }
   /* main text */
-  a,
+
   p,
   dl,
   dt,
@@ -81,6 +82,13 @@
   pre {
     @apply font-mono text-lg dark:text-gray-100 lg:text-xl;
   }
+}
+/* Links */
+a {
+  @apply font-text text-lg text-blue-500 underline underline-offset-4 transition duration-150 ease-linear hover:text-purple-700 dark:text-blue-500 dark:hover:text-purple-700 lg:text-xl;
+}
+.navbar a {
+  @apply no-underline transition duration-150 ease-linear hover:text-purple-300;
 }
 
 /* headings size and weight */
