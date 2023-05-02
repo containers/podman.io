@@ -91,7 +91,7 @@ const TestimonialSection = () => {
         textGradient={true}
         textGradientStops="from-blue-700 to-blue-500"
       />
-      <div className="container flex flex-wrap justify-center gap-4 md:gap-6">
+      <div className="flex flex-wrap justify-center gap-4 md:gap-6">
         {testimonials.map((testimonial, index) => {
           return <Testimonial key={index} {...testimonial} />;
         })}
