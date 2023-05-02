@@ -31,7 +31,7 @@ function ArticleCard(props: ArticleCardProps) {
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           <div className="grid items-end xl:basis-5/12">
             <div className="z-10 col-start-1 row-start-1">
-              <h3 className="w-10/12 bg-gradient-radial from-purple-700 to-purple-900 px-2 py-1 text-white shadow-sm">
+              <h3 className="w-9/12 bg-gradient-radial from-purple-700 to-purple-900 p-2 text-white shadow-sm">
                 <a href={props.path} target="_blank">
                   {props.title}
                 </a>
@@ -44,7 +44,7 @@ function ArticleCard(props: ArticleCardProps) {
             />
           </div>
           <div className="max-w-sm items-center gap-2 self-center">
-            {parse(abbrSubtitle)}
+            <p className="mb-2">{parse(abbrSubtitle)}</p>
             <p className="text-purple-700">
               By: <a href={props.author_link}>{props.display_name}</a>
             </p>
