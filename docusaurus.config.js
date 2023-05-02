@@ -57,6 +57,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
+        hideOnScroll: true,
+        colorMode: {
+          respectPrefersColorScheme: true,
+        },
         title: 'podman',
         logo: {
           alt: 'Podman Logo',
@@ -122,6 +126,7 @@ const config = {
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Podman. Built with Docusaurus.`,
       },
+
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
