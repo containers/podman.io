@@ -56,11 +56,12 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        respectPrefersColorScheme: true,
+      },
       navbar: {
         hideOnScroll: true,
-        colorMode: {
-          respectPrefersColorScheme: true,
-        },
+
         title: 'podman',
         logo: {
           alt: 'Podman Logo',
