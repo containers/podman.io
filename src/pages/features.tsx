@@ -220,7 +220,7 @@ const LearnArticles = () => {
             );
           }
         })}
-        <p className="ml-2l text-center lg:text-start">
+        <p className="ml-2l text-center 2xl:text-start">
           Check out more posts about Podman{' '}
           <a
             href="https://blog.podman.io"
@@ -237,19 +237,19 @@ const LearnArticles = () => {
 const LearnResources = () => {
   return (
     <section className="mt-4 lg:my-0">
-      <header className="container mb-6 text-center lg:text-start xl:mb-8">
-        <h3 className="font-medium text-blue-700 dark:text-blue-500 xl:ml-9 2xl:ml-24">{learnMore.resources.title}</h3>
+      <header className="container mb-6 text-center xl:mb-8 xl:text-start">
+        <h3 className="font-medium text-blue-700 dark:text-blue-500">{learnMore.resources.title}</h3>
       </header>
       <div>
-        <ul className="container mb-12 mt-4 flex flex-col gap-6 lg:mb-16 lg:mt-8 lg:gap-4">
+        <ul className="mb-10 mt-4 flex flex-col gap-6 sm:flex-row lg:mb-16 lg:mt-8 lg:gap-4 xl:flex-col">
           {learnMore.resources.cards.map((card, index) => {
             return (
               <li key={index}>
                 <a
                   href={card.path}
-                  className="mx-auto flex max-w-lg items-center gap-4 rounded-md bg-gray-100 p-4 text-purple-700 underline-offset-4 transition duration-150 ease-linear hover:bg-purple-700 hover:text-purple-50 hover:shadow-md dark:bg-gray-700 dark:hover:bg-purple-900 dark:hover:text-white">
+                  className="mx-auto flex h-32 max-w-lg flex-col items-center justify-center gap-4 rounded-md bg-gray-100 p-4 text-center text-purple-700 underline-offset-4 transition duration-150 ease-linear hover:bg-purple-700 hover:text-purple-50 hover:shadow-md dark:bg-gray-700 dark:hover:bg-purple-900 dark:hover:text-white lg:h-auto lg:flex-row xl:justify-start">
                   <span>{card.text}</span>
-                  <Icon icon={card.icon} className="order-first" />
+                  <Icon icon={card.icon} className="order-first hidden lg:block" />
                 </a>
               </li>
             );
@@ -264,7 +264,7 @@ const LearnMoreSection = () => {
   return (
     <section>
       <SectionHeader title={learnMore.title} textGradient={true} textGradientStops="from-purple-500 to-purple-900" />
-      <div className="container grid gap-4 lg:grid-cols-2">
+      <div className="container mt-8 flex flex-wrap justify-center gap-24">
         <LearnArticles />
         <LearnResources />
       </div>

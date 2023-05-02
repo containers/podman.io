@@ -27,8 +27,8 @@ function ArticleCard(props: ArticleCardProps) {
   const abbrSubtitle = props.subtitle.trim().split(' ').slice(0, 32).join(' ').concat('...');
   if (props.altLayout) {
     return (
-      <article className="container my-4 shadow-lg">
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+      <article className="my-4 max-w-xl shadow-lg">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="grid items-end xl:basis-5/12">
             <div className="z-10 col-start-1 row-start-1">
               <h3 className="w-9/12 bg-gradient-radial from-purple-700 to-purple-900 p-2 text-white shadow-sm">
