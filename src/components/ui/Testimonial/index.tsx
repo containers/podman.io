@@ -28,8 +28,8 @@ function Testimonial(props: TestimonialProps) {
           <img src="images/article-thumb.png" alt="test image" className="h-12 w-12 rounded-full" />
         </div>
       </div>
-      <div className="my-2 max-w-sm">
-        <p className="text-gray-900 dark:text-gray-300">{props.description}</p>
+      <div className="my-2">
+        <p className="whitespace-normal text-gray-900 dark:text-gray-300">{props.description}</p>
       </div>
       <div className="self-start text-gray-500">
         <p>{props.date}</p>
