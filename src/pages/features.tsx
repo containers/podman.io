@@ -198,7 +198,7 @@ const LearnArticles = () => {
     fetchData().catch(console.error);
   }, []);
   return (
-    <section>
+    <section className="my-4 lg:my-0">
       <header className="container mb-4 text-center lg:mb-8 lg:text-start">
         <h3 className="font-medium text-blue-700 dark:text-blue-500">{learnMore.blogPosts.title}</h3>
       </header>
@@ -220,7 +220,7 @@ const LearnArticles = () => {
             );
           }
         })}
-        <p className="ml-2l">
+        <p className="ml-2l text-center lg:text-start">
           Check out more posts about Podman{' '}
           <a
             href="https://blog.podman.io"
