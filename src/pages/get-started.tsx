@@ -12,11 +12,11 @@ import { header, getHelp } from '@site/static/data/get-started';
 /* PAGE COMPONENTS */
 const GetHelpSection = () => {
   return (
-    <section className=" mt-12 bg-gradient-to-b from-purple-500/75 to-purple-900 dark:from-purple-500 dark:to-purple-900 lg:mt-20">
-      <SectionHeader title={getHelp.title} textColor="text-blue-500 dark:text-gray-900" />
+    <section className=" mt-12 bg-gradient-to-br from-purple-500/75 to-purple-900 dark:from-purple-700 dark:via-purple-900 dark:to-gray-900 lg:mt-32">
+      <SectionHeader title={getHelp.title} textColor="dark:text-gray-100" />
       <div className="container my-8">
-        <header className="my-4 text-center text-blue-300 dark:text-blue-100 lg:my-8">
-          <h3>{getHelp.subtitle}</h3>
+        <header className="my-4 text-center lg:my-8">
+          <h3 className="text-white dark:text-blue-500">{getHelp.subtitle}</h3>
         </header>
         <div className="mx-auto">
           <div className="container grid max-w-6xl grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-y-0">
@@ -29,7 +29,7 @@ const GetHelpSection = () => {
               </CodeBlock>
           </div>
           <div className="container grid max-w-6xl grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-y-0">
-            <p className="max-w-sm text-white dark:text-gray-900">
+            <p className="max-w-sm text-white">
               To get some help and find out how Podman is working, you can use the help.
             </p>
             {/* prettier-ignore */}
