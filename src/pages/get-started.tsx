@@ -12,43 +12,35 @@ import { header, getHelp } from '@site/static/data/get-started';
 /* PAGE COMPONENTS */
 const GetHelpSection = () => {
   return (
-    <section className=" mt-12 bg-gradient-to-b from-purple-300 to-purple-700 dark:from-purple-500 dark:to-purple-900 lg:mt-20">
-      <SectionHeader title={getHelp.title} textColor="text-blue-700 dark:text-gray-900" />
-      <div className="container">
-        <header className="my-4 text-center text-blue-300 dark:text-blue-100">
+    <section className=" mt-12 bg-gradient-to-b from-purple-500/75 to-purple-900 dark:from-purple-500 dark:to-purple-900 lg:mt-20">
+      <SectionHeader title={getHelp.title} textColor="text-blue-500 dark:text-gray-900" />
+      <div className="container my-8">
+        <header className="my-4 text-center text-blue-300 dark:text-blue-100 lg:my-8">
           <h3>{getHelp.subtitle}</h3>
         </header>
         <div className="mx-auto">
-          <div className="container grid max-w-7xl grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-y-0">
-            <div>
-              <p className="text-white dark:text-gray-100">For more details, you can review the manpages:</p>
-            </div>
-            <div className="">
-              {/* prettier-ignore */}
-              <CodeBlock language="bash" showLineNumbers>
+          <div className="container grid max-w-6xl grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-y-0">
+            <p className="max-w-sm text-white dark:text-gray-100">For more details, you can review the manpages:</p>
+            {/* prettier-ignore */}
+            <CodeBlock language="bash" showLineNumbers>
                 $ podman --help # get a list of all commands {'\n'}
                 $ podman subcommand --help # get info on a command{' '}
                 {'\n'}
               </CodeBlock>
-            </div>
           </div>
-          <div className="container grid max-w-7xl grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-y-0">
-            <div>
-              <p className="text-white dark:text-gray-100">
-                To get some help and find out how Podman is working, you can use the help.
-              </p>
-            </div>
-            <div>
-              {/* prettier-ignore */}
-              <CodeBlock language="bash" showLineNumbers>
+          <div className="container grid max-w-6xl grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-y-0">
+            <p className="max-w-sm text-white dark:text-gray-900">
+              To get some help and find out how Podman is working, you can use the help.
+            </p>
+            {/* prettier-ignore */}
+            <CodeBlock language="bash" showLineNumbers>
                 $ man podman {'\n'} 
                 $ man podman subcommand {'\n'}
               </CodeBlock>
-            </div>
           </div>
         </div>
       </div>
-      <div className="container my-4 text-center">
+      <div className="container mb-8 mt-4 text-center lg:mb-20 lg:mt-6">
         <p className="text-white">
           'Please also reference the{' '}
           <a href="#" className="text-blue-300">
