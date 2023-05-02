@@ -13,9 +13,9 @@ type TestimonialProps = {
 
 function Testimonial(props: TestimonialProps) {
   return (
-    <article className="my-4 max-w-xs rounded-sm bg-white p-4 shadow-lg dark:bg-gray-900">
-      <div className="flex items-center gap-2">
-        <div>
+    <article className="mx-2 my-4 max-w-sm rounded-sm bg-white p-4 shadow-lg dark:bg-gray-900">
+      <div className="flex items-center gap-3">
+        <div className="mt-2">
           <div className="flex items-center gap-2">
             <h3 className="text-lg font-bold">{props.name}</h3>
             <Icon icon={`logos:${props.social}`} className="text-2xl" />
@@ -28,8 +28,8 @@ function Testimonial(props: TestimonialProps) {
           <img src="images/article-thumb.png" alt="test image" className="h-12 w-12 rounded-full" />
         </div>
       </div>
-      <div className="my-2 max-w-sm">
-        <p className="text-gray-900 dark:text-gray-300">{props.description}</p>
+      <div className="my-2">
+        <p className="whitespace-normal text-gray-900 dark:text-gray-300">{props.description}</p>
       </div>
       <div className="self-start text-gray-500">
         <p>{props.date}</p>

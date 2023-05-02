@@ -102,7 +102,7 @@ const learnMore = {
         icon: 'fa6-solid:book',
       },
       {
-        text: 'Podman Troubleshooting Guide',
+        text: 'Podman Troubleshooting',
         path: '#',
         icon: 'fa6-solid:book',
       },

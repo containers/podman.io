@@ -8,7 +8,7 @@ import InfoBanner from '@site/src/components/ui/InfoBanner';
 import ThumbCard from '@site/src/components/ui/ThumbCard';
 import ArticleCard from '@site/src/components/ui/ArticleCard';
 import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
-import Testimonial from '@site/src/components/ui/Testimonial';
+import TestimonialSection from '@site/src/components/content/TestimonialSection';
 /* PAGE DATA */
 import { header, featureList, kubernetesBanner, compatibleTools, testimonials } from '@site/static/data/home';
 
@@ -83,22 +83,6 @@ const LatestNews = () => {
   );
 };
 
-const TestimonialSection = () => {
-  return (
-    <section className="bg-gradient-to-b from-white to-purple-100 dark:from-gray-900 dark:via-gray-900 dark:to-purple-900">
-      <SectionHeader
-        title="What people are saying about Podman"
-        textGradient={true}
-        textGradientStops="from-blue-700 to-blue-500"
-      />
-      <div className="container flex flex-wrap justify-center gap-4 md:gap-6">
-        {testimonials.map((testimonial, index) => {
-          return <Testimonial key={index} {...testimonial} />;
-        })}
-      </div>
-    </section>
-  );
-};
 /* PAGE CONTENT */
 function IndexPage() {
   return (
