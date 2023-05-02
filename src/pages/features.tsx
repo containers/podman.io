@@ -236,12 +236,12 @@ const LearnArticles = () => {
 
 const LearnResources = () => {
   return (
-    <section>
-      <header className="container mb-4 text-center lg:text-start xl:mb-8">
-        <h3 className="font-medium text-blue-700 dark:text-blue-500">{learnMore.resources.title}</h3>
+    <section className="mt-4 lg:my-0">
+      <header className="container mb-6 text-center lg:text-start xl:mb-8">
+        <h3 className="font-medium text-blue-700 dark:text-blue-500 xl:ml-9 2xl:ml-24">{learnMore.resources.title}</h3>
       </header>
       <div>
-        <ul className="container mb-12 mt-4 flex flex-col gap-4 lg:mb-16 lg:mt-8">
+        <ul className="container mb-12 mt-4 flex flex-col gap-6 lg:mb-16 lg:mt-8 lg:gap-4">
           {learnMore.resources.cards.map((card, index) => {
             return (
               <li key={index}>
