@@ -76,7 +76,7 @@ const compatibleTools = {
     },
     {
       title: 'Kind',
-      description: "Kind's ability to run local Kubernetes clusters via container nodes includes support for Podman.",
+      description: "Kind's ability to run local Kubernetes clusters via container nodes includes support for Podman",
       image: { path: 'logos/optimized/kind-logo-165w-95h.webp', alt: 'Kind Logo' },
     },
   ],

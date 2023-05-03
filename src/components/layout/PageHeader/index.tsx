@@ -35,8 +35,8 @@ const Image = ({
 
 function PageHeader({ title, description, image, lightColor = 'white', darkColor = 'gray-900' }: PageHeaderProps) {
   return (
-    <header className={`h-5/6  xl:h-96 bg-${lightColor} dark:bg-${darkColor}`}>
-      <div className="bg-gradient-to-r from-blue-500 to-blue-700 pt-2 dark:from-purple-700 dark:to-blue-900 lg:pt-8">
+    <header className={`h-5/6  xl:h-100 bg-${lightColor} dark:bg-${darkColor}`}>
+      <div className="bg-gradient-to-r from-blue-500  to-purple-700 dark:from-blue-700 dark:to-purple-900 lg:pt-8">
         <WaveBorder />
       </div>
       <div className="container grid justify-items-center gap-3 md:grid-cols-2">

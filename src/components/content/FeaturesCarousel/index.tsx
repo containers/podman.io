@@ -30,7 +30,7 @@ const TabContent = (props): JSX.Element => {
   const { title, commands, image, description, isActive } = props;
   return (
     <>
-      <div className="container flex flex-wrap justify-center gap-4 md:gap-12">
+      <div className="xl:my-23 container my-12 flex flex-wrap justify-center gap-4 md:gap-12">
         <div className="max-w-sm">
           <h3
             className={`text-3xl ${
@@ -76,25 +76,23 @@ function FeaturesCarousel() {
         })}
       </div>
       <section
-        className={`flex py-10 md:py-16 ${
+        className={`py-10 md:py-16 ${
           activeTabIndex % 2 === 1
             ? 'bg-white dark:bg-gray-900 dark:bg-gradient-to-b dark:from-purple-900 dark:to-purple-900/50'
             : activeTabIndex === 2
             ? 'bg-gradient-to-br from-blue-300 via-blue-500 to-blue-900 dark:from-blue-900 dark:to-gray-700/50'
             : 'bg-gradient-to-br from-purple-300 via-purple-700 to-purple-900'
         }`}>
-        <div className=" relative ml-20 self-center">
+        <div className="space-between container flex">
           <button onClick={() => setActiveTabIndex(activeTabIndex > 0 ? activeTabIndex - 1 : tabData.length - 1)}>
             <Icon
               icon="fa-solid:arrow-circle-left"
-              className={`text-3xl transition duration-150 ease-linear hover:text-purple-900 dark:hover:text-purple-700  ${
-                activeTabIndex % 2 === 0 ? 'text-white' : 'text-gray-700 dark:text-gray-50'
+              className={`text-3xl transition duration-150 ease-linear hover:opacity-50 dark:hover:opacity-50  ${
+                activeTabIndex % 2 === 0 ? 'text-white' : 'text-purple-700 dark:text-gray-50'
               }`}
             />
           </button>
-        </div>
-        <TabContent {...tabData[activeTabIndex]} isActive={activeTabIndex} />
-        <div className="relative mr-20 self-center">
+          <TabContent {...tabData[activeTabIndex]} isActive={activeTabIndex} />
           <button onClick={() => setActiveTabIndex(activeTabIndex < 3 ? activeTabIndex + 1 : 0)}>
             <Icon
               icon="fa-solid:arrow-circle-right"

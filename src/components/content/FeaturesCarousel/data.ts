@@ -33,7 +33,7 @@ const tabData = [
     },
   },
   {
-    label: 'share',
+    label: 'Share',
     title: "Share the containers you've built.",
     commands: ['podman push'],
     description:

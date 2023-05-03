@@ -27,7 +27,7 @@ function ArticleCard(props: ArticleCardProps) {
   const abbrSubtitle = props.subtitle.trim().split(' ').slice(0, 32).join(' ').concat('...');
   if (props.altLayout) {
     return (
-      <article className="my-4 max-w-xl shadow-lg">
+      <article className="my-4 max-w-2xl shadow-lg">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="grid items-end xl:basis-5/12">
             <div className="z-10 col-start-1 row-start-1">
@@ -43,7 +43,7 @@ function ArticleCard(props: ArticleCardProps) {
               className=" col-start-1 row-start-1 h-full w-full rounded-sm object-cover lg:w-80"
             />
           </div>
-          <div className="max-w-sm items-center gap-2 self-center">
+          <div className="max-w-sm items-center gap-2 self-center p-2 pr-4">
             <p className="mb-2">{parse(abbrSubtitle)}</p>
             <p className="text-purple-700">
               By: <a href={props.author_link}>{props.display_name}</a>
