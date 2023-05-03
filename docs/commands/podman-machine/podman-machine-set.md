@@ -44,7 +44,7 @@ machine name (or `podman-machine-default` if no name is specified).
 
 @@option user-mode-networking
 
-Unlike [**podman system connection default**](podman-system-connection/podman-system-connection-default.md)
+Unlike [**podman system connection default**](commands/podman-system-connection/podman-system-connection-default.md)
 this option will also make the API socket, if available, forward to the rootful/rootless
 socket in the VM.
 
@@ -76,7 +76,7 @@ $ podman machine set --rootful myvm
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-machine(1)](podman-machine/podman-machine.md)**
+**[podman(1)](commands/podman.md)**, **[podman-machine(1)](commands/podman-machine/podman-machine.md)**
 
 ## HISTORY
 

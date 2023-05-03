@@ -67,7 +67,7 @@ podman kill --cidfile /home/user/cidfile --cidfile ./cidfile-2
 
 ## SEE ALSO
 
-**[podman](podman.md)**, **[podman-stop](podman-stop.md)**
+**[podman](commands/podman.md)**, **[podman-stop](commands/podman-stop.md)**
 
 ## HISTORY
 

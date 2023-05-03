@@ -16,13 +16,13 @@ The user will be prompted for the ssh login password or key file pass phrase as 
 
 ## COMMANDS
 
-| Command | Man Page                                                                                             | Description                                             |
-| ------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| add     | [podman-system-connection\-add(1)](podman-system-connection/podman-system-connection-add.md)         | Record destination for the Podman service               |
-| default | [podman-system-connection\-default(1)](podman-system-connection/podman-system-connection-default.md) | Set named destination as default for the Podman service |
-| list    | [podman-system-connection\-list(1)](podman-system-connection/podman-system-connection-list.md)       | List the destination for the Podman service(s)          |
-| remove  | [podman-system-connection\-remove(1)](podman-system-connection/podman-system-connection-remove.md)   | Delete named destination                                |
-| rename  | [podman-system-connection\-rename(1)](podman-system-connection/podman-system-connection-rename.md)   | Rename the destination for Podman service               |
+| Command | Man Page                                                                                                      | Description                                             |
+| ------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| add     | [podman-system-connection\-add(1)](commands/podman-system-connection/podman-system-connection-add.md)         | Record destination for the Podman service               |
+| default | [podman-system-connection\-default(1)](commands/podman-system-connection/podman-system-connection-default.md) | Set named destination as default for the Podman service |
+| list    | [podman-system-connection\-list(1)](commands/podman-system-connection/podman-system-connection-list.md)       | List the destination for the Podman service(s)          |
+| remove  | [podman-system-connection\-remove(1)](commands/podman-system-connection/podman-system-connection-remove.md)   | Delete named destination                                |
+| rename  | [podman-system-connection\-rename(1)](commands/podman-system-connection/podman-system-connection-rename.md)   | Rename the destination for Podman service               |
 
 ## EXAMPLE
 
@@ -34,7 +34,7 @@ devl ssh://root@example.com/run/podman/podman.sock ~/.ssh/id_rsa  true
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-system(1)](podman-system/podman-system.md)**
+**[podman(1)](commands/podman.md)**, **[podman-system(1)](commands/podman-system/podman-system.md)**
 
 ## HISTORY
 

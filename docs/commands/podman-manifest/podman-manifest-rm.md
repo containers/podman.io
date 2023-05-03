@@ -26,4 +26,4 @@ The storage configuration file specifies all of the available container storage 
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-manifest(1)](podman-manifest/podman-manifest.md)**, **[containers-storage.conf(5)](https://github.com/containers/storage/blob/main/docs/containers-storage.conf.5.md)**
+**[podman(1)](commands/podman.md)**, **[podman-manifest(1)](commands/podman-manifest/podman-manifest.md)**, **[containers-storage.conf(5)](https://github.com/containers/storage/blob/main/docs/containers-storage.conf.5.md)**

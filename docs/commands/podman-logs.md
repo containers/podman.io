@@ -108,7 +108,7 @@ AH00558: httpd: Could not reliably determine the server's fully qualified domain
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-run(1)](podman-run.md)**, **[podman-rm(1)](podman-rm.md)**
+**[podman(1)](commands/podman.md)**, **[podman-run(1)](commands/podman-run.md)**, **[podman-rm(1)](commands/podman-rm.md)**
 
 ## HISTORY
 

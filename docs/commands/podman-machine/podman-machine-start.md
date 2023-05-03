@@ -46,7 +46,7 @@ $ podman machine start myvm
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-machine(1)](podman-machine.md)**
+**[podman(1)](commands/podman.md)**, **[podman-machine(1)](commands/podman-machine.md)**
 
 ## HISTORY
 

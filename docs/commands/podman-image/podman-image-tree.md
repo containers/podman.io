@@ -85,7 +85,7 @@ Image Layers
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**
+**[podman(1)](commands/podman.md)**
 
 ## HISTORY
 

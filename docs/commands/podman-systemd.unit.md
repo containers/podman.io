@@ -750,5 +750,5 @@ Label=org.test.Key=value
 
 **[systemd.unit(5)](https://www.freedesktop.org/software/systemd/man/systemd.unit.html)**,
 **[systemd.service(5)](https://www.freedesktop.org/software/systemd/man/systemd.service.html)**,
-**[podman-run(1)](podman-run.md)**,
-**[podman-network-create(1)](podman-network/podman-network-create.md)**
+**[podman-run(1)](commands/podman-run.md)**,
+**[podman-network-create(1)](commands/podman-network/podman-network-create.md)**

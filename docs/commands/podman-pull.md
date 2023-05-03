@@ -219,7 +219,7 @@ Storing signatures
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-push(1)](podman-push.md)**, **[podman-login(1)](podman-login.md)**, **[containers-certs.d(5)](https://github.com/containers/image/blob/main/docs/containers-certs.d.5.md)**, **[containers-registries.conf(5)](https://github.com/containers/image/blob/main/docs/containers-registries.conf.5.md)**, **[containers-transports(5)](https://github.com/containers/image/blob/main/docs/containers-transports.5.md)**
+**[podman(1)](commands/podman.md)**, **[podman-push(1)](commands/podman-push.md)**, **[podman-login(1)](commands/podman-login.md)**, **[containers-certs.d(5)](https://github.com/containers/image/blob/main/docs/containers-certs.d.5.md)**, **[containers-registries.conf(5)](https://github.com/containers/image/blob/main/docs/containers-registries.conf.5.md)**, **[containers-transports(5)](https://github.com/containers/image/blob/main/docs/containers-transports.5.md)**
 
 ## HISTORY
 

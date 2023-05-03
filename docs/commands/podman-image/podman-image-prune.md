@@ -114,7 +114,7 @@ f9f0a8a58c9e02a2b3250b88cc5c95b1e10245ca2c4161d19376580aaa90f55c
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-images(1)](podman-images.md)**
+**[podman(1)](commands/podman.md)**, **[podman-images(1)](commands/podman-images.md)**
 
 ## HISTORY
 

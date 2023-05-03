@@ -314,7 +314,7 @@ bb310a0780ae  docker.io/library/alpine:latest  /bin/sh  3 minutes ago  Created  
 
 ## SEE ALSO
 
-**[podman(2)](podman.md)**, **[podman-container(1)](podman-container/podman-container.md)**, **systemctl(1)**, **systemd.unit(5)**, **systemd.service(5)**, **[conmon(8)](https://github.com/containers/conmon/blob/main/docs/conmon.8.md)**
+**[podman(2)](commands/podman.md)**, **[podman-container(1)](commands/podman-container/podman-container.md)**, **systemctl(1)**, **systemd.unit(5)**, **systemd.service(5)**, **[conmon(8)](https://github.com/containers/conmon/blob/main/docs/conmon.8.md)**
 
 ## HISTORY
 

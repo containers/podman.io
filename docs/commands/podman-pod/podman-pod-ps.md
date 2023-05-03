@@ -183,7 +183,7 @@ Print a list of pods
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-pod(1)](podman-pod/podman-pod.md)**
+**[podman(1)](commands/podman.md)**, **[podman-pod(1)](commands/podman-pod/podman-pod.md)**
 
 ## HISTORY
 

@@ -72,7 +72,7 @@ Subnet: 10.88.0.0/16 Gateway: 10.88.0
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-network(1)](podman-network.md)**, **[podman-network-ls(1)](podman-network-ls.md)**, **[podman-network-create(1)](podman-network-create.md)**
+**[podman(1)](commands/podman.md)**, **[podman-network(1)](commands/podman-network.md)**, **[podman-network-ls(1)](commands/podman-network-ls.md)**, **[podman-network-create(1)](commands/podman-network-create.md)**
 
 ## HISTORY
 

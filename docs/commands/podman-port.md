@@ -61,7 +61,7 @@ List the port mappings for a specific container for port 80 and the tcp protocol
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-inspect(1)](podman-inspect.md)**
+**[podman(1)](commands/podman.md)**, **[podman-inspect(1)](commands/podman-inspect.md)**
 
 ## HISTORY
 

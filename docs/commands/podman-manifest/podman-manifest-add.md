@@ -60,7 +60,7 @@ configuration information.
 Multiple transports are supported:
 
 **docker://**_docker-reference_ _(default)_
-An image in a registry implementing the "Docker Registry HTTP API V2". By default, uses the authorization state in `$XDG_RUNTIME_DIR/containers/auth.json`, which is set using `(podman login)`. If the authorization state is not found there, `$HOME/.docker/config.json` is checked, which is set using `(docker login)`.
+An image in a registry implementing the "Docker Registry HTTP API V2". By default, uses the authorization state in `$XDG_RUNTIME_DIR/containers/auth.json`, which is set using `(commands/podman login)`. If the authorization state is not found there, `$HOME/.docker/config.json` is checked, which is set using `(docker login)`.
 
     $ podman manifest add mylist:v11 docker://quay.io/username/myimage
 
@@ -109,4 +109,4 @@ podman manifest add --arch arm64 --variant v8 mylist:v11 docker://71c201d10fffdc
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-manifest(1)](podman-manifest/podman-manifest.md)**
+**[podman(1)](commands/podman.md)**, **[podman-manifest(1)](commands/podman-manifest/podman-manifest.md)**

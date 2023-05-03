@@ -76,26 +76,26 @@ Allow directories to be overwritten with non-directories and vice versa. By defa
 
 Podman has much stronger capabilities than just `podman cp` to achieve copying files between the host and containers.
 
-Using standard **[podman-mount(1)](podman-mount.md)** and **[podman-unmount(1)](podman-unmount.md)** takes advantage of the entire linux tool chain, rather than just cp.
+Using standard **[podman-mount(1)](commands/podman-mount.md)** and **[podman-unmount(1)](commands/podman-unmount.md)** takes advantage of the entire linux tool chain, rather than just cp.
 
 copying contents out of a container or into a container, can be achieved with a few simple commands. For example:
 
 To copy the `/etc/foobar` directory out of a container and onto `/tmp` on the host, the following commands can be executed:
 
-    mnt=$(podman mount CONTAINERID)
+    mnt=$(commands/podman mount CONTAINERID)
     cp -R ${mnt}/etc/foobar /tmp
     podman umount CONTAINERID
 
 To untar a tar ball into a container, following commands can be executed:
 
-    mnt=$(podman mount CONTAINERID)
+    mnt=$(commands/podman mount CONTAINERID)
     tar xf content.tgz -C ${mnt}
     podman umount CONTAINERID
 
 To install a package into a container that
 does not have dnf installed, following commands can be executed:
 
-    mnt=$(podman mount CONTAINERID)
+    mnt=$(commands/podman mount CONTAINERID)
     dnf install --installroot=${mnt} httpd
     chroot ${mnt} rm -rf /var/log/dnf /var/cache/dnf
     podman umount CONTAINERID
@@ -143,4 +143,4 @@ the cp command.
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-mount(1)](podman-mount.md)**, **[podman-unmount(1)](podman-unmount.md)**
+**[podman(1)](commands/podman.md)**, **[podman-mount(1)](commands/podman-mount.md)**, **[podman-unmount(1)](commands/podman-unmount.md)**

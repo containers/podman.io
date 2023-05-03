@@ -95,7 +95,7 @@ local local
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-volume(1)](podman-volume/podman-volume.md)**, **[podman-inspect(1)](podman-inspect.md)**
+**[podman(1)](commands/podman.md)**, **[podman-volume(1)](commands/podman-volume/podman-volume.md)**, **[podman-inspect(1)](commands/podman-inspect.md)**
 
 ## HISTORY
 

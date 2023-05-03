@@ -144,7 +144,7 @@ registries.conf is the configuration file which specifies which container regist
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[containers-registries(5)](https://github.com/containers/image/blob/main/docs/containers-registries.5.md)**
+**[podman(1)](commands/podman.md)**, **[containers-registries(5)](https://github.com/containers/image/blob/main/docs/containers-registries.5.md)**
 
 ## HISTORY
 

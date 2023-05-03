@@ -38,4 +38,4 @@ $ podman volume export myvol | podman volume import oldmyvol -
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-volume(1)](podman-volume/podman-volume.md)**, **[podman-volume-export(1)](podman-volume/podman-volume-export.md)**
+**[podman(1)](commands/podman.md)**, **[podman-volume(1)](commands/podman-volume/podman-volume.md)**, **[podman-volume-export(1)](commands/podman-volume/podman-volume-export.md)**

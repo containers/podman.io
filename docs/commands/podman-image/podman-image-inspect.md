@@ -130,7 +130,7 @@ $ podman image inspect --format '{{ .Id }}' fedora
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-image(1)](podman-image/podman-image.md)**, **[podman-inspect(1)](podman-inspect.md)**
+**[podman(1)](commands/podman.md)**, **[podman-image(1)](commands/podman-image/podman-image.md)**, **[podman-inspect(1)](commands/podman-inspect.md)**
 
 ## HISTORY
 

@@ -125,7 +125,7 @@ Storing signatures
 
 ## SEE ALSO
 
-**[podman-create(1)](podman-create.md)**, **[cgroups(7)](https://man7.org/linux/man-pages/man7/cgroups.7.html)**
+**[podman-create(1)](commands/podman-create.md)**, **[cgroups(7)](https://man7.org/linux/man-pages/man7/cgroups.7.html)**
 
 ## HISTORY
 

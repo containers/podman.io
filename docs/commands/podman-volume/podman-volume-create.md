@@ -115,7 +115,7 @@ This prevents xfs_quota management conflicts with containers/storage.
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**, **[podman-volume(1)](podman-volume/podman-volume.md)**, **mount(8)**, **xfs_quota(8)**, **xfs_quota(8)**, **projects(5)**, **projid(5)**
+**[podman(1)](commands/podman.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**, **[podman-volume(1)](commands/podman-volume/podman-volume.md)**, **mount(8)**, **xfs_quota(8)**, **xfs_quota(8)**, **projects(5)**, **projid(5)**
 
 ## HISTORY
 

@@ -44,7 +44,7 @@ not possible from the host network namespace.
 ## Exit Codes
 
 The exit code from `podman unshare` gives information about why the container
-failed to run or why it exited. When `podman unshare` commands exit with a non-zero code,
+failed to run or why it exited. When `podman unshare` c(commands exit with a non-zero code,
 the exit codes follow the `chroot` standard, see below:
 
 **125** The error is with podman **_itself_**

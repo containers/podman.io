@@ -37,4 +37,4 @@ $ podman volume export myvol --output myvol.tar
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-volume(1)](podman-volume/podman-volume.md)**, **[podman-volume-import(1)](podman-volume/podman-volume-import.md)**
+**[podman(1)](commands/podman.md)**, **[podman-volume(1)](commands/podman-volume/podman-volume.md)**, **[podman-volume-import(1)](commands/podman-volume/podman-volume-import.md)**

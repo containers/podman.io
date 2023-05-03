@@ -59,7 +59,7 @@ $ podman container cleanup mywebserver myflaskserver 860a4b23
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-container(1)](podman-container/podman-container.md)**, **[conmon(8)](https://github.com/containers/conmon/blob/main/docs/conmon.8.md)**
+**[podman(1)](commands/podman.md)**, **[podman-container(1)](commands/podman-container/podman-container.md)**, **[conmon(8)](https://github.com/containers/conmon/blob/main/docs/conmon.8.md)**
 
 ## HISTORY
 

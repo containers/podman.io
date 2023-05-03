@@ -24,7 +24,7 @@ Rootless only.
 NOTE: The podman-machine configuration file is managed under the
 `$XDG_CONFIG_HOME/containers/podman/machine/` directory. Changing the `$XDG_CONFIG_HOME`
 environment variable while the machines are running can lead to unexpected behavior.
-(see [podman(1)](podman.md))
+(see [podman(1)](commands/podman.md))
 
 ## OPTIONS
 
@@ -93,7 +93,7 @@ $ podman machine ls --format json
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-machine(1)](podman-machine/podman-machine.md)**
+**[podman(1)](commands/podman.md)**, **[podman-machine(1)](commands/podman-machine/podman-machine.md)**
 
 ## HISTORY
 

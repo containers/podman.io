@@ -46,7 +46,7 @@ PID   SECCOMP   COMMAND   %CPU
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-pod(1)](podman-pod/podman-pod.md)**, **ps(1)**, **seccomp(2)**, **proc(5)**, **capabilities(7)**
+**[podman(1)](commands/podman.md)**, **[podman-pod(1)](commands/podman-pod/podman-pod.md)**, **ps(1)**, **seccomp(2)**, **proc(5)**, **capabilities(7)**
 
 ## HISTORY
 

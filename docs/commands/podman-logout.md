@@ -53,7 +53,7 @@ Remove login credentials for all registries
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-login(1)](podman-login.md)**, **[containers-auth.json(5)](https://github.com/containers/image/blob/main/docs/containers-auth.json.5.md)**
+**[podman(1)](commands/podman.md)**, **[podman-login(1)](commands/podman-login.md)**, **[containers-auth.json(5)](https://github.com/containers/image/blob/main/docs/containers-auth.json.5.md)**
 
 ## HISTORY
 

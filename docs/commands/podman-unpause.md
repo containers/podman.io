@@ -83,7 +83,7 @@ podman unpause --latest
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-pause(1)](podman-pause.md)**
+**[podman(1)](commands/podman.md)**, **[podman-pause(1)](commands/podman-pause.md)**
 
 ## HISTORY
 

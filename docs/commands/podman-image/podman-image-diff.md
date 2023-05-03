@@ -52,7 +52,7 @@ $ podman diff --format json redis:old redis:alpine
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-image(1)](podman-image/podman-image.md)**
+**[podman(1)](commands/podman.md)**, **[podman-image(1)](commands/podman-image/podman-image.md)**
 
 ## HISTORY
 

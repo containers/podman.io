@@ -80,7 +80,7 @@ Loaded image:  registry.fedoraproject.org/fedora:latest
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-save(1)](podman-save.md)**
+**[podman(1)](commands/podman.md)**, **[podman-save(1)](commands/podman-save.md)**
 
 ## HISTORY
 

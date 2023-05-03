@@ -103,7 +103,7 @@ $ podman restart --cidfile /home/user/cidfile-1 --cidfile ./cidfile-2
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**
+**[podman(1)](commands/podman.md)**
 
 ## HISTORY
 

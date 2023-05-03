@@ -14,13 +14,13 @@ podman\-machine\-os - Manage a Podman virtual machine's OS
 
 ## SUBCOMMANDS
 
-| Command | Man Page                                                                | Description                                 |
-| ------- | ----------------------------------------------------------------------- | ------------------------------------------- |
-| apply   | [podman-machine-os-apply(1)](podman-machine/podman-machine-os-apply.md) | Apply an OCI image to a Podman Machine's OS |
+| Command | Man Page                                                                         | Description                                 |
+| ------- | -------------------------------------------------------------------------------- | ------------------------------------------- |
+| apply   | [podman-machine-os-apply(1)](commands/podman-machine/podman-machine-os-apply.md) | Apply an OCI image to a Podman Machine's OS |
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-machine(1)](podman-machine/podman-machine.md)**, **[podman-machine-os-apply(1)](podman-machine/podman-machine-os-apply.md)**
+**[podman(1)](commands/podman.md)**, **[podman-machine(1)](commands/podman-machine/podman-machine.md)**, **[podman-machine-os-apply(1)](commands/podman-machine/podman-machine-os-apply.md)**
 
 ## HISTORY
 

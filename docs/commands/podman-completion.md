@@ -34,7 +34,7 @@ The default is **false**.
 `bash-completion` has to be installed on the system.
 
 To load the completion script into the current session run:\
-**source <(podman completion bash)**.
+**source <(commands/podman completion bash)**.
 
 To make it available for all bash sessions run:\
 **podman completion -f /etc/bash_completion.d/podman bash**.
@@ -68,4 +68,4 @@ More information about profiles is available with **Get-Help about_Profiles**.
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **zsh(1)**, **fish(1)**, **powershell(1)**
+**[podman(1)](commands/podman.md)**, **zsh(1)**, **fish(1)**, **powershell(1)**

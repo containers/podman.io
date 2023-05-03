@@ -79,7 +79,7 @@ podman update --cpus 5 --cpuset-cpus 0 --cpu-shares 123 --cpuset-mems 0 --memory
 
 ## SEE ALSO
 
-**[podman(1)](podman.md)**, **[podman-create(1)](podman-create.md)**, **[podman-run(1)](podman-run.md)**
+**[podman(1)](commands/podman.md)**, **[podman-create(1)](commands/podman-create.md)**, **[podman-run(1)](commands/podman-run.md)**
 
 ## HISTORY
 
