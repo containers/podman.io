@@ -36,7 +36,7 @@ function GetToKnowPodmanSection() {
 const PodmanDesktopSection = () => {
   return (
     <section className="bg-gradient-to-b from-gray-50 to-gray-100 pb-5 dark:bg-gray-900 dark:from-gray-700/25 dark:to-gray-900">
-      <div className="align-center container flex justify-center">
+      <div className="align-center container mb-8 flex justify-center xl:mb-20">
         <div className="flex-row content-center">
           <h2 className="mb-5 content-center bg-blue-500 pl-5 pr-5 text-white dark:bg-blue-700 dark:text-white">
             Podman Desktop
@@ -61,7 +61,7 @@ const PodmanDesktopSection = () => {
 const ManageContainersUISection = () => {
   return (
     <section className="bg-gradient-to-b from-purple-100 to-purple-300 pb-5 dark:from-purple-900 dark:to-blue-900">
-      <div className="align-center container grid justify-center gap-4 md:grid-cols-3">
+      <div className="align-center container my-8 grid justify-center gap-4 md:grid-cols-3 xl:my-20">
         <div className="my-8 h-fit rounded-md bg-white/50 shadow-md">
           <div className="flex flex-col items-center justify-center p-8 dark:text-black">
             <div>
@@ -91,7 +91,7 @@ const ManageContainersUISection = () => {
 const BuildImagesUISection = () => {
   return (
     <section className="bg-gradient-to-b from-white to-gray-50 pb-5 dark:from-gray-900 dark:to-purple-900">
-      <div className="align-center container grid justify-center gap-4 md:grid-cols-3">
+      <div className="align-center container my-8 grid justify-center gap-4 md:grid-cols-3 xl:my-20">
         <div className="col-span-2 w-full">
           <img className="mb-6 mt-6 w-full md:max-w-[75%]" src="images/optimized/ui-screens/ui-buildimage.webp" />
         </div>
@@ -116,7 +116,7 @@ const BuildImagesUISection = () => {
 const CreatePodsUISection = () => {
   return (
     <section className="bg-gradient-to-b from-blue-100 to-blue-50 pb-5 dark:from-gray-700 dark:to-gray-900">
-      <div className="align-right container grid justify-center gap-4 md:grid-cols-3">
+      <div className="align-right container my-8 grid justify-center gap-4 md:grid-cols-3 xl:my-16">
         <div className="my-8 h-fit rounded-md bg-white/50 shadow-md">
           <div className="flex flex-col items-center justify-center p-8">
             <div>
@@ -142,7 +142,7 @@ const CreatePodsUISection = () => {
 const DeployToKubernetesUISection = () => {
   return (
     <section className="bg-gradient-to-b from-white to-gray-100 pb-5 dark:from-blue-900 dark:to-gray-900">
-      <div className="align-center container grid justify-center gap-4 md:grid-cols-3">
+      <div className="container my-8 grid justify-center gap-4 md:grid-cols-3 xl:my-20">
         <div className="col-span-2 w-full">
           <img className="mb-6 mt-6 w-full md:max-w-[75%]" src="images/optimized/ui-screens/ui-k8sdeploy.webp" />
         </div>
@@ -165,7 +165,7 @@ const DeployToKubernetesUISection = () => {
 const PodmanCLISection = () => {
   return (
     <section className="bg-gradient-to-b from-gray-50 to-gray-100  pb-5 dark:from-gray-700/25  dark:to-gray-900">
-      <div className="align-center container flex justify-center">
+      <div className="align-center container mb-8 flex justify-center xl:mb-20">
         <div className="flex-row content-center">
           <h2 className="mb-5 content-center bg-blue-700 pl-5 pr-5 text-white dark:text-white">Podman Command-Line</h2>
         </div>
