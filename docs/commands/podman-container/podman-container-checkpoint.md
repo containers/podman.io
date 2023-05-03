@@ -232,7 +232,7 @@ Dump the container's memory information of the latest container into an archive 
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-container-restore(1)](commands/podman-container/podman-container-restore.md)**, **criu(8)**
+**[podman(1)](podman.md)**, **[podman-container-restore(1)](commands/podman-container/podman-container-restore.md)**, **criu(8)**
 
 ## HISTORY
 

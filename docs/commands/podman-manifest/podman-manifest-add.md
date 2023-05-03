@@ -109,4 +109,4 @@ podman manifest add --arch arm64 --variant v8 mylist:v11 docker://71c201d10fffdc
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-manifest(1)](commands/podman-manifest/podman-manifest.md)**
+**[podman(1)](podman.md)**, **[podman-manifest(1)](commands/podman-manifest/podman-manifest.md)**

@@ -201,4 +201,4 @@ Podman uses builtin defaults if no containers.conf file is found.
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-system-service(1)](commands/podman-system/podman-system-service.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**
+**[podman(1)](podman.md)**, **[podman-system-service(1)](commands/podman-system/podman-system-service.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**

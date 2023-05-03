@@ -62,7 +62,7 @@ cc8f0bea67b1a1a11aec1ecd38102a1be4b145577f21fc843c7c83b77fc28907
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-pod(1)](commands/podman-pod/podman-pod.md)**, **[podman-restart(1)](commands/podman-restart.md)**
+**[podman(1)](podman.md)**, **[podman-pod(1)](commands/podman-pod/podman-pod.md)**, **[podman-restart(1)](commands/podman-restart.md)**
 
 ## HISTORY
 

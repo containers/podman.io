@@ -235,7 +235,7 @@ docker.io/library/alpine   latest   3fd9065eaf02   5 months ago    4.41 MB
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[containers-storage.conf(5)](https://github.com/containers/storage/blob/main/docs/containers-storage.conf.5.md)**
+**[podman(1)](podman.md)**, **[containers-storage.conf(5)](https://github.com/containers/storage/blob/main/docs/containers-storage.conf.5.md)**
 
 ## HISTORY
 

@@ -29,4 +29,4 @@ t3
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-volume(1)](commands/podman-volume/podman-volume.md)**
+**[podman(1)](podman.md)**, **[podman-volume(1)](commands/podman-volume/podman-volume.md)**

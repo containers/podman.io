@@ -131,7 +131,7 @@ stats output.
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**
+**[podman(1)](podman.md)**
 
 ## HISTORY
 

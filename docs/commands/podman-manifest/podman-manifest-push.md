@@ -108,4 +108,4 @@ podman manifest push mylist:v11 docker://registry.example.org/mylist:v11
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-manifest(1)](commands/podman-manifest/podman-manifest.md)**
+**[podman(1)](podman.md)**, **[podman-manifest(1)](commands/podman-manifest/podman-manifest.md)**

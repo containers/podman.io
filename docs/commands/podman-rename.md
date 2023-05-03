@@ -42,4 +42,4 @@ $ podman container rename 6e7514b47180 databaseCtr
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**
+**[podman(1)](podman.md)**

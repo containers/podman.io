@@ -33,7 +33,7 @@ $ podman tag httpd myregistryhost:5000/fedora/httpd:v2
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**
+**[podman(1)](podman.md)**
 
 ## HISTORY
 

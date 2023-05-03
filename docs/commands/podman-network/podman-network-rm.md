@@ -51,7 +51,7 @@ Deleted: fred
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-network(1)](commands/podman-network/podman-network.md)**
+**[podman(1)](podman.md)**, **[podman-network(1)](commands/podman-network/podman-network.md)**
 
 ## HISTORY
 

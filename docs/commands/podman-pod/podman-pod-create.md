@@ -201,7 +201,7 @@ $ podman pod create --network net1:ip=10.89.5 --network net2:ip=10.8900
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-pod(1)](commands/podman-pod/podman-pod.md)**, **[podman-kube-play(1)](commands/podman-kube/podman-kube-play.md)**, **containers.conf(1)**, **[cgroups(7)](https://man7.org/linux/man-pages/man7/cgroups.7.html)**
+**[podman(1)](podman.md)**, **[podman-pod(1)](commands/podman-pod/podman-pod.md)**, **[podman-kube-play(1)](commands/podman-kube/podman-kube-play.md)**, **containers.conf(1)**, **[cgroups(7)](https://man7.org/linux/man-pages/man7/cgroups.7.html)**
 
 ## HISTORY
 

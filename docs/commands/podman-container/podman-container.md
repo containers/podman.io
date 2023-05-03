@@ -54,4 +54,4 @@ The container command allows management of containers
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-exec(1)](commands/podman-exec.md)**, **[podman-run(1)](commands/podman-run.md)**
+**[podman(1)](podman.md)**, **[podman-exec(1)](commands/podman-exec.md)**, **[podman-run(1)](commands/podman-run.md)**

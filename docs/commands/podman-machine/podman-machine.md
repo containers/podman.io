@@ -25,22 +25,22 @@ environment variable while the machines are running can lead to unexpected behav
 
 ## SUBCOMMANDS
 
-| Command | Man Page                                                        | Description                          |
-| ------- | --------------------------------------------------------------- | ------------------------------------ |
-| info    | [podman-machine-info(1)](commands/podman-machine-info.md)       | Display machine host info            |
-| init    | [podman-machine-init(1)](commands/podman-machine-init.md)       | Initialize a new virtual machine     |
-| inspect | [podman-machine-inspect(1)](commands/podman-machine-inspect.md) | Inspect one or more virtual machines |
-| list    | [podman-machine-list(1)](commands/podman-machine-list.md)       | List virtual machines                |
-| os      | [podman-machine-os(1)](commands/podman-machine-os.md)           | Manage a Podman virtual machine's OS |
-| rm      | [podman-machine-rm(1)](commands/podman-machine-rm.md)           | Remove a virtual machine             |
-| set     | [podman-machine-set(1)](commands/podman-machine-set.md)         | Sets a virtual machine setting       |
-| ssh     | [podman-machine-ssh(1)](commands/podman-machine-ssh.md)         | SSH into a virtual machine           |
-| start   | [podman-machine-start(1)](commands/podman-machine-start.md)     | Start a virtual machine              |
-| stop    | [podman-machine-stop(1)](commands/podman-machine-stop.md)       | Stop a virtual machine               |
+| Command | Man Page                                                                       | Description                          |
+| ------- | ------------------------------------------------------------------------------ | ------------------------------------ |
+| info    | [podman-machine-info(1)](commands/podman-machine/podman-machine-info.md)       | Display machine host info            |
+| init    | [podman-machine-init(1)](commands/podman-machine/podman-machine-init.md)       | Initialize a new virtual machine     |
+| inspect | [podman-machine-inspect(1)](commands/podman-machine/podman-machine-inspect.md) | Inspect one or more virtual machines |
+| list    | [podman-machine-list(1)](commands/podman-machine/podman-machine-list.md)       | List virtual machines                |
+| os      | [podman-machine-os(1)](commands/podman-machine/podman-machine-os.md)           | Manage a Podman virtual machine's OS |
+| rm      | [podman-machine-rm(1)](commands/podman-machine/podman-machine-rm.md)           | Remove a virtual machine             |
+| set     | [podman-machine-set(1)](commands/podman-machine/podman-machine-set.md)         | Sets a virtual machine setting       |
+| ssh     | [podman-machine-ssh(1)](commands/podman-machine/podman-machine-ssh.md)         | SSH into a virtual machine           |
+| start   | [podman-machine-start(1)](commands/podman-machine/podman-machine-start.md)     | Start a virtual machine              |
+| stop    | [podman-machine-stop(1)](commands/podman-machine/podman-machine-stop.md)       | Stop a virtual machine               |
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-machine-info(1)](commands/podman-machine-info.md)**, **[podman-machine-init(1)](commands/podman-machine-init.md)**, **[podman-machine-list(1)](commands/podman-machine-list.md)**, **[podman-machine-os(1)](commands/podman-machine-os.md)**, **[podman-machine-rm(1)](commands/podman-machine-rm.md)**, **[podman-machine-ssh(1)](commands/podman-machine-ssh.md)**, **[podman-machine-start(1)](commands/podman-machine-start.md)**, **[podman-machine-stop(1)](commands/podman-machine-stop.md)**, **[podman-machine-inspect(1)](commands/podman-machine-inspect.md)**
+**[podman(1)](podman.md)**, **[podman-machine-info(1)](commands/podman-machine/podman-machine-info.md)**, **[podman-machine-init(1)](commands/podman-machine/podman-machine-init.md)**, **[podman-machine-list(1)](commands/podman-machine/podman-machine-list.md)**, **[podman-machine-os(1)](commands/podman-machine/podman-machine-os.md)**, **[podman-machine-rm(1)](commands/podman-machine/podman-machine-rm.md)**, **[podman-machine-ssh(1)](commands/podman-machine/podman-machine-ssh.md)**, **[podman-machine-start(1)](commands/podman-machine/podman-machine-start.md)**, **[podman-machine-stop(1)](commands/podman-machine/podman-machine-stop.md)**, **[podman-machine-inspect(1)](commands/podman-machine/podman-machine-inspect.md)**
 
 ## HISTORY
 

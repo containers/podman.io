@@ -34,7 +34,7 @@ devl ssh://root@example.com/run/podman/podman.sock ~/.ssh/id_rsa  true
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-system(1)](commands/podman-system/podman-system.md)**
+**[podman(1)](podman.md)**, **[podman-system(1)](commands/podman-system/podman-system.md)**
 
 ## HISTORY
 

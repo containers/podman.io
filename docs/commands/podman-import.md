@@ -119,7 +119,7 @@ db65d991f3bbf7f31ed1064db9a6ced7652e3f8166c4736aa9133dadd3c7acb3
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-export(1)](commands/podman-export.md)**
+**[podman(1)](podman.md)**, **[podman-export(1)](commands/podman-export.md)**
 
 ## HISTORY
 

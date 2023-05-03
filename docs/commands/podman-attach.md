@@ -59,4 +59,4 @@ $ podman attach --no-stdin foobar
 
 ## SEE ALSO
 
-**[podman(1)]\commands/podman.md)**, **[podman-exec(1)]\commands/podman-exec.md)**, **[podman-run(1)]\commands/podman-run.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**
+**[podman(1)](podman.md)**, **[podman-exec(1)](commands/podman-exec.md)**, **[podman-run(1)]\commands/podman-run.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**

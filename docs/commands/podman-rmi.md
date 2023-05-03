@@ -80,7 +80,7 @@ Error: nothing: image not known
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[skopeo-delete(1)](https://github.com/containers/skopeo/blob/main/docs/skopeo-delete.1.md)**
+**[podman(1)](podman.md)**, **[skopeo-delete(1)](https://github.com/containers/skopeo/blob/main/docs/skopeo-delete.1.md)**
 
 ## HISTORY
 

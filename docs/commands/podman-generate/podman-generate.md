@@ -22,4 +22,4 @@ The generate command will create structured output (like YAML) based on a contai
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-pod(1)](commands/podman-pod/podman-pod.md)**, **[podman-container(1)](commands/podman-container/podman-container.md)**
+**[podman(1)](podman.md)**, **[podman-pod(1)](commands/podman-pod/podman-pod.md)**, **[podman-container(1)](commands/podman-container/podman-container.md)**

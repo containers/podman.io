@@ -218,7 +218,7 @@ $ podman events --format json
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**
+**[podman(1)](podman.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**
 
 ## HISTORY
 

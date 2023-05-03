@@ -76,7 +76,7 @@ $ podman stop --latest
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-rm(1)](commands/podman-rm.md)**
+**[podman(1)](podman.md)**, **[podman-rm(1)](commands/podman-rm.md)**
 
 ## HISTORY
 

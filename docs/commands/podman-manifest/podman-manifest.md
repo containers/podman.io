@@ -72,4 +72,4 @@ be performed like this:
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-manifest-add(1)](commands/podman-manifest/podman-manifest-add.md)**, **[podman-manifest-annotate(1)](commands/podman-manifest/podman-manifest-annotate.md)**, **[podman-manifest-create(1)](commands/podman-manifest/podman-manifest-create.md)**, **[podman-manifest-inspect(1)](commands/podman-manifest/podman-manifest-inspect.md)**, **[podman-manifest-push(1)](commands/podman-manifest/podman-manifest-push.md)**, **[podman-manifest-remove(1)](commands/podman-manifest/podman-manifest-remove.md)**
+**[podman(1)](podman.md)**, **[podman-manifest-add(1)](commands/podman-manifest/podman-manifest-add.md)**, **[podman-manifest-annotate(1)](commands/podman-manifest/podman-manifest-annotate.md)**, **[podman-manifest-create(1)](commands/podman-manifest/podman-manifest-create.md)**, **[podman-manifest-inspect(1)](commands/podman-manifest/podman-manifest-inspect.md)**, **[podman-manifest-push(1)](commands/podman-manifest/podman-manifest-push.md)**, **[podman-manifest-remove(1)](commands/podman-manifest/podman-manifest-remove.md)**

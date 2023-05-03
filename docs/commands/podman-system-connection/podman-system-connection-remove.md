@@ -26,7 +26,7 @@ $ podman system connection remove production
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-system(1)](commands/podman-system/podman-system.md)**, **[podman-system-connection(1)](commands/podman-system-connection/podman-system-connection.md)**
+**[podman(1)](podman.md)**, **[podman-system(1)](commands/podman-system/podman-system.md)**, **[podman-system-connection(1)](commands/podman-system-connection/podman-system-connection.md)**
 
 ## HISTORY
 

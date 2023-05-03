@@ -122,7 +122,7 @@ d0cf1f782e2ed67e8c0050ff92df865a039186237a4df24d7acba5b1fa8cc6e7
 
 ## SEE ALSO
 
-**[podman-pod-create(1)](commands/podman-pod-create)**
+**[podman-pod-create(1)](commands/podman-pod/podman-pod-create.md)**
 
 ## HISTORY
 

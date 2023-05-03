@@ -80,7 +80,7 @@ $ podman pod stop -a -t 1
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-pod(1)](commands/podman-pod/podman-pod.md)**, **[podman-pod-start(1)](commands/podman-pod/podman-pod-start.md)**
+**[podman(1)](podman.md)**, **[podman-pod(1)](commands/podman-pod/podman-pod.md)**, **[podman-pod-start(1)](commands/podman-pod/podman-pod-start.md)**
 
 ## HISTORY
 

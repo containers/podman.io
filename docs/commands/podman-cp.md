@@ -143,4 +143,4 @@ the cp command.
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-mount(1)](commands/podman-mount.md)**, **[podman-unmount(1)](commands/podman-unmount.md)**
+**[podman(1)](podman.md)**, **[podman-mount(1)](commands/podman-mount.md)**, **[podman-unmount(1)](commands/podman-unmount.md)**

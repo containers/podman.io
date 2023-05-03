@@ -130,7 +130,7 @@ $ podman rm -f --latest
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[crio(8)](https://github.com/cri-o/cri-o/blob/main/docs/crio.8.md)**
+**[podman(1)](podman.md)**, **[crio(8)](https://github.com/cri-o/cri-o/blob/main/docs/crio.8.md)**
 
 ## HISTORY
 

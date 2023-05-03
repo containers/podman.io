@@ -40,4 +40,4 @@ $ podman network update network1 --dns-drop 8.8.8.8 --dns-add 3.3.3.3
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-network(1)](commands/podman-network/podman-network.md)**, **[podman-network-inspect(1)](commands/podman-network/podman-network-inspect.md)**, **[podman-network-ls(1)](commands/podman-network/podman-network-ls.md)**
+**[podman(1)](podman.md)**, **[podman-network(1)](commands/podman-network/podman-network.md)**, **[podman-network-inspect(1)](commands/podman-network/podman-network-inspect.md)**, **[podman-network-ls(1)](commands/podman-network/podman-network-ls.md)**

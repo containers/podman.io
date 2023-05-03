@@ -20,7 +20,7 @@ podman healthcheck is a set of subcommands that manage container healthchecks
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**
+**[podman(1)](podman.md)**
 
 ## HISTORY
 

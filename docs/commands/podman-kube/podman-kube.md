@@ -24,7 +24,7 @@ file input. Containers will be automatically started.
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-pod(1)](commands/podman-pod/podman-pod.md)**, **[podman-container(1)](commands/podman-container/podman-container.md)**, **[podman-kube-play(1)](commands/podman-kube/podman-kube-play.md)**, **[podman-kube-down(1)](commands/podman-kube/podman-kube-down.md)**, **[podman-kube-generate(1)](commands/podman-kube/podman-kube-generate.md)**, **[podman-kube-apply(1)](commands/podman-kube/podman-kube-apply.md)**
+**[podman(1)](podman.md)**, **[podman-pod(1)](commands/podman-pod/podman-pod.md)**, **[podman-container(1)](commands/podman-container/podman-container.md)**, **[podman-kube-play(1)](commands/podman-kube/podman-kube-play.md)**, **[podman-kube-down(1)](commands/podman-kube/podman-kube-down.md)**, **[podman-kube-generate(1)](commands/podman-kube/podman-kube-generate.md)**, **[podman-kube-apply(1)](commands/podman-kube/podman-kube-apply.md)**
 
 ## HISTORY
 

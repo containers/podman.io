@@ -93,7 +93,7 @@ Valid placeholders for the Go template are listed below:
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-pod(1)](commands/podman-pod/podman-pod.md)**, **[podman-inspect(1)](commands/podman-inspect.md)**
+**[podman(1)](podman.md)**, **[podman-pod(1)](commands/podman-pod/podman-pod.md)**, **[podman-inspect(1)](commands/podman-inspect.md)**
 
 ## HISTORY
 

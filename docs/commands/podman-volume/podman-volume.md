@@ -30,7 +30,7 @@ podman volume is a set of subcommands that manage volumes.
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**
+**[podman(1)](podman.md)**
 
 ## HISTORY
 

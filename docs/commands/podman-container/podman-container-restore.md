@@ -198,7 +198,7 @@ Start a container with the name "foobar-1". Create a checkpoint image "foobar-ch
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-container-checkpoint(1)](commands/podman-container/podman-container-checkpoint.md)**, **[podman-run(1)](commands/podman-run.md)**, **[podman-pod-create(1)](commands/podman-pod/podman-pod-create.md)**, **criu(8)**
+**[podman(1)](podman.md)**, **[podman-container-checkpoint(1)](commands/podman-container/podman-container-checkpoint.md)**, **[podman-run(1)](commands/podman-run.md)**, **[podman-pod-create(1)](commands/podman-pod/podman-pod-create.md)**, **criu(8)**
 
 ## HISTORY
 

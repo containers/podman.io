@@ -68,4 +68,4 @@ More information about profiles is available with **Get-Help about_Profiles**.
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **zsh(1)**, **fish(1)**, **powershell(1)**
+**[podman(1)](podman.md)**, **zsh(1)**, **fish(1)**, **powershell(1)**

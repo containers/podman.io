@@ -36,7 +36,7 @@ $ podman secret rm mysecret1 mysecret2
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-secret(1)](commands/podman-secret/podman-secret.md)**
+**[podman(1)](podman.md)**, **[podman-secret(1)](commands/podman-secret/podman-secret.md)**
 
 ## HISTORY
 

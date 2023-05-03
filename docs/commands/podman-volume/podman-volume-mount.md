@@ -30,4 +30,4 @@ podman volume mount foo
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-volume(1)](commands/podman-volume/podman-volume.md)**, **[podman-volume-unmount(1)](commands/podman-volume/podman-volume-unmount.md)**, **[podman-unshare(1)](commands/podman-unshare.md)**, **mount(8)**
+**[podman(1)](podman.md)**, **[podman-volume(1)](commands/podman-volume/podman-volume.md)**, **[podman-volume-unmount(1)](commands/podman-volume/podman-volume-unmount.md)**, **[podman-unshare(1)](commands/podman-unshare.md)**, **mount(8)**

@@ -28,4 +28,4 @@ The system command allows management of the podman systems
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**
+**[podman(1)](podman.md)**

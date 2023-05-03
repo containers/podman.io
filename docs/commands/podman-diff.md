@@ -56,7 +56,7 @@ A /test
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-container-diff(1)](commands/podman-container/podman-container-diff.md)**, **[podman-image-diff(1)](commands/podman-image/podman-image-diff.md)**
+**[podman(1)](podman.md)**, **[podman-container-diff(1)](commands/podman-container/podman-container-diff.md)**, **[podman-image-diff(1)](commands/podman-image/podman-image-diff.md)**
 
 ## HISTORY
 

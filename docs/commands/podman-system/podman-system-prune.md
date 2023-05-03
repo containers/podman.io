@@ -61,7 +61,7 @@ Prune volumes currently unused by any container
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-system(1)](commands/podman-system/podman-system.md)**
+**[podman(1)](podman.md)**, **[podman-system(1)](commands/podman-system/podman-system.md)**
 
 ## HISTORY
 

@@ -20,7 +20,7 @@ podman\-machine\-os - Manage a Podman virtual machine's OS
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-machine(1)](commands/podman-machine/podman-machine.md)**, **[podman-machine-os-apply(1)](commands/podman-machine/podman-machine-os-apply.md)**
+**[podman(1)](podman.md)**, **[podman-machine(1)](commands/podman-machine/podman-machine.md)**, **[podman-machine-os-apply(1)](commands/podman-machine/podman-machine-os-apply.md)**
 
 ## HISTORY
 

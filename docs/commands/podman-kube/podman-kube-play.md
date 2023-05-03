@@ -324,4 +324,4 @@ has been changed or altered.
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-kube(1)](commands/podman-kube/podman-kube.md)**, **[podman-kube-down(1)](commands/podman-kube/podman-kube-down.md)**, **[podman-network-create(1)](commands/podman-network/podman-network-create.md)**, **[podman-kube-generate(1)](commands/podman-kube/podman-kube-generate.md)**, **[containers-certs.d(5)](https://github.com/containers/image/blob/main/docs/containers-certs.d.5.md)**
+**[podman(1)](podman.md)**, **[podman-kube(1)](commands/podman-kube/podman-kube.md)**, **[podman-kube-down(1)](commands/podman-kube/podman-kube-down.md)**, **[podman-network-create(1)](commands/podman-network/podman-network-create.md)**, **[podman-kube-generate(1)](commands/podman-kube/podman-kube-generate.md)**, **[containers-certs.d(5)](https://github.com/containers/image/blob/main/docs/containers-certs.d.5.md)**

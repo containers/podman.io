@@ -160,7 +160,7 @@ myNetwork
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-container-inspect(1)](commands/podman-container/podman-container-inspect.md)**, **[podman-image-inspect(1)](commands/podman-image/podman-image-inspect.md)**, **[podman-network-inspect(1)](commands/podman-network/podman-network-inspect.md)**, **[podman-pod-inspect(1)](commands/podman-pod/podman-pod-inspect.md)**, **[podman-volume-inspect(1)](commands/podman-volume/podman-volume-inspect.md)**
+**[podman(1)](podman.md)**, **[podman-container-inspect(1)](commands/podman-container/podman-container-inspect.md)**, **[podman-image-inspect(1)](commands/podman-image/podman-image-inspect.md)**, **[podman-network-inspect(1)](commands/podman-network/podman-network-inspect.md)**, **[podman-pod-inspect(1)](commands/podman-pod/podman-pod-inspect.md)**, **[podman-volume-inspect(1)](commands/podman-volume/podman-volume-inspect.md)**
 
 ## HISTORY
 

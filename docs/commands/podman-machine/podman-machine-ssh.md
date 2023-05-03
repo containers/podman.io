@@ -87,7 +87,7 @@ $ podman machine ssh  myvm rpm -q podman
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-machine(1)](commands/podman-machine.md)**
+**[podman(1)](podman.md)**, **[podman-machine(1)](commands/podman-machine/podman-machine.md)**
 
 ## HISTORY
 

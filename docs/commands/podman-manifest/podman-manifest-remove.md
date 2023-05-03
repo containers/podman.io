@@ -25,4 +25,4 @@ e604eabaaee4858232761b4fef84e2316ed8f93e15eceafce845966ee3400036 :sha256:cb8a924
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-manifest(1)](commands/podman-manifest.md)**
+**[podman(1)](podman.md)**, **[podman-manifest(1)](commands/podman-manifest/podman-manifest.md)**

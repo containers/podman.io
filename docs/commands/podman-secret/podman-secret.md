@@ -24,7 +24,7 @@ podman secret is a set of subcommands that manage secrets.
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**
+**[podman(1)](podman.md)**
 
 ## HISTORY
 

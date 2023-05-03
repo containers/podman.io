@@ -128,7 +128,7 @@ $ podman commit -q --change LABEL=io.containers.capabilities=setuid,setgid epic_
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-run(1)](commands/podman-run.md)**, **[podman-create(1)](commands/podman-create.md)**
+**[podman(1)](podman.md)**, **[podman-run(1)](commands/podman-run.md)**, **[podman-create(1)](commands/podman-create.md)**
 
 ## HISTORY
 

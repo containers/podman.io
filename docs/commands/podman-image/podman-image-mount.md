@@ -78,4 +78,4 @@ podman image mount --format json
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-image(1)](commands/podman-image/podman-image.md)**, **[podman-image-unmount(1)](commands/podman-image/podman-image-unmount.md)**, **[podman-unshare(1)](commands/podman-unshare.md)**, **mount(8)**
+**[podman(1)](podman.md)**, **[podman-image(1)](commands/podman-image/podman-image.md)**, **[podman-image-unmount(1)](commands/podman-image/podman-image-unmount.md)**, **[podman-unshare(1)](commands/podman-unshare.md)**, **mount(8)**

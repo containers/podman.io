@@ -113,7 +113,7 @@ macvlan:
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-network(1)](commands/podman-network/podman-network.md)**, **[podman-network-inspect(1)](commands/podman-network/podman-network-inspect.md)**, **[podman-network-create(1)](commands/podman-network/podman-network-create.md)**
+**[podman(1)](podman.md)**, **[podman-network(1)](commands/podman-network/podman-network.md)**, **[podman-network-inspect(1)](commands/podman-network/podman-network-inspect.md)**, **[podman-network-create(1)](commands/podman-network/podman-network-create.md)**
 
 ## HISTORY
 

@@ -41,4 +41,4 @@ The image command allows the management of images
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**
+**[podman(1)](podman.md)**

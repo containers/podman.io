@@ -49,7 +49,7 @@ podman init --latest
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-start(1)](commands/podman-start.md)**
+**[podman(1)](podman.md)**, **[podman-start(1)](commands/podman-start.md)**
 
 ## HISTORY
 

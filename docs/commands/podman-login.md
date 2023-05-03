@@ -112,7 +112,7 @@ Login Succeeded!
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-logout(1)](commands/podman-logout.md)**, **[containers-auth.json(5)](https://github.com/containers/image/blob/main/docs/containers-auth.json.5.md)**, **[containers-certs.d(5)](https://github.com/containers/image/blob/main/docs/containers-certs.d.5.md)**, **[containers-registries.conf(5)](https://github.com/containers/image/blob/main/docs/containers-registries.conf.5.md)**
+**[podman(1)](podman.md)**, **[podman-logout(1)](commands/podman-logout.md)**, **[containers-auth.json(5)](https://github.com/containers/image/blob/main/docs/containers-auth.json.5.md)**, **[containers-certs.d(5)](https://github.com/containers/image/blob/main/docs/containers-certs.d.5.md)**, **[containers-registries.conf(5)](https://github.com/containers/image/blob/main/docs/containers-registries.conf.5.md)**
 
 ## HISTORY
 

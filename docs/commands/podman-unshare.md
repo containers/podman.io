@@ -101,4 +101,4 @@ $ podman unshare --rootless-netns ip addr
 
 ## SEE ALSO
 
-**[podman(1)](commands/podman.md)**, **[podman-mount(1)](commands/podman-mount.md)**, **namespaces(7)**, **newuidmap(1)**, **newgidmap(1)**, **user_namespaces(7)**
+**[podman(1)](podman.md)**, **[podman-mount(1)](commands/podman-mount.md)**, **namespaces(7)**, **newuidmap(1)**, **newgidmap(1)**, **user_namespaces(7)**
