@@ -166,8 +166,8 @@ podman rm --latest
 
 ## 集成测试
 
-在环境中如何设置并运行集成测试请查看集成测试的[自述页面](../../test/README.md)
+在环境中如何设置并运行集成测试请查看集成测试的[自述页面](https://github.com/containers/podman/blob/main/test/README.md)
 
 ## 更多信息
 
-有关 podman 和它的子命令的更多信息请查看 podman 的[自述页面](../../README.md#commands)
+有关 podman 和它的子命令的更多信息请查看 podman 的[自述页面](https://github.com/containers/podman/blob/main/README.md)

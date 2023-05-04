@@ -1,3 +1,8 @@
+--
+title: Podman Tutorial
+
+---
+
 ![PODMAN logo](https://raw.githubusercontent.com/containers/common/main/logos/podman-logo-full-vert.png)
 
 # Basic Setup and Use of Podman
@@ -173,9 +178,9 @@ You can verify the deletion of the container by running _podman ps -a_.
 
 ## Integration Tests
 
-For more information on how to set up and run the integration tests in your environment, checkout the Integration Tests [README.md](../../test/README.md)
+For more information on how to set up and run the integration tests in your environment, checkout the Integration Tests [README.md](https://github.com/containers/podman/blob/main/test/README.md)
 
 ## More information
 
-For more information on Podman and its subcommands, checkout the asciiart demos on the [README.md](../../README.md#commands)
+For more information on Podman and its subcommands, checkout the asciiart demos on the [README.md](https://github.com/containers/podman/blob/main/README.md)
 page.
