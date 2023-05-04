@@ -44,8 +44,8 @@ function ArticleCard(props: ArticleCardProps) {
             />
           </div>
           <div className="max-w-sm items-center gap-2 self-center p-2 pr-4">
-            <p className="mb-2">{parse(abbrSubtitle)}</p>
-            <p className="text-purple-700">
+            {parse(abbrSubtitle)}
+            <p className="mt-2 text-purple-700">
               By: <a href={props.author_link}>{props.display_name}</a>
             </p>
           </div>
@@ -64,8 +64,8 @@ function ArticleCard(props: ArticleCardProps) {
             </a>
           </h3>
           {/* TODO: Set a max length and add ... to end */}
-          <p className="mb-2 mt-4">{parse(abbrSubtitle)}</p>
-          <PublishDate date={props.date} styles="row-start-1 col-start-1 z-10" />
+          {parse(abbrSubtitle)}
+          <PublishDate date={props.date} styles="row-start-1 col-start-1 z-10 my-2" />
           <img src={props.imgSrc} className="object-fit col-start-1 row-start-1 rounded-sm" />
           <p className="text-purple-700">
             By: <a href={props.author_link}>{props.display_name}</a>
