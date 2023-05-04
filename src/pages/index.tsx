@@ -64,7 +64,6 @@ const LatestNews = () => {
       <SectionHeader title="Latest Podman News" textColor="text-purple-700" />
       <div className="flex flex-wrap justify-center gap-4">
         {blogData.map(card => {
-          console.log(card);
           return (
             <ArticleCard
               title={card.title.rendered}
