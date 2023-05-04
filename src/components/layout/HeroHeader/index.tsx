@@ -14,14 +14,18 @@ type InstallOptionProps = Card & {
 };
 
 const detectOperatingSystem = () => {
-  return window.navigator.userAgent
-    .toLowerCase()
-    .split(' ')
-    .find(item => item.includes('linux' || 'windows' || 'macos'));
+  const userAgent = window.navigator.userAgent.toLowerCase().split(' ');
+  if (userAgent.find(item => item.includes('windows'))) {
+    return 'windows';
+  } else if (userAgent.find(item => item.includes('macos'))) {
+    return 'macos';
+  }
+  return 'linux';
 };
 
 function returnOperatingSystemData() {
-  return operatingSystemData.find(os => os.id === detectOperatingSystem());
+  const os = operatingSystemData.find(os => os.id === detectOperatingSystem() && os);
+  return os;
 }
 
 const InstallOption = (): JSX.Element => {
@@ -31,7 +35,7 @@ const InstallOption = (): JSX.Element => {
       <div>
         <a
           href={data.path}
-          className="block rounded-t-md transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:hover:bg-purple-900">
+          className="text:gray-100 block rounded-t-md no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:hover:bg-purple-900">
           <div className="flex items-center gap-2 px-4 pb-6 pt-4">
             <div>
               <h3>{data.title}</h3>
@@ -59,6 +63,7 @@ const InstallOption = (): JSX.Element => {
 };
 
 function HeroHeader({ title, subtitle, release, image, platforms }) {
+  console.log(returnOperatingSystemData());
   return (
     <header className="bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900">
       <div className="mx-auto grid md:grid-cols-2 md:gap-12 xl:mx-20">
@@ -67,7 +72,7 @@ function HeroHeader({ title, subtitle, release, image, platforms }) {
           <p className="max-w-sm text-white dark:text-gray-50 lg:max-w-prose">{subtitle}</p>
           <div className="my-3 flex max-w-sm gap-8">
             <Button as="link" text="Get Started" path="#" />
-            {/* <BrowserOnly>{() => <DropdownButton text="Download" option={InstallOption()} />}</BrowserOnly> */}
+            <BrowserOnly>{() => <DropdownButton text="Download" option={InstallOption()} />}</BrowserOnly>
           </div>
           <p className="flex gap-4 text-white dark:text-gray-100">
             <span>
