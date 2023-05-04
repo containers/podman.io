@@ -28,33 +28,35 @@ function returnOperatingSystemData() {
   return os;
 }
 
-const InstallOption = (): JSX.Element => {
-  const data = returnOperatingSystemData();
+const InstallOption = (props): JSX.Element => {
+  if (!props) {
+    props = operatingSystemData[0];
+  }
   return (
     <section>
       <div>
         <a
-          href={data.path}
+          href={props.path}
           className="block rounded-t-md text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:text-white dark:hover:bg-purple-900 dark:hover:text-gray-300">
           <div className="flex items-center gap-4 px-4 pb-6 pt-4">
             <div>
-              <h3>{data.title}</h3>
-              <p>{data.subtitle}</p>
+              <h3>{props.title}</h3>
+              <p>{props.subtitle}</p>
             </div>
-            <Icon icon={data.icon} className="order-first text-4xl" />
+            <Icon icon={props.icon} className="order-first text-4xl" />
           </div>
         </a>
       </div>
       <div>
         <a
-          href={data.other.path}
+          href={props.other.path}
           className="block rounded-b-md bg-gray-50 py-2 text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:bg-gray-700 dark:text-white dark:hover:bg-purple-900 dark:hover:text-gray-300">
           <div className="px-4 py-2">
             <div className="flex items-center gap-2">
-              <h4 className="row-start-1">{data.other.text}</h4>
+              <h4 className="row-start-1">{props.other.text}</h4>
               <Icon icon="material-symbols:arrow-circle-right-rounded" className="row-start-1 text-xl" />
             </div>
-            <p>{data.other.subtext}</p>
+            <p>{props.other.subtext}</p>
           </div>
         </a>
       </div>
@@ -63,7 +65,6 @@ const InstallOption = (): JSX.Element => {
 };
 
 function HeroHeader({ title, subtitle, release, image, platforms }) {
-  console.log(returnOperatingSystemData());
   return (
     <header className="bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900">
       <div className="mx-auto grid md:grid-cols-2 md:gap-12 xl:mx-20">
@@ -72,7 +73,9 @@ function HeroHeader({ title, subtitle, release, image, platforms }) {
           <p className="max-w-sm text-white dark:text-gray-50 lg:max-w-prose">{subtitle}</p>
           <div className="my-3 flex max-w-sm gap-8">
             <Button as="link" text="Get Started" path="#" />
-            <BrowserOnly>{() => <DropdownButton text="Download" option={InstallOption()} />}</BrowserOnly>
+            <BrowserOnly>
+              {() => <DropdownButton text="Download" option={InstallOption(returnOperatingSystemData())} />}
+            </BrowserOnly>
           </div>
           <p className="flex gap-4 text-white dark:text-gray-100">
             <span>
