@@ -42,7 +42,7 @@ function ThankYouSection(): JSX.Element {
                 href={logo.href}
                 key={index}
                 target="_blank"
-                className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:mb-0 lg:w-80">
+                className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:mb-0 lg:flex lg:h-28 lg:w-80 lg:items-center">
                 <img {...logo} className="object-fit mx-auto max-w-sm p-4 " />
               </a>
             );
@@ -50,7 +50,7 @@ function ThankYouSection(): JSX.Element {
           <a
             href={debian.href}
             target="_blank"
-            className="mx-4 mb-4 inline-block rounded-md p-4  dark:bg-gray-100  lg:row-span-2 lg:row-start-1 lg:mb-0">
+            className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:row-span-2 lg:row-start-1 lg:mb-0">
             <img {...debian} className="mx-auto h-20 p-4 lg:h-32" />
           </a>
         </div>
