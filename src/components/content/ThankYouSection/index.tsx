@@ -29,7 +29,7 @@ function ThankYouSection(): JSX.Element {
         </button>
         <div
           id="slider"
-          className="mx-auto h-full w-full grid-flow-col place-items-center gap-6 overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar scrollbar-track-purple-500 lg:container lg:grid lg:grid-rows-2">
+          className="container mx-auto h-full w-full grid-flow-col place-items-center gap-6 overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar scrollbar-track-purple-500 lg:container lg:grid lg:grid-rows-2">
           <a
             href={redHat.href}
             target="_blank"
@@ -42,8 +42,8 @@ function ThankYouSection(): JSX.Element {
                 href={logo.href}
                 key={index}
                 target="_blank"
-                className="mx-4 mb-4 inline-block rounded-md p-4  dark:bg-gray-100 lg:mb-0">
-                <img {...logo} className="mx-auto h-20 max-w-xs p-4 lg:h-32" />
+                className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:mb-0 lg:w-80">
+                <img {...logo} className="object-fit mx-auto max-w-sm p-4 " />
               </a>
             );
           })}
