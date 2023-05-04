@@ -35,7 +35,7 @@ const InstallOption = (): JSX.Element => {
       <div>
         <a
           href={data.path}
-          className="block rounded-t-md text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:text-white dark:hover:bg-purple-900 dark:hover:text-gray-900">
+          className="block rounded-t-md text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:text-white dark:hover:bg-purple-900 dark:hover:text-gray-300">
           <div className="flex items-center gap-4 px-4 pb-6 pt-4">
             <div>
               <h3>{data.title}</h3>

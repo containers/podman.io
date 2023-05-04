@@ -11,7 +11,7 @@ function Button({ as = 'link', outline, colors, icon, text, method, path }: Butt
   const baseStyles =
     'h-fit my-2 block max-w-fit cursor-pointer rounded-md px-6 py-2 font-semibold transition duration-150 ease-in-out hover:no-underline hover:shadow-md whitespace-nowrap';
   const solidColors =
-    'bg-purple-700 dark:bg-purple-900 text-white dark:text-gray-50 hover:bg-purple-900 hover:dark:bg-purple-700 hover:text-white';
+    'bg-purple-700 dark:bg-purple-900 text-white dark:text-white hover:bg-purple-900 no-underline hover:no-underline dark:hover:text-gray-50 dark:hover:bg-purple-700 hover:text-white';
   const outlineColors =
     'dark:bg-white text-purple-700 dark:text-purple-900 hover:dark:bg-purple-900 hover:dark:text-white';
   /* Set Colors */
