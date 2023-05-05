@@ -72,7 +72,7 @@ function HeroHeader({ title, subtitle, release, image, platforms }) {
           <h1 className="mb-4 text-white dark:text-gray-50 lg:mb-8">{title}</h1>
           <p className="max-w-sm text-white dark:text-gray-50 lg:max-w-prose">{subtitle}</p>
           <div className="my-3 flex max-w-sm gap-8">
-            <Button as="link" text="Get Started" path="#" />
+            <Button as="link" text="Get Started" path="/get-started" />
             <BrowserOnly>
               {() => <DropdownButton text="Download" option={InstallOption(returnOperatingSystemData())} />}
             </BrowserOnly>
