@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 /* COMPONENTS */
+import WelcomeBanner from '@site/src/components/content/WelcomeBanner';
 import Markdown from '@site/src/components/utilities/Markdown';
 import HeroHeader from '@site/src/components/layout/HeroHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
@@ -86,6 +87,7 @@ const LatestNews = () => {
 function IndexPage() {
   return (
     <Layout>
+      <WelcomeBanner />
       <HeroHeader {...header} />
       <FeatureSection />
       <InfoBanner {...kubernetesBanner} />
