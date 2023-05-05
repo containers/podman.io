@@ -52,7 +52,9 @@
   display: inline;
   margin-left: 12px;
 }
-
+.footer {
+  @apply bg-purple-700 dark:bg-purple-900;
+}
 /* -------------- */
 /* Font Configuration */
 /* ------------- */
