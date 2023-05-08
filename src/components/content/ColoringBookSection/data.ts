@@ -4,7 +4,7 @@ export default {
     "A decentralized team of open source container tool superheroes comes to the rescue when an asteroid storm threatens the planet. Learn about each tool—Podman, CRI-O, Buildah, Skopeo, and OpenShift—as they redesign the planet's protective shields' container deployment to protect Earth.",
   button: {
     text: 'Download',
-    src: 'https://developers.redhat.com/e-books/container-commandos-coloring-book',
+    path: 'https://developers.redhat.com/e-books/container-commandos-coloring-book',
   },
   extraBook: {
     text: 'Podman in Action',

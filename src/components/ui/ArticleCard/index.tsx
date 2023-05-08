@@ -32,7 +32,10 @@ function ArticleCard(props: ArticleCardProps) {
           <div className="grid items-end xl:basis-5/12">
             <div className="z-10 col-start-1 row-start-1">
               <h3 className="w-9/12 bg-gradient-radial from-purple-700 to-purple-900 p-2 text-white shadow-sm">
-                <a href={props.path} target="_blank" className="text-white no-underline hover:text-gray-100">
+                <a
+                  href={props.path}
+                  target="_blank"
+                  className="text-white no-underline hover:text-gray-100 hover:no-underline dark:text-white dark:hover:text-gray-50">
                   {props.title}
                 </a>
               </h3>
@@ -59,7 +62,10 @@ function ArticleCard(props: ArticleCardProps) {
       <article className="my-4 max-w-sm p-4">
         <div className="grid">
           <h3 className="w-10/12 rounded-sm bg-gradient-radial from-purple-700 to-purple-900 px-2 py-1 text-white shadow-sm">
-            <a href={props.path} target="_blank" className="text-white no-underline hover:text-gray-100">
+            <a
+              href={props.path}
+              target="_blank"
+              className="text-white no-underline hover:text-gray-100 hover:no-underline dark:text-white dark:hover:text-gray-50">
               {props.title}
             </a>
           </h3>
