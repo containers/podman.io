@@ -20,7 +20,10 @@ const GetHelpSection = () => {
         </header>
         <div className="mx-auto">
           <div className="container grid max-w-6xl grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-y-0">
-            <p className="max-w-sm text-white dark:text-gray-100">For more details, you can review the manpages:</p>
+            <p className="max-w-sm text-white dark:text-gray-100">
+              For more details, you can review the <a href="https://docs.podman.io/en/latest/Commands.html">manpages</a>
+              :
+            </p>
             {/* prettier-ignore */}
             <CodeBlock language="bash" showLineNumbers>
                 $ podman --help # get a list of all commands {'\n'}
@@ -43,10 +46,7 @@ const GetHelpSection = () => {
       <div className="container mb-8 mt-4 text-center lg:mb-20 lg:mt-6">
         <p className="text-white">
           'Please also reference the{' '}
-          <a
-            target="_blank"
-            href="https://github.com/containers/podman/blob/main/troubleshooting.md"
-            className="text-blue-300">
+          <a href="https://github.com/containers/podman/blob/main/troubleshooting.md" className="text-blue-300">
             <strong>Podman Troubleshooting Guide</strong>
           </a>{' '}
           to find known issues and tips on how to solve common configuration mistakes.'
