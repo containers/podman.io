@@ -1,3 +1,4 @@
+import { LATEST_VERSION, LATEST_DESKTOP_VERSION } from '@site/static/data/global';
 const operatingSystemData = [
   {
     id: 'windows',
@@ -5,7 +6,7 @@ const operatingSystemData = [
     subtitle: 'Install on Desktop',
     icon: 'fa-brands:windows',
     options: [],
-    path: 'https://github.com/containers/podman-desktop/releases/download/v0.13.0/podman-desktop-0.13.0-setup.exe',
+    path: `https://github.com/containers/podman-desktop/releases/download/v${LATEST_DESKTOP_VERSION}/podman-desktop-${LATEST_DESKTOP_VERSION}-setup.exe`,
     other: {
       path: 'https://podman-desktop.io/downloads',
       text: 'Other Install Options',
@@ -18,7 +19,7 @@ const operatingSystemData = [
     subtitle: 'Universal *.dmg',
     icon: 'fa-brands:apple',
     options: [],
-    path: 'https://github.com/containers/podman-desktop/releases/download/v0.13.0/podman-desktop-0.13.0-universal.dmg',
+    path: `https://github.com/containers/podman-desktop/releases/download/v0.${LATEST_DESKTOP_VERSION}/podman-desktop-0.${LATEST_DESKTOP_VERSION}-universal.dmg`,
     other: {
       path: 'https://podman-desktop.io/downloads',
       text: 'Other Install Options',
@@ -31,7 +32,7 @@ const operatingSystemData = [
     subtitle: 'Install on Desktop',
     icon: 'fa-brands:linux',
     options: [{ path: 'https://podman.io/getting-started/installation#installing-on-linux', text: 'CLI Install' }],
-    path: 'https://github.com/containers/podman-desktop/releases/download/v0.13.0/podman-desktop-0.13.0.flatpak',
+    path: `https://github.com/containers/podman-desktop/releases/download/v${LATEST_DESKTOP_VERSION}/podman-desktop-${LATEST_DESKTOP_VERSION}.flatpak`,
     other: {
       path: 'https://podman-desktop.io/downloads',
       text: 'Other Install Options',

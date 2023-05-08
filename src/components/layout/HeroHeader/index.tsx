@@ -6,6 +6,7 @@ import DropdownButton from '@site/src/components/utilities/DropdownButton';
 import Link from '@site/src/components/utilities/Link';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
 import operatingSystemData from './installOptions';
+import LATEST_VERSION from '@site/static/data/global';
 type InstallOptionProps = Card & {
   icon: string;
   option?: React.ReactNode;
