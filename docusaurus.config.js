@@ -73,6 +73,7 @@ const config = {
           { to: 'community', label: 'Community', position: 'right' },
           {
             to: 'https://blog.podman.io',
+            target: '_self',
             label: 'Development Blog',
             position: 'right',
           },
@@ -84,7 +85,8 @@ const config = {
           },
 
           {
-            href: 'https://github.com/containers/website-new',
+            to: 'https://github.com/containers/website-new',
+            target: '_self',
             label: 'GitHub',
             position: 'right',
           },
