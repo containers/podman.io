@@ -12,7 +12,7 @@ function ColoringBookSection() {
             as="link"
             outline
             {...data.button}
-            colors="hover:bg-purple-500 dark:hover:bg-purple-900 dark:bg-purple-500 dark:text-white hover:text-white"
+            colors="hover:bg-purple-700 dark:hover:bg-purple-900 dark:bg-purple-500 dark:text-white hover:text-white outline"
           />
         </div>
         <div className="order-first mr-12 hidden lg:block">

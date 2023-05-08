@@ -13,7 +13,7 @@ function Button({ as = 'link', outline, colors, icon, text, method, path }: Butt
   const solidColors =
     'bg-purple-700 dark:bg-purple-900 text-white dark:text-white hover:bg-purple-900 no-underline hover:no-underline dark:hover:text-gray-50 dark:hover:bg-purple-700 hover:text-white';
   const outlineColors =
-    'dark:bg-white dark:text-purple-700 text-purple-700 dark:text-purple-900 dark:hover:bg-purple-900 dark:hover:text-white';
+    'outline dark:bg-white dark:text-purple-700 text-purple-700 dark:text-purple-900 dark:hover:bg-purple-900 dark:hover:text-white';
   /* Set Colors */
   const variantStyles = outline ? ` ${outlineColors} ${colors}` : `${solidColors} ${colors}`;
 
