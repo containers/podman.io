@@ -100,7 +100,7 @@ const config = {
             items: [
               {
                 label: 'Documentation',
-                to: 'docs/',
+                href: 'https://docs.podman.io/',
               },
               {
                 label: 'Podman CLI Commands',
