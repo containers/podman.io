@@ -81,14 +81,14 @@ const mailingList = {
   browseInfo: {
     title: 'Browse the mailing list',
     subtitle:
-      'Simply visit [the Podman mailing list website](https://lists.podman.io/archives/list/podman@lists.podman.io/) to browse or search previous postings to the Podman mailing list.',
+      'Simply visit [the Podman mailing list website](https://lists.podman.io/) to browse or search previous postings to the Podman mailing list.',
   },
   subscribeInfo: {
     title: 'Subscribe or post to the mailing list',
     subtitle:
-      'Simply visit [the Podman mailing list website](#) to browse or search previous postings to the Podman mailing list.',
+      'Simply visit [the Podman mailing list website](https://lists.podman.io/) to browse or search previous postings to the Podman mailing list.',
     description:
-      "Regardless of which method you use, a confirmation email will be sent to you. After you reply back to that confirmation email, you'll then be able to send mail directly to [podman@lists.podman.io](). You can then also go to [the list's web page]() and manage your subscription.",
+      "Regardless of which method you use, a confirmation email will be sent to you. After you reply back to that confirmation email, you'll then be able to send mail directly to podman@lists.podman.io Send an email to [podman-join@lists.podman.io](mailto:podman-join@lists.podman.io). You can then also go to [the web page](https://lists.podman.io) and manage your subscription.",
     options: [
       {
         title: 'Option 1',
