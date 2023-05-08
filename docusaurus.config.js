@@ -106,6 +106,10 @@ const config = {
                 label: 'Podman CLI Commands',
                 href: 'https://docs.podman.io/en/latest/Commands.html',
               },
+              {
+                label: 'Podman CLI Commands',
+                href: 'https://docs.podman.io/en/latest/Commands.html',
+              },
             ],
           },
           {
