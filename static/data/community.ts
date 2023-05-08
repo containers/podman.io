@@ -1,3 +1,4 @@
+import MEETING_URL from './global';
 const header = {
   title: 'Community',
   subtitle:
@@ -56,8 +57,8 @@ const communityMeetings = {
       date: '**1st Tuesday** every month',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
-        { text: 'Join Meeting', path: '#' },
-        { text: 'Meeting Agenda', path: '#' },
+        { text: 'Join Meeting', path: MEETING_URL },
+        { text: 'Meeting Agenda', path: 'https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w' },
       ],
     },
     {
@@ -67,8 +68,8 @@ const communityMeetings = {
       date: '**3rd Thursday** every month',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
-        { text: 'Join Meeting', path: '#' },
-        { text: 'Meeting Agenda', path: '#' },
+        { text: 'Join Meeting', path: MEETING_URL },
+        { text: 'Meeting Agenda', path: 'https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both' },
       ],
     },
   ],
