@@ -1,3 +1,5 @@
+import LATEST_VERSION from './global';
+
 const header = {
   title: 'The best free & open source container tools',
   subtitle:
@@ -7,8 +9,8 @@ const header = {
     alt: 'Two screenshots of the Podman Desktop user interface',
   },
   release: {
-    text: 'v4.3.0',
-    path: 'https://podman.io/releases/',
+    text: LATEST_VERSION,
+    path: 'https://github.com/containers/podman/releases',
   },
   platforms: [
     'Supported Platforms',
