@@ -13,9 +13,9 @@ import { header, getHelp } from '@site/static/data/get-started';
 const GetHelpSection = () => {
   return (
     <section className=" mt-12 bg-gradient-to-br from-purple-500/75 to-purple-900 dark:from-purple-700 dark:via-purple-900 dark:to-gray-900 lg:mt-32">
-      <SectionHeader title={getHelp.title} textColor="dark:text-gray-100" />
+      <SectionHeader title={getHelp.title} textColor="dark:text-blue-500 text-blue-300" />
       <div className="container my-8">
-        <header className="my-4 text-center lg:my-8">
+        <header className="text-center lg:my-8">
           <h3 className="text-white dark:text-blue-500">{getHelp.subtitle}</h3>
         </header>
         <div className="mx-auto">

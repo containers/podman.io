@@ -6,6 +6,10 @@ export default {
     text: 'Download',
     src: 'https://developers.redhat.com/e-books/container-commandos-coloring-book',
   },
+  extraBook: {
+    text: 'Podman in Action',
+    path: 'https://developers.redhat.com/sites/default/files/Podman%20in%20Action%20e-book%20cover_1.png',
+  },
   featureImage: {
     src: 'images/raw/comic-cover-224w-288h.png',
     alt: 'Container Commandos coloring book cover',
