@@ -1,4 +1,4 @@
-import LATEST_VERSION from './global';
+import { LATEST_VERSION } from './global';
 
 const header = {
   title: 'The best free & open source container tools',
