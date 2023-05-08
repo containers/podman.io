@@ -31,7 +31,7 @@ const featureList = [
   {
     title: 'Secure.',
     description:
-      'Rootless containers allow you to contain privileges without compromising functionality. Trusted by US government agencies for secure HPC at scale [case study](). ',
+      'Rootless containers allow you to contain privileges without compromising functionality. Trusted by US government agencies for secure HPC at scale [case study](https://www.redhat.com/architect/hpc-containers-scale-using-podman). ',
     href: 'https://www.redhat.com/architect/hpc-containers-scale-using-podman',
   },
   {
@@ -43,7 +43,7 @@ const featureList = [
   {
     title: 'Compatible.',
     description:
-      'Compatible with other OCI compliant container formats including Docker. Run your legacy Docker containers (including docker-compose files) on Podman. [Learn more](#)',
+      'Compatible with other OCI compliant container formats including Docker. Run your legacy Docker containers (including docker-compose files) on Podman. [Learn more](https://developers.redhat.com/blog/2020/11/19/transitioning-from-docker-to-podman)',
     href: 'https://developers.redhat.com/blog/2020/11/19/transitioning-from-docker-to-podman',
   },
 ];
