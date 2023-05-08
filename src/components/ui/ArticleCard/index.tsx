@@ -35,7 +35,7 @@ function ArticleCard(props: ArticleCardProps) {
                 <a
                   href={props.path}
                   target="_blank"
-                  className="text-white no-underline hover:text-gray-100 hover:no-underline dark:text-white dark:hover:text-gray-50">
+                  className="text-white no-underline hover:text-blue-100 hover:no-underline dark:text-white dark:hover:text-blue-50">
                   {props.title}
                 </a>
               </h3>
@@ -65,7 +65,7 @@ function ArticleCard(props: ArticleCardProps) {
             <a
               href={props.path}
               target="_blank"
-              className="text-white no-underline hover:text-gray-100 hover:no-underline dark:text-white dark:hover:text-gray-50">
+              className="text-white no-underline hover:text-blue-100 hover:no-underline dark:text-white dark:hover:text-blue-50">
               {props.title}
             </a>
           </h3>

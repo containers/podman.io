@@ -16,7 +16,7 @@ const GetHelpSection = () => {
       <SectionHeader title={getHelp.title} textColor="dark:text-blue-500 text-blue-300" />
       <div className="container my-8">
         <header className="text-center lg:my-8">
-          <h3 className="text-white dark:text-blue-500">{getHelp.subtitle}</h3>
+          <h3 className="text-white dark:text-white ">{getHelp.subtitle}</h3>
         </header>
         <div className="mx-auto">
           <div className="container grid max-w-6xl grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-y-0">
