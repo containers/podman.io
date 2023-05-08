@@ -36,18 +36,18 @@ function GetToKnowPodmanSection() {
 const PodmanDesktopSection = () => {
   return (
     <section className="bg-gradient-to-b from-gray-50 to-gray-100 pb-5 dark:bg-gray-900 dark:from-gray-700/25 dark:to-gray-900">
-      <div className="align-center container mb-8 flex justify-center xl:mb-20">
+      <div className="align-center container flex justify-center">
         <div className="flex-row content-center">
-          <h2 className="mb-5 content-center bg-blue-500 pl-5 pr-5 text-white dark:bg-blue-700 dark:text-white">
+          <h2 className="mb-8 content-center bg-blue-500 pl-5 pr-5 text-white dark:bg-blue-700 dark:text-white">
             Podman Desktop
           </h2>
         </div>
       </div>
-      <div className="container mb-4 grid gap-2 lg:grid-cols-3">
-        <div id="imgdiv" className="mx-auto">
-          <img id="pdlogo" src="logos/optimized/podman-desktop-logo-200w-198h.webp" />
+      <div className="container flex flex-col md:flex-row items-center">
+        <div id="imgdiv" className="mx-auto w-full md:w-auto">
+          <img id="pdlogo" className="mx-auto" src="logos/optimized/podman-desktop-logo-200w-198h.webp" />
         </div>
-        <div className="col-span-2">
+        <div className="md:w-1/2 xl:w-3/4">
           <p className="my-8 align-middle text-2xl leading-relaxed">
             Podman Desktop is Podman's graphical application that makes it easy to install and work with Podman (and
             other container engines) on Windows, MacOS, and Linux.
@@ -61,10 +61,10 @@ const PodmanDesktopSection = () => {
 const ManageContainersUISection = () => {
   return (
     <section className="xl:py-16 xl:flex xl:flex-row-reverse bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900">
-      <div className="flex-initial w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-        <img className="w-full lg:w-3/4 lg:mx-auto xl:w-full max-w-[1200px] items-center xl:mx-none md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" src="images/optimized/ui-screens/ui-manage-containers.webp" />
+      <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
+        <img className="w-full lg:w-3/4 lg:mx-auto xl:mr-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" src="images/optimized/ui-screens/ui-manage-containers.webp" />
       </div>
-      <div className="flex flex-initial my-16 md:my-none">
+      <div className="flex flex-1 my-16 md:my-none">
         <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
           <h3 className="mb-5 dark:text-white">Manage containers (not just Podman.)</h3>
           <p className="mb-3 dark:text-white">
@@ -87,10 +87,10 @@ const ManageContainersUISection = () => {
 const BuildImagesUISection = () => {
   return (
   <section className="xl:py-16 xl:flex xl:flex-row bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900 xl:dark:from-gray-900 xl:dark:to-black">
-    <div className="flex-initial w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-      <img className="w-full lg:w-3/4 lg:mx-auto xl:mx-0 xl:w-full max-w-[1200px] items-center xl:mx-none md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" src="images/optimized/ui-screens/ui-buildimage.webp" />
+    <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
+      <img className="w-full lg:w-3/4 lg:mx-auto xl:mx-0 xl:w-full max-w-[1200px] items-center xl:ml-0 md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" src="images/optimized/ui-screens/ui-buildimage.webp" />
     </div>
-    <div className="flex flex-initial my-16 md:my-none">
+    <div className="flex flex-1 my-16 md:my-none">
       <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
         <h3 className="mb-5 dark:text-white">Build, pull, and push images.</h3>
         <p className="mb-3 dark:text-white">
@@ -108,10 +108,10 @@ const BuildImagesUISection = () => {
 const CreatePodsUISection = () => {
   return (
     <section className="xl:py-16 xl:flex xl:flex-row-reverse bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900">
-    <div className="flex-initial w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-      <img className="w-full lg:w-3/4 lg:mx-auto xl:w-full max-w-[1200px] items-center xl:mx-none md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" src="images/optimized/ui-screens/ui-podify.webp" />
+    <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
+      <img className="w-full lg:w-3/4 lg:mx-auto xl:w-full max-w-[1200px] items-center xl:mr-0 md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" src="images/optimized/ui-screens/ui-podify.webp" />
     </div>
-    <div className="flex flex-initial my-16 md:my-none">
+    <div className="flex flex-1 my-16 md:my-none">
       <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
         <h3 className="mb-5 dark:text-white">Podify containers into pods.</h3>
         <p className="mb-3 dark:text-white">
@@ -130,10 +130,10 @@ const CreatePodsUISection = () => {
 const DeployToKubernetesUISection = () => {
   return (
   <section className="xl:py-16 md:pb-32 xl:flex xl:flex-row bg-gradient-to-b from-purple-100 to-purple-300  dark:from-black dark:to-gray-900 xl:dark:from-gray-900 xl:dark:to-black">
-    <div className="flex-initial w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
+    <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
       <img className="w-full lg:w-3/4 lg:mx-auto xl:mx-0 xl:w-full max-w-[1200px] items-center xl:mx-none md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" src="images/optimized/ui-screens/ui-k8sdeploy.webp" />
     </div>
-    <div className="flex flex-initial my-16 md:my-none">
+    <div className="flex flex-1 my-16 md:my-none">
       <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
         <h3 className="mb-5 dark:text-white">Deploy to Kubernetes.</h3>
         <p className="mb-3 dark:text-white">
