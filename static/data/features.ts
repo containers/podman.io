@@ -14,7 +14,7 @@ const knowPodman = {
     {
       title: 'Quick dive into Podman',
       description:
-        "Hop on over to our [Podman Quickstart Guide](#) and we'll lead you through basic Podman commands Guide and give you pointers to more learning materials and guides.",
+        "Hop on over to our [Podman Quickstart Guide](https://podman.io/docs/tutorials/podman_tutorial) and we'll lead you through basic Podman commands Guide and give you pointers to more learning materials and guides.",
       image: {
         path: 'images/raw/characters/seal-diving.png',
         alt: 'A seal diving into the water',
@@ -32,7 +32,7 @@ const knowPodman = {
     {
       title: 'Need some help?',
       description:
-        'Check out the [Podman Troubleshooting Guide](#), search our [Documentation](#), or file an issue in our [issue tracker](#).',
+        'Check out the [Podman Troubleshooting Guide](https://github.com/containers/podman/blob/main/troubleshooting.md), search our [Documentation](https://docs.podman.io), or file an issue in our [issue tracker](https://github.com/containers/podman/issues).',
       image: {
         path: 'images/raw/characters/confused-seal.png',
         alt: 'A confused seal.',
@@ -98,12 +98,12 @@ const learnMore = {
       },
       {
         text: 'Documentation',
-        path: '#',
+        path: 'https://docs.podman.io',
         icon: 'fa6-solid:book',
       },
       {
         text: 'Podman Troubleshooting',
-        path: '#',
+        path: 'https://github.com/containers/podman/blob/main/troubleshooting.md',
         icon: 'fa6-solid:book',
       },
     ],

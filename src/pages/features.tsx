@@ -15,7 +15,7 @@ import { header, knowPodman, learnMore } from '@site/static/data/features';
 function GetToKnowPodmanSection() {
   return (
     <section className="mb-8 mt-4 lg:mt-8 xl:mb-12">
-      <SectionHeader title={knowPodman.title} />
+      <SectionHeader title={knowPodman.title} textColor="text-blue-700 dark:text-blue-500" />
       <div className="container flex flex-wrap justify-center gap-4 lg:gap-8">
         {knowPodman.cards.map((card, index) => {
           return (

@@ -1,3 +1,4 @@
+import MEETING_URL from './global';
 const header = {
   title: 'Community',
   subtitle:
@@ -56,8 +57,8 @@ const communityMeetings = {
       date: '**1st Tuesday** every month',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
-        { text: 'Join Meeting', path: '#' },
-        { text: 'Meeting Agenda', path: '#' },
+        { text: 'Join Meeting', path: MEETING_URL },
+        { text: 'Meeting Agenda', path: 'https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w' },
       ],
     },
     {
@@ -67,8 +68,8 @@ const communityMeetings = {
       date: '**3rd Thursday** every month',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
-        { text: 'Join Meeting', path: '#' },
-        { text: 'Meeting Agenda', path: '#' },
+        { text: 'Join Meeting', path: MEETING_URL },
+        { text: 'Meeting Agenda', path: 'https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both' },
       ],
     },
   ],
@@ -80,14 +81,14 @@ const mailingList = {
   browseInfo: {
     title: 'Browse the mailing list',
     subtitle:
-      'Simply visit [the Podman mailing list website](https://lists.podman.io/archives/list/podman@lists.podman.io/) to browse or search previous postings to the Podman mailing list.',
+      'Simply visit [the Podman mailing list website](https://lists.podman.io/) to browse or search previous postings to the Podman mailing list.',
   },
   subscribeInfo: {
     title: 'Subscribe or post to the mailing list',
     subtitle:
-      'Simply visit [the Podman mailing list website](#) to browse or search previous postings to the Podman mailing list.',
+      'Simply visit [the Podman mailing list website](https://lists.podman.io/) to browse or search previous postings to the Podman mailing list.',
     description:
-      "Regardless of which method you use, a confirmation email will be sent to you. After you reply back to that confirmation email, you'll then be able to send mail directly to [podman@lists.podman.io](). You can then also go to [the list's web page]() and manage your subscription.",
+      "Regardless of which method you use, a confirmation email will be sent to you. After you reply back to that confirmation email, you'll then be able to send mail directly to podman@lists.podman.io Send an email to [podman-join@lists.podman.io](mailto:podman-join@lists.podman.io). You can then also go to [the web page](https://lists.podman.io) and manage your subscription.",
     options: [
       {
         title: 'Option 1',
@@ -132,7 +133,7 @@ const submittingIssues = [
     subtitle: "Don't include private / sensitive info in issues!",
     sections: [
       {
-        text: '**Before reporting an issue**, [check our backlog of open issues](#) to see if someone else has already reported it. If so:',
+        text: '**Before reporting an issue**, [check our backlog of open issues](https://github.com/containers/podman/issues) to see if someone else has already reported it. If so:',
         checkList: [
           'Feel free to add your scenario, or additional information, to the discussion.',
           'Subscribe to the issue to be notified when it is updated.',
@@ -150,7 +151,7 @@ const submittingIssues = [
             },
             { text: 'Check open Buildah issues', path: 'https://github.com/containers/buildah/issues' },
             { text: 'Check open Skopeo issues', path: 'https://github.com/containers/skopeo/issues' },
-            { text: 'Check open Cri-o issues', path: '#' },
+            { text: 'Check open Cri-o issues', path: 'https://github.com/cri-o/cri-o/issues' },
           ],
         },
       },
@@ -170,7 +171,7 @@ const submittingIssues = [
             },
             { text: 'File a new Buildah issue', path: 'https://github.com/containers/buildah/issues/new/choose' },
             { text: 'File a new Skopeo issue', path: 'https://github.com/containers/skopeo/issues/new/choose' },
-            { text: 'File a new Cri-o issue', path: '#' },
+            { text: 'File a new Cri-o issue', path: 'https://github.com/cri-o/cri-o/issues' },
           ],
         },
       },
@@ -191,7 +192,7 @@ const submittingIssues = [
     ],
     button: {
       text: 'More PR Submission Details',
-      path: '#',
+      path: 'https://github.com/containers/podman/blob/main/CONTRIBUTING.md#submitting-pull-requests',
     },
   },
 ];
