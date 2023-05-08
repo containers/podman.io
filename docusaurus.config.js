@@ -85,7 +85,7 @@ const config = {
           },
 
           {
-            to: 'https://github.com/containers/website-new',
+            to: 'https://github.com/containers/',
             target: '_self',
             label: 'GitHub',
             position: 'right',
