@@ -43,7 +43,10 @@ const GetHelpSection = () => {
       <div className="container mb-8 mt-4 text-center lg:mb-20 lg:mt-6">
         <p className="text-white">
           'Please also reference the{' '}
-          <a href="#" className="text-blue-300">
+          <a
+            target="_blank"
+            href="https://github.com/containers/podman/blob/main/troubleshooting.md"
+            className="text-blue-300">
             <strong>Podman Troubleshooting Guide</strong>
           </a>{' '}
           to find known issues and tips on how to solve common configuration mistakes.'
