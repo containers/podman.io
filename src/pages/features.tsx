@@ -115,7 +115,10 @@ const CreatePodsUISection = () => {
   return (
     <section className="xl:py-16 xl:flex xl:flex-row-reverse bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900">
     <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-      <img className="w-full lg:w-3/4 lg:mx-auto xl:w-full max-w-[1200px] items-center xl:mr-0 md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" src="images/optimized/ui-screens/ui-podify.webp" />
+      <video className="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:mr-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" controls>
+        <source src="video/ui/podify.mp4" type="video/mp4"/>
+        Your browser does not support the video tag.
+      </video> 
     </div>
     <div className="flex flex-1 my-16 md:my-none">
       <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
