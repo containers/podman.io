@@ -133,7 +133,7 @@ const submittingIssues = [
     subtitle: "Don't include private / sensitive info in issues!",
     sections: [
       {
-        text: '**Before reporting an issue**, [check our backlog of open issues](#) to see if someone else has already reported it. If so:',
+        text: '**Before reporting an issue**, [check our backlog of open issues](https://github.com/containers/podman/issues) to see if someone else has already reported it. If so:',
         checkList: [
           'Feel free to add your scenario, or additional information, to the discussion.',
           'Subscribe to the issue to be notified when it is updated.',
@@ -151,7 +151,7 @@ const submittingIssues = [
             },
             { text: 'Check open Buildah issues', path: 'https://github.com/containers/buildah/issues' },
             { text: 'Check open Skopeo issues', path: 'https://github.com/containers/skopeo/issues' },
-            { text: 'Check open Cri-o issues', path: '#' },
+            { text: 'Check open Cri-o issues', path: 'https://github.com/cri-o/cri-o/issues' },
           ],
         },
       },
@@ -171,7 +171,7 @@ const submittingIssues = [
             },
             { text: 'File a new Buildah issue', path: 'https://github.com/containers/buildah/issues/new/choose' },
             { text: 'File a new Skopeo issue', path: 'https://github.com/containers/skopeo/issues/new/choose' },
-            { text: 'File a new Cri-o issue', path: '#' },
+            { text: 'File a new Cri-o issue', path: 'https://github.com/cri-o/cri-o/issues' },
           ],
         },
       },
@@ -192,7 +192,7 @@ const submittingIssues = [
     ],
     button: {
       text: 'More PR Submission Details',
-      path: '#',
+      path: 'https://github.com/containers/podman/blob/main/CONTRIBUTING.md#submitting-pull-requests',
     },
   },
 ];
