@@ -1,4 +1,4 @@
-import MEETING_URL from './global';
+import { MEETING_URL } from './global';
 const header = {
   title: 'Community',
   subtitle:
