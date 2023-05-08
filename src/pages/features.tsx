@@ -62,7 +62,7 @@ const ManageContainersUISection = () => {
   return (
     <section className="xl:py-16 xl:flex xl:flex-row-reverse bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900">
       <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-        <video className="rounded-lg" controls>
+        <video className="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:mr-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" controls>
           <source src="video/ui/containers.mp4" type="video/mp4"/>
             Your browser does not support the video tag.
           </video> 
@@ -91,11 +91,11 @@ const BuildImagesUISection = () => {
   return (
   <section className="xl:py-16 xl:flex xl:flex-row bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900 xl:dark:from-gray-900 xl:dark:to-black">
     <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-      <video className="rounded-lg" controls>
-        <source src="video/ui/images.mp4" type="video/mp4"/>
-        Your browser does not support the video tag.
-      </video> 
-    </div>
+      <video className="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:ml-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" controls>
+        <source src="video/ui/containers.mp4" type="video/mp4"/>
+            Your browser does not support the video tag.
+        </video> 
+      </div>
     <div className="flex flex-1 my-16 md:my-none">
       <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
         <h3 className="mb-5 dark:text-white">Build, pull, and push images.</h3>
