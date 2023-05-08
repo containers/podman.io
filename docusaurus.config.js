@@ -100,7 +100,11 @@ const config = {
             items: [
               {
                 label: 'Documentation',
-                href: 'https://docs.podman.io/',
+                to: 'docs/',
+              },
+              {
+                label: 'Podman CLI Commands',
+                href: 'https://docs.podman.io/en/latest/Commands.html',
               },
             ],
           },
@@ -111,18 +115,30 @@ const config = {
                 label: 'Discord',
                 href: 'https://discord.com/invite/x5GzFF6QH4',
               },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
               {
                 label: 'Blog',
                 href: 'https://blog.podman.io/',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/containers/website-new',
+                label: 'Mailing List',
+                href: 'https://lists.podman.io',
+              },
+            ],
+          },
+          {
+            title: 'Projects',
+            items: [
+              {
+                label: 'Podman GitHub',
+                href: 'https://github.com/containers/podman',
+              },
+              {
+                label: 'Podman Desktop GitHub',
+                href: 'https://github.com/containers/podman-desktop',
+              },
+              {
+                label: 'Podman Website',
+                href: 'https://github.com/containers/podman.io',
               },
             ],
           },
