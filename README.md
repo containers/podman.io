@@ -1,32 +1,68 @@
-# Podman Website README
+# Podman.io Website README
 
 This website is built using [Docusaurus 2](https://docusaurus.io/).
 
-### Basic Commands
+### Build Locally
+
+Follow these steps to test the site with either a local development server, or by statically generating the site.
 
 - Install packages
   - `$ yarn`
-- Starts a local development server
+- Run a local development server
   - `$ yarn start`
-- Generate static content to serve on a static hosting service
+- Generate static content (this is how the site is built for production)
   - `$ yarn build`
+    - After this you can test the local build with:
+      - `yarn serve`
 
 ### Deployment
 
-- Using SSH: `$ USE_SSH=true yarn deploy`
-- Not using SSH: `$ GIT_USER=<Your GitHub username> yarn deploy`
+- The site is set to automatically deploy when code is pushed to the main branch
+  - See `.github/workflows/static.yml
 
-_If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch._
+---
+
+## How to Update the Podman.io Website
+
+### Page Content
+
+_Text and Images_
+
+- Most page data is stored in `static/data/<page-name>`
+  - It is set up so that you can use markdown in the strings for much of the content.
+    - _If the markdown syntax renders, it needs to be passed into the `Markdown` component (in `components/utilities/`)_
+- files like `static/data/globa.ts`, `static/data/testimonials.ts`, and `static/data/meetings.ts` are meant to make it easier for people with limited coding experience to be able to quickly update specific and regularly changing content.
+  - **note**: the `papaparse` library has been added for switching to `.csv` files in the future.
+
+### Page Style and Structure
+
+#### Pages Pattern
+
+- Fat arrow notation for sections that only appear on the particular page
+  - These sections are organized in an exported function at the end of the file
+- Large sections
+  - some content takes up a lot of space and may be useful elsewhere or temporary, they can be found in `src/components/content/`
+    - Components in this directory should be self sufficient for data (but it's not necessary of course)
+
+#### Components
+
+- `src/components/content`: Self-sufficient components, large page content components, temporary components
+- `src/components/layout`: Headers, grids, and any other sections that organize content
+- `src/components/shapes`: SVG components such as the wave border
+- `src/components/ui`: Reusable components, little to no data by default, presentational
+- `src/components/utilities`: Buttons, links, and other small reusable elements
 
 ---
 
 ## Configuration Information
 
-### Page Content Plan
+### How to Update Docusaurus
 
-- Page data (text and images) can be found in `static/data/`
-  - this content is then rendered in landing pages in `src/pages/`
-- Docs and blog content would be written in `.mdx` or `.md` files in `docs/`, and `blog/` respectively
+- Run the following command to upgrade docusaurus
+  - `yarn up @docusaurus/core@latest @docusaurus/preset-classic@latest`
+- _note that the docusaurus site says to use `upgrade` but it's actually `up` when using yarn_
+- to upgrade tailwind or other packages, similarly use the command:
+  - `yarn up <package-name>`
 
 ### Plugins and Libraries
 
@@ -34,10 +70,10 @@ _If you are using GitHub pages for hosting, this command is a convenient way to 
   - [Icones](https://icones.js.org/) for web based icon library overview
   - [Iconify Intellisense vscode extension](https://marketplace.visualstudio.com/items?itemName=antfu.iconify)
 - CSS Framework: [Tailwind](https://tailwindcss.com/) (see `tailwind.config.js`, `assets/css/main.css`)
-- Wordpress Blog Integration: [Wordpress to Docusaurus Plugin](https://github.com/mark-tate/wordpress-to-docusaurus-plugin)
 - Code Formatting: [Prettier](https://prettier.io/) (see `.prettierrc`, `.prettierignore`)
 - Linting: [Eslint](https://eslint.org/) (see `.eslintrc`, `.eslintignore`)
 - Rendering markdown from js strings: [react markdown parser](https://github.com/remarkjs/react-markdown)
   - Use the custom `<Markdown text="..." styles="..." /> component for any markdown strings
     - This component wraps the markdown parser in `<BrowserOnly>{() => <ReactMarkdown />}</BrowserOnly>` and handles the lazy loading and imports, reducing the amount of code needed on each instance.
-    - Reasons for this is that the reactmarkdown component needed to by dynamically imported to avoid import error. Being async on a ssg page caused hydration isues without the other code. the reactmarkdown component works fine without the extra code, but it does throw errors
+- Rendering html from wordpress: [html-react-parser](https://www.npmjs.com/package/html-react-parser)
+  - Use this to render any injected html to avoid XSS
