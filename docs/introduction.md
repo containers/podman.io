@@ -1,10 +1,10 @@
 # Introduction
 
-Containers* simplify the production, distribution, discoverability, and usage of applications with all of their dependencies and default configuration files. Users test drive or deploy a new application with one or two commands instead of following pages of installation instructions. Here's how to find your first `Container Image`*::
+Containers* simplify the production, distribution, discoverability, and usage of applications with all of their dependencies and default configuration files. Users test drive or deploy a new application with one or two commands instead of following pages of installation instructions. Here's how to find your first `Container Image`*:
 
     podman search busybox
 
-Output::
+Output:
 
     INDEX       NAME                                DESCRIPTION                                       STARS   OFFICIAL   AUTOMATED
     docker.io   docker.io/library/busybox           Busybox base image.                               1882    [OK]
@@ -14,15 +14,15 @@ Output::
 
 The previous command returned a list of publicly available container images on DockerHub. These container images are easy to consume, but of differing levels of quality and maintenance. Let’s use the first one listed because it seems to be well maintained.
 
-To run the busybox container image, it’s just a single command::
+To run the busybox container image, it’s just a single command:
 
     podman run -it docker.io/library/busybox
 
-Output::
+Output:
 
     / #
 
-You can poke around in the busybox container for a while, but you’ll quickly find that running small container with a few Linux utilities in it provides limited value, so exit out::
+You can poke around in the busybox container for a while, but you’ll quickly find that running small container with a few Linux utilities in it provides limited value, so exit out:
 
     exit
 
@@ -32,16 +32,16 @@ Sometimes we can find a publicly available container image for the exact workloa
 
 Container Images aren’t actually images, they’re repositories often made up of multiple layers. These layers can easily be added, saved, and shared with others by using a Containerfile (Dockerfile). This single file often contains all the instructions needed to build a new container image and can easily be shared with others publicly using tools like GitHub.
 
-Here's an example of how to build a Nginx web server on top of a Debian base image using the Dockerfile maintained by Nginx and published in GitHub::
+Here's an example of how to build a Nginx web server on top of a Debian base image using the Dockerfile maintained by Nginx and published in GitHub:
 
     podman build -t nginx https://git.io/Jf8ol
 
-Once, the image build completes, it’s easy to run the new image from our local cache::
+Once, the image build completes, it’s easy to run the new image from our local cache:
 
     podman run -d -p 8080:80 nginx
     curl localhost:8080
 
-Output::
+Output:
 
     ...
     <p><em>Thank you for using nginx.</em></p>
@@ -51,25 +51,25 @@ Building new images is great, but sharing our work with others let’s them revi
 
 Standardizing on container images and `Container Registries`_ enable a new level of collaboration through simple consumption. This simple consumption model is possible because every major Container Engine and Registry Server uses the Open Containers Initiative (OCI_) format. This allows users to find, run, build, share and deploy containers anywhere they want. Podman and other `Container Engines`\_ like CRI-O, Docker, or containerd can create and consume container images from docker.io, quay.io, an on premise registry or even one provided by a cloud provider. The OCI image format facilitates this ecosystem through a single standard.
 
-For example, if we wanted to share our newly built Nginx container image on quay.io it’s easy. First log in to quay::
+For example, if we wanted to share our newly built Nginx container image on quay.io it’s easy. First log in to quay:
 
     podman login quay.io
 
-Input::
+Input:
 
     Username: USERNAME
     Password: ********
     Login Succeeded!
 
-Next, tag the image so that we can push it into our user account::
+Next, tag the image so that we can push it into our user account:
 
     podman tag localhost/nginx quay.io/USERNAME/nginx
 
-Finally, push the image::
+Finally, push the image:
 
     podman push quay.io/USERNAME/nginx
 
-Output::
+Output:
 
     Getting image source signatures
     Copying blob 38c40d6c2c85 done
@@ -81,11 +81,11 @@ Output::
     Writing manifest to image destination
     Storing signatures
 
-Notice that we pushed four layers to our registry and now it’s available for others to share. Take a quick look::
+Notice that we pushed four layers to our registry and now it’s available for others to share. Take a quick look:
 
     podman inspect quay.io/USERNAME/nginx
 
-Output::
+Output:
 
     [
         {
