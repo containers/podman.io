@@ -54,7 +54,7 @@ const TabContent = (props): JSX.Element => {
           </p>
         </div>
         <div className={`${isActive % 2 === 1 && 'md:order-first'}`}>
-          <img {...image} className="object-fill lg:h-[400px] lg:w-[600px]" />
+          <img {...image} className="object-fit lg:w-[600px]" />
         </div>
       </div>
     </>
