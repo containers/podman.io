@@ -6,6 +6,7 @@ This website is built using [Docusaurus 2](https://docusaurus.io/).
 
 Follow these steps to test the site with either a local development server, or by statically generating the site.
 
+- [_make sure yarn is installed_](https://classic.yarnpkg.com/lang/docs/install/)
 - Install packages
   - `$ yarn`
 - Run a local development server
@@ -19,6 +20,7 @@ Follow these steps to test the site with either a local development server, or b
 
 - The site is set to automatically deploy when code is pushed to the main branch
   - See `.github/workflows/static.yml
+- **Important**: prior to merging to main, run `yarn build` locally
 
 ---
 
@@ -51,6 +53,24 @@ _Text and Images_
 - `src/components/shapes`: SVG components such as the wave border
 - `src/components/ui`: Reusable components, little to no data by default, presentational
 - `src/components/utilities`: Buttons, links, and other small reusable elements
+
+### Typescript
+
+- a bunch of base types are found in `typs.d.ts`
+  - these are primarily for props. Kept minimal by design and then extended when needed (primarily with style props)
+
+### Assets
+
+#### CSS
+
+- Podman and Podman Desktop color themes are added in `tailwind.config.js`
+- A custom radial gradient has also been added to `tailwind.config.js` (it uses the same breakpoints as other tailwind gradients)
+- changes to the default styles are in `src/assets/css/main.css` in the following order:
+  - imports
+  - docusaurus root colors
+  - docusarus component style changes
+  - font configuration
+- default fonts are set inside `@layer base{}` in `main.css` using tailwind's **@apply** syntax
 
 ---
 
