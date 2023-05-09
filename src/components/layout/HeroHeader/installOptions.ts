@@ -3,7 +3,7 @@ const operatingSystemData = [
   {
     id: 'windows',
     title: 'Download for Windows',
-    subtitle: 'Install on Desktop',
+    subtitle: `Install on Desktop v-${LATEST_DESKTOP_VERSION}`,
     icon: 'fa-brands:windows',
     options: [],
     path: `https://github.com/containers/podman-desktop/releases/download/v${LATEST_DESKTOP_VERSION}/podman-desktop-${LATEST_DESKTOP_VERSION}-setup.exe`,
@@ -14,9 +14,9 @@ const operatingSystemData = [
     },
   },
   {
-    id: 'macos',
+    id: 'macintosh',
     title: 'Download for macOS',
-    subtitle: 'Universal *.dmg',
+    subtitle: `Universal *.dmg v-${LATEST_DESKTOP_VERSION}`,
     icon: 'fa-brands:apple',
     options: [],
     path: `https://github.com/containers/podman-desktop/releases/download/v0.${LATEST_DESKTOP_VERSION}/podman-desktop-0.${LATEST_DESKTOP_VERSION}-universal.dmg`,
@@ -29,7 +29,7 @@ const operatingSystemData = [
   {
     id: 'linux',
     title: 'Download for Linux',
-    subtitle: 'Install on Desktop',
+    subtitle: `Install Desktop v-${LATEST_DESKTOP_VERSION}`,
     icon: 'fa-brands:linux',
     options: [{ path: 'https://podman.io/getting-started/installation#installing-on-linux', text: 'CLI Install' }],
     path: `https://github.com/containers/podman-desktop/releases/download/v${LATEST_DESKTOP_VERSION}/podman-desktop-${LATEST_DESKTOP_VERSION}.flatpak`,

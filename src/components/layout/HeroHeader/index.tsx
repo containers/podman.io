@@ -17,8 +17,8 @@ const detectOperatingSystem = () => {
   const userAgent = window.navigator.userAgent.toLowerCase().split(' ');
   if (userAgent.find(item => item.includes('windows'))) {
     return 'windows';
-  } else if (userAgent.find(item => item.includes('macos'))) {
-    return 'macos';
+  } else if (userAgent.find(item => item.includes('macintosh'))) {
+    return 'macintosh';
   }
   return 'linux';
 };
