@@ -99,13 +99,14 @@ const config = {
             title: 'Docs',
             items: [
               {
+                label: 'Installation Instructions',
+                to: 'docs/tutorials/installation',
+              },
+              {
                 label: 'Documentation',
                 href: 'https://docs.podman.io/',
               },
-              {
-                label: 'Podman CLI Commands',
-                href: 'https://docs.podman.io/en/latest/Commands.html',
-              },
+
               {
                 label: 'Podman CLI Commands',
                 href: 'https://docs.podman.io/en/latest/Commands.html',
