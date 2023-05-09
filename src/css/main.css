@@ -67,6 +67,7 @@
 .navbar__link--active {
   @apply text-purple-300 underline dark:text-purple-300 dark:underline;
 }
+
 /* ------------------ */
 /* Font Configuration */
 /* ------------------ */
