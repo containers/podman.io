@@ -94,8 +94,8 @@ const BuildImagesUISection = () => {
       <video className="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:ml-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" controls>
         <source src="video/ui/containers.mp4" type="video/mp4"/>
             Your browser does not support the video tag.
-        </video> 
-      </div>
+      </video> 
+    </div>
     <div className="flex flex-1 my-16 md:my-none">
       <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
         <h3 className="mb-5 dark:text-white">Build, pull, and push images.</h3>
@@ -140,7 +140,10 @@ const DeployToKubernetesUISection = () => {
   return (
   <section className="xl:py-16 md:pb-32 xl:flex xl:flex-row bg-gradient-to-b from-purple-100 to-purple-300  dark:from-black dark:to-gray-900 xl:dark:from-gray-900 xl:dark:to-black">
     <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-      <img className="w-full lg:w-3/4 lg:mx-auto xl:mx-0 xl:w-full max-w-[1200px] items-center xl:mx-none md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" src="images/optimized/ui-screens/ui-k8sdeploy.webp" />
+      <video className="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:ml-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" controls>
+        <source src="video/ui/kubernetes.mp4" type="video/mp4"/>
+            Your browser does not support the video tag.
+        </video> 
     </div>
     <div className="flex flex-1 my-16 md:my-none">
       <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
