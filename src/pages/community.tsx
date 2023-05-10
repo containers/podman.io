@@ -134,6 +134,7 @@ const DropdownContent = (props): JSX.Element => {
     </div>
   );
 };
+
 const IssuesSection = () => {
   return (
     <section className="max-w-lg rounded-md bg-white px-10 pt-10 shadow-lg dark:bg-gray-900">
@@ -164,6 +165,7 @@ const IssuesSection = () => {
     </section>
   );
 };
+
 const PullRequestSection = () => {
   return (
     <section className="max-w-lg rounded-md bg-white p-10 shadow-lg dark:bg-gray-900">
@@ -189,6 +191,7 @@ const PullRequestSection = () => {
     </section>
   );
 };
+
 const SubmitIssuesSection = () => {
   return (
     <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
@@ -206,7 +209,7 @@ const SubmitIssuesSection = () => {
   );
 };
 
-/* PAGE Content */
+/* PAGE CONTENT */
 function Community() {
   return (
     <Layout>

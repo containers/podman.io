@@ -11,7 +11,8 @@ import ArticleCard from '@site/src/components/ui/ArticleCard';
 import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
 import TestimonialSection from '@site/src/components/content/TestimonialSection';
 /* PAGE DATA */
-import { header, featureList, kubernetesBanner, compatibleTools, testimonials } from '@site/static/data/home';
+import { header, featureList, kubernetesBanner, compatibleTools } from '@site/static/data/home';
+import { testimonials } from '@site/static/data/testimonials';
 
 /* PAGE COMPONENTS */
 const FeatureItem = ({ title, description }) => {
@@ -47,6 +48,7 @@ const CompatibleToolSection = () => {
     </section>
   );
 };
+
 const LatestNews = () => {
   const [blogData, setBlogData] = useState([]);
 
