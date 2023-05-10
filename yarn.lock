@@ -1845,26 +1845,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/plugin-client-redirects@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "@docusaurus/plugin-client-redirects@npm:2.4.0"
-  dependencies:
-    "@docusaurus/core": 2.4.0
-    "@docusaurus/logger": 2.4.0
-    "@docusaurus/utils": 2.4.0
-    "@docusaurus/utils-common": 2.4.0
-    "@docusaurus/utils-validation": 2.4.0
-    eta: ^2.0.0
-    fs-extra: ^10.1.0
-    lodash: ^4.17.21
-    tslib: ^2.4.0
-  peerDependencies:
-    react: ^16.8.4 || ^17.0.0
-    react-dom: ^16.8.4 || ^17.0.0
-  checksum: e0a82b71521752fb338b928fd0e04c78f01a1b8f240ffde12631a25711cdf63b0bf1a56d1ee19e479ea11d33ef9aabf337071f2eb5dcd55b4f17228374ceae26
-  languageName: node
-  linkType: hard
-
 "@docusaurus/plugin-content-blog@npm:2.4.0":
   version: 2.4.0
   resolution: "@docusaurus/plugin-content-blog@npm:2.4.0"
@@ -9227,7 +9207,6 @@ __metadata:
     "@docusaurus/core": latest
     "@docusaurus/eslint-plugin": latest
     "@docusaurus/module-type-aliases": latest
-    "@docusaurus/plugin-client-redirects": ^2.4.0
     "@docusaurus/preset-classic": latest
     "@docusaurus/theme-live-codeblock": ^2.3.1
     "@iconify/react": ^4.0.1
