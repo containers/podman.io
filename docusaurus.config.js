@@ -41,11 +41,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/containers/website-new',
-        },
-        blog: {
-          showReadingTime: true,
-          editUrl: 'https://github.com/containers/website-new',
+          editUrl: 'https://podman.io/',
         },
         theme: {
           customCss: require.resolve('./src/css/main.css'),
