@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon } from '@iconify/react';
 import Testimonial from '@site/src/components/ui/Testimonial';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
-import { testimonials } from '@site/static/data/home';
+import { testimonials } from '@site/static/data/testimonials';
 
 function TestimonialSection() {
   const slideLeft = () => {
