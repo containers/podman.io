@@ -21,36 +21,23 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  setup_and_build:
+    uses: ./.github/workflows/setup_and_build.yml
   deploy:
+    needs: setup_and_build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Download build artifact
+        uses: actions/download-artifact
         with:
-          node-version: 18
-          cache: yarn
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: Install dependencies
-        run: yarn install --immutable-cache
-      - name: Build
-        run: yarn build
+          name: 'build'
+          path: 'build'
       - name: Setup Pages
         uses: actions/configure-pages@v1
-      - name: Upload artifact
+      - name: Upload page artifact
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
