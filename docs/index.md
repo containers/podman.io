@@ -19,7 +19,7 @@ The documentation for Podman is located
 ## Installing Podman
 
 For installing or building Podman, please see the
-[installation instructions]({{ site.baseurl }}/getting-started/installation).
+[installation instructions](installation).
 
 ## Familiarizing yourself with Podman
 
@@ -208,7 +208,7 @@ Checkpointing a container stops the container while writing the state of all
 processes in the container to disk. With this, a container can later be
 migrated and restored, running at exactly the same point in time as the
 checkpoint. For more details, see the
-[checkpoint instructions]({{ site.baseurl }}/getting-started/checkpoint).
+[checkpoint instructions](checkpoint).
 
 ## Integration Tests
 
