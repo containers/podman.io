@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   setup_and_build:
-    uses: ./.github/workflows/setup_and_build.yml
+    uses: containers/podman.io/.github/workflows/setup_and_build.yml@main
   deploy:
     needs: setup_and_build
     environment:
