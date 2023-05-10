@@ -24,6 +24,9 @@
   --docusaurus-highlighted-code-line-bg: rgba(44, 39, 53, 0.3);
 }
 
+.breadcrumbs__link {
+  @apply -my-2;
+}
 .navbar__title {
   font-family: Montserrat;
   font-weight: 500 !important;
@@ -32,7 +35,6 @@
   letter-spacing: -1.5px !important;
   font-kerning: normal !important;
 }
-
 .navbar__logo {
   height: 40px;
 }
@@ -40,7 +42,6 @@
   box-shadow: none;
   @apply bg-gradient-to-r from-blue-500  to-purple-700 dark:from-blue-700 dark:to-purple-900;
 }
-
 .navbar__title,
 .navbar__link,
 .clean-btn {
