@@ -12,7 +12,6 @@ import ColoringBookSection from '@site/src/components/content/ColoringBookSectio
 import TestimonialSection from '@site/src/components/content/TestimonialSection';
 /* PAGE DATA */
 import { header, featureList, kubernetesBanner, compatibleTools } from '@site/static/data/home';
-import { testimonials } from '@site/static/data/testimonials';
 
 /* PAGE COMPONENTS */
 const FeatureItem = ({ title, description }) => {
