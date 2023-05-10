@@ -1,0 +1,22 @@
+name: Test build content for pages
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  setup_and_build:
+    uses: ./.github/workflows/setup_and_build.yml
+  test:
+    needs: setup_and_build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: 'build'
+          path: 'build'
+      - name: Ensure index page was build
+        run: test -r build/index.html
