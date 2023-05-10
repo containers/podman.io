@@ -100,11 +100,11 @@ const config = {
             items: [
               {
                 label: 'Installation Instructions',
-                to: 'docs/tutorials/installation',
+                to: 'docs/installation',
               },
               {
                 label: 'Documentation',
-                href: 'https://docs.podman.io/',
+                to: 'docs/',
               },
 
               {
