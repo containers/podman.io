@@ -27,6 +27,9 @@
 .breadcrumbs__link {
   @apply -my-2;
 }
+.menu__list {
+  @apply mt-10;
+}
 .navbar__title {
   font-family: Montserrat;
   font-weight: 500 !important;
@@ -63,6 +66,9 @@
   @apply text-blue-50 no-underline hover:text-blue-300 dark:hover:text-blue-500;
 }
 .menu a {
+  @apply no-underline;
+}
+.table-of-contents__link {
   @apply no-underline;
 }
 .navbar__link--active {
