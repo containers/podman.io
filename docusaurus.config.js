@@ -8,7 +8,7 @@ const config = {
   title: 'Podman',
   tagline:
     'Podman is a daemonless container engine for developing, managing, and running OCI Containers on your Linux System',
-  url: 'https://containers.github.io',
+  url: 'https://podman.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -41,11 +41,8 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/containers/website-new',
-        },
-        blog: {
-          showReadingTime: true,
-          editUrl: 'https://github.com/containers/website-new',
+          path: 'docs',
+          editUrl: 'https://github.com/containers/podman.io/tree/main',
         },
         theme: {
           customCss: require.resolve('./src/css/main.css'),
