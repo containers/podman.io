@@ -64,7 +64,7 @@ const InstallOption = (props): JSX.Element => {
   );
 };
 
-function HeroHeader({ title, subtitle, release, image, platforms }) {
+function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, platforms }) {
   return (
     <header className="bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900">
       <div className="mx-auto grid md:grid-cols-2 md:gap-12 xl:mx-20">
@@ -79,7 +79,11 @@ function HeroHeader({ title, subtitle, release, image, platforms }) {
           </div>
           <p className="flex gap-4 text-white dark:text-gray-100">
             <span>
-              Latest stable <Link {...release} textColor="text-white dark:text-gray-100" />
+              Latest stable Podman <Link {...podmanrelease} textColor="text-white dark:text-gray-100" />
+            </span>
+            <span>-</span>
+            <span>
+              Latest stable Podman Desktop <Link {...desktoprelease} textColor="text-white dark:text-gray-100" />
             </span>
             <span>-</span>
             <Link

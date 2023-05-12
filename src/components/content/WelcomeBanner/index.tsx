@@ -18,7 +18,7 @@ function WelcomeBanner() {
         </div>
         <div className="col-span-full mt-8 flex flex-wrap items-center gap-8 md:mt-0 lg:col-span-8 ">
           <p className="max-w-prose text-center text-white">
-            Take a look around, dont forget to check out the new <a href="docs/podman">docs layout</a>. Please report
+            Take a look around, don't forget to check out the new <a href="docs">docs layout</a>. Please report
             any bugs to <a href="https://github.com/containers/website-new/issues">the issue tracker</a>.
           </p>
         </div>

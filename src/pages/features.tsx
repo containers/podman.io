@@ -36,20 +36,20 @@ function GetToKnowPodmanSection() {
 const PodmanDesktopSection = () => {
   return (
     <section className="bg-gradient-to-b from-gray-50 to-gray-100 pb-5 dark:bg-gray-900 dark:from-gray-700/25 dark:to-gray-900">
-      <div className="align-center container mb-8 flex justify-center xl:mb-20">
+      <div className="align-center container flex justify-center">
         <div className="flex-row content-center">
-          <h2 className="mb-5 content-center bg-blue-500 pl-5 pr-5 text-white dark:bg-blue-700 dark:text-white">
-            Podman Desktop
+          <h2 className="content-center">
+            <a className="hover:no-underline hover:text-white active:text-white visited:text-white dark:hover:text-white dark:active:text-white dark:visited:text-white text-4xl mb-5 px-5  bg-blue-500 no-underline text-white dark:bg-blue-700 dark:text-white" href="https://podman-desktop.io">Podman Desktop</a>
           </h2>
         </div>
       </div>
-      <div className="container mb-4 grid gap-2 lg:grid-cols-3">
-        <div id="imgdiv" className="mx-auto">
-          <img id="pdlogo" src="logos/optimized/podman-desktop-logo-200w-198h.webp" />
+      <div className="container flex flex-col md:flex-row items-center">
+        <div id="imgdiv" className="mx-auto w-full md:w-auto">
+          <img id="pdlogo" className="mx-auto" src="logos/optimized/podman-desktop-logo-200w-198h.webp" />
         </div>
-        <div className="col-span-2">
+        <div className="md:w-1/2 xl:w-3/4">
           <p className="my-8 align-middle text-2xl leading-relaxed">
-            Podman Desktop is Podman's graphical application that makes it easy to install and work with Podman (and
+            <a className="font-semibold hover:text-purple-500 text-purple-900 no-underline text-2xl leading-releaxed" href="https://podman-desktop.io">Podman Desktop</a> is Podman's graphical application that makes it easy to install and work with Podman (and
             other container engines) on Windows, MacOS, and Linux.
           </p>
         </div>
@@ -60,28 +60,24 @@ const PodmanDesktopSection = () => {
 
 const ManageContainersUISection = () => {
   return (
-    <section className="bg-gradient-to-b from-purple-100 to-purple-300 pb-5 dark:from-purple-900 dark:to-blue-900">
-      <div className="align-center container my-8 grid justify-center gap-4 md:grid-cols-3 xl:my-20">
-        <div className="my-8 h-fit rounded-md bg-white/50 shadow-md">
-          <div className="flex flex-col items-center justify-center p-8 dark:text-black">
-            <div>
-              <h3 className="mb-5 dark:text-black">Manage containers (not just Podman.)</h3>
-              <p className="mb-3 dark:text-black">
-                Podman Desktop allows you to list, view, and manage containers from multiple supported container
-                engines* in a single unified view.
-              </p>
-              <p className="mb-3 dark:text-black">
-                Gain easy access to a shell inside the container, logs, and basic controls.
-              </p>
-              <em className="mt-10 block">
-                * Supported engines and orchestrators include Podman, Docker, Lima, kind, Red Hat OpenShift, Red Hat
-                OpenShift Developer Sandbox.
-              </em>
-            </div>
-          </div>
-        </div>
-        <div className="col-span-2 w-full">
-          <img className="w-full" src="images/optimized/ui-screens/ui-manage-containers.webp" />
+    <section className="xl:py-16 xl:flex xl:flex-row-reverse bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900">
+      <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
+        <img className="w-full lg:w-3/4 lg:mx-auto xl:mr-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" src="images/optimized/ui-screens/ui-manage-containers.webp" />
+      </div>
+      <div className="flex flex-1 my-16 md:my-none">
+        <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
+          <h3 className="mb-5 dark:text-white">Manage containers (not just Podman.)</h3>
+          <p className="mb-3 dark:text-white">
+            Podman Desktop allows you to list, view, and manage containers from multiple supported container
+            engines* in a single unified view.
+          </p>
+          <p className="mb-3 dark:text-white">
+            Gain easy access to a shell inside the container, logs, and basic controls.
+          </p>
+          <em className="mt-10 block dark:text-white">
+            * Supported engines and orchestrators include Podman, Docker, Lima, kind, Red Hat OpenShift, Red Hat 
+            OpenShift Developer Sandbox.
+          </em>
         </div>
       </div>
     </section>
@@ -90,75 +86,63 @@ const ManageContainersUISection = () => {
 
 const BuildImagesUISection = () => {
   return (
-    <section className="bg-gradient-to-b from-white to-gray-50 pb-5 dark:from-gray-900 dark:to-purple-900">
-      <div className="align-center container my-8 grid justify-center gap-4 md:grid-cols-3 xl:my-20">
-        <div className="col-span-2 w-full">
-          <img className="mb-6 mt-6 w-full md:max-w-[75%]" src="images/optimized/ui-screens/ui-buildimage.webp" />
-        </div>
-        <div className="my-8 h-fit rounded-md bg-white/50 shadow-md">
-          <div className="flex flex-col items-center justify-center p-8">
-            <div>
-              <h3 className="mb-5 dark:text-black">Build, pull, and push images.</h3>
-              <p className="dark:text-black">
-                Build containers from a Dockerfile / Containerfile, or pull images from remote repositories to run.
-              </p>
-              <p className="dark:text-black">
-                Manage accounts for and push your images to multiple container registries.
-              </p>
-            </div>
-          </div>
-        </div>
+  <section className="xl:py-16 xl:flex xl:flex-row bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900 xl:dark:from-gray-900 xl:dark:to-black">
+    <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
+      <img className="w-full lg:w-3/4 lg:mx-auto xl:mx-0 xl:w-full max-w-[1200px] items-center xl:ml-0 md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" src="images/optimized/ui-screens/ui-buildimage.webp" />
+    </div>
+    <div className="flex flex-1 my-16 md:my-none">
+      <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
+        <h3 className="mb-5 dark:text-white">Build, pull, and push images.</h3>
+        <p className="mb-3 dark:text-white">
+          Build containers from a Dockerfile / Containerfile, or pull images from remote repositories to run.
+        </p>
+        <p className="mb-3 dark:text-white">
+          Manage accounts for and push your images to multiple container registries.
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
   );
 };
 
 const CreatePodsUISection = () => {
   return (
-    <section className="bg-gradient-to-b from-blue-100 to-blue-50 pb-5 dark:from-gray-700 dark:to-gray-900">
-      <div className="align-right container my-8 grid justify-center gap-4 md:grid-cols-3 xl:my-16">
-        <div className="my-8 h-fit rounded-md bg-white/50 shadow-md">
-          <div className="flex flex-col items-center justify-center p-8">
-            <div>
-              <h3 className="mb-5 dark:text-black">Create pods.</h3>
-              <p className="dark:text-black">
-                Create pods by selecting containers to run together. View unified logs for your pods and inspect the
-                containers inside each.
-              </p>
-              <p className="dark:text-black">
-                Play Kubernetes YAML locally, without Kubernetes, and generate Kubernetes YAML from Pods.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col-span-2 w-full">
-          <img className="mb-6 mt-6 w-full md:max-w-[75%]" src="images/optimized/ui-screens/ui-podify.webp" />
-        </div>
+    <section className="xl:py-16 xl:flex xl:flex-row-reverse bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900">
+    <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
+      <img className="w-full lg:w-3/4 lg:mx-auto xl:w-full max-w-[1200px] items-center xl:mr-0 md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" src="images/optimized/ui-screens/ui-podify.webp" />
+    </div>
+    <div className="flex flex-1 my-16 md:my-none">
+      <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
+        <h3 className="mb-5 dark:text-white">Podify containers into pods.</h3>
+        <p className="mb-3 dark:text-white">
+          Create pods by selecting containers to run together. View unified logs for your pods and inspect the
+          containers inside each.
+        </p>
+        <p className="mb-3 dark:text-white">
+        Play Kubernetes YAML locally, without Kubernetes, and generate Kubernetes YAML from Pods.
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
   );
 };
 
 const DeployToKubernetesUISection = () => {
   return (
-    <section className="bg-gradient-to-b from-white to-gray-100 pb-5 dark:from-blue-900 dark:to-gray-900">
-      <div className="container my-8 grid justify-center gap-4 md:grid-cols-3 xl:my-20">
-        <div className="col-span-2 w-full">
-          <img className="mb-6 mt-6 w-full md:max-w-[75%]" src="images/optimized/ui-screens/ui-k8sdeploy.webp" />
-        </div>
-        <div className="my-8 h-fit rounded-md bg-white/50 shadow-md">
-          <div className="flex flex-col items-center justify-center p-8">
-            <div>
-              <h3 className="mb-5 dark:text-black">Deploy to Kubernetes.</h3>
-              <p className="dark:text-black">
-                Deploy pods from Podman Desktop to local or remote Kubernetes contexts using automatically-generated
-                YAML config.
-              </p>
-            </div>
-          </div>
-        </div>
+  <section className="xl:py-16 md:pb-32 xl:flex xl:flex-row bg-gradient-to-b from-purple-100 to-purple-300  dark:from-black dark:to-gray-900 xl:dark:from-gray-900 xl:dark:to-black">
+    <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
+      <img className="w-full lg:w-3/4 lg:mx-auto xl:mx-0 xl:w-full max-w-[1200px] items-center xl:mx-none md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" src="images/optimized/ui-screens/ui-k8sdeploy.webp" />
+    </div>
+    <div className="flex flex-1 my-16 md:my-none">
+      <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
+        <h3 className="mb-5 dark:text-white">Deploy to Kubernetes.</h3>
+        <p className="mb-3 dark:text-white">
+          Deploy pods from Podman Desktop to local or remote Kubernetes contexts using automatically-generated
+          YAML config.
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
   );
 };
 
