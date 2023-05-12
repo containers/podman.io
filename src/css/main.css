@@ -94,6 +94,7 @@
   /* headings */
   h1,
   h2,
+  h2>a,
   h3,
   h4,
   h5 {
@@ -137,4 +138,10 @@
   h5 {
     @apply text-base font-semibold lg:text-lg;
   }
+}
+
+/** light-mode dark-mode image support for github **/
+[data-theme='light'] img[src$='#gh-dark-mode-only'],
+[data-theme='dark'] img[src$='#gh-light-mode-only'] {
+  display: none;
 }
