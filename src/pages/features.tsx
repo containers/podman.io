@@ -38,8 +38,8 @@ const PodmanDesktopSection = () => {
     <section className="bg-gradient-to-b from-gray-50 to-gray-100 pb-5 dark:bg-gray-900 dark:from-gray-700/25 dark:to-gray-900">
       <div className="align-center container mb-8 flex justify-center xl:mb-20">
         <div className="flex-row content-center">
-          <h2 className="mb-5 content-center bg-blue-500 pl-5 pr-5 text-white dark:bg-blue-700 dark:text-white">
-            Podman Desktop
+          <h2 className="content-center">
+            <a className="hover:no-underline hover:text-white active:text-white visited:text-white dark:hover:text-white dark:active:text-white dark:visited:text-white text-4xl mb-5 px-5  bg-blue-500 no-underline text-white dark:bg-blue-700 dark:text-white" href="https://podman-desktop.io">Podman Desktop</a>
           </h2>
         </div>
       </div>
@@ -49,7 +49,7 @@ const PodmanDesktopSection = () => {
         </div>
         <div className="col-span-2">
           <p className="my-8 align-middle text-2xl leading-relaxed">
-            Podman Desktop is Podman's graphical application that makes it easy to install and work with Podman (and
+            <a className="font-semibold hover:text-purple-500 text-purple-900 no-underline text-2xl leading-releaxed" href="https://podman-desktop.io">Podman Desktop</a> is Podman's graphical application that makes it easy to install and work with Podman (and
             other container engines) on Windows, MacOS, and Linux.
           </p>
         </div>
