@@ -14,7 +14,7 @@ const header = {
   },
   desktoprelease: {
     text: LATEST_DESKTOP_VERSION,
-    path: 'https://github.com/containers/podman-desktop/releases',
+    path: 'https://podman-desktop.io/blog/podman-desktop-release-0.15',
   },
   platforms: [
     'Supported Platforms',
