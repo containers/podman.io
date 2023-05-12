@@ -19,7 +19,7 @@ const operatingSystemData = [
     subtitle: `Universal *.dmg v-${LATEST_DESKTOP_VERSION}`,
     icon: 'fa-brands:apple',
     options: [],
-    path: `https://github.com/containers/podman-desktop/releases/download/v0.${LATEST_DESKTOP_VERSION}/podman-desktop-0.${LATEST_DESKTOP_VERSION}-universal.dmg`,
+    path: `https://github.com/containers/podman-desktop/releases/download/v${LATEST_DESKTOP_VERSION}/podman-desktop-${LATEST_DESKTOP_VERSION}-universal.dmg`,
     other: {
       path: 'https://podman-desktop.io/downloads',
       text: 'Other Install Options',
