@@ -1,3 +1,5 @@
+import { LATEST_VERSION, LATEST_DESKTOP_VERSION } from './global';
+
 const header = {
   title: 'The best free & open source container tools',
   subtitle:
@@ -6,9 +8,13 @@ const header = {
     path: 'images/optimized/podman-ui-679w-592h.webp',
     alt: 'Two screenshots of the Podman Desktop user interface',
   },
-  release: {
-    text: 'v4.3.0',
-    path: 'https://podman.io/releases/',
+  podmanrelease: {
+    text: LATEST_VERSION,
+    path: 'https://github.com/containers/podman/releases',
+  },
+  desktoprelease: {
+    text: LATEST_DESKTOP_VERSION,
+    path: 'https://podman-desktop.io/blog/podman-desktop-release-0.15',
   },
   platforms: [
     'Supported Platforms',
@@ -29,7 +35,7 @@ const featureList = [
   {
     title: 'Secure.',
     description:
-      'Rootless containers allow you to contain privileges without compromising functionality. Trusted by US government agencies for secure HPC at scale [case study](). ',
+      'Rootless containers allow you to contain privileges without compromising functionality. Trusted by US government agencies for secure HPC at scale [case study](https://www.redhat.com/architect/hpc-containers-scale-using-podman). ',
     href: 'https://www.redhat.com/architect/hpc-containers-scale-using-podman',
   },
   {
@@ -41,7 +47,7 @@ const featureList = [
   {
     title: 'Compatible.',
     description:
-      'Compatible with other OCI compliant container formats including Docker. Run your legacy Docker containers (including docker-compose files) on Podman. [Learn more](#)',
+      'Compatible with other OCI compliant container formats including Docker. Run your legacy Docker containers (including docker-compose files) on Podman. [Learn more](https://developers.redhat.com/blog/2020/11/19/transitioning-from-docker-to-podman)',
     href: 'https://developers.redhat.com/blog/2020/11/19/transitioning-from-docker-to-podman',
   },
 ];
@@ -148,33 +154,4 @@ const containerTools = {
   ],
 };
 
-const testimonials = [
-  {
-    name: 'Shakeel Ahmad Minhas',
-    handle: '@Ahmad_Shakeel77',
-    description:
-      'Looking for a lightweight and efficient way to run containers on your Mac? Give Podman a try! This open-source container engine can help you manage your containerized applications easily on macOS.  #Mac #Podman #Containers',
-    social: 'twitter',
-    path: '#',
-    date: 'Mar 9, 2023',
-  },
-  {
-    name: 'Marco Mornati',
-    handle: '@mmornati@techub.social',
-    description:
-      'Just getting back to test #podman-desktop I used a bit after the #docker-desktop payment announcement. Changes are incredible and on #macosx all looks pretty smooth right now: docker API, host folder sharing, port sharing with hosts, privileged access (I test with https://github.com/mmornati/docker-mock-rpmbuilder), ... I think this became THE replacement for what we knew...',
-    social: 'mastadon',
-    path: '#',
-    date: 'Feb 19, 2023',
-  },
-  {
-    name: 'Marco Mornati',
-    handle: '@mmornati@techub.social',
-    description:
-      'Just getting back to test #podman-desktop I used a bit after the #docker-desktop payment announcement. Changes are incredible and on #macosx all looks pretty smooth right now: docker API, host folder sharing, port sharing with hosts, privileged access (I test with https://github.com/mmornati/docker-mock-rpmbuilder), ... I think this became THE replacement for what we knew...',
-    social: 'mastadon',
-    path: '#',
-    date: 'Feb 19, 2023',
-  },
-];
-export { header, featureList, kubernetesBanner, compatibleTools, coloringBook, testimonials };
+export { header, featureList, kubernetesBanner, compatibleTools, coloringBook };

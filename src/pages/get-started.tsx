@@ -13,14 +13,17 @@ import { header, getHelp } from '@site/static/data/get-started';
 const GetHelpSection = () => {
   return (
     <section className=" mt-12 bg-gradient-to-br from-purple-500/75 to-purple-900 dark:from-purple-700 dark:via-purple-900 dark:to-gray-900 lg:mt-32">
-      <SectionHeader title={getHelp.title} textColor="dark:text-gray-100" />
+      <SectionHeader title={getHelp.title} textColor="dark:text-blue-500 text-blue-300" />
       <div className="container my-8">
-        <header className="my-4 text-center lg:my-8">
-          <h3 className="text-white dark:text-blue-500">{getHelp.subtitle}</h3>
+        <header className="text-center lg:my-8">
+          <h3 className="text-white dark:text-white ">{getHelp.subtitle}</h3>
         </header>
         <div className="mx-auto">
           <div className="container grid max-w-6xl grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-y-0">
-            <p className="max-w-sm text-white dark:text-gray-100">For more details, you can review the manpages:</p>
+            <p className="max-w-sm text-white dark:text-gray-100">
+              For more details, you can review the <a href="https://docs.podman.io/en/latest/Commands.html">manpages</a>
+              :
+            </p>
             {/* prettier-ignore */}
             <CodeBlock language="bash" showLineNumbers>
                 $ podman --help # get a list of all commands {'\n'}
@@ -43,7 +46,7 @@ const GetHelpSection = () => {
       <div className="container mb-8 mt-4 text-center lg:mb-20 lg:mt-6">
         <p className="text-white">
           'Please also reference the{' '}
-          <a href="#" className="text-blue-300">
+          <a href="https://github.com/containers/podman/blob/main/troubleshooting.md" className="text-blue-300">
             <strong>Podman Troubleshooting Guide</strong>
           </a>{' '}
           to find known issues and tips on how to solve common configuration mistakes.'

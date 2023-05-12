@@ -8,7 +8,7 @@ const config = {
   title: 'Podman',
   tagline:
     'Podman is a daemonless container engine for developing, managing, and running OCI Containers on your Linux System',
-  url: 'https://containers.github.io',
+  url: 'https://podman.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -41,11 +41,8 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/containers/website-new',
-        },
-        blog: {
-          showReadingTime: true,
-          editUrl: 'https://github.com/containers/website-new',
+          path: 'docs',
+          editUrl: 'https://github.com/containers/podman.io/tree/main',
         },
         theme: {
           customCss: require.resolve('./src/css/main.css'),
@@ -73,6 +70,7 @@ const config = {
           { to: 'community', label: 'Community', position: 'right' },
           {
             to: 'https://blog.podman.io',
+            target: '_self',
             label: 'Development Blog',
             position: 'right',
           },
@@ -84,7 +82,8 @@ const config = {
           },
 
           {
-            href: 'https://github.com/containers/website-new',
+            to: 'https://github.com/containers/',
+            target: '_self',
             label: 'GitHub',
             position: 'right',
           },
@@ -97,8 +96,17 @@ const config = {
             title: 'Docs',
             items: [
               {
+                label: 'Installation Instructions',
+                to: 'docs/installation',
+              },
+              {
                 label: 'Documentation',
-                href: 'https://docs.podman.io/',
+                to: 'docs/',
+              },
+
+              {
+                label: 'Podman CLI Commands',
+                href: 'https://docs.podman.io/en/latest/Commands.html',
               },
             ],
           },
@@ -109,18 +117,30 @@ const config = {
                 label: 'Discord',
                 href: 'https://discord.com/invite/x5GzFF6QH4',
               },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
               {
                 label: 'Blog',
                 href: 'https://blog.podman.io/',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/containers/website-new',
+                label: 'Mailing List',
+                href: 'https://lists.podman.io',
+              },
+            ],
+          },
+          {
+            title: 'Projects',
+            items: [
+              {
+                label: 'Podman GitHub',
+                href: 'https://github.com/containers/podman',
+              },
+              {
+                label: 'Podman Desktop GitHub',
+                href: 'https://github.com/containers/podman-desktop',
+              },
+              {
+                label: 'Podman Website Github',
+                href: 'https://github.com/containers/podman.io',
               },
             ],
           },
