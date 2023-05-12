@@ -1,4 +1,4 @@
-import { LATEST_VERSION } from './global';
+import { LATEST_VERSION, LATEST_DESKTOP_VERSION } from './global';
 
 const header = {
   title: 'The best free & open source container tools',
@@ -8,9 +8,13 @@ const header = {
     path: 'images/optimized/podman-ui-679w-592h.webp',
     alt: 'Two screenshots of the Podman Desktop user interface',
   },
-  release: {
+  podmanrelease: {
     text: LATEST_VERSION,
     path: 'https://github.com/containers/podman/releases',
+  },
+  desktoprelease: {
+    text: LATEST_DESKTOP_VERSION,
+    path: 'https://github.com/containers/podman-desktop/releases',
   },
   platforms: [
     'Supported Platforms',
