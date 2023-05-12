@@ -13,7 +13,7 @@ export const testimonials = [
     handle: '@mmornati@techub.social',
     description:
       'Just getting back to test #podman-desktop I used a bit after the #docker-desktop payment announcement. Changes are incredible and on #macosx all looks pretty smooth right now: docker API, host folder sharing, port sharing with hosts, privileged access (I test with https://github.com/mmornati/docker-mock-rpmbuilder), ... I think this became THE replacement for what we knew...',
-    social: 'mastadon',
+    social: 'mastodon',
     path: '#',
     date: 'Feb 19, 2023',
   },
@@ -22,7 +22,7 @@ export const testimonials = [
     handle: '@mmornati@techub.social',
     description:
       'Just getting back to test #podman-desktop I used a bit after the #docker-desktop payment announcement. Changes are incredible and on #macosx all looks pretty smooth right now: docker API, host folder sharing, port sharing with hosts, privileged access (I test with https://github.com/mmornati/docker-mock-rpmbuilder), ... I think this became THE replacement for what we knew...',
-    social: 'mastadon',
+    social: 'mastodon',
     path: '#',
     date: 'Feb 19, 2023',
   },
