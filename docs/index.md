@@ -3,7 +3,7 @@ id: podman
 title: Getting Started with Podman
 ---
 
-![Podman logo](/logos/raw/podman-logo-orig.png)
+![Podman logo](/logos/raw/podman-logo-orig.png#gh-light-mode-only)![Podman logo](/logos/raw/podman-logo-dark.png#gh-dark-mode-only)
 
 # Getting Started with Podman
 
