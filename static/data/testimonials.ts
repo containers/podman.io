@@ -1,5 +1,16 @@
 export const testimonials = [
   {
+    name: 'Gerald Venzl 🚀',
+    handle: '@GeraldVenzl',
+    description:
+      'My colleague \@scoter80 wrote a really cool blog post on how to run \@Podman_io Desktop on #Oracle #Linux 9. Hint, hint, he demonstrates it by using Oracle #Database #Free :)',
+    social: 'twitter',
+    path: 'https://twitter.com/GeraldVenzl/status/1656361050135212032',
+    date: 'May 10, 2023',
+    avatar: 'https://pbs.twimg.com/profile_images/1057877042438397952/DVNj9EiF_400x400.jpg',
+    featuredlink: 'https://blogs.oracle.com/scoter/post/run-oracle-database-23c-with-podman-desktop',
+  },
+  {
     name: 'Milind Mehta',
     handle: '@milindmehtamca',
     description: '3️⃣ Podman: 🐧 Hey Linux enthusiasts! 🐧 Podman is a lightweight, open-source container engine that doesn\'t require a special setup to run. 🏃‍♂️💨 With its secure capabilities, it allows developers to run containers without needing administrative access. 🛡️🔒 #PodmanPower',
