@@ -14,7 +14,7 @@ const knowPodman = {
     {
       title: 'Quick dive into Podman',
       description:
-        "Hop on over to our [Podman Quickstart Guide](https://podman.io/docs/tutorials/podman_tutorial) and we'll lead you through basic Podman commands Guide and give you pointers to more learning materials and guides.",
+        "Hop on over to our [Docs](/docs) and we'll lead you through the basic Podman commands Guide and give you pointers to more learning materials and guides.",
       image: {
         path: 'images/raw/characters/seal-diving.png',
         alt: 'A seal diving into the water',
