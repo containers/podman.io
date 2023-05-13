@@ -25,7 +25,7 @@ function Testimonial(props: TestimonialProps) {
           </a>
         </div>
         <div className="order-first">
-          <img src="images/article-thumb.png" alt="test image" className="h-12 w-12 rounded-full" />
+          <img src={`${props.avatar}`} alt="user avatar" className="h-12 w-12 rounded-full" />
         </div>
       </div>
       <div className="my-2">
