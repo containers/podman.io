@@ -35,7 +35,7 @@ export const testimonials = [
     description:
       'Just getting back to test #podman-desktop I used a bit after the #docker-desktop payment announcement. Changes are incredible and on #macosx all looks pretty smooth right now: docker API, host folder sharing, port sharing with hosts, privileged access (I test with https://github.com/mmornati/docker-mock-rpmbuilder), ... I think this became THE replacement for what we knew...',
     social: 'mastodon',
-    path: '#',
+    path: 'https://techhub.social/@mmornati/109893129549386078',
     date: 'Feb 19, 2023',
     avatar: 'https://files.techhub.social/accounts/avatars/109/332/122/677/447/785/original/2c0748bae8006e4b.jpg',
   },
