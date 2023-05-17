@@ -4,6 +4,7 @@ interface VideoProps {
     url: string;
     vidFormat?: string;
     styles?: string;
+    posterImg?: string;
   }
 
 const PlayOnScroll: React.FC = (props: VideoProps) => {
@@ -32,7 +33,7 @@ const PlayOnScroll: React.FC = (props: VideoProps) => {
   
     return (
       <div>
-        <video className={props.styles} ref={videoRef} autoPlay>
+        <video className={props.styles} ref={videoRef} poster={props.posterImg} autoPlay>
           <source src={props.url} type={props.vidFormat} />
           {/* Add additional source elements for different video formats if needed */}
           Your browser does not support the video tag.

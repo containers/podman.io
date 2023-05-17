@@ -63,7 +63,7 @@ const ManageContainersUISection = () => {
   return (
     <section className="xl:py-16 xl:flex xl:flex-row-reverse bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900">
       <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-        <PlayOnScroll vidFormat="video/mp4" url="video/ui/containers.mp4" styles="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:mr-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" />
+        <PlayOnScroll vidFormat="video/mp4" url="video/ui/containers.mp4" posterImg="images/optimized/ui-screens/ui-manage-containers.webp" styles="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:mr-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" />
       </div>
       <div className="flex flex-1 my-16 md:my-none">
         <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
@@ -89,7 +89,7 @@ const BuildImagesUISection = () => {
   return (
   <section className="xl:py-16 xl:flex xl:flex-row bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900 xl:dark:from-gray-900 xl:dark:to-black">
     <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-      <PlayOnScroll vidFormat="video/mp4" url="video/ui/images.mp4" styles="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:ml-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" />
+      <PlayOnScroll vidFormat="video/mp4" url="video/ui/images.mp4" posterImg="images/optimized/ui-screens/ui-buildimage.webp" styles="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:ml-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" />
     </div>
     <div className="flex flex-1 my-16 md:my-none">
       <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
@@ -110,7 +110,7 @@ const CreatePodsUISection = () => {
   return (
     <section className="xl:py-16 xl:flex xl:flex-row-reverse bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900">
     <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-      <PlayOnScroll vidFormat="video/mp4" url="video/ui/podify.mp4" styles="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:mr-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" />
+      <PlayOnScroll vidFormat="video/mp4" url="video/ui/podify.mp4" posterImg="images/optimized/ui-screens/ui-podify.webp" styles="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:mr-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" />
     </div>
     <div className="flex flex-1 my-16 md:my-none">
       <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
@@ -132,7 +132,7 @@ const DeployToKubernetesUISection = () => {
   return (
   <section className="xl:py-16 md:pb-32 xl:flex xl:flex-row bg-gradient-to-b from-purple-100 to-purple-300  dark:from-black dark:to-gray-900 xl:dark:from-gray-900 xl:dark:to-black">
     <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-      <PlayOnScroll vidFormat="video/mp4" url="video/ui/kubernetes.mp4" styles="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:ml-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" />
+      <PlayOnScroll vidFormat="video/mp4" url="video/ui/kubernetes.mp4" posterImg="images/optimized/ui-screens/ui-k8sdeploy.webp" styles="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:ml-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" />
     </div>
     <div className="flex flex-1 my-16 md:my-none">
       <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
