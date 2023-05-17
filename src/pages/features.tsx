@@ -10,6 +10,7 @@ import ArticleCard from '@site/src/components/ui/ArticleCard';
 import FeaturesCarousel from '@site/src/components/content/FeaturesCarousel';
 /* PAGE DATA */
 import { header, knowPodman, learnMore } from '@site/static/data/features';
+import PlayOnScroll from '@site/src/components/utilities/PlayOnScroll';
 
 /* PAGE COMPONENTS */
 function GetToKnowPodmanSection() {
@@ -62,11 +63,8 @@ const ManageContainersUISection = () => {
   return (
     <section className="xl:py-16 xl:flex xl:flex-row-reverse bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900">
       <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-        <video className="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:mr-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" controls>
-          <source src="video/ui/containers.mp4" type="video/mp4"/>
-            Your browser does not support the video tag.
-          </video> 
-        </div>
+        <PlayOnScroll vidFormat="video/mp4" url="video/ui/containers.mp4" styles="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:mr-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" />
+      </div>
       <div className="flex flex-1 my-16 md:my-none">
         <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
           <h3 className="mb-5 dark:text-white">Manage containers (not just Podman.)</h3>
@@ -91,10 +89,7 @@ const BuildImagesUISection = () => {
   return (
   <section className="xl:py-16 xl:flex xl:flex-row bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900 xl:dark:from-gray-900 xl:dark:to-black">
     <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-      <video className="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:ml-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" controls>
-        <source src="video/ui/containers.mp4" type="video/mp4"/>
-            Your browser does not support the video tag.
-      </video> 
+      <PlayOnScroll vidFormat="video/mp4" url="video/ui/images.mp4" styles="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:ml-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" />
     </div>
     <div className="flex flex-1 my-16 md:my-none">
       <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
@@ -115,10 +110,7 @@ const CreatePodsUISection = () => {
   return (
     <section className="xl:py-16 xl:flex xl:flex-row-reverse bg-gradient-to-b from-purple-100 to-purple-300 dark:from-black dark:to-gray-900">
     <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-      <video className="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:mr-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" controls>
-        <source src="video/ui/podify.mp4" type="video/mp4"/>
-        Your browser does not support the video tag.
-      </video> 
+      <PlayOnScroll vidFormat="video/mp4" url="video/ui/podify.mp4" styles="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:mr-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-r-none" />
     </div>
     <div className="flex flex-1 my-16 md:my-none">
       <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
@@ -140,10 +132,7 @@ const DeployToKubernetesUISection = () => {
   return (
   <section className="xl:py-16 md:pb-32 xl:flex xl:flex-row bg-gradient-to-b from-purple-100 to-purple-300  dark:from-black dark:to-gray-900 xl:dark:from-gray-900 xl:dark:to-black">
     <div className="flex-1 w-full md:my-16 md:w-4/5 md:mx-auto lg:w-full xl:my-16">
-      <video className="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:ml-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" controls>
-        <source src="video/ui/kubernetes.mp4" type="video/mp4"/>
-            Your browser does not support the video tag.
-        </video> 
+      <PlayOnScroll vidFormat="video/mp4" url="video/ui/kubernetes.mp4" styles="rounded-lg w-full lg:w-3/4 lg:mx-auto xl:ml-0 xl:w-full max-w-[1200px] items-center md:rounded-3xl bg-cover md:bg-contain xl:rounded-l-none" />
     </div>
     <div className="flex flex-1 my-16 md:my-none">
       <div className="flex-row px-16 xl:p-16 x2l:my-16 md:w-4/5 md:mx-auto">
