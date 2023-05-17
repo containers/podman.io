@@ -29,7 +29,7 @@ const featureList = [
   {
     title: 'Fast and light.',
     description:
-      "Daemonless, using the fastest technologists for a snappy experience. Our UI is reactive and light on resource usage and won't drag you down.",
+      "Daemonless, using the fastest technologies for a snappy experience. Our UI is reactive and light on resource usage and won't drag you down.",
     href: 'https://www.redhat.com/architect/hpc-containers-scale-using-podman',
   },
   {
