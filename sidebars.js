@@ -20,6 +20,11 @@ const sidebars = {
     },
     {
       type: 'link',
+      label: 'Tutorials',
+      href: 'https://docs.podman.io/en/latest/Tutorials.html',
+    },
+    {
+      type: 'link',
       label: 'Documentation',
       href: 'https://docs.podman.io',
     },
