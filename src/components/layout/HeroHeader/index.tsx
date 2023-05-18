@@ -36,14 +36,27 @@ const InstallOption = (props): JSX.Element => {
     <section>
       <div>
         <a
-          href={props.path}
+          href={props.preferred.path}
           className="block rounded-t-md text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:text-white dark:hover:bg-purple-900 dark:hover:text-gray-300">
           <div className="flex items-center gap-4 px-4 pb-6 pt-4">
             <div>
-              <h3>{props.title}</h3>
-              <p>{props.subtitle}</p>
+              <h3>{props.preferred.title}</h3>
+              <p>{props.preferred.subtitle}</p>
             </div>
-            <Icon icon={props.icon} className="order-first text-4xl" />
+            <Icon icon={props.preferred.icon} className="order-first text-4xl" />
+          </div>
+        </a>
+      </div>
+      <div>
+        <a
+          href={props.alt.path}
+          className="block rounded-t-md text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:text-white dark:hover:bg-purple-900 dark:hover:text-gray-300">
+          <div className="flex items-center gap-4 px-4 pb-6 pt-4">
+            <div>
+              <h4>{props.alt.title}</h4>
+              <p>{props.alt.subtitle}</p>
+            </div>
+            <Icon icon={props.alt.icon} className="order-first text-4xl" />
           </div>
         </a>
       </div>
@@ -53,7 +66,7 @@ const InstallOption = (props): JSX.Element => {
           className="block rounded-b-md bg-gray-50 py-2 text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:bg-gray-700 dark:text-white dark:hover:bg-purple-900 dark:hover:text-gray-300">
           <div className="px-4 py-2">
             <div className="flex items-center gap-2">
-              <h4 className="row-start-1">{props.other.text}</h4>
+              <h5 className="row-start-1">{props.other.text}</h5>
               <Icon icon="material-symbols:arrow-circle-right-rounded" className="row-start-1 text-xl" />
             </div>
             <p>{props.other.subtext}</p>
