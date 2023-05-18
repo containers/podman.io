@@ -1,8 +1,9 @@
 import React from 'react';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
 import Markdown from '@site/src/components/utilities/Markdown';
+import BasicResourcesBox from '@site/src/components/content/BasicResourcesBox';
 type ImageSectionProps = LayoutProps & {
-  image: Image;
+  image?: Image;
 };
 
 type PageHeaderProps = LayoutProps &
@@ -11,7 +12,14 @@ type PageHeaderProps = LayoutProps &
     colors?: Colors;
     darkColor?: string;
     lightColor?: string;
+    basicResources?: boolean;
   };
+
+type PageHeaderSupplementalInfoProps = PageHeaderProps & {
+    image?: Image;
+    basicResources?: boolean;
+}
+
 const TextBox = ({ grid, display, layout, title, description }: PageHeaderProps): JSX.Element => {
   return (
     <div className={`${grid} ${display} ${layout}`}>
@@ -33,7 +41,18 @@ const Image = ({
   );
 };
 
-function PageHeader({ title, description, image, lightColor = 'white', darkColor = 'gray-900' }: PageHeaderProps) {
+function PageHeaderSupplementalInfo({ image, basicResources }: PageHeaderSupplementalInfoProps) {
+  if (basicResources) {
+    return (
+      <BasicResourcesBox />
+    );
+  } 
+  return (
+    <Image image={image} layout="mb-8 lg:mb-0" />
+  );
+}
+
+function PageHeader({ title, description, image, lightColor = 'white', darkColor = 'gray-900', basicResources }: PageHeaderProps) {
   return (
     <header className={`h-5/6  xl:h-100 bg-${lightColor} dark:bg-${darkColor}`}>
       <div className="-mb-2 bg-gradient-to-r  from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900 lg:pt-8">
@@ -41,7 +60,7 @@ function PageHeader({ title, description, image, lightColor = 'white', darkColor
       </div>
       <div className="container grid justify-items-center gap-3 md:grid-cols-2">
         <TextBox title={title} description={description} layout="mt-12 lg:mt-0" />
-        <Image image={image} layout="mb-8 lg:mb-0" />
+        <PageHeaderSupplementalInfo basicResources={basicResources} />
       </div>
     </header>
   );

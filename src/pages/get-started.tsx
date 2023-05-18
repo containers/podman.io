@@ -70,7 +70,7 @@ const SearchPullListSection = () => {
 function GetStarted() {
   return (
     <Layout>
-      <PageHeader title={header.title} description={header.subtitle} />
+      <PageHeader title={header.title} description={header.subtitle} basicResources={true} />
       <GetHelpSection />
       <SearchPullListSection />
     </Layout>
