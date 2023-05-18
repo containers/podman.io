@@ -4,6 +4,8 @@ title: Podman Installation
 
 # Podman Installation Instructions
 
+Looking for a GUI? You can find Podman Desktop [here](https://podman-desktop.io/downloads).
+
 ## Installing on Mac & Windows
 
 While "containers are Linux," Podman also runs on Mac and Windows, where it
@@ -39,6 +41,8 @@ You can then verify the installation information using:
 ```bash
 podman info
 ```
+
+We also provide binaries and a pkginstaller on our [Github release page](https://github.com/containers/podman/releases)
 
 ### Windows
 
