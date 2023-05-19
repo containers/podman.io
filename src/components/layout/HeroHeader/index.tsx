@@ -84,7 +84,7 @@ function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, pla
         <div className="container row-span-2 mb-4 mt-12 place-self-end md:mb-0 md:ml-10 xl:ml-24">
           <h1 className="mb-4 text-white dark:text-gray-50 lg:mb-8">{title}</h1>
           <p className="max-w-sm text-white dark:text-gray-50 lg:max-w-prose">{subtitle}</p>
-          <div className="my-3 flex max-w-sm gap-8">
+          <div className="my-3 flex max-w-sm gap-8 text-lg">
             <Button as="link" text="Get Started" path="/get-started" />
             <BrowserOnly>
               {() => <DropdownButton text="Download" option={InstallOption(returnOperatingSystemData())} />}
