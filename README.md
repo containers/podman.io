@@ -16,6 +16,20 @@ Follow these steps to test the site with either a local development server, or b
     - After this you can test the local build with:
       - `yarn serve`
 
+#### Testing on your Virtual Machine
+
+If you're doing development on a VM there are a few steps to take to test your changes:
+
+- Set your firewall of your VM to allow access to port `3000`. These commands only have to be run once for the lifetime of the VM, or until you reconfigure your firewall settings.
+  - `# firewall-cmd --permanent --add-port=3000/tcp`
+  - `# firewall-cmd --reload`
+- As noted above, build and start your web server after your proposed changes are complete:
+  - `$ yarn build`
+  - `$ yarn serve`
+- On the host machine of your VM, open a web browser and connect to the IP of your VM:
+  - `http://#.#.#.#:3000`
+  - Note, `http` and NOT `https`, and `#.#.#.#` is your VM's TCP/IP address, such as `10.0.0.1`
+
 ### Deployment
 
 - The site is set to automatically deploy when code is pushed to the main branch
