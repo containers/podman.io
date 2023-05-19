@@ -17,7 +17,7 @@ const communityChat = {
   links: [
     {
       text: '#podman:matrix.org',
-      path: 'https://www.redhat.com/architect/hpc-containers-scale-using-podman',
+      path: 'https://matrix.to/#/#podman:fedoraproject.org',
       image: {
         path: 'logos/raw/element-56w-59h.png',
         alt: 'Element Matrix Logo',
