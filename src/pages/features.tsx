@@ -11,6 +11,7 @@ import FeaturesCarousel from '@site/src/components/content/FeaturesCarousel';
 /* PAGE DATA */
 import { header, knowPodman, learnMore } from '@site/static/data/features';
 import PlayOnScroll from '@site/src/components/utilities/PlayOnScroll';
+import BasicResourcesBox from '@site/src/components/content/BasicResourcesBox';
 
 /* PAGE COMPONENTS */
 function GetToKnowPodmanSection() {
@@ -169,6 +170,7 @@ const PodmanCLISection = () => {
   );
 };
 
+/* TODO Should be componentized at some point */
 const LearnArticles = () => {
   const [blogData, setBlogData] = useState([]);
 
@@ -219,39 +221,13 @@ const LearnArticles = () => {
   );
 };
 
-const LearnResources = () => {
-  return (
-    <section className="mt-4 lg:my-0">
-      <header className="container mb-6 text-center xl:mb-8 xl:text-start">
-        <h3 className="font-medium text-blue-700 dark:text-blue-500">{learnMore.resources.title}</h3>
-      </header>
-      <div>
-        <ul className="mb-10 mt-4 flex flex-col gap-6 sm:flex-row lg:mb-16 lg:mt-8 lg:gap-4 xl:flex-col">
-          {learnMore.resources.cards.map((card, index) => {
-            return (
-              <li key={index}>
-                <a
-                  href={card.path}
-                  className="mx-auto flex h-32 max-w-lg flex-col items-center justify-center gap-4 rounded-md bg-gray-100 p-4 text-center text-purple-700 underline-offset-4 transition duration-150 ease-linear hover:bg-purple-700 hover:text-purple-50 hover:shadow-md dark:bg-gray-700 dark:hover:bg-purple-900 dark:hover:text-white lg:h-auto lg:flex-row xl:justify-start">
-                  <span>{card.text}</span>
-                  <Icon icon={card.icon} className="order-first hidden lg:block" />
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </section>
-  );
-};
-
 const LearnMoreSection = () => {
   return (
     <section>
       <SectionHeader title={learnMore.title} textGradient={true} textGradientStops="from-purple-500 to-purple-900" />
       <div className="container mt-8 flex flex-wrap justify-center gap-24">
         <LearnArticles />
-        <LearnResources />
+        <BasicResourcesBox />
       </div>
     </section>
   );
