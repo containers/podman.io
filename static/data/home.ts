@@ -5,7 +5,7 @@ const header = {
   subtitle:
     'Manage containers, pods, and images with Podman. Seamlessly work with containers and Kubernetes from your local environment.',
   image: {
-    path: 'images/optimized/podman-ui-679w-592h.webp',
+    path: 'images/optimized/podman-ui-1200w-646h.webp',
     alt: 'Two screenshots of the Podman Desktop user interface',
   },
   podmanrelease: {
