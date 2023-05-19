@@ -12,7 +12,7 @@ import { header, getHelp } from '@site/static/data/get-started';
 /* PAGE COMPONENTS */
 const GetHelpSection = () => {
   return (
-    <section className=" mt-12 bg-gradient-to-br from-purple-500/75 to-purple-900 dark:from-purple-700 dark:via-purple-900 dark:to-gray-900 lg:mt-32">
+    <section className="bg-gradient-to-br from-purple-900 to-purple-500/75 dark:from-purple-700 dark:via-purple-900 dark:to-gray-900">
       <SectionHeader title={getHelp.title} textColor="dark:text-blue-500 text-blue-300" />
       <div className="container my-8">
         <header className="text-center lg:my-8">
@@ -45,11 +45,11 @@ const GetHelpSection = () => {
       </div>
       <div className="container mb-8 mt-4 text-center lg:mb-20 lg:mt-6">
         <p className="text-white">
-          'Please also reference the{' '}
+          Please also reference the{' '}
           <a href="https://github.com/containers/podman/blob/main/troubleshooting.md" className="text-blue-300">
             <strong>Podman Troubleshooting Guide</strong>
           </a>{' '}
-          to find known issues and tips on how to solve common configuration mistakes.'
+          to find known issues and tips on how to solve common configuration mistakes.
         </p>
       </div>
       <WaveBorder />
@@ -70,7 +70,7 @@ const SearchPullListSection = () => {
 function GetStarted() {
   return (
     <Layout>
-      <PageHeader title={header.title} description={header.subtitle} basicResources={true} />
+      <PageHeader title={header.title} description={header.subtitle} basicResources={true} instructions={header.instructions} />
       <GetHelpSection />
       <SearchPullListSection />
     </Layout>
