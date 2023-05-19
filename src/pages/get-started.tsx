@@ -19,7 +19,7 @@ const GetHelpSection = () => {
           <h3 className="text-white dark:text-white ">{getHelp.subtitle}</h3>
         </header>
         <div className="mx-auto">
-          <div className="container grid max-w-6xl grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-y-0">
+          <div className="container grid  grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-y-0">
             <p className="max-w-sm text-white dark:text-gray-100">
               For more details, you can review the <a href="https://docs.podman.io/en/latest/Commands.html">manpages</a>
               :
@@ -31,7 +31,7 @@ const GetHelpSection = () => {
                 {'\n'}
               </CodeBlock>
           </div>
-          <div className="container grid max-w-6xl grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-y-0">
+          <div className="container grid grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-y-0">
             <p className="max-w-sm text-white">
               To get some help and find out how Podman is working, you can use the help.
             </p>
