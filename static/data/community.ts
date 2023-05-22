@@ -54,7 +54,7 @@ const communityMeetings = {
       title: 'Podman Community Meeting',
       subtitle:
         'This meeting is used to show demos for or to have general discussions about Podman or other related container technologies. It is also used to make announcements about Podman and the other projects in the [Containers repository on GitHub](https://github.com/containers).',
-      date: '**1st Tuesday** every month',
+      date: '**1st Tuesday** of even numbered months',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
         { text: 'Join Meeting', path: MEETING_URL },
