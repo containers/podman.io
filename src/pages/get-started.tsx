@@ -68,12 +68,12 @@ const SearchPullListSection = () => {
 
 const RunListContainersSection = () => {
   return (
-    <section className="bg-blue-500 dark:bg-blue-900 text-white dark:text-white py-6" >
+    <section className="bg-gradient-to-br from-blue-500/75 to-blue-700 dark:bg-blue-900 dark:text-white pt-6 pb-16" >
       <SectionHeader textColor="text-purple-700 dark:text-purple-500" title="Running a container &amp; listing running containers" />
       <div className="text-center flex flex-col mx-4">
         <p className="mb-4">This sample container will run a very basic httpd server that serves only its index page.</p>
         
-        <h3 className="text-purple-700 dark:text-purple-300 mb-2">Running a container</h3>
+        <h3 className="text-purple-700 dark:text-purple-300 mb-2 mt-10">Running a container</h3>
 
         <div className="mx-auto">
           <CodeBlock language="bash" showLineNumbers className="text-left overflow-scroll max-w-full">
@@ -81,24 +81,19 @@ const RunListContainersSection = () => {
           </CodeBlock>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-6 mt-2">
-          <div className="max-w-lg rounded-md bg-white px-6 py-6 shadow-lg dark:bg-gray-900/50">
-            <h5 className="text-gray-700">Note:</h5>
-            <p className="text-gray-700 text-left">
-              Because the container is being run in detached mode, represented by the -d in the podman run command, 
-              Podman will run the container in the background and print the container ID after it has executed the 
-              command. The -t also adds a pseudo-tty to run arbitrary commands in an interactive shell.
-            </p>
-          </div>
-          <div className="max-w-lg rounded-md bg-white px-6 py-6 shadow-lg dark:bg-gray-900/50">
-            <h5 className="text-gray-700">Note:</h5>
-            <p className="text-gray-700 text-left">
-            We use port forwarding to be able to access the HTTP server. For successful running at least <strong>slirp4netns</strong> v0.3.0 is needed.
-            </p>
-          </div>
+        <div className="mx-auto max-w-lg rounded-md bg-white/50 px-6 py-6 shadow-lg dark:bg-gray-900/50">
+          <h5 className="text-gray-700">Note:</h5>
+          <p className="text-gray-700 text-left">
+            Because the container is being run in detached mode, represented by the -d in the podman run command, 
+            Podman will run the container in the background and print the container ID after it has executed the 
+            command. The -t also adds a pseudo-tty to run arbitrary commands in an interactive shell.
+          </p>
+          <p className="text-gray-700 text-left mt-4">
+            Also, we use port forwarding to be able to access the HTTP server. For successful running at least <strong>slirp4netns</strong> v0.3.0 is needed.
+          </p>
         </div>
 
-        <h3 className="text-purple-700 dark:text-purple-300 mt-6 mb-2">Listing running containers</h3>
+        <h3 className="text-purple-700 dark:text-purple-300 mt-16 mb-2">Listing running containers</h3>
       
         <div className="mx-auto">
           <p className="text-gray-700 mb-4">The <code>podman ps</code> command is used to list created and running containers.</p>
@@ -107,7 +102,7 @@ const RunListContainersSection = () => {
             CONTAINER ID  IMAGE                           COMMAND           CREATED       STATUS      PORTS                 NAMES{'\n'}
             01c44968199f  docker.io/library/httpd:latest  httpd-foreground  1 minute ago  Up 1 minute 0.0.0.0:8080->80/tcp  laughing_bob{'\n'}
           </CodeBlock>
-          <div className="mx-auto max-w-lg rounded-md bg-white px-6 py-6 shadow-lg dark:bg-gray-900/50">
+          <div className="mx-auto max-w-lg rounded-md bg-white/50 px-6 py-6 shadow-lg dark:bg-gray-900/50">
             <h5 className="text-gray-700">Note:</h5>
             <p className="text-gray-700 text-left">
              If you add <code>-a</code> to the <code>podman ps</code> command, Podman will show all containers (created, exited, running, etc.).
@@ -115,7 +110,7 @@ const RunListContainersSection = () => {
           </div>
         </div>
      
-      <h3 className="text-purple-700 dark:text-purple-300 mt-6 mb-2">Testing the <code>httpd</code> container</h3>
+      <h3 className="text-purple-700 dark:text-purple-300 mt-16 mb-2">Testing the <code>httpd</code> container</h3>
      
       <div className="mx-auto">
         <p className="text-gray-700 mb-4 text-left max-w-prose">As you are able to see, the container does not have an IP Address assigned. The container is reachable via its published port on your local machine.</p>
@@ -128,7 +123,7 @@ const RunListContainersSection = () => {
           $ curl http://{'<IP_Address>'}:8080{'\n'}
         </CodeBlock>
 
-        <div className="mx-auto max-w-lg rounded-md bg-white px-6 py-6 shadow-lg dark:bg-gray-900/50">
+        <div className="mx-auto max-w-lg rounded-md bg-white/50 px-6 py-6 shadow-lg dark:bg-gray-900/50">
           <h5 className="text-gray-700">Note:</h5>
           <p className="text-gray-700 text-left">
           Instead of using <code>curl</code>, you can also point a browser to <code>http://localhost:8080</code>.</p>
