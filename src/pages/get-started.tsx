@@ -86,8 +86,8 @@ const RunListContainersSection = () => {
             <h5 className="text-gray-700">Note:</h5>
             <p className="text-gray-700 text-left">
               Because the container is being run in detached mode, represented by the -d in the podman run command, 
-              Podman will print the container ID after it has executed the command. The -t also adds a pseudo-tty 
-              to run arbitrary commands in an interactive shell.
+              Podman will run the container in the background and print the container ID after it has executed the 
+              command. The -t also adds a pseudo-tty to run arbitrary commands in an interactive shell.
             </p>
           </div>
           <div className="max-w-lg rounded-md bg-white px-6 py-6 shadow-lg dark:bg-gray-900/50">
