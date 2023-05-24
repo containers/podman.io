@@ -66,6 +66,74 @@ const SearchPullListSection = () => {
   );
 };
 
+const RunListContainersSection = () => {
+  return (
+    <section className="bg-gradient-to-br from-blue-500/75 to-blue-700 dark:bg-blue-900 dark:text-white pt-6 pb-16" >
+      <SectionHeader textColor="text-purple-700 dark:text-purple-500" title="Running a container &amp; listing running containers" />
+      <div className="text-center flex flex-col mx-4">
+        <p className="mb-4">This sample container will run a very basic httpd server that serves only its index page.</p>
+        
+        <h3 className="text-purple-700 dark:text-purple-300 mb-2 mt-10">Running a container</h3>
+
+        <div className="mx-auto">
+          <CodeBlock language="bash" showLineNumbers className="text-left overflow-scroll max-w-full">
+            $ podman run -dt -p 8080:80/tcp docker.io/library/httpd {'\n'}
+          </CodeBlock>
+        </div>
+
+        <div className="mx-auto max-w-lg rounded-md bg-white/50 px-6 py-6 shadow-lg dark:bg-gray-900/50">
+          <h5 className="text-gray-700">Note:</h5>
+          <p className="text-gray-700 text-left">
+            Because the container is being run in detached mode, represented by the -d in the podman run command, 
+            Podman will run the container in the background and print the container ID after it has executed the 
+            command. The -t also adds a pseudo-tty to run arbitrary commands in an interactive shell.
+          </p>
+          <p className="text-gray-700 text-left mt-4">
+            Also, we use port forwarding to be able to access the HTTP server. For successful running at least <strong>slirp4netns</strong> v0.3.0 is needed.
+          </p>
+        </div>
+
+        <h3 className="text-purple-700 dark:text-purple-300 mt-16 mb-2">Listing running containers</h3>
+      
+        <div className="mx-auto">
+          <p className="text-gray-700 mb-4">The <code>podman ps</code> command is used to list created and running containers.</p>
+          <CodeBlock language="bash" showLineNumbers className="sm:bg-gray-100 text-left mx-4 overflow-scroll xl:max-w-6xl max-w-xs sm:max-w-md md:max-w-lg lg:max-w-4xl">
+            $ podman ps{'\n'}
+            CONTAINER ID  IMAGE                           COMMAND           CREATED       STATUS      PORTS                 NAMES{'\n'}
+            01c44968199f  docker.io/library/httpd:latest  httpd-foreground  1 minute ago  Up 1 minute 0.0.0.0:8080->80/tcp  laughing_bob{'\n'}
+          </CodeBlock>
+          <div className="mx-auto max-w-lg rounded-md bg-white/50 px-6 py-6 shadow-lg dark:bg-gray-900/50">
+            <h5 className="text-gray-700">Note:</h5>
+            <p className="text-gray-700 text-left">
+             If you add <code>-a</code> to the <code>podman ps</code> command, Podman will show all containers (created, exited, running, etc.).
+            </p>
+          </div>
+        </div>
+     
+      <h3 className="text-purple-700 dark:text-purple-300 mt-16 mb-2">Testing the <code>httpd</code> container</h3>
+     
+      <div className="mx-auto">
+        <p className="text-gray-700 mb-4 text-left max-w-prose">As you are able to see, the container does not have an IP Address assigned. The container is reachable via its published port on your local machine.</p>
+        <CodeBlock language="bash" showLineNumbers className="sm:bg-gray-100 text-left mx-auto overflow-scroll xl:max-w-6xl max-w-xs sm:max-w-md md:max-w-lg lg:max-w-4xl">
+          $ curl http://localhost:8080{'\n'}
+        </CodeBlock>
+
+        <p className="text-gray-700 mb-4 max-w-prose text-left">From another machine, you need to use the IP Address of the host, running the container.</p>
+        <CodeBlock language="bash" showLineNumbers className="sm:bg-gray-100 text-left mx-auto overflow-scroll xl:max-w-6xl max-w-xs sm:max-w-md md:max-w-lg lg:max-w-4xl">
+          $ curl http://{'<IP_Address>'}:8080{'\n'}
+        </CodeBlock>
+
+        <div className="mx-auto max-w-lg rounded-md bg-white/50 px-6 py-6 shadow-lg dark:bg-gray-900/50">
+          <h5 className="text-gray-700">Note:</h5>
+          <p className="text-gray-700 text-left">
+          Instead of using <code>curl</code>, you can also point a browser to <code>http://localhost:8080</code>.</p>
+        </div>
+      </div>
+    </div>
+    </section>
+  )
+}
+
 /* PAGE CONTENT */
 function GetStarted() {
   return (
@@ -73,6 +141,7 @@ function GetStarted() {
       <PageHeader title={header.title} description={header.subtitle} basicResources={true} instructions={header.instructions} />
       <GetHelpSection />
       <SearchPullListSection />
+      <RunListContainersSection />
     </Layout>
   );
 }
