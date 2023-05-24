@@ -255,6 +255,8 @@ sudo apt-get -qq -y install podman
 
 Follow the steps for Ubuntu (or Debian if you use LMDE).
 
+Replace `$(lsb_release -rs)` with `$(grep DISTRIB_RELEASE= /etc/upstream-release/lsb-release | cut -d "=" -f 2)` for Ubuntu steps.
+
 ### Installing development versions of Podman
 
 #### [Fedora](https://getfedora.org)
