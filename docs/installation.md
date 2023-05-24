@@ -251,7 +251,7 @@ sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
 
-### Linuxmint
+#### [Linux Mint](https://linuxmint.com)
 
 Follow the steps for Ubuntu (or Debian if you use LMDE).
 
