@@ -15,7 +15,7 @@ the `podman machine` command. Podman on Mac and Windows also listens for
 Docker API clients, supporting direct usage of Docker-based tools and
 programmatic access from your language of choice.
 
-### MacOS
+### macOS
 
 On Mac, each Podman machine is backed by a [QEMU](https://www.qemu.org) based
 virtual machine. Once installed, the podman command can be run directly from
@@ -251,7 +251,7 @@ sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 ```
 
-### Linuxmint
+#### [Linux Mint](https://linuxmint.com)
 
 Follow the steps for Ubuntu (or Debian if you use LMDE).
 
