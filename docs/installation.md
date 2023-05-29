@@ -100,7 +100,7 @@ provides packages for Debian Testing and Unstable.
 Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:kubic:libcontainers:unstable/podman)
 for a list of supported Debian versions and
 architecture combinations. **NOTE:** The command `sudo apt-get -y upgrade`
-maybe required in some cases if Podman cannot be installed without it.
+may be required in some cases if Podman cannot be installed without it.
 The Kubic packages are built using [Fedora's packaging
 sources](https://src.fedoraproject.org/rpms/podman/blob/rawhide/f/podman.spec).
 
@@ -231,7 +231,7 @@ provides packages for the latest Ubuntu versions.
 Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:kubic:libcontainers:unstable/podman)
 for a list of supported Ubuntu versions and
 architecture combinations. **NOTE:** The command `sudo apt-get -y upgrade`
-maybe required in some cases if Podman cannot be installed without it.
+may be required in some cases if Podman cannot be installed without it.
 The Kubic packages are built using [Fedora's packaging
 sources](https://src.fedoraproject.org/rpms/podman/blob/rawhide/f/podman.spec).
 
