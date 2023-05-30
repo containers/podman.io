@@ -139,7 +139,7 @@ const config = {
                 href: 'https://github.com/containers/podman-desktop',
               },
               {
-                label: 'Podman Website Github',
+                label: 'Podman Website GitHub',
                 href: 'https://github.com/containers/podman.io',
               },
             ],
