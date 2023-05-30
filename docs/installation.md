@@ -19,7 +19,7 @@ programmatic access from your language of choice.
 
 On Mac, each Podman machine is backed by a [QEMU](https://www.qemu.org) based
 virtual machine. Once installed, the podman command can be run directly from
-the Unix shell in `Terminal`, where it remotely communicates with the podman
+the Unix shell in Terminal, where it remotely communicates with the podman
 service running in the Machine VM.
 
 For Mac, Podman is provided through [Homebrew](https://brew.sh/). Once you
