@@ -100,7 +100,7 @@ provides packages for Debian Testing and Unstable.
 Checkout the [Kubic project page](https://build.opensuse.org/package/show/devel:kubic:libcontainers:unstable/podman)
 for a list of supported Debian versions and
 architecture combinations. **NOTE:** The command `sudo apt-get -y upgrade`
-maybe required in some cases if Podman cannot be installed without it.
+may be required in some cases if Podman cannot be installed without it.
 The Kubic packages are built using [Fedora's packaging
 sources](https://src.fedoraproject.org/rpms/podman/blob/rawhide/f/podman.spec).
 
@@ -190,7 +190,7 @@ Built-in, no need to install
 
 #### [Raspberry Pi OS arm64 (beta)](https://downloads.raspberrypi.org/raspios_arm64/images/)
 
-Raspberry Pi OS use the standard Debian's repositories,
+Raspberry Pi OS use the standard Debian repositories,
 so it is fully compatible with Debian's arm64 repository.
 You can simply follow the [steps for Debian](#debian) to install Podman.
 
