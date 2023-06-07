@@ -455,7 +455,7 @@ First, ensure that the `go version` that is found first on the $PATH is 1.16.x o
 ```bash
 git clone https://github.com/containers/podman/
 cd podman
-make BUILDTAGS="selinux seccomp"
+make BUILDTAGS="selinux seccomp" PREFIX=/usr
 sudo make install PREFIX=/usr
 ```
 
