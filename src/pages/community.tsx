@@ -6,7 +6,7 @@ import Markdown from '@site/src//components/utilities/Markdown';
 import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import ThankYouSection from '@site/src/components/content/ThankYouSection';
-import CardGrid from '@site/src/components/layout/CardGrid';
+import CustomCardGrid from '@site/src/components/layout/CustomCardGrid';
 import SmallCard from '@site/src/components/ui/SmallCard';
 import DateTimeBox from '@site/src/components/content/DateTimeBox';
 import InfoBox from '@site/src/components/ui/InfoBox';
@@ -37,7 +37,7 @@ const CommunityLinks = () => {
 const CommunityChatSection = (): JSX.Element => {
   return (
     <section className="bg-gray-50 dark:bg-gradient-to-t dark:from-gray-700 dark:via-gray-900 dark:to-gray-900 ">
-      <SectionHeader title={communityChat.title} />
+      <SectionHeader textGradient={true} title={communityChat.title} />
       <div className="mx-4 mt-8 flex flex-wrap justify-around gap-4 sm:mx-8 lg:mx-auto lg:mt-16 lg:max-w-6xl">
         <div className="">
           <p className="max-w-sm text-center text-gray-700 md:max-w-md md:text-start lg:max-w-xl">
@@ -61,14 +61,15 @@ const CommunityMeetingSection = (): JSX.Element => {
         <SectionHeader
           title={communityMeetings.title}
           description={communityMeetings.subtitle}
-          textColor="from-purple-500 to-purple-700 dark:text-purple-500"
+          textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
+          textGradient={true}
         />
         <img
           src={communityMeetings.image.path}
           alt={communityMeetings.image.alt}
           className="order-first mx-auto object-cover lg:max-w-lg"
         />
-        <CardGrid cards={communityMeetings.cards} />
+        <CustomCardGrid cards={communityMeetings.cards} />
       </div>
     </section>
   );
