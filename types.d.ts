@@ -48,9 +48,3 @@ type HeaderProps = {
   readonly title?: string;
   readonly description?: string;
 };
-
-type CommunityMeetingsProps = {
-  meeting_date: string;
-  meeting_link: string;
-  meeting_minutes: string;
-};
