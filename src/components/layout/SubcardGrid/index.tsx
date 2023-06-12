@@ -9,7 +9,6 @@ function SubcardGrid({ cards }) {
         date = new Date(parseInt(card.date)).toDateString();
         let [day, ...dateStr] = date.split(' ');
         let dateISO = dateStr.join(' ');
-        console.log(day);
 
         return (
           <CustomCard
