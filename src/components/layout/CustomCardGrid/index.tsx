@@ -10,7 +10,7 @@ function CustomCardGrid({ cards }) {
         return (
           <div
             key={`card-container-${index}`}
-            className="align-items-center card-container flex-column mb-4 flex flex-1 flex-wrap justify-center lg:mb-6">
+            className="align-items-center card-container mb-4 flex flex-1 flex-col flex-wrap justify-center lg:mb-6">
             <CustomCard
               key={`custom-card-${index}`}
               title={card.title}
