@@ -6,7 +6,7 @@ import Markdown from '@site/src//components/utilities/Markdown';
 import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import ThankYouSection from '@site/src/components/content/ThankYouSection';
-import CustomCardGrid from '@site/src/components/layout/CustomCardGrid';
+import CommunityMeetingsCardGrid from '@site/src/components/layout/CommunityMeetingsCardGrid';
 import SmallCard from '@site/src/components/ui/SmallCard';
 import DateTimeBox from '@site/src/components/content/DateTimeBox';
 import InfoBox from '@site/src/components/ui/InfoBox';
@@ -69,7 +69,7 @@ const CommunityMeetingSection = (): JSX.Element => {
           alt={communityMeetings.image.alt}
           className="order-first mx-auto object-cover lg:max-w-lg"
         />
-        <CustomCardGrid cards={communityMeetings.cards} />
+        <CommunityMeetingsCardGrid cards={communityMeetings.cards} />
       </div>
     </section>
   );
