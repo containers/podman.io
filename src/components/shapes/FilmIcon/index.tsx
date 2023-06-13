@@ -26,8 +26,8 @@ function FilmIcon() {
               cy="0.5"
               r="0.5"
               gradientTransform="matrix(-1.000000, 0.000000, -0.000000, -1.000000, 1.000000, 1.000000)">
-              <stop offset="0" stop-color="#68c6f7" stop-opacity="1" />
-              <stop offset="1" stop-color="#3799cc" stop-opacity="1" />
+              <stop offset="0" stopColor="#68c6f7" stopOpacity="1" />
+              <stop offset="1" stopColor="#3799cc" stopOpacity="1" />
             </radialGradient>
             <pattern
               patternUnits="userSpaceOnUse"
@@ -54,8 +54,8 @@ function FilmIcon() {
                 cy="0.5"
                 r="0.5"
                 gradientTransform="matrix(-1.000000, 0.000000, -0.000000, -1.000000, 1.000000, 1.000000)">
-                <stop offset="0" stop-color="#68c6f7" stop-opacity="1" />
-                <stop offset="1" stop-color="#3799cc" stop-opacity="1" />
+                <stop offset="0" stopColor="#68c6f7" stopOpacity="1" />
+                <stop offset="1" stopColor="#3799cc" stopOpacity="1" />
               </radialGradient>
               <pattern
                 patternUnits="userSpaceOnUse"
@@ -98,8 +98,8 @@ function FilmIcon() {
               cy="0.5"
               r="0.5"
               gradientTransform="matrix(-1.000000, 0.000000, -0.000000, -1.000000, 1.000000, 1.000000)">
-              <stop offset="0" stop-color="#68c6f7" stop-opacity="1" />
-              <stop offset="1" stop-color="#3799cc" stop-opacity="1" />
+              <stop offset="0" stopColor="#68c6f7" stopOpacity="1" />
+              <stop offset="1" stopColor="#3799cc" stopOpacity="1" />
             </radialGradient>
             <pattern
               patternUnits="userSpaceOnUse"
@@ -126,8 +126,8 @@ function FilmIcon() {
                 cy="0.5"
                 r="0.5"
                 gradientTransform="matrix(-1.000000, 0.000000, -0.000000, -1.000000, 1.000000, 1.000000)">
-                <stop offset="0" stop-color="#68c6f7" stop-opacity="1" />
-                <stop offset="1" stop-color="#3799cc" stop-opacity="1" />
+                <stop offset="0" stopColor="#68c6f7" stopOpacity="1" />
+                <stop offset="1" stopColor="#3799cc" stopOpacity="1" />
               </radialGradient>
               <pattern
                 patternUnits="userSpaceOnUse"

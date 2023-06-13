@@ -62,7 +62,7 @@ const communityMeetings = {
       ],
       subCards: [
         {
-          date: '1635814871',
+          date: 1635814871000,
           icon: 'film',
           buttons: [
             { text: 'Watch recordings', path: MEETING_URL },
@@ -70,7 +70,7 @@ const communityMeetings = {
           ],
         },
         {
-          date: '1633395671',
+          date: 1633395671000,
           icon: 'film',
           buttons: [
             { text: 'Watch recordings', path: MEETING_URL },
@@ -91,7 +91,7 @@ const communityMeetings = {
       ],
       subCards: [
         {
-          date: '1635814871',
+          date: 1635814871000,
           icon: 'film',
           buttons: [
             { text: 'Watch recordings', path: MEETING_URL },
@@ -99,7 +99,7 @@ const communityMeetings = {
           ],
         },
         {
-          date: '1633395671',
+          date: 1633395671000,
           icon: 'film',
           buttons: [
             { text: 'Watch recordings', path: MEETING_URL },
