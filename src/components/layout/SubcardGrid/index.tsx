@@ -1,20 +1,17 @@
 import React from 'react';
 import CustomCard from '@site/src/components/ui/CustomCard';
+import { DayOfTheWeek } from '@site/src/components/utilities/DateUtils';
 
 function SubcardGrid({ cards }) {
-  let date: string;
   return (
     <div className="mb-4 flex lg:mb-6">
-      {cards.map((card, index) => {
-        date = new Date(parseInt(card.date)).toDateString();
-        let [day, ...dateStr] = date.split(' ');
-        let dateISO = dateStr.join(' ');
-
+      {cards?.map((card, index) => {
+        let date = new Date(card.date).getDay();
         return (
           <CustomCard
             key={index}
-            title={dateISO}
-            subtitle={day}
+            title={card.date}
+            subtitle={DayOfTheWeek(date)}
             details={card.timeZone}
             text={card.subtitle}
             data={card.buttons}

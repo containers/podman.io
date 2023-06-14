@@ -17,14 +17,24 @@ type DropdownOptionProps = {
   };
 };
 
+type SubcardButtonProps = {
+  text: string;
+  path: string;
+};
+
+type SubcardGridProps = {
+  buttons: SubcardButtonProps[];
+  icon: string;
+  date: string;
+};
+
 let cabalDropdownOptions: DropdownOptionProps[] = [];
 let MeetingDropdownOptions: DropdownOptionProps[] = [];
 
 function populateMeetings(): void {
   Object.values(markDownFiles).forEach(mdFile => {
-    let cc = mdFile.default(useRef());
-
-    cc.props.children.forEach(child => {
+    let mdReader = mdFile.default(useRef());
+    mdReader.props.children.forEach(child => {
       let field1: string = child?.props?.children[0];
       let field2: object = child?.props?.children[1];
       if (typeof field1 == 'string' && (field1.includes('BlueJeans') || field1.includes('Video'))) {
@@ -78,6 +88,69 @@ function getDropdownOption(options: DropdownOptionProps[]) {
 
 function CustomCardGrid({ cards }) {
   populateMeetings();
+  const communityMeetingsLen = MeetingDropdownOptions.length;
+  const cabalMeetingsLen = cabalDropdownOptions.length;
+  let communityMeetingsData: SubcardGridProps[] = [
+    {
+      date: MeetingDropdownOptions[communityMeetingsLen - 1].date,
+      icon: 'film-icon',
+      buttons: [
+        {
+          path: MeetingDropdownOptions[communityMeetingsLen - 1].meeting_recording.link,
+          text: MeetingDropdownOptions[communityMeetingsLen - 1].meeting_recording.text,
+        },
+        {
+          path: MeetingDropdownOptions[communityMeetingsLen - 1].meeting_minutes.link,
+          text: MeetingDropdownOptions[communityMeetingsLen - 1].meeting_minutes.text,
+        },
+      ],
+    },
+    {
+      date: MeetingDropdownOptions[communityMeetingsLen - 2].date,
+      icon: 'film-icon',
+      buttons: [
+        {
+          path: MeetingDropdownOptions[communityMeetingsLen - 2].meeting_recording.link,
+          text: MeetingDropdownOptions[communityMeetingsLen - 2].meeting_recording.text,
+        },
+        {
+          path: MeetingDropdownOptions[communityMeetingsLen - 2].meeting_minutes.link,
+          text: MeetingDropdownOptions[communityMeetingsLen - 2].meeting_minutes.text,
+        },
+      ],
+    },
+  ];
+  let CabalMeetingsData: SubcardGridProps[] = [
+    {
+      date: cabalDropdownOptions[cabalMeetingsLen - 1].date,
+      icon: 'film-icon',
+      buttons: [
+        {
+          path: cabalDropdownOptions[cabalMeetingsLen - 1].meeting_recording.link,
+          text: cabalDropdownOptions[cabalMeetingsLen - 1].meeting_recording.text,
+        },
+        {
+          path: cabalDropdownOptions[cabalMeetingsLen - 1].meeting_minutes.link,
+          text: cabalDropdownOptions[cabalMeetingsLen - 1].meeting_minutes.text,
+        },
+      ],
+    },
+    {
+      date: cabalDropdownOptions[cabalMeetingsLen - 2].date,
+      icon: 'film-icon',
+      buttons: [
+        {
+          path: cabalDropdownOptions[cabalMeetingsLen - 2].meeting_recording.link,
+          text: cabalDropdownOptions[cabalMeetingsLen - 2].meeting_recording.text,
+        },
+        {
+          path: cabalDropdownOptions[cabalMeetingsLen - 2].meeting_minutes.link,
+          text: cabalDropdownOptions[cabalMeetingsLen - 2].meeting_minutes.text,
+        },
+      ],
+    },
+  ];
+
   return (
     <div className="justify-content-center align-items-center custom-card-grid-root flex">
       {cards.map((card, index) => {
@@ -100,7 +173,12 @@ function CustomCardGrid({ cards }) {
               textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
               textGradient={false}
             />
-            {card?.subCards && <SubcardGrid key={`subcard-grid-${index}`} cards={card.subCards} />}
+            {card?.subCards && (
+              <SubcardGrid
+                key={`subcard-grid-${index}`}
+                cards={index == 1 ? CabalMeetingsData : communityMeetingsData}
+              />
+            )}
             {
               <Dropdown
                 options={getDropdownOption(index == 1 ? [...cabalDropdownOptions] : [...MeetingDropdownOptions])}

@@ -7,7 +7,7 @@ function CardHeader(props) {
   const { title, subtitle, details } = props;
   return (
     <div className="mx-2 mb-10 mt-4 text-center">
-      <h3 className="mb-3 font-bold text-gray-700 dark:text-gray-50">{title}</h3>
+      <h3 className="mb-3 whitespace-nowrap font-bold text-gray-700 dark:text-gray-50">{title}</h3>
       <Markdown text={subtitle} styles="text-gray-700" />
       <Markdown text={details} styles="text-gray-700" />
     </div>

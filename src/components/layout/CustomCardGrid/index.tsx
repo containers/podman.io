@@ -6,7 +6,7 @@ import SectionHeader from '@site/src/components/layout/SectionHeader';
 function CustomCardGrid({ cards }) {
   return (
     <div className="justify-content-center align-items-center custom-card-grid-root flex">
-      {cards.map((card, index) => {
+      {cards?.map((card, index) => {
         return (
           <div
             key={`card-container-${index}`}
