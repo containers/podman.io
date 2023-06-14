@@ -32,15 +32,15 @@ let cabalDropdownOptions: DropdownOptionProps[] = [];
 let MeetingDropdownOptions: DropdownOptionProps[] = [];
 
 function populateMeetings(): void {
-  Object.values(markDownFiles).forEach(mdFile => {
-    let mdReader = mdFile.default(useRef());
-    mdReader.props.children.forEach(child => {
+  Object.values(markDownFiles)?.forEach(mdFile => {
+    let mdReader = mdFile?.default(useRef());
+    mdReader?.props?.children?.forEach(child => {
       let field1: string = child?.props?.children[0];
       let field2: object = child?.props?.children[1];
       if (typeof field1 == 'string' && (field1.includes('BlueJeans') || field1.includes('Video'))) {
         if (mdFile?.contentTitle?.includes('Cabal')) {
           cabalDropdownOptions.push({
-            date: (mdFile.toc[0].value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
+            date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
             meeting_minutes: {
               link: 'https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w',
               text: 'Meeting Minutes',
@@ -52,7 +52,7 @@ function populateMeetings(): void {
           });
         } else {
           MeetingDropdownOptions.push({
-            date: (mdFile.toc[0].value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
+            date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
             meeting_minutes: {
               link: 'https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w',
               text: 'Meeting Minutes',
@@ -72,11 +72,11 @@ function DropDownOption(props: DropdownOptionProps) {
   return (
     <div className="m-px inline-flex w-full justify-around bg-white p-0.5">
       <h3 className="flex-1 pl-1 text-base text-gray-700 dark:text-gray-50">{props.date}</h3>
-      <a className="flex-1" href={props.meeting_recording.link}>
-        {props.meeting_recording.text}
+      <a className="flex-1" href={props?.meeting_recording?.link}>
+        {props?.meeting_recording?.text}
       </a>
-      <a className="flex-1" href={props.meeting_minutes.link}>
-        {props.meeting_minutes.text}
+      <a className="flex-1" href={props?.meeting_minutes?.link}>
+        {props?.meeting_minutes?.text}
       </a>
     </div>
   );
@@ -92,60 +92,60 @@ function CustomCardGrid({ cards }) {
   const cabalMeetingsLen = cabalDropdownOptions.length;
   let communityMeetingsData: SubcardGridProps[] = [
     {
-      date: MeetingDropdownOptions[communityMeetingsLen - 1].date,
+      date: MeetingDropdownOptions?.[communityMeetingsLen - 1]?.date,
       icon: 'film-icon',
       buttons: [
         {
-          path: MeetingDropdownOptions[communityMeetingsLen - 1].meeting_recording.link,
-          text: MeetingDropdownOptions[communityMeetingsLen - 1].meeting_recording.text,
+          path: MeetingDropdownOptions?.[communityMeetingsLen - 1]?.meeting_recording?.link,
+          text: MeetingDropdownOptions?.[communityMeetingsLen - 1]?.meeting_recording?.text,
         },
         {
-          path: MeetingDropdownOptions[communityMeetingsLen - 1].meeting_minutes.link,
-          text: MeetingDropdownOptions[communityMeetingsLen - 1].meeting_minutes.text,
+          path: MeetingDropdownOptions?.[communityMeetingsLen - 1]?.meeting_minutes?.link,
+          text: MeetingDropdownOptions?.[communityMeetingsLen - 1]?.meeting_minutes?.text,
         },
       ],
     },
     {
-      date: MeetingDropdownOptions[communityMeetingsLen - 2].date,
+      date: MeetingDropdownOptions?.[communityMeetingsLen - 2]?.date,
       icon: 'film-icon',
       buttons: [
         {
-          path: MeetingDropdownOptions[communityMeetingsLen - 2].meeting_recording.link,
-          text: MeetingDropdownOptions[communityMeetingsLen - 2].meeting_recording.text,
+          path: MeetingDropdownOptions?.[communityMeetingsLen - 2]?.meeting_recording?.link,
+          text: MeetingDropdownOptions?.[communityMeetingsLen - 2]?.meeting_recording?.text,
         },
         {
-          path: MeetingDropdownOptions[communityMeetingsLen - 2].meeting_minutes.link,
-          text: MeetingDropdownOptions[communityMeetingsLen - 2].meeting_minutes.text,
+          path: MeetingDropdownOptions?.[communityMeetingsLen - 2]?.meeting_minutes?.link,
+          text: MeetingDropdownOptions?.[communityMeetingsLen - 2]?.meeting_minutes?.text,
         },
       ],
     },
   ];
   let CabalMeetingsData: SubcardGridProps[] = [
     {
-      date: cabalDropdownOptions[cabalMeetingsLen - 1].date,
+      date: cabalDropdownOptions?.[cabalMeetingsLen - 1]?.date,
       icon: 'film-icon',
       buttons: [
         {
-          path: cabalDropdownOptions[cabalMeetingsLen - 1].meeting_recording.link,
-          text: cabalDropdownOptions[cabalMeetingsLen - 1].meeting_recording.text,
+          path: cabalDropdownOptions?.[cabalMeetingsLen - 1]?.meeting_recording?.link,
+          text: cabalDropdownOptions?.[cabalMeetingsLen - 1]?.meeting_recording?.text,
         },
         {
-          path: cabalDropdownOptions[cabalMeetingsLen - 1].meeting_minutes.link,
-          text: cabalDropdownOptions[cabalMeetingsLen - 1].meeting_minutes.text,
+          path: cabalDropdownOptions?.[cabalMeetingsLen - 1]?.meeting_minutes?.link,
+          text: cabalDropdownOptions?.[cabalMeetingsLen - 1]?.meeting_minutes?.text,
         },
       ],
     },
     {
-      date: cabalDropdownOptions[cabalMeetingsLen - 2].date,
+      date: cabalDropdownOptions?.[cabalMeetingsLen - 2]?.date,
       icon: 'film-icon',
       buttons: [
         {
-          path: cabalDropdownOptions[cabalMeetingsLen - 2].meeting_recording.link,
-          text: cabalDropdownOptions[cabalMeetingsLen - 2].meeting_recording.text,
+          path: cabalDropdownOptions?.[cabalMeetingsLen - 2]?.meeting_recording?.link,
+          text: cabalDropdownOptions?.[cabalMeetingsLen - 2]?.meeting_recording?.text,
         },
         {
-          path: cabalDropdownOptions[cabalMeetingsLen - 2].meeting_minutes.link,
-          text: cabalDropdownOptions[cabalMeetingsLen - 2].meeting_minutes.text,
+          path: cabalDropdownOptions?.[cabalMeetingsLen - 2]?.meeting_minutes?.link,
+          text: cabalDropdownOptions?.[cabalMeetingsLen - 2]?.meeting_minutes?.text,
         },
       ],
     },
@@ -160,11 +160,11 @@ function CustomCardGrid({ cards }) {
             className="align-items-center card-container mb-4 flex flex-1 flex-col flex-wrap justify-center transition duration-150 ease-linear lg:mb-6">
             <CustomCard
               key={`custom-card-${index}`}
-              title={card.title}
-              subtitle={card.date}
-              details={card.timeZone}
-              text={card.subtitle}
-              data={card.buttons}
+              title={card?.title}
+              subtitle={card?.date}
+              details={card?.timeZone}
+              text={card?.subtitle}
+              data={card?.buttons}
               primary={true}
             />
             <SectionHeader

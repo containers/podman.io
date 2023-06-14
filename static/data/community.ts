@@ -60,24 +60,6 @@ const communityMeetings = {
         { text: 'Join Meeting', path: MEETING_URL },
         { text: 'Meeting Agenda', path: 'https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w' },
       ],
-      subCards: [
-        {
-          date: 1635814871000,
-          icon: 'film',
-          buttons: [
-            { text: 'Watch recordings', path: MEETING_URL },
-            { text: 'Meeting Minutes', path: 'https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w' },
-          ],
-        },
-        {
-          date: 1633395671000,
-          icon: 'film',
-          buttons: [
-            { text: 'Watch recordings', path: MEETING_URL },
-            { text: 'Meeting Minutes', path: 'https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w' },
-          ],
-        },
-      ],
     },
     {
       title: 'Podman Community Cabal',
@@ -88,24 +70,6 @@ const communityMeetings = {
       buttons: [
         { text: 'Join Meeting', path: MEETING_URL },
         { text: 'Meeting Agenda', path: 'https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both' },
-      ],
-      subCards: [
-        {
-          date: 1635814871000,
-          icon: 'film',
-          buttons: [
-            { text: 'Watch recordings', path: MEETING_URL },
-            { text: 'Meeting Minutes', path: 'https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both' },
-          ],
-        },
-        {
-          date: 1633395671000,
-          icon: 'film',
-          buttons: [
-            { text: 'Watch recordings', path: MEETING_URL },
-            { text: 'Meeting Minutes', path: 'https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both' },
-          ],
-        },
       ],
     },
   ],
