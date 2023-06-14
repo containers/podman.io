@@ -1,4 +1,4 @@
-import { LATEST_VERSION, LATEST_DESKTOP_VERSION, LATEST_DESKTOP_DOWNLOAD_URL } from './global';
+import { LATEST_VERSION, LATEST_DESKTOP_VERSION } from './global';
 
 const header = {
   title: 'The best free & open source container tools',
@@ -14,7 +14,7 @@ const header = {
   },
   desktoprelease: {
     text: LATEST_DESKTOP_VERSION,
-    path: LATEST_DESKTOP_DOWNLOAD_URL,
+    path: 'https://podman-desktop.io/blog/podman-desktop-release-0.15',
   },
   platforms: [
     'Supported Platforms',

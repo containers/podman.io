@@ -1,0 +1,15 @@
+.film-icon {
+  align-self: center;
+  scale: 2;
+  margin-bottom: 1rem;
+  vertical-align: top;
+  overflow-y: hidden;
+}
+
+#shape-f22025ed-2924-807f-8002-a2aff9654955 {
+  transition: all 0.5s ease-out;
+}
+
+.film-icon:hover #shape-f22025ed-2924-807f-8002-a2aff9654955 {
+  transform: translateY(-50%);
+}
