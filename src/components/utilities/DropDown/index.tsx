@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 
 type DropdownProps = {
   text: string;
-  options: string[];
+  options: any[];
   dropdownRef: React.MutableRefObject<undefined>;
 };
 
@@ -39,7 +39,7 @@ function Dropdown(props: DropdownProps) {
         </div>
         <span>{props.text}</span>
       </div>
-      <div className="absolute mt-2 flex w-6/12 flex-col overflow-y-auto overflow-x-hidden shadow-md dark:bg-gray-900 md:max-h-full lg:max-h-96">
+      <div className="absolute mt-2 flex w-6/12 flex-col overflow-y-auto overflow-x-hidden shadow-md scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:bg-gray-900 md:max-h-full lg:max-h-96">
         {isOpen && props?.options.map(option => option)}
       </div>
     </div>

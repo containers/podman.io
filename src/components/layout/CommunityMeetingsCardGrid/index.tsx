@@ -1,9 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import CustomCard from '@site/src/components/ui/CustomCard';
 import SubcardGrid from '@site/src/components/layout/SubcardGrid';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import Dropdown from '@site/src/components/utilities/DropDown';
+import CloseIcon from '@site/src/components/shapes/CloseIcon';
 import * as markDownFiles from '@site/static/data/meetings/notes/index';
+
+import './styles.css';
 
 type DropdownOptionProps = {
   date: string;
@@ -13,13 +16,14 @@ type DropdownOptionProps = {
   };
   meeting_minutes: {
     text: string;
-    link: string;
+    markDown: ReactNode;
   };
 };
 
 type SubcardButtonProps = {
   text: string;
-  path: string;
+  path?: string;
+  markDown?: ReactNode;
 };
 
 type SubcardGridProps = {
@@ -28,65 +32,99 @@ type SubcardGridProps = {
   date: string;
 };
 
-let cabalDropdownOptions: DropdownOptionProps[] = [];
-let MeetingDropdownOptions: DropdownOptionProps[] = [];
-
-function populateMeetings(): void {
-  Object.values(markDownFiles)?.forEach(mdFile => {
-    let mdReader = mdFile?.default(useRef());
-    mdReader?.props?.children?.forEach(child => {
-      let field1: string = child?.props?.children[0];
-      let field2: object = child?.props?.children[1];
-      if (typeof field1 == 'string' && (field1.includes('BlueJeans') || field1.includes('Video'))) {
-        if (mdFile?.contentTitle?.includes('Cabal')) {
-          cabalDropdownOptions.push({
-            date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
-            meeting_minutes: {
-              link: 'https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w',
-              text: 'Meeting Minutes',
-            },
-            meeting_recording: {
-              link: field2?.props?.href,
-              text: 'Watch Recording',
-            },
-          });
-        } else {
-          MeetingDropdownOptions.push({
-            date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
-            meeting_minutes: {
-              link: 'https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w',
-              text: 'Meeting Minutes',
-            },
-            meeting_recording: {
-              link: field2?.props?.href,
-              text: 'Watch Recording',
-            },
-          });
-        }
+function toggleModalOpen(ref, handler) {
+  useEffect(() => {
+    const listener = event => {
+      if (!ref.current || ref.current.contains(event.target)) {
+        return;
       }
-    });
-  });
-}
-
-function DropDownOption(props: DropdownOptionProps) {
-  return (
-    <div className="inline-flex w-full justify-around bg-white p-0.5">
-      <h3 className="flex-1 pl-1 text-base text-gray-700 dark:text-gray-50">{props.date}</h3>
-      <a className="flex-1" href={props?.meeting_recording?.link}>
-        {props?.meeting_recording?.text}
-      </a>
-      <a className="flex-1" href={props?.meeting_minutes?.link}>
-        {props?.meeting_minutes?.text}
-      </a>
-    </div>
-  );
-}
-
-function getDropdownOption(options: DropdownOptionProps[]) {
-  return options.map(option => <DropDownOption {...option} />);
+      handler(event);
+    };
+    document.addEventListener('mousedown', listener);
+    document.addEventListener('touchstart', listener);
+    return () => {
+      document.removeEventListener('mousedown', listener);
+      document.removeEventListener('touchstart', listener);
+    };
+  }, [ref, handler]);
 }
 
 function CustomCardGrid({ cards }) {
+  let cabalDropdownOptions: DropdownOptionProps[] = [];
+  let MeetingDropdownOptions: DropdownOptionProps[] = [];
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [meetinNotesMD, setMeetinNotesMD] = useState<ReactNode | undefined>(undefined);
+  const meetingMinutesRef = useRef();
+
+  toggleModalOpen(meetingMinutesRef, () => setIsModalOpen(false));
+
+  function populateMeetings(): void {
+    Object.values(markDownFiles)?.forEach(mdFile => {
+      let mdReader = mdFile?.default(useRef());
+      mdReader?.props?.children?.forEach(child => {
+        let field1: string = child?.props?.children[0];
+        let field2: object = child?.props?.children[1];
+        if (typeof field1 == 'string' && (field1.includes('BlueJeans') || field1.includes('Video'))) {
+          if (mdFile?.contentTitle?.includes('Cabal')) {
+            cabalDropdownOptions.unshift({
+              date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
+              meeting_minutes: {
+                markDown: mdReader,
+                text: 'Meeting Minutes',
+              },
+              meeting_recording: {
+                link: field2?.props?.href,
+                text: 'Watch Recording',
+              },
+            });
+          } else {
+            MeetingDropdownOptions.unshift({
+              date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
+              meeting_minutes: {
+                markDown: mdReader,
+                text: 'Meeting Minutes',
+              },
+              meeting_recording: {
+                link: field2?.props?.href,
+                text: 'Watch Recording',
+              },
+            });
+          }
+        }
+      });
+    });
+  }
+
+  const toggleIsModalOpen = modalData => {
+    modalData && setMeetinNotesMD(modalData);
+    setIsModalOpen(true);
+  };
+
+  function DropDownOption(props: DropdownOptionProps) {
+    const { meeting_minutes, meeting_recording, date } = props;
+
+    return (
+      <div className="inline-flex w-full justify-center bg-white px-8 py-1">
+        <h3 className="flex-1 pl-1 text-base text-gray-700 dark:text-gray-50">{date}</h3>
+        <a className="flex-1 no-underline hover:no-underline" href={meeting_recording?.link}>
+          {meeting_recording?.text}
+        </a>
+        <a
+          onClick={() => {
+            toggleIsModalOpen(meeting_minutes.markDown);
+          }}
+          className="cursor-pointer">
+          {meeting_minutes?.text}
+        </a>
+      </div>
+    );
+  }
+
+  function getDropdownOption(options: DropdownOptionProps[]) {
+    return options.map(option => <DropDownOption {...option} />);
+  }
+
   populateMeetings();
   const communityMeetingsLen = MeetingDropdownOptions.length;
   const cabalMeetingsLen = cabalDropdownOptions.length;
@@ -100,7 +138,7 @@ function CustomCardGrid({ cards }) {
           text: MeetingDropdownOptions?.[communityMeetingsLen - 1]?.meeting_recording?.text,
         },
         {
-          path: MeetingDropdownOptions?.[communityMeetingsLen - 1]?.meeting_minutes?.link,
+          markDown: MeetingDropdownOptions?.[communityMeetingsLen - 1]?.meeting_minutes?.markDown,
           text: MeetingDropdownOptions?.[communityMeetingsLen - 1]?.meeting_minutes?.text,
         },
       ],
@@ -114,7 +152,7 @@ function CustomCardGrid({ cards }) {
           text: MeetingDropdownOptions?.[communityMeetingsLen - 2]?.meeting_recording?.text,
         },
         {
-          path: MeetingDropdownOptions?.[communityMeetingsLen - 2]?.meeting_minutes?.link,
+          markDown: MeetingDropdownOptions?.[communityMeetingsLen - 2]?.meeting_minutes?.markDown,
           text: MeetingDropdownOptions?.[communityMeetingsLen - 2]?.meeting_minutes?.text,
         },
       ],
@@ -130,7 +168,7 @@ function CustomCardGrid({ cards }) {
           text: cabalDropdownOptions?.[cabalMeetingsLen - 1]?.meeting_recording?.text,
         },
         {
-          path: cabalDropdownOptions?.[cabalMeetingsLen - 1]?.meeting_minutes?.link,
+          markDown: cabalDropdownOptions?.[cabalMeetingsLen - 1]?.meeting_minutes?.markDown,
           text: cabalDropdownOptions?.[cabalMeetingsLen - 1]?.meeting_minutes?.text,
         },
       ],
@@ -144,7 +182,7 @@ function CustomCardGrid({ cards }) {
           text: cabalDropdownOptions?.[cabalMeetingsLen - 2]?.meeting_recording?.text,
         },
         {
-          path: cabalDropdownOptions?.[cabalMeetingsLen - 2]?.meeting_minutes?.link,
+          markDown: cabalDropdownOptions?.[cabalMeetingsLen - 2]?.meeting_minutes?.markDown,
           text: cabalDropdownOptions?.[cabalMeetingsLen - 2]?.meeting_minutes?.text,
         },
       ],
@@ -169,7 +207,7 @@ function CustomCardGrid({ cards }) {
             />
             <SectionHeader
               title=""
-              description="Most Recent Past meetings"
+              description="Most Recent meetings"
               textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
               textGradient={false}
             />
@@ -186,6 +224,15 @@ function CustomCardGrid({ cards }) {
                 text="Older meeting details"
               />
             }
+            <dialog
+              className="bg-stone-200 w-90-screen h-90-screen fixed top-20 z-50 max-h-screen w-fit overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300"
+              open={isModalOpen}
+              ref={meetingMinutesRef}>
+              <div className="close-icon">
+                <CloseIcon />
+              </div>
+              <div className="md-wrapper">{meetinNotesMD}</div>
+            </dialog>
           </div>
         );
       })}

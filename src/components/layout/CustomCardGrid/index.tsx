@@ -22,7 +22,7 @@ function CustomCardGrid({ cards }) {
             />
             <SectionHeader
               title=""
-              description="Most Recent Past meetings"
+              description="Most Recent meetings"
               textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
               textGradient={false}
             />

@@ -1,0 +1,27 @@
+/* colors (current tailwind standard colors but not included with currently using tailwind installation) */
+.bg-stone-200 {
+  background-color: rgb(231 229 228);
+}
+
+/* width custom classes */
+.w-90-screen {
+  width: 90vw;
+}
+
+/* height custom classes */
+.h-90-screen {
+  height: 90vh;
+}
+
+.close-icon {
+  position: sticky;
+  top: 1rem;
+  left: 98%;
+  width: fit-content;
+  background-color: rgb(177, 178, 181);
+  cursor: pointer;
+}
+
+.md-wrapper {
+  padding-right: 2rem;
+}
