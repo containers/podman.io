@@ -49,7 +49,7 @@ type SubcardGridProps = {
 function toggleModalOpen(ref, handler) {
   useEffect(() => {
     const listener = event => {
-      if (!ref.current || ref.current.contains(event.target)) {
+      if (ref?.current?.contains(event.target)) {
         return;
       }
       handler(event);
@@ -71,9 +71,9 @@ function CommunityMeetingsCardGrid({ cards }) {
   const [modalHeader, setModalHeader] = useState<ReactNode | undefined>(undefined);
   const [meetinNotesMD, setMeetinNotesMD] = useState<ReactNode | undefined>(undefined);
   const meetingMinutesRef = [useRef(), useRef()];
+  const modalRef = useRef();
 
-  toggleModalOpen(meetingMinutesRef[0], () => setIsModalOpen(false));
-  toggleModalOpen(meetingMinutesRef[1], () => setIsModalOpen(false));
+  toggleModalOpen(modalRef, () => setIsModalOpen(false));
 
   const prepareModalHeader = (text: string, date: string) => {
     const modalHeader: ReactNode = (
@@ -89,8 +89,8 @@ function CommunityMeetingsCardGrid({ cards }) {
   };
 
   const populateMeetings = (): void => {
-    Object.values(markDownFiles)?.forEach((mdFile, index) => {
-      let mdReader = mdFile?.default(useRef(index));
+    Object.values(markDownFiles)?.forEach(mdFile => {
+      let mdReader = mdFile?.default(useRef());
       mdReader?.props?.children?.forEach(child => {
         let field1: string = child?.props?.children[0];
         let field2: object = child?.props?.children[1];
@@ -158,8 +158,6 @@ function CommunityMeetingsCardGrid({ cards }) {
   }
 
   populateMeetings();
-  const communityMeetingsLen = MeetingDropdownOptions.length;
-  const cabalMeetingsLen = cabalDropdownOptions.length;
   let communityMeetingsData: SubcardGridProps[] = [
     {
       date: MeetingDropdownOptions?.[0]?.date,
@@ -246,22 +244,20 @@ function CommunityMeetingsCardGrid({ cards }) {
             <SubcardGrid key={`subcard-grid-${index}`} cards={index == 1 ? CabalMeetingsData : communityMeetingsData} />
             <Dropdown
               options={getDropdownOption(index == 1 ? [...cabalDropdownOptions] : [...MeetingDropdownOptions])}
-              dropdownRef={useRef()}
+              dropdownRef={meetingMinutesRef[index]}
               text="Older meeting details"
             />
-            {isModalOpen && (
-              <dialog
-                className="bg-stone-200 w-90-screen h-80-screen fixed top-20 z-50 max-h-screen w-fit border-4 border-purple-100 backdrop-brightness-50"
-                open={isModalOpen}
-                ref={meetingMinutesRef[index]}>
-                <div className="modal-content flex flex-col">
-                  {modalHeader}
-                  <div className="md-wrapper overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300">
-                    {meetinNotesMD}
-                  </div>
+            <dialog
+              className="bg-stone-200 w-90-screen h-80-screen fixed top-20 z-50 max-h-screen w-fit border-4 border-purple-100 backdrop-brightness-50"
+              open={isModalOpen}
+              ref={modalRef}>
+              <div className="modal-content flex flex-col">
+                {modalHeader}
+                <div className="md-wrapper overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300">
+                  {meetinNotesMD}
                 </div>
-              </dialog>
-            )}
+              </div>
+            </dialog>
           </div>
         );
       })}
