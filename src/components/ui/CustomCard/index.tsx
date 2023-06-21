@@ -35,7 +35,7 @@ function CardInfoButtons({ data = [{ text: 'button text' }], primary = false }) 
             </div>
           ))
         : data.map((button, index) => (
-            <div key={index} className="">
+            <div key={index}>
               <Button as="link" outline={true} {...button} />
             </div>
           ))}

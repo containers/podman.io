@@ -9,7 +9,7 @@ function CloseIcon(props) {
       height="33"
       id="screenshot-6dbb9699-50de-8051-8002-b160b2203dcd"
       viewBox="-0.5 -0.5 33 33"
-      fill="none"
+      fill="rgb(177, 178, 181)"
       version="1.1"
       className={classNames}>
       <g id="shape-6dbb9699-50de-8051-8002-b160b2203dcd" rx="0" ry="0">

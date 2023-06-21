@@ -9,19 +9,32 @@
 }
 
 /* height custom classes */
-.h-90-screen {
-  height: 90vh;
+.h-80-screen {
+  height: 85vh;
 }
 
 .close-icon {
-  position: sticky;
-  top: 1rem;
-  left: 98%;
-  width: fit-content;
-  background-color: rgb(177, 178, 181);
   cursor: pointer;
 }
 
 .md-wrapper {
-  padding-right: 2rem;
+  padding: 2rem;
+  height: 75vh;
+}
+
+.md-wrapper h1,
+h2,
+h3 {
+  padding: 0.5rem;
+}
+
+dialog {
+  padding: 0;
+}
+
+.modal-header {
+  background-color: white;
+  padding: 1rem;
+  display: inline-flex;
+  justify-content: space-between;
 }

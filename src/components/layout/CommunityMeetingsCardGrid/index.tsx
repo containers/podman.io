@@ -4,9 +4,22 @@ import SubcardGrid from '@site/src/components/layout/SubcardGrid';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import Dropdown from '@site/src/components/utilities/DropDown';
 import CloseIcon from '@site/src/components/shapes/CloseIcon';
-import * as markDownFiles from '@site/static/data/meetings/notes/index';
+import * as markDownFiles from '@site/static/data/meetings/notes/index'; // ToDo: Lazy load these files
 
 import './styles.css';
+
+type CommunityMeetingsCardProps = {
+  title: string;
+  subtitle: string;
+  date: string;
+  timeZone: string;
+  buttons: [
+    {
+      text: string;
+      path: string;
+    },
+  ];
+};
 
 type DropdownOptionProps = {
   date: string;
@@ -17,6 +30,7 @@ type DropdownOptionProps = {
   meeting_minutes: {
     text: string;
     markDown: ReactNode;
+    modalHeaderData?: string;
   };
 };
 
@@ -49,19 +63,34 @@ function toggleModalOpen(ref, handler) {
   }, [ref, handler]);
 }
 
-function CustomCardGrid({ cards }) {
+function CommunityMeetingsCardGrid({ cards }) {
   let cabalDropdownOptions: DropdownOptionProps[] = [];
   let MeetingDropdownOptions: DropdownOptionProps[] = [];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalHeader, setModalHeader] = useState<ReactNode | undefined>(undefined);
   const [meetinNotesMD, setMeetinNotesMD] = useState<ReactNode | undefined>(undefined);
-  const meetingMinutesRef = useRef();
+  const meetingMinutesRef = [useRef(11), useRef(12)]; // Used arbitrary numbers for initial ref
 
-  toggleModalOpen(meetingMinutesRef, () => setIsModalOpen(false));
+  toggleModalOpen(meetingMinutesRef[0], () => setIsModalOpen(false));
+  toggleModalOpen(meetingMinutesRef[1], () => setIsModalOpen(false));
 
-  function populateMeetings(): void {
-    Object.values(markDownFiles)?.forEach(mdFile => {
-      let mdReader = mdFile?.default(useRef());
+  const prepareModalHeader = (text: string, date: string) => {
+    const modalHeader: ReactNode = (
+      <div className="modal-header">
+        <h3 className="modal-header-title">{text}</h3>
+        <h3 className="modal-header-date">{date}</h3>
+        <div className="cursor-pointer" onClick={() => setIsModalOpen(false)}>
+          <CloseIcon />
+        </div>
+      </div>
+    );
+    setModalHeader(modalHeader);
+  };
+
+  const populateMeetings = (): void => {
+    Object.values(markDownFiles)?.forEach((mdFile, index) => {
+      let mdReader = mdFile?.default(useRef(index));
       mdReader?.props?.children?.forEach(child => {
         let field1: string = child?.props?.children[0];
         let field2: object = child?.props?.children[1];
@@ -71,6 +100,7 @@ function CustomCardGrid({ cards }) {
               date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
               meeting_minutes: {
                 markDown: mdReader,
+                modalHeaderData: mdFile['contentTitle'],
                 text: 'Meeting Minutes',
               },
               meeting_recording: {
@@ -83,6 +113,7 @@ function CustomCardGrid({ cards }) {
               date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
               meeting_minutes: {
                 markDown: mdReader,
+                modalHeaderData: mdFile['contentTitle'],
                 text: 'Meeting Minutes',
               },
               meeting_recording: {
@@ -94,10 +125,11 @@ function CustomCardGrid({ cards }) {
         }
       });
     });
-  }
+  };
 
-  const toggleIsModalOpen = modalData => {
-    modalData && setMeetinNotesMD(modalData);
+  const toggleIsModalOpen = (...modalData) => {
+    modalData && setMeetinNotesMD(modalData[0].markDown);
+    prepareModalHeader(modalData[0].modalHeaderData, modalData[1]);
     setIsModalOpen(true);
   };
 
@@ -105,14 +137,14 @@ function CustomCardGrid({ cards }) {
     const { meeting_minutes, meeting_recording, date } = props;
 
     return (
-      <div className="inline-flex w-full justify-center bg-white px-8 py-1">
+      <div className="inline-flex justify-around bg-white px-8 py-1">
         <h3 className="flex-1 pl-1 text-base text-gray-700 dark:text-gray-50">{date}</h3>
         <a className="flex-1 no-underline hover:no-underline" href={meeting_recording?.link}>
           {meeting_recording?.text}
         </a>
         <a
           onClick={() => {
-            toggleIsModalOpen(meeting_minutes.markDown);
+            toggleIsModalOpen(meeting_minutes, date);
           }}
           className="cursor-pointer">
           {meeting_minutes?.text}
@@ -130,60 +162,60 @@ function CustomCardGrid({ cards }) {
   const cabalMeetingsLen = cabalDropdownOptions.length;
   let communityMeetingsData: SubcardGridProps[] = [
     {
-      date: MeetingDropdownOptions?.[communityMeetingsLen - 1]?.date,
+      date: MeetingDropdownOptions?.[0]?.date,
       icon: 'film-icon',
       buttons: [
         {
-          path: MeetingDropdownOptions?.[communityMeetingsLen - 1]?.meeting_recording?.link,
-          text: MeetingDropdownOptions?.[communityMeetingsLen - 1]?.meeting_recording?.text,
+          path: MeetingDropdownOptions?.[0]?.meeting_recording?.link,
+          text: MeetingDropdownOptions?.[0]?.meeting_recording?.text,
         },
         {
-          markDown: MeetingDropdownOptions?.[communityMeetingsLen - 1]?.meeting_minutes?.markDown,
-          text: MeetingDropdownOptions?.[communityMeetingsLen - 1]?.meeting_minutes?.text,
+          markDown: MeetingDropdownOptions?.[0]?.meeting_minutes?.markDown,
+          text: MeetingDropdownOptions?.[0]?.meeting_minutes?.text,
         },
       ],
     },
     {
-      date: MeetingDropdownOptions?.[communityMeetingsLen - 2]?.date,
+      date: MeetingDropdownOptions?.[1]?.date,
       icon: 'film-icon',
       buttons: [
         {
-          path: MeetingDropdownOptions?.[communityMeetingsLen - 2]?.meeting_recording?.link,
-          text: MeetingDropdownOptions?.[communityMeetingsLen - 2]?.meeting_recording?.text,
+          path: MeetingDropdownOptions?.[1]?.meeting_recording?.link,
+          text: MeetingDropdownOptions?.[1]?.meeting_recording?.text,
         },
         {
-          markDown: MeetingDropdownOptions?.[communityMeetingsLen - 2]?.meeting_minutes?.markDown,
-          text: MeetingDropdownOptions?.[communityMeetingsLen - 2]?.meeting_minutes?.text,
+          markDown: MeetingDropdownOptions?.[1]?.meeting_minutes?.markDown,
+          text: MeetingDropdownOptions?.[1]?.meeting_minutes?.text,
         },
       ],
     },
   ];
   let CabalMeetingsData: SubcardGridProps[] = [
     {
-      date: cabalDropdownOptions?.[cabalMeetingsLen - 1]?.date,
+      date: cabalDropdownOptions?.[0]?.date,
       icon: 'film-icon',
       buttons: [
         {
-          path: cabalDropdownOptions?.[cabalMeetingsLen - 1]?.meeting_recording?.link,
-          text: cabalDropdownOptions?.[cabalMeetingsLen - 1]?.meeting_recording?.text,
+          path: cabalDropdownOptions?.[0]?.meeting_recording?.link,
+          text: cabalDropdownOptions?.[0]?.meeting_recording?.text,
         },
         {
-          markDown: cabalDropdownOptions?.[cabalMeetingsLen - 1]?.meeting_minutes?.markDown,
-          text: cabalDropdownOptions?.[cabalMeetingsLen - 1]?.meeting_minutes?.text,
+          markDown: cabalDropdownOptions?.[0]?.meeting_minutes?.markDown,
+          text: cabalDropdownOptions?.[0]?.meeting_minutes?.text,
         },
       ],
     },
     {
-      date: cabalDropdownOptions?.[cabalMeetingsLen - 2]?.date,
+      date: cabalDropdownOptions?.[1]?.date,
       icon: 'film-icon',
       buttons: [
         {
-          path: cabalDropdownOptions?.[cabalMeetingsLen - 2]?.meeting_recording?.link,
-          text: cabalDropdownOptions?.[cabalMeetingsLen - 2]?.meeting_recording?.text,
+          path: cabalDropdownOptions?.[1]?.meeting_recording?.link,
+          text: cabalDropdownOptions?.[1]?.meeting_recording?.text,
         },
         {
-          markDown: cabalDropdownOptions?.[cabalMeetingsLen - 2]?.meeting_minutes?.markDown,
-          text: cabalDropdownOptions?.[cabalMeetingsLen - 2]?.meeting_minutes?.text,
+          markDown: cabalDropdownOptions?.[1]?.meeting_minutes?.markDown,
+          text: cabalDropdownOptions?.[1]?.meeting_minutes?.text,
         },
       ],
     },
@@ -191,7 +223,7 @@ function CustomCardGrid({ cards }) {
 
   return (
     <div className="justify-content-center align-items-center custom-card-grid-root flex">
-      {cards.map((card, index) => {
+      {cards.map((card: CommunityMeetingsCardProps, index: number) => {
         return (
           <div
             key={`card-container-${index}`}
@@ -211,28 +243,25 @@ function CustomCardGrid({ cards }) {
               textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
               textGradient={false}
             />
-            {card?.subCards && (
-              <SubcardGrid
-                key={`subcard-grid-${index}`}
-                cards={index == 1 ? CabalMeetingsData : communityMeetingsData}
-              />
+            <SubcardGrid key={`subcard-grid-${index}`} cards={index == 1 ? CabalMeetingsData : communityMeetingsData} />
+            <Dropdown
+              options={getDropdownOption(index == 1 ? [...cabalDropdownOptions] : [...MeetingDropdownOptions])}
+              dropdownRef={useRef()}
+              text="Older meeting details"
+            />
+            {isModalOpen && (
+              <dialog
+                className="bg-stone-200 w-90-screen h-80-screen fixed top-20 z-50 max-h-screen w-fit border-4 border-purple-100 backdrop-brightness-50"
+                open={isModalOpen}
+                ref={meetingMinutesRef[index]}>
+                <div className="modal-content flex flex-col">
+                  {modalHeader}
+                  <div className="md-wrapper overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300">
+                    {meetinNotesMD}
+                  </div>
+                </div>
+              </dialog>
             )}
-            {
-              <Dropdown
-                options={getDropdownOption(index == 1 ? [...cabalDropdownOptions] : [...MeetingDropdownOptions])}
-                dropdownRef={useRef()}
-                text="Older meeting details"
-              />
-            }
-            <dialog
-              className="bg-stone-200 w-90-screen h-90-screen fixed top-20 z-50 max-h-screen w-fit overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300"
-              open={isModalOpen}
-              ref={meetingMinutesRef}>
-              <div className="close-icon">
-                <CloseIcon />
-              </div>
-              <div className="md-wrapper">{meetinNotesMD}</div>
-            </dialog>
           </div>
         );
       })}
@@ -240,4 +269,4 @@ function CustomCardGrid({ cards }) {
   );
 }
 
-export default CustomCardGrid;
+export default CommunityMeetingsCardGrid;
