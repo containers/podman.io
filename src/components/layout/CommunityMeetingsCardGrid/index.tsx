@@ -70,7 +70,7 @@ function CommunityMeetingsCardGrid({ cards }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalHeader, setModalHeader] = useState<ReactNode | undefined>(undefined);
   const [meetinNotesMD, setMeetinNotesMD] = useState<ReactNode | undefined>(undefined);
-  const meetingMinutesRef = [useRef(11), useRef(12)]; // Used arbitrary numbers for initial ref
+  const meetingMinutesRef = [useRef(), useRef()];
 
   toggleModalOpen(meetingMinutesRef[0], () => setIsModalOpen(false));
   toggleModalOpen(meetingMinutesRef[1], () => setIsModalOpen(false));
