@@ -71,9 +71,9 @@ function CloseIcon(props) {
                 ry="0"
                 d="M28.500,28.500L2.500,3.500"
                 fill="none"
-                stroke-width="2"
+                strokeWidth="2"
                 stroke="rgb(0, 0, 0)"
-                stroke-opacity="1"
+                strokeOpacity="1"
               />
             </g>
           </g>

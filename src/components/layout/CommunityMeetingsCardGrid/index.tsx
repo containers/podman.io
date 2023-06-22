@@ -38,6 +38,7 @@ type SubcardButtonProps = {
   text: string;
   path?: string;
   markDown?: ReactNode;
+  modalHeaderData?: String;
 };
 
 type SubcardGridProps = {
@@ -158,70 +159,42 @@ function CommunityMeetingsCardGrid({ cards }) {
   }
 
   populateMeetings();
-  let communityMeetingsData: SubcardGridProps[] = [
-    {
-      date: MeetingDropdownOptions?.[0]?.date,
+
+  let communityMeetingsData: SubcardGridProps[] = [];
+  let CabalMeetingsData: SubcardGridProps[] = [];
+
+  // get top 2 CommunityMeetings & CabalMeetings for subcards
+  for (let i = 0; i < 2; i++) {
+    let meeting = MeetingDropdownOptions.shift();
+    communityMeetingsData.push({
+      date: meeting?.date,
       icon: 'film-icon',
       buttons: [
         {
-          path: MeetingDropdownOptions?.[0]?.meeting_recording?.link,
-          text: MeetingDropdownOptions?.[0]?.meeting_recording?.text,
+          path: meeting?.meeting_recording?.link,
+          text: meeting?.meeting_recording?.text,
         },
-        {
-          markDown: MeetingDropdownOptions?.[0]?.meeting_minutes?.markDown,
-          text: MeetingDropdownOptions?.[0]?.meeting_minutes?.text,
-        },
+        { ...meeting?.meeting_minutes },
       ],
-    },
-    {
-      date: MeetingDropdownOptions?.[1]?.date,
+    });
+    meeting = cabalDropdownOptions.shift();
+    CabalMeetingsData.push({
+      date: meeting?.date,
       icon: 'film-icon',
       buttons: [
         {
-          path: MeetingDropdownOptions?.[1]?.meeting_recording?.link,
-          text: MeetingDropdownOptions?.[1]?.meeting_recording?.text,
+          path: meeting?.meeting_recording?.link,
+          text: meeting?.meeting_recording?.text,
         },
-        {
-          markDown: MeetingDropdownOptions?.[1]?.meeting_minutes?.markDown,
-          text: MeetingDropdownOptions?.[1]?.meeting_minutes?.text,
-        },
+        { ...meeting?.meeting_minutes },
       ],
-    },
-  ];
-  let CabalMeetingsData: SubcardGridProps[] = [
-    {
-      date: cabalDropdownOptions?.[0]?.date,
-      icon: 'film-icon',
-      buttons: [
-        {
-          path: cabalDropdownOptions?.[0]?.meeting_recording?.link,
-          text: cabalDropdownOptions?.[0]?.meeting_recording?.text,
-        },
-        {
-          markDown: cabalDropdownOptions?.[0]?.meeting_minutes?.markDown,
-          text: cabalDropdownOptions?.[0]?.meeting_minutes?.text,
-        },
-      ],
-    },
-    {
-      date: cabalDropdownOptions?.[1]?.date,
-      icon: 'film-icon',
-      buttons: [
-        {
-          path: cabalDropdownOptions?.[1]?.meeting_recording?.link,
-          text: cabalDropdownOptions?.[1]?.meeting_recording?.text,
-        },
-        {
-          markDown: cabalDropdownOptions?.[1]?.meeting_minutes?.markDown,
-          text: cabalDropdownOptions?.[1]?.meeting_minutes?.text,
-        },
-      ],
-    },
-  ];
+    });
+  }
 
   return (
     <div className="justify-content-center align-items-center custom-card-grid-root flex">
       {cards.map((card: CommunityMeetingsCardProps, index: number) => {
+        let meetingsData = index == 1 ? CabalMeetingsData : communityMeetingsData;
         return (
           <div
             key={`card-container-${index}`}
@@ -241,7 +214,7 @@ function CommunityMeetingsCardGrid({ cards }) {
               textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
               textGradient={false}
             />
-            <SubcardGrid key={`subcard-grid-${index}`} cards={index == 1 ? CabalMeetingsData : communityMeetingsData} />
+            <SubcardGrid key={`subcard-grid-${index}`} cards={meetingsData} toggleIsModalOpen={toggleIsModalOpen} />
             <Dropdown
               options={getDropdownOption(index == 1 ? [...cabalDropdownOptions] : [...MeetingDropdownOptions])}
               dropdownRef={meetingMinutesRef[index]}

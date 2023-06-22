@@ -2,7 +2,7 @@ import React from 'react';
 import CustomCard from '@site/src/components/ui/CustomCard';
 import { DayOfTheWeek } from '@site/src/components/utilities/DateUtils';
 
-function SubcardGrid({ cards }) {
+function SubcardGrid({ cards, toggleIsModalOpen }) {
   return (
     <div className="mb-4 flex lg:mb-6">
       {cards?.map((card, index) => {
@@ -16,6 +16,9 @@ function SubcardGrid({ cards }) {
             text={card.subtitle}
             data={card.buttons}
             icon={card.icon}
+            method={meeting_minutes => {
+              toggleIsModalOpen(meeting_minutes, card.date);
+            }}
           />
         );
       })}
