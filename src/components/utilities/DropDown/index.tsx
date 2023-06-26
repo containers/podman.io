@@ -35,7 +35,7 @@ function Dropdown(props: DropdownProps) {
       <div
         data-dropdown-toggle="dropdown"
         onClick={() => setIsOpen(prev => !prev)}
-        className="my-2 flex cursor-pointer items-center gap-1 py-2 pl-12 font-bold text-purple-700 transition duration-150 ease-linear">
+        className="my-2 flex cursor-pointer items-center gap-1 py-2 pl-12 font-bold text-purple-700 dark:text-purple-500">
         <div className={`transition duration-150 ease-linear ${isOpen && 'rotate-90'}`}>
           <Icon icon="bi:caret-right-square-fill" />
         </div>
