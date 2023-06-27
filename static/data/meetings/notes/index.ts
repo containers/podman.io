@@ -37,6 +37,9 @@ import * as F20220120 from '@site/static/data/meetings/notes/2022-01-20/index.md
 import * as F20220421 from '@site/static/data/meetings/notes/2022-04-21/index.md';
 import * as F20220915 from '@site/static/data/meetings/notes/2022-09-15/index.md';
 import * as F20230207 from '@site/static/data/meetings/notes/2023-02-07/index.md';
+import * as F20230518 from '@site/static/data/meetings/notes/2023-05-18/index.md';
+import * as F20230606 from '@site/static/data/meetings/notes/2023-06-06/index.md';
+import * as F20230615 from '@site/static/data/meetings/notes/2023-06-15/index.md';
 
 export {
   F20201006,
@@ -78,4 +81,7 @@ export {
   F20220421,
   F20220915,
   F20230207,
+  F20230518,
+  F20230606,
+  F20230615,
 };
