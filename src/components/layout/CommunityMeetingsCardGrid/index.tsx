@@ -78,9 +78,9 @@ function CommunityMeetingsCardGrid({ cards }) {
 
   const prepareModalHeader = (text: string, date: string) => {
     const modalHeader: ReactNode = (
-      <div className="modal-header">
-        <h3 className="modal-header-title">{text}</h3>
-        <h3 className="modal-header-date">{date}</h3>
+      <div className="modal-header dark:bg-gray-500 dark:shadow-none">
+        <h3 className="modal-header-title dark:text-gray-900">{text}</h3>
+        <h3 className="modal-header-date dark:text-gray-900">{date}</h3>
         <div className="cursor-pointer" onClick={() => setIsModalOpen(false)}>
           <CloseIcon />
         </div>
@@ -138,7 +138,7 @@ function CommunityMeetingsCardGrid({ cards }) {
     const { meeting_minutes, meeting_recording, date } = props;
 
     return (
-      <div className="inline-flex justify-around bg-white px-8 py-1">
+      <div className="inline-flex justify-around bg-white px-8 py-1 dark:bg-gray-700 dark:shadow-none">
         <h3 className="flex-1 pl-1 text-base text-gray-700 dark:text-gray-50">{date}</h3>
         <a className="flex-1 no-underline hover:no-underline" href={meeting_recording?.link}>
           {meeting_recording?.text}
@@ -221,12 +221,12 @@ function CommunityMeetingsCardGrid({ cards }) {
               text="Older meeting details"
             />
             <dialog
-              className="bg-stone-200 w-90-screen h-80-screen fixed top-20 z-50 max-h-screen w-fit border-4 border-purple-100 backdrop-brightness-50"
+              className="bg-stone-200 w-90-screen h-80-screen fixed top-20 z-50 max-h-screen w-fit border-4 border-purple-100"
               open={isModalOpen}
               ref={modalRef}>
               <div className="modal-content flex flex-col">
                 {modalHeader}
-                <div className="md-wrapper overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300">
+                <div className="md-wrapper overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:bg-gray-700  dark:text-gray-50 dark:shadow-none">
                   {meetinNotesMD}
                 </div>
               </div>
