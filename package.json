@@ -43,8 +43,8 @@
     "eslint-config-prettier": "^8.6.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
-    "prettier": "2.8.3",
-    "prettier-plugin-tailwindcss": "^0.2.1",
+    "prettier": "2.8.8",
+    "prettier-plugin-tailwindcss": "^0.4.0",
     "tailwind-scrollbar": "^3.0.0",
     "typescript": "^4.9.4"
   },
@@ -66,5 +66,5 @@
   "engines": {
     "node": "18"
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@3.6.1"
 }
