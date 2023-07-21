@@ -1,5 +1,37 @@
 export const testimonials = [
   {
+    name: 'Ananth Iyer',
+    handle: '@mrananthiyer',
+    description:
+      'I am using \@Podman_io for Magento 2 and it is super fast than other container tools. You must try it. #Podman #Magento #magento2',
+    social: 'twitter',
+    path: 'https://twitter.com/mrananthiyer/status/1681923271267319810',
+    date: 'Jul 20, 2023',
+    avatar: 'https://pbs.twimg.com/profile_images/1421078758707011593/yYD_EI3K_400x400.jpg',
+  },
+  {
+    name: 'Shinya Yanagihara',
+    handle: '@yanashin18618',
+    description:
+      'I recently started using \@Podman_io Desktop, and I like it because it is quite easy and cozy to use. I wish I had used Podman earlier.',
+    social: 'twitter',
+    path: 'https://twitter.com/yanashin18618/status/1672012788951289857',
+    date: 'Jun 22, 2023',
+    avatar: 'https://pbs.twimg.com/profile_images/1460075843888480256/oLLVLho5_400x400.jpg',
+    featuredlink: 'https://twitter.com/vitalethomas/status/1671985089675247618',
+  },
+  {
+    name: 'Fang-Pen Lin 🇺🇸🌈',
+    handle: '@fangpenlin',
+    description:
+      'Had some fun digging #podman source code and learned how OCI hooks work. Created an open source OCI hook for archiving #overlayfs mount upperdir 😄 #container',
+    social: 'twitter',
+    path: 'https://twitter.com/search?q=podman%20containers&src=typed_query&f=live',
+    date: 'Jun 17, 2023',
+    avatar: 'https://pbs.twimg.com/profile_images/703066250071580672/oQjrvIz1_400x400.jpg',
+    featuredlink: 'https://github.com/LaunchPlatform/oci-hooks-archive-overlay',
+  },
+  {
     name: 'Gerald Venzl 🚀',
     handle: '@GeraldVenzl',
     description:
@@ -9,34 +41,5 @@ export const testimonials = [
     date: 'May 10, 2023',
     avatar: 'https://pbs.twimg.com/profile_images/1057877042438397952/DVNj9EiF_400x400.jpg',
     featuredlink: 'https://blogs.oracle.com/scoter/post/run-oracle-database-23c-with-podman-desktop',
-  },
-  {
-    name: 'Milind Mehta',
-    handle: '@milindmehtamca',
-    description: '3️⃣ Podman: 🐧 Hey Linux enthusiasts! 🐧 Podman is a lightweight, open-source container engine that doesn\'t require a special setup to run. 🏃‍♂️💨 With its secure capabilities, it allows developers to run containers without needing administrative access. 🛡️🔒 #PodmanPower',
-    social: 'twitter',
-    path: 'https://twitter.com/milindmehtamca/status/1656154409489793025',
-    date: 'May 10, 2023',
-    avatar: 'https://pbs.twimg.com/profile_images/1635518252683264001/-79QjTlK_400x400.jpg',
-  },
-  {
-    name: 'Shakeel Ahmad Minhas',
-    handle: '@Ahmad_Shakeel77',
-    description:
-      'Looking for a lightweight and efficient way to run containers on your Mac? Give Podman a try! This open-source container engine can help you manage your containerized applications easily on macOS.  #Mac #Podman #Containers',
-    social: 'twitter',
-    path: 'https://twitter.com/Ahmad_Shakeel77/status/1634010760819929089',
-    date: 'Mar 9, 2023',
-    avatar: 'https://pbs.twimg.com/profile_images/883884663844077569/goTwa-tJ_400x400.jpg',
-  },
-  {
-    name: 'Marco Mornati',
-    handle: '@mmornati@techub.social',
-    description:
-      'Just getting back to test #podman-desktop I used a bit after the #docker-desktop payment announcement. Changes are incredible and on #macosx all looks pretty smooth right now: docker API, host folder sharing, port sharing with hosts, privileged access (I test with https://github.com/mmornati/docker-mock-rpmbuilder), ... I think this became THE replacement for what we knew...',
-    social: 'mastodon',
-    path: 'https://techhub.social/@mmornati/109893129549386078',
-    date: 'Feb 19, 2023',
-    avatar: 'https://files.techhub.social/accounts/avatars/109/332/122/677/447/785/original/2c0748bae8006e4b.jpg',
   },
 ];
