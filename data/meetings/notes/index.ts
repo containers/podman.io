@@ -40,6 +40,7 @@ import * as F20230207 from '@site/static/data/meetings/notes/2023-02-07/index.md
 import * as F20230518 from '@site/static/data/meetings/notes/2023-05-18/index.md';
 import * as F20230606 from '@site/static/data/meetings/notes/2023-06-06/index.md';
 import * as F20230615 from '@site/static/data/meetings/notes/2023-06-15/index.md';
+import * as F20230720 from '@site/static/data/meetings/notes/2023-07-20/index.md';
 
 export {
   F20201006,
@@ -84,4 +85,5 @@ export {
   F20230518,
   F20230606,
   F20230615,
+  F20230720,
 };
