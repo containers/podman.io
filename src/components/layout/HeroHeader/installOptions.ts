@@ -11,10 +11,10 @@ const operatingSystemData = [
     },
     alt: {
       title: 'Podman CLI for Windows',
-      subtitle: `Windows MSI Installer v-${LATEST_VERSION}`,
+      subtitle: `Podman Windows Installer v-${LATEST_VERSION}`,
       icon: 'material-symbols:terminal-rounded',
       options: [],
-      path: `https://github.com/containers/podman/releases/download/v${LATEST_VERSION}/podman-v${LATEST_VERSION}.msi`,
+      path: `https://github.com/containers/podman/releases/download/v${LATEST_VERSION}/podman-${LATEST_VERSION}-setup.exe`,
     },
     other: {
       path: 'docs/installation',
