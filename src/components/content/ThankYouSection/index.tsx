@@ -3,7 +3,7 @@ import sponsorData from './data';
 import { Icon } from '@iconify/react';
 
 function ThankYouSection(): JSX.Element {
-  const [redHat, debian, ...sponsors] = sponsorData;
+  const [redHat, amadeus, suse, motorola, ntt, ibm, debian] = sponsorData;
   const slideLeft = () => {
     const slider = document.getElementById('slider');
     slider.scrollLeft = slider.scrollLeft - 500;
@@ -29,29 +29,48 @@ function ThankYouSection(): JSX.Element {
         </button>
         <div
           id="slider"
-          className="mx-auto h-full w-full grid-flow-col place-items-center gap-6 overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar scrollbar-track-purple-500 lg:container lg:grid lg:grid-rows-2">
+          className="justify-center mx-auto h-full w-full  place-items-center gap-6 overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar scrollbar-track-purple-500 lg:container lg:grid">
           <a
             href={redHat.href}
             target="_blank"
             className="mx-4 mb-4 inline-block rounded-md p-4  dark:bg-gray-100 lg:row-span-2 lg:row-start-1 lg:mb-0">
-            <img {...redHat} className="mx-auto h-20 p-4 lg:h-32" />
+            <img {...redHat} className="mx-auto p-4" />
           </a>
-          {sponsors.map((logo, index) => {
-            return (
-              <a
-                href={logo.href}
-                key={index}
-                target="_blank"
-                className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:mb-0 lg:flex lg:h-28 lg:w-80 lg:items-center">
-                <img {...logo} className="object-fit mx-auto max-w-sm p-4 " />
-              </a>
-            );
-          })}
+          <a
+            href={amadeus.href}
+            target="_blank"
+            className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:mb-0 lg:flex lg:h-28 lg:w-80 lg:items-center">
+            <img {...amadeus} className="object-fit mx-auto max-w-sm p-4 " />
+          </a>
+          <a
+            href={suse.href}
+            target="_blank"
+            className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:mb-0 lg:flex lg:h-28 lg:w-80 lg:items-center">
+            <img {...suse} className="object-fit mx-auto max-w-sm p-4 " />
+          </a>
+          <a
+            href={motorola.href}
+            target="_blank"
+            className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:row-span-2 lg:row-start-1 lg:mb-0">
+            <img {...motorola} className="mx-auto p-4" />
+          </a>
+          <a
+            href={ntt.href}
+            target="_blank"
+            className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:mb-0 lg:flex lg:h-28 lg:w-80 lg:items-center">
+            <img {...ntt} className="object-fit mx-auto max-w-sm p-4 " />
+          </a>
+          <a
+            href={ibm.href}
+            target="_blank"
+            className="col-span-3 mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:mb-0 lg:flex lg:h-28 lg:w-80 lg:items-center">
+            <img {...ibm} className="object-fit mx-auto max-w-sm p-4 " />
+          </a>
           <a
             href={debian.href}
             target="_blank"
             className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:row-span-2 lg:row-start-1 lg:mb-0">
-            <img {...debian} className="mx-auto h-20 p-4 lg:h-32" />
+            <img {...debian} className="mx-auto p-4" />
           </a>
         </div>
         <button onClick={slideRight} className="lg:hidden">
