@@ -20,7 +20,7 @@ const sponsorData = [
   {
     label: 'Motorola',
     href: 'https://www.motorolasolutions.com/',
-    src: 'logos/raw/motorola-solutions-200w-172h.png',
+    src: 'logos/raw/motorola-solutions-128w-110h.png',
     alt: 'Motorola Solutions Logo',
   },
   {
