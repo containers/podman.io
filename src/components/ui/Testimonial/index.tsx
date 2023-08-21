@@ -31,7 +31,7 @@ function Testimonial(props: TestimonialProps) {
       </div>
       <div className="mt-2 mb-4 truncate">
         <p className="whitespace-normal text-gray-900 dark:text-gray-300 leading-snug mb-2">{props.description}</p>
-        {props.featuredlink && <a href={props.featuredlink}>{props.featuredlink}</a>}
+        {props.featuredlink && <a target="_blank" href={props.featuredlink}>{props.featuredlink}</a>}
       </div>
       <div className="mt-auto self-start text-gray-300 dark:text-gray-700 italic">
         <a href={props.path} className="text-gray-300 dark:text-gray-700 dark:hover:text-gray-700 no-underline hover:no-underline hover:bg-purple-300">
