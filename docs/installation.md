@@ -316,6 +316,7 @@ Debian, Ubuntu, and related distributions:
 ```bash
 sudo apt-get install \
   btrfs-progs \
+  containernetworking-plugins \
   crun \
   git \
   golang-go \
