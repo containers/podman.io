@@ -277,38 +277,50 @@ sudo dnf copr enable rhcontainerbot/podman-next -y
 sudo dnf install podman
 ```
 
-## Building from scratch
+## Building from Source
 
 ### Build and Run Dependencies
 
 **Required**
 
-Fedora, CentOS, RHEL, and related distributions you should try to run
-`make package-install` which will install dependencies, build the source,
-produce rpms for the current platform and install them in the end.
+On Fedora:
 
 ```bash
-sudo yum install -y \
-  btrfs-progs-devel \
+# Install build dependencies
+sudo dnf -y builddep rpm/podman.spec
+
+# Install runtime dependencies
+sudo dnf -y install catatonit conmon containers-common-extra
+```
+
+On all RHEL and CentOS Stream, first install `dnf-builddep`:
+```bash
+sudo dnf -y install 'dnf-command(builddep)'
+```
+
+Install build dependencies:
+
+```bash
+# CentOS Stream 8
+sudo dnf -y builddep rpm/podman.spec --enablerepo=powertools
+
+# CentOS Stream 9
+sudo dnf -y builddep rpm/podman.spec --enablerepo=crb
+
+# RHEL (8 and newer)
+sudo dnf -y builddep rpm/podman.spec --enablerepo=codeready-builder-for-rhel-$(rpm --eval %{?rhel})-$(uname -m)-rpms
+```
+
+Install runtime dependencies:
+```bash
+sudo dnf -y install \
   conmon \
-  containernetworking-plugins \
   containers-common \
   crun \
-  device-mapper-devel \
-  git \
-  glib2-devel \
-  glibc-devel \
-  glibc-static \
-  go \
-  golang-github-cpuguy83-md2man \
-  gpgme-devel \
   iptables \
-  libassuan-devel \
-  libgpg-error-devel \
-  libseccomp-devel \
-  libselinux-devel \
-  make \
-  pkgconfig
+  netavark \
+  nftables \
+  slirp4netns
 ```
 
 Debian, Ubuntu, and related distributions:
