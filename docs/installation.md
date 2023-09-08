@@ -345,9 +345,13 @@ sudo apt-get install \
   libseccomp-dev \
   libselinux1-dev \
   libsystemd-dev \
+  netavark \
   pkg-config \
   uidmap
 ```
+
+The `netavark` package may not be available on older Debian / Ubuntu
+versions. Install the `containernetworking-plugins` package instead.
 
 On openSUSE Leap 15.x and Tumbleweed:
 
