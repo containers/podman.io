@@ -1,11 +1,10 @@
 # Podman Community Cabal Meeting Notes
 
-## July 20, 2023 11:00 a.m. Eastern (UTC-5)
+## September 21, 2023 11:00 a.m. Eastern (UTC-5)
 
 ## Attendees: 
 Aditya Rajan, Anders F Björklund, Ashley Cui, Ed Santiago Munoz, Jake Correnti, Justin Jereza, Lokesh Mandvekar, Martin Jackson, Matt Heon, Miloslav Trmac, Mohan Boddu, Nalin Dahyabhai, Paul Holzinger, Tom Sweeney, Valentin Rothberg
 
-## July 20, 2023 Topics
 ## September 21, 2023 Topics
 
 1. Default settings for Podman 4.7
