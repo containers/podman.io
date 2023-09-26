@@ -29,6 +29,14 @@ const communityChat = {
       textLogo: 'IRC',
     },
     {
+      text: 'Podman GitHub Discussions',
+      path: 'https://github.com/containers/podman/discussions',
+      image: {
+        path: 'vectors/raw/github.svg',
+        alt: 'GitHub Logo',
+      },
+    },
+    {
       text: 'Podman Discord',
       path: 'https://discord.gg/vwpj7K6gW5',
       icon: 'logos:discord-icon',
