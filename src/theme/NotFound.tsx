@@ -53,7 +53,7 @@ export default function NotFound(): JSX.Element {
       <Layout>
         <main className="container margin-vert--xl">
           <div className='img-container flex justify-center'>
-            <img src="images/raw/characters/confused-seal.png" alt="Not Found" />
+            <img src="/images/raw/characters/confused-seal.png" alt="Not Found" />
           </div>
           <div className="row">
             <div className="col title-row-col-1">
