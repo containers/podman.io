@@ -125,6 +125,10 @@ const config = {
                 label: 'Mailing List',
                 href: 'https://lists.podman.io',
               },
+              {
+                label: 'RSS Feed',
+                href: 'https://blog.podman.io/feed/',
+              },
             ],
           },
           {
