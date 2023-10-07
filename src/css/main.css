@@ -41,8 +41,13 @@
   font-kerning: normal !important;
 }
 
+#__docusaurus > nav > div.navbar__inner > div:nth-child(1) > a > b {
+  font-size: xxx-large;
+  line-height: 2rem;
+}
+
 .navbar__logo {
-  height: 40px;
+  height: 6.25rem;
 }
 
 .navbar {
@@ -50,10 +55,15 @@
   @apply bg-gradient-to-r from-blue-500  to-purple-700 dark:from-blue-700 dark:to-purple-900;
 }
 
+.navbar--fixed-top {
+  height: 7rem;
+}
+
 .navbar__title,
 .navbar__link,
 .clean-btn {
   @apply text-white dark:text-gray-50;
+  font-size: x-large;
 }
 
 .navbar__link svg,
