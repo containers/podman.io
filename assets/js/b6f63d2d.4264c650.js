@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpodman=self.webpackChunkpodman||[]).push([[96357],{56907:a=>{a.exports=JSON.parse('{"label":"sudo","permalink":"/blog/tags/sudo","allTagsPath":"/blog/tags","count":8}')}}]);

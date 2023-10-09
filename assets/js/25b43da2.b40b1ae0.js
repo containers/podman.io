@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpodman=self.webpackChunkpodman||[]).push([[18705],{52531:a=>{a.exports=JSON.parse('{"label":"multiarch","permalink":"/blog/tags/multiarch","allTagsPath":"/blog/tags","count":2}')}}]);

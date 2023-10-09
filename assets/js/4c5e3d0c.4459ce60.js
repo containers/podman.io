@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpodman=self.webpackChunkpodman||[]).push([[26],{5724:(e,t,a)=>{a.r(t),a.d(t,{default:()=>c});var n=a(7294),l=a(5742);const c=()=>n.createElement(l.Z,null,n.createElement("meta",{charSet:"utf-8"}),n.createElement("meta",{"http-equiv":"refresh",content:"0 url=/docs/installation"}),n.createElement("title",null,"Redirect to Podman Docs"))}}]);

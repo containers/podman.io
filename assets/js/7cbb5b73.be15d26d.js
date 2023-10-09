@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpodman=self.webpackChunkpodman||[]).push([[25642],{57431:a=>{a.exports=JSON.parse('{"label":"containers","permalink":"/blog/tags/containers","allTagsPath":"/blog/tags","count":178}')}}]);
