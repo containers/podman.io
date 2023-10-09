@@ -44,6 +44,9 @@ const config = {
           path: 'docs',
           editUrl: 'https://github.com/containers/podman.io/tree/main',
         },
+        blog: {
+          showReadingTime: true,
+        },
         theme: {
           customCss: require.resolve('./src/css/main.css'),
         },

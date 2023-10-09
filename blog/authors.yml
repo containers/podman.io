@@ -1,0 +1,100 @@
+sumantro:
+  name: Sumantro
+  email: sumantro@redhat.com
+  url: https://github.com/sumantro93
+adrianr:
+  name: Adrian Reber
+  email: areber@redhat.com
+  url: https://github.com/adrianreber
+afbjorklund:
+  name: Anders F Björklund
+  email: anders.f.bjorklund@gmail.com
+  url: https://github.com/afbjorklund
+baude:
+  name: Brent Baude
+  email: bbaude@redhat.com
+  url: https://github.com/baude
+balage:
+  name: Balázs Németh
+  email: jobbara.artalmatlan@gmail.com
+  url: https://github.com/abalage
+bernardpaulus:
+  name: Bernard Paulus
+  email: bernard.paulus@gmail.com
+  url: https://github.com/bernardpaulus
+cevich:
+  name: Chris Evich
+  email: cevich@redhat.com
+  url: https://github.com/cevich
+daniel-wtd:
+  name: Daniel Schier
+  email: daniel@while-true-do.io
+  url: https://github.com/daniel-wtd
+dwalsh:
+  name: Dan Walsh
+  email: dwalsh@redhat.com
+  url: https://github.com/rhatdan
+ehaynes:
+  name: Ed Haynes
+  email: ehaynes@redhat.com
+  url: https://github.com/edhaynes
+emacchi:
+  name: Emilien Macchi
+  email: emacchi@redhat.com
+  url: https://github.com/EmilienM
+haraldh:
+  name: Harald Hoyer
+  email: harald@redhat.com
+  url: https://github.com/haraldh
+ipbabble:
+  name: William Henry
+  email: whenry@redhat.com
+  url: https://github.com/ipbabble
+jwhonce:
+  name: Jhon Honce
+  email: jhonce@redhat.com
+  url: https://github.com/jwhonce
+kshirinkin:
+  name: Kirill Shirinkin
+  email: kirill@mkdev.me
+  url: https://github.com/Fodoj
+lsm5:
+  name: Lokesh Mandvekar
+  email: lsm5@fedoraproject.org
+  url: https://github.com/lsm5
+mheon:
+  name: Matthew Heon
+  email: mheon@redhat.com
+  url: https://github.com/mheon
+pvanroy:
+  name: Parker Van Roy
+  email: pvanroy@redhat.com
+  url: https://github.com/ParkerVR
+tristanC:
+  name: Tristan de Cacqueray
+  email: tdecacqu@redhat.com
+  url: https://github.com/TristanCacqueray
+tsweeney:
+  name: Tom Sweeney
+  email: tsweeney@redhat.com
+  url: https://github.com/TomSweeneyRedhat
+vrothberg:
+  name: Valentin Rothberg
+  email: rothberg@redhat.com
+  url: https://github.com/vrothberg
+bhepworth:
+  name: Bryan Hepworth
+  email: bryan.hepworth@newcastle.ac.uk
+  url: https://github.com/BryanHepworth
+ahyder:
+  name: Austin Hyder
+  email: ahyder@redhat.com
+  url: https://github.com/amhyder
+fhsinchy:
+  name: Farhan Hasin Chowdhury
+  email: mail@farhan.info
+  url: https://github.com/fhsinchy
+afrocoder:
+  name: Leon N
+  email: me@leonnunes.dev
+  url: https://github.com/afro-coder
