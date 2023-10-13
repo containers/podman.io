@@ -203,6 +203,7 @@ and newer.
 
 ```bash
 # Ubuntu 20.10 and newer
+sudo add-apt-repository universe
 sudo apt-get update
 sudo apt-get -y install podman
 ```
