@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpodman=self.webpackChunkpodman||[]).push([[58349],{26274:a=>{a.exports=JSON.parse('{"label":"oci","permalink":"/blogs/tags/oci","allTagsPath":"/blogs/tags","count":49}')}}]);

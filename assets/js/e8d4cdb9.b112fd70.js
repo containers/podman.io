@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpodman=self.webpackChunkpodman||[]).push([[33150],{80397:e=>{e.exports=JSON.parse('{"label":"dependency-management","permalink":"/blogs/tags/dependency-management","allTagsPath":"/blogs/tags","count":2}')}}]);

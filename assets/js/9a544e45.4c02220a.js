@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpodman=self.webpackChunkpodman||[]).push([[66232],{88776:e=>{e.exports=JSON.parse('{"permalink":"/blogs/tags/oci/page/5","page":5,"postsPerPage":10,"totalPages":5,"totalCount":49,"previousPage":"/blogs/tags/oci/page/4","blogDescription":"Blog","blogTitle":"Blog"}')}}]);

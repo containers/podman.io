@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpodman=self.webpackChunkpodman||[]).push([[2777],{50898:e=>{e.exports=JSON.parse('{"permalink":"/blog/tags/v-2/page/7","page":7,"postsPerPage":10,"totalPages":10,"totalCount":96,"previousPage":"/blog/tags/v-2/page/6","nextPage":"/blog/tags/v-2/page/8","blogDescription":"Blog","blogTitle":"Blog"}')}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpodman=self.webpackChunkpodman||[]).push([[43505],{83722:e=>{e.exports=JSON.parse('{"permalink":"/blog/tags/kubernetes","page":1,"postsPerPage":10,"totalPages":7,"totalCount":62,"nextPage":"/blog/tags/kubernetes/page/2","blogDescription":"Blog","blogTitle":"Blog"}')}}]);

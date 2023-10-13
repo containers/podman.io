@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpodman=self.webpackChunkpodman||[]).push([[61890],{76915:a=>{a.exports=JSON.parse('{"label":"GitLab","permalink":"/blogs/tags/git-lab","allTagsPath":"/blogs/tags","count":2}')}}]);

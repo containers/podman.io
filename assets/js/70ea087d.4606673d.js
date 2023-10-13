@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpodman=self.webpackChunkpodman||[]).push([[37739],{79610:a=>{a.exports=JSON.parse('{"label":"netavark","permalink":"/blogs/tags/netavark","allTagsPath":"/blogs/tags","count":2}')}}]);

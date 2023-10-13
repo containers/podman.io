@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpodman=self.webpackChunkpodman||[]).push([[14640],{42273:a=>{a.exports=JSON.parse('{"label":"bioinformatics","permalink":"/blogs/tags/bioinformatics","allTagsPath":"/blogs/tags","count":1}')}}]);

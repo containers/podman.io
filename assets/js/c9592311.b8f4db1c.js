@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpodman=self.webpackChunkpodman||[]).push([[55330],{77210:a=>{a.exports=JSON.parse('{"label":"cri-o","permalink":"/blog/tags/cri-o","allTagsPath":"/blog/tags","count":1}')}}]);
