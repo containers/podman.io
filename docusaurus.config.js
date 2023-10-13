@@ -33,6 +33,14 @@ const config = {
         },
       };
     },
+    ['@docusaurus/plugin-content-blog',
+      {
+        showReadingTime: true,
+        routeBasePath: 'release',
+        id: 'release-anouncements',
+        path: './release',
+      },
+    ],
   ],
   presets: [
     [
