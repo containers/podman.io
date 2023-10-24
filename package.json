@@ -65,7 +65,7 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "engines": {
-    "node": "18"
+    "node": "20"
   },
   "packageManager": "yarn@3.6.3"
 }
