@@ -26,9 +26,8 @@ const GetHelpSection = () => {
             </p>
             {/* prettier-ignore */}
             <CodeBlock language="bash" showLineNumbers>
-                $ podman --help # get a list of all commands {'\n'}
-                $ podman subcommand --help # get info on a command{' '}
-                {'\n'}
+                $ man podman {'\n'} 
+                $ man podman subcommand
               </CodeBlock>
           </div>
           <div className="container grid grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-y-0">
@@ -37,8 +36,8 @@ const GetHelpSection = () => {
             </p>
             {/* prettier-ignore */}
             <CodeBlock language="bash" showLineNumbers>
-                $ man podman {'\n'} 
-                $ man podman subcommand {'\n'}
+                $ podman --help # get a list of all commands {'\n'}
+                $ podman subcommand --help # get info on a command
               </CodeBlock>
           </div>
         </div>
