@@ -33,6 +33,11 @@ const sidebars = {
       label: 'Network',
       href: 'https://github.com/containers/podman/blob/main/docs/tutorials/basic_networking.md',
     },
+    {
+      type: 'link',
+      label: 'Podman Python',
+      href: 'https://podman-py.readthedocs.io/en/latest/index.html',
+    },
   ],
 };
 module.exports = sidebars;
