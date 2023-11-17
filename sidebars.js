@@ -1,6 +1,8 @@
 // @ts-check
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
+
+
 const sidebars = {
   docsSidebar: [
     {
@@ -33,6 +35,36 @@ const sidebars = {
       label: 'Network',
       href: 'https://github.com/containers/podman/blob/main/docs/tutorials/basic_networking.md',
     },
+    {
+      type: 'doc',
+      id: 'podman-version.1',
+      label: 'podman-version',
+    },
+    {
+      type: 'category',
+      label: 'podman-generate',
+      items: [
+        {
+          type: 'doc',
+          id: 'podman-generate.1',
+        },
+        {
+          type: 'doc',
+          id: 'podman-kube-generate.1',
+        },
+        {
+          type: 'doc',
+          id: 'podman-generate-spec.1',
+        },
+        {
+          type: 'doc',
+          id: 'podman-generate-systemd.1',
+        },
+        
+      ],
+    },
+
+    
   ],
 };
 module.exports = sidebars;
