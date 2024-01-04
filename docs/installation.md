@@ -17,19 +17,38 @@ programmatic access from your language of choice.
 
 ### macOS
 
-On Mac, each Podman machine is backed by a [QEMU](https://www.qemu.org) based
-virtual machine. Once installed, the podman command can be run directly from
+On Mac, each Podman machine is backed by a virtual machine. 
+Once installed, the podman command can be run directly from
 the Unix shell in `Terminal`, where it remotely communicates with the podman
 service running in the Machine VM.
 
-For Mac, Podman is provided through [Homebrew](https://brew.sh/). Once you
+<details open>
+<summary>Download Podman Installer (Reccomended)</summary>
+
+Podman can be downloaded from the [Podman.io](https://podman.io) website.
+
+We also upload the installers and other binaries on our [Github release page](https://github.com/containers/podman/releases).
+
+</details>
+
+Though not reccomended, Podman can also be obtained through Homebrew,
+the package manager.
+<details>
+<summary>Install via Brew</summary>
+
+Since Brew is a community-maintained package manager, we cannot guarantee stability
+of Brew installs of Podman. Thus, installing via Brew is not reccomended.
+
+However, if you do wish to use Brew, you must first install [Homebrew](https://brew.sh/). Once you
 have set up brew, you can use the `brew install` command to install Podman:
 
 ```bash
 brew install podman
 ```
 
-Next, create and start your first Podman machine:
+</details>
+
+After installing, you need to create and start your first Podman machine:
 
 ```bash
 podman machine init
