@@ -23,7 +23,7 @@ the Unix shell in `Terminal`, where it remotely communicates with the podman
 service running in the Machine VM.
 
 <details open>
-<summary>Download Podman Installer (Reccomended)</summary>
+<summary>Download Podman Installer (Recommended)</summary>
 
 Podman can be downloaded from the [Podman.io](https://podman.io) website.
 
@@ -31,13 +31,13 @@ We also upload the installers and other binaries on our [Github release page](ht
 
 </details>
 
-Though not reccomended, Podman can also be obtained through Homebrew,
+Though not recommended, Podman can also be obtained through Homebrew,
 the package manager.
 <details>
 <summary>Install via Brew</summary>
 
 Since Brew is a community-maintained package manager, we cannot guarantee stability
-of Brew installs of Podman. Thus, installing via Brew is not reccomended.
+of Brew installs of Podman. Thus, installing via Brew is not recommended.
 
 However, if you do wish to use Brew, you must first install [Homebrew](https://brew.sh/). Once you
 have set up brew, you can use the `brew install` command to install Podman:
