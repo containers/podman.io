@@ -665,6 +665,17 @@ molecule verify
 
 registries.conf is the configuration file which specifies which container registries should be consulted when completing image names which do not include a registry or domain portion.
 
+#### Allows Searching to Work, Initially ####
+```
+mkdir -p ~/.config/containers
+cat - <<HERE > ~/.config/containers/registries.conf
+unqualified-search-registries = ["docker.io"]
+
+[[registry]]
+location = "docker.io"
+HERE
+```
+
 #### Example from the Fedora `containers-common` package
 
 ```
