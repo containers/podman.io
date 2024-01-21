@@ -65,7 +65,7 @@ We also provide binaries and a pkginstaller on our [Github release page](https:/
 
 ### Windows
 
-On Windows, each Podman machine is backed by a virtualized Windows System for
+On Windows, each Podman machine is backed by a virtualized Windows Subsystem for
 Linux (WSLv2) distribution. Once installed, the podman command can be run
 directly from your Windows PowerShell (or CMD) prompt, where it remotely
 communicates with the podman service running in the WSL environment.
