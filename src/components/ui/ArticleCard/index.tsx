@@ -24,7 +24,14 @@ const Title = (title: string) => {
 };
 
 function ArticleCard(props: ArticleCardProps) {
-  const abbrSubtitle = props.subtitle.trim().split(' ').slice(0, 32).join(' ').concat('...');
+  // Sanitizes HTML and converts it to plain text
+  const sanitizeHtml = (html: string) => {
+    if (!html) return html;
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    return div.textContent || div.innerText || "";
+  };
+  const abbrSubtitle = sanitizeHtml(props.subtitle).trim().split(' ').slice(0, 32).join(' ').concat('...');
   if (props.altLayout) {
     return (
       <article className="my-4 max-w-2xl shadow-lg">
@@ -36,7 +43,7 @@ function ArticleCard(props: ArticleCardProps) {
                   href={props.path}
                   target="_blank"
                   className="text-white no-underline hover:text-blue-100 hover:no-underline dark:text-white dark:hover:text-blue-50">
-                  {props.title}
+                  {sanitizeHtml(props.title)}
                 </a>
               </h3>
               <PublishDate date={props.date} styles="col-start-1 order-1 row-start-1 z-10" />
@@ -66,7 +73,7 @@ function ArticleCard(props: ArticleCardProps) {
               href={props.path}
               target="_blank"
               className="text-white no-underline hover:text-blue-100 hover:no-underline dark:text-white dark:hover:text-blue-50">
-              {props.title}
+              {sanitizeHtml(props.title)}
             </a>
           </h3>
           {parse(abbrSubtitle)}
