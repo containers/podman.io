@@ -123,7 +123,7 @@ function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, pla
               })}
             </ul>
           </div>
-          <div className="hidden justify-end md:flex lg:mb-12 lg:w-[510px] 2xl:w-full">
+          <div className="z-10 hidden justify-end md:flex lg:mb-12 lg:w-[510px] 2xl:w-full">
             <img src={image.path} alt={image.alt} className="object-cover" />
           </div>
         </div>
