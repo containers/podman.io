@@ -3,7 +3,7 @@
 This website is built using [Docusaurus 2](https://docusaurus.io/).
 
 ### Build Locally
-TEST
+
 Follow these steps to test the site with either a local development server, or by statically generating the site.
 
 - [_make sure yarn is installed_](https://classic.yarnpkg.com/lang/docs/install/)
