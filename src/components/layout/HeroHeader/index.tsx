@@ -18,10 +18,7 @@ const detectOperatingSystem = () => {
   if (userAgent.find(item => item.includes('windows'))) {
     return 'windows';
   } else if (userAgent.find(item => item.includes('macintosh'))) {
-    if (userAgent.find(item => item.includes('intel'))){
-      return 'mac_amd';
-    }
-    return 'mac_arm';
+    return 'mac';
   }
   return 'linux';
 };

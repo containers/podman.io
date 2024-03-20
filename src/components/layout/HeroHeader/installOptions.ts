@@ -22,7 +22,7 @@ const operatingSystemData = [
     },
   },
   {
-    id: 'mac_amd',
+    id: 'mac',
     preferred: {
       title: 'Podman Desktop for macOS',
       subtitle: `Universal *.dmg v-${LATEST_DESKTOP_VERSION}`,
@@ -32,29 +32,9 @@ const operatingSystemData = [
     },
     alt: {
       title: 'Podman CLI for macOS',
-      subtitle: `CLI only installer for Intel Macs`,
+      subtitle: `CLI only universal installer`,
       icon: 'material-symbols:terminal-rounded',
-      path: `https://github.com/containers/podman/releases/download/v${LATEST_VERSION}/podman-installer-macos-amd64.pkg`,
-    },
-    other: {
-      path: 'docs/installation',
-      text: 'Other Install Options',
-    },
-  },
-  {
-    id: 'mac_arm',
-    preferred: {
-      title: 'Podman Desktop for macOS',
-      subtitle: `Universal *.dmg v-${LATEST_DESKTOP_VERSION}`,
-      icon: 'fa-brands:apple',
-      options: [],
-      path: `https://github.com/containers/podman-desktop/releases/download/v${LATEST_DESKTOP_VERSION}/podman-desktop-${LATEST_DESKTOP_VERSION}-universal.dmg`,
-    },
-    alt: {
-      title: 'Podman CLI for macOS',
-      subtitle: `CLI only installer for Apple silicon`,
-      icon: 'material-symbols:terminal-rounded',
-      path: `https://github.com/containers/podman/releases/download/v${LATEST_VERSION}/podman-installer-macos-arm64.pkg`,
+      path: `https://github.com/containers/podman/releases/download/v${LATEST_VERSION}/podman-installer-macos-universal.pkg`,
     },
     other: {
       path: 'docs/installation',
