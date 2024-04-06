@@ -49,6 +49,7 @@ import * as F20240116 from '@site/static/data/meetings/notes/2024-01-16/index.md
 import * as F20240206 from '@site/static/data/meetings/notes/2024-02-06/index.md';
 import * as F20240220 from '@site/static/data/meetings/notes/2024-02-20/index.md';
 import * as F20240319 from '@site/static/data/meetings/notes/2024-03-19/index.md';
+import * as F20240402 from '@site/static/data/meetings/notes/2024-04-02/index.md';
 
 export {
   F20201006,
@@ -102,4 +103,5 @@ export {
   F20240206,
   F20240220,
   F20240319,
+  F20240402,
 };
