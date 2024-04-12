@@ -499,15 +499,6 @@ make BUILDTAGS="selinux seccomp"
 sudo cp runc /usr/bin/runc
 ```
 
-#### CNI plugins
-
-#### Setup CNI networking
-
-A proper description of setting up CNI networking is given in the [`cni` README](https://github.com/containers/podman/blob/main/cni/README.md).
-
-A basic setup for CNI networking is done by default during the installation or make processes and
-no further configuration is needed to start using Podman.
-
 #### Add configuration
 
 ```bash
@@ -559,6 +550,7 @@ make BUILDTAGS='seccomp apparmor'
 | Build Tag                        | Feature                            | Dependency  |
 | -------------------------------- | ---------------------------------- | ----------- |
 | apparmor                         | apparmor support                   | libapparmor |
+| cni                              | CNI networking                     |             |
 | exclude_graphdriver_btrfs        | exclude btrfs                      | libbtrfs    |
 | exclude_graphdriver_devicemapper | exclude device-mapper              | libdm       |
 | libdm_no_deferred_remove         | exclude deferred removal in libdm  | libdm       |
