@@ -73,7 +73,7 @@ const communityMeetings = {
       title: 'Podman Community Cabal',
       subtitle:
         'The focus of the cabal meeting is the planning and discussion of possible future changes to Podman or the [related Containers projects](https://github.com/containers) and discussing any outstanding issues that might need solving.',
-      date: '**3rd Tuesday** every month',
+      date: '**1st Tuesday** of odd numbered months',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
         { text: 'Join Meeting', path: MEETING_URL },
