@@ -7,9 +7,9 @@ Ashley Cui, Brent Baude, Cedric Clyburn, Daniel Walsh, Gerry Seidman, Jan Rodak,
 
 ### Topics
 
- 1) Podman AI Lab Demo - Sally O'Malley
- 2) Rosetta in Podman v5.1 - Sheon Tanaka
- 3) Podman v5.1.1 Features - Matt Heon
+  * Podman AI Lab Demo - Sally O'Malley
+  * Rosetta in Podman v5.1 - Sheon Tanaka
+  * Podman v5.1.1 Features - Matt Heon
 
 ## Meeting Start: 11:02 a.m. EDT
 ### Video [Recording](https://youtu.be/YTLIrvmI1t4)
@@ -26,7 +26,7 @@ Generative AI such as GitHub Copilot, LLaMA by Meta, chatGPT, etc.
 
 Generative AI uses a lot of cloud storage and CPU.
 
-Podman AI Lab on [GitHub](https://github.com/container/podman-desktop-extension-ai-lab).  The AI Lab has recipes and models in it.
+Podman AI Lab on [GitHub](https://github.com/containers/podman-desktop-extension-ai-lab).  The AI Lab has recipes and models in it.
 
 ### Demo - 9:38 in the video
 
@@ -47,7 +47,7 @@ We wrapped up with code generation, which ran well. Sally asked how to create a 
 Sally then ran through the various pieces in Podman Desktop and showed how to create an AI App.
 
 Links to blogs and links to other AI Resources:
-  * Podman AI Lab on [GitHub](https://github.com/container/podman-desktop-extension-ai-lab). 
+  * Podman AI Lab on [GitHub](https://github.com/containers/podman-desktop-extension-ai-lab). 
   * [AI Lab Recipes Slides](./ai-lab-recipes-podman-community.pdf).
 
 
@@ -81,19 +81,19 @@ Shion removed the machine, and verified the version of Podman, and then initiali
 He was working on a Mac with arm64 architecture.  Showed how to check the container and start the process.
 In the container he built an image, and he then showed how to remove rosetta from the machine
 
- Issues:
- 	* No way to upgrade a v5.0 to v5.1 machine as of now.  Need to remove and create.
- 	* Rosetta can't be used with
-      * Kernel extensions
-      * VM applications that virtualize x86_64 platforms
-      * AVX, AVX2, AVX512 vector instructions
-    * Images that can’t be used
-      * quay.io/fedoraci/fedora.eln
-      * centos_streamIO-development
-      * quay.io/podman/stable
-        * Cannot pull or build inside a container
+Issues:
+* No way to upgrade a v5.0 to v5.1 machine as of now.  Need to remove and create.
+* Rosetta can't be used with
+  * Kernel extensions
+  * VM applications that virtualize x86_64 platforms
+  * AVX, AVX2, AVX512 vector instructions
+* Images that can’t be used
+  * quay.io/fedoraci/fedora.eln
+  * centos_streamIO-development
+  * quay.io/podman/stable
+    * Cannot pull or build inside a container
     	 
- Dan would like to know how well the DNF update works. If it works well, it's a big buy.
+Dan would like to know how well the DNF update works. If it works well, it's a big buy.  (After the meeting, Shion is investigating and will report later).
 
 ## Podman v5.1.1 Update
 ### Matt Heon
@@ -106,9 +106,9 @@ v5.1.1 out today with bug fixes, and probably another 5.1.2 later.  V5.2.0 will 
 ## Open Forum/Questions?
 #### (49:50 in the video)
 
-  * Devconf.cz is next week, Devconf.us come up in mid-August.  Also in Boston just before Devconf.us, a containerization guild meetup.  
-  * Cedric and Dan talking about a number of topics with channels, new videos of 5 to 10 minutes in [RHEL Development](https://www.youtube.com/playlist?list=PLdYKU4HjyLFQz_o5uA_m665jRka0yslWp).  Pre-recorded first ones dropping tomorrow, then on Wednesdays after that.
-  * The Podman Cabal meetings will now be held on the first Tuesday of odd-numbered months, starting with July 2, 2024.  So going forward, on the first Tuesday of the month there will either be a Community or a Cabal meeting, given we have enough topics to hold it.
+* Devconf.cz is next week, Devconf.us come up in mid-August.  Also in Boston just before Devconf.us, a containerization guild meetup.
+* Cedric and Dan talking about a number of topics with channels, new videos of 5 to 10 minutes in [RHEL Development](https://www.youtube.com/playlist?list=PLdYKU4HjyLFQz_o5uA_m665jRka0yslWp).  Pre-recorded first ones dropping tomorrow, then on Wednesdays after that.
+* The Podman Cabal meetings will now be held on the first Tuesday of odd-numbered months, starting with July 2, 2024.  So going forward, on the first Tuesday of the month there will either be a Community or a Cabal meeting, given we have enough topics to hold it.
 
 ## Topics for Next Meeting
 
