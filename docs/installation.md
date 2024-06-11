@@ -455,11 +455,11 @@ echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 If any dependencies cannot be installed or are not sufficiently current, they have to be built from source.
 This will mainly affect Debian, Ubuntu, and related distributions, or RHEL where no subscription is active (e.g. Cloud VMs).
 
-#### golang
+#### Golang
 
-Be careful to double-check that the version of golang is new enough (i.e. `go version`), as of January 2022 version is 1.16.x or higher is required.
+Be careful to double-check that the version of Golang is new enough (i.e., `go version`). As of May 2024, version 1.21.x or higher is required.
 The current minimum required version can always be found in the [go.mod](https://github.com/containers/podman/blob/main/go.mod) file.
-If needed, golang kits are available at https://golang.org/dl/. Alternatively, go can be built from source as follows
+If needed, Golang kits are available at https://golang.org/dl/. Alternatively, go can be built from source as follows
 (it's helpful to leave the system-go installed, to avoid having to [bootstrap go](https://golang.org/doc/install/source):
 
 ```bash
@@ -522,7 +522,7 @@ apt-get install -y \
 
 ### Get Source Code
 
-First, ensure that the `go version` that is found first on the $PATH is 1.16.x or higher. Instruction [above](#golang) will help you compile newer version of Go if needed. Then we can build Podman:
+First, ensure that the `go version` that is found first on the $PATH is 1.21.x or higher. Instruction [above](#golang) will help you compile newer version of Go if needed. Then we can build Podman:
 
 ```bash
 git clone https://github.com/containers/podman/
