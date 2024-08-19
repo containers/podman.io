@@ -410,6 +410,7 @@ sudo apt-get install \
   libseccomp-dev \
   libselinux1-dev \
   libsystemd-dev \
+  make \
   netavark \
   pkg-config \
   uidmap
@@ -503,8 +504,8 @@ sudo cp runc /usr/bin/runc
 
 ```bash
 sudo mkdir -p /etc/containers
-sudo curl -L -o /etc/containers/registries.conf https://src.fedoraproject.org/rpms/containers-common/raw/main/f/registries.conf
-sudo curl -L -o /etc/containers/policy.json https://src.fedoraproject.org/rpms/containers-common/raw/main/f/default-policy.json
+sudo curl -L -o /etc/containers/registries.conf https://raw.githubusercontent.com/containers/image/main/registries.conf
+sudo curl -L -o /etc/containers/policy.json https://raw.githubusercontent.com/containers/image/main/default-policy.json
 ```
 
 #### Optional packages
@@ -583,7 +584,7 @@ molecule verify
 
 ## Configuration files
 
-### [registries.conf](https://src.fedoraproject.org/rpms/containers-common/blob/main/f/registries.conf)
+### [registries.conf](https://raw.githubusercontent.com/containers/image/main/registries.conf)
 
 #### Man Page: [registries.conf.5](https://github.com/containers/image/blob/main/docs/containers-registries.conf.5.md)
 
@@ -673,7 +674,7 @@ location="localhost:5000"
 insecure=true
 ```
 
-### [mounts.conf](https://src.fedoraproject.org/rpms/containers-common/blob/main/f/mounts.conf)
+### [mounts.conf](https://raw.githubusercontent.com/containers/common/main/pkg/subscriptions/mounts.conf)
 
 `/usr/share/containers/mounts.conf` and optionally `/etc/containers/mounts.conf`
 
@@ -692,7 +693,7 @@ cat /usr/share/containers/mounts.conf
 /usr/share/rhel/secrets:/run/secrets
 ```
 
-### [seccomp.json](https://src.fedoraproject.org/rpms/containers-common/blob/main/f/seccomp.json)
+### [seccomp.json](https://raw.githubusercontent.com/containers/common/main/pkg/seccomp/seccomp.json)
 
 `/usr/share/containers/seccomp.json`
 
@@ -701,7 +702,7 @@ containers. This file is usually provided by the containers-common package.
 
 The link above takes you to the seccomp.json
 
-### [policy.json](https://src.fedoraproject.org/rpms/containers-common/blob/main/f/default-policy.json)
+### [policy.json](https://raw.githubusercontent.com/containers/image/main/default-policy.json)
 
 `/etc/containers/policy.json`
 
