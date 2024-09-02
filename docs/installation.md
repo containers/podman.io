@@ -175,6 +175,14 @@ sudo yum module install -y container-tools:rhel8
 
 The `container-tools:rhel8` is the fast application stream, containing most recent rolling versions of the tools. Use the `container-tools:2.0` stream for stable versions of Podman 1.6. The command `yum module list container-tools` shows the available streams.
 
+#### [RHEL9](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9)
+
+To install Podman, use the following command in RHEL9:
+
+```bash
+sudo dnf install podman
+```
+
 #### [Ubuntu](https://www.ubuntu.com)
 
 The podman package is available in the official repositories for Ubuntu 20.10
