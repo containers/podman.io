@@ -548,6 +548,11 @@ To add build tags to the make option the `BUILDTAGS` variable must be set, for e
 make BUILDTAGS='seccomp apparmor'
 ```
 
+If you are building on RHEL8 you'll need to build without btrfs support due to [it being removed](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/file-systems-and-storage_considerations-in-adopting-rhel-8#btrfs-has-been-removed_file-systems-and-storage):
+```
+make BUILDTAGS="btrfs_noversion exclude_graphdriver_btrfs"
+```
+
 | Build Tag                        | Feature                            | Dependency  |
 | -------------------------------- | ---------------------------------- | ----------- |
 | apparmor                         | apparmor support                   | libapparmor |
