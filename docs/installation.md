@@ -98,11 +98,10 @@ For further details, please refer to the instructions on the [Alpine Linux wiki]
 
 #### [CentOS](https://www.centos.org)
 
-Podman is available in the default Extras repos for CentOS 7 and in
-the AppStream repo for CentOS 8 and Stream.
+Podman is available in the default in the AppStream repo for CentOS Stream 9+.
 
 ```bash
-sudo yum -y install podman
+sudo dnf -y install podman
 ```
 
 #### [Debian](https://debian.org)
@@ -155,25 +154,9 @@ Raspberry Pi OS use the standard Debian repositories,
 so it is fully compatible with Debian's arm64 repository.
 You can simply follow the [steps for Debian](#debian) to install Podman.
 
-#### [RHEL7](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux)
+#### [RHEL](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux)
 
-Subscribe, then enable Extras channel and install Podman.
-
-```bash
-sudo subscription-manager repos --enable=rhel-7-server-extras-rpms
-sudo yum -y install podman
-```
-
-#### [RHEL8](https://developers.redhat.com/rhel8)
-
-Podman is included in the `container-tools` module, along with Buildah and Skopeo.
-
-```bash
-sudo yum module enable -y container-tools:rhel8
-sudo yum module install -y container-tools:rhel8
-```
-
-The `container-tools:rhel8` is the fast application stream, containing most recent rolling versions of the tools. Use the `container-tools:2.0` stream for stable versions of Podman 1.6. The command `yum module list container-tools` shows the available streams.
+Follow the [official docs](https://access.redhat.com/solutions/3650231).
 
 #### [Ubuntu](https://www.ubuntu.com)
 
@@ -210,18 +193,11 @@ system](https://bodhi.fedoraproject.org/updates/?packages=podman).
 ### Installing bleeding-edge versions of Podman
 
 If you like danger and are interested in testing the latest
-unreleased bits of Podman on Fedora, CentOS and RHEL, we have a [Copr repository](https://copr.fedorainfracloud.org/coprs/rhcontainerbot/podman-next/).
+unreleased bits of Podman on Fedora, CentOS Stream 9+ and RHEL9+, we have a [Copr repository](https://copr.fedorainfracloud.org/coprs/rhcontainerbot/podman-next/).
 
 CAUTION: This repository contains rpm builds generated using the `main` branch
 of upstream container tools repositories, and simply CANNOT be recommended for
 any production use.
-
-RHEL8 / CentOS 8 Stream users would first need to disable the container-tools
-module. All other users can skip this step.
-
-```bash
-sudo dnf module disable container-tools -y
-```
 
 Enable the Copr and install podman.
 
@@ -366,13 +342,10 @@ sudo dnf -y install 'dnf-command(builddep)'
 Install build dependencies:
 
 ```bash
-# CentOS Stream 8
-sudo dnf -y builddep rpm/podman.spec --enablerepo=powertools
-
-# CentOS Stream 9
+# CentOS Stream 9+
 sudo dnf -y builddep rpm/podman.spec --enablerepo=crb
 
-# RHEL (8 and newer)
+# RHEL 9+
 sudo dnf -y builddep rpm/podman.spec --enablerepo=codeready-builder-for-rhel-$(rpm --eval %{?rhel})-$(uname -m)-rpms
 ```
 
