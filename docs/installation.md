@@ -96,7 +96,7 @@ sudo apk add podman
 
 For further details, please refer to the instructions on the [Alpine Linux wiki](https://wiki.alpinelinux.org/wiki/Podman).
 
-#### [CentOS](https://www.centos.org)
+#### [CentOS Stream](https://www.centos.org)
 
 Podman is available in the default in the AppStream repo for CentOS Stream 9+.
 
