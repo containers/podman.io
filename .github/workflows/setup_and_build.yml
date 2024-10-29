@@ -16,7 +16,7 @@ jobs:
         with:
           # DO NOT MODIFY manually, this value is managed by renovate to ensure
           # it stays in-sync with package.json.  See .github/renovate.json5
-          node-version: 20
+          node-version: 22
           cache: yarn
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
