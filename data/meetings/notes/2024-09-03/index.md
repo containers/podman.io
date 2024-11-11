@@ -1,4 +1,5 @@
 # Podman Community Cabal Agenda
+## Sep 3, 2024 11:00 a.m. Eastern (UTC-4)
 
 ### Attendees
 Anders, Daniel Walsh, Ed Santiago Munoz, Gerry Seidman, Giuseppe Scrivano, Jan Rodak, Jhon Honce, Kevin Clevenger, Lokesh Mandvekar, Mario Loriedo, Matt Heon, Miloslav Trmac, Mohan Boddu, Nalin Dahyabhai, Paul Holzinger, Rick Wagner, Tom Sweeney

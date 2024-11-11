@@ -1,4 +1,5 @@
 # Podman Community Cabal Agenda
+## Jul 2, 2024 11:00 a.m. Eastern (UTC-4)
 ### Attendees: Ralph Bean, Sumantro Mukherjee, Chris Evich, Dan Walsh, Ashley Cui, Neil Smith, Paul Holzinger, Lokesh Mandvekar, Ashley Cui, and others not noted.
 
 ### Meeting Notes
