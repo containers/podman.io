@@ -1,4 +1,6 @@
 # Podman Community Cabal Meeting Notes
+## January 16, 2024 11:00 a.m. Eastern (UTC-5)
+
 ### Attendees
 
 Alberto Faria, Anders F Björklund, Ashley Cui, Christopher Evich, Daniel Walsh, Ed Santiago Munoz, Gerry Seidman, Giuseppe Scrivano, Johns Gresham, Leila Hardy, Lokesh Mandvekar, Martin Jackson, Matt Heon, Miloslav Trmac, Mohan Boddu, Nalin Dahyabhai, Neil Smith, Shion Tanaka (田中 司恩), Steve Gordon, Tom Sweeney, Tyler Fanelli, Urvashi Mohnani, Vivek Goyal

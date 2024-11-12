@@ -1,4 +1,5 @@
 # Podman Community Cabal Meeting Notes
+## February 20, 2024 11:00 a.m. Eastern (UTC-4)
 
 ### Attendees
 Ashley Cui, Brent Baude, Christopher Evich, Daniel Walsh, Douglas Landgraf, Ed Santiago Munoz, F. Poirotte, Gerry Seidman, Giuseppe Scrivano, Jake Correnti, Jhon Honce, Kevin Clevenger, Lokesh Mandvekar, Martin Jackson, Matt Heon, Miloslav Trmac, Mohan Boddu, Neil Smith, Paul Holzinger, Peter Hunt, Povilas K, Tom Sweeney, Urvashi Mohnani, Vikas Goel
