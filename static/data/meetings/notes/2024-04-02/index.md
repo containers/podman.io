@@ -1,5 +1,5 @@
 # Podman Community Meeting Notes
-## April 2, 2024 11:00 a.m. Eastern (UTC-5)
+## April 2, 2024 11:00 a.m. Eastern (UTC-4)
 
 ### Attendees
 Ashley Cui, Brent Baude, Ed Santiago Munoz, Giuseppe Scrivano, Jake Correnti, Jhon Honce, Kevin Clevenger, Lokesh Mandvekar, Mark Russell, Matt Heon, Miloslav Trmac, Mohan Boddu, Nalin Dahyabhai, Neil Smith, Paul Holzinger, Rahil Bhimjiani, Steffen Röcker,  Tim deBoer, Tim deBoer's Presentation, Tom Sweeney, Tom Sweeney's Presentation, Urvashi Mohnani

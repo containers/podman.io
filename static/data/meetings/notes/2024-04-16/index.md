@@ -1,4 +1,5 @@
 # Podman Community Cabal Meeting Notes
+## April 16, 2024 11:00 a.m. Eastern (UTC-4)
 
 ### Attendees
 Ashley Cui, Brent Baude, Ed Santiago Munoz, Gerry Seidman, Kevin Clevenger, Lokesh Mandvekar, Matt Heon, Mohan Boddu, Nalin Dahyabhai, Neil Smith, Nicola Sella, Paul Holzinger, Shion Tanaka (田中 司恩), Tom Sweeney, Urvashi Mohnani, Vikas Goel
