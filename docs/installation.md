@@ -502,7 +502,7 @@ First, ensure that the `go version` that is found first on the $PATH is 1.16.x o
 git clone https://github.com/containers/podman/
 cd podman
 make BUILDTAGS="selinux seccomp" PREFIX=/usr
-sudo make install PREFIX=/usr
+sudo env PATH=$PATH:/usr/local/go/bin make install PREFIX=/usr
 ```
 
 #### Build Tags
