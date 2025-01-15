@@ -570,6 +570,8 @@ molecule verify
 
 registries.conf is the configuration file which specifies which container registries should be consulted when completing image names which do not include a registry or domain portion.
 
+NOTE: On macOS or Windows, please run the command `podman machine ssh` to enter the machine VM and edit the `/etc/containers/registries.conf` file with the same configuration content. If you encounter permission issues, run `podman machine set --rootful` and try again.
+
 #### Example from the Fedora `containers-common` package
 
 ```
