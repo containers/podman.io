@@ -366,7 +366,7 @@ Debian, Ubuntu, and related distributions:
 ```bash
 sudo apt-get install \
   btrfs-progs \
-  crun \
+  gcc \
   git \
   golang-go \
   go-md2man \
@@ -385,7 +385,9 @@ sudo apt-get install \
   libsystemd-dev \
   make \
   netavark \
+  passt \
   pkg-config \
+  runc \
   uidmap
 ```
 
