@@ -67,7 +67,7 @@ const compatibleTools = {
   tools: [
     {
       title: 'VS Code',
-      description: 'Visual Studio code includes Podman support',
+      description: 'Visual Studio Code includes Podman support',
       image: { path: 'logos/optimized/vscode-logo-75w-75h.webp', alt: 'VS Code Logo' },
     },
     {
@@ -76,9 +76,9 @@ const compatibleTools = {
       image: { path: 'logos/optimized/cirrus-logo-75w-75h.webp', alt: 'Cirrus Logo' },
     },
     {
-      title: 'Github Actions',
+      title: 'GitHub Actions',
       description: 'GitHub Actions include support for Podman, as well as friends buildah and skopeo',
-      image: { path: 'logos/optimized/github-logo-115w-115h.webp', alt: 'Github Logo' },
+      image: { path: 'logos/optimized/github-logo-115w-115h.webp', alt: 'GitHub Logo' },
     },
     {
       title: 'Kind',
