@@ -27,7 +27,7 @@ service running in the Machine VM.
 
 Podman can be downloaded from the [Podman.io](https://podman.io) website.
 
-We also upload the installers and other binaries on our [Github release page](https://github.com/containers/podman/releases).
+We also upload the installers and other binaries on our [GitHub release page](https://github.com/containers/podman/releases).
 
 </details>
 
@@ -61,7 +61,7 @@ You can then verify the installation information using:
 podman info
 ```
 
-We also provide binaries and a pkginstaller on our [Github release page](https://github.com/containers/podman/releases)
+We also provide binaries and a pkginstaller on our [GitHub release page](https://github.com/containers/podman/releases)
 
 ### Windows
 
