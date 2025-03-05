@@ -118,6 +118,12 @@ sudo apt-get -y install podman
 sudo dnf -y install podman
 ```
 
+To run `podman machine ...` commands
+
+```bash
+sudo dnf -y install podman-machine
+```
+
 #### [Fedora CoreOS](https://coreos.fedoraproject.org), [Fedora Silverblue](https://silverblue.fedoraproject.org)
 
 Built-in, no need to install
