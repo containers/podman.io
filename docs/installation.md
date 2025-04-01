@@ -124,6 +124,14 @@ To run `podman machine ...` commands
 sudo dnf -y install podman-machine
 ```
 
+slirp4netns is no longer the default for rootless networking on new podman installations, obsoleted in favor
+of [passt](https://passt.top/passt/about/). If you have containers using slirp4netns, make sure slirp4netns is
+installed:
+
+```bash
+sudo dnf -y install slirp4netns
+```
+
 #### [Fedora CoreOS](https://coreos.fedoraproject.org), [Fedora Silverblue](https://silverblue.fedoraproject.org)
 
 Built-in, no need to install
