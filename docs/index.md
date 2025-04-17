@@ -30,16 +30,16 @@ The code samples are intended to be run as a non-root user, and use
 
 To get some help and find out how Podman is working, you can use the _help_:
 
-```console
-$ podman --help
-$ podman <subcommand> --help
+```bash
+podman --help
+podman <subcommand> --help
 ```
 
 For more details, you can review the manpages:
 
-```console
-$ man podman
-$ man podman-<subcommand>
+```bash
+man podman
+man podman-<subcommand>
 ```
 
 Please also reference the [Podman Troubleshooting Guide](https://github.com/containers/podman/blob/main/troubleshooting.md)
@@ -49,26 +49,26 @@ to find known issues and tips on how to solve common configuration mistakes.
 
 Podman can search for images on remote registries with some simple keywords.
 
-```console
-$ podman search <search_term>
+```bash
+podman search <search_term>
 ```
 
 You can also enhance your search with filters:
 
-```console
-$ podman search httpd --filter=is-official
+```bash
+podman search httpd --filter=is-official
 ```
 
 Downloading (Pulling) an image is easy, too.
 
-```console
-$ podman pull docker.io/library/httpd
+```bash
+podman pull docker.io/library/httpd
 ```
 
 After pulling some images, you can list all images, present on your machine.
 
-```console
-$ podman images
+```bash
+podman images
 ```
 
 **Note**: Podman searches in different registries. Therefore it is recommend
@@ -80,8 +80,8 @@ _httpd_) to ensure, that you are using the correct image.
 This sample container will run a very basic httpd server that serves only its
 index page.
 
-```console
-$ podman run -dt -p 8080:80/tcp docker.io/library/httpd
+```bash
+podman run -dt -p 8080:80/tcp docker.io/library/httpd
 ```
 
 **Note**: Because the container is being run in detached mode, represented by
@@ -96,8 +96,8 @@ successful running at least slirp4netns v0.3.0 is needed.
 
 The `podman ps` command is used to list created and running containers.
 
-```console
-$ podman ps
+```bash
+podman ps
 ```
 
 **Note**: If you add `-a` to the `podman ps` command, Podman will show all
@@ -108,15 +108,15 @@ containers (created, exited, running, etc.).
 As you are able to see, the container does not have an IP Address assigned. The
 container is reachable via it's published port on your local machine.
 
-```console
-$ curl http://localhost:8080
+```bash
+curl http://localhost:8080
 ```
 
 From another machine, you need to use the IP Address of the host, running the
 container.
 
-```console
-$ curl http://<IP_Address>:8080
+```bash
+curl http://<IP_Address>:8080
 ```
 
 **Note**: Instead of using curl, you can also point a browser to
@@ -131,8 +131,8 @@ variables, network settings or allocated resources.
 Since, the container is running in **rootless** mode, no IP Address is assigned
 to the container.
 
-```console
-$ podman inspect -l | grep IPAddress
+```bash
+podman inspect -l | grep IPAddress
             "IPAddress": "",
 ```
 
@@ -147,8 +147,8 @@ also use the container's ID or name instead of `-l` or the long argument
 
 You can view the container's logs with Podman as well:
 
-```console
-$ podman logs -l
+```bash
+podman logs -l
 
 127.0.0.1 - - [04/May/2020:08:33:48 +0000] "GET / HTTP/1.1" 200 45
 127.0.0.1 - - [04/May/2020:08:33:50 +0000] "GET / HTTP/1.1" 200 45
@@ -162,8 +162,8 @@ $ podman logs -l
 
 You can observe the httpd pid in the container with `podman top`.
 
-```console
-$ podman top -l
+```bash
+podman top -l
 
 USER     PID   PPID   %CPU    ELAPSED            TTY     TIME   COMMAND
 root     1     0      0.000   22m13.33281018s    pts/0   0s     httpd -DFOREGROUND
@@ -176,23 +176,23 @@ daemon   5     1      0.000   22m13.333818476s   pts/0   0s     httpd -DFOREGROU
 
 You may stop the container:
 
-```console
-$ podman stop -l
+```bash
+podman stop -l
 ```
 
 You can check the status of one or more containers using the `podman ps`
 command. In this case, you should use the `-a` argument to list all containers.
 
-```console
-$ podman ps -a
+```bash
+podman ps -a
 ```
 
 ### Removing the container
 
 Finally, you can remove the container:
 
-```console
-$ podman rm -l
+```bash
+podman rm -l
 ```
 
 You can verify the deletion of the container by running `podman ps -a`.

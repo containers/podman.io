@@ -194,7 +194,7 @@ Follow the steps for Ubuntu (or Debian if you use LMDE).
 You can test the very latest Podman in Fedora's `updates-testing`
 repository before it goes out to all Fedora users.
 
-```console
+```bash
 sudo dnf update --refresh --enablerepo=updates-testing podman
 ```
 
