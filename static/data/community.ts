@@ -2,7 +2,7 @@ import { MEETING_URL } from './global';
 const header = {
   title: 'Community',
   subtitle:
-    'We want your feedback, issues, patches, and involvement in the development of Podman. **Chat** with us on Slack, IRC, or on our **mailing list**. Submit **issues & pull requests** (see our [CONTRIBUTING guide](https://github.com/containers/podman/blob/main/CONTRIBUTING.md) on how.) Participate in one of our twice-monthly community meetings. You are welcome in our community!',
+    'We want your feedback, issues, patches, and involvement in the development of Podman. **Chat** with us on Slack, Discord, or on our **mailing list**. Submit **issues & pull requests** (see our [CONTRIBUTING guide](https://github.com/containers/podman/blob/main/CONTRIBUTING.md) on how.) Participate in one of our twice-monthly community meetings. You are welcome in our community!',
   image: 'images/raw/podman-2-196w-172h.png',
   banner: {
     text: 'To help ensure all feel welcome in the Podman community, we expect all who participate to adhere to our [Code of Conduct](https://github.com/containers/common/blob/main/CODE-OF-CONDUCT.md)',
@@ -16,17 +16,22 @@ const communityChat = {
     'The Podman developers are generally around during CEST and Eastern Time business hours, so please be patient if you’re in another time zone!',
   links: [
     {
+      text: 'Slack - Podman Community',
+      path: 'https://app.slack.com/huddle/T08PSQ7BQ/C08MXJLCFCN',
+      icon: 'logos:slack-icon',
+    },
+    {
+      text: 'Slack - Podman Developers',
+      path: 'https://app.slack.com/huddle/T08PSQ7BQ/C08NTKCDC1W',
+      icon: 'logos:slack-icon',
+    },
+    {
       text: '#podman:matrix.org',
       path: 'https://matrix.to/#/#podman:fedoraproject.org',
       image: {
         path: 'logos/raw/element-56w-59h.png',
         alt: 'Element Matrix Logo',
       },
-    },
-    {
-      text: '#podman on libera.chat',
-      path: 'https://web.libera.chat/#podman-desktop',
-      textLogo: 'IRC',
     },
     {
       text: 'Podman GitHub Discussions',
@@ -40,11 +45,6 @@ const communityChat = {
       text: 'Podman Discord',
       path: 'https://discord.gg/vwpj7K6gW5',
       icon: 'logos:discord-icon',
-    },
-    {
-      text: 'Slack',
-      path: 'https://slack.k8s.io/',
-      icon: 'logos:slack-icon',
     },
   ],
 };

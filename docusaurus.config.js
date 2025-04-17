@@ -126,6 +126,14 @@ const config = {
             title: 'Community',
             items: [
               {
+                label: 'Slack - Podman Community',
+                href: 'https://app.slack.com/huddle/T08PSQ7BQ/C08MXJLCFCN',
+              },
+              {
+                label: 'Podman Development',
+                href: 'https://app.slack.com/huddle/T08PSQ7BQ/C08NTKCDC1W',
+              },
+              {
                 label: 'Discord',
                 href: 'https://discord.com/invite/x5GzFF6QH4',
               },
