@@ -8,9 +8,9 @@ Checkpoints currently work with root containers only. Therefore, you have to
 run the example container as root. Instead of prefixing each command with
 `sudo`, you can also switch to the root user beforehand via `sudo -i`.
 
-```console
-$ sudo podman run -dt -p 8080:80/tcp docker.io/library/httpd
-$ sudo podman ps
+```bash
+sudo podman run -dt -p 8080:80/tcp docker.io/library/httpd
+sudo podman ps
 ```
 
 ## Checkpointing the container
@@ -23,8 +23,8 @@ on the system.
 
 To checkpoint the container use:
 
-```console
-$ sudo podman container checkpoint <container_id>
+```bash
+sudo podman container checkpoint <container_id>
 ```
 
 ## Restoring the container
@@ -35,15 +35,15 @@ was checkpointed.
 
 To restore the container use:
 
-```console
-$ sudo podman container restore <container_id>
+```bash
+sudo podman container restore <container_id>
 ```
 
 After being restored, the container will answer requests again as it did before
 checkpointing.
 
-```console
-$ curl http://<IP_address>:8080
+```bash
+curl http://<IP_address>:8080
 ```
 
 ## Migrating the container
@@ -55,21 +55,21 @@ transferring the checkpoint, it is possible to specify an output-file.
 
 On the source system:
 
-```console
-$ sudo podman container checkpoint <container_id> -e /tmp/checkpoint.tar.zstd
-$ scp /tmp/checkpoint.tar.zstd <destination_system>:/tmp
+```bash
+sudo podman container checkpoint <container_id> -e /tmp/checkpoint.tar.zstd
+scp /tmp/checkpoint.tar.zstd <destination_system>:/tmp
 ```
 
 On the destination system:
 
-```console
-$ sudo podman container restore -i /tmp/checkpoint.tar.zstd
+```bash
+sudo podman container restore -i /tmp/checkpoint.tar.zstd
 ```
 
 After being restored, the container will answer requests again as it did before
 checkpointing. This time the container will continue to run on the destination
 system.
 
-```console
-$ curl http://<IP_address>:8080
+```bash
+curl http://<IP_address>:8080
 ```
