@@ -127,7 +127,7 @@ const config = {
             items: [
               {
                 label: 'Slack - Podman Community',
-                href: 'https://app.slack.com/huddle/T08PSQ7BQ/C08MXJLCFCN',
+                href: 'https://app.slack.com/client/T08PSQ7BQ/C08MXJLCFCN',
               },
               {
                 label: 'Podman Development',
