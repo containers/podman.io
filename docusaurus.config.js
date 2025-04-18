@@ -131,7 +131,7 @@ const config = {
               },
               {
                 label: 'Podman Development',
-                href: 'https://app.slack.com/huddle/T08PSQ7BQ/C08NTKCDC1W',
+                href: 'https://app.slack.com/client/T08PSQ7BQ/C08NTKCDC1W',
               },
               {
                 label: 'Discord',
