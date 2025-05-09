@@ -43,7 +43,7 @@ const communityChat = {
     },
     {
       text: 'Slack',
-      path: 'https://slack.k8s.io/',
+      path: 'https://cloud-native.slack.com/archives/C08MXJLCFCN',
       icon: 'logos:slack-icon',
     },
   ],
