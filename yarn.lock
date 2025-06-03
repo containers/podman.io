@@ -8931,12 +8931,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.3.8":
-  version: 3.3.8
-  resolution: "nanoid@npm:3.3.8"
+"nanoid@npm:^3.3.11":
+  version: 3.3.11
+  resolution: "nanoid@npm:3.3.11"
   bin:
     nanoid: bin/nanoid.cjs
-  checksum: dfe0adbc0c77e9655b550c333075f51bb28cfc7568afbf3237249904f9c86c9aaaed1f113f0fddddba75673ee31c758c30c43d4414f014a52a7a626efc5958c9
+  checksum: 3be20d8866a57a6b6d218e82549711c8352ed969f9ab3c45379da28f405363ad4c9aeb0b39e9abc101a529ca65a72ff9502b00bf74a912c4b64a9d62dfd26c29
   languageName: node
   linkType: hard
 
@@ -9357,9 +9357,9 @@ __metadata:
   linkType: hard
 
 "papaparse@npm:^5.4.1":
-  version: 5.5.2
-  resolution: "papaparse@npm:5.5.2"
-  checksum: 59d5c6aca4fe1621cc12f66c024d0ea651bb4aad77d50c2d66a3e3c1ba60e992e2f52762f783fc2531348120c302ab272d8e448d853652232c9c742cdb666fb8
+  version: 5.5.3
+  resolution: "papaparse@npm:5.5.3"
+  checksum: 369d68a16340e5fad95d411a0efca34bedbf93550744e6374fa9b60aaf6bc655e29a6d1a39a56afea0cf7dbc4454fd190f50a9ad76db80987b43d6c6c319f018
   languageName: node
   linkType: hard
 
@@ -10153,13 +10153,13 @@ __metadata:
   linkType: hard
 
 "postcss@npm:^8.3.11, postcss@npm:^8.4.14, postcss@npm:^8.4.17, postcss@npm:^8.4.21, postcss@npm:^8.4.47":
-  version: 8.5.3
-  resolution: "postcss@npm:8.5.3"
+  version: 8.5.4
+  resolution: "postcss@npm:8.5.4"
   dependencies:
-    nanoid: ^3.3.8
+    nanoid: ^3.3.11
     picocolors: ^1.1.1
     source-map-js: ^1.2.1
-  checksum: da574620eb84ff60e65e1d8fc6bd5ad87a19101a23d0aba113c653434161543918229a0f673d89efb3b6d4906287eb04b957310dbcf4cbebacad9d1312711461
+  checksum: 7ede5eb54aa56767a61541f13ca9994ce56d93340bc3c99328c741e5cc6c0024510e31667be108e3d29e5189d434ae8476c820e8c0ce90cf942d8a2faf1eb876
   languageName: node
   linkType: hard
 
@@ -10178,8 +10178,8 @@ __metadata:
   linkType: hard
 
 "prettier-plugin-tailwindcss@npm:^0.6.0":
-  version: 0.6.11
-  resolution: "prettier-plugin-tailwindcss@npm:0.6.11"
+  version: 0.6.12
+  resolution: "prettier-plugin-tailwindcss@npm:0.6.12"
   peerDependencies:
     "@ianvs/prettier-plugin-sort-imports": "*"
     "@prettier/plugin-pug": "*"
@@ -10231,7 +10231,7 @@ __metadata:
       optional: true
     prettier-plugin-svelte:
       optional: true
-  checksum: b626a09248e94d39b0ac26fe26323503faaf11aeae9a741b8a93ed65ee27ac12eadc00fa8f7113a0c54f88df59aa0136e4efb830d47ab204808a21b16e7d9b84
+  checksum: e1f42168c8ff029c9e90b2abe04ae0df1b7835b32afc2591676b565b31c01506f7584792eb5ffd0e6b612e6a623bc4ce69391aae86523d7df47e21cebdeb4596
   languageName: node
   linkType: hard
 
