@@ -126,6 +126,10 @@ const config = {
             title: 'Community',
             items: [
               {
+                label: 'Matrix',
+                href: 'https://matrix.to/#/#podman:fedoraproject.org',
+              },
+              {
                 label: 'Discord',
                 href: 'https://discord.com/invite/x5GzFF6QH4',
               },
