@@ -56,14 +56,14 @@ transferring the checkpoint, it is possible to specify an output-file.
 On the source system:
 
 ```bash
-sudo podman container checkpoint <container_id> -e /tmp/checkpoint.tar.zstd
-scp /tmp/checkpoint.tar.zstd <destination_system>:/tmp
+sudo podman container checkpoint <container_id> -e /tmp/checkpoint.tar.zst
+scp /tmp/checkpoint.tar.zst <destination_system>:/tmp
 ```
 
 On the destination system:
 
 ```bash
-sudo podman container restore -i /tmp/checkpoint.tar.zstd
+sudo podman container restore -i /tmp/checkpoint.tar.zst
 ```
 
 After being restored, the container will answer requests again as it did before
