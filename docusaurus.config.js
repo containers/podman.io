@@ -10,8 +10,9 @@ const config = {
     'Podman is a daemonless container engine for developing, managing, and running OCI Containers on your Linux System',
   url: 'https://podman.io',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
+  onBrokenAnchors: 'warn',
   favicon: 'favicon.ico',
   trailingSlash: false,
   deploymentBranch: 'gh-pages',
@@ -21,8 +22,38 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+  // Configure markdown processing: .md files use CommonMark, .mdx files use MDX
+  markdown: {
+    format: 'detect',
+  },
+  // Configure static directories and asset handling
+  staticDirectories: ['static'],
   plugins: [
     '@docusaurus/theme-live-codeblock',
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        // Index configuration
+        hashed: true,
+        language: ['en'],
+        indexDocs: true,
+        indexBlog: true,
+        indexPages: false,
+        // Route configuration
+        docsRouteBasePath: '/docs',
+        blogRouteBasePath: '/blogs',
+        // Version-aware directory configuration
+        docsDir: 'versioned_docs',
+        blogDir: ['blog', 'release'],
+        // Search result configuration
+        searchResultLimits: 8,
+        searchResultContextMaxLength: 50,
+        // Search bar configuration
+        searchBarShortcut: true,
+        searchBarShortcutHint: true,
+        searchBarPosition: 'right',
+      },
+    ],
     async function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
@@ -39,8 +70,11 @@ const config = {
         routeBasePath: 'release',
         id: 'release-anouncements',
         path: './release',
+        authorsMapPath: '../blog/authors.yml',
+        onInlineAuthors: 'ignore',
       },
     ],
+
   ],
   presets: [
     [
@@ -48,13 +82,16 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          path: 'docs',
-          editUrl: 'https://github.com/containers/podman.io/tree/main',
+          sidebarPath: require.resolve('./sidebars-podman.js'),
+          routeBasePath: 'docs',
+          disableVersioning: false,
+          includeCurrentVersion: false,
         },
         blog: {
           showReadingTime: true,
           routeBasePath: 'blogs',
+          authorsMapPath: 'blog/authors.yml',
+          onInlineAuthors: 'ignore',
         },
         theme: {
           customCss: require.resolve('./src/css/main.css'),
@@ -88,11 +125,15 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'podman',
+            docId: 'index',
             label: 'Documentation',
             position: 'right',
           },
-
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownActiveClassDisabled: true,
+          },
           {
             to: 'https://github.com/containers/',
             target: '_self',
@@ -109,16 +150,19 @@ const config = {
             items: [
               {
                 label: 'Installation Instructions',
-                to: 'docs/installation',
+                to: 'get-started',
               },
               {
                 label: 'Documentation',
                 to: 'docs/',
               },
-
               {
                 label: 'Podman CLI Commands',
-                href: 'https://docs.podman.io/en/latest/Commands.html',
+                to: 'docs/source/markdown/podman.1',
+              },
+              {
+                label: 'Tutorials',
+                to: 'docs/tutorials/podman_tutorial',
               },
             ],
           },

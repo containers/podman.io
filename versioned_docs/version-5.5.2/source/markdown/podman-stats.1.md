@@ -1,0 +1,164 @@
+---
+title: podman-stats
+version: v5.5.2
+---
+
+% podman-stats 1
+
+## NAME
+podman\-stats - Display a live stream of one or more container's resource usage statistics
+
+## SYNOPSIS
+**podman stats** [*options*] [*container*]
+
+**podman container stats** [*options*] [*container*]
+
+## DESCRIPTION
+Display a live stream of one or more containers' resource usage statistics
+
+Note:  Podman stats does not work in rootless environments that use CGroups V1.
+Podman stats relies on CGroup information for statistics, and CGroup v1 is not
+supported for rootless use cases.
+
+Note: Rootless environments that use CGroups V2 are not able to report statistics
+about their networking usage.
+
+## OPTIONS
+
+#### **--all**, **-a**
+
+Show all containers.  Only running containers are shown by default
+
+#### **--format**=*template*
+
+Pretty-print container statistics to JSON or using a Go template
+
+Valid placeholders for the Go template are listed below:
+
+| **Placeholder**     | **Description**                                  |
+|---------------------|--------------------------------------------------|
+| .AvgCPU             | Average CPU, full precision float                |
+| .AVGCPU             | Average CPU, formatted as a percent              |
+| .BlockInput         | Total data read from block device                |
+| .BlockIO            | Total data read/total data written to block device|
+| .BlockOutput        | Total data written to block device               |
+| .ContainerID        | Container ID, full (untruncated) hash            |
+| .ContainerStats ... | Nested structure, for experts only               |
+| .CPU                | Percent CPU, full precision float                |
+| .CPUNano            | CPU Usage, total, in nanoseconds                 |
+| .CPUPerc            | Percentage of CPU used                           |
+| .CPUSystemNano      | CPU Usage, kernel, in nanoseconds                |
+| .Duration           | Same as CPUNano                                  |
+| .ID                 | Container ID, truncated                          |
+| .MemLimit           | Memory limit, in bytes                           |
+| .MemPerc            | Memory percentage used                           |
+| .MemUsage           | Memory usage                                     |
+| .MemUsageBytes      | Memory usage (IEC)                               |
+| .Name               | Container Name                                   |
+| .NetIO              | Network IO                                       |
+| .Network ...        | Network I/O, separated by network interface      |
+| .PerCPU             | CPU time consumed by all tasks [1]               |
+| .PIDs               | Number of PIDs                                   |
+| .PIDS               | Number of PIDs (yes, we know this is a dup)      |
+| .SystemNano         | Current system datetime, nanoseconds since epoch |
+| .Up                 | Duration (CPUNano), in human-readable form       |
+| .UpTime             | Same as Up                                       |
+
+[1] Cgroups V1 only
+
+When using a Go template, precede the format with `table` to print headers.
+
+#### **--interval**, **-i**=*seconds*
+
+Time in seconds between stats reports, defaults to 5 seconds.
+
+
+[//]: # (BEGIN included file options/latest.md)
+#### **--latest**, **-l**
+
+Instead of providing the container name or ID, use the last created container.
+Note: the last started container can be from other users of Podman on the host machine.
+(This option is not available with the remote Podman client, including Mac and Windows
+(excluding WSL2) machines)
+
+[//]: # (END   included file options/latest.md)
+
+
+[//]: # (BEGIN included file options/no-reset.md)
+#### **--no-reset**
+
+Do not clear the terminal/screen in between reporting intervals
+
+[//]: # (END   included file options/no-reset.md)
+
+
+[//]: # (BEGIN included file options/no-stream.md)
+#### **--no-stream**
+
+Disable streaming stats and only pull the first result, default setting is false
+
+[//]: # (END   included file options/no-stream.md)
+
+#### **--no-trunc**
+
+Do not truncate output
+
+## EXAMPLE
+
+List statistics about all running containers without streaming mode:
+```
+# podman stats -a --no-stream
+ID             NAME              CPU %   MEM USAGE / LIMIT   MEM %   NET IO    BLOCK IO   PIDS
+a9f807ffaacd   frosty_hodgkin    --      3.092MB / 16.7GB    0.02%   -- / --   -- / --    2
+3b33001239ee   sleepy_stallman   --      -- / --             --      -- / --   -- / --    --
+```
+
+List the specified container's statistics in streaming mode:
+```
+# podman stats a9f80
+ID             NAME             CPU %   MEM USAGE / LIMIT   MEM %   NET IO    BLOCK IO   PIDS
+a9f807ffaacd   frosty_hodgkin   --      3.092MB / 16.7GB    0.02%   -- / --   -- / --    2
+```
+
+List the specified statistics about the specified container in table format:
+```
+$ podman stats --no-trunc 3667 --format 'table {{ .ID }} {{ .MemUsage }}'
+ID                                                                MEM USAGE / LIMIT
+3667c6aacb06aac2eaffce914c01736420023d56ef9b0f4cfe58b6d6a78b7503  49.15kB / 67.17GB
+```
+
+List the specified container statistics in JSON format:
+```
+# podman stats --no-stream --format=json a9f80
+[
+    {
+	"id": "a9f807ffaacd",
+	"name": "frosty_hodgkin",
+	"cpu_percent": "--",
+	"mem_usage": "3.092MB / 16.7GB",
+	"mem_percent": "0.02%",
+	"netio": "-- / --",
+	"blocki": "-- / --",
+	"pids": "2"
+    }
+]
+```
+
+List the specified container statistics in table format:
+```
+# podman stats --no-stream --format "table {{.ID}} {{.Name}} {{.MemUsage}}" 6eae
+ID             NAME           MEM USAGE / LIMIT
+6eae9e25a564   clever_bassi   3.031MB / 16.7GB
+```
+
+Note: When using a slirp4netns network with the rootlesskit port
+handler, the traffic sent via the port forwarding is accounted to
+the `lo` device.  Traffic accounted to `lo` is not accounted in the
+stats output.
+
+
+## SEE ALSO
+**[podman(1)](podman.1.md)**
+
+## HISTORY
+July 2017, Originally compiled by Ryan Cole <rycole@redhat.com>

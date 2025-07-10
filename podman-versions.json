@@ -1,0 +1,60 @@
+{
+  "versions": [
+    {
+      "version": "v5.5.2",
+      "label": "5.5.2 (Latest)",
+      "path": "current",
+      "isLatest": true,
+      "releaseDate": "2024-12-20",
+      "githubTag": "v5.5.2",
+      "deprecated": false
+    },
+    {
+      "version": "v5.5.1",
+      "label": "5.5.1",
+      "path": "v5.5.1",
+      "isLatest": false,
+      "releaseDate": "2024-11-15",
+      "githubTag": "v5.5.1",
+      "deprecated": false
+    },
+    {
+      "version": "v5.5.0",
+      "label": "5.5.0",
+      "path": "v5.5.0",
+      "isLatest": false,
+      "releaseDate": "2024-10-20",
+      "githubTag": "v5.5.0",
+      "deprecated": false
+    },
+    {
+      "version": "v5.4.2",
+      "label": "5.4.2",
+      "path": "v5.4.2",
+      "isLatest": false,
+      "releaseDate": "2024-09-15",
+      "githubTag": "v5.4.2",
+      "deprecated": false
+    },
+    {
+      "version": "v5.4.1",
+      "label": "5.4.1",
+      "path": "v5.4.1",
+      "isLatest": false,
+      "releaseDate": "2024-08-20",
+      "githubTag": "v5.4.1",
+      "deprecated": false
+    }
+  ],
+  "lastUpdated": "2025-01-08T10:00:00Z",
+  "defaultVersion": "current",
+  "supportedVersions": ["current", "v5.5.1", "v5.5.0", "v5.4.2", "v5.4.1"],
+  "deprecatedVersions": [],
+  "config": {
+    "maxVersions": 5,
+    "autoSync": true,
+    "syncInterval": "weekly",
+    "sourceRepository": "containers/podman",
+    "documentationPath": "docs"
+  }
+} 

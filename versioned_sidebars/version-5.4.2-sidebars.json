@@ -1,0 +1,45 @@
+{
+  "tutorialSidebar": [
+    {
+      "type": "doc",
+      "id": "index",
+      "label": "Overview"
+    },
+    {
+      "type": "doc",
+      "id": "source/markdown/podman.1",
+      "label": "Podman Command"
+    },
+    {
+      "type": "category",
+      "label": "Tutorials",
+      "items": [
+        "tutorials/README",
+        "tutorials/basic_networking",
+        "tutorials/image_signing",
+        "tutorials/mac_client",
+        "tutorials/mac_win_client",
+        "tutorials/performance",
+        "tutorials/podman-derivative-api",
+        "tutorials/podman-for-windows",
+        "tutorials/podman-install-certificate-authority",
+        "tutorials/podman_tutorial",
+        "tutorials/podman_tutorial_cn",
+        "tutorials/qemu-remote-tutorial",
+        "tutorials/remote_client",
+        "tutorials/rootless_tutorial",
+        "tutorials/socket_activation"
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "kubernetes_support",
+      "label": "Kubernetes Support"
+    },
+    {
+      "type": "doc",
+      "id": "MANPAGE_SYNTAX",
+      "label": "Manual Page Syntax"
+    }
+  ]
+}

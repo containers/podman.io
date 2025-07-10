@@ -1,0 +1,88 @@
+---
+title: podman-artifact-add
+version: v5.5.2
+---
+
+% podman-artifact-add 1
+
+## WARNING: Experimental command
+*This command is considered experimental and still in development. Inputs, options, and outputs are all
+subject to change.*
+
+## NAME
+podman\-artifact\-add - Add an OCI artifact to the local store
+
+## SYNOPSIS
+**podman artifact add** *name* *file* [*file*]...
+
+## DESCRIPTION
+
+Add an OCI artifact to the local store from the local filesystem.  You must
+provide at least one file to create the artifact, but several can also be
+added.
+
+
+## OPTIONS
+
+
+[//]: # (BEGIN included file options/annotation.manifest.md)
+#### **--annotation**=*annotation=value*
+
+Set an annotation on the entry for the specified image or artifact.
+
+[//]: # (END   included file options/annotation.manifest.md)
+
+Note: Set annotations for each file being added.
+
+#### **--append**, **-a**
+
+Append files to an existing artifact. This option cannot be used with the **--type** option.
+
+#### **--file-type**
+
+Set the media type of the artifact file instead of allowing detection to determine the type
+
+#### **--help**
+
+Print usage statement.
+
+#### **--type**
+
+Set a type for the artifact being added.
+
+## EXAMPLES
+
+Add a single file to an artifact
+
+```
+$ podman artifact add quay.io/myartifact/myml:latest /tmp/foobar.ml
+0fe1488ecdef8cc4093e11a55bc048d9fc3e13a4ba846efd24b5a715006c95b3
+```
+
+Add multiple files to an artifact
+```
+$ podman artifact add quay.io/myartifact/myml:latest /tmp/foobar1.ml /tmp/foobar2.ml
+1487acae11b5a30948c50762882036b41ac91a7b9514be8012d98015c95ddb78
+```
+
+Set an annotation for an artifact
+```
+$ podman artifact add --annotation date=2025-01-30 quay.io/myartifact/myml:latest /tmp/foobar1.ml
+```
+
+Append a file to an existing artifact
+```
+$ podman artifact add --append quay.io/myartifact/tarballs:latest /tmp/foobar.tar.gz
+```
+
+Override the media type of the artifact being added
+```
+$ podman artifact add --file-type text/yaml quay.io/myartifact/descriptors\:latest /tmp/info.yaml
+```
+
+
+## SEE ALSO
+**[podman(1)](podman.1.md)**, **[podman-artifact(1)](podman-artifact.1.md)**
+
+## HISTORY
+Jan 2025, Originally compiled by Brent Baude <bbaude@redhat.com>
