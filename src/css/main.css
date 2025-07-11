@@ -85,6 +85,17 @@
   @apply text-blue-50 no-underline hover:text-blue-300 dark:hover:text-blue-500;
 }
 
+.footer__copyright p{
+  display: block;
+  font-size: medium;
+  padding: 0px;
+}
+
+.footer__copyright a{
+  font-size: medium;
+  @apply text-blue-300 hover:text-blue-500
+}
+
 .menu a {
   @apply no-underline;
 }
