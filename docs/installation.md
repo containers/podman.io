@@ -118,6 +118,12 @@ sudo apt-get -y install podman
 sudo dnf -y install podman
 ```
 
+To run `podman kube play ...` commands
+
+```bash
+sudo dnf -y install iptables-nft
+```
+
 To run `podman machine ...` commands
 
 ```bash
