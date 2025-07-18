@@ -169,7 +169,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Podman. Built with Docusaurus.`,
+        copyright: `Built with Docusaurus<br />Copyright © Podman Container Tools a Series of LF Projects, LLC<br />For website terms of use, trademark policy and other project policies please see lfprojects.org/policies`,
       },
 
       prism: {
