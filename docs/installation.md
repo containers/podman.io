@@ -557,7 +557,7 @@ Note that Podman does not officially support device-mapper. Thus, the `exclude_g
 
 This project is using [go modules](https://github.com/golang/go/wiki/Modules) for dependency management. If the CI is complaining about a pull request leaving behind an unclean state, it is very likely right about it. After changing dependencies, make sure to run `make vendor` to synchronize the code with the go module and repopulate the `./vendor` directory.
 
-#### Ansible
+## Ansible
 
 An [Ansible Role](https://github.com/alvistack/ansible-role-podman) is
 also available to automate the installation of the above statically
