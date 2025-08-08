@@ -1,0 +1,101 @@
+/* Move version selector from navbar into docs content area */
+
+/* Hide version dropdown from navbar on docs pages */
+[data-current-docs-plugin-id] .navbar__item--docs-version-dropdown {
+  display: none !important;
+}
+
+/* Create a container for the relocated version selector */
+[data-current-docs-plugin-id] .container::before {
+  content: '';
+  display: block;
+  position: relative;
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+/* Add version selector inside docs content using JavaScript injection point */
+.docs-version-selector-injected {
+  position: sticky;
+  top: 80px;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-border-color);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 0 0 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.docs-version-selector-injected .version-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.docs-version-selector-injected .version-icon {
+  font-size: 1.2rem;
+}
+
+.docs-version-selector-injected .version-text {
+  font-weight: 600;
+  color: var(--ifm-font-color-base);
+  font-size: 0.95rem;
+}
+
+.docs-version-selector-injected .version-dropdown {
+  position: relative;
+}
+
+.docs-version-selector-injected select {
+  border: 1px solid var(--ifm-border-color);
+  border-radius: 6px;
+  padding: 8px 32px 8px 12px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 120px;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+}
+
+.docs-version-selector-injected select:focus {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+  border-color: var(--ifm-color-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .docs-version-selector-injected {
+    position: static;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+  }
+  
+  .docs-version-selector-injected .version-info {
+    gap: 8px;
+  }
+  
+  .docs-version-selector-injected .version-text {
+    font-size: 0.9rem;
+  }
+  
+  .docs-version-selector-injected select {
+    width: 100%;
+    min-width: unset;
+  }
+} 

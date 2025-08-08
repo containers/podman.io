@@ -25,8 +25,8 @@ const sidebars = {
     },
     {
       type: 'link',
-      label: 'Documentation',
-      href: 'https://docs.podman.io',
+      label: 'Podman Documentation',
+      href: '/docs',
     },
     {
       type: 'link',

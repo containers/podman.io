@@ -1,0 +1,117 @@
+---
+title: podman-volume-ls
+version: v5.4.1
+---
+
+% podman-volume-ls 1
+
+## NAME
+podman\-volume\-ls - List all the available volumes
+
+## SYNOPSIS
+**podman volume ls** [*options*]
+
+## DESCRIPTION
+
+Lists all the volumes that exist. The output can be filtered using the **--filter**
+flag and can be formatted to either JSON or a Go template using the **--format**
+flag. Use the **--quiet** flag to print only the volume names.
+
+## OPTIONS
+
+#### **--filter**, **-f**=*filter*
+
+Filter what volumes are shown in the output.
+Multiple filters can be given with multiple uses of the --filter flag.
+Filters with the same key work inclusive, with the only exception being `label`
+which is exclusive. Filters with different keys always work exclusive.
+
+Volumes can be filtered by the following attributes:
+
+| **Filter**  | **Description**                                                                       |
+| ----------  | ------------------------------------------------------------------------------------- |
+| dangling    | [Dangling] Matches all volumes not referenced by any containers                       |
+| driver      | [Driver] Matches volumes based on their driver                                        |
+| label       | [Key] or [Key=Value] Label assigned to a volume                                       |
+| name        | [Name] Volume name (accepts regex)                                                    |
+| opt         | Matches a storage driver options                                                      |
+| scope       | Filters volume by scope                                                               |
+| after/since | Filter by volumes created after the given VOLUME (name or tag)                        |
+| until       | Only remove volumes created before given timestamp                                    |
+
+#### **--format**=*format*
+
+Format volume output using Go template.
+
+Valid placeholders for the Go template are listed below:
+
+| **Placeholder**           | **Description**                              |
+| ------------------------- | -------------------------------------------- |
+| .Anonymous                | Indicates whether volume is anonymous        |
+| .CreatedAt ...            | Volume creation time                         |
+| .Driver                   | Volume driver                                |
+| .GID                      | GID of volume                                |
+| .InspectVolumeData ...    | Don't use                                    |
+| .Labels ...               | Label information associated with the volume |
+| .LockNumber               | Number of the volume's Libpod lock           |
+| .MountCount               | Number of times the volume is mounted        |
+| .Mountpoint               | Source of volume mount point                 |
+| .Name                     | Volume name                                  |
+| .NeedsChown               | Indicates whether volume needs to be chowned |
+| .NeedsCopyUp              | Indicates if volume needs to be copied up to |
+| .Options ...              | Volume options                               |
+| .Scope                    | Volume scope                                 |
+| .Status ...               | Status of the volume                         |
+| .StorageID                | StorageID of the volume                      |
+| .Timeout                  | Timeout of the volume                        |
+| .UID                      | UID of volume                                |
+| .VolumeConfigResponse ... | Don't use                                    |
+
+#### **--help**
+
+Print usage statement.
+
+
+[//]: # (BEGIN included file options/noheading.md)
+#### **--noheading**, **-n**
+
+Omit the table headings from the listing.
+
+[//]: # (END   included file options/noheading.md)
+
+#### **--quiet**, **-q**
+
+Print volume output in quiet mode. Only print the volume names.
+
+## EXAMPLES
+
+List all volumes.
+```
+$ podman volume ls
+```
+
+List all volumes and display content as json format.
+```
+$ podman volume ls --format json
+```
+
+List all volumes and display their Driver and Scope fields
+```
+$ podman volume ls --format "{{.Driver}} {{.Scope}}"
+```
+
+List volumes with the name foo and label blue.
+```
+$ podman volume ls --filter name=foo,label=blue
+```
+
+List volumes with the label key=value.
+```
+$ podman volume ls --filter label=key=value
+```
+
+## SEE ALSO
+**[podman(1)](podman.1.md)**, **[podman-volume(1)](podman-volume.1.md)**
+
+## HISTORY
+November 2018, Originally compiled by Urvashi Mohnani <umohnani@redhat.com>

@@ -1,0 +1,107 @@
+---
+title: podman-save
+version: v5.5.0
+---
+
+% podman-save 1
+
+## NAME
+podman\-save - Save image(s) to an archive
+
+## SYNOPSIS
+**podman save** [*options*] *name*[:*tag*]
+
+**podman image save** [*options*] *name*[:*tag*]
+
+## DESCRIPTION
+**podman save** saves an image to a local file or directory.
+**podman save** writes to STDOUT by default and can be redirected to a
+file using the **output** flag. The **quiet** flag suppresses the output when set.
+**podman save** saves parent layers of the image(s) and the image(s) can be loaded using **podman load**.
+To export the containers, use the **podman export**.
+Note: `:` is a restricted character and cannot be part of the file name.
+
+**podman [GLOBAL OPTIONS]**
+
+**podman save [GLOBAL OPTIONS]**
+
+**podman save [OPTIONS] NAME[\:TAG]**
+
+## OPTIONS
+
+
+[//]: # (BEGIN included file options/dir-compress.md)
+#### **--compress**
+
+Compress tarball image layers when pushing to a directory using the 'dir' transport. (default is same compression type, compressed or uncompressed, as source)
+
+[//]: # (END   included file options/dir-compress.md)
+
+Note: This flag can only be set with **--format=docker-dir**.
+
+#### **--format**=*format*
+
+An image format to produce, one of:
+
+| Format             | Description                                                                  |
+| ------------------ | ---------------------------------------------------------------------------- |
+| **docker-archive** | A tar archive interoperable with **docker load(1)** (the default)            |
+| **oci-archive**    | A tar archive using the OCI Image Format                                     |
+| **oci-dir**        | A directory using the OCI Image Format                                       |
+| **docker-dir**     | **dir** transport (see **containers-transports(5)**) with v2s2 manifest type |
+
+#### **--help**, **-h**
+
+Print usage statement
+
+#### **--multi-image-archive**, **-m**
+
+Allow for creating archives with more than one image.  Additional names are interpreted as images instead of tags.  Only supported for **--format=docker-archive**.
+The default for this option can be modified via the `multi_image_archive="true"|"false"` flag in containers.conf.
+
+#### **--output**, **-o**=*file*
+
+Write to a file, default is STDOUT
+
+#### **--quiet**, **-q**
+
+Suppress the output
+
+#### **--uncompressed**
+
+Accept uncompressed layers when using one of the OCI formats.
+
+## EXAMPLES
+
+Save image to a local file without displaying progress.
+```
+$ podman save --quiet -o alpine.tar alpine:2.6
+```
+
+Save image to stdout and redirect content via shell.
+```
+$ podman save alpine > alpine-all.tar
+```
+
+Save image in oci-archive format to the local file.
+```
+$ podman save -o oci-alpine.tar --format oci-archive alpine
+```
+
+Save image compressed in docker-dir format.
+```
+$ podman save --compress --format docker-dir -o alp-dir alpine
+Getting image source signatures
+Copying blob sha256:2fdfe1cd78c20d05774f0919be19bc1a3e4729bce219968e4188e7e0f1af679d
+ 1.97 MB / 1.97 MB [========================================================] 0s
+Copying config sha256:501d1a8f0487e93128df34ea349795bc324d5e0c0d5112e08386a9dfaff620be
+ 584 B / 584 B [============================================================] 0s
+Writing manifest to image destination
+Storing signatures
+```
+
+## SEE ALSO
+**[podman(1)](podman.1.md)**, **[podman-load(1)](podman-load.1.md)**, **[containers.conf(5)](https://github.com/containers/common/blob/main/docs/containers.conf.5.md)**, **[containers-transports(5)](https://github.com/containers/image/blob/main/docs/containers-transports.5.md)**
+
+## HISTORY
+July 2017, Originally compiled by Urvashi Mohnani <umohnani@redhat.com>
