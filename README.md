@@ -16,6 +16,15 @@ Follow these steps to test the site with either a local development server, or b
     - After this you can test the local build with:
       - `yarn serve`
 
+To test with the `https`, follow the following steps:
+
+- Generate the localhost self-signed certificate and install it (uses `mkcert` tool):
+  - `$ mkcert localhost`
+  - `$ mkcert -install`
+- Start the local development server with HTTPS enabled:
+  - `$ HTTPS=true SSL_CERT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem yarn start`
+
+
 #### Testing on your Virtual Machine
 
 If you're doing development on a VM there are a few steps to take to test your changes:
