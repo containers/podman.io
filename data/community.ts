@@ -1,3 +1,4 @@
+import { CABAL_MEETING_URL } from './global';
 import { MEETING_URL } from './global';
 const header = {
   title: 'Community',
@@ -71,7 +72,7 @@ const communityMeetings = {
       date: '**1st Tuesday** of odd numbered months',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
-        { text: 'Join Meeting', path: MEETING_URL },
+        { text: 'Join Meeting', path: CABAL_MEETING_URL },
         { text: 'Meeting Agenda', path: 'https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both' },
       ],
     },
