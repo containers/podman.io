@@ -87,7 +87,7 @@ const MailingListSection = (): JSX.Element => {
         />
         <section className="container mb-8">
           <h3 className="mb-2 font-medium text-purple-700 dark:text-purple-500">{mailingList.browseInfo.title}</h3>
-          <p className="max-w-prose text-gray-500">{mailingList.browseInfo.subtitle}</p>
+          <Markdown text={mailingList.browseInfo.subtitle} styles="max-w-prose" />
         </section>
         <section className="container mb-8">
           <h3 className="mb-2 font-medium text-purple-700 dark:text-purple-500">{mailingList.subscribeInfo.title}</h3>
