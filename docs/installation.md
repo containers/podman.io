@@ -497,16 +497,25 @@ sudo curl -L -o /etc/containers/policy.json https://raw.githubusercontent.com/co
 
 #### Optional packages
 
+Installing `fuse-overlayfs` may resolve a number of issues, e.g. the one from Ecryptfs:
+`configure storage: 'overlay' is not supported over ecryptfs, a mount_program is required: backing file system is unsupported for this graph driver`
+
 Fedora, CentOS, RHEL, and related distributions:
 
-(no optional packages)
+```bash
+sudo dnf install -y \
+  fuse-overlayfs
+```
 
 Debian, Ubuntu, and related distributions:
 
 ```bash
-apt-get install -y \
-  libapparmor-dev
+sudo apt-get install -y \
+  libapparmor-dev \
+  fuse-overlayfs
 ```
+
+`fuse-overlayfs` can also be installed from [source](https://github.com/containers/fuse-overlayfs).
 
 ### Get Source Code
 
