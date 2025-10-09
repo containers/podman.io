@@ -475,10 +475,9 @@ sudo make podman
 #### crun / runc
 
 The latest version of at least one container runtime is expected to be installed on the system. `crun` or `runc` are some of the possibilities, and one is picked up as the default runtime by Podman (crun has priority over runc).
-Supported versions of `crun` or `runc` are available for example on Ubuntu 22.04.
-`runc` version 1.0.0-rc4 is the minimal requirement, which is available since Ubuntu 18.04.
+Supported versions of `crun` and `runc` are available on modern Linux distributions like Ubuntu 22.04 or newer. The minimum required version for `runc` is v1.1.11. This requirement is necessary as Podman now depends on features and behavior introduced in this version. 
 
-To double-check, `runc --version` should produce at least `spec: 1.0.1`, otherwise build your own:
+To double-check, the first line of the `runc --version` output should show `version 1.1.11` or newer. If not, you can build it from source:
 
 ```bash
 git clone https://github.com/opencontainers/runc.git $GOPATH/src/github.com/opencontainers/runc
