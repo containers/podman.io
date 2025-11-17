@@ -6,7 +6,7 @@ function ColoringBookSection() {
     <section className="container my-12 flex flex-wrap justify-center gap-4 lg:justify-start xl:my-20">
       <div className="flex">
         <div className="mx-4 flex-col items-center text-center lg:mx-0 lg:items-start lg:text-start">
-          <h2 className="my-4 font-medium text-blue-900 dark:text-blue-500">{data.title}</h2>
+          <h2 className="my-4 p-0 font-medium text-blue-900 dark:text-blue-500">{data.title}</h2>
           <p className="mb-4 max-w-prose lg:mb-10">{data.description}</p>
           <Button
             as="link"
