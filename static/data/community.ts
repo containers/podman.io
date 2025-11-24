@@ -186,7 +186,7 @@ const submittingIssues = [
     ],
     checkList: [
       'Well-documented code changes.',
-      'Additional testcases. Ideally m they should fail w/o your code change applied.',
+      'Additional testcases. Ideally, they should fail w/o your code change applied.',
       'Documentation changes.',
     ],
     button: {
