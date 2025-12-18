@@ -218,7 +218,7 @@ sudo dnf copr enable rhcontainerbot/podman-next -y
 sudo dnf install podman
 ```
 
-## Installing on [FreeBSD](https://freebsd.org) 14.0
+## Installing on [FreeBSD](https://freebsd.org)
 
 >[!WARNING]
 >The FreeBSD port of the Podman container engine is experimental and should be used for evaluation and testing purposes only.
