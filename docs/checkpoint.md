@@ -9,7 +9,7 @@ run the example container as root. Instead of prefixing each command with
 `sudo`, you can also switch to the root user beforehand via `sudo -i`.
 
 ```bash
-sudo podman run -dt -p 8080:80/tcp docker.io/library/httpd
+sudo podman run -d -p 8080:80/tcp docker.io/library/httpd
 sudo podman ps
 ```
 

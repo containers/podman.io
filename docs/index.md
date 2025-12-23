@@ -81,13 +81,12 @@ This sample container will run a very basic httpd server that serves only its
 index page.
 
 ```bash
-podman run -dt -p 8080:80/tcp docker.io/library/httpd
+podman run -d -p 8080:80/tcp docker.io/library/httpd
 ```
 
 **Note**: Because the container is being run in detached mode, represented by
 the `-d` in the `podman run` command, Podman will print the container ID after
-it has executed the command. The `-t` also adds a pseudo-tty to run arbitrary
-commands in an interactive shell.
+it has executed the command.
 
 **Note**: We use port forwarding to be able to access the HTTP server. For
 successful running at least slirp4netns v0.3.0 is needed.
