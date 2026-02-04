@@ -413,7 +413,7 @@ versions. Install the `containernetworking-plugins` package instead.
 On openSUSE Leap 15.x and Tumbleweed:
 
 ```bash
-sudo zypper -n in libseccomp-devel libgpgme-devel
+sudo zypper -n in libseccomp-devel libgpgme-devel libbtrfs-devel make man
 ```
 
 On Manjaro (and maybe other Linux distributions):
