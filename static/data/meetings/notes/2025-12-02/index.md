@@ -72,7 +72,7 @@ Meeting finished 11:46 a.m.
 
 The first 7 minutes and 36 seconds of the meeting's recording were cut, so the timestamps in the next two sections are off by that amount compared to the YouTube video.
 
- ### Raw Meeting Chat:
+### Raw Meeting Chat:
 
 ```    
 00:02:38	Laura Santamaria (Red Hat; she/her):	Tom, if you're talking, you're muted
