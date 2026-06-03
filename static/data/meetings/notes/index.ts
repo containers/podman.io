@@ -73,6 +73,7 @@ import * as F20260203 from '@site/static/data/meetings/notes/2026-02-03/index.md
 import * as F20260303 from '@site/static/data/meetings/notes/2026-03-03/index.md';
 import * as F20260407 from '@site/static/data/meetings/notes/2026-04-07/index.md';
 import * as F20260505 from '@site/static/data/meetings/notes/2026-05-05/index.md';
+import * as F20260602 from '@site/static/data/meetings/notes/2026-06-02/index.md';
 
 export {
   F20201006,
