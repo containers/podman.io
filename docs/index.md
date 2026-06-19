@@ -71,9 +71,7 @@ After pulling some images, you can list all images, present on your machine.
 podman images
 ```
 
-**Note**: Podman searches in different registries. Therefore it is recommend
-to use the full image name (_docker.io/library/httpd_ instead of
-_httpd_) to ensure, that you are using the correct image.
+**Note**: Podman searches in different registries. To make sure you're pulling the correct image, use the full image name (_docker.io/library/httpd_ instead of _httpd_).
 
 ### Running a container
 
@@ -88,8 +86,7 @@ podman run -d -p 8080:80/tcp docker.io/library/httpd
 the `-d` in the `podman run` command, Podman will print the container ID after
 it has executed the command.
 
-**Note**: We use port forwarding to be able to access the HTTP server. For
-successful running at least slirp4netns v0.3.0 is needed.
+**Note**: We use port forwarding to be able to access the HTTP server. You need `slirp4netns` `v0.3.0` or newer to use it.
 
 ### Listing running containers
 
@@ -99,8 +96,7 @@ The `podman ps` command is used to list created and running containers.
 podman ps
 ```
 
-**Note**: If you add `-a` to the `podman ps` command, Podman will show all
-containers (created, exited, running, etc.).
+**Note**: To show all containers (created, exited, running, etc.), use the `-a` argument with the `podman ps` command.
 
 ### Testing the httpd container
 
@@ -118,7 +114,7 @@ container.
 curl http://<IP_Address>:8080
 ```
 
-**Note**: Instead of using curl, you can also point a browser to
+**Note**: Instead of using `curl`, you can also point a browser to
 `http://localhost:8080`.
 
 ### Inspecting a running container
@@ -135,16 +131,15 @@ podman inspect -l | grep IPAddress
             "IPAddress": "",
 ```
 
-**Note**: The `-l` is a convenience argument for **latest container**. You can
-also use the container's ID or name instead of `-l` or the long argument
-`--latest`.
+**Note**: The `-l` is a convenience argument for **latest container**. Instead of this short argument, you can
+also use the container's ID, container's name or the long argument (`--latest`).
 
 **Note**: If you are running remote Podman client, including Mac and Windows
-(excluding WSL2) machines, `-l` option is not available.
+(excluding WSL2) machines, the `-l` argument is not available.
 
 ### Viewing the container's logs
 
-You can view the container's logs with Podman as well:
+You can also use Podman to view the container's logs:
 
 ```bash
 podman logs -l
