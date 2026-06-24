@@ -18,50 +18,43 @@ programmatic access from your language of choice.
 ### macOS
 
 On Mac, each Podman machine is backed by a virtual machine. 
-Once installed, the podman command can be run directly from
-the Unix shell in `Terminal`, where it remotely communicates with the podman
+Once installed, the podman command can run directly from
+the Unix shell in `Terminal`, where it remotely communicates with the `podman`
 service running in the Machine VM.
 
-<details open>
-<summary>Download Podman Installer (Recommended)</summary>
+1. Download Podman:
+  - Recommended
+    <details open>
+    <summary>Use the Installer (Recommended)</summary>
+    Podman can be downloaded from the [Podman.io](https://podman.io) website.
+    You can get binaries and a pkginstaller from our [GitHub release page](https://github.com/containers/podman/releases).
+    </details>
+  - Not recommended
+    <details>
+    <summary>Use Homebrew</summary>
+    It's not recommended to install via Homebrew because it is a community-maintained package manager, and we cannot guarantee the stability
+    of the Podman installation.
+    However, if you do wish to use Brew:
+    1. Install [Homebrew](https://brew.sh/).
+    2. Run the installation command:
+      ```bash
+      brew install podman
+      ```
 
-Podman can be downloaded from the [Podman.io](https://podman.io) website.
+    </details>
 
-We also upload the installers and other binaries on our [GitHub release page](https://github.com/containers/podman/releases).
+2. Create and start your first Podman machine:
+  
+  ```bash
+  podman machine init
+  podman machine start
+  ```
 
-</details>
-
-Though not recommended, Podman can also be obtained through Homebrew,
-the package manager.
-<details>
-<summary>Install via Brew</summary>
-
-Since Brew is a community-maintained package manager, we cannot guarantee stability
-of Brew installs of Podman. Thus, installing via Brew is not recommended.
-
-However, if you do wish to use Brew, you must first install [Homebrew](https://brew.sh/). Once you
-have set up brew, you can use the `brew install` command to install Podman:
-
-```bash
-brew install podman
-```
-
-</details>
-
-After installing, you need to create and start your first Podman machine:
-
-```bash
-podman machine init
-podman machine start
-```
-
-You can then verify the installation information using:
-
-```bash
-podman info
-```
-
-We also provide binaries and a pkginstaller on our [GitHub release page](https://github.com/containers/podman/releases)
+3. Verify the installation information:
+  
+  ```bash
+  podman info
+  ```
 
 ### Windows
 
