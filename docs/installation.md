@@ -18,7 +18,7 @@ programmatic access from your language of choice.
 ### macOS
 
 On Mac, each Podman machine is backed by a virtual machine. 
-Once you install it, you can run the `podman` command directly from
+Once installed, the podman command can run directly from
 the Unix shell in `Terminal`, where it remotely communicates with the `podman`
 service running in the Machine VM.
 
@@ -32,8 +32,8 @@ service running in the Machine VM.
   - Not recommended
     <details>
     <summary>Use Homebrew</summary>
-    It's not recommended to install via Homebrew because it is a community-maintained package manager and we cannot guarantee stability
-    of Podman installation.
+    It's not recommended to install via Homebrew because it is a community-maintained package manager, and we cannot guarantee the stability
+    of the Podman installation.
     However, if you do wish to use Brew:
     1. Install [Homebrew](https://brew.sh/).
     2. Run the installation command:
