@@ -96,7 +96,7 @@ The `podman ps` command is used to list created and running containers.
 podman ps
 ```
 
-**Note**: To show all containers (created, exited, running, etc.), use the `-a` argument with the `podman ps` command.
+**Note**: To show all containers (created, exited, running, etc.), use the `-a` option with the `podman ps` command.
 
 ### Testing the httpd container
 
@@ -135,7 +135,7 @@ podman inspect -l | grep IPAddress
 also use the container's ID, container's name or the long argument (`--latest`).
 
 **Note**: If you are running remote Podman client, including Mac and Windows
-(excluding WSL2) machines, the `-l` argument is not available.
+(excluding WSL2) machines, the `-l` option is not available.
 
 ### Viewing the container's logs
 
