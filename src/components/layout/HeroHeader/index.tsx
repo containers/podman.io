@@ -10,6 +10,7 @@ type InstallOptionProps = Card & {
   icon: string;
   option?: React.ReactNode;
   path: string;
+  third?: { title: string; subtitle: string; icon: string; path: string };
   other?: { path: string; text: string; subtext: string };
 };
 
@@ -60,6 +61,21 @@ const InstallOption = (props): JSX.Element => {
           </div>
         </a>
       </div>
+      {props.third && (
+        <div>
+          <a
+            href={props.third.path}
+            className="block text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:text-white dark:hover:bg-purple-900 dark:hover:text-gray-300">
+            <div className="flex items-center gap-4 px-4 pb-6 pt-4">
+              <div>
+                <h4>{props.third.title}</h4>
+                <p>{props.third.subtitle}</p>
+              </div>
+              <Icon icon={props.third.icon} className="order-first text-4xl" />
+            </div>
+          </a>
+        </div>
+      )}
       <div>
         <a
           href={props.other.path}
