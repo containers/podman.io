@@ -23,38 +23,42 @@ the Unix shell in `Terminal`, where it remotely communicates with the `podman`
 service running in the Machine VM.
 
 1. Download Podman:
-  - Recommended
-    <details open>
-    <summary>Use the Installer (Recommended)</summary>
-    Podman can be downloaded from the [Podman.io](https://podman.io) website.
-    You can get binaries and a pkginstaller from our [GitHub release page](https://github.com/containers/podman/releases).
-    </details>
-  - Not recommended
-    <details>
-    <summary>Use Homebrew</summary>
-    It's not recommended to install via Homebrew because it is a community-maintained package manager, and we cannot guarantee the stability
-    of the Podman installation.
-    However, if you do wish to use Brew:
-    1. Install [Homebrew](https://brew.sh/).
-    2. Run the installation command:
-      ```bash
-      brew install podman
-      ```
 
-    </details>
+   - Recommended
+
+     <details open>
+     <summary>Use the Installer (Recommended)</summary>
+
+     Podman can be downloaded from the [Podman.io](https://podman.io) website.
+     You can get binaries and a pkginstaller from our [GitHub release page](https://github.com/containers/podman/releases).
+
+     </details>
+
+   - Not recommended
+
+     <details>
+     <summary>Use Homebrew</summary>
+
+     It's not recommended to install via [Homebrew](https://brew.sh/) because it is a community-maintained package manager, and we cannot guarantee the stability
+     of the Podman installation. However, if you do wish to use Brew, run:
+     ```bash
+     brew install podman
+     ```
+
+     </details>
 
 2. Create and start your first Podman machine:
-  
-  ```bash
-  podman machine init
-  podman machine start
-  ```
+
+   ```bash
+   podman machine init
+   podman machine start
+   ```
 
 3. Verify the installation information:
-  
-  ```bash
-  podman info
-  ```
+
+   ```bash
+   podman info
+   ```
 
 ### Windows
 
