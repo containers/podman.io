@@ -1,0 +1,6 @@
+# podman security contact — see https://github.com/containers/common/blob/main/SECURITY.md
+Contact: mailto:security@lists.podman.io
+Expires: 2027-07-14T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://podman.io/.well-known/security.txt
+Policy: https://github.com/containers/common/blob/main/SECURITY.md
