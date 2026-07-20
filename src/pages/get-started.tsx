@@ -75,7 +75,7 @@ const RunListContainersSection = () => {
         <h3 className="text-purple-700 dark:text-purple-300 mb-2 mt-10">Running a container</h3>
 
         <div className="mx-auto">
-          <CodeBlock language="bash" showLineNumbers className="text-left overflow-scroll max-w-full">
+          <CodeBlock language="bash" showLineNumbers className="text-left overflow-scroll xl:max-w-6xl max-w-xs sm:max-w-md md:max-w-lg lg:max-w-4xl">
             $ podman run -dt -p 8080:80/tcp docker.io/library/httpd {'\n'}
           </CodeBlock>
         </div>
