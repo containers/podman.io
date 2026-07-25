@@ -21,7 +21,7 @@ function ThankYouSection(): JSX.Element {
         </p>
       </header>
       <div className="relative mx-auto my-8 flex items-center">
-        <button onClick={slideLeft} className="lg:hidden">
+        <button type="button" onClick={slideLeft} className="lg:hidden" aria-label="Previous contributor">
           <Icon
             icon="fa-solid:arrow-circle-left"
             className="text-4xl text-gray-500 opacity-25 transition duration-150 ease-linear hover:text-purple-900 hover:opacity-100 dark:hover:text-purple-700"
@@ -73,7 +73,7 @@ function ThankYouSection(): JSX.Element {
             <img {...debian} className="mx-auto p-4" />
           </a>
         </div>
-        <button onClick={slideRight} className="lg:hidden">
+        <button type="button" onClick={slideRight} className="lg:hidden" aria-label="Next contributor">
           <Icon
             icon="fa-solid:arrow-circle-right"
             className="dark:hover-text-purple-700 text-4xl text-gray-500 opacity-25 transition duration-150 ease-linear hover:text-purple-900 hover:opacity-100"
