@@ -14,12 +14,12 @@ const RenderLabelledCode = (props: CodeProps) => {
   const { command, code, label, extra, className } = props;
 
   return (
-    <div className={`w-96 md:max-w-md ${className}`}>
-      <div className="m-4 max-w-md rounded-md bg-blue-700 p-4 text-center shadow-md dark:bg-blue-900 md:max-w-sm md:text-start lg:mx-0">
+    <div className={`w-full max-w-md ${className}`}>
+      <div className="my-4 w-full max-w-full rounded-md bg-blue-700 p-4 text-center shadow-md dark:bg-blue-900 md:text-start">
         <Markdown text={label} styles="text-white dark:text-white" />
       </div>
       {extra && (
-        <div className="mx-4 mb-2 mt-4 hidden max-w-md rounded-md bg-blue-700 p-4 shadow-md dark:bg-blue-900 md:mx-0 md:block md:max-w-sm">
+        <div className="mb-2 mt-4 hidden w-full max-w-full rounded-md bg-blue-700 p-4 shadow-md dark:bg-blue-900 md:block">
           <Markdown text={extra} styles="text-white dark:text-white" />
         </div>
       )}
@@ -36,7 +36,7 @@ interface DeskProps {
 }
 const DesktopCodeBlock = (props: DeskProps) => {
   return (
-    <div className={`container hidden md:block ${props.className}`}>
+    <div className={`container hidden min-w-0 md:block ${props.className}`}>
       <CodeBlock language="bash" showLineNumbers>
         {searchExample.command}
         {searchExample.code}
@@ -52,18 +52,18 @@ const DesktopCodeBlock = (props: DeskProps) => {
 function CodeExampleSection() {
   return (
     <div className="container my-12 grid place-items-center gap-4 md:grid-cols-12 md:place-items-end">
-      <DesktopCodeBlock className="-z-50 md:col-span-11 md:col-start-1 md:row-start-1 md:row-end-4 md:place-self-center lg:col-span-10 lg:col-start-1" />
+      <DesktopCodeBlock className="md:col-span-12 md:col-start-1 md:row-start-1 lg:col-span-8 lg:row-span-3 lg:place-self-center" />
       <RenderLabelledCode
         {...searchExample}
-        className="row-start-1 md:col-span-5 md:col-start-9 md:self-end lg:col-span-3 lg:col-start-10"
+        className="md:col-span-12 md:col-start-1 md:row-start-2 lg:col-span-4 lg:col-start-9 lg:row-start-1"
       />
       <RenderLabelledCode
         {...searchFilterExample}
-        className="row-start-2 md:col-span-5 md:col-start-9 lg:col-span-3 lg:col-start-10"
+        className="md:col-span-12 md:col-start-1 md:row-start-3 lg:col-span-4 lg:col-start-9 lg:row-start-2"
       />
       <RenderLabelledCode
         {...imagesExample}
-        className="row-start-3 md:col-span-5 md:col-start-9 lg:col-span-3 lg:col-start-10"
+        className="md:col-span-12 md:col-start-1 md:row-start-4 lg:col-span-4 lg:col-start-9 lg:row-start-3"
       />
     </div>
   );
