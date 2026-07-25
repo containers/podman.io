@@ -1,4 +1,5 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import { Icon } from '@iconify/react';
 import CustomCard from '@site/src/components/ui/CustomCard';
 import SubcardGrid from '@site/src/components/layout/SubcardGrid';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
@@ -45,6 +46,7 @@ type SubcardGridProps = {
   buttons: SubcardButtonProps[];
   icon: string;
   date: string;
+  thumbnailUrl?: string;
 };
 
 function toggleModalOpen(ref, handler) {
@@ -163,12 +165,20 @@ function CommunityMeetingsCardGrid({ cards }) {
   let communityMeetingsData: SubcardGridProps[] = [];
   let CabalMeetingsData: SubcardGridProps[] = [];
 
+  const parseYoutubeId = (url?: string) => {
+    if (!url) return null;
+    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+    return match ? match[1] : null;
+  };
+
   // get top 2 CommunityMeetings & CabalMeetings for subcards
   for (let i = 0; i < 2; i++) {
     let meeting = MeetingDropdownOptions.shift();
+    let ytId1 = parseYoutubeId(meeting?.meeting_recording?.link);
     communityMeetingsData.push({
       date: meeting?.date,
       icon: 'film-icon',
+      thumbnailUrl: ytId1 ? `https://img.youtube.com/vi/${ytId1}/hqdefault.jpg` : undefined,
       buttons: [
         {
           path: meeting?.meeting_recording?.link,
@@ -178,9 +188,11 @@ function CommunityMeetingsCardGrid({ cards }) {
       ],
     });
     meeting = cabalDropdownOptions.shift();
+    let ytId2 = parseYoutubeId(meeting?.meeting_recording?.link);
     CabalMeetingsData.push({
       date: meeting?.date,
       icon: 'film-icon',
+      thumbnailUrl: ytId2 ? `https://img.youtube.com/vi/${ytId2}/hqdefault.jpg` : undefined,
       buttons: [
         {
           path: meeting?.meeting_recording?.link,
@@ -208,12 +220,12 @@ function CommunityMeetingsCardGrid({ cards }) {
               data={card?.buttons}
               primary={true}
             />
-            <SectionHeader
-              title=""
-              description="Most Recent meetings"
-              textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
-              textGradient={false}
-            />
+            <div className="mt-8 mb-4 w-full px-2">
+              <h3 className="text-xl font-bold text-gray-100 flex items-center gap-2 border-l-4 border-purple-500 pl-3 m-0 py-1">
+                <Icon icon="fa-solid:video" className="text-purple-500" />
+                {index === 0 ? "Recent Community Meetings" : "Recent Cabal Meetings"}
+              </h3>
+            </div>
             <SubcardGrid key={`subcard-grid-${index}`} cards={meetingsData} toggleIsModalOpen={toggleIsModalOpen} />
             <Dropdown
               options={getDropdownOption(index == 1 ? [...cabalDropdownOptions] : [...MeetingDropdownOptions])}

@@ -35,11 +35,12 @@ function Dropdown(props: DropdownProps) {
       <div
         data-dropdown-toggle="dropdown"
         onClick={() => setIsOpen(prev => !prev)}
-        className="my-2 flex cursor-pointer items-center gap-1 py-2 pl-12 font-bold text-purple-700 dark:text-purple-500">
-        <div className={`transition duration-150 ease-linear ${isOpen && 'rotate-90'}`}>
-          <Icon icon="bi:caret-right-square-fill" />
-        </div>
+        className="my-4 mx-2 flex w-fit cursor-pointer items-center gap-2 rounded-xl border border-gray-600 bg-gray-800/50 px-5 py-2.5 text-sm font-semibold text-gray-200 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-purple-500 hover:bg-gray-800 hover:text-white"
+      >
         <span>{props.text}</span>
+        <div className={`transition-transform duration-300 ease-in-out ${isOpen ? 'rotate-90 text-purple-400' : 'text-gray-400'}`}>
+          <Icon icon="fa-solid:chevron-right" />
+        </div>
       </div>
       <div className="dropdown-options absolute mt-2 flex flex-col overflow-y-auto overflow-x-hidden shadow-md scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:bg-gray-900 md:max-h-full lg:max-h-96">
         {isOpen && props?.options.map(option => option)}
