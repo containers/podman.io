@@ -20,7 +20,7 @@ function TestimonialSection() {
         textGradient={true}
         textGradientStops="from-blue-700 to-blue-500"
       />
-      <div className="container relative mx-auto my-8 flex items-center justify-center">
+      <div className="relative mx-auto my-8 flex w-full items-center justify-center">
         <button onClick={slideLeft} className="hidden sm:block xl:hidden">
           <Icon
             icon="fa-solid:arrow-circle-left"
@@ -29,7 +29,7 @@ function TestimonialSection() {
         </button>
         <div
           id="slider"
-          className="mx-auto flex h-full w-full justify-center overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar">
+          className="scrollbar mx-auto flex h-full w-full overflow-x-scroll scroll-smooth whitespace-nowrap snap-x snap-mandatory px-4 md:px-8 py-8">
           {testimonials.map((testimonial, index) => {
             return <Testimonial key={index} {...testimonial} />;
           })}
