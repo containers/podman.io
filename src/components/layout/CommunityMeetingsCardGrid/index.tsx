@@ -1,4 +1,5 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import { Icon } from '@iconify/react';
 import CustomCard from '@site/src/components/ui/CustomCard';
 import SubcardGrid from '@site/src/components/layout/SubcardGrid';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
@@ -76,14 +77,35 @@ function CommunityMeetingsCardGrid({ cards }) {
 
   toggleModalOpen(modalRef, () => setIsModalOpen(false));
 
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isModalOpen]);
+
   const prepareModalHeader = (text: string, date: string) => {
     const modalHeader: ReactNode = (
-      <div className="modal-header dark:bg-gray-500 dark:shadow-none">
-        <h3 className="modal-header-title dark:text-gray-900">{text}</h3>
-        <h3 className="modal-header-date dark:text-gray-900">{date}</h3>
-        <div className="cursor-pointer" onClick={() => setIsModalOpen(false)}>
-          <CloseIcon />
+      <div 
+        className="flex items-center justify-between px-6 py-4 shadow-sm"
+        style={{ borderBottom: '1px solid var(--ifm-color-emphasis-200)' }}
+      >
+        <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3">
+          <h3 className="m-0 text-xl font-bold" style={{ color: 'var(--ifm-font-color-base)' }}>{text}</h3>
+          <span className="hidden h-5 w-px sm:block" style={{ backgroundColor: 'var(--ifm-color-emphasis-300)' }}></span>
+          <p className="m-0 text-sm font-medium" style={{ color: 'var(--ifm-color-emphasis-600)' }}>{date}</p>
         </div>
+        <button 
+          className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-none transition-colors hover:opacity-80"
+          style={{ backgroundColor: 'var(--ifm-color-emphasis-200)', color: 'var(--ifm-font-color-base)' }}
+          onClick={() => setIsModalOpen(false)}
+        >
+          <Icon icon="mdi:close" className="text-lg" />
+        </button>
       </div>
     );
     setModalHeader(modalHeader);
@@ -220,20 +242,32 @@ function CommunityMeetingsCardGrid({ cards }) {
               dropdownRef={meetingMinutesRef[index]}
               text="Older meeting details"
             />
-            <dialog
-              className="bg-stone-200 w-90-screen h-80-screen fixed top-20 z-50 max-h-screen w-fit border-4 border-purple-100"
-              open={isModalOpen}
-              ref={modalRef}>
-              <div className="modal-content flex flex-col">
-                {modalHeader}
-                <div className="md-wrapper overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:bg-gray-700  dark:text-gray-50 dark:shadow-none">
-                  {meetinNotesMD}
-                </div>
-              </div>
-            </dialog>
           </div>
         );
       })}
+
+      {/* Proper Modal Overlay */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm sm:p-6 md:p-12" onClick={() => setIsModalOpen(false)}>
+          <div 
+            className="flex w-full max-w-5xl flex-col overflow-hidden rounded-2xl shadow-2xl relative"
+            style={{ 
+              maxHeight: '85vh',
+              backgroundColor: 'var(--ifm-background-surface-color)',
+              color: 'var(--ifm-font-color-base)',
+              border: '1px solid var(--ifm-color-emphasis-200)'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {modalHeader}
+            <div className="flex-1 overflow-y-auto p-6 sm:p-8 md:p-10">
+              <div className="markdown prose max-w-none">
+                {meetinNotesMD}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
