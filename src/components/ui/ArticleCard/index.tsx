@@ -49,7 +49,10 @@ function ArticleCard(props: ArticleCardProps) {
               <PublishDate date={props.date} styles="col-start-1 order-1 row-start-1 z-10" />
             </div>
             <img
-              src={props.imgSrc}
+              src={props.imgSrc || 'logos/optimized/podman-3-logo-266w-253h.webp'}
+              onError={(e) => {
+                e.currentTarget.src = 'logos/optimized/podman-3-logo-266w-253h.webp';
+              }}
               className=" col-start-1 row-start-1 h-full w-full rounded-sm object-cover lg:w-80"
             />
           </div>
@@ -78,7 +81,13 @@ function ArticleCard(props: ArticleCardProps) {
           </h3>
           {parse(abbrSubtitle)}
           <PublishDate date={props.date} styles="row-start-1 col-start-1 z-10 my-2" />
-          <img src={props.imgSrc} className="object-fit col-start-1 row-start-1 rounded-sm" />
+          <img 
+            src={props.imgSrc || 'logos/optimized/podman-3-logo-266w-253h.webp'} 
+            onError={(e) => {
+              e.currentTarget.src = 'logos/optimized/podman-3-logo-266w-253h.webp';
+            }}
+            className="object-fit col-start-1 row-start-1 rounded-sm" 
+          />
           <p className="text-purple-700">
             By: <a href={props.author_link}>{props.display_name}</a>
           </p>
