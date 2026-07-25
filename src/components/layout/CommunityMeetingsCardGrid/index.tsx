@@ -1,10 +1,11 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import CustomCard from '@site/src/components/ui/CustomCard';
 import SubcardGrid from '@site/src/components/layout/SubcardGrid';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import Dropdown from '@site/src/components/utilities/DropDown';
 import CloseIcon from '@site/src/components/shapes/CloseIcon';
-import * as markDownFiles from '@site/static/data/meetings/notes/index'; // ToDo: Lazy load these files
+import meetings from '@site/static/data/meetings/notes/index';
 
 import './styles.css';
 
@@ -29,16 +30,16 @@ type DropdownOptionProps = {
   };
   meeting_minutes: {
     text: string;
-    markDown: ReactNode;
-    modalHeaderData?: string;
+    folderName: string;
+    modalHeaderData: string;
   };
 };
 
 type SubcardButtonProps = {
   text: string;
   path?: string;
-  markDown?: ReactNode;
-  modalHeaderData?: String;
+  folderName?: string;
+  modalHeaderData?: string;
 };
 
 type SubcardGridProps = {
@@ -65,8 +66,8 @@ function toggleModalOpen(ref, handler) {
 }
 
 function CommunityMeetingsCardGrid({ cards }) {
-  let cabalDropdownOptions: DropdownOptionProps[] = [];
-  let MeetingDropdownOptions: DropdownOptionProps[] = [];
+  const cabalDropdownOptions: DropdownOptionProps[] = [];
+  const MeetingDropdownOptions: DropdownOptionProps[] = [];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalHeader, setModalHeader] = useState<ReactNode | undefined>(undefined);
@@ -90,48 +91,52 @@ function CommunityMeetingsCardGrid({ cards }) {
   };
 
   const populateMeetings = (): void => {
-    Object.values(markDownFiles)?.forEach(mdFile => {
-      let mdReader = mdFile?.default(useRef());
-      mdReader?.props?.children?.forEach(child => {
-        let field1: string = child?.props?.children?.[0];
-        let field2: object = child?.props?.children?.[1];
-        if (typeof field1 == 'string' && (field1.includes('BlueJeans') || field1.includes('Video'))) {
-          if (mdFile?.contentTitle?.includes('Cabal')) {
-            cabalDropdownOptions.unshift({
-              date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
-              meeting_minutes: {
-                markDown: mdReader,
-                modalHeaderData: mdFile['contentTitle'],
-                text: 'Meeting Minutes',
-              },
-              meeting_recording: {
-                link: field2?.props?.href,
-                text: 'Watch Recording',
-              },
-            });
-          } else {
-            MeetingDropdownOptions.unshift({
-              date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
-              meeting_minutes: {
-                markDown: mdReader,
-                modalHeaderData: mdFile['contentTitle'],
-                text: 'Meeting Minutes',
-              },
-              meeting_recording: {
-                link: field2?.props?.href,
-                text: 'Watch Recording',
-              },
-            });
-          }
-        }
-      });
+    if (!meetings) {
+      console.warn('meetings metadata list is undefined');
+      return;
+    }
+    meetings.forEach(meeting => {
+      const option: DropdownOptionProps = {
+        date: meeting.date,
+        meeting_recording: {
+          link: meeting.videoLink,
+          text: 'Watch Recording',
+        },
+        meeting_minutes: {
+          folderName: meeting.folderName,
+          modalHeaderData: meeting.title,
+          text: 'Meeting Minutes',
+        },
+      };
+
+      if (meeting.isCabal) {
+        cabalDropdownOptions.push(option);
+      } else {
+        MeetingDropdownOptions.push(option);
+      }
     });
   };
 
-  const toggleIsModalOpen = (...modalData) => {
-    modalData && setMeetinNotesMD(modalData[0].markDown);
-    prepareModalHeader(modalData[0].modalHeaderData, modalData[1]);
+  const toggleIsModalOpen = async (meetingMinutes: { folderName: string; modalHeaderData: string }, date: string) => {
+    setMeetinNotesMD(<div className="p-4 text-center">Loading meeting minutes...</div>);
+    prepareModalHeader(meetingMinutes.modalHeaderData, date);
     setIsModalOpen(true);
+
+    const meeting = meetings?.find(m => m.folderName === meetingMinutes.folderName);
+    if (meeting) {
+      try {
+        const mdxModule = await meeting.importMDX();
+        const MDXComponent = mdxModule.default;
+        setMeetinNotesMD(<MDXComponent />);
+      } catch (err) {
+        console.error(err);
+        setMeetinNotesMD(
+          <div className="text-red-500 p-4 text-center">Failed to load meeting minutes. Please try again.</div>,
+        );
+      }
+    } else {
+      setMeetinNotesMD(<div className="text-red-500 p-4 text-center">Meeting notes not found.</div>);
+    }
   };
 
   function DropDownOption(props: DropdownOptionProps) {
@@ -160,8 +165,8 @@ function CommunityMeetingsCardGrid({ cards }) {
 
   populateMeetings();
 
-  let communityMeetingsData: SubcardGridProps[] = [];
-  let CabalMeetingsData: SubcardGridProps[] = [];
+  const communityMeetingsData: SubcardGridProps[] = [];
+  const CabalMeetingsData: SubcardGridProps[] = [];
 
   // get top 2 CommunityMeetings & CabalMeetings for subcards
   for (let i = 0; i < 2; i++) {
@@ -194,7 +199,7 @@ function CommunityMeetingsCardGrid({ cards }) {
   return (
     <div className="justify-content-center align-items-center custom-card-grid-root flex">
       {cards.map((card: CommunityMeetingsCardProps, index: number) => {
-        let meetingsData = index == 1 ? CabalMeetingsData : communityMeetingsData;
+        const meetingsData = index == 1 ? CabalMeetingsData : communityMeetingsData;
         return (
           <div
             key={`card-container-${index}`}

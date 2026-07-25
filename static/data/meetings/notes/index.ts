@@ -1,154 +1,622 @@
-import * as F20201006 from '@site/static/data/meetings/notes/2020-10-06/index.md';
-import * as F20210406 from '@site/static/data/meetings/notes/2021-04-06/index.md';
-import * as F20210819 from '@site/static/data/meetings/notes/2021-08-19/index.md';
-import * as F20211102 from '@site/static/data/meetings/notes/2021-11-02/index.md';
-import * as F20220201 from '@site/static/data/meetings/notes/2022-02-01/index.md';
-import * as F20220519 from '@site/static/data/meetings/notes/2022-05-19/index.md';
-import * as F20221004 from '@site/static/data/meetings/notes/2022-10-04/index.md';
-import * as F20230216 from '@site/static/data/meetings/notes/2023-02-16/index.md';
-import * as F20201103 from '@site/static/data/meetings/notes/2020-11-03/index.md';
-import * as F20210504 from '@site/static/data/meetings/notes/2021-05-04/index.md';
-import * as F20210907 from '@site/static/data/meetings/notes/2021-09-07/index.md';
-import * as F20211118 from '@site/static/data/meetings/notes/2021-11-18/index.md';
-import * as F20220217 from '@site/static/data/meetings/notes/2022-02-17/index.md';
-import * as F20220607 from '@site/static/data/meetings/notes/2022-06-07/index.md';
-import * as F20221117 from '@site/static/data/meetings/notes/2022-11-17/index.md';
-import * as F20230316 from '@site/static/data/meetings/notes/2023-03-16/index.md';
-import * as F20201201 from '@site/static/data/meetings/notes/2020-12-01/index.md';
-import * as F20210601 from '@site/static/data/meetings/notes/2021-06-01/index.md';
-import * as F20210916 from '@site/static/data/meetings/notes/2021-09-16/index.md';
-import * as F20211207 from '@site/static/data/meetings/notes/2021-12-07/index.md';
-import * as F20220317 from '@site/static/data/meetings/notes/2022-03-17/index.md';
-import * as F20220721 from '@site/static/data/meetings/notes/2022-07-21/index.md';
-import * as F20221206 from '@site/static/data/meetings/notes/2022-12-06/index.md';
-import * as F20230404 from '@site/static/data/meetings/notes/2023-04-04/index.md';
-import * as F20210202 from '@site/static/data/meetings/notes/2021-02-02/index.md';
-import * as F20210715 from '@site/static/data/meetings/notes/2021-07-15/index.md';
-import * as F20211005 from '@site/static/data/meetings/notes/2021-10-05/index.md';
-import * as F20211216 from '@site/static/data/meetings/notes/2021-12-16/index.md';
-import * as F20220405 from '@site/static/data/meetings/notes/2022-04-05/index.md';
-import * as F20220802 from '@site/static/data/meetings/notes/2022-08-02/index.md';
-import * as F20230119 from '@site/static/data/meetings/notes/2023-01-19/index.md';
-import * as F20230420 from '@site/static/data/meetings/notes/2023-04-20/index.md';
-import * as F20210302 from '@site/static/data/meetings/notes/2021-03-02/index.md';
-import * as F20210803 from '@site/static/data/meetings/notes/2021-08-03/index.md';
-import * as F20211021 from '@site/static/data/meetings/notes/2021-10-21/index.md';
-import * as F20220120 from '@site/static/data/meetings/notes/2022-01-20/index.md';
-import * as F20220421 from '@site/static/data/meetings/notes/2022-04-21/index.md';
-import * as F20220915 from '@site/static/data/meetings/notes/2022-09-15/index.md';
-import * as F20230207 from '@site/static/data/meetings/notes/2023-02-07/index.md';
-import * as F20230518 from '@site/static/data/meetings/notes/2023-05-18/index.md';
-import * as F20230606 from '@site/static/data/meetings/notes/2023-06-06/index.md';
-import * as F20230615 from '@site/static/data/meetings/notes/2023-06-15/index.md';
-import * as F20230720 from '@site/static/data/meetings/notes/2023-07-20/index.md';
-import * as F20230921 from '@site/static/data/meetings/notes/2023-09-21/index.md';
-import * as F20231003 from '@site/static/data/meetings/notes/2023-10-03/index.md';
-import * as F20231019 from '@site/static/data/meetings/notes/2023-10-19/index.md';
-import * as F20231212 from '@site/static/data/meetings/notes/2023-12-12/index.md';
-import * as F20240116 from '@site/static/data/meetings/notes/2024-01-16/index.md';
-import * as F20240206 from '@site/static/data/meetings/notes/2024-02-06/index.md';
-import * as F20240220 from '@site/static/data/meetings/notes/2024-02-20/index.md';
-import * as F20240319 from '@site/static/data/meetings/notes/2024-03-19/index.md';
-import * as F20240402 from '@site/static/data/meetings/notes/2024-04-02/index.md';
-import * as F20240416 from '@site/static/data/meetings/notes/2024-04-16/index.md';
-import * as F20240521 from '@site/static/data/meetings/notes/2024-05-21/index.md';
-import * as F20240604 from '@site/static/data/meetings/notes/2024-06-04/index.md';
-import * as F20240702 from '@site/static/data/meetings/notes/2024-07-02/index.md';
-import * as F20240806 from '@site/static/data/meetings/notes/2024-08-06/index.md';
-import * as F20240903 from '@site/static/data/meetings/notes/2024-09-03/index.md';
-import * as F20241001 from '@site/static/data/meetings/notes/2024-10-01/index.md';
-import * as F20241105 from '@site/static/data/meetings/notes/2024-11-05/index.md';
-import * as F20250204 from '@site/static/data/meetings/notes/2025-02-04/index.md';
-import * as F20250304 from '@site/static/data/meetings/notes/2025-03-04/index.md';
-import * as F20250401 from '@site/static/data/meetings/notes/2025-04-01/index.md';
-import * as F20250506 from '@site/static/data/meetings/notes/2025-05-06/index.md';
-import * as F20250603 from '@site/static/data/meetings/notes/2025-06-03/index.md';
-import * as F20250701 from '@site/static/data/meetings/notes/2025-07-01/index.md';
-import * as F20250805 from '@site/static/data/meetings/notes/2025-08-05/index.md';
-import * as F20250902 from '@site/static/data/meetings/notes/2025-09-02/index.md';
-import * as F20251007 from '@site/static/data/meetings/notes/2025-10-07/index.md';
-import * as F20251104 from '@site/static/data/meetings/notes/2025-11-04/index.md';
-import * as F20251202 from '@site/static/data/meetings/notes/2025-12-02/index.md';
-import * as F20260203 from '@site/static/data/meetings/notes/2026-02-03/index.md';
-import * as F20260303 from '@site/static/data/meetings/notes/2026-03-03/index.md';
-import * as F20260407 from '@site/static/data/meetings/notes/2026-04-07/index.md';
-import * as F20260505 from '@site/static/data/meetings/notes/2026-05-05/index.md';
-import * as F20260602 from '@site/static/data/meetings/notes/2026-06-02/index.md';
+// Auto-generated by scripts/generate-meetings-index.js. Do not edit directly.
+export interface MeetingMetadata {
+  folderName: string;
+  date: string;
+  title: string;
+  isCabal: boolean;
+  videoLink: string;
+  importMDX: () => Promise<any>;
+}
 
-export {
-  F20201006,
-  F20210406,
-  F20210819,
-  F20211102,
-  F20220201,
-  F20220519,
-  F20221004,
-  F20230216,
-  F20201103,
-  F20210504,
-  F20210907,
-  F20211118,
-  F20220217,
-  F20220607,
-  F20221117,
-  F20230316,
-  F20201201,
-  F20210601,
-  F20210916,
-  F20211207,
-  F20220317,
-  F20220721,
-  F20221206,
-  F20230404,
-  F20210202,
-  F20210715,
-  F20211005,
-  F20211216,
-  F20220405,
-  F20220802,
-  F20230119,
-  F20230420,
-  F20210302,
-  F20210803,
-  F20211021,
-  F20220120,
-  F20220421,
-  F20220915,
-  F20230207,
-  F20230518,
-  F20230606,
-  F20230615,
-  F20230720,
-  F20230921,
-  F20231003,
-  F20231019,
-  F20231212,
-  F20240116,
-  F20240206,
-  F20240220,
-  F20240319,
-  F20240402,
-  F20240416,
-  F20240521,
-  F20240604,
-  F20240702,
-  F20240806,
-  F20240903,
-  F20241001,
-  F20241105,
-  F20250204,
-  F20250304,
-  F20250401,
-  F20250506,
-  F20250603,
-  F20250701,
-  F20250805,
-  F20250902,
-  F20251007,
-  F20251104,
-  F20251202,
-  F20260203,
-  F20260303,
-  F20260407,
-  F20260505,
-};
+export const meetings: MeetingMetadata[] = [
+  {
+    folderName: '2026-06-02',
+    date: "June 2, 2026",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=d0XEeePqzag",
+    importMDX: () => import('@site/static/data/meetings/notes/2026-06-02/index.md'),
+  },
+  {
+    folderName: '2026-05-05',
+    date: "May 5, 2026",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://www.youtube.com/watch?v=drwPTQj-dy0",
+    importMDX: () => import('@site/static/data/meetings/notes/2026-05-05/index.md'),
+  },
+  {
+    folderName: '2026-04-07',
+    date: "April 7, 2026",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=wm8IB0GcAso",
+    importMDX: () => import('@site/static/data/meetings/notes/2026-04-07/index.md'),
+  },
+  {
+    folderName: '2026-03-03',
+    date: "Mar 3, 2026",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://www.youtube.com/watch?v=_AY54vbStgY",
+    importMDX: () => import('@site/static/data/meetings/notes/2026-03-03/index.md'),
+  },
+  {
+    folderName: '2026-02-03',
+    date: "Februrary 3, 2026",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=xeYq4PkkgXI",
+    importMDX: () => import('@site/static/data/meetings/notes/2026-02-03/index.md'),
+  },
+  {
+    folderName: '2025-12-02',
+    date: "December 2, 2025",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=HP7-5kxZ6QQ&t=6s",
+    importMDX: () => import('@site/static/data/meetings/notes/2025-12-02/index.md'),
+  },
+  {
+    folderName: '2025-11-04',
+    date: "November 4, 2025",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://www.youtube.com/watch?v=0x6juTSRvo0",
+    importMDX: () => import('@site/static/data/meetings/notes/2025-11-04/index.md'),
+  },
+  {
+    folderName: '2025-10-07',
+    date: "October 7, 2025",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=jw2zKOi-fvs&t=138s",
+    importMDX: () => import('@site/static/data/meetings/notes/2025-10-07/index.md'),
+  },
+  {
+    folderName: '2025-09-02',
+    date: "2025-09-02",
+    title: "Podman Community Cabal Agenda",
+    isCabal: true,
+    videoLink: "https://www.youtube.com/watch?v=Gzm6Rq7dOw4",
+    importMDX: () => import('@site/static/data/meetings/notes/2025-09-02/index.md'),
+  },
+  {
+    folderName: '2025-08-05',
+    date: "August 5, 2025",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=v8HyyGA679c",
+    importMDX: () => import('@site/static/data/meetings/notes/2025-08-05/index.md'),
+  },
+  {
+    folderName: '2025-07-01',
+    date: "July 1, 2025",
+    title: "Podman Community Cabal Notes",
+    isCabal: true,
+    videoLink: "",
+    importMDX: () => import('@site/static/data/meetings/notes/2025-07-01/index.md'),
+  },
+  {
+    folderName: '2025-06-03',
+    date: "June 3, 2025",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=CbBHL83QPlw",
+    importMDX: () => import('@site/static/data/meetings/notes/2025-06-03/index.md'),
+  },
+  {
+    folderName: '2025-05-06',
+    date: "May 6, 2025",
+    title: "Podman Community Cabal Notes",
+    isCabal: true,
+    videoLink: "https://www.youtube.com/watch?v=PbafpszDDsc",
+    importMDX: () => import('@site/static/data/meetings/notes/2025-05-06/index.md'),
+  },
+  {
+    folderName: '2025-04-01',
+    date: "April 1, 2025,",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=Jlt21bIrmZQ",
+    importMDX: () => import('@site/static/data/meetings/notes/2025-04-01/index.md'),
+  },
+  {
+    folderName: '2025-03-04',
+    date: "March 4, 2025",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://www.youtube.com/watch?v=WfDmgNFaX2I",
+    importMDX: () => import('@site/static/data/meetings/notes/2025-03-04/index.md'),
+  },
+  {
+    folderName: '2025-02-04',
+    date: "February 4, 2025,",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=451s1B31VGA",
+    importMDX: () => import('@site/static/data/meetings/notes/2025-02-04/index.md'),
+  },
+  {
+    folderName: '2024-11-05',
+    date: "November 5, 2024",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://www.youtube.com/watch?v=9oIpmjQy7AM",
+    importMDX: () => import('@site/static/data/meetings/notes/2024-11-05/index.md'),
+  },
+  {
+    folderName: '2024-10-01',
+    date: "Oct 1, 2024",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://youtu.be/NeFsVLS-2lY",
+    importMDX: () => import('@site/static/data/meetings/notes/2024-10-01/index.md'),
+  },
+  {
+    folderName: '2024-09-03',
+    date: "Sep 3, 2024",
+    title: "Podman Community Cabal Agenda",
+    isCabal: true,
+    videoLink: "https://www.youtube.com/watch?v=v_QR2hbXHH4",
+    importMDX: () => import('@site/static/data/meetings/notes/2024-09-03/index.md'),
+  },
+  {
+    folderName: '2024-08-06',
+    date: "Aug 6, 2024",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=q_OTd4zyN40",
+    importMDX: () => import('@site/static/data/meetings/notes/2024-08-06/index.md'),
+  },
+  {
+    folderName: '2024-07-02',
+    date: "Jul 2, 2024",
+    title: "Podman Community Cabal Agenda",
+    isCabal: true,
+    videoLink: "https://www.youtube.com/watch?v=1tTD7VgXI5s",
+    importMDX: () => import('@site/static/data/meetings/notes/2024-07-02/index.md'),
+  },
+  {
+    folderName: '2024-06-04',
+    date: "June 4, 2024",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://youtu.be/YTLIrvmI1t4",
+    importMDX: () => import('@site/static/data/meetings/notes/2024-06-04/index.md'),
+  },
+  {
+    folderName: '2024-05-21',
+    date: "May 21, 2024",
+    title: "Podman Community Cabal Agenda Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/OC4_oCT1cdg",
+    importMDX: () => import('@site/static/data/meetings/notes/2024-05-21/index.md'),
+  },
+  {
+    folderName: '2024-04-16',
+    date: "April 16, 2024",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://www.youtube.com/watch?v=aLKET_3loWw&t=4s",
+    importMDX: () => import('@site/static/data/meetings/notes/2024-04-16/index.md'),
+  },
+  {
+    folderName: '2024-04-02',
+    date: "April 2, 2024",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=-8l3vGcT3fo",
+    importMDX: () => import('@site/static/data/meetings/notes/2024-04-02/index.md'),
+  },
+  {
+    folderName: '2024-03-19',
+    date: "Mar 19, 2024",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/XW43y97V6kU",
+    importMDX: () => import('@site/static/data/meetings/notes/2024-03-19/index.md'),
+  },
+  {
+    folderName: '2024-02-20',
+    date: "February 20, 2024",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://www.youtube.com/watch?v=1wOoZ5qPeII",
+    importMDX: () => import('@site/static/data/meetings/notes/2024-02-20/index.md'),
+  },
+  {
+    folderName: '2024-02-06',
+    date: "February 6, 2024",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://youtu.be/soxBbexH_VA",
+    importMDX: () => import('@site/static/data/meetings/notes/2024-02-06/index.md'),
+  },
+  {
+    folderName: '2024-01-16',
+    date: "January 16, 2024",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/pOiu3qoplAA",
+    importMDX: () => import('@site/static/data/meetings/notes/2024-01-16/index.md'),
+  },
+  {
+    folderName: '2023-12-12',
+    date: "2023-12-12",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/snmlDKDcMRg",
+    importMDX: () => import('@site/static/data/meetings/notes/2023-12-12/index.md'),
+  },
+  {
+    folderName: '2023-10-19',
+    date: "October 19, 2023 Topics",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/JndjmrZBEKc",
+    importMDX: () => import('@site/static/data/meetings/notes/2023-10-19/index.md'),
+  },
+  {
+    folderName: '2023-10-03',
+    date: "October 3, 2023,",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://youtu.be/kjsQVJRQlJU",
+    importMDX: () => import('@site/static/data/meetings/notes/2023-10-03/index.md'),
+  },
+  {
+    folderName: '2023-09-21',
+    date: "September 21, 2023",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/By7wb1tOvLc",
+    importMDX: () => import('@site/static/data/meetings/notes/2023-09-21/index.md'),
+  },
+  {
+    folderName: '2023-07-20',
+    date: "July 20, 2023",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/O-6RWIcIvqk",
+    importMDX: () => import('@site/static/data/meetings/notes/2023-07-20/index.md'),
+  },
+  {
+    folderName: '2023-06-15',
+    date: "June 15, 2023",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/GYrFHoYtXDA",
+    importMDX: () => import('@site/static/data/meetings/notes/2023-06-15/index.md'),
+  },
+  {
+    folderName: '2023-06-06',
+    date: "June 6, 2023",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=65pE8RhCK5w&t=116s",
+    importMDX: () => import('@site/static/data/meetings/notes/2023-06-06/index.md'),
+  },
+  {
+    folderName: '2023-05-18',
+    date: "May 18, 2023",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/GYrFHoYtXDA",
+    importMDX: () => import('@site/static/data/meetings/notes/2023-05-18/index.md'),
+  },
+  {
+    folderName: '2023-04-20',
+    date: "April 20, 2023",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/_NnWUqyaBmw",
+    importMDX: () => import('@site/static/data/meetings/notes/2023-04-20/index.md'),
+  },
+  {
+    folderName: '2023-04-04',
+    date: "April 4, 2023",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://youtu.be/B1OynYGBHz8",
+    importMDX: () => import('@site/static/data/meetings/notes/2023-04-04/index.md'),
+  },
+  {
+    folderName: '2023-03-16',
+    date: "March 16, 2023",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/k_88s2RQm5Q",
+    importMDX: () => import('@site/static/data/meetings/notes/2023-03-16/index.md'),
+  },
+  {
+    folderName: '2023-02-16',
+    date: "February 16, 2023",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/Rn8SKgubXQ4",
+    importMDX: () => import('@site/static/data/meetings/notes/2023-02-16/index.md'),
+  },
+  {
+    folderName: '2023-02-07',
+    date: "February 7, 2023,",
+    title: "Podman Community Meeting notes",
+    isCabal: false,
+    videoLink: "https://youtu.be/qLhf-Ae4jvo",
+    importMDX: () => import('@site/static/data/meetings/notes/2023-02-07/index.md'),
+  },
+  {
+    folderName: '2023-01-19',
+    date: "Jauary 19, 2023",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/YCi6KuC9ESw",
+    importMDX: () => import('@site/static/data/meetings/notes/2023-01-19/index.md'),
+  },
+  {
+    folderName: '2022-12-06',
+    date: "December 6, 2022",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=GZNazm39wEo",
+    importMDX: () => import('@site/static/data/meetings/notes/2022-12-06/index.md'),
+  },
+  {
+    folderName: '2022-11-17',
+    date: "November 17, 2022",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/HIzZYPpE304",
+    importMDX: () => import('@site/static/data/meetings/notes/2022-11-17/index.md'),
+  },
+  {
+    folderName: '2022-10-04',
+    date: "October 4, 2022,",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=JNijOHL4_Ko",
+    importMDX: () => import('@site/static/data/meetings/notes/2022-10-04/index.md'),
+  },
+  {
+    folderName: '2022-09-15',
+    date: "September 15, 2022",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/mAUUGASnmIk",
+    importMDX: () => import('@site/static/data/meetings/notes/2022-09-15/index.md'),
+  },
+  {
+    folderName: '2022-08-02',
+    date: "August 2, 2022",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://youtu.be/Ee-boJpjSvA",
+    importMDX: () => import('@site/static/data/meetings/notes/2022-08-02/index.md'),
+  },
+  {
+    folderName: '2022-07-21',
+    date: "July 21, 2022",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/aV6RYlF9Ocs",
+    importMDX: () => import('@site/static/data/meetings/notes/2022-07-21/index.md'),
+  },
+  {
+    folderName: '2022-06-07',
+    date: "June 7, 2022",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://www.youtube.com/watch?v=lherM_ah3GU",
+    importMDX: () => import('@site/static/data/meetings/notes/2022-06-07/index.md'),
+  },
+  {
+    folderName: '2022-05-19',
+    date: "May 19, 2022",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/G4pad4k2Az4",
+    importMDX: () => import('@site/static/data/meetings/notes/2022-05-19/index.md'),
+  },
+  {
+    folderName: '2022-04-21',
+    date: "April 21, 2022",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/DP3FAGWn48s",
+    importMDX: () => import('@site/static/data/meetings/notes/2022-04-21/index.md'),
+  },
+  {
+    folderName: '2022-04-05',
+    date: "April 5, 2022",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://t.co/FUPhuBAE7l",
+    importMDX: () => import('@site/static/data/meetings/notes/2022-04-05/index.md'),
+  },
+  {
+    folderName: '2022-03-17',
+    date: "March 17, 2022",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/wvENxqMjuLI",
+    importMDX: () => import('@site/static/data/meetings/notes/2022-03-17/index.md'),
+  },
+  {
+    folderName: '2022-02-17',
+    date: "February 17, 2022",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://youtu.be/ysFO1s7h-YE",
+    importMDX: () => import('@site/static/data/meetings/notes/2022-02-17/index.md'),
+  },
+  {
+    folderName: '2022-02-01',
+    date: "February 1, 2021",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://youtu.be/-dVK9CfqeNM",
+    importMDX: () => import('@site/static/data/meetings/notes/2022-02-01/index.md'),
+  },
+  {
+    folderName: '2022-01-20',
+    date: "January 20, 2022",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://www.youtube.com/watch?v=bwhDnwYyiJY&t=2729s",
+    importMDX: () => import('@site/static/data/meetings/notes/2022-01-20/index.md'),
+  },
+  {
+    folderName: '2021-12-16',
+    date: "December 16, 2021",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://www.youtube.com/watch?v=f4dXfsFmDck",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-12-16/index.md'),
+  },
+  {
+    folderName: '2021-12-07',
+    date: "December 7, 2021",
+    title: "Podman Community Meeting Notes",
+    isCabal: false,
+    videoLink: "https://youtu.be/WUk_ZzVThd8",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-12-07/index.md'),
+  },
+  {
+    folderName: '2021-11-18',
+    date: "November 18, 2021",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://www.youtube.com/watch?v=y9PxhYF-uNM",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-11-18/index.md'),
+  },
+  {
+    folderName: '2021-11-02',
+    date: "November 2, 2021",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://bluejeans.com/s/bhRBWYOh02V",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-11-02/index.md'),
+  },
+  {
+    folderName: '2021-10-21',
+    date: "October 21, 2021",
+    title: "Podman Community Cabal Notes",
+    isCabal: true,
+    videoLink: "https://drive.google.com/drive/folders/1pDCsZFj0yDobe4OxPqAzitECGL6O0KMY",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-10-21/index.md'),
+  },
+  {
+    folderName: '2021-10-05',
+    date: "October 5, 2021",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://bluejeans.com/s/X3NY6qgSlKQ",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-10-05/index.md'),
+  },
+  {
+    folderName: '2021-09-16',
+    date: "September 16, 2021",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://drive.google.com/file/d/1kCm-AK0Gqpk5Eua3m26agzxIp8NLR73x/view?usp=drive_web",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-09-16/index.md'),
+  },
+  {
+    folderName: '2021-09-07',
+    date: "September 7, 2021",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://bluejeans.com/s/16n3v6p@XWp/",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-09-07/index.md'),
+  },
+  {
+    folderName: '2021-08-19',
+    date: "August 19, 2021",
+    title: "Podman Community Cabal Meeting Notes",
+    isCabal: true,
+    videoLink: "https://drive.google.com/file/d/1VOzFK0zpG4MgjQnyiGDZL3J9gMIj-msh/view",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-08-19/index.md'),
+  },
+  {
+    folderName: '2021-08-03',
+    date: "August 3, 2021",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://bluejeans.com/s/KyZqj8gBg1E",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-08-03/index.md'),
+  },
+  {
+    folderName: '2021-07-15',
+    date: "July 15, 2021",
+    title: "Podman Community Cabal Meeting",
+    isCabal: true,
+    videoLink: "https://drive.google.com/file/d/1hdLMicPfI9NA_MEuGaHGtyIgw6v28Ojg/view",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-07-15/index.md'),
+  },
+  {
+    folderName: '2021-06-01',
+    date: "June 1, 2021",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://bluejeans.com/s/3fO@uV5g9KF",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-06-01/index.md'),
+  },
+  {
+    folderName: '2021-05-04',
+    date: "May 4, 2021",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://bluejeans.com/s/Qq_IsjrnOaG",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-05-04/index.md'),
+  },
+  {
+    folderName: '2021-04-06',
+    date: "April 6, 2021",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://bluejeans.com/s/@f3vA2PsK7a",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-04-06/index.md'),
+  },
+  {
+    folderName: '2021-03-02',
+    date: "March 2, 2021",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://bluejeans.com/s/w9MNLQGTmf3",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-03-02/index.md'),
+  },
+  {
+    folderName: '2021-02-02',
+    date: "February 2, 2021",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://bluejeans.com/s/UNt8jSU7IH2",
+    importMDX: () => import('@site/static/data/meetings/notes/2021-02-02/index.md'),
+  },
+  {
+    folderName: '2020-12-01',
+    date: "December 1, 2020",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://bluejeans.com/s/aOaqCoRSJB4/",
+    importMDX: () => import('@site/static/data/meetings/notes/2020-12-01/index.md'),
+  },
+  {
+    folderName: '2020-11-03',
+    date: "November 3, 2020",
+    title: "Podman Community Meeting",
+    isCabal: false,
+    videoLink: "https://bluejeans.com/s/PwWkFkPIlI6",
+    importMDX: () => import('@site/static/data/meetings/notes/2020-11-03/index.md'),
+  },
+  {
+    folderName: '2020-10-06',
+    date: "October 6, 2020",
+    title: "{{ page.title }}",
+    isCabal: false,
+    videoLink: "",
+    importMDX: () => import('@site/static/data/meetings/notes/2020-10-06/index.md'),
+  },
+];
+
+export default meetings;
