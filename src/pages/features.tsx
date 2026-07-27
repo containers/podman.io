@@ -158,7 +158,7 @@ const PodmanCLISection = () => {
       </div>
       <div className="container mb-4 grid gap-2 lg:grid-cols-3">
         <div className="mx-auto">
-          <img className="max-h-[200px]" src="images/raw/podman-selkie-385w-358h.png" />
+          <img className="max-h-[200px]" src="images/optimized/podman-selkie-385w-358h.webp" />
         </div>
         <div className="col-span-2">
           <p className="my-8 align-middle text-2xl leading-relaxed">
