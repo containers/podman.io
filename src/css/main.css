@@ -166,3 +166,40 @@
 [data-theme='dark'] img[src$='#gh-light-mode-only'] {
   display: none;
 }
+
+/* --------------------------------------------------------- */
+/* Divider between Community Meeting and Community Cabal */
+/* --------------------------------------------------------- */
+
+/* Add a vertical divider between the Community Meeting and Community Cabal sections */
+.custom-card-grid-root {
+  position: relative;
+}
+
+.custom-card-grid-root::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  background: var(--ifm-color-emphasis-600);
+  pointer-events: none;
+}
+
+/* Improve the layout and readability of dropdown list items */
+.meeting-dropdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  transition: background-color 0.2s ease;
+}
+
+/* Remove the divider from the last dropdown item */
+.meeting-dropdown-row:last-child {
+  border-bottom: none;
+}

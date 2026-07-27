@@ -138,7 +138,7 @@ function CommunityMeetingsCardGrid({ cards }) {
     const { meeting_minutes, meeting_recording, date } = props;
 
     return (
-      <div className="inline-flex justify-around bg-white px-8 py-1 dark:bg-gray-700 dark:shadow-none">
+      <div className="meeting-dropdown-row bg-white dark:bg-gray-700 dark:shadow-none">
         <h3 className="flex-1 pl-1 text-base text-gray-700 dark:text-gray-50">{date}</h3>
         <a className="flex-1 no-underline hover:no-underline" href={meeting_recording?.link}>
           {meeting_recording?.text}
@@ -210,7 +210,11 @@ function CommunityMeetingsCardGrid({ cards }) {
             />
             <SectionHeader
               title=""
-              description="Most Recent meetings"
+              description={
+                index === 0
+                  ? "Most Recent Community Meetings"
+                  : "Most Recent Community Cabal Meetings"
+              }
               textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
               textGradient={false}
             />
@@ -218,7 +222,11 @@ function CommunityMeetingsCardGrid({ cards }) {
             <Dropdown
               options={getDropdownOption(index == 1 ? [...cabalDropdownOptions] : [...MeetingDropdownOptions])}
               dropdownRef={meetingMinutesRef[index]}
-              text="Older meeting details"
+              text={
+                index === 0
+                  ? "Older Community Meeting Details"
+                  : "Older Community Cabal Meetings Details"
+              }
             />
             <dialog
               className="bg-stone-200 w-90-screen h-80-screen fixed top-20 z-50 max-h-screen w-fit border-4 border-purple-100"
