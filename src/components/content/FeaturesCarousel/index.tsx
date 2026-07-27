@@ -92,7 +92,17 @@ function FeaturesCarousel() {
               }`}
             />
           </button>
-          <TabContent {...tabData[activeTabIndex]} isActive={activeTabIndex} />
+          <div className="grid flex-1">
+            {tabData.map((tab, index) => (
+              <div
+                key={index}
+                className={`col-start-1 row-start-1 transition-opacity duration-300 ${
+                  activeTabIndex === index ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none invisible'
+                }`}>
+                <TabContent {...tab} isActive={index} />
+              </div>
+            ))}
+          </div>
           <button onClick={() => setActiveTabIndex(activeTabIndex < 3 ? activeTabIndex + 1 : 0)}>
             <Icon
               icon="fa-solid:arrow-circle-right"
