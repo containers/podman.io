@@ -1,0 +1,21 @@
+name: Feature proposal
+description: Propose a feature
+title: "[Feature]: "
+body:
+  - type: textarea
+    attributes:
+      label: Consisely describe the feature.
+      value: Consisely describe the feature. Do not use a LLM.
+  - type: textarea
+    attributes:
+      label: Upload screenshots
+      value:  Add screenshots or proposed mockups (optional).
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: LLM Policy
+      options:
+        - label: This issue is human-written, and folow up comments will also be human-written
+          required: true
