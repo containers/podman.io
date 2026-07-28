@@ -95,7 +95,7 @@ const InstallOption = (props): JSX.Element => {
 
 function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, platforms }) {
   return (
-    <header className="bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900">
+    <header className="overflow-hidden bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900">
       <div className="mx-auto grid md:grid-cols-2 md:gap-12 xl:mx-20">
         <div className="container row-span-2 mb-4 mt-12 place-self-end md:mb-0 md:ml-10 xl:ml-24">
           <h1 className="mb-4 text-white dark:text-gray-50 lg:mb-8">{title}</h1>
@@ -141,7 +141,7 @@ function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, pla
           </div>
         </div>
       </div>
-      <WaveBorder grid="lg:-mt-44" />
+      <WaveBorder grid="lg:-mt-44" layout="relative z-10" />
     </header>
   );
 }
