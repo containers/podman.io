@@ -30,8 +30,8 @@ const TabContent = (props): JSX.Element => {
   const { title, commands, image, description, isActive } = props;
   return (
     <>
-      <div className="xl:my-23 container my-12 flex flex-wrap justify-center gap-4 md:gap-12">
-        <div className="max-w-sm">
+      <div className="xl:my-23 container my-12 flex flex-wrap items-center justify-center gap-4 md:gap-12">
+        <div className="flex min-h-[23rem] max-w-sm flex-col justify-center">
           <h3
             className={`text-3xl ${
               isActive % 2 === 0
@@ -53,8 +53,8 @@ const TabContent = (props): JSX.Element => {
             {description}
           </p>
         </div>
-        <div className={`${isActive % 2 === 1 && 'md:order-first'}`}>
-          <img {...image} className="object-fit lg:w-[600px]" />
+        <div className={`flex w-full max-w-[600px] justify-center ${isActive % 2 === 1 && 'md:order-first'}`}>
+          <img {...image} className="h-64 w-full rounded-lg object-cover shadow-lg md:h-72 lg:h-80" />
         </div>
       </div>
     </>
@@ -83,7 +83,7 @@ function FeaturesCarousel() {
             ? 'bg-gradient-to-br from-blue-300 via-blue-500 to-blue-900 dark:from-blue-900 dark:to-gray-700/50'
             : 'bg-gradient-to-br from-purple-300 via-purple-700 to-purple-900'
         }`}>
-        <div className="space-between container flex">
+        <div className="space-between container flex items-center">
           <button
             type="button"
             onClick={() => setActiveTabIndex(activeTabIndex > 0 ? activeTabIndex - 1 : tabData.length - 1)}
