@@ -84,7 +84,10 @@ function FeaturesCarousel() {
             : 'bg-gradient-to-br from-purple-300 via-purple-700 to-purple-900'
         }`}>
         <div className="space-between container flex">
-          <button onClick={() => setActiveTabIndex(activeTabIndex > 0 ? activeTabIndex - 1 : tabData.length - 1)}>
+          <button
+            type="button"
+            onClick={() => setActiveTabIndex(activeTabIndex > 0 ? activeTabIndex - 1 : tabData.length - 1)}
+            aria-label="Previous feature">
             <Icon
               icon="fa-solid:arrow-circle-left"
               className={`text-3xl transition duration-150 ease-linear hover:opacity-50 dark:hover:opacity-50  ${
@@ -93,7 +96,10 @@ function FeaturesCarousel() {
             />
           </button>
           <TabContent {...tabData[activeTabIndex]} isActive={activeTabIndex} />
-          <button onClick={() => setActiveTabIndex(activeTabIndex < 3 ? activeTabIndex + 1 : 0)}>
+          <button
+            type="button"
+            onClick={() => setActiveTabIndex(activeTabIndex < 3 ? activeTabIndex + 1 : 0)}
+            aria-label="Next feature">
             <Icon
               icon="fa-solid:arrow-circle-right"
               className={`text-3xl transition duration-150 ease-linear hover:text-purple-900 dark:hover:text-purple-700 ${
