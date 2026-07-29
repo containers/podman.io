@@ -86,7 +86,7 @@ const LatestNews = () => {
 /* PAGE CONTENT */
 function IndexPage() {
   return (
-    <Layout>
+    <Layout description="Manage containers, pods, and images with Podman. Seamlessly work with containers and Kubernetes from your local environment.">
       <HeroHeader {...header} />
       <FeatureSection />
       <InfoBanner {...kubernetesBanner} />

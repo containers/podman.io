@@ -136,7 +136,9 @@ const RunListContainersSection = () => {
 /* PAGE CONTENT */
 function GetStarted() {
   return (
-    <Layout>
+    <Layout
+      title="Get Started"
+      description="Set up Podman and work through the basics: search and pull images, run a container, and list and test what is running.">
       <PageHeader title={header.title} description={header.subtitle} basicResources={true} instructions={header.instructions} />
       <GetHelpSection />
       <SearchPullListSection />
