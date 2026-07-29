@@ -106,19 +106,33 @@ function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, pla
               {() => <DropdownButton text="Download" option={InstallOption(returnOperatingSystemData())} />}
             </BrowserOnly>
           </div>
-          <p className="flex gap-4 text-white dark:text-gray-100">
+          <p className="flex flex-wrap gap-4 text-white dark:text-gray-100">
             <span>
-              Latest stable Podman <Link {...podmanrelease} textColor="text-white dark:text-gray-100" />
+              Latest stable Podman{' '}
+              <Link
+                {...podmanrelease}
+                textColor="text-white dark:text-gray-100"
+                hoverColor="hover:text-blue-100"
+                className="rounded px-1 -mx-1 font-semibold hover:bg-white/10"
+              />
             </span>
             <span>-</span>
             <span>
-              Latest stable Podman Desktop <Link {...desktoprelease} textColor="text-white dark:text-gray-100" />
+              Latest stable Podman Desktop{' '}
+              <Link
+                {...desktoprelease}
+                textColor="text-white dark:text-gray-100"
+                hoverColor="hover:text-blue-100"
+                className="rounded px-1 -mx-1 font-semibold hover:bg-white/10"
+              />
             </span>
             <span>-</span>
             <Link
               text="Apache License 2.0"
               path="https://www.apache.org/licenses/LICENSE-2.0"
               textColor="text-white dark:text-gray-100"
+              hoverColor="hover:text-blue-100"
+              className="rounded px-1 -mx-1 font-semibold hover:bg-white/10"
             />
           </p>
         </div>
