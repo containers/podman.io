@@ -29,7 +29,7 @@ function TestimonialSection() {
         </button>
         <div
           id="slider"
-          className="mx-auto flex h-full w-full justify-start overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar">
+          className="mx-auto flex h-full w-full justify-center overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar">
           {testimonials.map((testimonial, index) => {
             return <Testimonial key={index} {...testimonial} />;
           })}
