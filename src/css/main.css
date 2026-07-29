@@ -66,6 +66,11 @@
   font-size: x-large;
 }
 
+.navbar-sidebar__brand .navbar__title,
+.navbar-sidebar__brand .clean-btn {
+  @apply text-gray-900 dark:text-gray-50;
+}
+
 .navbar__link svg,
 .footer__item svg {
   display: inline;
