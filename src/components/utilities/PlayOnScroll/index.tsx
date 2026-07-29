@@ -15,10 +15,12 @@ const PlayOnScroll: React.FC = (props: VideoProps) => {
         if (videoRef.current) {
           const rect = videoRef.current.getBoundingClientRect();
           const isFullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
-          
+
           if (isFullyVisible) {
-            videoRef.current.play();
-          } else {
+            if (videoRef.current.paused) {
+              videoRef.current.play().catch(() => {});
+            }
+          } else if (!videoRef.current.paused) {
             videoRef.current.pause();
           }
         }
