@@ -155,7 +155,7 @@ function CommunityMeetingsCardGrid({ cards }) {
   }
 
   function getDropdownOption(options: DropdownOptionProps[]) {
-    return options.map(option => <DropDownOption {...option} />);
+    return options.map((option, index) => <DropDownOption key={index} {...option} />);
   }
 
   populateMeetings();
