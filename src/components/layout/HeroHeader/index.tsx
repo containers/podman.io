@@ -111,25 +111,25 @@ function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, pla
               text={`Podman v${podmanrelease.text}`}
               path={podmanrelease.path}
               textColor="text-white dark:text-gray-100"
-              hoverColor="hover:text-purple-300 hover:border-purple-300"
-              underline="no-underline"
-              className="rounded-full border border-white/30 px-3 py-1 text-sm font-semibold"
+              hoverColor="hover:text-white hover:dark:text-gray-100 hover:border-purple-300 hover:bg-purple-900/60"
+              underline="no-underline hover:no-underline"
+              className="rounded-full border border-white/30 px-4 py-1.5 text-base font-semibold"
             />
             <Link
               text={`Podman Desktop v${desktoprelease.text}`}
               path={desktoprelease.path}
               textColor="text-white dark:text-gray-100"
-              hoverColor="hover:text-purple-300 hover:border-purple-300"
-              underline="no-underline"
-              className="rounded-full border border-white/30 px-3 py-1 text-sm font-semibold"
+              hoverColor="hover:text-white hover:dark:text-gray-100 hover:border-purple-300 hover:bg-purple-900/60"
+              underline="no-underline hover:no-underline"
+              className="rounded-full border border-white/30 px-4 py-1.5 text-base font-semibold"
             />
             <Link
               text="Apache License 2.0"
               path="https://www.apache.org/licenses/LICENSE-2.0"
               textColor="text-white dark:text-gray-100"
-              hoverColor="hover:text-purple-300 hover:border-purple-300"
-              underline="no-underline"
-              className="rounded-full border border-white/30 px-3 py-1 text-sm font-semibold"
+              hoverColor="hover:text-white hover:dark:text-gray-100 hover:border-purple-300 hover:bg-purple-900/60"
+              underline="no-underline hover:no-underline"
+              className="rounded-full border border-white/30 px-4 py-1.5 text-base font-semibold"
             />
           </p>
         </div>
