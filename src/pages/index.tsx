@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Layout from '@theme/Layout';
 /* COMPONENTS */
 import Markdown from '@site/src/components/utilities/Markdown';
@@ -6,9 +6,9 @@ import HeroHeader from '@site/src/components/layout/HeroHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import InfoBanner from '@site/src/components/ui/InfoBanner';
 import ThumbCard from '@site/src/components/ui/ThumbCard';
-import ArticleCard from '@site/src/components/ui/ArticleCard';
 import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
 import TestimonialSection from '@site/src/components/content/TestimonialSection';
+import BlogArticlesList from '@site/src/components/content/BlogArticlesList';
 /* PAGE DATA */
 import { header, featureList, kubernetesBanner, compatibleTools } from '@site/static/data/home';
 
@@ -47,42 +47,6 @@ const CompatibleToolSection = () => {
   );
 };
 
-const LatestNews = () => {
-  const [blogData, setBlogData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const rawData = await fetch(
-        'https://blog.podman.io/wp-json/wp/v2/posts?per_page=4&_fields=id, author_info, title, wbDate, jetpack_featured_media_url, link, excerpt',
-      );
-      const jsonData = await rawData.json();
-      setBlogData(jsonData);
-    };
-    fetchData().catch(console.error);
-  }, []);
-  return (
-    <section>
-      <SectionHeader title="Latest Podman News" textColor="text-purple-700" />
-      <div className="flex flex-wrap justify-center gap-4">
-        {blogData.map(card => {
-          return (
-            <ArticleCard
-              title={card.title.rendered}
-              author_link={card.author_info.author_link}
-              display_name={card.author_info.display_name}
-              subtitle={card.excerpt.rendered}
-              date={card.wbDate}
-              imgSrc={card.jetpack_featured_media_url}
-              path={card.link}
-              key={card.id}
-            />
-          );
-        })}
-      </div>
-    </section>
-  );
-};
-
 /* PAGE CONTENT */
 function IndexPage() {
   return (
@@ -92,7 +56,7 @@ function IndexPage() {
       <InfoBanner {...kubernetesBanner} />
       <CompatibleToolSection />
       <TestimonialSection />
-      <LatestNews />
+      <BlogArticlesList limit={4} title="Latest Podman News" titleColor="text-purple-700" containerLayout="grid" />
       <ColoringBookSection />
     </Layout>
   );
