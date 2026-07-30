@@ -32,10 +32,7 @@ const communityChat = {
     {
       text: 'Podman GitHub Discussions',
       path: 'https://github.com/containers/podman/discussions',
-      image: {
-        path: 'vectors/raw/github.svg',
-        alt: 'GitHub Logo',
-      },
+      icon: 'fa6-brands:github',
     },
     {
       text: 'Podman Discord',
