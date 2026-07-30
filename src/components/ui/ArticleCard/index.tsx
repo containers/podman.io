@@ -77,20 +77,23 @@ function ArticleCard(props: ArticleCardProps) {
   // Normal Layout
   else
     return (
-      <article className="my-4 max-w-sm p-4">
-        <div className="grid">
-          <h3 className="w-10/12 rounded-sm bg-gradient-radial from-purple-700 to-purple-900 px-2 py-1 text-white shadow-sm">
-            <a
-              href={props.path}
-              target="_blank"
-              className="text-white no-underline hover:text-blue-100 hover:no-underline dark:text-white dark:hover:text-blue-50">
-              {sanitizeHtml(props.title)}
-            </a>
-          </h3>
+      <article className="flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-gray-50 shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-purple-500/40 hover:shadow-xl hover:shadow-purple-500/5 dark:border-gray-800 dark:bg-gray-900/50 dark:hover:border-purple-500/40 dark:hover:shadow-purple-500/10">
+        <div className="relative h-56 w-full overflow-hidden bg-gray-100 dark:bg-gray-950/40">
+          <img src={props.imgSrc || fallbackImage} alt={sanitizeHtml(props.title)} className="h-full w-full object-contain p-2" />
+          <div className="absolute bottom-0 left-0 z-10 w-10/12">
+            <h3 className="rounded-sm bg-gradient-radial from-purple-700 to-purple-900 px-2 py-1 text-white shadow-sm">
+              <a
+                href={props.path}
+                target="_blank"
+                className="text-white no-underline hover:text-blue-100 hover:no-underline dark:text-white dark:hover:text-blue-50">
+                {sanitizeHtml(props.title)}
+              </a>
+            </h3>
+          </div>
+        </div>
+        <div className="flex flex-1 flex-col p-4">
           {parse(abbrSubtitle)}
-          <PublishDate date={props.date} styles="row-start-1 col-start-1 z-10 my-2" />
-          <img src={props.imgSrc || fallbackImage} className="object-fit col-start-1 row-start-1 rounded-sm" />
-          <p className="text-purple-700">
+          <p className="mt-auto text-purple-700">
             By: <a href={props.author_link}>{props.display_name}</a>
           </p>
         </div>

@@ -34,12 +34,13 @@ const BlogArticlesList: React.FC<BlogArticlesListProps> = ({
   }
 
   const containerClasses =
-    containerLayout === 'vertical' ? 'flex flex-col gap-4' : 'flex flex-wrap justify-center gap-4';
+    containerLayout === 'vertical' ? 'flex flex-col gap-4' : 'mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2';
 
   return (
     <section className={sectionClassName}>
       <SectionHeader title={title} textColor={titleColor} />
-      <div className={containerClasses}>
+      <div className="container px-4 md:px-8">
+        <div className={containerClasses}>
         {data.slice(0, actualDisplayCount).map((card, index) => (
           <ArticleCard
             key={card.id}
@@ -54,6 +55,7 @@ const BlogArticlesList: React.FC<BlogArticlesListProps> = ({
             index={index}
           />
         ))}
+        </div>
       </div>
       {showFooter && footerText && (
         <p className="ml-2l text-center 2xl:text-start">

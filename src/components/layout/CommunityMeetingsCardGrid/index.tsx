@@ -94,7 +94,7 @@ function CommunityMeetingsCardGrid({ cards }) {
       let mdReader = mdFile?.default(useRef());
       mdReader?.props?.children?.forEach(child => {
         let field1: string = child?.props?.children?.[0];
-        let field2: object = child?.props?.children?.[1];
+        let field2: any = child?.props?.children?.[1];
         if (typeof field1 == 'string' && (field1.includes('BlueJeans') || field1.includes('Video'))) {
           if (mdFile?.contentTitle?.includes('Cabal')) {
             cabalDropdownOptions.unshift({

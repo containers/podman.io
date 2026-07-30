@@ -15,21 +15,21 @@ import { header, featureList, kubernetesBanner, compatibleTools } from '@site/st
 /* PAGE COMPONENTS */
 const FeatureItem = ({ title, description }) => {
   return (
-    <li className="m-6 rounded-md bg-gray-50 p-12 text-center dark:bg-gray-900 lg:w-1/3">
-      <h3 className="mx-auto mb-4 text-3xl font-bold text-purple-700 dark:text-purple-500">{title}</h3>
-      <Markdown text={description} styles="mx-auto max-w-md leading-relaxed text-gray-700" />
-    </li>
+    <div className="flex flex-col justify-start rounded-2xl border border-gray-100 bg-gray-50 p-8 shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-purple-500/40 hover:shadow-xl hover:shadow-purple-500/5 dark:border-gray-800 dark:bg-gray-900/50 dark:hover:border-purple-500/40 dark:hover:shadow-purple-500/10">
+      <h3 className="mb-4 text-2xl font-bold text-purple-700 dark:text-purple-500">{title}</h3>
+      <Markdown text={description} styles="leading-relaxed text-gray-700 dark:text-gray-300" />
+    </div>
   );
 };
 
 const FeatureSection = () => {
   return (
-    <section className="mb-12">
-      <ul className="flex flex-wrap justify-center gap-4">
+    <section className="container mb-20 px-4 md:px-8">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         {featureList.map(feature => {
           return <FeatureItem key={feature.title} title={feature.title} description={feature.description} />;
         })}
-      </ul>
+      </div>
     </section>
   );
 };
