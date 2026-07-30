@@ -78,8 +78,8 @@ function CardInfoButtons(cardInfoButtonProps: CardInfoButtonProps) {
 function CustomCard(props) {
   return (
     <article
-      style={props.primary ? { maxHeight: '550px', flex: 1 } : {}}
-      className="flex w-11/12 flex-col rounded-lg bg-gray-50 p-4 shadow-xl dark:bg-gray-700 dark:shadow-none lg:mx-8 lg:my-4">
+      style={props.primary ? { maxHeight: '550px' } : {}}
+      className="mx-2 my-2 flex flex-1 min-w-[15rem] flex-col rounded-lg bg-gray-50 p-4 shadow-xl dark:bg-gray-700 dark:shadow-none lg:mx-8 lg:my-4">
       <CardHeader {...props} />
       {props?.icon ? <FilmIcon /> : <CardBody {...props} />}
       <CardInfoButtons {...props} />

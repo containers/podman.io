@@ -192,13 +192,13 @@ function CommunityMeetingsCardGrid({ cards }) {
   }
 
   return (
-    <div className="justify-content-center align-items-center custom-card-grid-root flex">
+    <div className="justify-content-center align-items-center custom-card-grid-root flex flex-wrap">
       {cards.map((card: CommunityMeetingsCardProps, index: number) => {
         let meetingsData = index == 1 ? CabalMeetingsData : communityMeetingsData;
         return (
           <div
             key={`card-container-${index}`}
-            className="align-items-center card-container mb-4 flex flex-1 flex-col flex-wrap justify-center transition duration-150 ease-linear lg:mb-6">
+            className="align-items-center card-container mb-4 flex min-w-[35rem] flex-1 flex-col flex-wrap justify-center transition duration-150 ease-linear lg:mb-6">
             <CustomCard
               key={`custom-card-${index}`}
               title={card?.title}
