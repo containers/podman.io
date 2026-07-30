@@ -49,6 +49,7 @@ const CompatibleToolSection = () => {
 
 const LatestNews = () => {
   const [blogData, setBlogData] = useState([]);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,13 +59,19 @@ const LatestNews = () => {
       const jsonData = await rawData.json();
       setBlogData(jsonData);
     };
-    fetchData().catch(console.error);
+    fetchData().catch((err) => {
+      console.error(err);
+      setHasError(true);
+    });
   }, []);
   return (
     <section>
       <SectionHeader title="Latest Podman News" textColor="text-purple-700" />
       <div className="flex flex-wrap justify-center gap-4">
-        {blogData.map(card => {
+        {hasError ? (
+          <p className="text-gray-500 my-8">Failed to load latest Podman news. Please check your connection.</p>
+        ) : (
+          blogData.map(card => {
           return (
             <ArticleCard
               title={card.title.rendered}
@@ -77,7 +84,8 @@ const LatestNews = () => {
               key={card.id}
             />
           );
-        })}
+        })
+        )}
       </div>
     </section>
   );

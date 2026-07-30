@@ -173,6 +173,7 @@ const PodmanCLISection = () => {
 /* TODO Should be componentized at some point */
 const LearnArticles = () => {
   const [blogData, setBlogData] = useState([]);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -182,7 +183,10 @@ const LearnArticles = () => {
       const jsonData = await rawData.json();
       setBlogData(jsonData);
     };
-    fetchData().catch(console.error);
+    fetchData().catch((err) => {
+      console.error(err);
+      setHasError(true);
+    });
   }, []);
   return (
     <section className="my-4 lg:my-0">
@@ -190,7 +194,10 @@ const LearnArticles = () => {
         <h3 className="font-medium text-blue-700 dark:text-blue-500">{learnMore.blogPosts.title}</h3>
       </header>
       <div className="flex flex-col gap-4">
-        {blogData.map((card, index) => {
+        {hasError ? (
+          <p className="ml-2 text-center text-gray-500 2xl:text-start">Failed to load latest blog posts.</p>
+        ) : (
+          blogData.map((card, index) => {
           if (index < 2) {
             return (
               <ArticleCard
@@ -206,7 +213,8 @@ const LearnArticles = () => {
               />
             );
           }
-        })}
+        })
+        )}
         <p className="ml-2l text-center 2xl:text-start">
           Check out more posts about Podman{' '}
           <a
