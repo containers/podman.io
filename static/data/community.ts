@@ -17,7 +17,7 @@ const communityChat = {
     'The Podman developers are generally around during CEST and Eastern Time business hours, so please be patient if you’re in another time zone!',
   links: [
     {
-      text: '#podman:matrix.org',
+      text: 'Matrix',
       path: 'https://matrix.to/#/#podman:fedoraproject.org',
       image: {
         path: 'logos/optimized/element-56w-59h.webp',
@@ -25,17 +25,17 @@ const communityChat = {
       },
     },
     {
-      text: '#podman on libera.chat',
+      text: 'IRC',
       path: 'https://web.libera.chat/#podman-desktop',
       textLogo: 'IRC',
     },
     {
-      text: 'Podman GitHub Discussions',
+      text: 'GitHub',
       path: 'https://github.com/containers/podman/discussions',
       icon: 'fa6-brands:github',
     },
     {
-      text: 'Podman Discord',
+      text: 'Discord',
       path: 'https://discord.gg/vwpj7K6gW5',
       icon: 'logos:discord-icon',
     },

@@ -21,7 +21,7 @@ function IconLink({ text, path, icon, image, textLogo }: IconLinkProps) {
           <img src={image.path} alt={image.alt} className="w-16" />
         )}
       </div>
-      <span className="underline-offset-6 mt-4 block text-blue-700 underline transition-colors duration-200 ease-out group-hover:text-purple-700 dark:text-blue-300 dark:group-hover:text-purple-300">
+      <span className="mt-4 block text-blue-700 no-underline transition-colors duration-200 ease-out group-hover:text-purple-700 dark:text-blue-300 dark:group-hover:text-purple-300">
         {text}
       </span>
     </a>
