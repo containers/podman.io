@@ -1,0 +1,21 @@
+name: Bug Report
+description: File a bug report.
+title: "[Bug]: "
+body:
+  - type: textarea
+    attributes:
+      label: Consisely describe the issue
+      value: Consisely describe the issue, and what page it is on. Consisely describe the feature. Do not use a LLM.
+  - type: textarea
+    attributes:
+      label: Upload screenshots or screen recordings
+      value:  Add screenshots or screen recordings to help explain your problem.
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: LLM Policy
+      options:
+        - label: This issue is human-written, and folow up comments will also be human-written
+          required: true
