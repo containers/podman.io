@@ -6,6 +6,12 @@
 @import 'fonts/source-sans-pro.css';
 @import 'fonts/source-code-pro.css';
 
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 :root {
   --ifm-color-primary: #892ca0;
   --ifm-color-primary-darkest: #5f246b;
