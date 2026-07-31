@@ -177,7 +177,7 @@ const LearnArticles = () => {
   useEffect(() => {
     const fetchData = async () => {
       const rawData = await fetch(
-        'https://blog.podman.io/wp-json/wp/v2/posts?per_page=4&_fields=id, author_info, title, wbDate, jetpack_featured_media_url, link, excerpt',
+        'https://blog.podman.io/wp-json/wp/v2/posts?per_page=4&_fields=id, author, author_info, title, wbDate, jetpack_featured_media_url, link, excerpt',
       );
       const jsonData = await rawData.json();
       setBlogData(jsonData);
