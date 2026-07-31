@@ -39,7 +39,7 @@ const Image = ({
   grid,
   display,
   layout,// if array then {[key:string]: any}[];
-  image = { path: 'images/raw/podman-2-196w-172h.png', alt: 'Podman Logo' },
+  image = { path: 'images/optimized/podman-2-196w-172h.webp', alt: 'Podman Logo' },
 }: ImageSectionProps) => {
   return (
     <div>

@@ -225,7 +225,7 @@ function Community() {
       <InfoBanner
         description="**Searching for Podman Desktop Community Meetings?** [Click Here](https://podman-desktop.io/community#community-events) or visit the [official website](https://podman-desktop.io) to learn more."
         image={{
-          src: "images/podman-desktop-logo.png",
+          src: "logos/optimized/podman-desktop-logo-200w-198h.webp",
           alt: "Podman Desktop Logo"
         }}
         styles="bg-purple-700 dark:bg-purple-900 text-white [&_img]:w-16 [&_img]:h-16  [&_a]:underline [&_a:hover]:text-purple-300"

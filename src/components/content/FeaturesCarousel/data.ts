@@ -6,7 +6,7 @@ const tabData = [
     description:
       'Find and pull down containers whether they are on dockerhub.io or quay.io, an internal registry server, or direct from a vendor.',
     image: {
-      src: 'images/raw/cli-screens/cli-find-image.png',
+      src: 'images/optimized/cli-screens/cli-find-image.webp',
       alt: 'example of podman commands',
     },
   },
@@ -15,20 +15,20 @@ const tabData = [
     title: 'Run pre-built application or distro containers.',
     commands: ['podman run'],
     description:
-      'Find and pull down containers whether they are on dockerhub.io or quay.io, an internal registry server, or direct from a vendor.',
+      'Run containers using images pulled from a registry, or from images you build yourself. Podman lets you run containers as a regular user or as root.',
     image: {
-      src: 'images/raw/cli-screens/cli-run-image.png',
+      src: 'images/optimized/cli-screens/cli-run-image.webp',
       alt: 'example of podman commands',
     },
   },
   {
     label: 'Build',
-    title: 'Podman Troubleshooting Guide ',
+    title: 'Build container images from a Containerfile.',
     commands: ['podman build'],
     description:
-      'Find and pull down containers whether they are on dockerhub.io or quay.io, an internal registry server, or direct from a vendor.',
+      'Build OCI and Docker-compatible container images using a Containerfile or Dockerfile — no daemon required.',
     image: {
-      src: 'images/raw/cli-screens/cli-build-image.png',
+      src: 'images/optimized/cli-screens/cli-build-image.webp',
       alt: 'example of podman commands',
     },
   },
@@ -39,7 +39,7 @@ const tabData = [
     description:
       'Podman lets you push your newly-built containers anywhere you want with a single podman push command.',
     image: {
-      src: 'images/raw/cli-screens/cli-share-image.png',
+      src: 'images/optimized/cli-screens/cli-share-image.webp',
       alt: 'example of podman commands',
     },
   },

@@ -152,11 +152,11 @@ const config = {
             items: [
               {
                 label: 'Podman GitHub',
-                href: 'https://github.com/containers/podman',
+                href: 'https://github.com/podman-container-tools/podman',
               },
               {
                 label: 'Podman Desktop GitHub',
-                href: 'https://github.com/containers/podman-desktop',
+                href: 'https://github.com/podman-desktop/podman-desktop',
               },
               {
                 label: 'Podman Website GitHub',

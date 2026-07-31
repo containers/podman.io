@@ -9,7 +9,15 @@ type ArticleCardProps = {
   imgSrc?: string;
   altLayout?: boolean;
   path: string;
+  index?: number;
 };
+
+const FALLBACK_IMAGES = [
+  'images/raw/characters/seal-diving.png',
+  'images/raw/characters/seals-swimming.png',
+  'images/raw/characters/confused-seal.png',
+  'images/raw/podman-selkie-385w-358h.png',
+];
 
 const PublishDate = ({ date, styles }: { date: string; styles?: string }) => {
   return (
@@ -24,6 +32,9 @@ const Title = (title: string) => {
 };
 
 function ArticleCard(props: ArticleCardProps) {
+  // Select fallback image based on index, cycling through available images
+  const fallbackImage = FALLBACK_IMAGES[(props.index || 0) % FALLBACK_IMAGES.length];
+  
   // Sanitizes HTML and converts it to plain text
   const sanitizeHtml = (html: string) => {
     if (!html) return html;
@@ -49,7 +60,7 @@ function ArticleCard(props: ArticleCardProps) {
               <PublishDate date={props.date} styles="col-start-1 order-1 row-start-1 z-10" />
             </div>
             <img
-              src={props.imgSrc}
+              src={props.imgSrc || fallbackImage}
               className=" col-start-1 row-start-1 h-full w-full rounded-sm object-cover lg:w-80"
             />
           </div>
@@ -78,7 +89,7 @@ function ArticleCard(props: ArticleCardProps) {
           </h3>
           {parse(abbrSubtitle)}
           <PublishDate date={props.date} styles="row-start-1 col-start-1 z-10 my-2" />
-          <img src={props.imgSrc} className="object-fit col-start-1 row-start-1 rounded-sm" />
+          <img src={props.imgSrc || fallbackImage} className="object-fit col-start-1 row-start-1 rounded-sm" />
           <p className="text-purple-700">
             By: <a href={props.author_link}>{props.display_name}</a>
           </p>

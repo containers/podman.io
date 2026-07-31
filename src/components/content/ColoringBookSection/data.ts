@@ -11,11 +11,11 @@ export default {
     path: 'https://developers.redhat.com/sites/default/files/Podman%20in%20Action%20e-book%20cover_1.png',
   },
   featureImage: {
-    src: 'images/raw/comic-cover-224w-288h.png',
+    src: 'images/optimized/comic-cover-224w-288h.webp',
     alt: 'Container Commandos coloring book cover',
   },
   collageImages: {
-    src: 'images/raw/coloring-pages.png',
+    src: 'images/optimized/coloring-pages-496w-364h.webp',
     alt: 'A collection of pages from the Podman coloring book.',
   },
 };
