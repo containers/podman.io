@@ -108,7 +108,7 @@ function FeaturesCarousel() {
           </div>
           <button
             type="button"
-            onClick={() => setActiveTabIndex(activeTabIndex < 3 ? activeTabIndex + 1 : 0)}
+            onClick={() => setActiveTabIndex(activeTabIndex < tabData.length - 1 ? activeTabIndex + 1 : 0)}
             aria-label="Next feature">
             <Icon
               icon="fa-solid:arrow-circle-right"
