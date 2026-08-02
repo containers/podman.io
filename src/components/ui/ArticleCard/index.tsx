@@ -52,7 +52,7 @@ function ArticleCard(props: ArticleCardProps) {
               <h3 className="w-9/12 bg-gradient-radial from-purple-700 to-purple-900 p-2 text-white shadow-sm">
                 <a
                   href={props.path}
-                  target="_blank"
+                  target="_blank" rel="noopener noreferrer"
                   className="text-white no-underline hover:text-blue-100 hover:no-underline dark:text-white dark:hover:text-blue-50">
                   {sanitizeHtml(props.title)}
                 </a>
@@ -82,7 +82,7 @@ function ArticleCard(props: ArticleCardProps) {
           <h3 className="w-10/12 rounded-sm bg-gradient-radial from-purple-700 to-purple-900 px-2 py-1 text-white shadow-sm">
             <a
               href={props.path}
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
               className="text-white no-underline hover:text-blue-100 hover:no-underline dark:text-white dark:hover:text-blue-50">
               {sanitizeHtml(props.title)}
             </a>
