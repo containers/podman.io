@@ -63,7 +63,7 @@ export default function NotFound(): JSX.Element {
                   {Messages[rand_seed]}
                 </div>
               </h1>
-              <p>
+              <div>
                 <div
                   id="theme-NotFound-p1">
                   We could not find what you were looking for: &nbsp;
@@ -83,7 +83,7 @@ export default function NotFound(): JSX.Element {
                       path={searchLink} />
                   </span>
                 </div>
-              </p>
+              </div>
             </div>
           </div>
         </main>

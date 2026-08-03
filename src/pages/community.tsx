@@ -124,7 +124,7 @@ const DropdownContent = (props): JSX.Element => {
       <ul>
         {props.map((link, index) => {
           return (
-            <li className="my-2 rounded-md px-2 transition duration-150 ease-linear hover:bg-purple-700 hover:text-white">
+            <li key={index} className="my-2 rounded-md px-2 transition duration-150 ease-linear hover:bg-purple-700 hover:text-white">
               <a href={link.path} className=" w-full hover:text-white hover:no-underline">
                 {link.text}
               </a>
