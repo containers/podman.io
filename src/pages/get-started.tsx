@@ -99,7 +99,7 @@ const RunListContainersSection = () => {
           <CodeBlock language="bash" showLineNumbers className="sm:bg-gray-100 text-left mx-4 overflow-scroll xl:max-w-6xl max-w-xs sm:max-w-md md:max-w-lg lg:max-w-4xl">
             $ podman ps{'\n'}
             CONTAINER ID  IMAGE                           COMMAND           CREATED       STATUS      PORTS                 NAMES{'\n'}
-            01c44968199f  docker.io/library/httpd:latest  httpd-foreground  1 minute ago  Up 1 minute 0.0.0.0:8080->80/tcp  laughing_bob{'\n'}
+            01c44968199f  docker.io/library/httpd:latest  httpd-foreground  1 minute ago  Up 1 minute 0.0.0.0:8080-{'>'}80/tcp  laughing_bob{'\n'}
           </CodeBlock>
           <div className="mx-auto max-w-lg rounded-md bg-white/50 px-6 py-6 shadow-lg dark:bg-gray-900/50">
             <h5 className="text-gray-700">Note:</h5>
