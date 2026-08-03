@@ -483,7 +483,7 @@ To double-check, the first line of the `runc --version` output should show `vers
 ```bash
 git clone https://github.com/opencontainers/runc.git $GOPATH/src/github.com/opencontainers/runc
 cd $GOPATH/src/github.com/opencontainers/runc
-make BUILDTAGS="selinux seccomp"
+make EXTRA_BUILDTAGS="selinux seccomp"
 sudo cp runc /usr/bin/runc
 ```
 
@@ -524,16 +524,16 @@ First, ensure that the `go version` that is found first on the $PATH is 1.23.x o
 ```bash
 git clone https://github.com/containers/podman/
 cd podman
-make BUILDTAGS="selinux seccomp" PREFIX=/usr
+make EXTRA_BUILDTAGS="selinux seccomp" PREFIX=/usr
 sudo env PATH=$PATH make install PREFIX=/usr
 ```
 
 #### Build Tags
 
-Otherwise, if you do not want to build Podman with seccomp or selinux support you can add `BUILDTAGS=""` when running make.
+If you want to build Podman and auto-detect tags, omit the `BUILDTAGS` option when running make.
 
 ```bash
-make BUILDTAGS=""
+make
 sudo make install
 ```
 
@@ -541,7 +541,7 @@ Podman supports optional build tags for compiling support of various features.
 To add build tags to the make option the `BUILDTAGS` variable must be set, for example:
 
 ```bash
-make BUILDTAGS='seccomp apparmor'
+make EXTRA_BUILDTAGS='seccomp apparmor'
 ```
 
 If you are building on RHEL8 you'll need to build without btrfs support due to [it being removed](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/file-systems-and-storage_considerations-in-adopting-rhel-8#btrfs-has-been-removed_file-systems-and-storage):
