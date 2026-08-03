@@ -24,7 +24,7 @@
     "@iconify/react": "^4.0.1",
     "@mdx-js/react": "^1.6.22",
     "autoprefixer": "^10.4.13",
-    "clsx": "^1.2.1",
+    "clsx": "^2",
     "html-react-parser": "^3.0.16",
     "papaparse": "^5.4.1",
     "postcss": "^8.4.21",
