@@ -52,18 +52,18 @@ const DesktopCodeBlock = (props: DeskProps) => {
 function CodeExampleSection() {
   return (
     <div className="container my-12 grid place-items-center gap-4 md:grid-cols-12 md:place-items-end">
-      <DesktopCodeBlock className="-z-50 md:col-span-11 md:col-start-1 md:row-start-1 md:row-end-4 md:place-self-center lg:col-span-10 lg:col-start-1" />
+      <DesktopCodeBlock className="md:col-span-8 md:col-start-1 md:row-start-1 md:row-end-4 md:place-self-center lg:col-span-8 lg:col-start-1" />
       <RenderLabelledCode
         {...searchExample}
-        className="row-start-1 md:col-span-5 md:col-start-9 md:self-end lg:col-span-3 lg:col-start-10"
+        className="row-start-1 md:col-span-4 md:col-start-9 md:self-end lg:col-span-4 lg:col-start-9"
       />
       <RenderLabelledCode
         {...searchFilterExample}
-        className="row-start-2 md:col-span-5 md:col-start-9 lg:col-span-3 lg:col-start-10"
+        className="row-start-2 md:col-span-4 md:col-start-9 lg:col-span-4 lg:col-start-9"
       />
       <RenderLabelledCode
         {...imagesExample}
-        className="row-start-3 md:col-span-5 md:col-start-9 lg:col-span-3 lg:col-start-10"
+        className="row-start-3 md:col-span-4 md:col-start-9 lg:col-span-4 lg:col-start-9"
       />
     </div>
   );
