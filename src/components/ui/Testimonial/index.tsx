@@ -14,7 +14,7 @@ type TestimonialProps = {
 
 function Testimonial(props: TestimonialProps) {
   return (
-    <article className="flex flex-col mx-2 my-4 max-w-sm rounded-sm bg-white p-4 shadow-lg dark:bg-gray-900">
+    <article className="flex flex-col mx-2 my-4 w-[300px] min-w-[300px] max-w-sm rounded-sm bg-white p-4 shadow-lg dark:bg-gray-900 sm:w-[340px] sm:min-w-[340px]">
       <div className="flex items-center gap-3 mb-4">
         <div className="m-2">
           <div className="flex items-center gap-2">
