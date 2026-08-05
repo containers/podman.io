@@ -60,6 +60,7 @@ function ArticleCard(props: ArticleCardProps) {
             <img
               src={props.imgSrc || fallbackImage}
               className="col-start-1 row-start-1 h-72 w-full rounded-sm object-cover object-top lg:w-80"
+              alt={sanitizeHtml(props.title)}
             />
           </div>
           <div className="max-w-sm items-center gap-2 self-center p-2 pr-4">
@@ -90,6 +91,7 @@ function ArticleCard(props: ArticleCardProps) {
           <img
             src={props.imgSrc || fallbackImage}
             className="col-start-1 row-start-1 h-72 w-full rounded-sm object-cover object-top"
+            alt={sanitizeHtml(props.title)}
           />
           <p className="text-purple-700">
             By: <a href={props.author_link}>{props.display_name}</a>
