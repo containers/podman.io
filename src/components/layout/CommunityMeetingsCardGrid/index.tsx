@@ -165,30 +165,34 @@ function CommunityMeetingsCardGrid({ cards }) {
 
   // get top 2 CommunityMeetings & CabalMeetings for subcards
   for (let i = 0; i < 2; i++) {
-    let meeting = MeetingDropdownOptions.shift();
-    communityMeetingsData.push({
-      date: meeting?.date,
-      icon: 'film-icon',
-      buttons: [
-        {
-          path: meeting?.meeting_recording?.link,
-          text: meeting?.meeting_recording?.text,
-        },
-        { ...meeting?.meeting_minutes },
-      ],
-    });
-    meeting = cabalDropdownOptions.shift();
-    CabalMeetingsData.push({
-      date: meeting?.date,
-      icon: 'film-icon',
-      buttons: [
-        {
-          path: meeting?.meeting_recording?.link,
-          text: meeting?.meeting_recording?.text,
-        },
-        { ...meeting?.meeting_minutes },
-      ],
-    });
+    const meeting = MeetingDropdownOptions.shift();
+    if (meeting) {
+      communityMeetingsData.push({
+        date: meeting.date,
+        icon: 'film-icon',
+        buttons: [
+          {
+            path: meeting.meeting_recording?.link,
+            text: meeting.meeting_recording?.text,
+          },
+          { ...meeting.meeting_minutes },
+        ],
+      });
+    }
+    const cabalMeeting = cabalDropdownOptions.shift();
+    if (cabalMeeting) {
+      CabalMeetingsData.push({
+        date: cabalMeeting.date,
+        icon: 'film-icon',
+        buttons: [
+          {
+            path: cabalMeeting.meeting_recording?.link,
+            text: cabalMeeting.meeting_recording?.text,
+          },
+          { ...cabalMeeting.meeting_minutes },
+        ],
+      });
+    }
   }
 
   return (
