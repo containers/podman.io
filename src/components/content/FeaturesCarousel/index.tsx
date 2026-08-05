@@ -7,6 +7,9 @@ const Tab = (props): JSX.Element => {
   return (
     <button
       onClick={method}
+      role="tab"
+      aria-selected={isActive}
+      aria-controls="tabpanel"
       className={`rounded-lg p-4 shadow-sm transition duration-150 hover:bg-purple-700 hover:text-white dark:hover:bg-purple-900 dark:hover:text-gray-50 md:h-36 md:w-56
       ${
         isActive
@@ -67,7 +70,7 @@ function FeaturesCarousel() {
   // render content
   return (
     <section className="bg-gray-100 dark:bg-gray-900">
-      <div className="container -mb-6 flex justify-center gap-5 md:-mb-10 md:gap-8">
+      <div className="container -mb-6 flex justify-center gap-5 md:-mb-10 md:gap-8" role="tablist">
         {/* Loop through Tab data and generate tab buttons for each */}
         {tabData.map((tab, index) => {
           return (

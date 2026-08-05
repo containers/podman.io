@@ -62,6 +62,7 @@ function ArticleCard(props: ArticleCardProps) {
             <img
               src={props.imgSrc || fallbackImage}
               className=" col-start-1 row-start-1 h-full w-full rounded-sm object-cover lg:w-80"
+              alt={sanitizeHtml(props.title)}
             />
           </div>
           <div className="max-w-sm items-center gap-2 self-center p-2 pr-4">
@@ -89,7 +90,7 @@ function ArticleCard(props: ArticleCardProps) {
           </h3>
           {parse(abbrSubtitle)}
           <PublishDate date={props.date} styles="row-start-1 col-start-1 z-10 my-2" />
-          <img src={props.imgSrc || fallbackImage} className="object-fit col-start-1 row-start-1 rounded-sm" />
+          <img src={props.imgSrc || fallbackImage} className="object-fit col-start-1 row-start-1 rounded-sm" alt={sanitizeHtml(props.title)} />
           <p className="text-purple-700">
             By: <a href={props.author_link}>{props.display_name}</a>
           </p>
