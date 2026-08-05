@@ -2392,14 +2392,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/react@npm:^4.0.1":
-  version: 4.1.1
-  resolution: "@iconify/react@npm:4.1.1"
+"@iconify/react@npm:^6":
+  version: 6.0.2
+  resolution: "@iconify/react@npm:6.0.2"
   dependencies:
     "@iconify/types": ^2.0.0
   peerDependencies:
     react: ">=16"
-  checksum: 43b71a0eb4312cf0fa7412b568369e75b8a327b8b7d9fc3dce42b2d047326e39dd17541a8d915fb80b87b20a56eba1a9b52304410624b5814fdf3ad17da9196a
+  checksum: 8038cf3cc064a060dba3f794e4790a1d00c24350ff5fa1aabe94eb9ac1e5795cb2a81ac74928bd75e38878136f3244c5473d2aa579bf3144e92846cec8bb97a4
   languageName: node
   linkType: hard
 
@@ -9638,7 +9638,7 @@ __metadata:
     "@docusaurus/plugin-content-blog": ^2.4.1
     "@docusaurus/preset-classic": ^2.4.1
     "@docusaurus/theme-live-codeblock": ^2.4.1
-    "@iconify/react": ^4.0.1
+    "@iconify/react": ^6
     "@mdx-js/react": ^1.6.22
     "@tsconfig/docusaurus": ^1.0.5
     "@typescript-eslint/eslint-plugin": ^5.48.2
