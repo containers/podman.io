@@ -5,23 +5,13 @@ import Button from '@site/src/components/utilities/Button';
 import DropdownButton from '@site/src/components/utilities/DropdownButton';
 import Link from '@site/src/components/utilities/Link';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
-import operatingSystemData from './installOptions';
+import operatingSystemData, { detectOperatingSystem } from './installOptions';
 type InstallOptionProps = Card & {
   icon: string;
   option?: React.ReactNode;
   path: string;
   third?: { title: string; subtitle: string; icon: string; path: string };
   other?: { path: string; text: string; subtext: string };
-};
-
-const detectOperatingSystem = () => {
-  const userAgent = window.navigator.userAgent.toLowerCase().split(' ');
-  if (userAgent.find(item => item.includes('windows'))) {
-    return 'windows';
-  } else if (userAgent.find(item => item.includes('macintosh'))) {
-    return 'mac';
-  }
-  return 'linux';
 };
 
 function returnOperatingSystemData() {
