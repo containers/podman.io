@@ -33,14 +33,6 @@ const config = {
         },
       };
     },
-    ['@docusaurus/plugin-content-blog',
-      {
-        showReadingTime: true,
-        routeBasePath: 'release',
-        id: 'release-anouncements',
-        path: './release',
-      },
-    ],
   ],
   presets: [
     [
@@ -153,6 +145,10 @@ const config = {
               {
                 label: 'Podman GitHub',
                 href: 'https://github.com/podman-container-tools/podman',
+              },
+              {
+                label: 'Podman Releases',
+                href: 'https://github.com/podman-container-tools/podman/releases',
               },
               {
                 label: 'Podman Desktop GitHub',
