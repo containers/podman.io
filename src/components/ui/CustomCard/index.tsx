@@ -30,9 +30,9 @@ function CardBody(props) {
   const { text } = props;
   return (
     <div className="mx-2 my-6 overflow-y-auto lg:my-8">
-      <p id="cardBody-parsed" className="text-gray-700 dark:text-gray-100">
+      <div id="cardBody-parsed" className="text-gray-700 dark:text-gray-100">
         <Markdown text={text} />
-      </p>
+      </div>
     </div>
   );
 }
