@@ -192,7 +192,7 @@ function CommunityMeetingsCardGrid({ cards }) {
   }
 
   return (
-    <div className="justify-content-center align-items-center custom-card-grid-root flex">
+    <div className="justify-center items-center custom-card-grid-root flex">
       {cards.map((card: CommunityMeetingsCardProps, index: number) => {
         let meetingsData = index == 1 ? CabalMeetingsData : communityMeetingsData;
         return (
