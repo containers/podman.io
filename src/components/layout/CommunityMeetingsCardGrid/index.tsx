@@ -192,13 +192,13 @@ function CommunityMeetingsCardGrid({ cards }) {
   }
 
   return (
-    <div className="justify-content-center align-items-center custom-card-grid-root flex">
+    <div className="custom-card-grid-root flex items-center justify-center">
       {cards.map((card: CommunityMeetingsCardProps, index: number) => {
         let meetingsData = index == 1 ? CabalMeetingsData : communityMeetingsData;
         return (
           <div
             key={`card-container-${index}`}
-            className="align-items-center card-container mb-4 flex flex-1 flex-col flex-wrap justify-center transition duration-150 ease-linear lg:mb-6">
+            className="card-container mb-4 flex flex-1 flex-col flex-wrap items-center justify-center transition duration-150 ease-linear lg:mb-6">
             <CustomCard
               key={`custom-card-${index}`}
               title={card?.title}
@@ -226,7 +226,7 @@ function CommunityMeetingsCardGrid({ cards }) {
               ref={modalRef}>
               <div className="modal-content flex flex-col">
                 {modalHeader}
-                <div className="md-wrapper overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:bg-gray-700  dark:text-gray-50 dark:shadow-none">
+                <div className="md-wrapper overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:bg-gray-700 dark:text-gray-50 dark:shadow-none">
                   {meetinNotesMD}
                 </div>
               </div>
