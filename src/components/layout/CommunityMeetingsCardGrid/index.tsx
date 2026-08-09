@@ -47,6 +47,26 @@ type SubcardGridProps = {
   date: string;
 };
 
+type MarkdownLinkProps = {
+  href?: string;
+};
+
+const isMarkdownLinkElement = (
+  node: React.ReactNode,
+): node is React.ReactElement<MarkdownLinkProps> => {
+  return React.isValidElement<MarkdownLinkProps>(node);
+};
+
+type MarkdownSectionProps = {
+  children?: React.ReactNode;
+};
+
+const isMarkdownSectionElement = (
+  node: React.ReactNode,
+): node is React.ReactElement<MarkdownSectionProps> => {
+  return React.isValidElement<MarkdownSectionProps>(node);
+};
+
 function toggleModalOpen(ref, handler) {
   useEffect(() => {
     const listener = event => {
@@ -91,11 +111,20 @@ function CommunityMeetingsCardGrid({ cards }) {
 
   const populateMeetings = (): void => {
     Object.values(markDownFiles)?.forEach(mdFile => {
-      let mdReader = mdFile?.default(useRef());
-      mdReader?.props?.children?.forEach(child => {
-        let field1: string = child?.props?.children?.[0];
-        let field2: object = child?.props?.children?.[1];
+      const mdReader = mdFile?.default({});
+      if (!isMarkdownSectionElement(mdReader)) {
+        return;
+      }
+
+      React.Children.forEach(mdReader.props.children, child => {
+        if (!isMarkdownSectionElement(child)) {
+          return;
+        }
+
+        const [field1, field2] = React.Children.toArray(child.props.children);
         if (typeof field1 == 'string' && (field1.includes('BlueJeans') || field1.includes('Video'))) {
+          const recordingLink = isMarkdownLinkElement(field2) ? field2.props.href : undefined;
+
           if (mdFile?.contentTitle?.includes('Cabal')) {
             cabalDropdownOptions.unshift({
               date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
@@ -105,7 +134,7 @@ function CommunityMeetingsCardGrid({ cards }) {
                 text: 'Meeting Minutes',
               },
               meeting_recording: {
-                link: field2?.props?.href,
+                link: recordingLink,
                 text: 'Watch Recording',
               },
             });
@@ -118,7 +147,7 @@ function CommunityMeetingsCardGrid({ cards }) {
                 text: 'Meeting Minutes',
               },
               meeting_recording: {
-                link: field2?.props?.href,
+                link: recordingLink,
                 text: 'Watch Recording',
               },
             });
