@@ -1,40 +1,11 @@
-/* colors (current tailwind standard colors but not included with currently using tailwind installation) */
-.bg-stone-200 {
-  background-color: rgb(231 229 228);
-}
-
-/* width custom classes */
-.w-90-screen {
-  width: 90vw;
-}
-
-/* height custom classes */
-.h-80-screen {
-  height: 85vh;
-}
-
-.close-icon {
-  cursor: pointer;
-}
-
-.md-wrapper {
-  padding: 2rem;
-  height: 75vh;
-}
-
-.md-wrapper h1,
-h2,
-h3 {
-  padding: 0.5rem;
-}
-
-dialog {
-  padding: 0;
-}
-
-.modal-header {
-  background-color: white;
-  padding: 1rem;
-  display: inline-flex;
-  justify-content: space-between;
-}
+/*
+ * CommunityMeetingsCardGrid styles
+ *
+ * The modal-specific CSS that was previously in this file (.modal-header,
+ * .md-wrapper, dialog, .bg-stone-200, .w-90-screen, .h-80-screen,
+ * .close-icon) has been removed as part of the meeting-pages refactor.
+ * Meeting notes are now rendered on dedicated pages instead of in a modal.
+ *
+ * If any future utility classes specific to this component are needed,
+ * they should be added here rather than inline.
+ */

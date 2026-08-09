@@ -1,204 +1,151 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { usePluginData } from '@docusaurus/useGlobalData';
+import Link from '@docusaurus/Link';
 import CustomCard from '@site/src/components/ui/CustomCard';
-import SubcardGrid from '@site/src/components/layout/SubcardGrid';
-import SectionHeader from '@site/src/components/layout/SectionHeader';
-import Dropdown from '@site/src/components/utilities/DropDown';
-import CloseIcon from '@site/src/components/shapes/CloseIcon';
-import * as markDownFiles from '@site/static/data/meetings/notes/index'; // ToDo: Lazy load these files
+import type { MeetingMeta } from '@site/src/types/meeting';
 
-import './styles.css';
+// ── Types ──────────────────────────────────────────────────────────────────
 
-type CommunityMeetingsCardProps = {
+/**
+ * Shape of each card in the `communityMeetings.cards` data array defined in
+ * static/data/community.ts.  These top-level cards describe the meeting
+ * schedule and provide "Join Meeting" + "Meeting Agenda" links.
+ */
+type ScheduleCardProps = {
   title: string;
   subtitle: string;
   date: string;
   timeZone: string;
-  buttons: [
-    {
-      text: string;
-      path: string;
-    },
-  ];
+  buttons: Array<{ text: string; path: string }>;
 };
 
-type DropdownOptionProps = {
-  date: string;
-  meeting_recording: {
-    text: string;
-    link: string;
-  };
-  meeting_minutes: {
-    text: string;
-    markDown: ReactNode;
-    modalHeaderData?: string;
-  };
-};
+// ── Helper ─────────────────────────────────────────────────────────────────
 
-type SubcardButtonProps = {
-  text: string;
-  path?: string;
-  markDown?: ReactNode;
-  modalHeaderData?: String;
-};
-
-type SubcardGridProps = {
-  buttons: SubcardButtonProps[];
-  icon: string;
-  date: string;
-};
-
-function toggleModalOpen(ref, handler) {
-  useEffect(() => {
-    const listener = event => {
-      if (ref?.current?.contains(event.target)) {
-        return;
-      }
-      handler(event);
-    };
-    document.addEventListener('mousedown', listener);
-    document.addEventListener('touchstart', listener);
-    return () => {
-      document.removeEventListener('mousedown', listener);
-      document.removeEventListener('touchstart', listener);
-    };
-  }, [ref, handler]);
+/**
+ * Returns the two most recent meetings of the given type, sorted newest first.
+ * If fewer than two meetings of that type exist the returned array will be
+ * shorter — callers must guard against undefined entries.
+ */
+function recentMeetingsOfType(
+  all: MeetingMeta[],
+  type: MeetingMeta['type'],
+): MeetingMeta[] {
+  return [...all]
+    .filter(m => m.type === type)
+    .sort((a, b) => b.isoDate.localeCompare(a.isoDate))
+    .slice(0, 2);
 }
 
-function CommunityMeetingsCardGrid({ cards }) {
-  let cabalDropdownOptions: DropdownOptionProps[] = [];
-  let MeetingDropdownOptions: DropdownOptionProps[] = [];
+// ── Sub-components ─────────────────────────────────────────────────────────
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalHeader, setModalHeader] = useState<ReactNode | undefined>(undefined);
-  const [meetinNotesMD, setMeetinNotesMD] = useState<ReactNode | undefined>(undefined);
-  const meetingMinutesRef = [useRef(), useRef()];
-  const modalRef = useRef();
-
-  toggleModalOpen(modalRef, () => setIsModalOpen(false));
-
-  const prepareModalHeader = (text: string, date: string) => {
-    const modalHeader: ReactNode = (
-      <div className="modal-header dark:bg-gray-500 dark:shadow-none">
-        <h3 className="modal-header-title dark:text-gray-900">{text}</h3>
-        <h3 className="modal-header-date dark:text-gray-900">{date}</h3>
-        <div className="cursor-pointer" onClick={() => setIsModalOpen(false)}>
-          <CloseIcon />
-        </div>
+/**
+ * RecentMeetingRow renders a single row in the "Most recent meetings" section.
+ * Each row shows the date, a link to the meeting notes page, and a recording
+ * link when one is available.
+ */
+function RecentMeetingRow({ meeting }: { meeting: MeetingMeta }): JSX.Element {
+  const { slug, dateLabel, recordingUrl } = meeting;
+  return (
+    <li className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-200 py-2 last:border-0 dark:border-gray-700">
+      <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
+        {dateLabel}
+      </span>
+      <div className="flex gap-2">
+        <Link
+          to={`/community/meetings/${slug}`}
+          className="rounded border border-purple-600 px-2 py-0.5 text-xs font-medium text-purple-700 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:border-purple-400 dark:text-purple-400 dark:hover:bg-purple-700 dark:hover:text-white">
+          Meeting Notes
+        </Link>
+        {recordingUrl && (
+          <a
+            href={recordingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded border border-gray-400 px-2 py-0.5 text-xs font-medium text-gray-600 no-underline transition duration-150 ease-linear hover:bg-gray-100 hover:no-underline dark:border-gray-500 dark:text-gray-300 dark:hover:bg-gray-700">
+            Recording ↗
+          </a>
+        )}
       </div>
-    );
-    setModalHeader(modalHeader);
-  };
+    </li>
+  );
+}
 
-  const populateMeetings = (): void => {
-    Object.values(markDownFiles)?.forEach(mdFile => {
-      let mdReader = mdFile?.default(useRef());
-      mdReader?.props?.children?.forEach(child => {
-        let field1: string = child?.props?.children?.[0];
-        let field2: object = child?.props?.children?.[1];
-        if (typeof field1 == 'string' && (field1.includes('BlueJeans') || field1.includes('Video'))) {
-          if (mdFile?.contentTitle?.includes('Cabal')) {
-            cabalDropdownOptions.unshift({
-              date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
-              meeting_minutes: {
-                markDown: mdReader,
-                modalHeaderData: mdFile['contentTitle'],
-                text: 'Meeting Minutes',
-              },
-              meeting_recording: {
-                link: field2?.props?.href,
-                text: 'Watch Recording',
-              },
-            });
-          } else {
-            MeetingDropdownOptions.unshift({
-              date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
-              meeting_minutes: {
-                markDown: mdReader,
-                modalHeaderData: mdFile['contentTitle'],
-                text: 'Meeting Minutes',
-              },
-              meeting_recording: {
-                link: field2?.props?.href,
-                text: 'Watch Recording',
-              },
-            });
-          }
-        }
-      });
-    });
-  };
-
-  const toggleIsModalOpen = (...modalData) => {
-    modalData && setMeetinNotesMD(modalData[0].markDown);
-    prepareModalHeader(modalData[0].modalHeaderData, modalData[1]);
-    setIsModalOpen(true);
-  };
-
-  function DropDownOption(props: DropdownOptionProps) {
-    const { meeting_minutes, meeting_recording, date } = props;
-
+/**
+ * RecentMeetingsList renders the two most recent meetings of a given type
+ * below their corresponding schedule card, plus a link to the full archive.
+ */
+function RecentMeetingsList({
+  meetings,
+}: {
+  meetings: MeetingMeta[];
+}): JSX.Element {
+  if (meetings.length === 0) {
     return (
-      <div className="inline-flex justify-around bg-white px-8 py-1 dark:bg-gray-700 dark:shadow-none">
-        <h3 className="flex-1 pl-1 text-base text-gray-700 dark:text-gray-50">{date}</h3>
-        <a className="flex-1 no-underline hover:no-underline" href={meeting_recording?.link}>
-          {meeting_recording?.text}
-        </a>
-        <a
-          onClick={() => {
-            toggleIsModalOpen(meeting_minutes, date);
-          }}
-          className="cursor-pointer">
-          {meeting_minutes?.text}
-        </a>
-      </div>
+      <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
+        No meeting records yet.
+      </p>
     );
-  }
-
-  function getDropdownOption(options: DropdownOptionProps[]) {
-    return options.map(option => <DropDownOption {...option} />);
-  }
-
-  populateMeetings();
-
-  let communityMeetingsData: SubcardGridProps[] = [];
-  let CabalMeetingsData: SubcardGridProps[] = [];
-
-  // get top 2 CommunityMeetings & CabalMeetings for subcards
-  for (let i = 0; i < 2; i++) {
-    let meeting = MeetingDropdownOptions.shift();
-    communityMeetingsData.push({
-      date: meeting?.date,
-      icon: 'film-icon',
-      buttons: [
-        {
-          path: meeting?.meeting_recording?.link,
-          text: meeting?.meeting_recording?.text,
-        },
-        { ...meeting?.meeting_minutes },
-      ],
-    });
-    meeting = cabalDropdownOptions.shift();
-    CabalMeetingsData.push({
-      date: meeting?.date,
-      icon: 'film-icon',
-      buttons: [
-        {
-          path: meeting?.meeting_recording?.link,
-          text: meeting?.meeting_recording?.text,
-        },
-        { ...meeting?.meeting_minutes },
-      ],
-    });
   }
 
   return (
-    <div className="justify-content-center align-items-center custom-card-grid-root flex">
-      {cards.map((card: CommunityMeetingsCardProps, index: number) => {
-        let meetingsData = index == 1 ? CabalMeetingsData : communityMeetingsData;
+    <div className="mt-4 w-full max-w-sm rounded-lg bg-white px-4 pb-2 pt-3 shadow-md dark:bg-gray-700">
+      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+        Most recent meetings
+      </p>
+      <ul>
+        {meetings.map(m => (
+          <RecentMeetingRow key={m.slug} meeting={m} />
+        ))}
+      </ul>
+      <Link
+        to="/community/meetings"
+        className="mt-3 block text-center text-xs font-medium text-purple-700 no-underline hover:underline dark:text-purple-400">
+        View all meeting notes →
+      </Link>
+    </div>
+  );
+}
+
+// ── Main component ─────────────────────────────────────────────────────────
+
+/**
+ * CommunityMeetingsCardGrid renders the "Podman Community Meetings" section
+ * on /community.
+ *
+ * Layout:
+ *   For each meeting type (Community Meeting, Cabal) it shows:
+ *     1. A schedule card  — title, recurrence, time zone, Join/Agenda buttons
+ *     2. A "recent meetings" list — 2 most recent, linking to dedicated pages
+ *
+ * This component no longer contains any modal, dialog, or Markdown-file
+ * import logic.  Meeting discovery and data extraction are handled at build
+ * time by the meetings-plugin Docusaurus plugin.
+ *
+ * @param {{ cards: ScheduleCardProps[] }} props
+ */
+function CommunityMeetingsCardGrid({
+  cards,
+}: {
+  cards: ScheduleCardProps[];
+}): JSX.Element {
+  // usePluginData returns the lightweight MeetingMeta array set by the plugin.
+  // The cast is safe because the plugin always populates this with MeetingMeta[].
+  const allMeetings = usePluginData('meetings-plugin') as MeetingMeta[];
+
+  // cards[0] → Community Meeting, cards[1] → Community Cabal (order from data)
+  const meetingTypes: MeetingMeta['type'][] = ['community', 'cabal'];
+
+  return (
+    <div className="justify-content-center align-items-center custom-card-grid-root flex flex-wrap gap-8">
+      {cards.map((card: ScheduleCardProps, index: number) => {
+        const type = meetingTypes[index] ?? 'community';
+        const recent = recentMeetingsOfType(allMeetings, type);
+
         return (
           <div
             key={`card-container-${index}`}
-            className="align-items-center card-container mb-4 flex flex-1 flex-col flex-wrap justify-center transition duration-150 ease-linear lg:mb-6">
+            className="align-items-center mb-4 flex flex-1 flex-col flex-wrap items-center justify-center transition duration-150 ease-linear lg:mb-6">
+            {/* Schedule card — unchanged from the previous implementation */}
             <CustomCard
               key={`custom-card-${index}`}
               title={card?.title}
@@ -208,29 +155,9 @@ function CommunityMeetingsCardGrid({ cards }) {
               data={card?.buttons}
               primary={true}
             />
-            <SectionHeader
-              title=""
-              description="Most Recent meetings"
-              textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
-              textGradient={false}
-            />
-            <SubcardGrid key={`subcard-grid-${index}`} cards={meetingsData} toggleIsModalOpen={toggleIsModalOpen} />
-            <Dropdown
-              options={getDropdownOption(index == 1 ? [...cabalDropdownOptions] : [...MeetingDropdownOptions])}
-              dropdownRef={meetingMinutesRef[index]}
-              text="Older meeting details"
-            />
-            <dialog
-              className="bg-stone-200 w-90-screen h-80-screen fixed top-20 z-50 max-h-screen w-fit border-4 border-purple-100"
-              open={isModalOpen}
-              ref={modalRef}>
-              <div className="modal-content flex flex-col">
-                {modalHeader}
-                <div className="md-wrapper overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:bg-gray-700  dark:text-gray-50 dark:shadow-none">
-                  {meetinNotesMD}
-                </div>
-              </div>
-            </dialog>
+
+            {/* Two most recent meetings with links to dedicated pages */}
+            <RecentMeetingsList meetings={recent} />
           </div>
         );
       })}

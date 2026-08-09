@@ -41,6 +41,9 @@ const config = {
         path: './release',
       },
     ],
+    // Generates /community/meetings (list) and /community/meetings/:slug (detail)
+    // pages from the meeting Markdown files in static/data/meetings/notes/.
+    require('./plugins/meetings-plugin'),
   ],
   presets: [
     [
