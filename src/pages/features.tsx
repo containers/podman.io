@@ -18,15 +18,19 @@ function GetToKnowPodmanSection() {
   return (
     <section className="mb-8 mt-4 lg:mt-8 xl:mb-12">
       <SectionHeader title={knowPodman.title} textColor="text-blue-700 dark:text-blue-500" />
-      <div className="container flex flex-wrap justify-center gap-4 lg:gap-8">
+      <div className="container grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         {knowPodman.cards.map((card, index) => {
           return (
-            <article key={index} className="mt-2 flex flex-col justify-start rounded-md p-4 text-center lg:mt-4">
-              <div>
-                <h3 className="mb-4 font-medium dark:text-blue-500 xl:mb-6">{card.title}</h3>
-                <Markdown text={card.description} styles="max-w-xs" />
-              </div>
-              <img src={card.image.path} alt={card.image.alt} className="order-first my-2 h-52 w-auto object-contain" />
+            <article
+              key={index}
+              className="flex h-full flex-col items-center rounded-lg bg-gray-50 p-6 pb-8 text-center shadow-md dark:bg-gray-700 dark:shadow-none lg:p-8">
+              <img
+                src={card.image.path}
+                alt={card.image.alt}
+                className="mb-6 h-40 w-auto object-contain"
+              />
+              <h3 className="mb-3 font-medium dark:text-blue-500">{card.title}</h3>
+              <Markdown text={card.description} styles="max-w-xs leading-relaxed" />
             </article>
           );
         })}
@@ -195,7 +199,7 @@ const LearnMoreSection = () => {
 function Features() {
   return (
     <Layout>
-      <PageHeader title={header.title} description={header.subtitle} />
+      <PageHeader title={header.title} description={header.subtitle} image={header.image} />
       <GetToKnowPodmanSection />
       <PodmanDesktopSection />
       <ManageContainersUISection />

@@ -1,8 +1,9 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import { Icon } from '@iconify/react';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
 import Markdown from '@site/src/components/utilities/Markdown';
 import BasicResourcesBox from '@site/src/components/content/BasicResourcesBox';
+
 type ImageSectionProps = LayoutProps & {
   image?: Image;
 };
@@ -14,22 +15,22 @@ type PageHeaderProps = LayoutProps &
     darkColor?: string;
     lightColor?: string;
     basicResources?: boolean;
-    instructions?: { [key:string]: any };
+    instructions?: { [key: string]: any };
   };
 
 type PageHeaderSupplementalInfoProps = PageHeaderProps & {
   image?: Image;
   basicResources?: boolean;
-}
+};
 
 type InstructionsProps = PageHeaderProps & {
-  instructions?: { [key:string]: any };
-}
+  instructions?: { [key: string]: any };
+};
 
 const TextBox = ({ grid, display, layout, title, description }: PageHeaderProps): JSX.Element => {
   return (
     <div className={`${grid} ${display} ${layout}`}>
-      <h1 className="mb-6 max-w-sm text-purple-700 dark:text-purple-500 lg:max-w-lg ">{title}</h1>
+      <h1 className="mb-6 max-w-sm text-purple-700 dark:text-purple-500 lg:max-w-lg">{title}</h1>
       <Markdown text={description} styles="leading-relaxed" />
     </div>
   );
@@ -38,64 +39,74 @@ const TextBox = ({ grid, display, layout, title, description }: PageHeaderProps)
 const Image = ({
   grid,
   display,
-  layout,// if array then {[key:string]: any}[];
+  layout,
   image = { path: 'images/optimized/podman-2-196w-172h.webp', alt: 'Podman Logo' },
 }: ImageSectionProps) => {
   return (
-    <div>
-      <img src={image.path} alt={image.alt} className={`${grid} ${display} ${layout}`} />
-    </div>
+    <img
+      src={image.path}
+      alt={image.alt}
+      className={`${grid} ${display} ${layout} h-auto max-h-48 w-auto object-contain`}
+    />
   );
 };
 
 function PageHeaderSupplementalInfo({ image, basicResources }: PageHeaderSupplementalInfoProps) {
   if (basicResources) {
-    return (
-      <BasicResourcesBox />
-    );
-  } 
-  return (
-    <Image image={image} layout="mb-8 lg:mb-0" />
-  );
+    return <BasicResourcesBox />;
+  }
+  return <Image image={image} layout="mb-4 md:mb-0" />;
 }
 
 function Instructions({ instructions }: InstructionsProps) {
   if (instructions) {
     return (
       <div>
-        <h3 className="text-gray-700 mb-4">{instructions.title}</h3>
+        <h3 className="mb-4 text-gray-700">{instructions.title}</h3>
         <p>{instructions.subtitle}</p>
-         <ul className="mb-10 mt-4 flex flex-col gap-6 sm:flex-row lg:mb-16 lg:gap-4 xl:flex-col">
-              <li>
-                <a
-                  href={instructions.button.path}
-                  className="no-underline hover:no-underline flex h-32 max-w-lg flex-col items-center justify-center gap-4 rounded-md bg-gray-100 p-4 text-center text-purple-700 underline-offset-4 transition duration-150 ease-linear hover:bg-purple-700 hover:text-purple-50 hover:shadow-md dark:bg-gray-700 dark:hover:bg-purple-900 dark:hover:text-white lg:h-auto lg:flex-row xl:justify-start">
-                  <span>{instructions.button.text}</span>
-                  <Icon icon={instructions.button.icon} className="order-first hidden lg:block" />
-                </a>
-              </li>
+        <ul className="mb-10 mt-4 flex flex-col gap-6 sm:flex-row lg:mb-16 lg:gap-4 xl:flex-col">
+          <li>
+            <a
+              href={instructions.button.path}
+              className="flex h-32 max-w-lg flex-col items-center justify-center gap-4 rounded-md bg-gray-100 p-4 text-center text-purple-700 no-underline underline-offset-4 transition duration-150 ease-linear hover:bg-purple-700 hover:text-purple-50 hover:shadow-md hover:no-underline dark:bg-gray-700 dark:hover:bg-purple-900 dark:hover:text-white lg:h-auto lg:flex-row xl:justify-start">
+              <span>{instructions.button.text}</span>
+              <Icon icon={instructions.button.icon} className="order-first hidden lg:block" />
+            </a>
+          </li>
         </ul>
       </div>
-    )
+    );
   }
   return null;
 }
 
-function PageHeader({ title, description, image, lightColor = 'white', darkColor = 'gray-900', basicResources, instructions }: PageHeaderProps) {
+function PageHeader({
+  title,
+  description,
+  image,
+  lightColor = 'white',
+  darkColor = 'gray-900',
+  basicResources,
+  instructions,
+}: PageHeaderProps) {
   return (
     <header className={`bg-${lightColor} dark:bg-${darkColor}`}>
-      <div className="bg-gradient-to-r  from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900 lg:pt-8">
+      <div className="bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900 lg:pt-8">
         <WaveBorder />
       </div>
-      <div className="container flex flex-col md:flex-row justify-around">
-        <div>
-          <TextBox title={title} description={description} layout="mt-12 lg:mt-0 mb-8" />
+      <div className="container flex flex-col items-stretch gap-8 md:flex-row md:items-center md:justify-between md:gap-12 lg:py-5">
+        <div className="min-w-0 max-w-xl lg:max-w-2xl">
+          <TextBox title={title} description={description} layout={instructions ? 'mb-8' : ''} />
           <Instructions instructions={instructions} />
         </div>
-        <div className="w-[50%] ml-24">
-          <PageHeaderSupplementalInfo basicResources={basicResources} />
+        <div
+          className={
+            basicResources
+              ? 'flex w-full max-w-md shrink-0 justify-center md:justify-end'
+              : 'hidden shrink-0 md:flex md:justify-end'
+          }>
+          <PageHeaderSupplementalInfo image={image} basicResources={basicResources} />
         </div>
-
       </div>
     </header>
   );
