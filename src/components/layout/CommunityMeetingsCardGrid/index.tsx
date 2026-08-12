@@ -1,4 +1,5 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import CustomCard from '@site/src/components/ui/CustomCard';
 import SubcardGrid from '@site/src/components/layout/SubcardGrid';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
@@ -38,7 +39,7 @@ type SubcardButtonProps = {
   text: string;
   path?: string;
   markDown?: ReactNode;
-  modalHeaderData?: String;
+  modalHeaderData?: string;
 };
 
 type SubcardGridProps = {
@@ -65,8 +66,8 @@ function toggleModalOpen(ref, handler) {
 }
 
 function CommunityMeetingsCardGrid({ cards }) {
-  let cabalDropdownOptions: DropdownOptionProps[] = [];
-  let MeetingDropdownOptions: DropdownOptionProps[] = [];
+  const cabalDropdownOptions: DropdownOptionProps[] = [];
+  const MeetingDropdownOptions: DropdownOptionProps[] = [];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalHeader, setModalHeader] = useState<ReactNode | undefined>(undefined);
@@ -91,10 +92,10 @@ function CommunityMeetingsCardGrid({ cards }) {
 
   const populateMeetings = (): void => {
     Object.values(markDownFiles)?.forEach(mdFile => {
-      let mdReader = mdFile?.default(useRef());
+      const mdReader = mdFile?.default(useRef());
       mdReader?.props?.children?.forEach(child => {
-        let field1: string = child?.props?.children?.[0];
-        let field2: object = child?.props?.children?.[1];
+        const field1: string = child?.props?.children?.[0];
+        const field2: object = child?.props?.children?.[1];
         if (typeof field1 == 'string' && (field1.includes('BlueJeans') || field1.includes('Video'))) {
           if (mdFile?.contentTitle?.includes('Cabal')) {
             cabalDropdownOptions.unshift({
@@ -160,8 +161,8 @@ function CommunityMeetingsCardGrid({ cards }) {
 
   populateMeetings();
 
-  let communityMeetingsData: SubcardGridProps[] = [];
-  let CabalMeetingsData: SubcardGridProps[] = [];
+  const communityMeetingsData: SubcardGridProps[] = [];
+  const CabalMeetingsData: SubcardGridProps[] = [];
 
   // get top 2 CommunityMeetings & CabalMeetings for subcards
   for (let i = 0; i < 2; i++) {
@@ -194,7 +195,7 @@ function CommunityMeetingsCardGrid({ cards }) {
   return (
     <div className="justify-content-center align-items-center custom-card-grid-root flex">
       {cards.map((card: CommunityMeetingsCardProps, index: number) => {
-        let meetingsData = index == 1 ? CabalMeetingsData : communityMeetingsData;
+        const meetingsData = index == 1 ? CabalMeetingsData : communityMeetingsData;
         return (
           <div
             key={`card-container-${index}`}

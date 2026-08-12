@@ -18,8 +18,6 @@
   },
   "plugins": ["@typescript-eslint", "prettier"],
   "ignorePatterns": [
-    "packages/preload/exposedInMainWorld.d.ts",
-    "packages/preload-docker-extension/exposedInDockerExtension.d.ts",
     "node_modules/**",
     "**/dist/**"
   ],

@@ -29,7 +29,7 @@ function ThankYouSection(): JSX.Element {
         </button>
         <div
           id="slider"
-          className="justify-center mx-auto h-full w-full  place-items-center gap-6 overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar scrollbar-track-purple-500 lg:container lg:grid">
+          className="mx-auto h-full w-full place-items-center  justify-center gap-6 overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar scrollbar-track-purple-500 lg:container lg:grid">
           <a
             href={redHat.href}
             target="_blank"

@@ -38,11 +38,7 @@ function TestimonialSection() {
             return <Testimonial key={index} {...testimonial} />;
           })}
         </div>
-        <button
-          type="button"
-          onClick={slideRight}
-          className="hidden sm:block xl:hidden"
-          aria-label="Next testimonial">
+        <button type="button" onClick={slideRight} className="hidden sm:block xl:hidden" aria-label="Next testimonial">
           <Icon
             icon="fa-solid:arrow-circle-right"
             className="dark:hover-text-purple-700 text-4xl text-gray-500 opacity-25 transition duration-150 ease-linear hover:text-purple-900 hover:opacity-100"

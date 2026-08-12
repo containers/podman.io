@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import Button from '@site/src/components/utilities/Button/';
 import Markdown from '@site/src/components/utilities/Markdown';
 import FilmIcon from '../../shapes/FilmIcon';
@@ -11,7 +12,7 @@ type SubcardButtonProps = {
 
 type CardInfoButtonProps = {
   data: SubcardButtonProps[];
-  primary: Boolean;
+  primary: boolean;
   method: Function;
 };
 
