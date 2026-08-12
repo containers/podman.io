@@ -9,7 +9,7 @@ import ColoringBookSection from '@site/src/components/content/ColoringBookSectio
 import FeaturesCarousel from '@site/src/components/content/FeaturesCarousel';
 import BlogArticlesList from '@site/src/components/content/BlogArticlesList';
 /* PAGE DATA */
-import { header, knowPodman, learnMore } from '@site/static/data/features';
+import { header, knowPodman, podmanDesktop, learnMore } from '@site/static/data/features';
 import PlayOnScroll from '@site/src/components/utilities/PlayOnScroll';
 import BasicResourcesBox from '@site/src/components/content/BasicResourcesBox';
 
@@ -41,24 +41,22 @@ function GetToKnowPodmanSection() {
 
 const PodmanDesktopSection = () => {
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-gray-100 pb-5 dark:bg-gray-900 dark:from-gray-700/25 dark:to-gray-900">
-      <div className="align-center container flex justify-center">
-        <div className="flex-row content-center">
-          <h2 className="content-center">
-            <a className="hover:no-underline hover:text-white active:text-white visited:text-white dark:hover:text-white dark:active:text-white dark:visited:text-white text-4xl mb-5 px-5  bg-blue-500 no-underline text-white dark:bg-blue-700 dark:text-white" href="https://podman-desktop.io">Podman Desktop</a>
-          </h2>
-        </div>
-      </div>
-      <div className="container flex flex-col md:flex-row items-center">
-        <div id="imgdiv" className="mx-auto w-full md:w-auto">
-          <img id="pdlogo" className="mx-auto" src="logos/optimized/podman-desktop-logo-200w-198h.webp" />
-        </div>
-        <div className="md:w-1/2 xl:w-3/4">
-          <p className="my-8 align-middle text-2xl leading-relaxed">
-            <a className="font-semibold hover:text-purple-500 text-purple-900 no-underline text-2xl leading-releaxed" href="https://podman-desktop.io">Podman Desktop</a> is Podman's graphical application that makes it easy to install and work with Podman (and
-            other container engines) on Windows, MacOS, and Linux.
-          </p>
-        </div>
+    <section className="mb-8 mt-4 lg:mt-8 xl:mb-12">
+      <SectionHeader title={podmanDesktop.title} textColor="text-blue-700 dark:text-blue-500" />
+      <div className="container flex flex-col items-center gap-8 py-4 md:flex-row md:items-center md:gap-10 lg:gap-14">
+        <img
+          src={podmanDesktop.image.path}
+          alt={podmanDesktop.image.alt}
+          className="h-40 w-auto shrink-0 object-contain md:h-44 lg:h-48"
+        />
+        <p className="min-w-0 flex-1 text-xl leading-relaxed text-gray-700 dark:text-gray-100 md:text-2xl">
+          <a
+            className="font-semibold text-purple-700 no-underline hover:text-purple-500 dark:text-blue-500 dark:hover:text-blue-300"
+            href="https://podman-desktop.io">
+            {podmanDesktop.title}
+          </a>{' '}
+          {podmanDesktop.description}
+        </p>
       </div>
     </section>
   );
