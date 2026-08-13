@@ -47,7 +47,7 @@ const PodmanDesktopSection = () => {
         <img
           src={podmanDesktop.image.path}
           alt={podmanDesktop.image.alt}
-          className="h-40 w-auto shrink-0 object-contain md:h-44 lg:h-48"
+          className="h-40 w-auto shrink-0 object-contain hidden md:block md:h-44 lg:h-48"
         />
         <p className="min-w-0 flex-1 text-xl leading-relaxed text-gray-700 dark:text-gray-100 md:text-2xl">
           <a
