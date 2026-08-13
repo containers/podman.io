@@ -33,6 +33,18 @@ const config = {
         },
       };
     },
+    async function esmInteropPlugin() {
+      return {
+        name: 'esm-interop',
+        configureWebpack() {
+          return {
+            module: {
+              rules: [{ test: /\.m?js$/, resolve: { fullySpecified: false } }],
+            },
+          };
+        },
+      };
+    },
     ['@docusaurus/plugin-content-blog',
       {
         showReadingTime: true,

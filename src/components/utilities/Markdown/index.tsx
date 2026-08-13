@@ -16,7 +16,9 @@ function Markdown({ text, styles }: Props): JSX.Element {
     <BrowserOnly>
       {() => (
         <Suspense fallback={fallBackComponent()}>
-          <ReactMarkdown children={text} className={styles} />
+          <div className={styles}>
+            <ReactMarkdown children={text} />
+          </div>
         </Suspense>
       )}
     </BrowserOnly>
