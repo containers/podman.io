@@ -483,7 +483,7 @@ To double-check, the first line of the `runc --version` output should show `vers
 ```bash
 git clone https://github.com/opencontainers/runc.git $GOPATH/src/github.com/opencontainers/runc
 cd $GOPATH/src/github.com/opencontainers/runc
-make EXTRA_BUILDTAGS="selinux seccomp"
+make RUNC_BUILDTAGS="selinux"
 sudo cp runc /usr/bin/runc
 ```
 
@@ -538,7 +538,7 @@ sudo make install
 ```
 
 Podman supports optional build tags for compiling support of various features.
-To add build tags to the make option the `BUILDTAGS` variable must be set, for example:
+To add build tags while keeping auto-detected defaults, set `EXTRA_BUILDTAGS`, for example:
 
 ```bash
 make EXTRA_BUILDTAGS='seccomp apparmor'
@@ -546,7 +546,7 @@ make EXTRA_BUILDTAGS='seccomp apparmor'
 
 If you are building on RHEL8 you'll need to build without btrfs support due to [it being removed](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/file-systems-and-storage_considerations-in-adopting-rhel-8#btrfs-has-been-removed_file-systems-and-storage):
 ```
-make BUILDTAGS="btrfs_noversion exclude_graphdriver_btrfs"
+make EXTRA_BUILDTAGS="btrfs_noversion exclude_graphdriver_btrfs"
 ```
 
 | Build Tag                        | Feature                            | Dependency  |
