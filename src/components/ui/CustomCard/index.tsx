@@ -12,7 +12,6 @@ type SubcardButtonProps = {
 type CardInfoButtonProps = {
   data: SubcardButtonProps[];
   primary: Boolean;
-  method: Function;
 };
 
 function CardHeader(props) {
@@ -43,9 +42,6 @@ function CardInfoButtons(cardInfoButtonProps: CardInfoButtonProps) {
   const {
     data = [{ text: 'button text', markDown: <>No MarkDown to Display!</> }],
     primary = false,
-    method = () => {
-      console.error('No callback method passed');
-    },
   } = cardInfoButtonProps;
   return (
     <div className="align-center mb-4 mt-8 flex flex-row flex-wrap justify-center gap-4 lg:mb-8 2xl:px-10">
@@ -57,18 +53,7 @@ function CardInfoButtons(cardInfoButtonProps: CardInfoButtonProps) {
           ))
         : data.map((button, index) => (
             <div key={index}>
-              {index == 0 ? (
-                <Button as="link" outline={true} {...button} />
-              ) : (
-                <Button
-                  as="button"
-                  method={() => {
-                    method(button);
-                  }}
-                  outline={true}
-                  {...button}
-                />
-              )}
+              <Button as="link" outline={index !== 0} {...button} />
             </div>
           ))}
     </div>

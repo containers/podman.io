@@ -1,9 +1,8 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import React, { ReactNode, useRef } from 'react';
 import CustomCard from '@site/src/components/ui/CustomCard';
 import SubcardGrid from '@site/src/components/layout/SubcardGrid';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import Dropdown from '@site/src/components/utilities/DropDown';
-import CloseIcon from '@site/src/components/shapes/CloseIcon';
 import * as markDownFiles from '@site/static/data/meetings/notes/index'; // ToDo: Lazy load these files
 
 import './styles.css';
@@ -29,16 +28,13 @@ type DropdownOptionProps = {
   };
   meeting_minutes: {
     text: string;
-    markDown: ReactNode;
-    modalHeaderData?: string;
+    path: string;
   };
 };
 
 type SubcardButtonProps = {
   text: string;
   path?: string;
-  markDown?: ReactNode;
-  modalHeaderData?: String;
 };
 
 type SubcardGridProps = {
@@ -47,47 +43,23 @@ type SubcardGridProps = {
   date: string;
 };
 
-function toggleModalOpen(ref, handler) {
-  useEffect(() => {
-    const listener = event => {
-      if (ref?.current?.contains(event.target)) {
-        return;
-      }
-      handler(event);
-    };
-    document.addEventListener('mousedown', listener);
-    document.addEventListener('touchstart', listener);
-    return () => {
-      document.removeEventListener('mousedown', listener);
-      document.removeEventListener('touchstart', listener);
-    };
-  }, [ref, handler]);
-}
 
 function CommunityMeetingsCardGrid({ cards }) {
   let cabalDropdownOptions: DropdownOptionProps[] = [];
   let MeetingDropdownOptions: DropdownOptionProps[] = [];
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalHeader, setModalHeader] = useState<ReactNode | undefined>(undefined);
-  const [meetinNotesMD, setMeetinNotesMD] = useState<ReactNode | undefined>(undefined);
   const meetingMinutesRef = [useRef(), useRef()];
-  const modalRef = useRef();
 
-  toggleModalOpen(modalRef, () => setIsModalOpen(false));
+const getMeetingPath = (value: string): string => {
+  const dateString = value.split(/[0-9]{2}:[0-9]{2}/)[0].trim();
+  const date = new Date(dateString);
 
-  const prepareModalHeader = (text: string, date: string) => {
-    const modalHeader: ReactNode = (
-      <div className="modal-header dark:bg-gray-500 dark:shadow-none">
-        <h3 className="modal-header-title dark:text-gray-900">{text}</h3>
-        <h3 className="modal-header-date dark:text-gray-900">{date}</h3>
-        <div className="cursor-pointer" onClick={() => setIsModalOpen(false)}>
-          <CloseIcon />
-        </div>
-      </div>
-    );
-    setModalHeader(modalHeader);
-  };
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
+  return `/community/meeting/notes/${year}-${month}-${day}/`;
+};
 
   const populateMeetings = (): void => {
     Object.values(markDownFiles)?.forEach(mdFile => {
@@ -100,8 +72,7 @@ function CommunityMeetingsCardGrid({ cards }) {
             cabalDropdownOptions.unshift({
               date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
               meeting_minutes: {
-                markDown: mdReader,
-                modalHeaderData: mdFile['contentTitle'],
+                path: getMeetingPath(mdFile?.toc?.[0]?.value as string),
                 text: 'Meeting Minutes',
               },
               meeting_recording: {
@@ -113,8 +84,7 @@ function CommunityMeetingsCardGrid({ cards }) {
             MeetingDropdownOptions.unshift({
               date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
               meeting_minutes: {
-                markDown: mdReader,
-                modalHeaderData: mdFile['contentTitle'],
+                path: getMeetingPath(mdFile?.toc?.[0]?.value as string),
                 text: 'Meeting Minutes',
               },
               meeting_recording: {
@@ -128,11 +98,6 @@ function CommunityMeetingsCardGrid({ cards }) {
     });
   };
 
-  const toggleIsModalOpen = (...modalData) => {
-    modalData && setMeetinNotesMD(modalData[0].markDown);
-    prepareModalHeader(modalData[0].modalHeaderData, modalData[1]);
-    setIsModalOpen(true);
-  };
 
   function DropDownOption(props: DropdownOptionProps) {
     const { meeting_minutes, meeting_recording, date } = props;
@@ -144,9 +109,7 @@ function CommunityMeetingsCardGrid({ cards }) {
           {meeting_recording?.text}
         </a>
         <a
-          onClick={() => {
-            toggleIsModalOpen(meeting_minutes, date);
-          }}
+          href={meeting_minutes?.path}
           className="cursor-pointer">
           {meeting_minutes?.text}
         </a>
@@ -214,23 +177,12 @@ function CommunityMeetingsCardGrid({ cards }) {
               textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
               textGradient={false}
             />
-            <SubcardGrid key={`subcard-grid-${index}`} cards={meetingsData} toggleIsModalOpen={toggleIsModalOpen} />
+            <SubcardGrid key={`subcard-grid-${index}`} cards={meetingsData} />
             <Dropdown
               options={getDropdownOption(index == 1 ? [...cabalDropdownOptions] : [...MeetingDropdownOptions])}
               dropdownRef={meetingMinutesRef[index]}
               text="Older meeting details"
             />
-            <dialog
-              className="bg-stone-200 w-90-screen h-80-screen fixed top-20 z-50 max-h-screen w-fit border-4 border-purple-100"
-              open={isModalOpen}
-              ref={modalRef}>
-              <div className="modal-content flex flex-col">
-                {modalHeader}
-                <div className="md-wrapper overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:bg-gray-700  dark:text-gray-50 dark:shadow-none">
-                  {meetinNotesMD}
-                </div>
-              </div>
-            </dialog>
           </div>
         );
       })}
