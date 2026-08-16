@@ -10,7 +10,6 @@ import CommunityMeetingsCardGrid from '@site/src/components/layout/CommunityMeet
 import SmallCard from '@site/src/components/ui/SmallCard';
 import DateTimeBox from '@site/src/components/content/DateTimeBox';
 import InfoBox from '@site/src/components/ui/InfoBox';
-import InfoBanner from '@site/src/components/ui/InfoBanner';
 import IconLink from '@site/src/components/utilities/IconLink';
 import Button from '@site/src/components/utilities/Button';
 import DropdownButton from '@site/src/components/utilities/DropdownButton';
@@ -18,6 +17,44 @@ import DropdownButton from '@site/src/components/utilities/DropdownButton';
 import { header, communityChat, communityMeetings, mailingList, submittingIssues } from '@site/static/data/community';
 
 /* PAGE COMPONENTS */
+const NoticeCard = ({
+  icon,
+  image,
+  text,
+  accent = 'purple',
+}: {
+  icon?: string;
+  image?: { src: string; alt: string };
+  text: string;
+  accent?: 'purple' | 'blue';
+}): JSX.Element => {
+  const accentStyles =
+    accent === 'blue'
+      ? 'border-blue-500 bg-blue-50 dark:bg-blue-500/10'
+      : 'border-purple-500 bg-purple-50 dark:bg-purple-500/10';
+  return (
+    <div className="container">
+      <div
+        className={`mx-auto flex max-w-3xl flex-col items-center gap-4 rounded-2xl border-l-4 p-6 text-center shadow-sm sm:flex-row sm:text-left lg:p-8 ${accentStyles}`}>
+        <div className="shrink-0">
+          {icon ? (
+            <div
+              className={`flex h-12 w-12 items-center justify-center rounded-full text-2xl text-white ${accent === 'blue' ? 'bg-blue-600' : 'bg-purple-700'}`}>
+              <Icon icon={icon} />
+            </div>
+          ) : (
+            image && <img src={image.src} alt={image.alt} className="h-12 w-12 object-contain" />
+          )}
+        </div>
+        <Markdown
+          text={text}
+          styles="leading-relaxed text-gray-700 dark:text-gray-100 [&_a]:font-semibold [&_a]:text-purple-700 dark:[&_a]:text-purple-400"
+        />
+      </div>
+    </div>
+  );
+};
+
 const CommunityLinks = () => {
   const links = communityChat.links.map(x => x);
   return (
@@ -246,22 +283,18 @@ function Community() {
   return (
     <Layout>
       <PageHeader title={header.title} description={header.subtitle} />
-      <InfoBanner
-        description={header.banner.text}
-        icon={header.banner.icon}
-        styles="bg-purple-500 dark:bg-purple-700 text-white"
-      />
+      <div className="pb-8 lg:pb-12">
+        <NoticeCard icon={header.banner.icon} text={header.banner.text} accent="purple" />
+      </div>
       <CommunityChatSection />
       <CommunityMeetingSection />
-      <InfoBanner
-        description="**Searching for Podman Desktop Community Meetings?** [Click Here](https://podman-desktop.io/community#community-events) or visit the [official website](https://podman-desktop.io) to learn more."
-        image={{
-          src: '/logos/optimized/podman-desktop-logo-200w-198h.webp',
-          alt: 'Podman Desktop Logo',
-        }}
-        styles="bg-purple-700 dark:bg-purple-900 text-white [&_img]:w-16 [&_img]:h-16  [&_a:hover]:text-purple-300"
-        marginHeight="mt-8 lg:mt-16"
-      />
+      <div className="py-8 lg:py-12">
+        <NoticeCard
+          image={{ src: '/logos/optimized/podman-desktop-logo-200w-198h.webp', alt: 'Podman Desktop Logo' }}
+          text="**Searching for Podman Desktop Community Meetings?** [Click Here](https://podman-desktop.io/community#community-events) or visit the [official website](https://podman-desktop.io) to learn more."
+          accent="blue"
+        />
+      </div>
       <MailingListSection />
       <SubmitIssuesSection />
       <ThankYouSection />
