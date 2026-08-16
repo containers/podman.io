@@ -19,7 +19,7 @@ The documentation for Podman is located
 ## Installing Podman
 
 For installing or building Podman, please see the
-[installation instructions](docs/installation).
+[installation instructions](installation).
 
 ## Familiarizing yourself with Podman
 
@@ -101,7 +101,7 @@ podman ps
 ### Testing the httpd container
 
 As you are able to see, the container does not have an IP Address assigned. The
-container is reachable via it's published port on your local machine.
+container is reachable via its published port on your local machine.
 
 ```bash
 curl http://localhost:8080
@@ -134,7 +134,7 @@ podman inspect -l | grep IPAddress
 **Note**: The `-l` is a convenience argument for **latest container**. Instead of this short argument, you can
 also use the container's ID, container's name or the long argument (`--latest`).
 
-**Note**: If you are running remote Podman client, including Mac and Windows
+**Note**: If you are running a remote Podman client, including Mac and Windows
 (excluding WSL2) machines, the `-l` option is not available.
 
 ### Viewing the container's logs

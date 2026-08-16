@@ -56,7 +56,7 @@ _Text and Images_
 - Most page data is stored in `static/data/<page-name>`
   - It is set up so that you can use markdown in the strings for much of the content.
     - _If the markdown syntax renders, it needs to be passed into the `Markdown` component (in `components/utilities/`)_
-- files like `static/data/globa.ts`, `static/data/testimonials.ts`, and `static/data/meetings.ts` are meant to make it easier for people with limited coding experience to be able to quickly update specific and regularly changing content.
+- files like `static/data/global.ts`, `static/data/testimonials.ts`, and `static/data/meetings.ts` are meant to make it easier for people with limited coding experience to be able to quickly update specific and regularly changing content.
   - **note**: the `papaparse` library has been added for switching to `.csv` files in the future.
 
 ### Page Style and Structure
@@ -79,7 +79,7 @@ _Text and Images_
 
 ### Typescript
 
-- a bunch of base types are found in `typs.d.ts`
+- a bunch of base types are found in `types.d.ts`
   - these are primarily for props. Kept minimal by design and then extended when needed (primarily with style props)
 
 ### Assets
@@ -91,7 +91,7 @@ _Text and Images_
 - changes to the default styles are in `src/assets/css/main.css` in the following order:
   - imports
   - docusaurus root colors
-  - docusarus component style changes
+  - docusaurus component style changes
   - font configuration
 - default fonts are set inside `@layer base{}` in `main.css` using tailwind's **@apply** syntax
 
