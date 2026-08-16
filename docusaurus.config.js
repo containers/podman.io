@@ -23,6 +23,7 @@ const config = {
   },
   plugins: [
     '@docusaurus/theme-live-codeblock',
+    require.resolve('./src/plugins/meetingNotesPlugin.js'),
     async function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
@@ -33,7 +34,8 @@ const config = {
         },
       };
     },
-    ['@docusaurus/plugin-content-blog',
+    [
+      '@docusaurus/plugin-content-blog',
       {
         showReadingTime: true,
         routeBasePath: 'release',
@@ -75,10 +77,15 @@ const config = {
         logo: {
           alt: 'Podman Logo',
           src: 'logos/optimized/podman-3-logo-266w-253h.webp',
+          // Docusaurus's ThemedImage hides the light-only image outright in
+          // dark mode unless a dark variant is also given — same artwork
+          // works fine on both, so just point srcDark at the same file.
+          srcDark: 'logos/optimized/podman-3-logo-266w-253h.webp',
         },
         items: [
           { to: 'features', label: 'Features', position: 'right' },
           { to: 'get-started', label: 'Get Started', position: 'right' },
+          { to: 'downloads', label: 'Downloads', position: 'right' },
           { to: 'community', label: 'Community', position: 'right' },
           {
             to: 'https://blog.podman.io',
@@ -108,16 +115,20 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Installation Instructions',
-                to: 'docs/installation',
+                label: 'Downloads',
+                to: '/downloads',
+              },
+              {
+                label: 'Installation',
+                to: '/docs/installation',
               },
               {
                 label: 'Documentation',
-                to: 'docs/',
+                to: '/docs/',
               },
 
               {
-                label: 'Podman CLI Commands',
+                label: 'CLI Commands',
                 href: 'https://docs.podman.io/en/latest/Commands.html',
               },
             ],
@@ -151,19 +162,19 @@ const config = {
             title: 'Projects',
             items: [
               {
-                label: 'Podman GitHub',
+                label: 'GitHub',
                 href: 'https://github.com/podman-container-tools/podman',
               },
               {
-                label: 'Podman Desktop GitHub',
+                label: 'Desktop GitHub',
                 href: 'https://github.com/podman-desktop/podman-desktop',
               },
               {
-                label: 'Podman Website GitHub',
+                label: 'Website GitHub',
                 href: 'https://github.com/containers/podman.io',
               },
               {
-                label: 'Podman Desktop Website',
+                label: 'Desktop Website',
                 href: 'https://podman-desktop.io/',
               },
             ],

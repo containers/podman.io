@@ -1,41 +1,83 @@
 import React from 'react';
+import { Icon } from '@iconify/react';
+
+function formatTime(date: Date, timeZone: string): string {
+  return date.toLocaleString('en-US', { timeZone, hour: '2-digit', minute: '2-digit', hour12: true });
+}
+
+function formatZoneAbbreviation(date: Date, timeZone: string): string {
+  const long = Intl.DateTimeFormat('en-US', { timeZone, timeZoneName: 'long' }).format(date).split(', ')[1];
+  return long
+    .split(' ')
+    .map(word => word[0])
+    .join('');
+}
+
+type ZoneRowData = {
+  label: string;
+  flag: string;
+  time: string;
+  abbreviation: string;
+};
+
+function ZoneRow({ label, flag, time, abbreviation }: ZoneRowData): JSX.Element {
+  return (
+    <div className="flex items-center justify-between gap-4 rounded-xl bg-white/5 px-5 py-4">
+      <div className="flex items-center gap-4">
+        <Icon icon={flag} className="h-9 w-9 shrink-0 rounded-full" />
+        <div>
+          <p className="text-sm text-purple-100">{label}</p>
+          <p className="text-2xl font-extrabold text-white">{time}</p>
+        </div>
+      </div>
+      <span className="shrink-0 rounded-md bg-purple-500 px-3 py-1.5 text-sm font-bold text-white">{abbreviation}</span>
+    </div>
+  );
+}
 
 function DateTimeBox(): JSX.Element {
   const date = new Date();
-  const centralEuropeTime = [
-    date.toLocaleString('en-US', {
-      timeZone: 'Europe/Paris',
-      hour: 'numeric',
-      minute: 'numeric',
-      hour12: false,
-    }),
-    Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Paris', timeZoneName: 'long' }).format().split(',')[1],
-  ];
-  const easternTime = [
-    date.toLocaleString('en-US', {
-      timeZone: 'America/New_York',
-      hour: 'numeric',
-      minute: 'numeric',
-      hour12: false,
-    }),
-    Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', timeZoneName: 'long' }).format().split(',')[1],
+
+  const zones: ZoneRowData[] = [
+    {
+      label: 'US / Eastern Time',
+      flag: 'circle-flags:us',
+      time: formatTime(date, 'America/New_York'),
+      abbreviation: formatZoneAbbreviation(date, 'America/New_York'),
+    },
+    {
+      label: 'Europe / Central Time',
+      flag: 'circle-flags:eu',
+      time: formatTime(date, 'Europe/Paris'),
+      abbreviation: formatZoneAbbreviation(date, 'Europe/Paris'),
+    },
   ];
 
   return (
-    <article className="mb-10 max-w-lg rounded-lg bg-aqua shadow-md dark:bg-purple-900">
-      <div className="m-4 grid grid-cols-2 gap-x-4 lg:m-8">
-        <div className="col-span-full mb-5 text-center">
-          <h3 className="font-bold text-gray-300 dark:text-gray-100">Current Time</h3>
+    <article className="relative mx-auto mb-10 max-w-lg overflow-hidden rounded-2xl bg-gradient-to-br from-blue-700 via-purple-700 to-purple-900 p-6 shadow-lg lg:p-8">
+      <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-500/20 blur-3xl" />
+      <header className="relative mb-6 flex items-start justify-between gap-4">
+        <div className="flex items-start gap-3">
+          <Icon icon="mdi:earth" className="mt-0.5 h-7 w-7 shrink-0 text-purple-100" />
+          <div>
+            <h3 className="font-bold text-white">Current Time</h3>
+            <p className="text-sm text-purple-100">Community around the world</p>
+          </div>
         </div>
-        <div className="text-center">
-          <h4 className="mb-2 text-3xl font-extrabold text-purple-500 dark:text-gray-100">{centralEuropeTime[0]}</h4>
-          <p className="w-40 font-bold text-blue-900">{centralEuropeTime[1]}</p>
-        </div>
-        <div className="text-center">
-          <h4 className="mb-2 text-3xl font-extrabold text-purple-500 dark:text-gray-100">{easternTime[0]}</h4>
-          <p className="w-40 font-bold text-blue-900">{easternTime[1]}</p>
-        </div>
+        <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white">
+          <span className="h-2 w-2 rounded-full bg-blue-500" />
+          Live
+        </span>
+      </header>
+      <div className="relative flex flex-col gap-4">
+        {zones.map(zone => (
+          <ZoneRow key={zone.label} {...zone} />
+        ))}
       </div>
+      <footer className="relative mt-6 flex items-center gap-2 border-t border-white/10 pt-5 text-sm text-purple-100">
+        <span className="h-2 w-2 rounded-full bg-blue-500" />
+        Most community members are online now
+      </footer>
     </article>
   );
 }

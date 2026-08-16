@@ -12,7 +12,7 @@ tags: [containers, podman, distro, linux, centos, ubuntu, debian]
 
 ## By Lokesh Mandvekar [GitHub](https://github.com/lsm5)
 
-The Podman Community [builds and supports packages](https://podman.io/getting-started/installation)
+The Podman Community [builds and supports packages](/get-started)
 for a wide variety of Linux distributions and operating systems. These builds are
 provided in the public Open Build Service hosted by openSUSE.
 [These pre-built packages](https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/)

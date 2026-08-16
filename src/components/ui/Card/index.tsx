@@ -21,7 +21,7 @@ function CardBody(props) {
 }
 function CardButtons({ data = [{ text: 'button text' }] }) {
   return (
-    <div className=" mx-2 mb-4 flex justify-center gap-2 lg:mb-8">
+    <div className="mx-2 mb-4 flex justify-center gap-2 lg:mb-8">
       {data.map((button, index) => (
         <div key={index}>
           {index == 0 ? <Button as="link" {...button} /> : <Button as="link" outline={true} {...button} />}
@@ -33,7 +33,7 @@ function CardButtons({ data = [{ text: 'button text' }] }) {
 
 function Card(props) {
   return (
-    <article className="m-4 flex flex-col justify-between rounded-lg bg-gray-50 p-4 shadow-xl dark:bg-gray-700 dark:shadow-none lg:m-2">
+    <article className="m-4 flex flex-col justify-between rounded-xl border border-gray-100 bg-gray-50 p-4 shadow-xl transition duration-200 hover:-translate-y-1 hover:shadow-2xl dark:border-gray-500 dark:bg-gray-700 dark:shadow-none lg:m-2">
       <CardHeader {...props} />
       <CardBody {...props} />
       <CardButtons {...props} />

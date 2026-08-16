@@ -9,37 +9,34 @@ type ButtonProps = Button & {
 
 function Button({ as = 'link', outline, colors, icon, text, method, path }: ButtonProps) {
   const baseStyles =
-    'text-xl h-fit my-2 block max-w-fit cursor-pointer rounded-md px-6 py-2 font-semibold transition duration-150 ease-in-out hover:no-underline hover:shadow-md whitespace-nowrap';
+    'inline-flex items-center justify-center gap-2 my-2 max-w-fit cursor-pointer whitespace-nowrap rounded-md px-6 py-2.5 text-base font-semibold no-underline transition duration-150 ease-in-out hover:no-underline active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900';
   const solidColors =
-    'bg-purple-700 dark:bg-purple-900 text-white dark:text-white hover:bg-purple-900 no-underline hover:no-underline dark:hover:text-gray-50 dark:hover:bg-purple-700 hover:text-white';
+    'border border-transparent bg-purple-700 text-white shadow-sm hover:bg-purple-900 hover:shadow-md hover:text-white dark:bg-purple-700 dark:hover:bg-purple-500';
   const outlineColors =
-    'no-underline outline dark:bg-white dark:text-purple-700 text-purple-700 dark:text-purple-900 dark:hover:bg-purple-900 dark:hover:text-white';
+    'border-2 border-purple-700 bg-transparent text-purple-700 hover:bg-purple-700 hover:text-white dark:border-purple-500 dark:text-purple-300 dark:hover:bg-purple-500 dark:hover:text-white';
   /* Set Colors */
-  const variantStyles = outline ? ` ${outlineColors} ${colors}` : `${solidColors} ${colors}`;
+  const variantStyles = `${outline ? outlineColors : solidColors} ${colors ?? ''}`;
+  const className = `${baseStyles} ${variantStyles}`;
+
+  const content = !icon ? (
+    <span>{text}</span>
+  ) : (
+    <span className="flex items-center gap-2">
+      {text} <Icon icon={icon} />
+    </span>
+  );
 
   /** Render the component with style variations */
   if (as === 'button') {
     return (
-      <button onClick={method} className={`${baseStyles} ${variantStyles}`}>
-        {!icon ? (
-          <span>{text}</span>
-        ) : (
-          <span className="flex items-center gap-2">
-            {text} <Icon icon={icon} />
-          </span>
-        )}
+      <button type="button" onClick={method} className={className}>
+        {content}
       </button>
     );
   }
   return (
-    <a href={path} className={`${baseStyles} ${variantStyles}`}>
-      {!icon ? (
-        <span>{text}</span>
-      ) : (
-        <span className="flex items-center gap-2">
-          {text} <Icon icon={icon} />
-        </span>
-      )}
+    <a href={path} className={className}>
+      {content}
     </a>
   );
 }

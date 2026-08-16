@@ -1,60 +1,51 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
+import TerminalCard from '@site/src/components/utilities/TerminalCard';
 import tabData from './data';
 
+const tabIcons: Record<string, string> = {
+  Find: 'mdi:magnify',
+  Run: 'mdi:play-circle-outline',
+  Build: 'mdi:hammer-wrench',
+  Share: 'mdi:share-variant-outline',
+};
+
 const Tab = (props): JSX.Element => {
-  const { label, commands, method, isActive } = props;
+  const { label, method, isActive } = props;
   return (
     <button
       onClick={method}
-      className={`rounded-lg p-4 shadow-sm transition duration-150 hover:bg-purple-700 hover:text-white dark:hover:bg-purple-900 dark:hover:text-gray-50 md:h-36 md:w-56
-      ${
+      className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold shadow-sm transition duration-150 ease-linear ${
         isActive
-          ? 'bg-gradient-radial from-purple-500 to-purple-700 text-white dark:from-purple-700 dark:to-purple-900 dark:shadow-purple-900'
-          : '0 bg-white text-gray-700 dark:bg-gray-700 dark:text-gray-300 dark:shadow-gray-700'
+          ? 'bg-gradient-to-br from-purple-500 to-purple-700 text-white dark:from-purple-700 dark:to-purple-900'
+          : 'bg-white text-gray-700 hover:bg-purple-50 hover:text-purple-700 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-500 dark:hover:text-white'
       }`}>
-      <h4 className="text-blue-500 dark:text-blue-500">{label}</h4>
-      <ul>
-        {commands.map((command, index) => {
-          return (
-            <li key={index} className="hidden font-mono text-sm md:block">
-              {command}
-            </li>
-          );
-        })}
-      </ul>
+      <Icon icon={tabIcons[label]} className="text-base" />
+      {label}
     </button>
   );
 };
 const TabContent = (props): JSX.Element => {
-  const { title, commands, image, description, isActive } = props;
+  const { title, commands, terminal, description, isActive } = props;
   return (
     <>
-      <div className="xl:my-23 container my-12 flex flex-wrap justify-center gap-4 md:gap-12">
+      <div className="mx-auto my-16 flex w-full max-w-6xl flex-wrap items-center justify-center gap-8 px-4">
         <div className="max-w-sm">
-          <h3
-            className={`text-3xl ${
-              isActive % 2 === 0
-                ? 'text-white dark:text-white'
-                : isActive === 1
-                ? 'text-blue-700 dark:text-purple-500'
-                : 'text-purple-700 dark:text-purple-500'
-            }`}>
-            {title}
-          </h3>
-          <ul className="my-4 lg:my-12">
+          <h3 className="text-3xl text-white dark:text-white">{title}</h3>
+          <ul className="my-6 flex flex-col gap-2">
             {commands.map((command, index) => (
-              <li key={index} className={`font-mono  ${isActive == 2 ? 'text-white' : 'text-blue-500'}`}>
+              <li
+                key={index}
+                className="inline-flex w-fit items-center gap-1.5 rounded-md bg-white/10 px-3 py-1.5 font-mono text-sm text-blue-100 ring-1 ring-white/15">
+                <Icon icon="mdi:chevron-right" className="shrink-0 text-xs text-purple-300" />
                 {command}
               </li>
             ))}
           </ul>
-          <p className={isActive % 2 === 0 ? 'text-white dark:text-white' : 'text-gray-900 dark:text-white'}>
-            {description}
-          </p>
+          <p className="text-white/90 dark:text-white/90">{description}</p>
         </div>
-        <div className={`${isActive % 2 === 1 && 'md:order-first'}`}>
-          <img {...image} className="object-fit lg:w-[600px]" />
+        <div className={`w-full max-w-[500px] ${isActive % 2 === 1 && 'md:order-first'}`}>
+          <TerminalCard>{terminal}</TerminalCard>
         </div>
       </div>
     </>
@@ -67,7 +58,7 @@ function FeaturesCarousel() {
   // render content
   return (
     <section className="bg-gray-100 dark:bg-gray-900">
-      <div className="container -mb-6 flex justify-center gap-5 md:-mb-10 md:gap-8">
+      <div className="relative z-10 mx-auto -mb-8 flex w-full max-w-3xl flex-wrap justify-center gap-3 px-4">
         {/* Loop through Tab data and generate tab buttons for each */}
         {tabData.map((tab, index) => {
           return (
@@ -75,36 +66,27 @@ function FeaturesCarousel() {
           );
         })}
       </div>
-      <section
-        className={`py-10 md:py-16 ${
-          activeTabIndex % 2 === 1
-            ? 'bg-white dark:bg-gray-900 dark:bg-gradient-to-b dark:from-purple-900 dark:to-purple-900/50'
-            : activeTabIndex === 2
-            ? 'bg-gradient-to-br from-blue-300 via-blue-500 to-blue-900 dark:from-blue-900 dark:to-gray-700/50'
-            : 'bg-gradient-to-br from-purple-300 via-purple-700 to-purple-900'
-        }`}>
-        <div className="space-between container flex">
+      <section className="bg-gradient-to-br from-purple-300 via-purple-700 to-purple-900 py-10 dark:from-purple-900 dark:via-purple-900 dark:to-gray-900 md:py-16">
+        <div className="mx-auto flex min-h-[540px] w-full max-w-6xl items-center justify-between px-4">
           <button
             type="button"
+            className="shrink-0"
             onClick={() => setActiveTabIndex(activeTabIndex > 0 ? activeTabIndex - 1 : tabData.length - 1)}
             aria-label="Previous feature">
             <Icon
               icon="fa-solid:arrow-circle-left"
-              className={`text-3xl transition duration-150 ease-linear hover:opacity-50 dark:hover:opacity-50  ${
-                activeTabIndex % 2 === 0 ? 'text-white' : 'text-purple-700 dark:text-gray-50'
-              }`}
+              className="text-3xl text-white transition duration-150 ease-linear hover:opacity-50 dark:hover:opacity-50"
             />
           </button>
           <TabContent {...tabData[activeTabIndex]} isActive={activeTabIndex} />
           <button
             type="button"
+            className="shrink-0"
             onClick={() => setActiveTabIndex(activeTabIndex < 3 ? activeTabIndex + 1 : 0)}
             aria-label="Next feature">
             <Icon
               icon="fa-solid:arrow-circle-right"
-              className={`text-3xl transition duration-150 ease-linear hover:text-purple-900 dark:hover:text-purple-700 ${
-                activeTabIndex % 2 === 0 ? 'text-white' : 'text-gray-700 dark:text-gray-50'
-              }`}
+              className="text-3xl text-white transition duration-150 ease-linear hover:opacity-50 dark:hover:opacity-50"
             />
           </button>
         </div>

@@ -7,7 +7,7 @@ const header = {
     subtitle: 'For installing or building Podman, please see the installation instructions:',
     button: {
       text: 'Installation Instructions',
-      path: 'docs/installation',
+      path: '/docs/installation',
       icon: 'fa6-solid:book',
     },
   },

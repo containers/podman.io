@@ -4,7 +4,7 @@ import { DayOfTheWeek } from '@site/src/components/utilities/DateUtils';
 
 function SubcardGrid({ cards, toggleIsModalOpen }) {
   return (
-    <div className="mb-4 flex lg:mb-6">
+    <div className="mb-4 flex w-full flex-col items-center gap-4 sm:flex-row sm:items-stretch lg:mb-6">
       {cards?.map((card, index) => {
         let date = new Date(card.date).getDay();
         return (
@@ -16,6 +16,8 @@ function SubcardGrid({ cards, toggleIsModalOpen }) {
             text={card.subtitle}
             data={card.buttons}
             icon={card.icon}
+            embedUrl={card.embedUrl}
+            embedTitle={card.embedTitle}
             method={meeting_minutes => {
               toggleIsModalOpen(meeting_minutes, card.date);
             }}

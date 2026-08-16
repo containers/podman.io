@@ -1,27 +1,33 @@
 # Podman Community Meeting Notes
+
 ## Aug 4, 2026 11:00 a.m. Eastern (UTC-4)
 
 ### Attendees
+
 Tom Sweeney, Pranav Jogdand, Nalin Dahyabhai, Kartik Yadav, Pratik Patil, Miloslav Trmac, Ashley Cui, Giuseppe Scrivano, Joshua Arrevillaga, Paul Holzinger,Marek Simek, Kevin Clevenger, Jetshree Sharma, Lokesh Mandvekar, Tim Zhou, Brent Baude, Gagan U
 
 ### Meeting Notes
+
 Video [Recording](https://youtu.be/W3cWHSrQnEQ)
 
 Meeting start: 11:02 a.m. EDT (UTC-4)
 
 #### Quick Recap
+
 The Podman Community Meeting covered updates and demos related to recent Podman releases and LFX internships. Paul demonstrated improvements in port forwarding for custom networks in Podman 6.1 RC1, showing how source IP addresses are now correctly preserved. The group discussed the upcoming final release of Podman 6.1, noting it mostly included bug fixes and a few new features. Tom and Ashley provided information about the LFX internships, emphasizing that prior contributions were not required for applicants and addressing questions about the application process, design portfolios, and cover letters. Several participants, including Kartik and Pratik, asked for clarification on internship expectations and project proposals. The conversation ended with a reminder for topic submissions for the next meeting and thanks to the presenters and attendees.
 
 #### Next Steps
-  * Tom: Review the number of applications received for the LFX internships.
-  * Kartik: Check the CNCF/monitoring repo issue for the broken text on the LFX portal and consider creating an issue or PR if not already done.
-  * All interested applicants: Apply for the LFX internships before the closing date of August 18th.
-  * All interested applicants: Prepare a design portfolio for the website UX project, including descriptions of contributions, and a cover letter outlining relevant experience and project approach.
-  * All interested applicants for the automation project: Consider including some code samples or contributions (personal, school, or open-source) in the application, though it is not strictly required.
-  * All attendees: Submit topics for the next Podman Community Meeting (October 6, 2026).
+
+- Tom: Review the number of applications received for the LFX internships.
+- Kartik: Check the CNCF/monitoring repo issue for the broken text on the LFX portal and consider creating an issue or PR if not already done.
+- All interested applicants: Apply for the LFX internships before the closing date of August 18th.
+- All interested applicants: Prepare a design portfolio for the website UX project, including descriptions of contributions, and a cover letter outlining relevant experience and project approach.
+- All interested applicants for the automation project: Consider including some code samples or contributions (personal, school, or open-source) in the application, though it is not strictly required.
+- All attendees: Submit topics for the next Podman Community Meeting (October 6, 2026).
 
 ### Topics
-#### Pasta Forwarding Demo - Paul Holzinger  ([01:29](https://www.youtube.com/watch?v=W3cWHSrQnEQ&t=89s) in the video)
+
+#### Pasta Forwarding Demo - Paul Holzinger ([01:29](https://www.youtube.com/watch?v=W3cWHSrQnEQ&t=89s) in the video)
 
 Paul demonstrated new port forwarding functionality in Podman 6 and 6.1 that addresses a long-standing issue with incorrect source IP addresses in custom networks. The demonstration showed how the previous standard poster mode worked with default networks but failed with custom networks, causing remote connections to appear with incorrect IP addresses in web server logs. Paul explained that they added a new port forwarding mode in Podman 6.0 and made further improvements in 6.1, including support for IPv6 connections in dual-stack networks.
 
@@ -29,34 +35,38 @@ Paul demonstrated new features in Podman 6.1 RC1, which was released on Friday. 
 
 #### Podman 6.1 RC1 update - Paul Holzinger, Tom Sweeney - ([08:47](https://www.youtube.com/watch?v=W3cWHSrQnEQ&t=527s) in the video)
 
-Tom and Paul discussed the recent release, which focused mainly on bug fixes and included new features like Podman volume rename and Podman machine restart. It was released on Friday July 29, 2026.  They confirmed plans for the final release next week and the next major release, 6.2, in November. Tom also announced updates to the container tools, including new versions of Buildah (1.45) and Skopeo (1.24),
+Tom and Paul discussed the recent release, which focused mainly on bug fixes and included new features like Podman volume rename and Podman machine restart. It was released on Friday July 29, 2026. They confirmed plans for the final release next week and the next major release, 6.2, in November. Tom also announced updates to the container tools, including new versions of Buildah (1.45) and Skopeo (1.24),
 
 #### LFX Internships for Podman - Ashley Cui, Paul Holzinger, Tom Sweeney - ([12:39](https://www.youtube.com/watch?v=W3cWHSrQnEQ&t=759s) in the video)
 
 Two interns for September through November of 2026, applications close in a few weeks on August 18.
 
- * Podman.io https://mentorship.lfx.linuxfoundation.org/project/42be74e1-704b-4b17-8b47-e38f37338414
- * CI FLakes https://mentorship.lfx.linuxfoundation.org/project/050e89d9-aec2-47ad-9113-3ba41a639d55
- 
+- Podman.io https://mentorship.lfx.linuxfoundation.org/project/42be74e1-704b-4b17-8b47-e38f37338414
+- CI FLakes https://mentorship.lfx.linuxfoundation.org/project/050e89d9-aec2-47ad-9113-3ba41a639d55
+
 ##### Application Deadlines and Requirements:
+
 The team discussed application deadlines, with Kartik confirming the applications close on August 18th. Paul mentioned receiving many applications to review, noting that only one candidate can be selected. Kartik raised questions about the website UX project, including broken text on the LFX portal and requirements for the design portfolio and cover letter. Ashley clarified that the design portfolio should showcase separate work rather than the website itself, and should include descriptions of what was designed and contributed.
 
 ##### Project Expectations and Contributions Discussion:
-The team discussed expectations for an upcoming project, with Tom suggesting that mentees should provide quick examples of their previous work, including school projects, work-related tasks, and personal projects, highlighting what they specifically contributed. Paul clarified that while pre-contribution to Podman is not required, having some previous contribution, such as open-source work or a GitHub presence, would be beneficial. 
+
+The team discussed expectations for an upcoming project, with Tom suggesting that mentees should provide quick examples of their previous work, including school projects, work-related tasks, and personal projects, highlighting what they specifically contributed. Paul clarified that while pre-contribution to Podman is not required, having some previous contribution, such as open-source work or a GitHub presence, would be beneficial.
 
 ##### Internship Application Discussion:
+
 Kartik asked if he should include his implemented features in his cover letter, such as fixing RSS feeds and auto-detecting OS systems, and Tom advised that anything pertinent to the internship would be appropriate to include. Miloslav added that while they don't want the internship to begin before selecting a candidate, demonstrating competence is welcome. The conversation ended with Tom thanking participants and announcing the next meeting on October 6th.
 
 The next meeting is scheduled for October 6th, with hopes to have more demonstrations ready, particularly given that version 6.1 will be finalized by then.
 
 #### Open discussion
- 1. No further topics discussed 
+
+1.  No further topics discussed
 
 ### Next Community Meeting: Tuesday, October 6, 2026, 11:00 a.m. EST (UTC-4)
 
 #### Possible Topics:
- 1. None Discussed
 
+1.  None Discussed
 
 Meeting finished 11:26 a.m.
 
@@ -70,7 +80,7 @@ The first 10 minutes and 51 seconds of the meeting's recording were cut, so the 
 00:22:34	Tom Sweeney (Red Hat LLC):	https://github.com/podman-container-tools/podman/releases
 00:22:57	Tom Sweeney (Red Hat LLC):	Release Announcement.^^
 00:23:44	Tom Sweeney (Red Hat LLC):	* Podman.io https://mentorship.lfx.linuxfoundation.org/project/42be74e1-704b-4b17-8b47-e38f37338414
- * CI FLakes https://mentorship.lfx.linuxfoundation.org/project/050e89d9-aec2-47ad-9113-3ba41a639d55 
+ * CI FLakes https://mentorship.lfx.linuxfoundation.org/project/050e89d9-aec2-47ad-9113-3ba41a639d55
 ```
 
 ### Raw Zoom Meet Transcript

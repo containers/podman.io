@@ -8,6 +8,7 @@ interface BlogArticlesListProps {
   displayCount?: number;
   altLayout?: boolean;
   title?: string;
+  description?: string;
   titleColor?: string;
   showFooter?: boolean;
   footerText?: string;
@@ -20,6 +21,7 @@ const BlogArticlesList: React.FC<BlogArticlesListProps> = ({
   displayCount,
   altLayout = false,
   title = 'Latest Articles',
+  description,
   titleColor = 'text-blue-700',
   showFooter = false,
   footerText = '',
@@ -29,16 +31,38 @@ const BlogArticlesList: React.FC<BlogArticlesListProps> = ({
   const { data, loading } = useBlogPosts(limit);
   const actualDisplayCount = displayCount ?? limit;
 
-  if (loading) {
-    return null;
-  }
-
   const containerClasses =
-    containerLayout === 'vertical' ? 'flex flex-col gap-4' : 'flex flex-wrap justify-center gap-4';
+    containerLayout === 'vertical' ? 'flex flex-col gap-4' : 'flex flex-wrap justify-center gap-6';
+
+  if (loading) {
+    return (
+      <section className={sectionClassName}>
+        <SectionHeader title={title} description={description} textColor={titleColor} />
+        <div className={containerClasses}>
+          {Array.from({ length: actualDisplayCount }).map((_, index) => (
+            <div
+              key={index}
+              className={
+                altLayout
+                  ? 'mx-auto flex w-full max-w-2xl animate-pulse flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-white/10 dark:bg-gray-900 sm:grid sm:grid-cols-2'
+                  : 'mx-auto flex w-full max-w-sm animate-pulse flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-white/10 dark:bg-gray-900'
+              }>
+              <div className="aspect-[16/10] w-full bg-gray-100 dark:bg-gray-700" />
+              <div className="flex flex-1 flex-col justify-center gap-2 p-5">
+                <div className="h-4 w-3/4 rounded bg-gray-100 dark:bg-gray-700" />
+                <div className="h-4 w-1/2 rounded bg-gray-100 dark:bg-gray-700" />
+                <div className="h-3 w-1/3 rounded bg-gray-100 dark:bg-gray-700" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className={sectionClassName}>
-      <SectionHeader title={title} textColor={titleColor} />
+      <SectionHeader title={title} description={description} textColor={titleColor} />
       <div className={containerClasses}>
         {data.slice(0, actualDisplayCount).map((card, index) => (
           <ArticleCard
@@ -56,7 +80,7 @@ const BlogArticlesList: React.FC<BlogArticlesListProps> = ({
         ))}
       </div>
       {showFooter && footerText && (
-        <p className="ml-2l text-center 2xl:text-start">
+        <p className="mt-6 text-center">
           {footerText}{' '}
           <a
             href="https://blog.podman.io"

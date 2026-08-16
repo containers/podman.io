@@ -14,7 +14,6 @@ import InfoBanner from '@site/src/components/ui/InfoBanner';
 import IconLink from '@site/src/components/utilities/IconLink';
 import Button from '@site/src/components/utilities/Button';
 import DropdownButton from '@site/src/components/utilities/DropdownButton';
-import WaveBorder from '@site/src/components/shapes/WaveBorder';
 /* PAGE DATA */
 import { header, communityChat, communityMeetings, mailingList, submittingIssues } from '@site/static/data/community';
 
@@ -22,11 +21,11 @@ import { header, communityChat, communityMeetings, mailingList, submittingIssues
 const CommunityLinks = () => {
   const links = communityChat.links.map(x => x);
   return (
-    <ul className="mb-12 flex flex-wrap items-end justify-around gap-8 lg:gap-16">
+    <ul className="mx-auto grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
       {links.map((link, index) => {
         return (
-          <li key={index}>
-            <IconLink {...link} />
+          <li key={index} className="h-full">
+            <IconLink {...link} accentColor="text-purple-700 dark:text-purple-300" />
           </li>
         );
       })}
@@ -36,39 +35,43 @@ const CommunityLinks = () => {
 
 const CommunityChatSection = (): JSX.Element => {
   return (
-    <section className="bg-gray-50 dark:bg-gradient-to-t dark:from-gray-700 dark:via-gray-900 dark:to-gray-900 ">
-      <SectionHeader textGradient={true} title={communityChat.title} />
-      <div className="mx-4 mt-8 flex flex-wrap justify-around gap-4 sm:mx-8 lg:mx-auto lg:mt-16 lg:max-w-6xl">
-        <div className="">
-          <p className="max-w-sm text-center text-gray-700 md:max-w-md md:text-start lg:max-w-xl">
-            {communityChat.subtitle}
-          </p>
-        </div>
+    <section className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white pb-12 dark:from-gray-700 dark:to-gray-900 lg:pb-20">
+      <div className="pointer-events-none absolute -top-20 left-1/4 h-72 w-72 rounded-full bg-blue-300/20 blur-3xl dark:bg-blue-700/10" />
+      <div className="pointer-events-none absolute -top-10 right-1/4 h-72 w-72 rounded-full bg-purple-300/20 blur-3xl dark:bg-purple-700/10" />
+      <SectionHeader
+        textGradient={true}
+        title={communityChat.title}
+        description={communityChat.subtitle}
+        textGradientStops="from-blue-700 to-purple-700 dark:from-blue-500 dark:to-purple-500"
+      />
+      <div className="relative mx-4 mt-8 flex flex-col items-center justify-center gap-10 sm:mx-8 lg:mx-auto lg:mt-16 lg:max-w-6xl">
+        <CommunityLinks />
         <DateTimeBox />
       </div>
-      <div className="container pt-12 lg:pt-20">
-        <CommunityLinks />
-      </div>
-      <WaveBorder />
     </section>
   );
 };
 
 const CommunityMeetingSection = (): JSX.Element => {
   return (
-    <section className="bg-gradient-to-b from-white via-gray-50 to-gray-100 pb-8 dark:from-gray-900 dark:to-gray-900">
+    <section className="bg-gradient-to-b from-white via-gray-50 to-gray-100 pb-8 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900">
       <div className="container flex flex-col">
         <SectionHeader
           title={communityMeetings.title}
-          description={communityMeetings.subtitle}
           textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
           textGradient={true}
         />
-        <img
-          src={communityMeetings.image.path}
-          alt={communityMeetings.image.alt}
-          className="order-first mx-auto object-cover lg:max-w-lg"
-        />
+        <div className="mx-auto mb-12 flex flex-col items-center gap-8 lg:mb-16 lg:flex-row lg:items-center lg:gap-12">
+          <img
+            src={communityMeetings.image.path}
+            alt={communityMeetings.image.alt}
+            className="w-full max-w-lg shrink-0 rounded-2xl object-cover shadow-md lg:w-1/2"
+          />
+          <Markdown
+            text={communityMeetings.subtitle}
+            styles="max-w-2xl text-center leading-relaxed text-gray-700 dark:text-gray-100 lg:text-left"
+          />
+        </div>
         <CommunityMeetingsCardGrid cards={communityMeetings.cards} />
       </div>
     </section>
@@ -77,42 +80,51 @@ const CommunityMeetingSection = (): JSX.Element => {
 
 const MailingListSection = (): JSX.Element => {
   return (
-    <section>
-      <div className="container grid gap-4 lg:grid-cols-2">
+    <section className="pb-16 lg:pb-20">
+      <div className="container grid gap-10 lg:grid-cols-2">
         <SectionHeader
           title={mailingList.title}
           description={mailingList.subtitle}
           layout="col-span-full"
           textColor="dark:text-blue-700"
         />
-        <section className="container mb-8">
-          <h3 className="mb-2 font-medium text-purple-700 dark:text-purple-500">{mailingList.browseInfo.title}</h3>
-          <Markdown text={mailingList.browseInfo.subtitle} styles="max-w-prose" />
-        </section>
-        <section className="container mb-8">
-          <h3 className="mb-2 font-medium text-purple-700 dark:text-purple-500">{mailingList.subscribeInfo.title}</h3>
-          <Markdown text={mailingList.subscribeInfo.subtitle} styles="max-w-prose " />
-          <div className="flex flex-wrap gap-6">
-            {mailingList.subscribeInfo.options.map((card, index) => {
-              return <SmallCard {...card} key={index} />;
-            })}
+        <div className="flex flex-col gap-6">
+          <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900 lg:p-8">
+            <div className="mb-3 flex items-center gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-500">
+                <Icon icon="mdi:email-search-outline" className="text-xl" />
+              </span>
+              <h3 className="font-medium text-purple-700 dark:text-purple-500">{mailingList.browseInfo.title}</h3>
+            </div>
+            <Markdown text={mailingList.browseInfo.subtitle} styles="max-w-prose" />
           </div>
-          <div className="my-4 max-w-prose">
-            <Markdown text={mailingList.subscribeInfo.description} />
+
+          <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900 lg:p-8">
+            <div className="mb-3 flex items-center gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-purple-100 text-purple-700 dark:bg-purple-500/10 dark:text-purple-500">
+                <Icon icon="mdi:email-fast-outline" className="text-xl" />
+              </span>
+              <h3 className="font-medium text-purple-700 dark:text-purple-500">{mailingList.subscribeInfo.title}</h3>
+            </div>
+            <Markdown text={mailingList.subscribeInfo.subtitle} styles="max-w-prose" />
+            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {mailingList.subscribeInfo.options.map((card, index) => {
+                return <SmallCard {...card} key={index} />;
+              })}
+            </div>
+            <div className="mt-6 max-w-prose border-t border-gray-100 pt-4 text-xs text-gray-500 dark:border-white/10 dark:text-gray-300">
+              <Markdown text={mailingList.subscribeInfo.description} />
+            </div>
           </div>
-        </section>
-        <section className="mb-8 lg:col-start-2 lg:row-span-2 lg:row-start-2">
-          <div>
-            <img
-              src={mailingList.extraInfo.image.path}
-              alt={mailingList.extraInfo.image.alt}
-              className="w-full  object-cover"
-            />
-          </div>
-          <div className="ml-8 xl:ml-10">
-            <InfoBox title={mailingList.extraInfo.note.title} text={mailingList.extraInfo.note.text} />
-          </div>
-        </section>
+        </div>
+        <div className="flex flex-col gap-6 rounded-2xl border border-gray-100 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-900">
+          <img
+            src={mailingList.extraInfo.image.path}
+            alt={mailingList.extraInfo.image.alt}
+            className="w-full rounded-xl object-cover"
+          />
+          <InfoBox title={mailingList.extraInfo.note.title} text={mailingList.extraInfo.note.text} />
+        </div>
       </div>
     </section>
   );
@@ -124,8 +136,10 @@ const DropdownContent = (props): JSX.Element => {
       <ul>
         {props.map((link, index) => {
           return (
-            <li className="my-2 rounded-md px-2 transition duration-150 ease-linear hover:bg-purple-700 hover:text-white">
-              <a href={link.path} className=" w-full hover:text-white hover:no-underline">
+            <li
+              key={index}
+              className="my-2 rounded-md px-2 transition duration-150 ease-linear hover:bg-purple-700 hover:text-white">
+              <a href={link.path} className="w-full hover:text-white hover:no-underline">
                 {link.text}
               </a>
             </li>
@@ -138,12 +152,12 @@ const DropdownContent = (props): JSX.Element => {
 
 const IssuesSection = () => {
   return (
-    <section className="max-w-lg rounded-md bg-white px-10 pt-10 shadow-lg dark:bg-gray-900">
+    <section className="max-w-lg rounded-2xl border border-gray-100 bg-white px-10 pt-10 shadow-md ring-1 ring-black/5 transition duration-200 hover:-translate-y-1 hover:shadow-xl dark:border-gray-700 dark:bg-gray-900 dark:ring-white/5">
       <header className="mb-10">
         <h3 className="mb-4 text-center text-blue-700 dark:text-blue-500">{submittingIssues[1].title}</h3>
-        <div className="bg-blue-100/25 px-3 py-2">
-          <p className="flex items-center gap-2 rounded-md">
-            <Icon icon="fa-solid:exclamation-circle" className="text-purple-700" />
+        <div className="rounded-md bg-blue-100/25 px-3 py-2 dark:bg-blue-500/10">
+          <p className="flex items-center gap-2 rounded-md dark:text-gray-100">
+            <Icon icon="fa-solid:exclamation-circle" className="text-purple-700 dark:text-purple-500" />
             <span>{submittingIssues[1].subtitle}</span>
           </p>
         </div>
@@ -155,10 +169,18 @@ const IssuesSection = () => {
               <Markdown text={section.text} />
               <ul className="mb-8 ml-5 mt-4 list-disc">
                 {section.checkList.map((item, index) => {
-                  return <li key={index}>{item}</li>;
+                  return (
+                    <li key={index} className="text-gray-900 dark:text-gray-100">
+                      {item}
+                    </li>
+                  );
                 })}
               </ul>
-              <DropdownButton text={section.button.text} option={DropdownContent(section.button.links)} />
+              <DropdownButton
+                text={section.button.text}
+                option={DropdownContent(section.button.links)}
+                className="my-2 inline-flex items-center gap-2 rounded-md border-2 border-purple-700 bg-transparent px-6 py-2.5 text-base font-semibold text-purple-700 transition duration-150 ease-in-out hover:bg-purple-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 active:scale-[0.98] dark:border-purple-500 dark:text-purple-300 dark:hover:bg-purple-500 dark:hover:text-white dark:focus-visible:ring-offset-gray-900"
+              />
             </div>
           );
         })}
@@ -169,7 +191,7 @@ const IssuesSection = () => {
 
 const PullRequestSection = () => {
   return (
-    <section className="max-w-lg rounded-md bg-white p-10 shadow-lg dark:bg-gray-900">
+    <section className="max-w-lg rounded-2xl border border-gray-100 bg-white p-10 shadow-md ring-1 ring-black/5 transition duration-200 hover:-translate-y-1 hover:shadow-xl dark:border-gray-700 dark:bg-gray-900 dark:ring-white/5">
       <header className="mx-auto mb-10">
         <h3 className="mb-3 text-center text-blue-700 dark:text-blue-500">{submittingIssues[2].title}</h3>
         <Markdown text={submittingIssues[2].subtitle} />
@@ -184,10 +206,19 @@ const PullRequestSection = () => {
         })}
         <ul className="my-4 ml-5 list-disc">
           {submittingIssues[2].checkList.map((item, index) => {
-            return <li key={index}>{item}</li>;
+            return (
+              <li key={index} className="text-gray-900 dark:text-gray-100">
+                {item}
+              </li>
+            );
           })}
         </ul>
-        <Button as="link" outline={true} text={submittingIssues[2].button.text} />
+        <Button
+          as="link"
+          outline={true}
+          path={submittingIssues[2].button.path}
+          text={submittingIssues[2].button.text}
+        />
       </div>
     </section>
   );
@@ -195,14 +226,14 @@ const PullRequestSection = () => {
 
 const SubmitIssuesSection = () => {
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
+    <section className="bg-gradient-to-b from-gray-50 to-gray-100 pb-16 pt-8 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 lg:pb-20 lg:pt-12">
       <SectionHeader
         title={submittingIssues[0].title}
         description={submittingIssues[0].subtitle}
         textGradientStops="from-purple-500 to-purple-700 dark:text-blue-700"
         textGradient={true}
       />
-      <div className="mx-auto mb-20 mt-16 flex flex-wrap justify-center gap-20 px-8 lg:container">
+      <div className="mx-auto mt-16 flex flex-wrap justify-center gap-10 px-8 lg:container lg:gap-20">
         <IssuesSection />
         <PullRequestSection />
       </div>
@@ -225,12 +256,12 @@ function Community() {
       <InfoBanner
         description="**Searching for Podman Desktop Community Meetings?** [Click Here](https://podman-desktop.io/community#community-events) or visit the [official website](https://podman-desktop.io) to learn more."
         image={{
-          src: "logos/optimized/podman-desktop-logo-200w-198h.webp",
-          alt: "Podman Desktop Logo"
+          src: '/logos/optimized/podman-desktop-logo-200w-198h.webp',
+          alt: 'Podman Desktop Logo',
         }}
-        styles="bg-purple-700 dark:bg-purple-900 text-white [&_img]:w-16 [&_img]:h-16  [&_a]:underline [&_a:hover]:text-purple-300"
+        styles="bg-purple-700 dark:bg-purple-900 text-white [&_img]:w-16 [&_img]:h-16  [&_a:hover]:text-purple-300"
         marginHeight="mt-8 lg:mt-16"
-      /> 
+      />
       <MailingListSection />
       <SubmitIssuesSection />
       <ThankYouSection />

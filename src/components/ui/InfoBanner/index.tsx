@@ -16,18 +16,30 @@ function InfoBanner({
   title,
   description,
   image,
-  styles,
+  styles = '',
   icon,
-  bgColor = 'from-blue-700 via-blue-700 to-blue-900 dark:from-blue-500  dark:to-blue-700',
-  titleColor = 'text-purple-700 dark:text-purple-500',
+  bgColor,
+  titleColor = 'text-white',
   marginHeight = 'mt-8 lg:mt-16',
 }: BannerProps): JSX.Element {
+  // A gradient's `background-image` always paints over a flat `background-color`,
+  // so a caller-supplied `bg-*` in `styles` would silently lose to this default —
+  // only fall back to the brand gradient when the caller hasn't set their own background.
+  // (Previously this default also omitted `bg-gradient-to-r`, so `from-*`/`via-*`/`to-*`
+  // never rendered as a gradient at all — the banner had no visible background.)
+  const hasCustomBackground = /(^|\s)bg-/.test(styles);
+  const resolvedBgColor =
+    bgColor ??
+    (hasCustomBackground ? '' : 'bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900');
+
   return (
-    <section className={`${styles} ${bgColor} ${marginHeight} mx-auto w-full`}>
-      <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-4 py-4 md:py-8 lg:gap-8 xl:max-w-fit">
-        <div>
+    <section className={`${styles} ${resolvedBgColor} ${marginHeight} mx-auto w-full shadow-inner`}>
+      <div className="container mx-auto flex max-w-3xl flex-col items-center justify-center gap-6 py-10 text-center md:py-14 lg:flex-row lg:gap-8 lg:text-start">
+        <div className="shrink-0">
           {icon ? (
-            <Icon icon={icon} className="text-4xl text-white dark:text-gray-50" />
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20">
+              <Icon icon={icon} className="text-4xl text-white" />
+            </div>
           ) : image ? (
             <img src={image.src} alt={image.alt} />
           ) : (
@@ -36,12 +48,12 @@ function InfoBanner({
         </div>
 
         {title ? (
-          <div className="mx-auto text-center md:text-start lg:pl-4">
-            <h3 className={`mx-auto mb-4 text-3xl font-bold ${titleColor}`}>{title}</h3>
-            <Markdown text={description} styles="mx-auto max-w-4xl leading-relaxed text-gray-700" />
+          <div>
+            <h3 className={`mb-2 text-3xl font-bold ${titleColor}`}>{title}</h3>
+            <Markdown text={description} styles="leading-relaxed text-blue-50" />
           </div>
         ) : (
-          <Markdown text={description} styles="mx-auto leading-relaxed" />
+          <Markdown text={description} styles="leading-relaxed text-blue-50" />
         )}
       </div>
     </section>

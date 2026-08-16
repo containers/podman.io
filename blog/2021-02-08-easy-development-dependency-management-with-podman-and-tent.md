@@ -29,7 +29,7 @@ Tent is heavily inspired from [tighten/takeout](https://github.com/tighten/takeo
 ## Dependencies
 
 - Linux
-- [Podman](https://podman.io/getting-started/installation) Installed
+- [Podman](/get-started) Installed
 - Podman System Service Running
 
 If you have Podman installed, you can start the system service as follows:

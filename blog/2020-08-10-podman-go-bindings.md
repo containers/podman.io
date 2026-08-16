@@ -522,7 +522,7 @@ containers and pods in a way which fits very nicely in many production environme
 ## References
 
 - Podman v2 is available for most major distributions along with MacOS and Windows.
-  Installation details are available on the [Podman official website](https://podman.io/getting-started/).
+  Installation details are available on the [Podman official website](/get-started).
 
 - Documentation can be found at the [Podman Docs page](https://docs.podman.io).
   It also includes a section on the [RESTful API](https://docs.podman.io/en/latest/Reference.html).
@@ -530,7 +530,7 @@ containers and pods in a way which fits very nicely in many production environme
 ## Contribute
 
 - Any issues with the bindings can be [reported upstream](https://github.com/containers/podman/issues/new/choose).
-- Check out the [Podman community page](https://podman.io/community/) for more ways to get in touch with the community.
+- Check out the [Podman community page](/community) for more ways to get in touch with the community.
 
 ## Acknowledgments
 

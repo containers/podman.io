@@ -188,4 +188,4 @@ is just a matter of practice (or some new bash scripts).
 Please also remember to pay attention to the tooling versions, as several
 bugs and deficiencies are present in earlier editions. On that same note,
 if you do encounter any strange or unexpected behavior, please reach out
-to the [upstream community for assistance](https://podman.io/community/#slack-irc-matrix-and-discord).
+to the [upstream community for assistance](/community).

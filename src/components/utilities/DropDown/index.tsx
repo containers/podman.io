@@ -6,7 +6,7 @@ import './styles.css';
 type DropdownProps = {
   text: string;
   options: any[];
-  dropdownRef: React.MutableRefObject<undefined>;
+  dropdownRef: React.RefObject<HTMLDivElement | null>;
 };
 
 function toggleDropdown(ref, handler) {
@@ -31,19 +31,23 @@ function Dropdown(props: DropdownProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   toggleDropdown(dropdownRef, () => setIsOpen(false));
   return (
-    <div ref={dropdownRef}>
-      <div
+    <div ref={dropdownRef} className="w-full">
+      <button
+        type="button"
         data-dropdown-toggle="dropdown"
         onClick={() => setIsOpen(prev => !prev)}
-        className="my-2 flex cursor-pointer items-center gap-1 py-2 pl-12 font-bold text-purple-700 dark:text-purple-500">
+        aria-expanded={isOpen}
+        className="my-2 flex w-full cursor-pointer items-center gap-2 py-2 pl-12 font-bold text-purple-700 transition duration-150 ease-linear hover:text-purple-900 dark:text-purple-500 dark:hover:text-purple-300">
         <div className={`transition duration-150 ease-linear ${isOpen && 'rotate-90'}`}>
           <Icon icon="bi:caret-right-square-fill" />
         </div>
         <span>{props.text}</span>
-      </div>
-      <div className="dropdown-options absolute mt-2 flex flex-col overflow-y-auto overflow-x-hidden shadow-md scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:bg-gray-900 md:max-h-full lg:max-h-96">
-        {isOpen && props?.options.map(option => option)}
-      </div>
+      </button>
+      {isOpen && (
+        <div className="dropdown-options flex max-h-96 flex-col divide-y divide-gray-100 overflow-y-auto overflow-x-hidden rounded-xl border border-gray-100 bg-white shadow-md scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-900">
+          {props?.options.map(option => option)}
+        </div>
+      )}
     </div>
   );
 }

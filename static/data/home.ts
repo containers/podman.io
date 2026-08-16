@@ -5,7 +5,7 @@ const header = {
   subtitle:
     'Manage containers, pods, and images with Podman. Seamlessly work with containers and Kubernetes from your local environment.',
   image: {
-    path: 'images/optimized/podman-ui-1200w-646h.webp',
+    path: '/images/optimized/podman-ui-1200w-646h.webp',
     alt: 'Two screenshots of the Podman Desktop user interface',
   },
   podmanrelease: {
@@ -16,12 +16,12 @@ const header = {
     text: LATEST_DESKTOP_VERSION,
     path: LATEST_DESKTOP_DOWNLOAD_URL,
   },
+  platformsLabel: 'Supported Platforms',
   platforms: [
-    'Supported Platforms',
-    'fa6-brands:redhat',
-    'fa6-brands:apple',
-    'fa6-brands:microsoft',
-    'fa6-brands:linux',
+    { icon: 'fa6-brands:redhat', label: 'RHEL', path: '/docs/installation#rhel' },
+    { icon: 'fa6-brands:apple', label: 'macOS', path: '/docs/installation#macos' },
+    { icon: 'fa6-brands:microsoft', label: 'Windows', path: '/docs/installation#windows' },
+    { icon: 'fa6-brands:linux', label: 'Linux', path: '/docs/installation#installing-on-linux' },
   ],
 };
 
@@ -57,7 +57,7 @@ const kubernetesBanner = {
   description:
     'Create, start, inspect, and manage pods. Play Kubernetes YAML directly with Podman, generate Kubernetes YAML from pods, and deploy to existing Kubernetes environments.',
   image: {
-    src: 'logos/optimized/kubernetes-logo-147w-143h.webp',
+    src: '/logos/optimized/kubernetes-logo-147w-143h.webp',
     alt: 'Kubernetes Logo',
   },
 };
@@ -68,22 +68,22 @@ const compatibleTools = {
     {
       title: 'VS Code',
       description: 'Visual Studio Code includes Podman support',
-      image: { path: 'logos/optimized/vscode-logo-75w-75h.webp', alt: 'VS Code Logo' },
+      image: { path: '/logos/optimized/vscode-logo-75w-75h.webp', alt: 'VS Code Logo' },
     },
     {
       title: 'Cirrus',
       description: 'Cirrus CLI allows you to reproducibly run containerized tasks with Podman',
-      image: { path: 'logos/optimized/cirrus-logo-75w-75h.webp', alt: 'Cirrus Logo' },
+      image: { path: '/logos/optimized/cirrus-logo-75w-75h.webp', alt: 'Cirrus Logo' },
     },
     {
       title: 'GitHub Actions',
       description: 'GitHub Actions include support for Podman, as well as friends buildah and skopeo',
-      image: { path: 'logos/optimized/github-logo-115w-115h.webp', alt: 'GitHub Logo' },
+      image: { path: '/logos/optimized/github-logo-115w-115h.webp', alt: 'GitHub Logo' },
     },
     {
       title: 'Kind',
       description: "Kind's ability to run local Kubernetes clusters via container nodes includes support for Podman",
-      image: { path: 'logos/optimized/kind-logo-165w-95h.webp', alt: 'Kind Logo' },
+      image: { path: '/logos/optimized/kind-logo-165w-95h.webp', alt: 'Kind Logo' },
     },
   ],
 };

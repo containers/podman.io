@@ -7,6 +7,10 @@
 @import 'fonts/source-code-pro.css';
 
 :root {
+  /* Matches the navbar's actual rendered height (see `.navbar--fixed-top`
+     below) — components like the docs sidebar and TOC read this variable
+     to position themselves just below the navbar. */
+  --ifm-navbar-height: 5.5rem;
   --ifm-color-primary: #892ca0;
   --ifm-color-primary-darkest: #5f246b;
   --ifm-color-primary-light: #bd58dd;
@@ -32,43 +36,88 @@
   @apply mt-10;
 }
 
+/* Docs sidebar + TOC polish: rounded hover/active pills instead of Infima's
+   plain color-only states, matching the treatment built for the Nextra
+   docs sidebar on the Next.js branch. */
+.theme-doc-sidebar-container {
+  @apply border-r border-gray-300 dark:border-gray-700;
+}
+
+.table-of-contents {
+  @apply border-l border-gray-300 dark:border-gray-700;
+}
+
+.menu__link,
+.table-of-contents__link {
+  border-radius: 0.25rem;
+  transition:
+    background-color 150ms ease-linear,
+    color 150ms ease-linear;
+}
+
+.menu__link:hover,
+.table-of-contents__link:hover {
+  @apply bg-gray-100 text-gray-900 dark:bg-purple-500/10 dark:text-gray-50;
+}
+
+.menu__link--active:not(.menu__link--sublist),
+.table-of-contents__link--active {
+  @apply bg-purple-100 font-semibold text-purple-700 dark:bg-purple-500/10 dark:text-purple-300;
+}
+
 .navbar__title {
   font-family: Montserrat;
   font-weight: 500 !important;
-  /* font-size: 200%; */
   padding: 8px 0px;
   letter-spacing: -1.5px !important;
   font-kerning: normal !important;
 }
 
 #__docusaurus > nav > div.navbar__inner > div:nth-child(1) > a > b {
-  font-size: xxx-large;
+  font-size: x-large;
   line-height: 2rem;
 }
 
 .navbar__logo {
-  height: 6.25rem;
+  height: 4.25rem;
 }
 
+/* Full-bleed gradient navbar, sticky at the top of the page. */
 .navbar {
   box-shadow: none;
-  @apply bg-gradient-to-r from-blue-500  to-purple-700 dark:from-blue-700 dark:to-purple-900;
+  @apply bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900;
 }
 
 .navbar--fixed-top {
-  height: 7rem;
+  min-height: 5.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 .navbar__title,
-.navbar__link,
-.clean-btn {
+.navbar__link {
   @apply text-white dark:text-gray-50;
-  font-size: x-large;
+  font-size: 1.125rem;
+}
+
+.navbar .clean-btn {
+  @apply text-white dark:text-gray-50;
+  transition: color 150ms ease-linear;
+}
+
+.navbar .clean-btn:hover {
+  @apply text-purple-300;
 }
 
 .navbar-sidebar__brand .navbar__title,
 .navbar-sidebar__brand .clean-btn {
   @apply text-gray-900 dark:text-gray-50;
+}
+
+/* The docs sidebar renders its own fallback logo to cover for
+   `hideOnScroll` hiding the main navbar — that duplicates the real navbar
+   right above it, so hide it. */
+.theme-doc-sidebar-container [class*='sidebarLogo_'] {
+  display: none !important;
 }
 
 .navbar__link svg,
@@ -77,9 +126,24 @@
   margin-left: 12px;
 }
 
+/* Give navbar links breathing room — they sit flush with zero gap by
+   default, so the hover pill (background + lift + shadow) of one link
+   touches and visually overlaps the next link's hover pill. */
+.navbar__items {
+  @apply gap-1;
+}
+
 .navbar__link,
 .navbar__brand {
-  @apply no-underline transition duration-150 ease-linear hover:text-purple-300;
+  @apply rounded-md px-3 py-2 font-medium tracking-wide no-underline transition duration-200 ease-linear hover:-translate-y-0.5 hover:bg-purple-500 hover:text-white hover:shadow-md;
+}
+
+.navbar__brand {
+  @apply rounded-md px-0 py-0 hover:translate-y-0 hover:bg-transparent hover:text-purple-300 hover:shadow-none;
+}
+
+.navbar__link--active {
+  @apply bg-purple-500 text-white shadow-md;
 }
 
 .footer {
@@ -90,15 +154,15 @@
   @apply text-blue-50 no-underline hover:text-blue-300 dark:hover:text-blue-500;
 }
 
-.footer__copyright p{
+.footer__copyright p {
   display: block;
   font-size: medium;
   padding: 0px;
 }
 
-.footer__copyright a{
+.footer__copyright a {
   font-size: medium;
-  @apply text-blue-300 hover:text-blue-500
+  @apply text-blue-300 hover:text-blue-500;
 }
 
 .menu a {
@@ -109,8 +173,109 @@
   @apply no-underline;
 }
 
-.navbar__link--active {
-  @apply text-purple-300 underline dark:text-purple-300 dark:underline;
+/* Back-to-top button (Docusaurus renders it on every page, docs included,
+   once scrolled past its threshold): brand gradient FAB instead of
+   Infima's plain gray circle, so it's easy to spot in a corner. */
+.theme-back-to-top-button {
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 3.25rem;
+  height: 3.25rem;
+  @apply bg-gradient-to-br from-blue-500 to-purple-700 shadow-lg transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-xl dark:from-blue-700 dark:to-purple-900;
+}
+
+.theme-back-to-top-button::after {
+  @apply bg-white;
+}
+
+/* ------------------------------------ */
+/* Docs content polish (code, tables,   */
+/* admonitions, blockquotes, pagination)*/
+/* ------------------------------------ */
+
+/* Code blocks: rounded card treatment instead of Infima's flat square box. */
+.markdown pre {
+  border-radius: 0.75rem !important;
+  @apply border border-gray-100 shadow-sm dark:border-white/10;
+}
+
+/* Inline code: tinted pill instead of the plain gray box. */
+.markdown :not(pre) > code {
+  @apply rounded-md border border-purple-100 bg-purple-50 px-1.5 py-0.5 text-purple-700 dark:border-purple-500/20 dark:bg-purple-500/10 dark:text-purple-300;
+}
+
+/* Tables: rounded container, tinted header, zebra striping. */
+.markdown table {
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  @apply w-full border border-gray-100 shadow-sm dark:border-white/10;
+}
+
+.markdown th {
+  @apply bg-purple-50 text-sm font-bold uppercase tracking-wide text-purple-700 dark:bg-purple-500/10 dark:text-purple-300;
+}
+
+.markdown tbody tr:nth-child(even) td {
+  @apply bg-gray-50 dark:bg-white/5;
+}
+
+.markdown tbody tr:hover td {
+  @apply bg-purple-50/60 dark:bg-purple-500/10;
+}
+
+.markdown td,
+.markdown th {
+  transition: background-color 150ms ease-linear;
+}
+
+/* Blockquotes: accent border + soft tint instead of plain indented text. */
+.markdown blockquote {
+  @apply rounded-r-lg border-l-4 border-purple-300 bg-purple-50/50 py-2 pl-4 italic text-gray-700 dark:border-purple-500/40 dark:bg-purple-500/5 dark:text-gray-300;
+}
+
+/* Admonitions (:::note/tip/info/caution/danger) and <details> callouts,
+   which Infima renders with the same `.alert` classes: rounded card with a
+   colored accent edge instead of a flat solid-color box. */
+.alert {
+  border-radius: 0.75rem !important;
+  border-width: 0 0 0 4px !important;
+  @apply shadow-sm;
+}
+
+.alert--info,
+.alert--note {
+  @apply border-blue-500 bg-blue-50 dark:border-blue-500 dark:bg-blue-500/10;
+}
+
+.alert--tip,
+.alert--success {
+  @apply border-purple-500 bg-purple-50 dark:border-purple-300 dark:bg-purple-500/10;
+}
+
+.alert--caution,
+.alert--warning {
+  @apply border-[#c2860a] bg-[#fdf6e8] dark:border-[#e0ac2b] dark:bg-[#e0ac2b]/10;
+}
+
+.alert--danger {
+  @apply border-[#dc2626] bg-[#fef2f2] dark:border-[#f87171] dark:bg-[#dc2626]/10;
+}
+
+/* Pagination nav (prev/next doc links): interactive cards with hover lift,
+   matching the treatment used for cards across the rest of the site. */
+.pagination-nav__link {
+  border-radius: 1rem !important;
+  @apply border border-gray-100 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-purple-300 hover:shadow-xl hover:shadow-purple-500/10 dark:border-white/10 dark:hover:border-purple-500/30 dark:hover:shadow-purple-900/20;
+}
+
+.pagination-nav__sublabel {
+  @apply text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-500;
+}
+
+.pagination-nav__label {
+  @apply text-purple-700 dark:text-purple-300;
 }
 
 /* ------------------ */
@@ -120,7 +285,7 @@
   /* headings */
   h1,
   h2,
-  h2>a,
+  h2 > a,
   h3,
   h4,
   h5 {
@@ -145,7 +310,7 @@
   }
 
   a {
-    @apply font-text text-lg text-blue-500 underline underline-offset-4 transition duration-150 ease-linear hover:opacity-90 dark:text-blue-500 dark:hover:text-blue-700 lg:text-xl;
+    @apply font-text text-lg text-blue-500 no-underline underline-offset-4 transition duration-150 ease-linear hover:text-blue-700 hover:underline dark:text-blue-500 dark:hover:text-blue-300 lg:text-xl;
   }
 
   /* headings size and weight */

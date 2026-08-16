@@ -1,45 +1,43 @@
 import React, { useRef, useEffect } from 'react';
 
 interface VideoProps {
-    url: string;
-    vidFormat?: string;
-    styles?: string;
-    posterImg?: string;
-  }
+  url: string;
+  vidFormat?: string;
+  styles?: string;
+  posterImg?: string;
+}
 
-const PlayOnScroll: React.FC = (props: VideoProps) => {
-    const videoRef = useRef<HTMLVideoElement>(null);
-  
-    useEffect(() => {
-      const handleScroll = () => {
-        if (videoRef.current) {
-          const rect = videoRef.current.getBoundingClientRect();
-          const isFullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
-          
-          if (isFullyVisible) {
-            videoRef.current.play();
-          } else {
-            videoRef.current.pause();
-          }
+const PlayOnScroll: React.FC<VideoProps> = props => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
         }
-      };
-  
-      window.addEventListener('scroll', handleScroll);
-      
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }, []);
-  
-    return (
-      <div>
-        <video className={props.styles} ref={videoRef} poster={props.posterImg} autoPlay>
-          <source src={props.url} type={props.vidFormat} />
-          {/* Add additional source elements for different video formats if needed */}
-          Your browser does not support the video tag.
-        </video>
-      </div>
+      },
+      { threshold: 0.25 },
     );
-  };
-  
-  export default PlayOnScroll;
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div>
+      <video className={props.styles} ref={videoRef} poster={props.posterImg} muted playsInline loop>
+        <source src={props.url} type={props.vidFormat} />
+        {/* Add additional source elements for different video formats if needed */}
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  );
+};
+
+export default PlayOnScroll;

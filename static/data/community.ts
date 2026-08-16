@@ -4,7 +4,7 @@ const header = {
   title: 'Community',
   subtitle:
     'We want your feedback, issues, patches, and involvement in the development of Podman. **Chat** with us on Matrix, Discord, IRC, or on our **mailing list**. Submit **issues & pull requests** (see our [CONTRIBUTING guide](https://github.com/containers/podman/blob/main/CONTRIBUTING.md) on how.) Participate in one of our twice-monthly community meetings. You are welcome in our community!',
-  image: 'images/optimized/podman-2-196w-172h.webp',
+  image: '/images/optimized/podman-2-196w-172h.webp',
   banner: {
     text: 'To help ensure all feel welcome in the Podman community, we expect all who participate to adhere to our [Code of Conduct](https://github.com/containers/common/blob/main/CODE-OF-CONDUCT.md)',
     icon: 'fa6-regular:handshake',
@@ -17,30 +17,43 @@ const communityChat = {
     'The Podman developers are generally around during CEST and Eastern Time business hours, so please be patient if you’re in another time zone!',
   links: [
     {
-      text: '#podman:matrix.org',
+      text: 'Matrix',
+      description: 'Chat with the community in real time on Matrix',
+      linkText: 'Join Matrix',
       path: 'https://matrix.to/#/#podman:fedoraproject.org',
       image: {
-        path: 'logos/optimized/element-56w-59h.webp',
+        path: '/logos/optimized/element-56w-59h.webp',
         alt: 'Element Matrix Logo',
       },
+      accentColor: 'text-blue-700 dark:text-blue-500',
     },
     {
-      text: '#podman on libera.chat',
+      text: 'IRC',
+      description: 'Join the conversation on our IRC channel',
+      linkText: 'Join IRC',
       path: 'https://web.libera.chat/#podman-desktop',
       textLogo: 'IRC',
+      accentColor: 'text-purple-700 dark:text-purple-500',
     },
     {
-      text: 'Podman GitHub Discussions',
+      text: 'GitHub',
+      description: 'Contribute, report issues, or browse the source code',
+      linkText: 'View Repository',
       path: 'https://github.com/containers/podman/discussions',
       image: {
-        path: 'vectors/raw/github.svg',
+        path: '/vectors/raw/github.svg',
         alt: 'GitHub Logo',
       },
+      invertInDark: true,
+      accentColor: 'text-gray-700 dark:text-gray-100',
     },
     {
-      text: 'Podman Discord',
+      text: 'Discord',
+      description: 'Join our Discord server for real-time support',
+      linkText: 'Join Discord',
       path: 'https://discord.gg/vwpj7K6gW5',
       icon: 'logos:discord-icon',
+      accentColor: 'text-deep-purple-700 dark:text-deep-purple-300',
     },
   ],
 };
@@ -50,7 +63,7 @@ const communityMeetings = {
   subtitle:
     "Many of the maintainers for the Podman project attend both of these meetings, so it's a great chance for community members like you to ask them questions or address concerns directly. If you have a topic that you’d like to propose for either meeting, please send a note to the [Mailing List]().",
   image: {
-    path: 'images/optimized/community-call-554w-219h.webp',
+    path: '/images/optimized/community-call-554w-219h.webp',
     alt: 'An image of podman team members in a virtual meeting',
   },
   cards: [
@@ -61,8 +74,8 @@ const communityMeetings = {
       date: '**1st Tuesday** of even numbered months',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
-        { text: 'Join Meeting', path: MEETING_URL },
-        { text: 'Meeting Agenda', path: 'https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w' },
+        { text: 'Join Meeting', path: MEETING_URL, icon: 'mdi:video-outline' },
+        { text: 'Meeting Agenda', path: 'https://hackmd.io/fc1zraYdS0-klJ2KJcfC7w', icon: 'mdi:text-box-outline' },
       ],
     },
     {
@@ -72,8 +85,12 @@ const communityMeetings = {
       date: '**1st Tuesday** of odd numbered months',
       timeZone: '11 AM US ET /5 PM CET',
       buttons: [
-        { text: 'Join Meeting', path: CABAL_MEETING_URL },
-        { text: 'Meeting Agenda', path: 'https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both' },
+        { text: 'Join Meeting', path: CABAL_MEETING_URL, icon: 'mdi:video-outline' },
+        {
+          text: 'Meeting Agenda',
+          path: 'https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both',
+          icon: 'mdi:text-box-outline',
+        },
       ],
     },
   ],
@@ -102,6 +119,7 @@ const mailingList = {
           text: 'Send email',
           path: 'mailto:podman-join@lists.podman.io',
         },
+        icon: 'mdi:email-fast-outline',
       },
       {
         title: 'Option 2',
@@ -111,12 +129,13 @@ const mailingList = {
           text: 'Sign up page',
           path: 'https://lists.podman.io/admin/lists/podman.lists.podman.io/',
         },
+        icon: 'mdi:cursor-default-click-outline',
       },
     ],
   },
   extraInfo: {
     image: {
-      path: 'images/optimized/mailing-list-screenshot-580w-376h.webp',
+      path: '/images/optimized/mailing-list-screenshot-580w-376h.webp',
       alt: 'A screenshot of the Podman mailing list home screen.',
     },
     note: {

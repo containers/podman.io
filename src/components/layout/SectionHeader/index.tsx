@@ -22,11 +22,11 @@ function SectionHeader({
   bgColor,
 }: SectionHeaderProps): JSX.Element {
   const applyTextColor = textGradient
-    ? `bg-gradient-radial bg-clip-text text-transparent dark:bg-gradient-radial dark:text-transparent ${textGradientStops}`
+    ? `bg-gradient-to-r bg-clip-text text-transparent dark:bg-gradient-to-r dark:text-transparent ${textGradientStops}`
     : `${textColor}`;
   return (
-    <header className={`${bgColor}  ${layout}`}>
-      <div className="container mx-auto mb-4 mt-12 text-center  lg:mt-16">
+    <header className={`${bgColor} ${layout}`}>
+      <div className="container mx-auto mb-4 mt-12 text-center lg:mt-16">
         <h2 className={`${applyTextColor} ${fontWeight}`}>{title}</h2>
         <Markdown text={description} styles="mx-auto my-4 max-w-4xl leading-relaxed text-gray-700 dark:text-gray-100" />
       </div>

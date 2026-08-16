@@ -1,12 +1,16 @@
 import React, { ReactNode } from 'react';
+import { Icon } from '@iconify/react';
 import Button from '@site/src/components/utilities/Button/';
 import Markdown from '@site/src/components/utilities/Markdown';
+import VideoEmbed from '@site/src/components/ui/VideoEmbed';
 import FilmIcon from '../../shapes/FilmIcon';
 
 type SubcardButtonProps = {
   text: string;
   path?: string;
   markDown?: ReactNode;
+  embedUrl?: string;
+  modalHeaderData?: string;
 };
 
 type CardInfoButtonProps = {
@@ -15,24 +19,10 @@ type CardInfoButtonProps = {
   method: Function;
 };
 
-function CardHeader(props) {
-  const { title, subtitle, details } = props;
+function CardBody({ text, className = '' }: { text: string; className?: string }) {
   return (
-    <div className="mx-2 mb-10 mt-4 text-center">
-      <h3 className="mb-3 whitespace-nowrap font-bold text-gray-700 dark:text-gray-50">{title}</h3>
-      <Markdown text={subtitle} styles="text-gray-700" />
-      <Markdown text={details} styles="text-gray-700" />
-    </div>
-  );
-}
-
-function CardBody(props) {
-  const { text } = props;
-  return (
-    <div className="mx-2 my-6 overflow-y-auto lg:my-8">
-      <p id="cardBody-parsed" className="text-gray-700 dark:text-gray-100">
-        <Markdown text={text} />
-      </p>
+    <div className={`overflow-y-auto text-gray-700 dark:text-gray-100 ${className}`}>
+      <Markdown text={text} />
     </div>
   );
 }
@@ -48,7 +38,7 @@ function CardInfoButtons(cardInfoButtonProps: CardInfoButtonProps) {
     },
   } = cardInfoButtonProps;
   return (
-    <div className="align-center mb-4 mt-8 flex flex-row flex-wrap justify-center gap-4 lg:mb-8 2xl:px-10">
+    <div className={`flex flex-row flex-wrap gap-3 ${primary ? 'mt-4 justify-start' : 'mt-3 justify-center'}`}>
       {primary
         ? data.map((button, index) => (
             <div key={index}>
@@ -57,7 +47,7 @@ function CardInfoButtons(cardInfoButtonProps: CardInfoButtonProps) {
           ))
         : data.map((button, index) => (
             <div key={index}>
-              {index == 0 ? (
+              {button.path ? (
                 <Button as="link" outline={true} {...button} />
               ) : (
                 <Button
@@ -75,16 +65,55 @@ function CardInfoButtons(cardInfoButtonProps: CardInfoButtonProps) {
   );
 }
 
-function CustomCard(props) {
+// Primary cards (the two meeting-type cards) get a colored schedule rail down the side.
+function PrimaryCard(props) {
+  const { title, subtitle, details, text } = props;
   return (
-    <article
-      style={props.primary ? { maxHeight: '550px', flex: 1 } : {}}
-      className="flex w-11/12 flex-col rounded-lg bg-gray-50 p-4 shadow-xl dark:bg-gray-700 dark:shadow-none lg:mx-8 lg:my-4">
-      <CardHeader {...props} />
-      {props?.icon ? <FilmIcon /> : <CardBody {...props} />}
-      <CardInfoButtons {...props} />
+    <article className="grid w-full grid-cols-1 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md transition duration-200 hover:-translate-y-1 hover:shadow-xl dark:border-gray-700 dark:bg-gray-900 sm:grid-cols-[12rem_1fr]">
+      <div className="flex flex-row items-center gap-4 bg-gradient-to-br from-purple-700 to-purple-900 p-5 text-white dark:from-purple-900 dark:to-black sm:flex-col sm:justify-center sm:gap-3 sm:p-6 sm:text-center">
+        <Icon icon="mdi:calendar-month-outline" className="shrink-0 text-3xl text-purple-100" />
+        <div>
+          {subtitle && <Markdown text={subtitle} styles="text-sm font-semibold leading-snug [&>p]:m-0" />}
+          {details && <Markdown text={details} styles="mt-1.5 text-xs text-purple-100 [&>p]:m-0" />}
+        </div>
+      </div>
+      <div className="flex flex-col p-6">
+        <h3 className="mb-3 text-blue-700 dark:text-blue-500">{title}</h3>
+        <CardBody text={text} className="text-sm leading-relaxed" />
+        <CardInfoButtons {...props} />
+      </div>
     </article>
   );
+}
+
+// Subcards (recent meeting recordings) get the date/day stamped directly on the video thumbnail.
+function SubCard(props) {
+  const { title, subtitle, embedUrl, embedTitle, icon } = props;
+  return (
+    <article className="flex w-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md transition duration-200 hover:-translate-y-1 hover:shadow-xl dark:border-gray-700 dark:bg-gray-900">
+      <div className="relative">
+        {embedUrl ? (
+          <VideoEmbed url={embedUrl} title={embedTitle || title} />
+        ) : icon ? (
+          <div className="flex aspect-video w-full items-center justify-center bg-gray-100 dark:bg-gray-900">
+            <FilmIcon />
+          </div>
+        ) : null}
+        <div className="pointer-events-none absolute left-2 top-2 z-10 flex items-center gap-1.5 rounded-md bg-black/70 px-2 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+          <Icon icon="mdi:calendar-blank-outline" className="shrink-0 text-purple-300" />
+          {title}
+          {subtitle && <span className="font-normal text-white/70">&middot; {subtitle}</span>}
+        </div>
+      </div>
+      <div className="flex flex-1 flex-col items-center p-4">
+        <CardInfoButtons {...props} />
+      </div>
+    </article>
+  );
+}
+
+function CustomCard(props) {
+  return props.primary ? <PrimaryCard {...props} /> : <SubCard {...props} />;
 }
 
 export default CustomCard;
