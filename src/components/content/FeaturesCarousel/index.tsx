@@ -7,8 +7,7 @@ const Tab = (props): JSX.Element => {
   return (
     <button
       onClick={method}
-      className={`rounded-lg p-4 shadow-sm transition duration-150 hover:bg-purple-700 hover:text-white dark:hover:bg-purple-900 dark:hover:text-gray-50 md:h-36 md:w-56
-      ${
+      className={`rounded-lg p-4 shadow-sm transition duration-150 hover:bg-purple-700 hover:text-white dark:hover:bg-purple-900 dark:hover:text-gray-50 md:h-36 md:w-56 ${
         isActive
           ? 'bg-gradient-radial from-purple-500 to-purple-700 text-white dark:from-purple-700 dark:to-purple-900 dark:shadow-purple-900'
           : '0 bg-white text-gray-700 dark:bg-gray-700 dark:text-gray-300 dark:shadow-gray-700'
@@ -37,14 +36,14 @@ const TabContent = (props): JSX.Element => {
               isActive % 2 === 0
                 ? 'text-white dark:text-white'
                 : isActive === 1
-                ? 'text-blue-700 dark:text-purple-500'
-                : 'text-purple-700 dark:text-purple-500'
+                  ? 'text-blue-700 dark:text-purple-500'
+                  : 'text-purple-700 dark:text-purple-500'
             }`}>
             {title}
           </h3>
           <ul className="my-4 lg:my-12">
             {commands.map((command, index) => (
-              <li key={index} className={`font-mono  ${isActive == 2 ? 'text-white' : 'text-blue-500'}`}>
+              <li key={index} className={`font-mono ${isActive == 2 ? 'text-white' : 'text-blue-500'}`}>
                 {command}
               </li>
             ))}
@@ -80,8 +79,8 @@ function FeaturesCarousel() {
           activeTabIndex % 2 === 1
             ? 'bg-white dark:bg-gray-900 dark:bg-gradient-to-b dark:from-purple-900 dark:to-purple-900/50'
             : activeTabIndex === 2
-            ? 'bg-gradient-to-br from-blue-300 via-blue-500 to-blue-900 dark:from-blue-900 dark:to-gray-700/50'
-            : 'bg-gradient-to-br from-purple-300 via-purple-700 to-purple-900'
+              ? 'bg-gradient-to-br from-blue-300 via-blue-500 to-blue-900 dark:from-blue-900 dark:to-gray-700/50'
+              : 'bg-gradient-to-br from-purple-300 via-purple-700 to-purple-900'
         }`}>
         <div className="space-between container flex">
           <button
@@ -90,7 +89,7 @@ function FeaturesCarousel() {
             aria-label="Previous feature">
             <Icon
               icon="fa-solid:arrow-circle-left"
-              className={`text-3xl transition duration-150 ease-linear hover:opacity-50 dark:hover:opacity-50  ${
+              className={`text-3xl transition duration-150 ease-linear hover:opacity-50 dark:hover:opacity-50 ${
                 activeTabIndex % 2 === 0 ? 'text-white' : 'text-purple-700 dark:text-gray-50'
               }`}
             />

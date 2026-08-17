@@ -6,7 +6,7 @@ function SubcardGrid({ cards, toggleIsModalOpen }) {
   return (
     <div className="mb-4 flex lg:mb-6">
       {cards?.map((card, index) => {
-        let date = new Date(card.date).getDay();
+        const date = new Date(card.date).getDay();
         return (
           <CustomCard
             key={index}
