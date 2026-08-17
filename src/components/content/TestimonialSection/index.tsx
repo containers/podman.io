@@ -24,24 +24,24 @@ function TestimonialSection() {
         <button
           type="button"
           onClick={slideLeft}
-          className="hidden sm:block xl:hidden"
+          className="hidden shrink-0 p-2 sm:block"
           aria-label="Previous testimonial">
           <Icon
             icon="fa-solid:arrow-circle-left"
             className="text-4xl text-gray-500 opacity-25 transition duration-150 ease-linear hover:text-purple-900 hover:opacity-100 dark:hover:text-purple-700"
           />
         </button>
-        <div
-          id="slider"
-          className="mx-auto flex h-full w-full justify-center overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar">
-          {testimonials.map((testimonial, index) => {
-            return <Testimonial key={index} {...testimonial} />;
-          })}
+        <div id="slider" className="h-full w-full overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar">
+          <div className="mx-auto flex w-max gap-4">
+            {testimonials.map((testimonial, index) => {
+              return <Testimonial key={index} {...testimonial} />;
+            })}
+          </div>
         </div>
         <button
           type="button"
           onClick={slideRight}
-          className="hidden sm:block xl:hidden"
+          className="hidden shrink-0 p-2 sm:block"
           aria-label="Next testimonial">
           <Icon
             icon="fa-solid:arrow-circle-right"
