@@ -41,6 +41,14 @@ const config = {
         path: './release',
       },
     ],
+    ['@docusaurus/plugin-content-docs',
+      {
+        id: 'meetings',
+        path: 'meetings',
+        routeBasePath: 'meetings',
+        sidebarPath: false,
+      },
+    ],
   ],
   presets: [
     [
@@ -80,6 +88,7 @@ const config = {
           { to: 'features', label: 'Features', position: 'right' },
           { to: 'get-started', label: 'Get Started', position: 'right' },
           { to: 'community', label: 'Community', position: 'right' },
+          { to: 'meetings', label: 'Meetings', position: 'right' },
           {
             to: 'https://blog.podman.io',
             target: '_self',
