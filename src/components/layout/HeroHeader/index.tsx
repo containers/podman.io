@@ -106,19 +106,30 @@ function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, pla
               {() => <DropdownButton text="Download" option={InstallOption(returnOperatingSystemData())} />}
             </BrowserOnly>
           </div>
-          <p className="flex gap-4 text-white dark:text-gray-100">
-            <span>
-              Latest stable Podman <Link {...podmanrelease} textColor="text-white dark:text-gray-100" />
-            </span>
-            <span>-</span>
-            <span>
-              Latest stable Podman Desktop <Link {...desktoprelease} textColor="text-white dark:text-gray-100" />
-            </span>
-            <span>-</span>
+          <p className="flex flex-wrap items-center gap-2 text-white dark:text-gray-100">
+            <Link
+              text={`Podman v${podmanrelease.text}`}
+              path={podmanrelease.path}
+              textColor="text-white dark:text-gray-100"
+              hoverColor="hover:text-white hover:dark:text-gray-100 hover:border-purple-300 hover:bg-purple-900/60"
+              underline="no-underline hover:no-underline"
+              className="rounded-full border border-white/30 px-4 py-1.5 text-base font-semibold"
+            />
+            <Link
+              text={`Podman Desktop v${desktoprelease.text}`}
+              path={desktoprelease.path}
+              textColor="text-white dark:text-gray-100"
+              hoverColor="hover:text-white hover:dark:text-gray-100 hover:border-purple-300 hover:bg-purple-900/60"
+              underline="no-underline hover:no-underline"
+              className="rounded-full border border-white/30 px-4 py-1.5 text-base font-semibold"
+            />
             <Link
               text="Apache License 2.0"
               path="https://www.apache.org/licenses/LICENSE-2.0"
               textColor="text-white dark:text-gray-100"
+              hoverColor="hover:text-white hover:dark:text-gray-100 hover:border-purple-300 hover:bg-purple-900/60"
+              underline="no-underline hover:no-underline"
+              className="rounded-full border border-white/30 px-4 py-1.5 text-base font-semibold"
             />
           </p>
         </div>

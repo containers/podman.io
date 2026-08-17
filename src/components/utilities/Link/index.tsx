@@ -6,6 +6,7 @@ export type LinkProps = Link & {
   hoverColor?: string;
   underline?: string;
   target?: string;
+  className?: string;
 };
 function Link({
   text,
@@ -14,13 +15,14 @@ function Link({
   textColor = 'text-blue-700 dark:text-blue-500',
   hoverColor = 'hover:text-purple-700 hover:dark:text-purple-700',
   underline = 'underline underline-offset-4',
-  target = '_self'
+  target = '_self',
+  className = ''
 }: LinkProps): JSX.Element {
   return (
     <a
       href={path}
       target={target}
-      className={`${fontSize} ${textColor} ${hoverColor} ${underline} cursor-pointer transition duration-150 ease-in`}>
+      className={`${fontSize} ${textColor} ${hoverColor} ${underline} ${className} cursor-pointer transition duration-150 ease-in`}>
       {text}
     </a>
   );
