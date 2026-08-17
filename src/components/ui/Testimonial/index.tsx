@@ -26,7 +26,9 @@ function Testimonial(props: TestimonialProps) {
           </a>
         </div>
         <div className="order-first">
-          <img src={`${props.avatar}`} alt="user avatar" className="h-fit w-fit max-w-16 max-h-16 rounded-full" />
+          <a href={props.path}>
+            <img src={`${props.avatar}`} alt="user avatar" className="h-fit w-fit max-w-16 max-h-16 rounded-full" />
+          </a>
         </div>
       </div>
       <div className="mt-2 mb-4 truncate">

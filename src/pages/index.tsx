@@ -11,6 +11,7 @@ import TestimonialSection from '@site/src/components/content/TestimonialSection'
 import BlogArticlesList from '@site/src/components/content/BlogArticlesList';
 /* PAGE DATA */
 import { header, featureList, kubernetesBanner, compatibleTools } from '@site/static/data/home';
+import TerminalSimulator from '@site/src/components/ui/TerminalSimulator';
 
 /* PAGE COMPONENTS */
 const FeatureItem = ({ title, description }) => {
@@ -52,6 +53,9 @@ function IndexPage() {
   return (
     <Layout>
       <HeroHeader {...header} />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-[-3rem] relative z-10 hidden md:block">
+        <TerminalSimulator />
+      </div>
       <FeatureSection />
       <InfoBanner {...kubernetesBanner} />
       <CompatibleToolSection />
