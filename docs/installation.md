@@ -599,6 +599,7 @@ NOTE: On macOS or Windows, please run the command `podman machine ssh` to enter 
 
 ```
 $ cat /etc/containers/registries.conf
+# Or $HOME/.config/containers/registries.conf for rootless Podman
 # For more information on this configuration file, see containers-registries.conf(5).
 #
 # NOTE: RISK OF USING UNQUALIFIED IMAGE NAMES
@@ -693,6 +694,7 @@ Note this is not a volume mount. The content of the volumes is copied into conta
 
 ```
 cat /usr/share/containers/mounts.conf
+# Or $HOME/.config/containers/mounts.conf for rootless Podman
 /usr/share/rhel/secrets:/run/secrets
 ```
 
@@ -715,6 +717,7 @@ The link above takes you to the seccomp.json
 
 ```
 cat /etc/containers/policy.json
+# Or $HOME/.config/containers/policy.json for rootless Podman
 {
     "default": [
         {
