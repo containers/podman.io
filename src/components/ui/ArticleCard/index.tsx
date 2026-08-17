@@ -27,20 +27,17 @@ const PublishDate = ({ date, styles }: { date: string; styles?: string }) => {
     </div>
   );
 };
-const Title = (title: string) => {
-  return <h3 className="text-purple-700">{title}</h3>;
-};
 
 function ArticleCard(props: ArticleCardProps) {
   // Select fallback image based on index, cycling through available images
   const fallbackImage = FALLBACK_IMAGES[(props.index || 0) % FALLBACK_IMAGES.length];
-  
+
   // Sanitizes HTML and converts it to plain text
   const sanitizeHtml = (html: string) => {
     if (!html) return html;
-    const div = document.createElement("div");
+    const div = document.createElement('div');
     div.innerHTML = html;
-    return div.textContent || div.innerText || "";
+    return div.textContent || div.innerText || '';
   };
   const abbrSubtitle = sanitizeHtml(props.subtitle).trim().split(' ').slice(0, 32).join(' ').concat('...');
   if (props.altLayout) {
