@@ -146,7 +146,17 @@
   h3,
   h4,
   h5 {
-    @apply font-display dark:text-gray-300;
+    @apply font-display;
+    color: var(--ifm-heading-color);
+  }
+  
+  html[data-theme='dark'] h1,
+  html[data-theme='dark'] h2,
+  html[data-theme='dark'] h2>a,
+  html[data-theme='dark'] h3,
+  html[data-theme='dark'] h4,
+  html[data-theme='dark'] h5 {
+    @apply text-gray-300;
   }
 
   /* main text */
@@ -157,13 +167,30 @@
   ol,
   figcaption,
   blockquote {
-    @apply font-text text-lg dark:text-gray-100 lg:text-xl;
+    @apply font-text text-lg lg:text-xl;
+    color: var(--ifm-font-color-base);
+  }
+
+  html[data-theme='dark'] p,
+  html[data-theme='dark'] dl,
+  html[data-theme='dark'] dt,
+  html[data-theme='dark'] dd,
+  html[data-theme='dark'] ol,
+  html[data-theme='dark'] figcaption,
+  html[data-theme='dark'] blockquote {
+    @apply text-gray-100;
   }
 
   /* monospace */
   code,
   pre {
-    @apply font-mono text-lg dark:text-gray-100 lg:text-xl;
+    @apply font-mono text-lg lg:text-xl;
+    color: var(--ifm-font-color-base);
+  }
+
+  html[data-theme='dark'] code,
+  html[data-theme='dark'] pre {
+    @apply text-gray-100;
   }
 
   a {

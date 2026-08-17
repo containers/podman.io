@@ -79,6 +79,7 @@ const config = {
         items: [
           { to: 'features', label: 'Features', position: 'right' },
           { to: 'get-started', label: 'Get Started', position: 'right' },
+          { to: 'downloads', label: 'Downloads', position: 'right' },
           { to: 'community', label: 'Community', position: 'right' },
           {
             to: 'https://blog.podman.io',
