@@ -10,7 +10,7 @@ export type IconLinkProps = Link & {
 function IconLink({ text, path, icon, image, textLogo }: IconLinkProps) {
   return (
     <a href={path} className="mx-auto flex flex-col items-center text-center">
-      <div className="max-w-fit rounded-full bg-white p-8 shadow-sm  dark:bg-gray-900">
+      <div className="max-w-fit rounded-full bg-white p-8 shadow-sm dark:bg-gray-900">
         {icon ? (
           <Icon icon={icon} className="text-5xl" />
         ) : textLogo ? (
