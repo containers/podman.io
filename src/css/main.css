@@ -39,19 +39,40 @@
   padding: 8px 0px;
   letter-spacing: -1.5px !important;
   font-kerning: normal !important;
+  transition: color 0.4s ease;
 }
 
 #__docusaurus > nav > div.navbar__inner > div:nth-child(1) > a > b {
   font-size: xxx-large;
   line-height: 2rem;
 }
-
 .navbar__logo {
   height: 6.25rem;
+  width: 6.57rem;
+  min-width: 6.57rem;
+  min-height: 6.25rem;
+  flex: 0 0 auto;
+  transition: opacity 0.4s ease;
+}
+
+.navbar__logo img {
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 266 / 253;
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+  will-change: opacity;
+}
+
+.navbar__brand {
+  min-height: 6.25rem;
+  align-items: center;
 }
 
 .navbar {
   box-shadow: none;
+  transition: background 0.4s ease, background-color 0.4s ease;
   @apply bg-gradient-to-r from-blue-500  to-purple-700 dark:from-blue-700 dark:to-purple-900;
 }
 
@@ -79,7 +100,8 @@
 
 .navbar__link,
 .navbar__brand {
-  @apply no-underline transition duration-150 ease-linear hover:text-purple-300;
+  @apply no-underline hover:text-purple-300;
+  transition: color 0.4s ease, opacity 0.4s ease;
 }
 
 .footer {
