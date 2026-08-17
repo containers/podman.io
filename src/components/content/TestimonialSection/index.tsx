@@ -33,7 +33,7 @@ function TestimonialSection() {
         </button>
         <div
           id="slider"
-          className="mx-auto flex h-full w-full justify-center overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar">
+          className="scrollbar mx-auto flex h-full w-full overflow-x-scroll scroll-smooth whitespace-nowrap snap-x snap-mandatory px-4 md:px-8 py-8">
           {testimonials.map((testimonial, index) => {
             return <Testimonial key={index} {...testimonial} />;
           })}
