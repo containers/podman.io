@@ -150,7 +150,7 @@
 
   /* headings size and weight */
   h1 {
-    @apply text-4xl font-bold lg:text-5xl;
+    @apply mb-6 text-4xl font-bold lg:text-5xl;
   }
   h2 {
     @apply text-2xl font-bold lg:text-3xl;
