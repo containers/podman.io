@@ -51,7 +51,7 @@ const PodmanDesktopSection = () => {
         </div>
         <div className="md:w-1/2 xl:w-3/4">
           <p className="my-8 align-middle text-2xl leading-relaxed">
-            <a className="font-semibold hover:text-purple-500 text-purple-900 no-underline text-2xl leading-releaxed" href="https://podman-desktop.io">Podman Desktop</a> is Podman's graphical application that makes it easy to install and work with Podman (and
+            <a className="font-semibold hover:text-purple-500 text-purple-900 no-underline text-2xl leading-relaxed" href="https://podman-desktop.io">Podman Desktop</a> is Podman's graphical application that makes it easy to install and work with Podman (and
             other container engines) on Windows, MacOS, and Linux.
           </p>
         </div>
