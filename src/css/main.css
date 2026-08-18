@@ -171,3 +171,155 @@
 [data-theme='dark'] img[src$='#gh-light-mode-only'] {
   display: none;
 }
+/* ==========================================================================
+   Documentation Page Modern Redesign (Podman Theme)
+   ========================================================================== */
+
+/* 1. Global Doc Variables & Smooth Animations */
+:root {
+  --ifm-menu-color: #374151; /* gray-700 */
+  --ifm-menu-color-active: var(--ifm-color-primary-darkest);
+  --ifm-menu-color-background-active: rgba(137, 44, 160, 0.08);
+  --ifm-toc-border-color: transparent;
+  --ifm-toc-link-color: #6b7280; /* gray-500 */
+  --ifm-toc-link-color-active: var(--ifm-color-primary);
+  --doc-entry-duration: 0.6s;
+}
+
+[data-theme='dark'] {
+  --ifm-menu-color: #d1d5db; /* gray-300 */
+  --ifm-menu-color-active: #e3b4f3;
+  --ifm-menu-color-background-active: rgba(227, 180, 243, 0.15);
+  --ifm-toc-link-color: #9ca3af; /* gray-400 */
+  --ifm-toc-link-color-active: var(--ifm-color-primary-lightest);
+  --ifm-background-color: #0f172a; /* Rich midnight blue for premium feel */
+  --ifm-background-surface-color: #1e293b;
+}
+
+/* Entry Animation for Docs Content */
+@keyframes docFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.theme-doc-markdown {
+  animation: docFadeUp var(--doc-entry-duration) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 2. Glassmorphism Sidebar */
+.theme-doc-sidebar-container {
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.02);
+  transition: background-color 0.3s ease;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-container {
+  background: rgba(15, 23, 42, 0.75) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar Menu Items Hover & Micro-animations */
+.theme-doc-sidebar-menu .menu__link {
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.theme-doc-sidebar-menu .menu__link:hover {
+  transform: translateX(4px);
+  background: rgba(137, 44, 160, 0.05);
+}
+[data-theme='dark'] .theme-doc-sidebar-menu .menu__link:hover {
+  background: rgba(227, 180, 243, 0.1);
+}
+
+/* 3. Floating Table of Contents (TOC) */
+.theme-doc-toc-desktop {
+  margin-top: 2rem;
+  margin-right: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 7rem;
+}
+
+[data-theme='dark'] .theme-doc-toc-desktop {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.theme-doc-toc-desktop .table-of-contents__link {
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+  padding-left: 0.5rem;
+}
+.theme-doc-toc-desktop .table-of-contents__link:hover {
+  color: var(--ifm-toc-link-color-active);
+  transform: translateX(2px);
+}
+.theme-doc-toc-desktop .table-of-contents__link--active {
+  border-left-color: var(--ifm-color-primary);
+  font-weight: 600;
+  padding-left: 0.75rem;
+}
+
+/* 4. Enhanced Content Area & Typography */
+.theme-doc-markdown h1:first-child {
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest), var(--ifm-color-primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+  font-size: 3.5rem !important;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+[data-theme='dark'] .theme-doc-markdown h1:first-child {
+  background: linear-gradient(135deg, #60a5fa, #c084fc); /* Vibrant blue to purple for dark mode */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Code Blocks Lift Effect */
+.theme-doc-markdown .prism-code {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.theme-doc-markdown .prism-code:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .theme-doc-markdown .prism-code {
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .theme-doc-markdown .prism-code:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Soften the main wrapper background in light mode to contrast with white cards */
+html[data-theme='light'] body {
+  background-color: #f8fafc;
+}
