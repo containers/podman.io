@@ -61,19 +61,22 @@ function PageHeaderSupplementalInfo({ image, basicResources }: PageHeaderSupplem
 
 function Instructions({ instructions }: InstructionsProps) {
   if (instructions) {
+    const buttons = instructions.buttons || (instructions.button ? [instructions.button] : []);
     return (
       <div>
         <h3 className="text-gray-700 mb-4">{instructions.title}</h3>
         <p>{instructions.subtitle}</p>
          <ul className="mb-10 mt-4 flex flex-col gap-6 sm:flex-row lg:mb-16 lg:gap-4 xl:flex-col">
-              <li>
+            {buttons.map((btn: any, index: number) => (
+              <li key={index}>
                 <a
-                  href={instructions.button.path}
+                  href={btn.path}
                   className="no-underline hover:no-underline flex h-32 max-w-lg flex-col items-center justify-center gap-4 rounded-md bg-gray-100 p-4 text-center text-purple-700 underline-offset-4 transition duration-150 ease-linear hover:bg-purple-700 hover:text-purple-50 hover:shadow-md dark:bg-gray-700 dark:hover:bg-purple-900 dark:hover:text-white lg:h-auto lg:flex-row xl:justify-start">
-                  <span>{instructions.button.text}</span>
-                  <Icon icon={instructions.button.icon} className="order-first hidden lg:block" />
+                  <span>{btn.text}</span>
+                  <Icon icon={btn.icon} className="order-first hidden lg:block" />
                 </a>
               </li>
+            ))}
         </ul>
       </div>
     )
