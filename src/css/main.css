@@ -171,3 +171,34 @@
 [data-theme='dark'] img[src$='#gh-light-mode-only'] {
   display: none;
 }
+
+/* ------------------ */
+/* Blog Styling */
+/* ------------------ */
+
+/* Add visual separation between blog posts */
+main[itemtype*="Blog"] article[itemprop="blogPost"] {
+  margin-bottom: 0 !important;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  padding: 2rem 0;
+}
+
+/* Add a divider above the first blog post */
+main[itemtype*="Blog"] article[itemprop="blogPost"]:first-child {
+  border-top: 1px solid var(--ifm-toc-border-color);
+}
+
+/* Add spacing before the blog pagination */
+main[itemtype*="Blog"] .pagination-nav {
+  margin-top: 2rem;
+}
+
+/* Align blog titles with post metadata */
+main[itemtype*="Blog"] article[itemprop="blogPost"] h2 {
+  padding: 0;
+}
