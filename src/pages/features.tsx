@@ -194,7 +194,9 @@ const LearnMoreSection = () => {
 
 function Features() {
   return (
-    <Layout>
+    <Layout
+      title="Features"
+      description="Podman is an open source container, pod, and container image management engine. Podman makes it easy to find, run, build, and share containers.">
       <PageHeader title={header.title} description={header.subtitle} />
       <GetToKnowPodmanSection />
       <PodmanDesktopSection />
