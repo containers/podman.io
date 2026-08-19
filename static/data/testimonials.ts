@@ -39,7 +39,7 @@ export const testimonials = [
     social: 'twitter',
     path: 'https://twitter.com/GeraldVenzl/status/1656361050135212032',
     date: 'May 10, 2023',
-    avatar: 'https://pbs.twimg.com/profile_images/1057877042438397952/DVNj9EiF_400x400.jpg',
+    avatar: 'https://github.com/gvenzl.png',
     featuredlink: 'https://blogs.oracle.com/scoter/post/run-oracle-database-23c-with-podman-desktop',
   },
 ];
