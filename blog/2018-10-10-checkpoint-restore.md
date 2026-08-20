@@ -135,7 +135,7 @@ life.
 
 I recorded all those steps in the demo below:
 
-<a href="https://asciinema.org/a/FsTbx9mZkzeuhCM2pFOr1tujM" target="_blank"><img src="https://asciinema.org/a/FsTbx9mZkzeuhCM2pFOr1tujM.png" width="650"/></a>
+<a href="https://asciinema.org/a/FsTbx9mZkzeuhCM2pFOr1tujM" target="_blank" rel="noopener noreferrer"><img src="https://asciinema.org/a/FsTbx9mZkzeuhCM2pFOr1tujM.png" width="650"/></a>
 
 The checkpoint/restore support in Podman is still very new and requires a git
 checkout of CRIU using the `criu-dev` branch to work right now. The necessary
