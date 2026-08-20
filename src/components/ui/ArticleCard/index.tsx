@@ -51,6 +51,7 @@ function ArticleCard(props: ArticleCardProps) {
                 <a
                   href={props.path}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-white no-underline hover:text-blue-100 hover:no-underline dark:text-white dark:hover:text-blue-50">
                   {sanitizeHtml(props.title)}
                 </a>
@@ -82,6 +83,7 @@ function ArticleCard(props: ArticleCardProps) {
             <a
               href={props.path}
               target="_blank"
+              rel="noopener noreferrer"
               className="text-white no-underline hover:text-blue-100 hover:no-underline dark:text-white dark:hover:text-blue-50">
               {sanitizeHtml(props.title)}
             </a>
