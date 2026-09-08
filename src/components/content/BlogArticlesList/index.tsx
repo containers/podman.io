@@ -34,35 +34,38 @@ const BlogArticlesList: React.FC<BlogArticlesListProps> = ({
   }
 
   const containerClasses =
-    containerLayout === 'vertical' ? 'flex flex-col gap-4' : 'flex flex-wrap justify-center gap-4';
+    containerLayout === 'vertical'
+      ? 'flex flex-col gap-4'
+      : 'flex flex-wrap justify-center gap-6 items-stretch';
 
   return (
     <section className={sectionClassName}>
       <SectionHeader title={title} textColor={titleColor} />
       <div className={containerClasses}>
         {data.slice(0, actualDisplayCount).map((card, index) => (
-          <ArticleCard
-            key={card.id}
-            title={card.title.rendered}
-            author_link={card.author_info.author_link}
-            display_name={card.author_info.display_name}
-            subtitle={card.excerpt.rendered}
-            date={card.wbDate}
-            imgSrc={card.jetpack_featured_media_url}
-            path={card.link}
-            altLayout={altLayout}
-            index={index}
-          />
+          <div key={card.id} className="w-80 flex flex-col">
+            <ArticleCard
+              title={card.title.rendered}
+              author_link={card.author_info.author_link}
+              display_name={card.author_info.display_name}
+              subtitle={card.excerpt.rendered}
+              date={card.wbDate}
+              imgSrc={card.jetpack_featured_media_url}
+              path={card.link}
+              altLayout={altLayout}
+              index={index}
+            />
+          </div>
         ))}
       </div>
       {showFooter && footerText && (
-        <p className="ml-2l text-center 2xl:text-start">
+        <p className="ml-2l text-center 2xl:text-start mt-6">
           {footerText}{' '}
           <a
             href="https://blog.podman.io"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline-offset-4 transition duration-150 ease-linear hover:text-purple-700 dark:hover:text-purple-500">
+            className="underline-offset-4 transition duration-150 ease-linear hover:text-purple-700 dark:hover:text-purple-50">
             on our Blog!
           </a>
         </p>
