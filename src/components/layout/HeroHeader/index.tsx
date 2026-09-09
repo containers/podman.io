@@ -95,53 +95,68 @@ const InstallOption = (props): JSX.Element => {
 
 function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, platforms }) {
   return (
-    <header className="bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900">
-      <div className="mx-auto grid md:grid-cols-2 md:gap-12 xl:mx-20">
-        <div className="container row-span-2 mb-4 mt-12 place-self-end md:mb-0 md:ml-10 xl:ml-24">
-          <h1 className="mb-4 text-white dark:text-gray-50 lg:mb-8">{title}</h1>
-          <p className="max-w-sm text-white dark:text-gray-50 lg:max-w-prose">{subtitle}</p>
-          <div className="my-3 flex max-w-sm gap-8 text-lg">
-            <Button as="link" text="Get Started" path="/get-started" />
-            <BrowserOnly>
-              {() => <DropdownButton text="Download" option={InstallOption(returnOperatingSystemData())} />}
-            </BrowserOnly>
+    <header className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-end md:grid-cols-12 md:gap-8 lg:gap-12">
+          <div className="min-w-0 pt-8 pb-16 md:col-span-7 md:pt-12 md:pb-24 lg:col-span-7 lg:pb-28 xl:col-span-7">
+            <h1 className="mb-4 text-3xl font-extrabold tracking-tight text-white dark:text-gray-50 sm:text-4xl lg:text-5xl lg:leading-tight">
+              {title}
+            </h1>
+            <p className="max-w-xl text-base leading-relaxed text-white/90 dark:text-gray-100 sm:text-lg">
+              {subtitle}
+            </p>
+            <div className="my-5 flex flex-wrap items-center gap-4 text-lg">
+              <Button as="link" text="Get Started" path="/get-started" />
+              <BrowserOnly>
+                {() => <DropdownButton text="Download" option={InstallOption(returnOperatingSystemData())} />}
+              </BrowserOnly>
+            </div>
+            <p className="flex gap-4 text-white dark:text-gray-100">
+              <span>
+                Latest stable Podman <Link {...podmanrelease} textColor="text-white dark:text-gray-100" />
+              </span>
+              <span>-</span>
+              <span>
+                Latest stable Podman Desktop <Link {...desktoprelease} textColor="text-white dark:text-gray-100" />
+              </span>
+              <span>-</span>
+              <Link
+                text="Apache License 2.0"
+                path="https://www.apache.org/licenses/LICENSE-2.0"
+                textColor="text-white dark:text-gray-100"
+              />
+            </p>
           </div>
-          <p className="flex gap-4 text-white dark:text-gray-100">
-            <span>
-              Latest stable Podman <Link {...podmanrelease} textColor="text-white dark:text-gray-100" />
-            </span>
-            <span>-</span>
-            <span>
-              Latest stable Podman Desktop <Link {...desktoprelease} textColor="text-white dark:text-gray-100" />
-            </span>
-            <span>-</span>
-            <Link
-              text="Apache License 2.0"
-              path="https://www.apache.org/licenses/LICENSE-2.0"
-              textColor="text-white dark:text-gray-100"
-            />
-          </p>
-        </div>
 
-        <div className="container mx-auto flex flex-col justify-end self-end md:col-start-2 md:row-span-3 lg:row-span-2 lg:row-start-2">
-          <div className="container mb-12 flex flex-col items-start md:mb-0 md:max-w-lg lg:max-w-full lg:items-end 2xl:pr-8">
-            <h3 className="text-base font-medium text-white dark:text-gray-100">{platforms[0]}</h3>
-            <ul className="flex gap-4">
-              {platforms.slice(1).map((icon, index) => {
-                return (
-                  <li key={index}>
-                    <Icon icon={icon} className="text-3xl text-white dark:text-gray-100" />
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <div className="hidden justify-end md:flex lg:mb-12 lg:w-[510px] 2xl:w-full">
-            <img src={image.path} alt={image.alt} className="object-cover" />
+          <div className="min-w-0 flex flex-col justify-end self-end pb-12 md:col-span-5 md:pb-0 lg:col-span-5 xl:col-span-5">
+            <div className="mb-4 flex flex-col items-start md:items-end">
+              <h3 className="mb-2 text-sm font-semibold tracking-wide text-white/90 uppercase dark:text-gray-100">
+                {platforms[0]}
+              </h3>
+              <ul className="flex items-center gap-3 lg:gap-4">
+                {platforms.slice(1).map((icon, index) => {
+                  return (
+                    <li key={index}>
+                      <Icon icon={icon} className="text-2xl lg:text-3xl text-white/90 transition hover:text-white dark:text-gray-100" />
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <div className="hidden justify-end md:flex w-full">
+              <img
+                src={image.path}
+                alt={image.alt}
+                className="w-full max-h-[380px] xl:max-h-[460px] object-contain drop-shadow-2xl"
+              />
+            </div>
           </div>
         </div>
       </div>
-      <WaveBorder grid="lg:-mt-44" />
+      <WaveBorder
+        className="pointer-events-none absolute bottom-0 left-0 z-10 w-full h-10 sm:h-14 md:h-16 lg:h-20 xl:h-24"
+        preserveAspectRatio="none"
+      />
     </header>
   );
 }

@@ -3,20 +3,26 @@ import React from 'react';
 type ShapeProps = Shape & {
   grid?: string;
   layout?: string;
+  className?: string;
+  preserveAspectRatio?: string;
 };
 function WaveBorder({
   light = 'fill-white',
   dark = 'dark:fill-gray-900',
   width = '100',
   height = '130',
-  grid,
-  layout,
+  grid = '',
+  layout = '',
+  className = '',
+  preserveAspectRatio,
 }: ShapeProps): JSX.Element {
+  const combinedClasses = [grid, layout, className].filter(Boolean).join(' ');
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={`${grid} ${layout}`}
-      width={`${width}%`}
+      className={combinedClasses}
+      width={width ? (width.endsWith('%') ? width : `${width}%`) : undefined}
+      preserveAspectRatio={preserveAspectRatio}
       viewBox={`-8620 -1968 1400 ${height}`}>
       <path
         className={`${light} ${dark}`}
