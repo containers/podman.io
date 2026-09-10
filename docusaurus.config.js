@@ -65,6 +65,8 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      // Default preview image for links shared on social platforms.
+      image: 'images/podman-social-card.png',
       colorMode: {
         respectPrefersColorScheme: true,
       },

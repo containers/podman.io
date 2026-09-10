@@ -213,7 +213,9 @@ const SubmitIssuesSection = () => {
 /* PAGE CONTENT */
 function Community() {
   return (
-    <Layout>
+    <Layout
+      title="Community"
+      description="Chat with the Podman community on Matrix, Discord, IRC, or the mailing list, and join our twice-monthly community meetings.">
       <PageHeader title={header.title} description={header.subtitle} />
       <InfoBanner
         description={header.banner.text}
