@@ -1,3 +1,3 @@
-## The podman.io Project Community Code of Conduct
+## The Podman Project Community Code of Conduct
 
-The podman.io Project follows the [Containers Community Code of Conduct](https://github.com/containers/common/blob/main/CODE-OF-CONDUCT.md).
+The Podman project follows the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/main/code-of-conduct.md).
