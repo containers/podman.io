@@ -11,7 +11,7 @@ const Tab = (props): JSX.Element => {
       ${
         isActive
           ? 'bg-gradient-radial from-purple-500 to-purple-700 text-white dark:from-purple-700 dark:to-purple-900 dark:shadow-purple-900'
-          : '0 bg-white text-gray-700 dark:bg-gray-700 dark:text-gray-300 dark:shadow-gray-700'
+          : 'bg-white text-gray-700 dark:bg-gray-700 dark:text-gray-300 dark:shadow-gray-700'
       }`}>
       <h4 className="text-blue-500 dark:text-blue-500">{label}</h4>
       <ul>
