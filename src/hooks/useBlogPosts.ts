@@ -22,7 +22,7 @@ interface UseBlogPostsReturn {
   loading: boolean;
 }
 
-export const useBlogPosts = (limit: number = 4): UseBlogPostsReturn => {
+export const useBlogPosts = (limit = 4): UseBlogPostsReturn => {
   const [data, setData] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 

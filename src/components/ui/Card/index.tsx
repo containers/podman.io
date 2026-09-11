@@ -21,7 +21,7 @@ function CardBody(props) {
 }
 function CardButtons({ data = [{ text: 'button text' }] }) {
   return (
-    <div className=" mx-2 mb-4 flex justify-center gap-2 lg:mb-8">
+    <div className="mx-2 mb-4 flex justify-center gap-2 lg:mb-8">
       {data.map((button, index) => (
         <div key={index}>
           {index == 0 ? <Button as="link" {...button} /> : <Button as="link" outline={true} {...button} />}

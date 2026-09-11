@@ -18,7 +18,7 @@ function FilmIcon() {
           className="svg-inline--fa fa-film fa-w-16"
           rx="0"
           ry="0"
-          fill={`url(#fill-0-rumext-id-2)`}>
+          fill={'url(#fill-0-rumext-id-2)'}>
           <defs>
             <radialGradient
               id="fill-color-gradient_rumext-id-2_0"
@@ -41,7 +41,7 @@ function FilmIcon() {
                 <rect
                   width="74.66667200000188"
                   height="56.00000799999998"
-                  fill={`url(#fill-color-gradient_rumext-id-2_0)`}
+                  fill={'url(#fill-color-gradient_rumext-id-2_0)'}
                 />
               </g>
             </pattern>
@@ -70,7 +70,7 @@ function FilmIcon() {
                   <rect
                     width="75.00000000000205"
                     height="56.000000000000455"
-                    fill={`url(#fill-color-gradient_rumext-id-3_0)`}
+                    fill={'url(#fill-color-gradient_rumext-id-3_0)'}
                   />
                 </g>
               </pattern>
@@ -90,7 +90,7 @@ function FilmIcon() {
           className="svg-inline--fa fa-film fa-w-16"
           rx="0"
           ry="0"
-          fill={`url(#fill-0-rumext-id-4)`}>
+          fill={'url(#fill-0-rumext-id-4)'}>
           <defs>
             <radialGradient
               id="fill-color-gradient_rumext-id-4_0"
@@ -113,7 +113,7 @@ function FilmIcon() {
                 <rect
                   width="74.66667200000188"
                   height="56.00000799999998"
-                  fill={`url(#fill-color-gradient_rumext-id-4_0)`}
+                  fill={'url(#fill-color-gradient_rumext-id-4_0)'}
                 />
               </g>
             </pattern>
@@ -142,7 +142,7 @@ function FilmIcon() {
                   <rect
                     width="75.00000000000205"
                     height="56.000000000000455"
-                    fill={`url(#fill-color-gradient_rumext-id-5_0)`}
+                    fill={'url(#fill-color-gradient_rumext-id-5_0)'}
                   />
                 </g>
               </pattern>
