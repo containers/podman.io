@@ -2,7 +2,7 @@ import { LATEST_VERSION, LATEST_DESKTOP_VERSION } from '@site/static/data/global
 const operatingSystemData = [
   {
     id: 'windows',
-    preferred:{
+    preferred: {
       title: 'Podman Desktop for Windows',
       subtitle: `Windows Installer v-${LATEST_DESKTOP_VERSION}`,
       icon: 'fa-brands:windows',
@@ -39,7 +39,7 @@ const operatingSystemData = [
     },
     alt: {
       title: 'Podman CLI for macOS',
-      subtitle: `CLI only ARM64 installer`,
+      subtitle: 'CLI only ARM64 installer',
       icon: 'material-symbols:terminal-rounded',
       path: `https://github.com/podman-container-tools/podman/releases/download/v${LATEST_VERSION}/podman-installer-macos-arm64.pkg`,
     },
@@ -54,7 +54,7 @@ const operatingSystemData = [
       title: 'Podman CLI for Linux',
       subtitle: `Podman Engine v${LATEST_VERSION}`,
       icon: 'material-symbols:terminal-rounded',
-      path: `docs/installation#installing-on-linux`,
+      path: 'docs/installation#installing-on-linux',
     },
     alt: {
       title: 'Podman Desktop for Linux',

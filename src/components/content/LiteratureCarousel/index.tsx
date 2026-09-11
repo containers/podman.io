@@ -5,7 +5,7 @@ import { literature } from '@site/static/data/literature';
 
 function LiteratureCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
-  
+
   // Randomize initial book on page load
   useEffect(() => {
     setActiveIndex(Math.floor(Math.random() * literature.length));
@@ -13,11 +13,11 @@ function LiteratureCarousel() {
   const currentBook = literature[activeIndex];
 
   const navigateLeft = () => {
-    setActiveIndex((prev) => (prev > 0 ? prev - 1 : literature.length - 1));
+    setActiveIndex(prev => (prev > 0 ? prev - 1 : literature.length - 1));
   };
 
   const navigateRight = () => {
-    setActiveIndex((prev) => (prev < literature.length - 1 ? prev + 1 : 0));
+    setActiveIndex(prev => (prev < literature.length - 1 ? prev + 1 : 0));
   };
 
   return (
@@ -32,24 +32,18 @@ function LiteratureCarousel() {
         </button>
 
         {/* Book Content - Fixed Width Container */}
-        <div className="flex flex-wrap justify-center gap-4 lg:justify-start max-w-5xl mx-auto">
+        <div className="mx-auto flex max-w-5xl flex-wrap justify-center gap-4 lg:justify-start">
           <div className={`flex flex-1 ${!currentBook.coverImage ? 'justify-center' : ''}`}>
             {/* Book Cover Image (only if available) */}
             {currentBook.coverImage && (
               <div className="order-first mr-12 hidden lg:block">
-                <img
-                  src={currentBook.coverImage.src}
-                  alt={currentBook.coverImage.alt}
-                  className="max-w-xs"
-                />
+                <img src={currentBook.coverImage.src} alt={currentBook.coverImage.alt} className="max-w-xs" />
               </div>
             )}
 
             {/* Text Content */}
-            <div className="mx-4 flex-col items-center text-center lg:mx-0 lg:items-start lg:text-start max-w-prose">
-              <h2 className="my-4 p-0 font-medium text-blue-900 dark:text-blue-500">
-                {currentBook.title}
-              </h2>
+            <div className="mx-4 max-w-prose flex-col items-center text-center lg:mx-0 lg:items-start lg:text-start">
+              <h2 className="my-4 p-0 font-medium text-blue-900 dark:text-blue-500">{currentBook.title}</h2>
               <p className="mb-4 max-w-prose lg:mb-10">{currentBook.description}</p>
               <Button
                 as="link"
@@ -62,12 +56,8 @@ function LiteratureCarousel() {
 
           {/* Extra Images (like coloring pages collage) */}
           {currentBook.extraImages && (
-            <div className="order-first mx-auto lg:order-last xl:mx-0 hidden lg:block">
-              <img
-                src={currentBook.extraImages.src}
-                alt={currentBook.extraImages.alt}
-                className="max-w-sm"
-              />
+            <div className="order-first mx-auto hidden lg:order-last lg:block xl:mx-0">
+              <img src={currentBook.extraImages.src} alt={currentBook.extraImages.alt} className="max-w-sm" />
             </div>
           )}
         </div>
@@ -91,7 +81,7 @@ function LiteratureCarousel() {
             className={`h-2 w-2 rounded-full transition-all duration-300 ${
               index === activeIndex
                 ? 'w-8 bg-purple-700 dark:bg-purple-500'
-                : 'bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500'
+                : 'hover:bg-gray-400 dark:bg-gray-600 bg-gray-300 dark:hover:bg-gray-500'
             }`}
             aria-label={`Go to book ${index + 1}`}
           />
