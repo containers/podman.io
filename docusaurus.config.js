@@ -21,6 +21,7 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+  clientModules: [require.resolve('./src/clientModules/tocAutoScroll.js')],
   plugins: [
     '@docusaurus/theme-live-codeblock',
     async function tailwindPlugin() {
