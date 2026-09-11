@@ -41,6 +41,16 @@ const knowPodman = {
   ],
 };
 
+const podmanDesktop = {
+  title: 'Podman Desktop',
+  description:
+    'is Podman\'s graphical application that makes it easy to install and work with Podman (and other container engines) on Windows, MacOS, and Linux.',
+  image: {
+    path: 'logos/optimized/podman-desktop-logo-200w-198h.webp',
+    alt: 'Podman Desktop logo',
+  },
+};
+
 const carouselContent = [
   {
     title: 'Find',
@@ -113,4 +123,4 @@ const learnMore = {
   },
 };
 
-export { header, knowPodman, carouselContent, learnMore };
+export { header, knowPodman, podmanDesktop, carouselContent, learnMore };

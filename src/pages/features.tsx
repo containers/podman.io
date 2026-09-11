@@ -9,7 +9,7 @@ import LiteratureCarousel from '@site/src/components/content/LiteratureCarousel'
 import FeaturesCarousel from '@site/src/components/content/FeaturesCarousel';
 import BlogArticlesList from '@site/src/components/content/BlogArticlesList';
 /* PAGE DATA */
-import { header, knowPodman, learnMore } from '@site/static/data/features';
+import { header, knowPodman, podmanDesktop, learnMore } from '@site/static/data/features';
 import PlayOnScroll from '@site/src/components/utilities/PlayOnScroll';
 import BasicResourcesBox from '@site/src/components/content/BasicResourcesBox';
 
@@ -18,15 +18,19 @@ function GetToKnowPodmanSection() {
   return (
     <section className="mb-8 mt-4 lg:mt-8 xl:mb-12">
       <SectionHeader title={knowPodman.title} textColor="text-blue-700 dark:text-blue-500" />
-      <div className="container flex flex-wrap justify-center gap-4 lg:gap-8">
+      <div className="container grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         {knowPodman.cards.map((card, index) => {
           return (
-            <article key={index} className="mt-2 flex flex-col justify-start rounded-md p-4 text-center lg:mt-4">
-              <div>
-                <h3 className="mb-4 font-medium dark:text-blue-500 xl:mb-6">{card.title}</h3>
-                <Markdown text={card.description} styles="max-w-xs" />
-              </div>
-              <img src={card.image.path} alt={card.image.alt} className="order-first my-2 h-52 w-auto object-contain" />
+            <article
+              key={index}
+              className="flex h-full flex-col items-center rounded-lg bg-gray-50 p-6 pb-8 text-center shadow-md dark:bg-gray-700 dark:shadow-none lg:p-8">
+              <img
+                src={card.image.path}
+                alt={card.image.alt}
+                className="mb-6 h-40 w-auto object-contain"
+              />
+              <h3 className="mb-3 font-medium dark:text-blue-500">{card.title}</h3>
+              <Markdown text={card.description} styles="max-w-xs leading-relaxed" />
             </article>
           );
         })}
@@ -37,24 +41,22 @@ function GetToKnowPodmanSection() {
 
 const PodmanDesktopSection = () => {
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-gray-100 pb-5 dark:bg-gray-900 dark:from-gray-700/25 dark:to-gray-900">
-      <div className="align-center container flex justify-center">
-        <div className="flex-row content-center">
-          <h2 className="content-center">
-            <a className="hover:no-underline hover:text-white active:text-white visited:text-white dark:hover:text-white dark:active:text-white dark:visited:text-white text-4xl mb-5 px-5  bg-blue-500 no-underline text-white dark:bg-blue-700 dark:text-white" href="https://podman-desktop.io">Podman Desktop</a>
-          </h2>
-        </div>
-      </div>
-      <div className="container flex flex-col md:flex-row items-center">
-        <div id="imgdiv" className="mx-auto w-full md:w-auto">
-          <img id="pdlogo" className="mx-auto" src="logos/optimized/podman-desktop-logo-200w-198h.webp" />
-        </div>
-        <div className="md:w-1/2 xl:w-3/4">
-          <p className="my-8 align-middle text-2xl leading-relaxed">
-            <a className="font-semibold hover:text-purple-500 text-purple-900 no-underline text-2xl leading-releaxed" href="https://podman-desktop.io">Podman Desktop</a> is Podman's graphical application that makes it easy to install and work with Podman (and
-            other container engines) on Windows, MacOS, and Linux.
-          </p>
-        </div>
+    <section className="mb-8 mt-4 lg:mt-8 xl:mb-12">
+      <SectionHeader title={podmanDesktop.title} textColor="text-blue-700 dark:text-blue-500" />
+      <div className="container flex flex-col items-center gap-8 py-4 md:flex-row md:items-center md:gap-10 lg:gap-14">
+        <img
+          src={podmanDesktop.image.path}
+          alt={podmanDesktop.image.alt}
+          className="h-40 w-auto shrink-0 object-contain hidden md:block md:h-44 lg:h-48"
+        />
+        <p className="min-w-0 flex-1 text-xl leading-relaxed text-gray-700 dark:text-gray-100 md:text-2xl">
+          <a
+            className="font-semibold text-purple-700 no-underline hover:text-purple-500 dark:text-blue-500 dark:hover:text-blue-300"
+            href="https://podman-desktop.io">
+            {podmanDesktop.title}
+          </a>{' '}
+          {podmanDesktop.description}
+        </p>
       </div>
     </section>
   );
@@ -195,7 +197,7 @@ const LearnMoreSection = () => {
 function Features() {
   return (
     <Layout>
-      <PageHeader title={header.title} description={header.subtitle} />
+      <PageHeader title={header.title} description={header.subtitle} image={header.image} />
       <GetToKnowPodmanSection />
       <PodmanDesktopSection />
       <ManageContainersUISection />
