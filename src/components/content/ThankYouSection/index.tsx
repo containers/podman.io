@@ -33,42 +33,49 @@ function ThankYouSection(): JSX.Element {
           <a
             href={redHat.href}
             target="_blank"
+            rel="noopener noreferrer"
             className="mx-4 mb-4 inline-block rounded-md p-4  dark:bg-gray-100 lg:row-span-2 lg:row-start-1 lg:mb-0">
             <img {...redHat} className="mx-auto p-4" />
           </a>
           <a
             href={amadeus.href}
             target="_blank"
+            rel="noopener noreferrer"
             className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:mb-0 lg:flex lg:h-28 lg:w-80 lg:items-center">
             <img {...amadeus} className="object-fit mx-auto max-w-sm p-4 " />
           </a>
           <a
             href={suse.href}
             target="_blank"
+            rel="noopener noreferrer"
             className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:mb-0 lg:flex lg:h-28 lg:w-80 lg:items-center">
             <img {...suse} className="object-fit mx-auto max-w-sm p-4 " />
           </a>
           <a
             href={motorola.href}
             target="_blank"
+            rel="noopener noreferrer"
             className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:row-span-2 lg:row-start-1 lg:mb-0">
             <img {...motorola} className="mx-auto p-4" />
           </a>
           <a
             href={ntt.href}
             target="_blank"
+            rel="noopener noreferrer"
             className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:mb-0 lg:flex lg:h-28 lg:w-80 lg:items-center">
             <img {...ntt} className="object-fit mx-auto max-w-sm p-4 " />
           </a>
           <a
             href={ibm.href}
             target="_blank"
+            rel="noopener noreferrer"
             className="col-span-3 mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:mb-0 lg:flex lg:h-28 lg:w-80 lg:items-center">
             <img {...ibm} className="object-fit mx-auto max-w-sm p-4 " />
           </a>
           <a
             href={debian.href}
             target="_blank"
+            rel="noopener noreferrer"
             className="mx-4 mb-4 inline-block rounded-md p-4 dark:bg-gray-100 lg:row-span-2 lg:row-start-1 lg:mb-0">
             <img {...debian} className="mx-auto p-4" />
           </a>
