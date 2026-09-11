@@ -7,27 +7,30 @@ interface VideoProps {
     posterImg?: string;
   }
 
-const PlayOnScroll: React.FC = (props: VideoProps) => {
+const PlayOnScroll: React.FC<VideoProps> = props => {
     const videoRef = useRef<HTMLVideoElement>(null);
-  
+
     useEffect(() => {
-      const handleScroll = () => {
-        if (videoRef.current) {
-          const rect = videoRef.current.getBoundingClientRect();
-          const isFullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
-          
-          if (isFullyVisible) {
-            videoRef.current.play();
+      const video = videoRef.current;
+      if (!video) {
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
           } else {
-            videoRef.current.pause();
+            video.pause();
           }
-        }
-      };
-  
-      window.addEventListener('scroll', handleScroll);
-      
+        },
+        { threshold: 1 },
+      );
+
+      observer.observe(video);
+
       return () => {
-        window.removeEventListener('scroll', handleScroll);
+        observer.disconnect();
       };
     }, []);
   
