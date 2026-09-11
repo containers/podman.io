@@ -61,7 +61,7 @@ function ArticleCard(props: ArticleCardProps) {
             </div>
             <img
               src={props.imgSrc || fallbackImage}
-              className=" col-start-1 row-start-1 h-full w-full rounded-sm object-cover lg:w-80"
+              className="col-start-1 row-start-1 h-72 w-full rounded-sm object-cover object-top lg:w-80"
             />
           </div>
           <div className="max-w-sm items-center gap-2 self-center p-2 pr-4">

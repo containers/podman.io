@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react';
 import Markdown from '@site/src/components/utilities/Markdown';
 import PageHeader from '@site/src/components/layout/PageHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
-import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
+import LiteratureCarousel from '@site/src/components/content/LiteratureCarousel';
 import FeaturesCarousel from '@site/src/components/content/FeaturesCarousel';
 import BlogArticlesList from '@site/src/components/content/BlogArticlesList';
 /* PAGE DATA */
@@ -205,7 +205,7 @@ function Features() {
       <PodmanCLISection />
       <FeaturesCarousel />
       <LearnMoreSection />
-      <ColoringBookSection />
+      <LiteratureCarousel />
     </Layout>
   );
 }
