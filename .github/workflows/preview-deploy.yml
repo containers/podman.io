@@ -1,0 +1,98 @@
+name: PR Preview
+
+on:
+  workflow_run:
+    workflows: ['Test build content for pages']
+    types: [completed]
+
+permissions:
+  actions: read # download artifacts from the triggering run
+  contents: write # push the preview to gh-pages
+  pull-requests: write # comment the link
+
+concurrency:
+  group: gh-pages-preview
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download PR number
+        uses: actions/download-artifact@v8
+        with:
+          name: 'pr-number'
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Read PR number
+        id: pr
+        run: |
+          number=$(tr -cd '0-9' < pr-number.txt)
+          test -n "$number"
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+
+      - name: Check for user-facing changes
+        id: userfacing
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          not_user_facing='^(\.[^/]+|License|[^/]+\.md)$|^(\.github|\.husky|\.yarn)/'
+          if gh pr diff '${{ steps.pr.outputs.number }}' \
+               --repo '${{ github.repository }}' --name-only \
+               | grep -qvE "$not_user_facing"; then
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'No user-facing files changed, skipping preview.'
+          fi
+
+      - name: Download site build
+        if: steps.userfacing.outputs.changed == 'true'
+        uses: actions/download-artifact@v8
+        with:
+          name: 'build'
+          path: 'build'
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Mark preview pages as noindex
+        if: steps.userfacing.outputs.changed == 'true'
+        run: >-
+          find build -name '*.html' -exec
+          sed -i 's|</head>|<meta name="robots" content="noindex"></head>|' {} +
+
+      - name: Publish preview
+        if: steps.userfacing.outputs.changed == 'true'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          destination_dir: pr-preview/pr-${{ steps.pr.outputs.number }}
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+
+      # Appended to the PR description rather than posted as a comment, so it
+      # stays at the top of the PR instead of scrolling away under review
+      # discussion. The marker makes this idempotent across pushes.
+      - name: Add the preview link to the PR description
+        if: steps.userfacing.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR: ${{ steps.pr.outputs.number }}
+          MARKER: '<!-- pr-preview-link -->'
+          SITE: https://podman.io
+        run: |
+          body=$(gh pr view "$PR" --repo "$REPO" --json body --jq '.body')
+          case "$body" in
+            *"$MARKER"*)
+              echo 'Preview link already in the description.'
+              exit 0
+              ;;
+          esac
+          printf '%s\n\n---\n%s\n📖 **Website preview:** %s/pr-preview/pr-%s/\n' \
+            "$body" "$MARKER" "$SITE" "$PR" \
+            | gh pr edit "$PR" --repo "$REPO" --body-file -

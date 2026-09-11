@@ -1,0 +1,42 @@
+name: PR Preview Cleanup
+
+on:
+  pull_request_target:
+    types: [closed]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gh-pages-preview
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      # Tolerates a missing gh-pages branch: no branch means no previews have
+      # ever been published, so there is nothing to clean up and the run should
+      # not be reported as a failure.
+      - name: Checkout gh-pages
+        id: checkout
+        continue-on-error: true
+        uses: actions/checkout@v7
+        with:
+          ref: gh-pages
+
+      - name: Remove preview
+        if: steps.checkout.outcome == 'success'
+        env:
+          PR: ${{ github.event.number }}
+        run: |
+          dir="pr-preview/pr-$PR"
+          if [ ! -d "$dir" ]; then
+            echo "No preview at $dir, nothing to clean up."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm -rq "$dir"
+          git commit -m "chore: remove website preview for PR #$PR"
+          git push

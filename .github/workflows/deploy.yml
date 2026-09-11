@@ -34,6 +34,13 @@ jobs:
         with:
           name: 'build'
           path: 'build'
+      - name: Preserve open PR previews
+        run: |
+          git clone --depth 1 --single-branch --branch gh-pages \
+            'https://github.com/${{ github.repository }}.git' gh-pages || exit 0
+          if [ -d gh-pages/pr-preview ]; then
+            cp -r gh-pages/pr-preview build/pr-preview
+          fi
       - name: Setup Pages
         uses: actions/configure-pages@v6
       - name: Upload page artifact
