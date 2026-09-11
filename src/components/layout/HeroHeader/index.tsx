@@ -91,13 +91,11 @@ function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, pla
     <header className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-end md:grid-cols-12 md:gap-8 lg:gap-12">
-          <div className="min-w-0 pt-8 pb-16 md:col-span-7 md:pt-12 md:pb-24 lg:col-span-7 lg:pb-28 xl:col-span-7">
+          <div className="min-w-0 pb-16 pt-8 md:col-span-7 md:pb-24 md:pt-12 lg:col-span-7 lg:pb-28 xl:col-span-7">
             <h1 className="mb-4 text-3xl font-extrabold tracking-tight text-white dark:text-gray-50 sm:text-4xl lg:text-5xl lg:leading-tight">
               {title}
             </h1>
-            <p className="max-w-xl text-base leading-relaxed text-white/90 dark:text-gray-100 sm:text-lg">
-              {subtitle}
-            </p>
+            <p className="max-w-xl text-base leading-relaxed text-white/90 dark:text-gray-100 sm:text-lg">{subtitle}</p>
             <div className="my-5 flex flex-wrap items-center gap-4 text-lg">
               <Button as="link" text="Get Started" path="/get-started" />
               <BrowserOnly>
@@ -121,33 +119,36 @@ function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, pla
             </p>
           </div>
 
-          <div className="min-w-0 flex flex-col justify-end self-end pb-12 md:col-span-5 md:pb-0 lg:col-span-5 xl:col-span-5">
+          <div className="flex min-w-0 flex-col justify-end self-end pb-12 md:col-span-5 md:pb-0 lg:col-span-5 xl:col-span-5">
             <div className="mb-4 flex flex-col items-start md:items-end">
-              <h3 className="mb-2 text-sm font-semibold tracking-wide text-white/90 uppercase dark:text-gray-100">
+              <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-white/90 dark:text-gray-100">
                 {platforms[0]}
               </h3>
               <ul className="flex items-center gap-3 lg:gap-4">
                 {platforms.slice(1).map((icon, index) => {
                   return (
                     <li key={index}>
-                      <Icon icon={icon} className="text-2xl lg:text-3xl text-white/90 transition hover:text-white dark:text-gray-100" />
+                      <Icon
+                        icon={icon}
+                        className="text-2xl text-white/90 transition hover:text-white dark:text-gray-100 lg:text-3xl"
+                      />
                     </li>
                   );
                 })}
               </ul>
             </div>
-            <div className="hidden justify-end md:flex w-full">
+            <div className="hidden w-full justify-end md:flex">
               <img
                 src={image.path}
                 alt={image.alt}
-                className="w-full max-h-[380px] xl:max-h-[460px] object-contain drop-shadow-2xl"
+                className="max-h-[380px] w-full object-contain drop-shadow-2xl xl:max-h-[460px]"
               />
             </div>
           </div>
         </div>
       </div>
       <WaveBorder
-        className="pointer-events-none absolute bottom-0 left-0 z-10 w-full h-10 sm:h-14 md:h-16 lg:h-20 xl:h-24"
+        className="pointer-events-none absolute bottom-0 left-0 z-10 h-10 w-full sm:h-14 md:h-16 lg:h-20 xl:h-24"
         preserveAspectRatio="none"
       />
     </header>

@@ -86,7 +86,10 @@ function ArticleCard(props: ArticleCardProps) {
           </h3>
           {parse(abbrSubtitle)}
           <PublishDate date={props.date} styles="row-start-1 col-start-1 z-10 my-2" />
-          <img src={props.imgSrc || fallbackImage} className="col-start-1 row-start-1 h-72 w-full rounded-sm object-cover object-top" />
+          <img
+            src={props.imgSrc || fallbackImage}
+            className="col-start-1 row-start-1 h-72 w-full rounded-sm object-cover object-top"
+          />
           <p className="text-purple-700">
             By: <a href={props.author_link}>{props.display_name}</a>
           </p>
