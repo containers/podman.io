@@ -31,26 +31,40 @@ const InstallOption = (props): JSX.Element => {
       <div>
         <a
           href={props.preferred.path}
-          className="block rounded-t-md text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:text-white dark:hover:bg-purple-900 dark:hover:text-gray-300">
-          <div className="flex items-center gap-4 px-4 pb-6 pt-4">
-            <div>
-              <h3>{props.preferred.title}</h3>
-              <p>{props.preferred.subtitle}</p>
+          className="group block rounded-t-md px-4 py-3.5 text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:text-white dark:hover:bg-purple-700">
+          <div className="flex items-center gap-4">
+            <Icon
+              icon={props.preferred.icon}
+              className="order-first shrink-0 text-3xl text-purple-900 group-hover:text-white dark:!text-white dark:group-hover:!text-white sm:text-4xl"
+            />
+            <div className="min-w-0 flex-1">
+              <h3 className="m-0 text-sm font-semibold text-purple-900 group-hover:text-white dark:!text-white dark:group-hover:!text-white sm:text-base">
+                {props.preferred.title}
+              </h3>
+              <p className="m-0 mt-0.5 text-xs font-normal text-gray-500 group-hover:text-purple-100 dark:!text-white dark:group-hover:!text-white sm:text-sm">
+                {props.preferred.subtitle}
+              </p>
             </div>
-            <Icon icon={props.preferred.icon} className="order-first text-4xl" />
           </div>
         </a>
       </div>
       <div>
         <a
           href={props.alt.path}
-          className="block text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:text-white dark:hover:bg-purple-900 dark:hover:text-gray-300">
-          <div className="flex items-center gap-4 px-4 pb-6 pt-4">
-            <div>
-              <h4>{props.alt.title}</h4>
-              <p>{props.alt.subtitle}</p>
+          className="group block px-4 py-3.5 text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:text-white dark:hover:bg-purple-700">
+          <div className="flex items-center gap-4">
+            <Icon
+              icon={props.alt.icon}
+              className="order-first shrink-0 text-3xl text-purple-900 group-hover:text-white dark:!text-white dark:group-hover:!text-white sm:text-4xl"
+            />
+            <div className="min-w-0 flex-1">
+              <h4 className="m-0 text-sm font-semibold text-purple-900 group-hover:text-white dark:!text-white dark:group-hover:!text-white sm:text-base">
+                {props.alt.title}
+              </h4>
+              <p className="m-0 mt-0.5 text-xs font-normal text-gray-500 group-hover:text-purple-100 dark:!text-white dark:group-hover:!text-white sm:text-sm">
+                {props.alt.subtitle}
+              </p>
             </div>
-            <Icon icon={props.alt.icon} className="order-first text-4xl" />
           </div>
         </a>
       </div>
@@ -58,13 +72,20 @@ const InstallOption = (props): JSX.Element => {
         <div>
           <a
             href={props.third.path}
-            className="block text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:text-white dark:hover:bg-purple-900 dark:hover:text-gray-300">
-            <div className="flex items-center gap-4 px-4 pb-6 pt-4">
-              <div>
-                <h4>{props.third.title}</h4>
-                <p>{props.third.subtitle}</p>
+            className="group block px-4 py-3.5 text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:text-white dark:hover:bg-purple-700">
+            <div className="flex items-center gap-4">
+              <Icon
+                icon={props.third.icon}
+                className="order-first shrink-0 text-3xl text-purple-900 group-hover:text-white dark:!text-white dark:group-hover:!text-white sm:text-4xl"
+              />
+              <div className="min-w-0 flex-1">
+                <h4 className="m-0 text-sm font-semibold text-purple-900 group-hover:text-white dark:!text-white dark:group-hover:!text-white sm:text-base">
+                  {props.third.title}
+                </h4>
+                <p className="m-0 mt-0.5 text-xs font-normal text-gray-500 group-hover:text-purple-100 dark:!text-white dark:group-hover:!text-white sm:text-sm">
+                  {props.third.subtitle}
+                </p>
               </div>
-              <Icon icon={props.third.icon} className="order-first text-4xl" />
             </div>
           </a>
         </div>
@@ -72,13 +93,22 @@ const InstallOption = (props): JSX.Element => {
       <div>
         <a
           href={props.other.path}
-          className="block rounded-b-md bg-gray-50 py-2 text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:bg-gray-700 dark:text-white dark:hover:bg-purple-900 dark:hover:text-gray-300">
-          <div className="px-4 py-2">
-            <div className="flex items-center gap-2">
-              <h5 className="row-start-1">{props.other.text}</h5>
-              <Icon icon="material-symbols:arrow-circle-right-rounded" className="row-start-1 text-xl" />
+          className="group block rounded-b-md bg-gray-50 px-4 py-3 text-purple-900 no-underline transition duration-150 ease-linear hover:bg-purple-700 hover:text-white hover:no-underline dark:bg-white/[0.07] dark:text-white dark:hover:bg-purple-700">
+          <div className="flex items-center justify-between gap-2">
+            <div className="min-w-0 flex-1">
+              <h5 className="m-0 text-sm font-semibold text-purple-900 group-hover:text-white dark:!text-white dark:group-hover:!text-white">
+                {props.other.text}
+              </h5>
+              {props.other.subtext && (
+                <p className="m-0 mt-0.5 text-xs font-normal text-gray-500 group-hover:text-purple-100 dark:!text-white dark:group-hover:!text-white">
+                  {props.other.subtext}
+                </p>
+              )}
             </div>
-            <p>{props.other.subtext}</p>
+            <Icon
+              icon="material-symbols:arrow-circle-right-rounded"
+              className="shrink-0 text-xl text-purple-900 group-hover:text-white dark:!text-white dark:group-hover:!text-white"
+            />
           </div>
         </a>
       </div>
@@ -88,10 +118,10 @@ const InstallOption = (props): JSX.Element => {
 
 function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, platforms }) {
   return (
-    <header className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900">
+    <header className="relative bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-end md:grid-cols-12 md:gap-8 lg:gap-12">
-          <div className="min-w-0 pb-16 pt-8 md:col-span-7 md:pb-24 md:pt-12 lg:col-span-7 lg:pb-28 xl:col-span-7">
+          <div className="relative z-20 min-w-0 pb-16 pt-8 md:col-span-7 md:pb-24 md:pt-12 lg:col-span-7 lg:pb-28 xl:col-span-7">
             <h1 className="mb-4 text-3xl font-extrabold tracking-tight text-white dark:text-gray-50 sm:text-4xl lg:text-5xl lg:leading-tight">
               {title}
             </h1>
@@ -99,7 +129,13 @@ function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, pla
             <div className="my-5 flex flex-wrap items-center gap-4 text-lg">
               <Button as="link" text="Get Started" path="/get-started" />
               <BrowserOnly>
-                {() => <DropdownButton text="Download" option={InstallOption(returnOperatingSystemData())} />}
+                {() => (
+                  <DropdownButton
+                    text="Download"
+                    icon="material-symbols:download-rounded"
+                    option={InstallOption(returnOperatingSystemData())}
+                  />
+                )}
               </BrowserOnly>
             </div>
             <p className="flex gap-4 text-white dark:text-gray-100">
@@ -138,11 +174,7 @@ function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, pla
               </ul>
             </div>
             <div className="hidden w-full justify-end md:flex">
-              <img
-                src={image.path}
-                alt={image.alt}
-                className="max-h-[380px] w-full object-contain drop-shadow-2xl xl:max-h-[460px]"
-              />
+              <img src={image.path} alt={image.alt} className="max-h-[380px] w-full object-contain xl:max-h-[460px]" />
             </div>
           </div>
         </div>
