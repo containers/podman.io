@@ -118,15 +118,18 @@ const InstallOption = (props): JSX.Element => {
 
 function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, platforms }) {
   return (
-    <header className="relative bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-end md:grid-cols-12 md:gap-8 lg:gap-12">
-          <div className="relative z-20 min-w-0 pb-16 pt-8 md:col-span-7 md:pb-24 md:pt-12 lg:col-span-7 lg:pb-28 xl:col-span-7">
-            <h1 className="mb-4 text-3xl font-extrabold tracking-tight text-white dark:text-gray-50 sm:text-4xl lg:text-5xl lg:leading-tight">
+    <header className="relative z-30 overflow-hidden bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900 md:overflow-visible">
+      <div className="w-full px-5 sm:px-8 md:px-10 lg:px-14 xl:px-20 2xl:px-24">
+        <div className="grid items-end md:grid-cols-2 md:gap-8 lg:gap-12 xl:gap-16">
+          {/* Left Column: Heading, Subtitle, Buttons, Release Links */}
+          <div className="relative z-30 min-w-0 pb-8 pt-6 sm:pb-12 sm:pt-8 md:pb-16 md:pt-8 lg:pb-20 lg:pt-10 xl:pb-24 xl:pt-12 2xl:pb-28 2xl:pt-16">
+            <h1 className="mb-3 text-3xl font-extrabold tracking-tight text-white dark:text-gray-50 sm:text-4xl lg:text-5xl lg:leading-tight xl:text-[3.25rem] 2xl:text-6xl">
               {title}
             </h1>
-            <p className="max-w-xl text-base leading-relaxed text-white/90 dark:text-gray-100 sm:text-lg">{subtitle}</p>
-            <div className="my-5 flex flex-wrap items-center gap-4 text-lg">
+            <p className="max-w-xl text-base leading-relaxed text-white/90 dark:text-gray-100 sm:text-lg lg:text-lg xl:max-w-2xl xl:text-xl">
+              {subtitle}
+            </p>
+            <div className="relative z-40 my-4 flex flex-wrap items-center gap-3 text-lg sm:my-5 sm:gap-4">
               <Button as="link" text="Get Started" path="/get-started" />
               <BrowserOnly>
                 {() => (
@@ -138,7 +141,7 @@ function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, pla
                 )}
               </BrowserOnly>
             </div>
-            <p className="flex gap-4 text-white dark:text-gray-100">
+            <p className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-white dark:text-gray-100 xl:text-base">
               <span>
                 Latest stable Podman <Link {...podmanrelease} textColor="text-white dark:text-gray-100" />
               </span>
@@ -155,32 +158,37 @@ function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, pla
             </p>
           </div>
 
-          <div className="flex min-w-0 flex-col justify-end self-end pb-12 md:col-span-5 md:pb-0 lg:col-span-5 xl:col-span-5">
-            <div className="mb-4 flex flex-col items-start md:items-end">
-              <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-white/90 dark:text-gray-100">
+          {/* Right Column: Supported Platforms & Desktop Preview */}
+          <div className="relative z-10 flex min-w-0 flex-row items-end justify-between pb-8 sm:pb-10 md:flex-col md:pb-0">
+            <div className="mb-2 flex shrink-0 flex-col items-start md:mb-4 md:items-end">
+              <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-white/90 dark:text-gray-100 sm:text-sm xl:text-base">
                 {platforms[0]}
               </h3>
-              <ul className="flex items-center gap-3 lg:gap-4">
+              <ul className="flex items-center gap-2.5 sm:gap-3 lg:gap-4 xl:gap-5">
                 {platforms.slice(1).map((icon, index) => {
                   return (
                     <li key={index}>
                       <Icon
                         icon={icon}
-                        className="text-2xl text-white/90 transition hover:text-white dark:text-gray-100 lg:text-3xl"
+                        className="text-xl text-white/90 transition hover:text-white dark:text-gray-100 sm:text-2xl lg:text-3xl xl:text-4xl"
                       />
                     </li>
                   );
                 })}
               </ul>
             </div>
-            <div className="hidden w-full justify-end md:flex">
-              <img src={image.path} alt={image.alt} className="max-h-[380px] w-full object-contain xl:max-h-[460px]" />
+            <div className="flex w-auto justify-end overflow-hidden md:w-full md:overflow-visible">
+              <img
+                src={image.path}
+                alt={image.alt}
+                className="3xl:max-w-[1100px] w-[210px] max-w-none translate-x-3 object-contain sm:w-[320px] sm:translate-x-0 md:w-full md:max-w-[500px] lg:max-w-[600px] xl:max-w-[720px] 2xl:max-w-[950px]"
+              />
             </div>
           </div>
         </div>
       </div>
       <WaveBorder
-        className="pointer-events-none absolute bottom-0 left-0 z-10 h-10 w-full sm:h-14 md:h-16 lg:h-20 xl:h-24"
+        className="pointer-events-none absolute bottom-0 left-0 z-20 h-10 w-full sm:h-12 md:h-14 lg:h-16 xl:h-20 2xl:h-24"
         preserveAspectRatio="none"
       />
     </header>
