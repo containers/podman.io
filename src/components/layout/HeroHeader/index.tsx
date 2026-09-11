@@ -118,80 +118,70 @@ const InstallOption = (props): JSX.Element => {
 
 function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, platforms }) {
   const releaseLinkProps = {
-    fontSize: 'text-sm lg:text-sm font-normal',
+    fontSize: 'text-xs sm:text-sm 2xl:text-base font-normal',
     textColor: 'text-white dark:text-gray-100',
     hoverColor: 'hover:text-purple-300 dark:hover:text-purple-300',
     underline: 'underline underline-offset-4 decoration-white/70 hover:decoration-purple-300',
   };
 
   return (
-    <header className="relative bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-end md:grid-cols-12 md:gap-8 lg:gap-12">
-          <div className="relative z-20 min-w-0 pb-16 pt-8 md:col-span-7 md:pb-24 md:pt-12 lg:col-span-7 lg:pb-28 xl:col-span-7">
-            <h1 className="mb-4 text-3xl font-extrabold tracking-tight text-white dark:text-gray-50 sm:text-4xl lg:text-5xl lg:leading-tight">
-              {title}
-            </h1>
-            <p className="max-w-xl text-base leading-relaxed text-white/90 dark:text-gray-100 sm:text-lg">{subtitle}</p>
-            <div className="my-5 flex flex-wrap items-center gap-4 text-lg">
-              <Button as="link" text="Get Started" path="/get-started" />
-              <BrowserOnly>
-                {() => (
-                  <DropdownButton
-                    text="Download"
-                    icon="material-symbols:download-rounded"
-                    option={InstallOption(returnOperatingSystemData())}
-                  />
-                )}
-              </BrowserOnly>
-            </div>
-            <p className="flex flex-wrap items-center gap-y-1.5 pt-2 text-sm font-normal text-white dark:text-gray-100">
-              <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
-                <span>Latest stable Podman</span>
-                <Link {...podmanrelease} {...releaseLinkProps} />
-              </span>
-              <span className="inline-flex items-center gap-1.5 whitespace-nowrap before:mx-2.5 before:opacity-60 before:content-['-']">
-                <span>Latest stable Podman Desktop</span>
-                <Link {...desktoprelease} {...releaseLinkProps} />
-              </span>
-              <span className="inline-flex items-center whitespace-nowrap before:mx-2.5 before:opacity-60 before:content-['-']">
-                <Link
-                  text="Apache License 2.0"
-                  path="https://www.apache.org/licenses/LICENSE-2.0"
-                  {...releaseLinkProps}
+    <header className="relative z-30 bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900">
+      <div className="mx-auto grid px-6 sm:px-8 md:grid-cols-5 md:items-end md:gap-8 lg:gap-12 lg:px-16 xl:px-28 2xl:px-52">
+        <div className="relative z-20 min-w-0 pb-20 pt-8 md:col-span-3 md:pb-28 md:pt-12 lg:pb-32 2xl:pb-36">
+          <h1 className="mb-4 text-3xl font-extrabold tracking-tight text-white dark:text-gray-50 sm:text-4xl lg:mb-6 lg:text-5xl 2xl:text-6xl">
+            {title}
+          </h1>
+          <p className="max-w-sm text-base leading-relaxed text-white/95 dark:text-gray-100 sm:max-w-md sm:text-lg lg:max-w-xl 2xl:max-w-2xl 2xl:text-xl">
+            {subtitle}
+          </p>
+          <div className="relative z-40 my-4 flex max-w-sm gap-6 text-base sm:gap-8 sm:text-lg 2xl:text-xl">
+            <Button as="link" text="Get Started" path="/get-started" />
+            <BrowserOnly>
+              {() => (
+                <DropdownButton
+                  text="Download"
+                  icon="material-symbols:download-rounded"
+                  option={InstallOption(returnOperatingSystemData())}
                 />
-              </span>
-            </p>
+              )}
+            </BrowserOnly>
           </div>
+          <p className="flex flex-nowrap items-center gap-2 whitespace-nowrap pt-2 text-xs font-normal text-white dark:text-gray-100 sm:gap-3 sm:text-sm 2xl:gap-4 2xl:text-base">
+            <span>
+              Latest stable Podman <Link {...podmanrelease} {...releaseLinkProps} />
+            </span>
+            <span className="opacity-60">-</span>
+            <span>
+              Latest stable Podman Desktop <Link {...desktoprelease} {...releaseLinkProps} />
+            </span>
+            <span className="opacity-60">-</span>
+            <Link text="Apache License 2.0" path="https://www.apache.org/licenses/LICENSE-2.0" {...releaseLinkProps} />
+          </p>
+        </div>
 
-          <div className="flex min-w-0 flex-col justify-end self-end pb-12 md:col-span-5 md:pb-0 lg:col-span-5 xl:col-span-5">
-            <div className="mb-4 flex flex-col items-start md:items-end">
-              <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-white/90 dark:text-gray-100">
-                {platforms[0]}
-              </h3>
-              <ul className="flex items-center gap-3 lg:gap-4">
-                {platforms.slice(1).map((icon, index) => {
-                  return (
-                    <li key={index}>
-                      <Icon
-                        icon={icon}
-                        className="text-2xl text-white/90 transition hover:text-white dark:text-gray-100 lg:text-3xl"
-                      />
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-            <div className="hidden w-full justify-end md:flex">
-              <img src={image.path} alt={image.alt} className="max-h-[380px] w-full object-contain xl:max-h-[460px]" />
-            </div>
+        <div className="flex flex-col items-end justify-end self-end pb-4 md:col-span-2 md:pb-8 lg:pb-10 2xl:pb-14">
+          <div className="mb-4 flex flex-col items-start pr-4 sm:pr-5 md:mb-6 md:items-end lg:pr-6 2xl:pr-8">
+            <h3 className="text-base font-medium text-white dark:text-gray-100 2xl:text-lg">{platforms[0]}</h3>
+            <ul className="flex gap-4 2xl:gap-5">
+              {platforms.slice(1).map((icon, index) => {
+                return (
+                  <li key={index}>
+                    <Icon icon={icon} className="text-3xl text-white dark:text-gray-100 2xl:text-4xl" />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="hidden w-full justify-end md:flex">
+            <img
+              src={image.path}
+              alt={image.alt}
+              className="w-full max-w-none object-cover md:w-[108%] lg:w-[112%] 2xl:w-[115%]"
+            />
           </div>
         </div>
       </div>
-      <WaveBorder
-        className="pointer-events-none absolute bottom-0 left-0 z-10 h-10 w-full sm:h-14 md:h-16 lg:h-20 xl:h-24"
-        preserveAspectRatio="none"
-      />
+      <WaveBorder grid="md:-mt-16 lg:-mt-20 xl:-mt-24 2xl:-mt-28" />
     </header>
   );
 }
