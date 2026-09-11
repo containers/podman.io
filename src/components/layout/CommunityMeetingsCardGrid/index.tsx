@@ -72,18 +72,34 @@ function CommunityMeetingsCardGrid({ cards }) {
   const [modalHeader, setModalHeader] = useState<ReactNode | undefined>(undefined);
   const [meetinNotesMD, setMeetinNotesMD] = useState<ReactNode | undefined>(undefined);
   const meetingMinutesRef = [useRef(), useRef()];
-  const modalRef = useRef();
+  const modalRef = useRef<HTMLDialogElement>(null);
 
   toggleModalOpen(modalRef, () => setIsModalOpen(false));
+
+  useEffect(() => {
+    const dialogEl = modalRef.current;
+    if (!dialogEl) {
+      return;
+    }
+    if (isModalOpen && !dialogEl.open) {
+      dialogEl.showModal();
+    } else if (!isModalOpen && dialogEl.open) {
+      dialogEl.close();
+    }
+  }, [isModalOpen]);
 
   const prepareModalHeader = (text: string, date: string) => {
     const modalHeader: ReactNode = (
       <div className="modal-header dark:bg-gray-500 dark:shadow-none">
         <h3 className="modal-header-title dark:text-gray-900">{text}</h3>
         <h3 className="modal-header-date dark:text-gray-900">{date}</h3>
-        <div className="cursor-pointer" onClick={() => setIsModalOpen(false)}>
+        <button
+          type="button"
+          className="cursor-pointer border-0 bg-transparent p-0"
+          onClick={() => setIsModalOpen(false)}
+          aria-label="Close meeting minutes">
           <CloseIcon />
-        </div>
+        </button>
       </div>
     );
     setModalHeader(modalHeader);
@@ -222,8 +238,8 @@ function CommunityMeetingsCardGrid({ cards }) {
             />
             <dialog
               className="bg-stone-200 w-90-screen h-80-screen fixed top-20 z-50 max-h-screen w-fit border-4 border-purple-100"
-              open={isModalOpen}
-              ref={modalRef}>
+              ref={modalRef}
+              onClose={() => setIsModalOpen(false)}>
               <div className="modal-content flex flex-col">
                 {modalHeader}
                 <div className="md-wrapper overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:bg-gray-700  dark:text-gray-50 dark:shadow-none">
