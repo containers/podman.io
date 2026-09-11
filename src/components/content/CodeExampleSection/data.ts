@@ -1,5 +1,5 @@
 const searchExample = {
-  command: `$ podman search httpd`,
+  command: '$ podman search httpd',
   // prettier-ignore
   code: ` 
   INDEX       NAME                                  DESCRIPTION                    STARS OFFICIAL AUTOMATED
@@ -13,10 +13,10 @@ const searchExample = {
 
 
 `,
-  label: `Podman can search for images on remote registries with some simple keywords.`,
+  label: 'Podman can search for images on remote registries with some simple keywords.',
 };
 const searchFilterExample = {
-  command: `$ podman search httpd --filter=is-official`,
+  command: '$ podman search httpd --filter=is-official',
   // prettier-ignore
   code:`
   INDEX       NAME                                  DESCRIPTION                    STARS OFFICIAL AUTOMATED
@@ -37,19 +37,20 @@ const searchFilterExample = {
 
 
 `,
-  label: `You can also enhance your search with filters.`,
-  extra: `Downloading (pulling) an image is easy, too.`,
+  label: 'You can also enhance your search with filters.',
+  extra: 'Downloading (pulling) an image is easy, too.',
 };
 const imagesExample = {
-  command: `$ podman images`,
+  command: '$ podman images',
   // prettier-ignore
   code:`
   REPOSITORY               TAG         IMAGE ID      CREATED       SIZE
   docker.io/library/httpd  latest      d294bb32c207  12 hours ago  148 MB
   
 `,
-  label: `Podman can search for images on remote registries with some simple keywords.`,
-  extra: `**Note**: Podman searches in different registries. Therefore it is recommend to use the full image name (docker.io/library/httpd instead of httpd) to ensure that you are using the correct image.`,
+  label: 'Podman can search for images on remote registries with some simple keywords.',
+  extra:
+    '**Note**: Podman searches in different registries. Therefore it is recommend to use the full image name (docker.io/library/httpd instead of httpd) to ensure that you are using the correct image.',
 };
 
 export { searchExample, searchFilterExample, imagesExample };

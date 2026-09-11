@@ -14,7 +14,7 @@ function Link({
   textColor = 'text-blue-700 dark:text-blue-500',
   hoverColor = 'hover:text-purple-700 hover:dark:text-purple-700',
   underline = 'underline underline-offset-4',
-  target = '_self'
+  target = '_self',
 }: LinkProps): JSX.Element {
   return (
     <a
