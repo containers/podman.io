@@ -92,7 +92,7 @@ function PageHeader({ title, description, image, lightColor = 'white', darkColor
           <TextBox title={title} description={description} layout="mt-12 lg:mt-0 mb-8" />
           <Instructions instructions={instructions} />
         </div>
-        <div className="w-[50%] ml-24">
+        <div className="w-full md:w-1/2 md:ml-12 lg:ml-24">
           <PageHeaderSupplementalInfo basicResources={basicResources} />
         </div>
 
