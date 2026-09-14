@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { Icon } from '@iconify/react';
+import { SpeakerDropdown } from './SpeakerDropdown';
 
 export type TranscriptTurn = {
   id: string;
@@ -21,14 +22,14 @@ export type ChatMessage = {
 
 // Distinct pastel color palette for speaker avatar circles
 const AVATAR_PALETTES = [
-  { bg: 'bg-purple-100 dark:bg-purple-900/50', text: 'text-purple-700 dark:text-purple-300' },
-  { bg: 'bg-blue-100 dark:bg-blue-900/50', text: 'text-blue-700 dark:text-blue-300' },
-  { bg: 'bg-emerald-100 dark:bg-emerald-900/50', text: 'text-emerald-700 dark:text-emerald-300' },
-  { bg: 'bg-amber-100 dark:bg-amber-900/50', text: 'text-amber-700 dark:text-amber-300' },
-  { bg: 'bg-rose-100 dark:bg-rose-900/50', text: 'text-rose-700 dark:text-rose-300' },
-  { bg: 'bg-cyan-100 dark:bg-cyan-900/50', text: 'text-cyan-700 dark:text-cyan-300' },
-  { bg: 'bg-indigo-100 dark:bg-indigo-900/50', text: 'text-indigo-700 dark:text-indigo-300' },
-  { bg: 'bg-teal-100 dark:bg-teal-900/50', text: 'text-teal-700 dark:text-teal-300' },
+  { bg: 'bg-purple-100 dark:bg-purple-900/60', text: 'text-purple-700 dark:text-purple-300' },
+  { bg: 'bg-blue-100 dark:bg-blue-900/60', text: 'text-blue-700 dark:text-blue-300' },
+  { bg: 'bg-deep-purple-100 dark:bg-deep-purple-900/60', text: 'text-deep-purple-700 dark:text-deep-purple-300' },
+  { bg: 'bg-[#e6f7ed] dark:bg-[#143823]', text: 'text-[#0e8a40] dark:text-[#56d389]' },
+  { bg: 'bg-[#fef3e7] dark:bg-[#3d2410]', text: 'text-[#c05621] dark:text-[#f6ad55]' },
+  { bg: 'bg-[#fde8e8] dark:bg-[#3d1418]', text: 'text-[#c53030] dark:text-[#feb2b2]' },
+  { bg: 'bg-[#e6fffa] dark:bg-[#123032]', text: 'text-[#234e52] dark:text-[#4fd1c5]' },
+  { bg: 'bg-[#ebf4ff] dark:bg-[#1e1e42]', text: 'text-[#4c51bf] dark:text-[#a3bffa]' },
 ];
 
 function getSpeakerColor(speaker: string) {
@@ -77,16 +78,44 @@ export function formatSecondsToDisplay(seconds: number): string {
 }
 
 /**
+ * Check if a raw code string represents a "Not captured" / placeholder block
+ */
+export function isNotCapturedContent(content: string): boolean {
+  if (!content || typeof content !== 'string') return false;
+  const t = content.trim().toLowerCase();
+  return (
+    t === 'none' ||
+    t.includes('not captured') ||
+    t.includes('did not record') ||
+    t.includes('raw chat was not captured') ||
+    t.includes('no transcript available') ||
+    t.includes('no chat available')
+  );
+}
+
+/**
  * Check if a raw code string is a Zoom/Meet transcript
  */
 export function isTranscriptContent(content: string): boolean {
   if (!content || typeof content !== 'string') return false;
-  // Check for WebVTT cues or timestamp arrows: 00:10:52.070 --> 00:10:58.269
-  if (/-->/m.test(content) && /\d{1,2}:\d{2}:\d{2}/.test(content)) return true;
+  if (isNotCapturedContent(content)) return false;
+  // If it has comma-separated SRT chat timestamps, it is a chat log, NOT a spoken transcript!
+  if (/\d{2}:\d{2}:\d{2}[.,]\d{3}\s*,\s*\d{2}:\d{2}:\d{2}[.,]\d{3}/.test(content)) return false;
+  // 1. Zoom VTT format: has --> timestamp arrows or WEBVTT
+  if (content.includes('-->')) return true;
   if (/^WEBVTT/m.test(content)) return true;
-  // Check for dialogue with timestamps like "00:02:56" and speaker names
-  const speakerLines = content.match(/^[A-Z][a-zA-Z\s.,()'-]{2,30}:\s+[^\n]+/gm);
-  if (speakerLines && speakerLines.length >= 4) return true;
+  // 2. Google Meet header markers
+  if (/- Transcript\b/i.test(content)) return true;
+  if (/This editable transcript was computer generated/i.test(content)) return true;
+  // 3. Google Meet transcript with repeated speaker names: "Roberto Majadas\nRoberto Majadas\n00:12:15"
+  if (/^([A-Za-z\s().,'"-]{2,40})\r?\n\1\r?\n\s*(?:\d{1,2}:\d{2}:\d{2}|\d{1,2}:\d{2})\s*$/m.test(content)) {
+    return true;
+  }
+  // 4. Multiple speaker dialogue turns (spoken meeting conversation without timestamps)
+  if (!/\b(?:[01]?\d|2[0-3]):[0-5]\d\b/.test(content)) {
+    const speakerLines = content.match(/^[A-Z][a-zA-Z\s.,()'-]{2,30}:\s+[^\n]+/gm);
+    if (speakerLines && speakerLines.length >= 4) return true;
+  }
   return false;
 }
 
@@ -95,148 +124,364 @@ export function isTranscriptContent(content: string): boolean {
  */
 export function isChatContent(content: string): boolean {
   if (!content || typeof content !== 'string') return false;
-  // Check for pattern: 00:07:52\tSpeaker:\tMessage
-  const chatLines = content.match(/^\d{1,2}:\d{2}:\d{2}\s+[^\n:]+:\s+[^\n]+/gm);
-  return Boolean(chatLines && chatLines.length >= 2);
+  if (isNotCapturedContent(content)) return false;
+  if (isTranscriptContent(content)) return false;
+
+  // Format 1: "To Everyone" or "From ... To"
+  if (/To Everyone/i.test(content)) return true;
+  // Format 2: "00:07:52\tSpeaker:\tMessage" or "00:07:52 Speaker: Message"
+  if (/\b(?:[01]?\d|2[0-3]):[0-5]\d(?::[0-5]\d)?\s+[^:\n]{2,40}:\s*/.test(content)) return true;
+  // Format 3: SRT timestamp format: "00:10:39.522,00:10:42.522" followed by speaker line
+  if (/\d{2}:\d{2}:\d{2}[.,]\d{3}\s*,\s*\d{2}:\d{2}:\d{2}[.,]\d{3}/.test(content)) return true;
+  // Exclude yaml/code patterns
+  if (!/^\s*(?:version:|services:|volumes:|image:)/m.test(content)) {
+    // Format 4: Multi-line Speaker Name followed by time on next line:
+    // e.g. "Tom Sweeney (Red Hat LLC)\n12:35" or "Brent Baude\n11:04 AM"
+    if (
+      /^[ \t]*[A-Za-z][A-Za-z\s().,'"-]{2,40}\r?\n\s*(?:[01]?\d|2[0-3]):[0-5]\d(?:\s*(?:AM|PM|am|pm))?\s*$/m.test(
+        content,
+      )
+    )
+      return true;
+    if (/[A-Za-z][A-Za-z\s().,'"-]{2,40}(?:[01]?\d|2[0-3]):[0-5]\d\s*(?:AM|PM)/m.test(content)) return true;
+    // Format 5: Speaker dialogue lines with colon (e.g. 1-3 lines of chat)
+    const speakerDialogue = content.match(/^[ \t]*[A-Z][a-zA-Z\s.,()'-]{2,35}:\s+.+$/gm);
+    if (speakerDialogue && speakerDialogue.length >= 1 && !content.includes('restart: always')) return true;
+  }
+  return false;
 }
 
 /**
- * Parse Zoom VTT or Google Meet raw transcript text into structured turns
+ * Parse Zoom VTT or Google Meet raw transcript text into structured turns.
+ * Highly optimized O(N) line-by-line parser with zero regex backtracking.
  */
 export function parseTranscript(rawText: string): TranscriptTurn[] {
+  if (!rawText || typeof rawText !== 'string') return [];
   const turns: TranscriptTurn[] = [];
 
-  // 1. Check if it's Zoom VTT format with --> timestamps
-  if (/-->/.test(rawText)) {
-    const cueRegex =
-      /(?:(\d+)\s*\n)?(\d{1,2}:\d{2}:\d{2}(?:[.,]\d+)?)\s*-->\s*(\d{1,2}:\d{2}:\d{2}(?:[.,]\d+)?)\s*\n([\s\S]*?)(?=(?:\n\s*\d+\s*\n\d{1,2}:\d{2}:\d{2}|\n\s*\d{1,2}:\d{2}:\d{2}\s*-->|$))/g;
-    let match: RegExpExecArray | null;
+  // 1. Zoom VTT format with --> timestamps
+  if (rawText.includes('-->')) {
+    const lines = rawText.split(/\r?\n/);
+    let currentId = '';
+    let currentStart = '';
+    let currentLines: string[] = [];
 
-    while ((match = cueRegex.exec(rawText)) !== null) {
-      const id = match[1] || `${turns.length + 1}`;
-      const startTime = match[2];
-      const body = match[4].trim();
-      if (!body) continue;
+    const flushCue = () => {
+      if (currentStart && currentLines.length > 0) {
+        const body = currentLines.join(' ').trim();
+        if (body) {
+          const seconds = parseTimeToSeconds(currentStart);
+          const timeFormatted = formatSecondsToDisplay(seconds);
 
-      const seconds = parseTimeToSeconds(startTime);
-      const timeFormatted = formatSecondsToDisplay(seconds);
+          const speakerMatch = body.match(/^([^:\n]{2,40}):\s*([\s\S]*)$/);
+          let speaker = 'Speaker';
+          let affiliation: string | undefined;
+          let text = body;
 
-      // Extract speaker if present: "Speaker Name (Affiliation): Text"
-      const speakerMatch = body.match(/^([^:\n]+):\s*([\s\S]*)$/);
-      let speaker = 'Speaker';
-      let affiliation: string | undefined;
-      let text = body;
+          if (speakerMatch) {
+            const rawSpeaker = speakerMatch[1].trim();
+            text = speakerMatch[2].trim();
+            const affMatch = rawSpeaker.match(/^(.+?)\s*\((.+?)\)$/);
+            if (affMatch) {
+              speaker = affMatch[1].trim();
+              affiliation = affMatch[2].trim();
+            } else {
+              speaker = rawSpeaker;
+            }
+          }
 
-      if (speakerMatch) {
-        const rawSpeaker = speakerMatch[1].trim();
-        text = speakerMatch[2].trim();
-
-        // Extract "(Red Hat LLC)" or similar
-        const affMatch = rawSpeaker.match(/^(.+?)\s*\((.+?)\)$/);
-        if (affMatch) {
-          speaker = affMatch[1].trim();
-          affiliation = affMatch[2].trim();
-        } else {
-          speaker = rawSpeaker;
+          turns.push({
+            id: currentId || `${turns.length + 1}`,
+            timeSeconds: seconds,
+            timeFormatted,
+            speaker,
+            affiliation,
+            text,
+          });
         }
       }
+      currentId = '';
+      currentStart = '';
+      currentLines = [];
+    };
 
-      if (text) {
-        turns.push({
-          id,
-          timeSeconds: seconds,
-          timeFormatted,
-          speaker,
-          affiliation,
-          text,
-        });
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line || line === 'WEBVTT') continue;
+
+      const arrowIdx = line.indexOf('-->');
+      if (arrowIdx !== -1) {
+        flushCue();
+        const parts = line.split('-->');
+        currentStart = parts[0].trim();
+        continue;
+      }
+
+      if (!currentStart && /^\d+$/.test(line)) {
+        currentId = line;
+        continue;
+      }
+
+      if (currentStart) {
+        currentLines.push(line);
       }
     }
+    flushCue();
 
     if (turns.length > 0) return turns;
   }
 
-  // 2. Fallback: Parse line-by-line for Google Meet transcript or generic dialogue
-  const lines = rawText.split('\n');
+  // 2. Google Meet transcript or generic dialogue format
+  // Handles:
+  // - "Roberto Majadas\nRoberto Majadas\n00:12:15\nText..."
+  // - "11:03\nText..."
+  // - "Speaker: Text..."
+  const lines = rawText.split(/\r?\n/);
+  let currentSpeaker = 'Speaker';
+  let currentAffiliation: string | undefined;
   let currentSeconds = 0;
+  let currentLines: string[] = [];
+
+  const flushTurn = () => {
+    if (currentLines.length > 0) {
+      const text = currentLines.join(' ').trim();
+      if (text) {
+        turns.push({
+          id: `${turns.length + 1}`,
+          timeSeconds: currentSeconds,
+          timeFormatted: formatSecondsToDisplay(currentSeconds),
+          speaker: currentSpeaker,
+          affiliation: currentAffiliation,
+          text,
+        });
+      }
+    }
+    currentLines = [];
+  };
+
+  const parseSpeaker = (raw: string) => {
+    const clean = raw.trim();
+    const affMatch = clean.match(/^(.+?)\s*\((.+?)\)$/);
+    if (affMatch) {
+      return { speaker: affMatch[1].trim(), affiliation: affMatch[2].trim() };
+    }
+    return { speaker: clean };
+  };
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
     if (!line || line === 'WEBVTT' || /^xrq-uemd/.test(line) || /^Transcript$/i.test(line)) continue;
 
-    // Check if line is a standalone timestamp e.g. "00:02:56" or "0:12"
+    // Check for "Speaker:\n" or "Speaker: Text"
+    const colonSpeakerMatch = line.match(/^([A-Z][a-zA-Z\s.,()'-]{1,35}):(?:\s+(.+))?$/);
+    if (colonSpeakerMatch) {
+      flushTurn();
+      const parsed = parseSpeaker(colonSpeakerMatch[1]);
+      currentSpeaker = parsed.speaker;
+      currentAffiliation = parsed.affiliation;
+      if (colonSpeakerMatch[2]) {
+        currentLines.push(colonSpeakerMatch[2]);
+      }
+      continue;
+    }
+
+    // Check if current line is a standalone timestamp e.g. "11:03" or "00:12:15"
     if (/^\d{1,2}:\d{2}(?::\d{2})?$/.test(line)) {
+      flushTurn();
       currentSeconds = parseTimeToSeconds(line);
       continue;
     }
 
-    // Check for Speaker: Text format
-    const speakerMatch = line.match(/^([A-Z][a-zA-Z\s.,()'-]{1,35}):\s+(.+)$/);
-    if (speakerMatch) {
-      const rawSpeaker = speakerMatch[1].trim();
-      const text = speakerMatch[2].trim();
+    // Check Google Meet pattern:
+    // Line i: Speaker (e.g. "Roberto Majadas")
+    // Line i+1: Speaker or Timestamp
+    // Line i+2: Timestamp
+    const line2 = lines[i + 1]?.trim() || '';
+    const line3 = lines[i + 2]?.trim() || '';
 
-      const affMatch = rawSpeaker.match(/^(.+?)\s*\((.+?)\)$/);
-      let speaker = rawSpeaker;
-      let affiliation: string | undefined;
-
-      if (affMatch) {
-        speaker = affMatch[1].trim();
-        affiliation = affMatch[2].trim();
+    if (line.length <= 40 && !line.includes('http') && !line.includes('?') && !line.endsWith('.')) {
+      if (/^\d{1,2}:\d{2}(?::\d{2})?$/.test(line2)) {
+        flushTurn();
+        const parsed = parseSpeaker(line);
+        currentSpeaker = parsed.speaker;
+        currentAffiliation = parsed.affiliation;
+        currentSeconds = parseTimeToSeconds(line2);
+        i++; // skip timestamp line
+        continue;
       }
-
-      turns.push({
-        id: `${turns.length + 1}`,
-        timeSeconds: currentSeconds,
-        timeFormatted: formatSecondsToDisplay(currentSeconds),
-        speaker,
-        affiliation,
-        text,
-      });
+      if (line === line2 && /^\d{1,2}:\d{2}(?::\d{2})?$/.test(line3)) {
+        flushTurn();
+        const parsed = parseSpeaker(line);
+        currentSpeaker = parsed.speaker;
+        currentAffiliation = parsed.affiliation;
+        currentSeconds = parseTimeToSeconds(line3);
+        i += 2; // skip duplicate speaker and timestamp line
+        continue;
+      }
     }
+
+    currentLines.push(line);
   }
+  flushTurn();
 
   return turns;
 }
 
 /**
- * Parse in-meeting chat logs
+ * Parse in-meeting chat logs across Zoom, Google Meet, and WebVTT chat formats.
+ * Instant, robust parser supporting multi-line messages, URLs, and affiliations.
  */
 export function parseChatLog(rawText: string): ChatMessage[] {
+  if (!rawText || typeof rawText !== 'string') return [];
   const messages: ChatMessage[] = [];
-  const lines = rawText.split('\n');
+  const lines = rawText.split(/\r?\n/);
+
+  let currentSpeaker = '';
+  let currentAffiliation: string | undefined;
+  let currentTimeSeconds = 0;
+  let currentTimeFormatted = '';
+  let currentMsgLines: string[] = [];
+
+  const flushMessage = () => {
+    if (currentSpeaker && currentMsgLines.length > 0) {
+      const text = currentMsgLines.join('\n').trim();
+      if (text && !/^keep$/i.test(text) && !/^pinned$/i.test(text)) {
+        messages.push({
+          id: `${messages.length + 1}`,
+          timeSeconds: currentTimeSeconds,
+          timeFormatted: currentTimeFormatted || formatSecondsToDisplay(currentTimeSeconds),
+          speaker: currentSpeaker,
+          affiliation: currentAffiliation,
+          text,
+        });
+      }
+    }
+    currentSpeaker = '';
+    currentAffiliation = undefined;
+    currentTimeSeconds = 0;
+    currentTimeFormatted = '';
+    currentMsgLines = [];
+  };
+
+  const parseSpeaker = (raw: string) => {
+    const clean = raw
+      .replace(/^From\s+/i, '')
+      .replace(/\s+To\s+.*$/i, '')
+      .trim();
+    const affMatch = clean.match(/^(.+?)\s*\((.+?)\)$/);
+    if (affMatch) {
+      return { speaker: affMatch[1].trim(), affiliation: affMatch[2].trim() };
+    }
+    return { speaker: clean };
+  };
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
     if (!line) continue;
 
-    // Format: "00:07:52\tPranav Jogdand:\tMessage..." or "00:07:52 Pranav Jogdand: Message..."
-    const match = line.match(/^(\d{1,2}:\d{2}:\d{2})\s+([^:\t]+):\s*(.*)$/);
-    if (match) {
-      const rawTime = match[1];
-      const rawSpeaker = match[2].trim();
-      const text = match[3].trim();
-      const seconds = parseTimeToSeconds(rawTime);
-
-      const affMatch = rawSpeaker.match(/^(.+?)\s*\((.+?)\)$/);
-      let speaker = rawSpeaker;
-      let affiliation: string | undefined;
-
-      if (affMatch) {
-        speaker = affMatch[1].trim();
-        affiliation = affMatch[2].trim();
+    // Format 1: "10:56:23 From Tom Sweeney (Red Hat, Inc.) To Everyone:\n Message"
+    const fromMatch = line.match(/^(\d{1,2}:\d{2}(?::\d{2})?)\s+From\s+(.+?)\s+To\s+.+?:?\s*(.*)$/i);
+    if (fromMatch) {
+      flushMessage();
+      const timeStr = fromMatch[1];
+      const parsed = parseSpeaker(fromMatch[2]);
+      currentSpeaker = parsed.speaker;
+      currentAffiliation = parsed.affiliation;
+      currentTimeSeconds = parseTimeToSeconds(timeStr);
+      currentTimeFormatted = formatSecondsToDisplay(currentTimeSeconds);
+      if (fromMatch[3]?.trim()) {
+        currentMsgLines.push(fromMatch[3].trim());
       }
+      continue;
+    }
 
-      messages.push({
-        id: `${messages.length + 1}`,
-        timeSeconds: seconds,
-        timeFormatted: formatSecondsToDisplay(seconds),
-        speaker,
-        affiliation,
-        text,
-      });
+    // Format 2: SRT timestamp line e.g. "00:10:39.522,00:10:42.522"
+    const srtTimeMatch = line.match(/^(\d{1,2}:\d{2}(?::\d{2})?)[.,]\d{3}\s*,\s*\d{1,2}:\d{2}/);
+    if (srtTimeMatch) {
+      flushMessage();
+      const timeStr = srtTimeMatch[1];
+      currentTimeSeconds = parseTimeToSeconds(timeStr);
+      currentTimeFormatted = formatSecondsToDisplay(currentTimeSeconds);
+      // Check next line for Speaker: Message
+      const nextLine = lines[i + 1]?.trim() || '';
+      const nextSpeakerMatch = nextLine.match(/^([A-Za-z\s().,'"-]+?):\s*(.*)$/);
+      if (nextSpeakerMatch) {
+        const parsed = parseSpeaker(nextSpeakerMatch[1]);
+        currentSpeaker = parsed.speaker;
+        currentAffiliation = parsed.affiliation;
+        if (nextSpeakerMatch[2]) {
+          currentMsgLines.push(nextSpeakerMatch[2]);
+        }
+        i++;
+      }
+      continue;
+    }
+
+    // Format 3: Tab or space separated "00:17:51\tMartin Beckert:\tmessage"
+    const tabMatch = line.match(/^(\d{1,2}:\d{2}(?::\d{2})?)\s+([^:\t]+):\s*(.*)$/);
+    if (tabMatch) {
+      flushMessage();
+      const timeStr = tabMatch[1];
+      const parsed = parseSpeaker(tabMatch[2]);
+      currentSpeaker = parsed.speaker;
+      currentAffiliation = parsed.affiliation;
+      currentTimeSeconds = parseTimeToSeconds(timeStr);
+      currentTimeFormatted = formatSecondsToDisplay(currentTimeSeconds);
+      if (tabMatch[3]?.trim()) {
+        currentMsgLines.push(tabMatch[3].trim());
+      }
+      continue;
+    }
+
+    // Format 4: Multi-line Zoom / Google Meet format:
+    // Line 1: Speaker Name (e.g. "Tom Sweeney (Red Hat LLC)" or "Brent Baude")
+    // Line 2: Timestamp (e.g. "12:35" or "11:04 AM")
+    const nextLine = lines[i + 1]?.trim() || '';
+    const timeOnlyMatch = nextLine.match(/^(\d{1,2}:\d{2}(?::\d{2})?)\s*(?:AM|PM|am|pm)?$/i);
+    if (timeOnlyMatch && line.length < 50 && !line.includes('http') && !line.startsWith('@') && !line.startsWith('>')) {
+      flushMessage();
+      const parsed = parseSpeaker(line);
+      currentSpeaker = parsed.speaker;
+      currentAffiliation = parsed.affiliation;
+      const timeStr = timeOnlyMatch[1];
+      currentTimeSeconds = parseTimeToSeconds(timeStr);
+      currentTimeFormatted = formatSecondsToDisplay(currentTimeSeconds);
+      i++;
+      continue;
+    }
+
+    // Format 5: Concatenated "Brent Baude11:04 AM"
+    const concatMatch = line.match(/^([A-Za-z\s().,'"-]+?)(\d{1,2}:\d{2}\s*(?:AM|PM|am|pm)?)$/);
+    if (concatMatch && concatMatch[1].trim().length >= 2) {
+      flushMessage();
+      const parsed = parseSpeaker(concatMatch[1]);
+      currentSpeaker = parsed.speaker;
+      currentAffiliation = parsed.affiliation;
+      const timeStr = concatMatch[2].trim();
+      currentTimeSeconds = parseTimeToSeconds(timeStr);
+      currentTimeFormatted = formatSecondsToDisplay(currentTimeSeconds);
+      continue;
+    }
+
+    // Format 6: Simple speaker line without timestamp e.g. "Martin Beckert: There's a new Podlet release v0.3.2"
+    const isUrlOrLabel = /https?:\/\/|blog|post|update|agenda|meeting|notes|release/i.test(line);
+    const speakerLineMatch = !isUrlOrLabel && line.match(/^([A-Z][a-zA-Z\s().,'"-]{2,35}):\s+(.+)$/);
+    if (speakerLineMatch && !line.startsWith('http')) {
+      flushMessage();
+      const parsed = parseSpeaker(speakerLineMatch[1]);
+      currentSpeaker = parsed.speaker;
+      currentAffiliation = parsed.affiliation;
+      currentTimeSeconds = 0;
+      currentTimeFormatted = '';
+      currentMsgLines.push(speakerLineMatch[2]);
+      continue;
+    }
+
+    if (currentSpeaker) {
+      currentMsgLines.push(line);
     }
   }
+  flushMessage();
 
   return messages;
 }
@@ -246,6 +491,83 @@ export type TranscriptViewerProps = {
   onSeekTimestamp?: (seconds: number) => void;
 };
 
+interface TurnRowProps {
+  turn: TranscriptTurn;
+  isSelected: boolean;
+  copied: boolean;
+  onTimestampClick: (turn: TranscriptTurn) => void;
+  onCopyQuote: (turn: TranscriptTurn) => void;
+}
+
+const TurnRow = React.memo(function TurnRow({
+  turn,
+  isSelected,
+  copied,
+  onTimestampClick,
+  onCopyQuote,
+}: TurnRowProps): JSX.Element {
+  const colors = getSpeakerColor(turn.speaker);
+  const initials = getSpeakerInitials(turn.speaker);
+
+  return (
+    <div
+      className={`group flex items-start gap-4 p-4 transition-colors duration-150 ${
+        isSelected ? 'bg-purple-100/60 dark:bg-purple-900/30' : 'hover:bg-gray-50/70 dark:hover:bg-[#25242b]/80'
+      }`}>
+      {/* Left Column: Timestamp Pill */}
+      <div className="shrink-0 pt-0.5">
+        <button
+          type="button"
+          onClick={() => onTimestampClick(turn)}
+          style={{ border: 'none', outline: 'none' }}
+          title={`Seek video to ${turn.timeFormatted}`}
+          className="hover:bg-purple-800 dark:hover:bg-purple-600 inline-flex items-center gap-1 rounded border-0 border-none bg-purple-700 px-2 py-1 font-mono text-xs font-semibold text-white shadow-sm transition dark:bg-purple-700 dark:text-white">
+          <Icon
+            icon="material-symbols:play-arrow-rounded"
+            className="text-xs text-white transition-transform group-hover:scale-110"
+          />
+          <span>{turn.timeFormatted}</span>
+        </button>
+      </div>
+
+      {/* Right Column: Speaker Name + Spoken Text */}
+      <div className="min-w-0 flex-1">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            {/* Speaker Initials Avatar */}
+            <span
+              className={`flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold ${colors.bg} ${colors.text}`}>
+              {initials}
+            </span>
+            <span className="text-sm font-bold text-gray-900 dark:text-white">{turn.speaker}</span>
+            {turn.affiliation && (
+              <span className="border-gray-200 shadow-xs rounded-md border bg-white px-2 py-0.5 text-[11px] font-medium text-gray-700 dark:border dark:border-[#4d465c] dark:bg-[#2d2c35] dark:text-gray-100">
+                {turn.affiliation}
+              </span>
+            )}
+          </div>
+
+          {/* Copy Quote Button on hover */}
+          <button
+            type="button"
+            onClick={() => onCopyQuote(turn)}
+            style={{ border: 'none', outline: 'none' }}
+            className="text-gray-400 border-0 border-none opacity-0 transition-opacity duration-150 group-hover:opacity-100 hover:text-purple-700 dark:text-gray-500 dark:hover:text-purple-300"
+            title="Copy Quote">
+            <Icon
+              icon={copied ? 'material-symbols:check-rounded' : 'material-symbols:content-copy-outline'}
+              className={`text-sm ${copied ? 'text-green-600' : ''}`}
+            />
+          </button>
+        </div>
+
+        {/* Spoken Text */}
+        <p className="m-0 mt-1.5 text-sm leading-relaxed text-gray-700 dark:text-gray-100">{turn.text}</p>
+      </div>
+    </div>
+  );
+});
+
 /**
  * World-class interactive transcript viewer matching the user's reference design
  */
@@ -254,7 +576,6 @@ export function TranscriptViewer({ rawText, onSeekTimestamp }: TranscriptViewerP
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSpeaker, setSelectedSpeaker] = useState<string>('all');
   const [activeTurnId, setActiveTurnId] = useState<string | null>(null);
-  const [isExpanded, setIsExpanded] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   // Extract list of unique speakers with turn counts
@@ -300,16 +621,16 @@ export function TranscriptViewer({ rawText, onSeekTimestamp }: TranscriptViewerP
   );
 
   return (
-    <div className="border-gray-200/80 dark:border-gray-800 my-6 overflow-hidden rounded-xl border bg-white shadow-lg transition-all duration-200 dark:bg-gray-900">
+    <div className="my-6 overflow-hidden rounded-xl border border-black/[0.08] bg-white shadow-sm transition-all duration-200 dark:border-white/10 dark:bg-[#1b1b1d]">
       {/* Header Bar */}
-      <div className="border-gray-200/80 dark:border-gray-800 flex flex-col gap-3 border-b bg-gray-50/70 p-4 dark:bg-gray-900/80 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 border-b border-black/[0.06] bg-gray-50/70 p-4 dark:border-b dark:border-white/10 dark:bg-[#212027] sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-700 text-white shadow-sm shadow-purple-700/25 dark:bg-purple-700 dark:text-white">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-700 text-white shadow-sm">
             <Icon icon="material-symbols:record-voice-over-outline-rounded" className="text-lg text-white" />
           </div>
           <div>
             <h4 className="m-0 text-sm font-bold text-gray-900 dark:text-white">Meeting Audio Transcript</h4>
-            <div className="dark:text-gray-400 text-xs text-gray-500">
+            <div className="text-xs text-gray-500 dark:text-gray-300">
               {turns.length} turns • {speakerStats.length} speakers
             </div>
           </div>
@@ -321,151 +642,98 @@ export function TranscriptViewer({ rawText, onSeekTimestamp }: TranscriptViewerP
           <div className="relative min-w-[200px] flex-1 sm:flex-initial">
             <Icon
               icon="material-symbols:search"
-              className="text-gray-400 absolute left-2.5 top-1/2 -translate-y-1/2 text-sm"
+              className="dark:text-gray-400 pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-500"
             />
             <input
               type="text"
               placeholder="Search transcript..."
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              style={{ border: 'none', outline: 'none' }}
-              className="text-gray-800 ring-gray-200/80 dark:bg-gray-800 w-full rounded-md border-0 border-none bg-white py-1.5 pl-8 pr-7 text-xs shadow-sm outline-none ring-1 transition focus:ring-2 focus:ring-purple-700 dark:text-gray-100 dark:ring-gray-700 dark:focus:ring-purple-500"
+              style={{ outline: 'none' }}
+              className="dark:placeholder:text-gray-400 dark:focus:border-purple-400 w-full rounded-full border border-[#d0ccd8] bg-white py-1.5 pl-8 pr-7 text-xs text-gray-900 shadow-sm outline-none transition hover:border-[#a8a2b5] focus:border-purple-500 focus:ring-2 focus:ring-purple-100 dark:border-[#443e50] dark:bg-[#25242b] dark:text-white dark:hover:border-[#635b75] dark:focus:ring-purple-900/40"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
                 style={{ border: 'none', outline: 'none' }}
-                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 absolute right-2 top-1/2 -translate-y-1/2 border-0 border-none">
+                className="dark:text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 border-0 text-gray-500 hover:text-gray-700 dark:hover:text-white">
                 <Icon icon="material-symbols:close" className="text-xs" />
               </button>
             )}
           </div>
 
-          {/* Speaker Selector */}
-          <select
-            value={selectedSpeaker}
-            onChange={e => setSelectedSpeaker(e.target.value)}
-            style={{ border: 'none', outline: 'none' }}
-            className="ring-gray-200/80 dark:bg-gray-800 dark:text-gray-200 rounded-md border-0 border-none bg-white px-2.5 py-1.5 text-xs font-semibold text-gray-700 shadow-sm outline-none ring-1 transition hover:bg-gray-50 dark:ring-gray-700">
-            <option value="all">All Speakers ({speakerStats.length})</option>
-            {speakerStats.map(([name, count]) => (
-              <option key={name} value={name}>
-                {name} ({count})
-              </option>
-            ))}
-          </select>
-
-          {/* Expand/Collapse Container Height */}
-          <button
-            type="button"
-            onClick={() => setIsExpanded(!isExpanded)}
-            style={{ border: 'none', outline: 'none' }}
-            title={isExpanded ? 'Collapse viewer' : 'Expand full height'}
-            className="ring-gray-200/80 dark:bg-gray-800 inline-flex items-center gap-1 rounded-md border-0 border-none bg-white px-2.5 py-1.5 text-xs font-semibold text-gray-700 shadow-sm outline-none ring-1 transition hover:bg-gray-50 hover:text-purple-700 dark:text-gray-300 dark:ring-gray-700">
-            <Icon
-              icon={isExpanded ? 'material-symbols:collapse-all-rounded' : 'material-symbols:expand-all-rounded'}
-              className="text-sm"
-            />
-            <span className="hidden sm:inline">{isExpanded ? 'Collapse' : 'Expand'}</span>
-          </button>
+          {/* Custom Styled Speaker Dropdown UI */}
+          <SpeakerDropdown
+            selectedSpeaker={selectedSpeaker}
+            onSelectSpeaker={setSelectedSpeaker}
+            speakerStats={speakerStats}
+            totalTurns={turns.length}
+          />
         </div>
       </div>
 
       {/* Transcript Dialogue List (matching user's reference image) */}
       <div
-        className={`dark:divide-gray-800/80 divide-y divide-gray-100 overflow-y-auto transition-all ${
-          isExpanded ? 'max-h-[85vh]' : 'max-h-[500px]'
-        }`}
-        style={{ scrollbarWidth: 'thin' }}>
+        className="transcript-dialogue-list no-scrollbar max-h-[520px] divide-y divide-black/[0.06] overflow-y-auto transition-all dark:divide-white/10"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
         {filteredTurns.length === 0 ? (
-          <div className="dark:text-gray-400 p-8 text-center text-xs text-gray-500">
+          <div className="p-8 text-center text-xs text-gray-500 dark:text-gray-300">
             No spoken dialogue found matching "{searchQuery}".
           </div>
         ) : (
-          filteredTurns.map(turn => {
-            const isSelected = activeTurnId === turn.id;
-            const colors = getSpeakerColor(turn.speaker);
-            const initials = getSpeakerInitials(turn.speaker);
-
-            return (
-              <div
-                key={turn.id}
-                className={`group flex items-start gap-4 p-4 transition-colors duration-150 ${
-                  isSelected ? 'dark:bg-purple-950/30 bg-purple-50/80' : 'dark:hover:bg-gray-800/40 hover:bg-gray-50/70'
-                }`}>
-                {/* Left Column: Timestamp Pill */}
-                <div className="shrink-0 pt-0.5">
-                  <button
-                    type="button"
-                    onClick={() => handleTimestampClick(turn)}
-                    style={{ border: 'none', outline: 'none' }}
-                    title={`Seek video to ${turn.timeFormatted}`}
-                    className="dark:bg-purple-950/60 dark:hover:bg-purple-600 inline-flex items-center gap-1 rounded border-0 border-none bg-purple-50 px-2 py-1 font-mono text-xs font-semibold text-purple-700 shadow-sm transition hover:bg-purple-700 hover:text-white hover:shadow dark:text-purple-300 dark:hover:text-white">
-                    <Icon
-                      icon="material-symbols:play-arrow-rounded"
-                      className="text-xs transition-transform group-hover:scale-110"
-                    />
-                    <span>{turn.timeFormatted}</span>
-                  </button>
-                </div>
-
-                {/* Right Column: Speaker Name + Spoken Text */}
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      {/* Speaker Initials Avatar */}
-                      <span
-                        className={`flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold ${colors.bg} ${colors.text}`}>
-                        {initials}
-                      </span>
-                      <span className="text-sm font-bold text-gray-900 dark:text-white">{turn.speaker}</span>
-                      {turn.affiliation && (
-                        <span className="text-gray-600 dark:bg-gray-800 dark:text-gray-400 rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium">
-                          {turn.affiliation}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Copy Quote Button on hover */}
-                    <button
-                      type="button"
-                      onClick={() => handleCopyQuote(turn)}
-                      style={{ border: 'none', outline: 'none' }}
-                      className="text-gray-400 border-0 border-none opacity-0 transition-opacity duration-150 group-hover:opacity-100 hover:text-purple-700 dark:hover:text-purple-300"
-                      title="Copy Quote">
-                      <Icon
-                        icon={
-                          copiedId === turn.id
-                            ? 'material-symbols:check-rounded'
-                            : 'material-symbols:content-copy-outline'
-                        }
-                        className={`text-sm ${copiedId === turn.id ? 'text-green-600' : ''}`}
-                      />
-                    </button>
-                  </div>
-
-                  {/* Spoken Text */}
-                  <p className="m-0 mt-1.5 text-sm leading-relaxed text-gray-700 dark:text-gray-300">{turn.text}</p>
-                </div>
-              </div>
-            );
-          })
+          filteredTurns.map(turn => (
+            <TurnRow
+              key={turn.id}
+              turn={turn}
+              isSelected={activeTurnId === turn.id}
+              copied={copiedId === turn.id}
+              onTimestampClick={handleTimestampClick}
+              onCopyQuote={handleCopyQuote}
+            />
+          ))
         )}
       </div>
 
       {/* Footer / Status bar */}
-      <div className="dark:border-gray-800 dark:text-gray-400 flex items-center justify-between border-t border-gray-100 bg-gray-50/50 px-4 py-2 text-xs text-gray-500 dark:bg-gray-900/60">
+      <div className="flex items-center justify-between border-t border-black/[0.06] bg-gray-50/50 px-4 py-2 text-xs text-gray-500 dark:border-t dark:border-white/10 dark:bg-[#212027] dark:text-gray-300">
         <span>
           Showing {filteredTurns.length} of {turns.length} utterances
         </span>
-        <span className="text-[11px] italic">
+        <span className="text-[11px] italic text-gray-500 dark:text-gray-300">
           💡 Click any timestamp to jump the video recording to that exact moment
         </span>
       </div>
     </div>
   );
 }
+
+const ChatMessageRow = React.memo(function ChatMessageRow({ msg }: { msg: ChatMessage }): JSX.Element {
+  const colors = getSpeakerColor(msg.speaker);
+  const isUrl = /^https?:\/\//i.test(msg.text);
+
+  return (
+    <div className="flex items-start gap-2.5 text-xs">
+      <span className="text-gray-400 shrink-0 pt-0.5 font-mono font-medium dark:text-gray-300">
+        {msg.timeFormatted}
+      </span>
+      <div className="flex-1">
+        <span className={`font-bold ${colors.text} mr-1.5`}>{msg.speaker}:</span>
+        {isUrl ? (
+          <a
+            href={msg.text}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-purple-700 underline underline-offset-2 hover:text-purple-900 dark:text-purple-300 dark:hover:text-purple-100">
+            {msg.text}
+          </a>
+        ) : (
+          <span className="text-gray-800 dark:text-gray-100">{msg.text}</span>
+        )}
+      </div>
+    </div>
+  );
+});
 
 /**
  * Clean in-meeting chat log viewer
@@ -481,10 +749,10 @@ export function ChatLogViewer({ rawText }: { rawText: string }): JSX.Element {
   }, [rawText]);
 
   return (
-    <div className="border-gray-200/80 dark:border-gray-800 my-6 overflow-hidden rounded-xl border bg-white shadow-lg dark:bg-gray-900">
-      <div className="border-gray-200/80 dark:border-gray-800 flex items-center justify-between border-b bg-gray-50/70 p-3.5 dark:bg-gray-900/80">
+    <div className="my-6 overflow-hidden rounded-xl border border-black/[0.08] bg-white shadow-sm dark:border-white/10 dark:bg-[#1b1b1d]">
+      <div className="flex items-center justify-between border-b border-black/[0.06] bg-gray-50/70 p-3.5 dark:border-b dark:border-white/10 dark:bg-[#212027]">
         <div className="flex items-center gap-2.5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-700 text-white shadow-sm shadow-purple-700/25 dark:bg-purple-700 dark:text-white">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-700 text-white shadow-sm">
             <Icon icon="material-symbols:chat-outline-rounded" className="text-lg text-white" />
           </div>
           <h4 className="m-0 text-sm font-bold text-gray-900 dark:text-white">
@@ -494,38 +762,22 @@ export function ChatLogViewer({ rawText }: { rawText: string }): JSX.Element {
         <button
           type="button"
           onClick={handleCopyChat}
-          style={{ border: 'none', outline: 'none' }}
-          className="ring-gray-200/80 dark:bg-gray-800 inline-flex items-center gap-1 rounded-md border-0 border-none bg-white px-2.5 py-1 text-xs font-semibold text-gray-700 shadow-sm ring-1 transition hover:bg-gray-50 hover:text-purple-700 dark:text-gray-300 dark:ring-gray-700">
-          <Icon icon={copied ? 'material-symbols:check-rounded' : 'material-symbols:content-copy-outline'} />
+          style={{ outline: 'none' }}
+          className="text-gray-800 shadow-xs inline-flex items-center gap-1.5 rounded-lg border border-[#d0ccd8] bg-white px-3 py-1.5 text-xs font-semibold transition hover:border-[#a8a2b5] hover:bg-gray-50 hover:text-purple-700 dark:border-0 dark:bg-[#25242b] dark:text-gray-100 dark:hover:bg-[#2e2d36] dark:hover:text-white">
+          <Icon
+            icon={copied ? 'material-symbols:check-rounded' : 'material-symbols:content-copy-outline'}
+            className={`text-sm ${copied ? 'text-green-600' : 'text-gray-600 dark:text-gray-300'}`}
+          />
           <span>{copied ? 'Copied!' : 'Copy Chat'}</span>
         </button>
       </div>
 
-      <div className="max-h-72 space-y-2.5 overflow-y-auto p-4" style={{ scrollbarWidth: 'thin' }}>
-        {messages.map(msg => {
-          const colors = getSpeakerColor(msg.speaker);
-          const isUrl = /^https?:\/\//i.test(msg.text);
-
-          return (
-            <div key={msg.id} className="flex items-start gap-2.5 text-xs">
-              <span className="text-gray-400 shrink-0 pt-0.5 font-mono font-medium">{msg.timeFormatted}</span>
-              <div className="flex-1">
-                <span className={`font-bold ${colors.text} mr-1.5`}>{msg.speaker}:</span>
-                {isUrl ? (
-                  <a
-                    href={msg.text}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="dark:text-purple-400 font-medium text-purple-700 underline underline-offset-2 hover:text-purple-900">
-                    {msg.text}
-                  </a>
-                ) : (
-                  <span className="text-gray-800 dark:text-gray-200">{msg.text}</span>
-                )}
-              </div>
-            </div>
-          );
-        })}
+      <div
+        className="chat-log-list no-scrollbar max-h-72 space-y-2.5 overflow-y-auto p-4"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+        {messages.map(msg => (
+          <ChatMessageRow key={msg.id} msg={msg} />
+        ))}
       </div>
     </div>
   );

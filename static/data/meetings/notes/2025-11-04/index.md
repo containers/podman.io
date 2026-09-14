@@ -1,39 +1,44 @@
 # Podman Community Cabal Meeting Notes
+
 ## November 4, 2025 11:00 a.m. Eastern (UTC-5)
 
 ### Attendees
+
 Tom Sweeney, Tim Zhou, Mark Russell, Matt Heon, Nalin Dahyabhai, Mario Loriedo, Fatih, Ashley Cui, Paul Holzinger, Kevin Clevenger, Jan Rodak, Dave Darrah, Gerry Seidman.
 
 ### Topics
 
- 1. Go formatter, https://github.com/containers/podman/discussions/27291 - Paul
- 2. Drop in config file loading behaviors - Paul
+1.  Go formatter, https://github.com/containers/podman/discussions/27291 - Paul
+2.  Drop in config file loading behaviors - Paul
 
 ### Meeting Notes
+
 Video [Recording](https://www.youtube.com/watch?v=0x6juTSRvo0)
 
 Meeting start: 11:03 a.m. EDT (UTC-5)
 
 #### Quick Recap
+
 The Podman Community Cabal meeting focused on discussing formatting standards and config file parsing changes for version 6, with Paul presenting proposals on both topics that generated debate among team members. The team discussed the need for more maintainers and contributors, with Matthew encouraging participation and Mohan announcing an upcoming livestreamed talk on Podman. The next community meeting was scheduled for December 2nd, with the next Cabal meeting set for January 6th, 2026.
 
 #### Next Steps
- * Paul: Add a reply to the Go formatter discussion stating voting will close end of day on the 7th, with the decision to be made on Monday
- * Tom: Socialize the Go formatter discussion/vote
- * Paul: Write and upload a design doc as a PR to the design docs directory in the repo regarding config file parsing consolidation for Podman 6
- * Tom: Add the CNCF ambassador Podman talk event to the meeting notes
-    * https://www.linkedin.com/events/chatloopbackoff-episode71-podma7386532304296484864/
 
-#### Go formatter  - Paul Holzinger - ([00:34](https://www.youtube.com/watch?v=0x6juTSRvo0&t=34s) in the video)
+- Paul: Add a reply to the Go formatter discussion stating voting will close end of day on the 7th, with the decision to be made on Monday
+- Tom: Socialize the Go formatter discussion/vote
+- Paul: Write and upload a design doc as a PR to the design docs directory in the repo regarding config file parsing consolidation for Podman 6
+- Tom: Add the CNCF ambassador Podman talk event to the meeting notes
+  - https://www.linkedin.com/events/chatloopbackoff-episode71-podma7386532304296484864/
+
+#### Go formatter - Paul Holzinger - ([00:34](https://www.youtube.com/watch?v=0x6juTSRvo0&t=34s) in the video)
 
 Go Formatting Standard Debate:The team discussed the Go formatting standard to use in their repositories, with a current majority favoring GoFMT over the stricter GoFundT format. Paul created a voting discussion that will remain open until the end of the day on July 7th, after which Tom will tally the votes on Monday. Nalin highlighted the advantage of the opinionated GoFundT format in clearly marking octal constants, which is particularly useful for file permission handling.
 
 gofmt request for [vote](https://github.com/containers/podman/discussions/27291).
 Please add your vote by Friday, November 7, 2025.
 
-#### Drop in config file loading behaviors  - Paul Holzinger - ([07:42](https://www.youtube.com/watch?v=0x6juTSRvo0&t=462s) in the video)
+#### Drop in config file loading behaviors - Paul Holzinger - ([07:42](https://www.youtube.com/watch?v=0x6juTSRvo0&t=462s) in the video)
 
-We have config *.conf files in a number of places.  As an example: /usr/share/containers.conf, usr/.../containers.conf.d/1-dropin.conf, /etch/containers/containers.conf, /etc/../containers.conf.d/1-dropin.conf  See [slides](./2025_Nov_Cabal_Paul_Slide.pdf)
+We have config *.conf files in a number of places. As an example: /usr/share/containers.conf, usr/.../containers.conf.d/1-dropin.conf, /etch/containers/containers.conf, /etc/../containers.conf.d/1-dropin.conf See [slides](./2025_Nov_Cabal_Paul_Slide.pdf)
 
 Podman Config Changes Discussion:The team discussed changes to Podman's config file parsing in version 6, with Paul presenting a proposal to consolidate parsing logic across different config files. Kevin expressed support for maintaining the current Podman approach due to backward compatibility concerns with embedded partners. Paul clarified that the proposed changes would still allow for drop-in files and per-installation modifications. Paul leans towards the UAPI method.
 
@@ -41,29 +46,31 @@ Paul will be putting together a design doc.
 
 #### Looking for more people - Matt Heon - ([24:27](https://www.youtube.com/watch?v=0x6juTSRvo0&t=1467s) in the video)
 
-We're looking for reviewers, maintainers, and contributors.  Just hop on and start reviewing, or reach out to us on the matrix channel.
+We're looking for reviewers, maintainers, and contributors. Just hop on and start reviewing, or reach out to us on the matrix channel.
 
 #### Open discussion - ([25:33](https://www.youtube.com/watch?v=0x6juTSRvo0&t=1533s) in the video)
-1. Mohan announced an upcoming livestream talk on Podman by a CNCF ambassador on Podman on Thursday, November 6, 2025, at noon eastern (UTC-5).  https://www.linkedin.com/events/chatloopbackoff-episode71-podma7386532304296484864/
+
+1. Mohan announced an upcoming livestream talk on Podman by a CNCF ambassador on Podman on Thursday, November 6, 2025, at noon eastern (UTC-5). https://www.linkedin.com/events/chatloopbackoff-episode71-podma7386532304296484864/
 
 ### Next Cabal Meeting: Tuesday, January 6, 2026, 11:00 a.m. EDT (UTC-5)
 
 #### Possible Topics
- 1. None Discussed.
+
+1.  None Discussed.
 
 ### Next Community Meeting: Tuesday, December 2, 2025, 11:00 a.m. EST (UTC-5)
 
 #### Possible Topics:
- 1. None Discussed
 
+1.  None Discussed
 
 Meeting finished 11:31 a.m.
 
 The first 11 or so minutes of the meeting were cut, so the timestamps in the next two sections are off by that amount compared to the YouTube video.
 
- ### Raw Meeting Chat:
+### Raw Meeting Chat:
 
- ```    
+```
 00:12:42	Paul Holzinger:	https://github.com/containers/podman/discussions/27291
 00:28:29	Gerald Seidman (AuriStor Inc.):	I am in a loud location, so I'll ask my question here ....
 Is analogously something similar to be done to storage.conf?
@@ -71,7 +78,7 @@ In particular on OpenShift, there isn't a way to add/override fields in storage.
 00:29:20	Tom Sweeney (Red Hat, Inc.):	Gerry, I'll ask in a moment.
 00:29:35	Gerald Seidman (AuriStor Inc.):	Reacted to "Gerry, I'll ask in a..." with 👍
 00:34:54	Mohan Boddu:	ps: https://www.linkedin.com/events/chatloopbackoff-episode71-podma7386532304296484864/
- ```
+```
 
 ### Raw Zoom Meet Transcript
 

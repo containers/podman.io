@@ -1,114 +1,119 @@
 # Podman Community Cabal Meeting Notes
+
 ## February 20, 2024 11:00 a.m. Eastern (UTC-4)
 
 ### Attendees
+
 Ashley Cui, Brent Baude, Christopher Evich, Daniel Walsh, Douglas Landgraf, Ed Santiago Munoz, F. Poirotte, Gerry Seidman, Giuseppe Scrivano, Jake Correnti, Jhon Honce, Kevin Clevenger, Lokesh Mandvekar, Martin Jackson, Matt Heon, Miloslav Trmac, Mohan Boddu, Neil Smith, Paul Holzinger, Peter Hunt, Povilas K, Tom Sweeney, Urvashi Mohnani, Vikas Goel
 
 ### February 20, 2024 Topics
 
- 1. Podman, Kubernetes, and Image/Container Volumes - Matt, Dan
- 2. Proposal to maintain podman-compose.  Povilas.
- 3. Podman kube to handle vm's too?  - Vivek Goyal
+1.  Podman, Kubernetes, and Image/Container Volumes - Matt, Dan
+2.  Proposal to maintain podman-compose. Povilas.
+3.  Podman kube to handle vm's too? - Vivek Goyal
 
 ### Meeting Notes
- Video [Recording](https://www.youtube.com/watch?v=1wOoZ5qPeII)
 
- Meeting start 11:02 a.m. Tuesday, February 20, 2024
+Video [Recording](https://www.youtube.com/watch?v=1wOoZ5qPeII)
 
-#### Podman, Kubernetes, and Image/Container Volumes - Matt, Dan (0:48 in the video) 
+Meeting start 11:02 a.m. Tuesday, February 20, 2024
 
- Make an image a container volume.  Discussion put off until Dan or Peter joins the meeting.
+#### Podman, Kubernetes, and Image/Container Volumes - Matt, Dan (0:48 in the video)
 
-#### Proposal to maintain podman-compose.  Povilas. - (3:00 in the video)
+Make an image a container volume. Discussion put off until Dan or Peter joins the meeting.
 
- https://github.com/containers/podman-compose/tags
+#### Proposal to maintain podman-compose. Povilas. - (3:00 in the video)
 
- Thinking about helping with podman compose
+https://github.com/containers/podman-compose/tags
 
- Concerns: The project is dying, and there is no active maintainer.  Do we boot it again, just to have it die again?  Due to maintainers being absent, maintainers are not encouraged to contribute.  Povilas is hopeful that once it is maintained again, it will grow.
+Thinking about helping with podman compose
 
-Bringing it back might cause further confusion about the current status of the project.  Maintainer absent for seven months.  No response to email or via GitHub.  
+Concerns: The project is dying, and there is no active maintainer. Do we boot it again, just to have it die again? Due to maintainers being absent, maintainers are not encouraged to contribute. Povilas is hopeful that once it is maintained again, it will grow.
 
- Dan opened an issue to add new maintainers.  He asked if Povilas would be willing to be a maintainer, and Povilas agreed.
+Bringing it back might cause further confusion about the current status of the project. Maintainer absent for seven months. No response to email or via GitHub.
 
- Currently 278 issues, with no release in 10 months.  
+Dan opened an issue to add new maintainers. He asked if Povilas would be willing to be a maintainer, and Povilas agreed.
 
- A discussion was undertaken on how to take it over.  FOSS has some guidelines, Brent thinks.
+Currently 278 issues, with no release in 10 months.
 
- Brent brought up, that if we do this, we're saying we'll work with Podman Compose going forward rather than just Docker Compose.
+A discussion was undertaken on how to take it over. FOSS has some guidelines, Brent thinks.
 
- The Red Hat team has been asked for support for it, just because it lives in the Containers org and we don't have much to do with it.
+Brent brought up, that if we do this, we're saying we'll work with Podman Compose going forward rather than just Docker Compose.
 
- Brent would like to see a name change to separate ourselves from the current project.  Perhaps a fork?  
+The Red Hat team has been asked for support for it, just because it lives in the Containers org and we don't have much to do with it.
 
- Matt thinks moving to a new name, still under the Containers umbrella.
+Brent would like to see a name change to separate ourselves from the current project. Perhaps a fork?
 
- Podman team wants to be able to use yaml files compose.  Currently if a bug happens there’s no one to go to.
+Matt thinks moving to a new name, still under the Containers umbrella.
 
- Dan will contact Povilas with a name change.  
+Podman team wants to be able to use yaml files compose. Currently if a bug happens there’s no one to go to.
 
- Brent suggested a blog, but Povilas suggested to do the administration at least for now, and see if he can get others to help maintain the repository.
+Dan will contact Povilas with a name change.
 
- We don't want to remove current maintainer, but want to add Povilas and others.
+Brent suggested a blog, but Povilas suggested to do the administration at least for now, and see if he can get others to help maintain the repository.
 
- Povilas thinks it should be up to the containers org ownership to determine the ownership.
+We don't want to remove current maintainer, but want to add Povilas and others.
 
- Given the current status, should Podman Compose be part of Fedora 40?  It is already in Fedora 40, so it will stay there.
+Povilas thinks it should be up to the containers org ownership to determine the ownership.
 
- Given name changes in GitHub, would we need to change in Fedora too?  Chris pointed out renameing can be problematic.
+Given the current status, should Podman Compose be part of Fedora 40? It is already in Fedora 40, so it will stay there.
 
- Wait one week, add Povilas as maintainer.  Delaying name change for now.  The thought to evaluate/decide by Fedora 41, or perhasp Fedora 42..
+Given name changes in GitHub, would we need to change in Fedora too? Chris pointed out renameing can be problematic.
+
+Wait one week, add Povilas as maintainer. Delaying name change for now. The thought to evaluate/decide by Fedora 41, or perhasp Fedora 42..
 
 #### Podman, Kubernetes, and Image/Container Volumes - Matt, Dan - (31:57 in the video)
 
 A way to get an image mounted into a container that is existing, both in Podman and also in Kubernetes.
 
- Take volumes from an image, and not have a container run them, and then mount them into a kubernetes yaml file.  Dan wants to know if there's a standard kubernetes way to do this.  Peter said he believes this exists already.
+Take volumes from an image, and not have a container run them, and then mount them into a kubernetes yaml file. Dan wants to know if there's a standard kubernetes way to do this. Peter said he believes this exists already.
 
- Wiring this into Podman might be tricky.  Gerry was active in the storage community, suggests talking to a person at Google who has been working on this.
+Wiring this into Podman might be tricky. Gerry was active in the storage community, suggests talking to a person at Google who has been working on this.
 
- It would be like an image path that you'd specify.  There's a CFI driver that could potentially be used, but Peter didn't have a use case, so they didn't explore it much.  
+It would be like an image path that you'd specify. There's a CFI driver that could potentially be used, but Peter didn't have a use case, so they didn't explore it much.
 
- Dan to talk to Jeremey Eder about this, he thinks it will be something that will be coming along in AI modules.  That's the use case that Dan is hearing about.  People on Peter's team have started to explore some use cases.  Peter will talk to Dan for more info.  
+Dan to talk to Jeremey Eder about this, he thinks it will be something that will be coming along in AI modules. That's the use case that Dan is hearing about. People on Peter's team have started to explore some use cases. Peter will talk to Dan for more info.
 
- Dan and Peter think artifacts might be the use case.  Gerry will send Dan email with contact info.
+Dan and Peter think artifacts might be the use case. Gerry will send Dan email with contact info.
 
- Dan asked Peter if he had heard of using "volume from", which allows an existing container to use a volume from another container.
+Dan asked Peter if he had heard of using "volume from", which allows an existing container to use a volume from another container.
 
- Peter has heard of the concept, but not seen concrete examples.  
+Peter has heard of the concept, but not seen concrete examples.
 
- The CSI driver that might be of use: https://github.com/warm-metal/container-image-csi-driver.  But it is using an old version of CRIO
+The CSI driver that might be of use: https://github.com/warm-metal/container-image-csi-driver. But it is using an old version of CRIO
 
 #### Podman kube to handle VMs too? - Dan Walsh (41:22 in the video)
- Currently we have kube virt, and have created crunvm package, a runtime to use qemu from the host and take the image and run it.
 
- Use case Dan is looking for is basically a quadlet so you can set cgroups and other settings.  Is there a way to use a K8S Yaml file to do something similar?
+Currently we have kube virt, and have created crunvm package, a runtime to use qemu from the host and take the image and run it.
 
- Kubevirt has an APi that allows for a VM to be created.  It just reached v1.0, a stable version.  Dan wants to know if the runtime can be specified.  Peter says there is a way to specify it by creating a runtime class. (https://kubernetes.io/docs/concepts/containers/runtime-class/)
+Use case Dan is looking for is basically a quadlet so you can set cgroups and other settings. Is there a way to use a K8S Yaml file to do something similar?
 
- Basically a dumbed down version of kubevirt.  Dan thinks this might work for his use here.
+Kubevirt has an APi that allows for a VM to be created. It just reached v1.0, a stable version. Dan wants to know if the runtime can be specified. Peter says there is a way to specify it by creating a runtime class. (https://kubernetes.io/docs/concepts/containers/runtime-class/)
+
+Basically a dumbed down version of kubevirt. Dan thinks this might work for his use here.
 
 #### Open discussion - (48:20 in the video) - 50
- 1. Data production for appliances backup application, topic for next time.  Dan and Gerry talked about quadlet use, init containers and appliances and how it might be used.
-  
+
+1.  Data production for appliances backup application, topic for next time. Dan and Gerry talked about quadlet use, init containers and appliances and how it might be used.
+
 ### Next Cabal Meeting: Tuesday, March 19, 2024, 11:00 a.m. EDT (UTC-5)
 
-
 #### Possible Topics
- 1. N/A
 
+1.  N/A
 
 ### Next Community Meeting: Tuesday, April 2, 2024, 11:00 a.m. EDT (UTC-4)
 
 #### Possible Topics:
- 1. Quay namespace maintenance: Consider dropping/redirecting quay.io/containers
- 2. Data production for appliances backup application - Vikas Goel
 
- Meeting finished 11: a.m.
+1.  Quay namespace maintenance: Consider dropping/redirecting quay.io/containers
+2.  Data production for appliances backup application - Vikas Goel
+
+Meeting finished 11: a.m.
 
 ### Raw Meeting Chat:
 
- ```
+```
  Jake Correnti
  11:02 AM
  vivek goyal is on PTO
@@ -174,11 +179,12 @@ A way to get an image mounted into a container that is existing, both in Podman 
  You
  11:52 AM
  https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both
- xrq-uemd-bzy```
+ xrq-uemd-bzy
+```
 
 ### Raw Google Meet Transcript
 
- ```
+```
 Tom Sweeney: Good morning, Today is Tuesday, February 20th. 2024. This is the padman community cabal meeting. We have a Agenda up in hack empty which I'll put into the meeting notes in a moment here today. We were going to be talking about pubman Cube to handle VMS too. But unfortunately the person who was going to leave that discussion is not here. So I'm gonna post that postpone that until the next time March.
 Tom Sweeney: And what publicson welcome povilas and then we are going to talk about public kubernetes an image container volumes with Matt. And then finally we're going to be talking about proposal to maintain podman compose and then any open discussion that we may have after that. So given all that. I'm going to hand it off to you and Dan who's not quite here. You can take it.
 Matt Heon: I can at least try to get a started. So the ask here is originally coming from Dan who basically wants a way to get a image into an existing container. what I mean by this is we don't want to start a new container based on the image. We want to make the contents of the image available within an existing container as a volume and podman we can already do this. We have actually two ways of doing this. We have a concept of image volumes and we have a cons They're both called image volumes. It's horribly confusing one of them goes to the podman volume command. One of them doesn't anyways pod man an abundance of ways to get images into containers. And this is very convenient for things like security scanning.
@@ -423,7 +429,7 @@ Peter Hunt: So they're using quite an old version of cryo. So, who knows? but th
 Daniel Walsh: We move on to the next one Tom.
 Tom Sweeney: And at the moment, that would be open discussions. didn't have no proposal for that. We had something from Vivek about modern Cube to handle VMS to Dan. I don't know if you want to talk about that now today or wait till he's here. He's on vacation. Thank you forgot about this vacation time.
 Daniel Walsh: Yeah.
-Daniel Walsh: 
+Daniel Walsh:
 Daniel Walsh: that I think basically the basic idea right now we have Cooper which is basically taking a VM putting it inside of a container image and then all the tooling to run the
 Daniel Walsh: Run the Q go to inside of kubert.
 Daniel Walsh: We've recently created a package called c-run VM. which is a oci runtime that we'll use the Cuke out qmu from it's defaulted to qmu, but we'll run Q mu from The Host. And take the content of the image and run and basically look for a q cow too inside of the image and run the use case we're looking for is basically like a quadlet where you'd have a machine boot up and you want to have a VM that's managed as a container.

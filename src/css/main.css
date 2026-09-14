@@ -425,27 +425,21 @@
 
 /* Hide scrollbars completely across all browsers */
 .no-scrollbar::-webkit-scrollbar,
-.meetings-year-menu::-webkit-scrollbar {
+.speaker-dropdown-menu::-webkit-scrollbar,
+.meetings-year-menu::-webkit-scrollbar,
+.meetings-sessions-container::-webkit-scrollbar,
+.transcript-dialogue-list::-webkit-scrollbar,
+.chat-log-list::-webkit-scrollbar {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
 }
 .no-scrollbar,
-.meetings-year-menu {
+.speaker-dropdown-menu,
+.meetings-year-menu,
+.meetings-sessions-container,
+.transcript-dialogue-list,
+.chat-log-list {
   -ms-overflow-style: none !important;
   scrollbar-width: none !important;
-}
-
-/* Meetings controls resets (remove native borders/outlines) */
-.meetings-search-input,
-.meetings-year-btn {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.meetings-search-input:focus {
-  border: none !important;
-  outline: none !important;
-  box-shadow: 0 0 0 2px #7e22ce !important;
 }
