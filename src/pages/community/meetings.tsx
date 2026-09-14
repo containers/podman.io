@@ -138,7 +138,7 @@ function MeetingsPage(): JSX.Element {
     <Layout
       title="Podman Community Meeting Notes & Minutes"
       description="Browse notes, agendas, summaries, and embedded video recordings for Podman Community and Cabal meetings.">
-      <main className="min-h-screen bg-gray-50 pb-20 dark:bg-gray-900">
+      <main className="min-h-screen bg-white pb-20 dark:bg-gray-900">
         {/* Hero Section */}
         <section className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-700 pb-16 pt-10 dark:from-blue-700 dark:to-purple-900 md:pb-24 md:pt-14">
           <div className="container mx-auto px-4 lg:px-8 xl:max-w-[1440px]">
