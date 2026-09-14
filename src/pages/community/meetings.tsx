@@ -24,7 +24,13 @@ function MeetingsPage(): JSX.Element {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedYear, setSelectedYear] = useState<string>('all');
   const [copiedLink, setCopiedLink] = useState(false);
+  const [isSidebarAtBottom, setIsSidebarAtBottom] = useState(false);
   const copyTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleSidebarScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
+    setIsSidebarAtBottom(scrollTop + clientHeight >= scrollHeight - 20);
+  }, []);
 
   // Clear copy status timer on unmount
   useEffect(() => {
@@ -256,22 +262,35 @@ function MeetingsPage(): JSX.Element {
                   )}
                 </div>
 
-                <div
-                  className="meetings-sessions-container no-scrollbar max-h-[calc(100vh-240px)] space-y-3 overflow-y-auto px-2 py-3"
-                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                  {filteredMeetings.length === 0 ? (
-                    <div className="rounded-md border border-black/[0.06] bg-white p-8 text-center text-sm text-gray-500 shadow-sm dark:border-white/10 dark:bg-[#24232a] dark:text-gray-300">
-                      No meetings match your filter.
-                    </div>
-                  ) : (
-                    filteredMeetings.map(meeting => (
-                      <SessionCard
-                        key={meeting.id}
-                        meeting={meeting}
-                        isSelected={activeMeeting?.id === meeting.id}
-                        onSelect={handleSelectMeeting}
-                      />
-                    ))
+                <div className="relative">
+                  <div
+                    onScroll={handleSidebarScroll}
+                    className="meetings-sessions-container no-scrollbar max-h-[calc(100vh-140px)] space-y-3 overflow-y-auto px-1 pb-14 pt-1"
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                    {filteredMeetings.length === 0 ? (
+                      <div className="rounded-md border border-black/[0.06] bg-white p-8 text-center text-sm text-gray-500 shadow-sm dark:border-white/10 dark:bg-[#24232a] dark:text-gray-300">
+                        No meetings match your filter.
+                      </div>
+                    ) : (
+                      filteredMeetings.map(meeting => (
+                        <SessionCard
+                          key={meeting.id}
+                          meeting={meeting}
+                          isSelected={activeMeeting?.id === meeting.id}
+                          onSelect={handleSelectMeeting}
+                        />
+                      ))
+                    )}
+                  </div>
+
+                  {/* Elegant bottom fade dissolve indicator so cards never look abruptly cut off */}
+                  {filteredMeetings.length > 3 && (
+                    <div
+                      aria-hidden="true"
+                      className={`pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white via-white/80 to-transparent transition-opacity duration-200 dark:from-gray-900 dark:via-gray-900/80 ${
+                        isSidebarAtBottom ? 'opacity-0' : 'opacity-100'
+                      }`}
+                    />
                   )}
                 </div>
               </div>
