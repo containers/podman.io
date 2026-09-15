@@ -49,7 +49,7 @@ export function extractMeetingTopics(toc?: Array<{ value?: string }>): string[] 
     }
 
     let cleaned = raw
-      .replace(/^\d+[\.\)]\s*/, '')
+      .replace(/^\d+[.)]\s*/, '')
       .replace(/\s*\(?\s*\[?\d{1,2}:\d{2}(?::\d{2})?\]?.*$/i, '')
       .trim();
 
