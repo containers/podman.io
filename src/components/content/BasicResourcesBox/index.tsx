@@ -15,7 +15,7 @@ const BasicResourcesBox = () => {
               <li key={index}>
                 <a
                   href={button.path}
-                  className="no-underline hover:no-underline leading-none mx-auto flex h-32 max-w-lg flex-col items-center justify-center gap-4 rounded-md bg-gray-100 p-4 text-center text-purple-700 underline-offset-4 transition duration-150 ease-linear hover:bg-purple-700 hover:text-purple-50 hover:shadow-md dark:bg-gray-700 dark:hover:bg-purple-900 dark:hover:text-white lg:h-auto lg:flex-row xl:justify-start">
+                  className="mx-auto flex h-32 max-w-lg flex-col items-center justify-center gap-4 rounded-md bg-gray-100 p-4 text-center leading-none text-purple-700 no-underline underline-offset-4 transition duration-150 ease-linear hover:bg-purple-700 hover:text-purple-50 hover:no-underline hover:shadow-md dark:bg-gray-700 dark:hover:bg-purple-900 dark:hover:text-white lg:h-auto lg:flex-row xl:justify-start">
                   <span className="text-left">{button.text}</span>
                   <Icon icon={button.icon} className="order-first hidden lg:block" />
                 </a>

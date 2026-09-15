@@ -32,22 +32,40 @@
   @apply mt-10;
 }
 
-.navbar__title {
-  font-family: Montserrat;
-  font-weight: 500 !important;
-  /* font-size: 200%; */
-  padding: 8px 0px;
-  letter-spacing: -1.5px !important;
+.navbar__brand {
+  flex-shrink: 0 !important;
+  min-width: max-content;
+  max-width: none !important;
+  overflow: visible !important;
+  margin-right: 1.5rem;
+}
+
+.navbar__title,
+.navbar__title.text--truncate {
+  font-family: Montserrat, sans-serif;
+  font-weight: 600 !important;
+  padding: 4px 0px;
+  letter-spacing: -0.5px !important;
   font-kerning: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: nowrap !important;
+  max-width: none !important;
+  flex-shrink: 0 !important;
+  font-size: clamp(1.75rem, 2.4vw, 2.5rem) !important;
+  line-height: 1.2 !important;
 }
 
 #__docusaurus > nav > div.navbar__inner > div:nth-child(1) > a > b {
-  font-size: xxx-large;
-  line-height: 2rem;
+  font-size: inherit;
+  line-height: inherit;
+  overflow: visible !important;
+  text-overflow: clip !important;
 }
 
 .navbar__logo {
-  height: 6.25rem;
+  height: clamp(3.5rem, 5vw, 5.25rem);
+  flex-shrink: 0;
 }
 
 .navbar {
@@ -63,7 +81,11 @@
 .navbar__link,
 .clean-btn {
   @apply text-white dark:text-gray-50;
-  font-size: x-large;
+}
+
+.navbar__link {
+  font-size: clamp(1.05rem, 1.2vw, 1.25rem);
+  padding: 0.5rem 0.65rem;
 }
 
 .navbar-sidebar__brand .navbar__title,
@@ -74,7 +96,7 @@
 .navbar__link svg,
 .footer__item svg {
   display: inline;
-  margin-left: 12px;
+  margin-left: 8px;
 }
 
 .navbar__link,
@@ -150,7 +172,7 @@
 
   /* headings size and weight */
   h1 {
-    @apply text-4xl font-bold lg:text-5xl;
+    @apply mb-6 text-4xl font-bold lg:text-5xl;
   }
   h2 {
     @apply text-2xl font-bold lg:text-3xl;

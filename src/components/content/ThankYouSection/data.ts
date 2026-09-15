@@ -5,7 +5,7 @@ const sponsorData = [
     src: 'logos/optimized/red-hat-120w-77h.webp',
     alt: 'Red Hat Logo',
   },
-   {
+  {
     label: 'Amadeus',
     href: 'https://www.amadeus.com/',
     src: 'logos/optimized/amadeus-171w-22h.webp',

@@ -6,7 +6,7 @@ import HeroHeader from '@site/src/components/layout/HeroHeader';
 import SectionHeader from '@site/src/components/layout/SectionHeader';
 import InfoBanner from '@site/src/components/ui/InfoBanner';
 import ThumbCard from '@site/src/components/ui/ThumbCard';
-import ColoringBookSection from '@site/src/components/content/ColoringBookSection';
+import LiteratureCarousel from '@site/src/components/content/LiteratureCarousel';
 import TestimonialSection from '@site/src/components/content/TestimonialSection';
 import BlogArticlesList from '@site/src/components/content/BlogArticlesList';
 /* PAGE DATA */
@@ -57,7 +57,7 @@ function IndexPage() {
       <CompatibleToolSection />
       <TestimonialSection />
       <BlogArticlesList limit={4} title="Latest Podman News" titleColor="text-purple-700" containerLayout="grid" />
-      <ColoringBookSection />
+      <LiteratureCarousel />
     </Layout>
   );
 }

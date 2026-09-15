@@ -30,7 +30,7 @@ service running in the Machine VM.
      <summary>Use the Installer (Recommended)</summary>
 
      Podman can be downloaded from the [Podman.io](https://podman.io) website.
-     You can get binaries and a pkginstaller from our [GitHub release page](https://github.com/containers/podman/releases).
+     You can get binaries and a pkg installer from our [GitHub release page](https://github.com/containers/podman/releases).
 
      </details>
 
@@ -95,7 +95,7 @@ For further details, please refer to the instructions on the [Alpine Linux wiki]
 
 #### [CentOS Stream](https://www.centos.org)
 
-Podman is available in the default in the AppStream repo for CentOS Stream 9+.
+Podman is available by default in the AppStream repo for CentOS Stream 9+.
 
 ```bash
 sudo dnf -y install podman

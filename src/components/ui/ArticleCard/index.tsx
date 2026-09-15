@@ -35,6 +35,17 @@ function ArticleCard(props: ArticleCardProps) {
     WebkitBoxOrient: 'vertical',
     WebkitLineClamp: 3,
     overflow: 'hidden',
+
+function ArticleCard(props: ArticleCardProps) {
+  // Select fallback image based on index, cycling through available images
+  const fallbackImage = FALLBACK_IMAGES[(props.index || 0) % FALLBACK_IMAGES.length];
+
+  // Sanitizes HTML and converts it to plain text
+  const sanitizeHtml = (html: string) => {
+    if (!html) return html;
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    return div.textContent || div.innerText || '';
   };
 
   const titleContent = htmlToText(props.title);
@@ -57,7 +68,7 @@ function ArticleCard(props: ArticleCardProps) {
             </div>
             <img
               src={props.imgSrc || fallbackImage}
-              className=" col-start-1 row-start-1 h-full w-full rounded-sm object-cover lg:w-80"
+              className="col-start-1 row-start-1 h-72 w-full rounded-sm object-cover object-top lg:w-80"
             />
           </div>
           <div className="max-w-sm items-center gap-2 self-center p-2 pr-4" style={subtitleStyle}>
@@ -85,7 +96,10 @@ function ArticleCard(props: ArticleCardProps) {
           </h3>
           <div style={subtitleStyle}>{subtitleContent}</div>
           <PublishDate date={props.date} styles="row-start-1 col-start-1 z-10 my-2" />
-          <img src={props.imgSrc || fallbackImage} className="object-fit col-start-1 row-start-1 rounded-sm" />
+          <img
+            src={props.imgSrc || fallbackImage}
+            className="col-start-1 row-start-1 h-72 w-full rounded-sm object-cover object-top"
+          />
           <p className="text-purple-700">
             By: <a href={props.author_link}>{props.display_name}</a>
           </p>
