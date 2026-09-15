@@ -217,7 +217,7 @@
 .meeting-notes-content h3 {
   font-size: 1.3rem !important;
   font-weight: 700 !important;
-  color: #6b21a8 !important; /* purple-700 */
+  color: #892ca0 !important;
   margin-top: 2.25rem !important;
   margin-bottom: 0.85rem !important;
   padding-bottom: 0.5rem !important;
@@ -225,12 +225,22 @@
   letter-spacing: -0.01em !important;
   display: flex !important;
   align-items: center !important;
-  gap: 0.5rem !important;
+  gap: 0.625rem !important;
+}
+
+.meeting-notes-content h3 > span:first-child {
+  background-color: #892ca0 !important;
+  color: #ffffff !important;
 }
 
 [data-theme='dark'] .meeting-notes-content h3 {
-  color: #c084fc !important; /* purple-400 */
-  border-bottom-color: rgba(168, 85, 247, 0.25) !important;
+  color: #a542c3 !important;
+  border-bottom-color: rgba(165, 66, 195, 0.3) !important;
+}
+
+[data-theme='dark'] .meeting-notes-content h3 > span:first-child {
+  background-color: #892ca0 !important;
+  color: #ffffff !important;
 }
 
 /* Sub-topic Headings (Quick Recap, Next Steps, Presentation topics) */
@@ -251,6 +261,11 @@
   color: #f9fafb !important;
   background: transparent !important;
   border-left: none !important;
+}
+
+.viewer-header-title {
+  color: #ffffff !important;
+  margin: 0 !important;
 }
 
 /* H5 Headings (Nested sub-sections) */
@@ -371,11 +386,11 @@
 }
 
 .meeting-notes-content li::marker {
-  color: #7e22ce !important;
+  color: #892ca0 !important;
 }
 
 [data-theme='dark'] .meeting-notes-content li::marker {
-  color: #a855f7 !important;
+  color: #a542c3 !important;
 }
 
 /* Pre / Code Blocks (Chat Transcripts & Code) */

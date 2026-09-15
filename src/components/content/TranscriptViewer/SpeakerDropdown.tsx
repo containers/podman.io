@@ -63,21 +63,19 @@ export const SpeakerDropdown: React.FC<SpeakerDropdownProps> = ({
         aria-expanded={isOpen}
         aria-label="Filter transcript by speaker"
         onClick={() => setIsOpen(!isOpen)}
-        style={{ outline: 'none' }}
-        className="speaker-filter-btn inline-flex cursor-pointer items-center justify-between gap-2.5 rounded-full border border-[#d0ccd8] bg-white py-1.5 pl-3.5 pr-3 text-xs font-semibold text-gray-900 shadow-sm transition hover:border-[#a8a2b5] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-100 dark:border-[#443e50] dark:bg-[#25242b] dark:text-white dark:hover:border-[#635b75] dark:hover:bg-[#2e2d36] dark:focus:ring-purple-900/40">
-        <Icon
-          icon="material-symbols:record-voice-over-outline-rounded"
-          className="shrink-0 text-sm text-purple-700 dark:text-purple-300"
-        />
-        <span className="max-w-[150px] truncate">{currentLabel}</span>
-        {selectedSpeaker !== 'all' && (
-          <span className="text-[10px] font-bold text-gray-500 dark:text-gray-300">({activeCount})</span>
-        )}
+        style={{
+          outline: 'none',
+          backgroundColor: 'rgba(255,255,255,0.15)',
+          color: '#ffffff',
+          borderColor: 'rgba(255,255,255,0.35)',
+        }}
+        className="speaker-filter-btn shadow-xs inline-flex cursor-pointer items-center justify-between gap-2.5 rounded-full border py-1.5 pl-3.5 pr-3 text-xs font-bold text-white transition hover:bg-white/25 focus:outline-none">
+        <Icon icon="material-symbols:record-voice-over-outline-rounded" className="shrink-0 text-sm text-white" />
+        <span className="max-w-[140px] truncate text-white">{currentLabel}</span>
+        {selectedSpeaker !== 'all' && <span className="text-[10px] font-bold text-white/80">({activeCount})</span>}
         <Icon
           icon="material-symbols:keyboard-arrow-down-rounded"
-          className={`shrink-0 text-base text-gray-500 transition-transform duration-200 dark:text-gray-300 ${
-            isOpen ? 'rotate-180 text-purple-700 dark:text-purple-300' : ''
-          }`}
+          className={`shrink-0 text-base text-white transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
 

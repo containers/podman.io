@@ -10,6 +10,9 @@ import {
   MeetingCategory,
   MeetingTypeSwitcher,
   MeetingVideoPlayer,
+  MeetingViewDropdown,
+  MeetingTab,
+  MeetingTabContext,
   SessionCard,
   YearDropdown,
   meetingMdxComponents,
@@ -21,6 +24,7 @@ function MeetingsPage(): JSX.Element {
 
   const [activeType, setActiveType] = useState<MeetingCategory>('community');
   const [selectedMeetingId, setSelectedMeetingId] = useState<string>('');
+  const [activeTab, setActiveTab] = useState<MeetingTab>('notes');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedYear, setSelectedYear] = useState<string>('all');
   const [copiedLink, setCopiedLink] = useState(false);
@@ -316,19 +320,8 @@ function MeetingsPage(): JSX.Element {
                       <p className="dark:text-gray-400 mt-1 text-sm text-gray-500">{activeMeeting.fullDate}</p>
                     </div>
 
-                    {/* High-Contrast, Elevated Action Buttons */}
+                    {/* Header Actions */}
                     <div className="flex flex-wrap items-center gap-2.5">
-                      {activeMeeting.recordingUrl && (
-                        <a
-                          href={activeMeeting.recordingUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ textDecoration: 'none' }}
-                          className="inline-flex items-center gap-2 rounded-xl border border-black/[0.08] bg-white px-4 py-2 text-sm font-bold text-gray-900 !no-underline shadow-sm transition-all duration-150 hover:border-black/[0.16] hover:bg-gray-50/80 hover:text-gray-900 hover:!no-underline hover:shadow dark:border-white/10 dark:bg-[#282732] dark:text-white dark:hover:border-white/20 dark:hover:bg-[#32313e] dark:hover:text-white">
-                          <Icon icon="logos:youtube-icon" className="shrink-0 text-base" />
-                          <span>Open in YouTube</span>
-                        </a>
-                      )}
                       <button
                         type="button"
                         onClick={handleCopyLink}
@@ -337,7 +330,7 @@ function MeetingsPage(): JSX.Element {
                         className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-black/[0.08] bg-white px-4 py-2 text-sm font-bold text-gray-900 !no-underline shadow-sm transition-all duration-150 hover:border-black/[0.16] hover:bg-gray-50/80 hover:text-gray-900 hover:!no-underline hover:shadow dark:border-white/10 dark:bg-[#282732] dark:text-white dark:hover:border-white/20 dark:hover:bg-[#32313e] dark:hover:text-white">
                         <Icon
                           icon={copiedLink ? 'material-symbols:check-rounded' : 'material-symbols:share-outline'}
-                          className={`shrink-0 text-base ${copiedLink ? 'text-green-600 dark:text-green-400' : 'dark:text-gray-200 text-gray-700'}`}
+                          className={`shrink-0 text-base ${copiedLink ? 'text-green-600 dark:text-green-400' : 'text-gray-700 dark:text-white'}`}
                         />
                         <span>{copiedLink ? 'Link Copied!' : 'Share'}</span>
                       </button>
@@ -347,16 +340,31 @@ function MeetingsPage(): JSX.Element {
                   {/* Embedded Video Player */}
                   <MeetingVideoPlayer meeting={activeMeeting} />
 
-                  {/* Render Markdown Content with MDX Provider */}
-                  <div className="meeting-notes-content max-w-none">
-                    {activeMeeting.Component ? (
-                      <MDXProvider components={meetingMdxComponents}>
-                        <activeMeeting.Component />
-                      </MDXProvider>
-                    ) : (
-                      <p className="text-gray-500">No notes available for this meeting.</p>
-                    )}
+                  {/* View Selector — sits between video and content for natural flow */}
+                  <div className="mt-8 flex items-center gap-4">
+                    <span className="text-sm font-bold uppercase tracking-widest text-[#892ca0] dark:text-[#a542c3]">
+                      Select Reading View
+                    </span>
+                    <div className="h-px flex-1 bg-black/[0.06] dark:bg-white/10" />
+                    <MeetingViewDropdown
+                      activeTab={activeTab}
+                      onSelectTab={setActiveTab}
+                      hasTranscript={activeMeeting.hasTranscript}
+                    />
                   </div>
+
+                  {/* Render Markdown Content with MDX Provider */}
+                  <MeetingTabContext.Provider value={{ activeTab }}>
+                    <div className="meeting-notes-content mt-6 max-w-none">
+                      {activeMeeting.Component ? (
+                        <MDXProvider components={meetingMdxComponents}>
+                          <activeMeeting.Component />
+                        </MDXProvider>
+                      ) : (
+                        <p className="text-gray-500">No notes available for this meeting.</p>
+                      )}
+                    </div>
+                  </MeetingTabContext.Provider>
                 </div>
               ) : (
                 <div className="dark:text-gray-400 rounded-2xl border border-dashed border-black/10 p-16 text-center text-gray-500 dark:border-white/10">

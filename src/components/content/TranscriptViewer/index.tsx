@@ -621,19 +621,13 @@ export function TranscriptViewer({ rawText, onSeekTimestamp }: TranscriptViewerP
   );
 
   return (
-    <div className="my-6 overflow-hidden rounded-xl border border-black/[0.08] bg-white shadow-sm transition-all duration-200 dark:border-white/10 dark:bg-[#1b1b1d]">
-      {/* Header Bar */}
-      <div className="flex flex-col gap-3 border-b border-black/[0.06] bg-gray-50/70 p-4 dark:border-b dark:border-white/10 dark:bg-[#212027] sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-2.5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-700 text-white shadow-sm">
-            <Icon icon="material-symbols:record-voice-over-outline-rounded" className="text-lg text-white" />
-          </div>
-          <div>
-            <h4 className="m-0 text-sm font-bold text-gray-900 dark:text-white">Meeting Audio Transcript</h4>
-            <div className="text-xs text-gray-500 dark:text-gray-300">
-              {turns.length} turns • {speakerStats.length} speakers
-            </div>
-          </div>
+    <div className="my-6 w-full overflow-hidden rounded-xl border border-black/[0.08] bg-white shadow-sm transition-all duration-200 dark:border-white/10 dark:bg-[#1b1b1d]">
+      {/* Controls Bar: Stats, Search, Speaker Filter — brand purple banner */}
+      <div
+        style={{ backgroundColor: '#892ca0' }}
+        className="flex flex-col gap-3 p-3.5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="text-xs font-semibold text-white/90">
+          {turns.length} turns &bull; {speakerStats.length} speakers
         </div>
 
         {/* Controls: Search and Speaker Filter */}
@@ -642,28 +636,34 @@ export function TranscriptViewer({ rawText, onSeekTimestamp }: TranscriptViewerP
           <div className="relative min-w-[200px] flex-1 sm:flex-initial">
             <Icon
               icon="material-symbols:search"
-              className="dark:text-gray-400 pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-500"
+              className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-white/70"
             />
             <input
               type="text"
               placeholder="Search transcript..."
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              style={{ outline: 'none' }}
-              className="dark:placeholder:text-gray-400 dark:focus:border-purple-400 w-full rounded-full border border-[#d0ccd8] bg-white py-1.5 pl-8 pr-7 text-xs text-gray-900 shadow-sm outline-none transition hover:border-[#a8a2b5] focus:border-purple-500 focus:ring-2 focus:ring-purple-100 dark:border-[#443e50] dark:bg-[#25242b] dark:text-white dark:hover:border-[#635b75] dark:focus:ring-purple-900/40"
+              style={{
+                outline: 'none',
+                backgroundColor: 'rgba(255,255,255,0.15)',
+                color: '#ffffff',
+                borderColor: 'rgba(255,255,255,0.35)',
+                boxShadow: 'none',
+              }}
+              className="w-full rounded-full border py-1.5 pl-8 pr-7 text-xs font-medium text-white shadow-none outline-none transition placeholder:text-white/60 hover:border-white/50 focus:border-white/60 focus:outline-none focus:ring-0"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
                 style={{ border: 'none', outline: 'none' }}
-                className="dark:text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 border-0 text-gray-500 hover:text-gray-700 dark:hover:text-white">
+                className="absolute right-3 top-1/2 -translate-y-1/2 border-0 text-white/70 hover:text-white">
                 <Icon icon="material-symbols:close" className="text-xs" />
               </button>
             )}
           </div>
 
-          {/* Custom Styled Speaker Dropdown UI */}
+          {/* Speaker Dropdown */}
           <SpeakerDropdown
             selectedSpeaker={selectedSpeaker}
             onSelectSpeaker={setSelectedSpeaker}
@@ -673,7 +673,7 @@ export function TranscriptViewer({ rawText, onSeekTimestamp }: TranscriptViewerP
         </div>
       </div>
 
-      {/* Transcript Dialogue List (matching user's reference image) */}
+      {/* Transcript Dialogue List */}
       <div
         className="transcript-dialogue-list no-scrollbar max-h-[520px] divide-y divide-black/[0.06] overflow-y-auto transition-all dark:divide-white/10"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
@@ -695,7 +695,7 @@ export function TranscriptViewer({ rawText, onSeekTimestamp }: TranscriptViewerP
         )}
       </div>
 
-      {/* Footer / Status bar */}
+      {/* Footer */}
       <div className="flex items-center justify-between border-t border-black/[0.06] bg-gray-50/50 px-4 py-2 text-xs text-gray-500 dark:border-t dark:border-white/10 dark:bg-[#212027] dark:text-gray-300">
         <span>
           Showing {filteredTurns.length} of {turns.length} utterances
@@ -749,24 +749,24 @@ export function ChatLogViewer({ rawText }: { rawText: string }): JSX.Element {
   }, [rawText]);
 
   return (
-    <div className="my-6 overflow-hidden rounded-xl border border-black/[0.08] bg-white shadow-sm dark:border-white/10 dark:bg-[#1b1b1d]">
-      <div className="flex items-center justify-between border-b border-black/[0.06] bg-gray-50/70 p-3.5 dark:border-b dark:border-white/10 dark:bg-[#212027]">
-        <div className="flex items-center gap-2.5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-700 text-white shadow-sm">
-            <Icon icon="material-symbols:chat-outline-rounded" className="text-lg text-white" />
-          </div>
-          <h4 className="m-0 text-sm font-bold text-gray-900 dark:text-white">
-            Meeting Chat Transcript ({messages.length} messages)
-          </h4>
-        </div>
+    <div className="my-6 w-full overflow-hidden rounded-xl border border-black/[0.08] bg-white shadow-sm dark:border-white/10 dark:bg-[#1b1b1d]">
+      {/* Top Bar for Chat Metadata & Copy Action — brand purple banner */}
+      <div style={{ backgroundColor: '#892ca0' }} className="flex items-center justify-between p-3.5">
+        <span className="text-xs font-semibold text-white/90">{messages.length} messages</span>
         <button
           type="button"
           onClick={handleCopyChat}
-          style={{ outline: 'none' }}
-          className="text-gray-800 shadow-xs inline-flex items-center gap-1.5 rounded-lg border border-[#d0ccd8] bg-white px-3 py-1.5 text-xs font-semibold transition hover:border-[#a8a2b5] hover:bg-gray-50 hover:text-purple-700 dark:border-0 dark:bg-[#25242b] dark:text-gray-100 dark:hover:bg-[#2e2d36] dark:hover:text-white">
+          style={{
+            outline: 'none',
+            border: 'none',
+            backgroundColor: 'rgba(255,255,255,0.15)',
+            color: '#ffffff',
+            borderColor: 'rgba(255,255,255,0.35)',
+          }}
+          className="inline-flex cursor-pointer items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs font-bold text-white transition hover:bg-white/25">
           <Icon
             icon={copied ? 'material-symbols:check-rounded' : 'material-symbols:content-copy-outline'}
-            className={`text-sm ${copied ? 'text-green-600' : 'text-gray-600 dark:text-gray-300'}`}
+            className={`text-sm ${copied ? 'text-green-300' : 'text-white'}`}
           />
           <span>{copied ? 'Copied!' : 'Copy Chat'}</span>
         </button>

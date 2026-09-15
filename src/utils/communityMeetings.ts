@@ -13,7 +13,66 @@ export type MeetingItem = {
   recordingText?: string;
   searchIndex?: string;
   Component?: ComponentType<unknown>;
+  topics: string[];
+  hasTranscript: boolean;
 };
+
+/**
+ * Extract clean, reader-friendly discussion topic titles from MDX table-of-contents headings.
+ */
+export function extractMeetingTopics(toc?: Array<{ value?: string }>): string[] {
+  if (!Array.isArray(toc)) return [];
+
+  const genericHeadingPatterns = [
+    /attendee/i,
+    /meeting notes/i,
+    /quick recap/i,
+    /next steps/i,
+    /^topics$/i,
+    /raw (?:meeting )?chat/i,
+    /raw .*transcript/i,
+    /next (?:community )?meeting/i,
+    /possible topics/i,
+    /^[0-9]{1,2}:[0-9]{2}/,
+    /^[A-Za-z]+ \d{1,2}, \d{4}/,
+    /^video recording/i,
+  ];
+
+  const topics: string[] = [];
+
+  for (const item of toc) {
+    const raw = typeof item?.value === 'string' ? item.value.trim() : '';
+    if (!raw) continue;
+
+    if (genericHeadingPatterns.some(pattern => pattern.test(raw))) {
+      continue;
+    }
+
+    let cleaned = raw
+      .replace(/^\d+[\.\)]\s*/, '')
+      .replace(/\s*\(?\s*\[?\d{1,2}:\d{2}(?::\d{2})?\]?.*$/i, '')
+      .trim();
+
+    cleaned = cleaned
+      .replace(/\s+-\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*(?:,\s*[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)*\s*$/, '')
+      .replace(/\s*-\s*$/, '')
+      .trim();
+
+    if (cleaned && cleaned.length > 2 && !topics.includes(cleaned)) {
+      topics.push(cleaned);
+    }
+  }
+
+  return topics;
+}
+
+export function detectMeetingHasTranscript(toc?: Array<{ value?: string }>): boolean {
+  if (!Array.isArray(toc)) return false;
+  return toc.some(item => {
+    const v = typeof item?.value === 'string' ? item.value.toLowerCase() : '';
+    return v.includes('transcript') || v.includes('raw meeting chat') || v.includes('chat:');
+  });
+}
 
 let cachedMeetings: MeetingItem[] | null = null;
 
@@ -88,7 +147,9 @@ export function getAllMeetings(): MeetingItem[] {
     const tocHeadings = Array.isArray(file.toc)
       ? file.toc.map(item => (typeof item?.value === 'string' ? item.value : '')).filter(Boolean)
       : [];
-    const searchIndex = [id, datePart, day, title, tocVal, ...tocHeadings].join(' ').toLowerCase();
+    const topics = extractMeetingTopics(file.toc);
+    const hasTranscript = detectMeetingHasTranscript(file.toc);
+    const searchIndex = [id, datePart, day, title, tocVal, ...tocHeadings, ...topics].join(' ').toLowerCase();
 
     list.push({
       id,
@@ -102,6 +163,8 @@ export function getAllMeetings(): MeetingItem[] {
       recordingText,
       searchIndex,
       Component: file.default as ComponentType<unknown> | undefined,
+      topics,
+      hasTranscript,
     });
   });
 

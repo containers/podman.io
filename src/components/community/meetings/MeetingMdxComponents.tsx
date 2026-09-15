@@ -97,19 +97,21 @@ export const meetingMdxComponents = {
   h2: () => null,
   h3: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
     const text = typeof children === 'string' ? children : '';
+
     let icon = 'material-symbols:article-outline';
     if (/attendee/i.test(text)) icon = 'material-symbols:group-outline';
     else if (/note/i.test(text)) icon = 'material-symbols:edit-note-rounded';
     else if (/topic/i.test(text)) icon = 'material-symbols:topic-outline';
     else if (/chat/i.test(text)) icon = 'material-symbols:chat-bubble-outline';
+    else if (/transcript/i.test(text)) icon = 'material-symbols:subtitles-outline';
     else if (/next/i.test(text)) icon = 'material-symbols:event-upcoming-outline';
 
     return (
       <div className="mb-4 mt-8 pb-1">
         <h3
-          className="m-0 flex items-center gap-2.5 text-xl font-bold tracking-tight text-gray-900 dark:text-white"
+          className="m-0 flex items-center gap-2.5 text-xl font-bold tracking-tight text-[#892ca0] dark:text-[#a542c3]"
           {...props}>
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-700 text-white">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#892ca0] text-white dark:bg-[#892ca0] dark:text-white">
             <Icon icon={icon} className="text-lg text-white" />
           </span>
           <span>{children}</span>
@@ -191,4 +193,78 @@ export const meetingMdxComponents = {
       </code>
     );
   },
+  wrapper: ({ children }: { children?: React.ReactNode }) => {
+    const { activeTab } = React.useContext(MeetingTabContext);
+    const childArray = React.Children.toArray(children);
+
+    const notesElements: React.ReactNode[] = [];
+    const transcriptElements: React.ReactNode[] = [];
+    let isTranscriptSection = false;
+
+    for (const child of childArray) {
+      if (React.isValidElement(child)) {
+        const text = extractTextContent(child).trim();
+        const mdxType = (child.props as { mdxType?: string })?.mdxType || '';
+        const isHeading =
+          mdxType === 'h2' ||
+          mdxType === 'h3' ||
+          mdxType === 'h4' ||
+          (typeof child.type === 'string' && /^h[2-4]$/.test(child.type));
+
+        if (isHeading && (/raw (?:meeting )?chat/i.test(text) || /transcript/i.test(text))) {
+          isTranscriptSection = true;
+        } else if (isHeading && isTranscriptSection && !/raw (?:meeting )?chat|transcript/i.test(text)) {
+          isTranscriptSection = false;
+        }
+
+        if (isTranscriptSection) {
+          transcriptElements.push(child);
+        } else {
+          // Check if a pre element is actually a raw transcript or chat block even without a preceding heading
+          if (mdxType === 'pre' || child.type === 'pre') {
+            const rawPre = extractTextContent(child);
+            if (isTranscriptContent(rawPre) || isChatContent(rawPre)) {
+              transcriptElements.push(child);
+              continue;
+            }
+          }
+          notesElements.push(child);
+        }
+      } else {
+        if (isTranscriptSection) {
+          transcriptElements.push(child);
+        } else {
+          notesElements.push(child);
+        }
+      }
+    }
+
+    if (activeTab === 'transcript') {
+      if (transcriptElements.length === 0) {
+        return (
+          <div className="dark:bg-gray-800/40 my-8 rounded-xl border border-black/[0.08] bg-gray-50/60 p-8 text-center dark:border-white/10">
+            <Icon icon="material-symbols:subtitles-off-outline" className="text-gray-400 mx-auto mb-2 text-4xl" />
+            <h4 className="text-gray-800 dark:text-gray-200 text-base font-bold">No Transcript or Chat Available</h4>
+            <p className="dark:text-gray-400 mt-1 text-sm text-gray-500">
+              A full transcript or chat log was not captured or recorded for this session. Please switch to the Meeting
+              Notes tab to review the session minutes and discussion points.
+            </p>
+          </div>
+        );
+      }
+      return <div className="meeting-transcript-section space-y-6">{transcriptElements}</div>;
+    }
+
+    return <div className="meeting-notes-section">{notesElements}</div>;
+  },
 };
+
+export type MeetingTabType = 'notes' | 'transcript';
+
+export interface MeetingTabContextValue {
+  activeTab: MeetingTabType;
+}
+
+export const MeetingTabContext = React.createContext<MeetingTabContextValue>({
+  activeTab: 'notes',
+});
