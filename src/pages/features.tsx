@@ -50,7 +50,12 @@ const PodmanDesktopSection = () => {
       </div>
       <div className="container flex flex-col items-center md:flex-row">
         <div id="imgdiv" className="mx-auto w-full md:w-auto">
-          <img id="pdlogo" className="mx-auto" src="logos/optimized/podman-desktop-logo-200w-198h.webp" />
+          <img
+            id="pdlogo"
+            className="mx-auto"
+            src="logos/optimized/podman-desktop-logo-200w-198h.webp"
+            alt="Podman Desktop logo"
+          />
         </div>
         <div className="md:w-1/2 xl:w-3/4">
           <p className="my-8 align-middle text-2xl leading-relaxed">
