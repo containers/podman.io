@@ -117,6 +117,13 @@ const InstallOption = (props): JSX.Element => {
 };
 
 function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, platforms }) {
+  const releaseLinkProps = {
+    fontSize: 'text-sm lg:text-sm font-normal',
+    textColor: 'text-white dark:text-gray-100',
+    hoverColor: 'hover:text-purple-300 dark:hover:text-purple-300',
+    underline: 'underline underline-offset-4 decoration-white/70 hover:decoration-purple-300',
+  };
+
   return (
     <header className="relative bg-gradient-to-r from-blue-500 to-purple-700 dark:from-blue-700 dark:to-purple-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -138,20 +145,22 @@ function HeroHeader({ title, subtitle, podmanrelease, desktoprelease, image, pla
                 )}
               </BrowserOnly>
             </div>
-            <p className="flex gap-4 text-white dark:text-gray-100">
-              <span>
-                Latest stable Podman <Link {...podmanrelease} textColor="text-white dark:text-gray-100" />
+            <p className="flex flex-wrap items-center gap-y-1.5 pt-2 text-sm font-normal text-white dark:text-gray-100">
+              <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+                <span>Latest stable Podman</span>
+                <Link {...podmanrelease} {...releaseLinkProps} />
               </span>
-              <span>-</span>
-              <span>
-                Latest stable Podman Desktop <Link {...desktoprelease} textColor="text-white dark:text-gray-100" />
+              <span className="inline-flex items-center gap-1.5 whitespace-nowrap before:mx-2.5 before:opacity-60 before:content-['-']">
+                <span>Latest stable Podman Desktop</span>
+                <Link {...desktoprelease} {...releaseLinkProps} />
               </span>
-              <span>-</span>
-              <Link
-                text="Apache License 2.0"
-                path="https://www.apache.org/licenses/LICENSE-2.0"
-                textColor="text-white dark:text-gray-100"
-              />
+              <span className="inline-flex items-center whitespace-nowrap before:mx-2.5 before:opacity-60 before:content-['-']">
+                <Link
+                  text="Apache License 2.0"
+                  path="https://www.apache.org/licenses/LICENSE-2.0"
+                  {...releaseLinkProps}
+                />
+              </span>
             </p>
           </div>
 
