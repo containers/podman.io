@@ -1,37 +1,42 @@
 # Podman Community Cabal Meeting Notes
+
 ## Mar 3, 2026 11:00 a.m. Eastern (UTC-5)
 
 ### Attendees
+
 Tom Sweeney, Mark Russell, Simon Brauner, Tomas Sedlacek, Ashley Cui, Neil Smith, Mohan Boddu, Miloslav Trmac, Brent Baude, Tim Zhou, Matt Heon, Nalin Dahyabhai, Mario Loriedo, Ashley Cui, Paul Holzinger, Kevin Clevenger, Jan Rodak, Dave Darrah, Gerry Seidman.
 
 ### Topics
 
- 1. Podman v5.8.1 Announcements - Matt Heon
- 2. Podman AI Policy Status - Matt Heon
- 3. Upcoming Conferences - All
+1.  Podman v5.8.1 Announcements - Matt Heon
+2.  Podman AI Policy Status - Matt Heon
+3.  Upcoming Conferences - All
 
 ### Meeting Notes
+
 Video [Recording](https://www.youtube.com/watch?v=_AY54vbStgY)
 
 Meeting start: 11:05 a.m. EDT (UTC-5)
 
 #### Quick Recap
+
 The Podman Community Cabal meeting focused on two main topics: the release of Podman 5.8.1 and a new AI contribution policy. Matt Heon explained that 5.8.1 was released approximately one week later than planned, but it was still on schedule and would serve as a long-term support release for RHEL. The team is now working on Podman 6, targeting a release in early May, while planning a 5.8.1 bug fix release before the end of March. The meeting also discussed a new AI contribution policy, which was recently merged into the Podman repository. This policy aims to address the increasing volume of AI-generated contributions, particularly security issues, by requiring real human review and meaningful engagement from contributors. The conversation ended with brief mentions of upcoming community events, including Community Day in New York City and DevConf in both Brno and Boston.
 
 #### Next Steps
-  * Matt (and team): Prepare and release Podman 5.8.1 bug fix release before end of March.
-  * Mark: Consider resubmitting a talk or session for Community Day in New York City before the CFP closes on March 17th.
-  * Matt: Consider submitting a talk or session for DevConf (Bruno or Boston) as appropriate.
+
+- Matt (and team): Prepare and release Podman 5.8.1 bug fix release before end of March.
+- Mark: Consider resubmitting a talk or session for Community Day in New York City before the CFP closes on March 17th.
+- Matt: Consider submitting a talk or session for DevConf (Bruno or Boston) as appropriate.
 
 #### Podman v5.8.1 - ([00:26](https://www.youtube.com/watch?v=_AY54vbStgY&t=26s) in the video)
 
-Matt reported that the 5.8 release branch was currently closing in on v5.8.1, which was slightly delayed but still on schedule, and described it as a long-term support release for RHEL and other platforms. He confirmed that development is now focused on Podman 6, which is still targeted for release in the second week of May. Matt also mentioned that the 5.8.1 bug fix release is being planned for before the end of March, which will be the last release before Podman 6. He noted that development pace is expected to increase upstream after the release of Podman 6, with more people working on big features and smaller bugs. 
+Matt reported that the 5.8 release branch was currently closing in on v5.8.1, which was slightly delayed but still on schedule, and described it as a long-term support release for RHEL and other platforms. He confirmed that development is now focused on Podman 6, which is still targeted for release in the second week of May. Matt also mentioned that the 5.8.1 bug fix release is being planned for before the end of March, which will be the last release before Podman 6. He noted that development pace is expected to increase upstream after the release of Podman 6, with more people working on big features and smaller bugs.
 
 The team discussed the compatibility issues between Podman 6 and RHEL 9 and 10, with Matt explaining that RHEL 10 has several deprecations that would be removed in Podman 6, making 5.8 the last release for RHEL 9. Kevin inquired about the transition to RHEL 9 and 10, and Matt clarified that only RHEL 10 would be compatible with Podman 6. The conversation ended with Matt requesting to discuss the AI policy, and no further comments or questions were raised.
 
-#### Podman AI Policy Status  - Matt Heon - ([04:02]i(https://www.youtube.com/watch?v=_AY54vbStgY&t=242s) in the video
+#### Podman AI Policy Status - Matt Heon - ([04:02](https://www.youtube.com/watch?v=_AY54vbStgY&t=242s) in the video)
 
-The meeting focused on addressing the increasing volume of AI-generated contributions to the Podman repository, particularly security issues, which are straining limited resources. Matt explained that a new [policy](https://github.com/containers/podman/blob/main/LLM_POLICY.md) has been merged to handle AI-generated contributions, emphasizing the need for real humans to review code and engage in meaningful conversations. The policy is currently applicable to Podman and Skopeo, with potential expansion to other projects. Tom mentioned the policy's availability on the main [GitHub](https://github.com/containers/podman/blob/main/LLM_POLICY.md) page and noted that it is subject to future updates as AI technology evolves. 
+The meeting focused on addressing the increasing volume of AI-generated contributions to the Podman repository, particularly security issues, which are straining limited resources. Matt explained that a new [policy](https://github.com/containers/podman/blob/main/LLM_POLICY.md) has been merged to handle AI-generated contributions, emphasizing the need for real humans to review code and engage in meaningful conversations. The policy is currently applicable to Podman and Skopeo, with potential expansion to other projects. Tom mentioned the policy's availability on the main [GitHub](https://github.com/containers/podman/blob/main/LLM_POLICY.md) page and noted that it is subject to future updates as AI technology evolves.
 
 #### Upcoming Conferences - All - ([08:25](https://www.youtube.com/watch?v=_AY54vbStgY&t=505s) in the video)
 
@@ -40,18 +45,20 @@ The group discussed Community Day in New York City, with Mark indicating he woul
 Tom and Matt discussed upcoming DevConf [CZ](https://www.devconf.info/cz/) and [US](https://www.devconf.info/us/) events, highlighting challenges with attendance for DevConf CZ due to a major sporting event and limited hotel availability in Brno. They announced plans for DevConf CZ in Brno on June 18-19 and DevConf US in Boston on September 24-25, encouraging submissions for talks for both still. Paul noted the high costs in Brno during this time, advising attendees to check their travel budgets.
 
 #### Open discussion - None
+
 1. No questions.
 
 ### Next Cabal Meeting: Tuesday, May 5, 2026, 11:00 a.m. EDT (UTC-4)
 
 #### Possible Topics
- 1. None Discussed.
+
+1.  None Discussed.
 
 ### Next Community Meeting: Tuesday, April 7, 2026, 11:00 a.m. EST (UTC-4)
 
 #### Possible Topics:
- 1. None Discussed
 
+1.  None Discussed
 
 Meeting finished 11:07 a.m.
 
@@ -59,7 +66,7 @@ The first 7 minutes and 15 seconds of the meeting's recording was cut, so the ti
 
 ### Raw Meeting Chat:
 
-```    
+```
 00:10:13	Tom Sweeney (Red Hat LLC):	Folks, please turn on your video if possible, if you are talking.
 00:12:21	Tom Sweeney (Red Hat LLC):	https://github.com/containers/podman/blob/main/LLM_POLICY.md
 00:14:12	Matthew Heon (Red Hat LLC):	https://github.com/containers/podman/blob/main/LLM_POLICY.md
@@ -70,7 +77,7 @@ The first 7 minutes and 15 seconds of the meeting's recording was cut, so the ti
 00:16:26	Tom Sweeney (Red Hat LLC):	:^)
 00:16:34	Gerald Seidman (AuriStor Inc.):	Let me know if/how I can help
 00:16:52	Gerald Seidman (AuriStor Inc.):	I have been in communication with Scott Ridley one of the organizers
-00:17:07	Gerald Seidman (AuriStor Inc.):	Yes, it was announced only recently.. they have been late .. 
+00:17:07	Gerald Seidman (AuriStor Inc.):	Yes, it was announced only recently.. they have been late ..
 ```
 
 ### Raw Zoom Meet Transcript
