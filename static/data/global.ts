@@ -1,5 +1,5 @@
 
-export const LATEST_VERSION = '6.1.1';
+export const LATEST_VERSION = '6.1.2';
 export const LATEST_DESKTOP_VERSION = '1.29.3';
 export const LATEST_DESKTOP_DOWNLOAD_URL = 'https://podman-desktop.io/blog/podman-desktop-release-1.29';
 export const MEETING_URL = 'https://zoom-lfx.platform.linuxfoundation.org/meeting/97486138230?password=3144ae43-0fd5-457e-a495-bb4e0202e9c2';
