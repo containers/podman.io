@@ -9,7 +9,9 @@ const config = {
   tagline:
     'Podman is a daemonless container engine for developing, managing, and running OCI Containers on your Linux System',
   url: 'https://podman.io',
-  baseUrl: '/',
+  // Overridden to the preview subdirectory when building a PR preview, so the
+  // generated asset paths resolve there instead of at the domain root.
+  baseUrl: process.env.BASE_URL || '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'favicon.ico',
