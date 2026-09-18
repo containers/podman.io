@@ -39,7 +39,8 @@ function ArticleCard(props: ArticleCardProps) {
     div.innerHTML = html;
     return div.textContent || div.innerText || '';
   };
-  const abbrSubtitle = sanitizeHtml(props.subtitle).trim().split(' ').slice(0, 32).join(' ').concat('...');
+  const subtitleWords = sanitizeHtml(props.subtitle).trim().split(' ');
+  const abbrSubtitle = subtitleWords.slice(0, 32).join(' ') + (subtitleWords.length > 32 ? '...' : '');
   if (props.altLayout) {
     return (
       <article className="my-4 max-w-2xl shadow-lg">
