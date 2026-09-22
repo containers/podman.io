@@ -59,6 +59,7 @@ function ArticleCard(props: ArticleCardProps) {
             </div>
             <img
               src={props.imgSrc || fallbackImage}
+              alt={props.title || 'Article cover image'}
               className="col-start-1 row-start-1 h-72 w-full rounded-sm object-cover object-top lg:w-80"
             />
           </div>
@@ -89,6 +90,7 @@ function ArticleCard(props: ArticleCardProps) {
           <PublishDate date={props.date} styles="row-start-1 col-start-1 z-10 my-2" />
           <img
             src={props.imgSrc || fallbackImage}
+            alt={props.title || 'Article cover image'}
             className="col-start-1 row-start-1 h-72 w-full rounded-sm object-cover object-top"
           />
           <p className="text-purple-700">
