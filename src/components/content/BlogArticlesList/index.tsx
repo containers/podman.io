@@ -35,8 +35,8 @@ const BlogArticlesList: React.FC<BlogArticlesListProps> = ({
 
   const containerClasses =
     containerLayout === 'vertical'
-      ? 'flex flex-col gap-6'
-      : 'container mx-auto max-w-4xl grid grid-cols-1 gap-6 px-4 sm:px-6 md:grid-cols-2 lg:px-8';
+      ? 'mt-6 flex flex-col gap-6 sm:mt-8'
+      : 'container mx-auto mt-6 max-w-4xl grid grid-cols-1 gap-6 px-4 sm:mt-8 sm:px-6 md:grid-cols-2 lg:px-8';
 
   return (
     <section className={sectionClassName || 'my-12 xl:my-20'}>
