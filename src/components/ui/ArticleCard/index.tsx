@@ -39,7 +39,8 @@ function ArticleCard(props: ArticleCardProps) {
     div.innerHTML = html;
     return div.textContent || div.innerText || '';
   };
-  const abbrSubtitle = sanitizeHtml(props.subtitle).trim().split(' ').slice(0, 32).join(' ').concat('...');
+  const subtitleWords = sanitizeHtml(props.subtitle).trim().split(' ');
+  const abbrSubtitle = subtitleWords.slice(0, 32).join(' ') + (subtitleWords.length > 32 ? '...' : '');
   if (props.altLayout) {
     return (
       <article className="my-4 max-w-2xl shadow-lg">
@@ -58,6 +59,7 @@ function ArticleCard(props: ArticleCardProps) {
             </div>
             <img
               src={props.imgSrc || fallbackImage}
+              alt={props.title || 'Article cover image'}
               className="col-start-1 row-start-1 h-72 w-full rounded-sm object-cover object-top lg:w-80"
             />
           </div>
@@ -88,6 +90,7 @@ function ArticleCard(props: ArticleCardProps) {
           <PublishDate date={props.date} styles="row-start-1 col-start-1 z-10 my-2" />
           <img
             src={props.imgSrc || fallbackImage}
+            alt={props.title || 'Article cover image'}
             className="col-start-1 row-start-1 h-72 w-full rounded-sm object-cover object-top"
           />
           <p className="text-purple-700">
