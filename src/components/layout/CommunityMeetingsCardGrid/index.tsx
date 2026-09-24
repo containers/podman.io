@@ -38,11 +38,20 @@ function parseBold(text: string): JSX.Element {
   );
 }
 
-function MeetingCard({ card, index }: { card: CommunityMeetingsCardProps; index: number }) {
+function MeetingCard({
+  card,
+  index,
+  isSingle,
+}: {
+  card: CommunityMeetingsCardProps;
+  index: number;
+  isSingle?: boolean;
+}) {
   const meta = CARD_META[index] ?? CARD_META[0];
 
   return (
-    <div className="meeting-card flex w-full max-w-[540px] flex-1 flex-col rounded-2xl p-6 sm:p-7">
+    <div
+      className={`meeting-card flex w-full flex-1 flex-col rounded-2xl p-6 sm:p-7 ${isSingle ? 'max-w-4xl' : 'max-w-[540px]'}`}>
       {/* Top Row: Badge on left, Time on right top */}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2.5">
         <div className="meeting-badge shadow-xs inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold">
@@ -102,12 +111,14 @@ function MeetingCard({ card, index }: { card: CommunityMeetingsCardProps; index:
 }
 
 function CommunityMeetingsCardGrid({ cards }: { cards: CommunityMeetingsCardProps[] }): JSX.Element {
+  const isSingle = cards.length === 1;
   return (
     <div className="mt-4 w-full md:mt-6">
-      {/* 2 Primary Meeting Cards Side by Side */}
-      <div className="mb-12 flex flex-col items-center justify-center gap-6 lg:flex-row lg:items-stretch lg:gap-8">
+      {/* Meeting Cards */}
+      <div
+        className={`mb-12 flex flex-col items-center justify-center gap-6 ${isSingle ? 'lg:flex-row' : 'lg:flex-row lg:items-stretch lg:gap-8'}`}>
         {cards.map((card, index) => (
-          <MeetingCard key={index} card={card} index={index} />
+          <MeetingCard key={index} card={card} index={index} isSingle={isSingle} />
         ))}
       </div>
 
