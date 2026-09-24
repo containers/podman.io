@@ -119,8 +119,12 @@ function CommunityMeetingsCardGrid({ cards }: { cards: CommunityMeetingsCardProp
               <Icon icon="material-symbols:history-edu" className="text-sm" />
               <span>Full Meeting Archive</span>
             </div>
-            <h3 className="text-lg font-bold text-white">Previous meetings, transcripts &amp; minutes</h3>
-            <p className="mt-0.5 text-sm text-white/80">
+            <h3 style={{ color: '#ffffff' }} className="meeting-archive-title text-lg font-bold !text-white text-white">
+              Previous meetings, transcripts &amp; minutes
+            </h3>
+            <p
+              style={{ color: 'rgba(255, 255, 255, 0.85)' }}
+              className="meeting-archive-desc mt-0.5 text-sm !text-white/85 text-white/85">
               Recordings, notes and searchable transcripts from all past sessions.
             </p>
           </div>

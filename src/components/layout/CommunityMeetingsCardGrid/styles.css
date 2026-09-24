@@ -222,3 +222,16 @@ dialog {
 [data-theme='dark'] .meeting-archive-cta:hover svg {
   color: #ffffff !important;
 }
+
+/* Meeting Archive Callout Heading & Description — Always Crisp White */
+.meeting-archive-title,
+[data-theme='dark'] .meeting-archive-title,
+[data-theme='dark'] h3.meeting-archive-title {
+  color: #ffffff !important;
+}
+
+.meeting-archive-desc,
+[data-theme='dark'] .meeting-archive-desc,
+[data-theme='dark'] p.meeting-archive-desc {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
