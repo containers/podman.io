@@ -33,7 +33,8 @@ const config = {
         },
       };
     },
-    ['@docusaurus/plugin-content-blog',
+    [
+      '@docusaurus/plugin-content-blog',
       {
         showReadingTime: true,
         routeBasePath: 'release',
@@ -79,7 +80,25 @@ const config = {
         items: [
           { to: 'features', label: 'Features', position: 'right' },
           { to: 'get-started', label: 'Get Started', position: 'right' },
-          { to: 'community', label: 'Community', position: 'right' },
+          {
+            type: 'dropdown',
+            label: 'Community',
+            position: 'right',
+            items: [
+              {
+                label: 'Community',
+                to: 'community',
+                exact: true,
+                activeBaseRegex: '^/community/?$',
+              },
+              {
+                label: 'Meetings',
+                to: 'community/meetings',
+                exact: true,
+                activeBaseRegex: '^/community/meetings/?$',
+              },
+            ],
+          },
           {
             to: 'https://blog.podman.io',
             target: '_self',

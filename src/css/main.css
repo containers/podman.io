@@ -156,6 +156,137 @@
   @apply text-purple-300 underline dark:text-purple-300 dark:underline;
 }
 
+/* ======================================================== */
+/* Navbar Dropdown Menu Styling                             */
+/* Matches the meetings page dropdown design system        */
+/* ======================================================== */
+.dropdown {
+  position: relative !important;
+}
+
+.navbar__item.dropdown {
+  padding-bottom: 14px !important;
+  margin-bottom: -14px !important;
+}
+
+/* Keep navbar dropdown trigger text crisp white in all states */
+.dropdown > .navbar__link,
+.dropdown > .navbar__link:hover,
+.dropdown--hoverable:hover > .navbar__link,
+.dropdown--show > .navbar__link,
+.dropdown > .navbar__link.navbar__link--active {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.dropdown > .navbar__link::after {
+  border-top-color: #ffffff !important;
+  opacity: 0.9;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.dropdown__menu {
+  background-color: #ffffff !important;
+  border: 1px solid #d0ccd8 !important;
+  border-radius: 1rem !important; /* rounded-2xl */
+  padding: 0.5rem !important; /* p-2 */
+  min-width: 180px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important; /* shadow-2xl */
+  top: 100% !important;
+}
+
+/* Invisible hover bridge to eliminate gap and prevent closing when moving mouse */
+.dropdown__menu::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -20px !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 20px !important;
+  background: transparent !important;
+  display: block !important;
+}
+
+[data-theme='dark'] .dropdown__menu {
+  background-color: #1e1d24 !important;
+  border: 1px solid #443e50 !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+.dropdown__menu a,
+.dropdown__link,
+.dropdown__link--active {
+  text-decoration: none !important;
+}
+
+/* Base dropdown item styling */
+.dropdown__link {
+  font-family: Montserrat, sans-serif !important;
+  font-size: 0.875rem !important; /* text-sm */
+  font-weight: 600 !important; /* font-semibold */
+  line-height: 1.4 !important;
+  color: #514c5c !important; /* text-gray-700 */
+  text-decoration: none !important;
+  border-radius: 0.75rem !important; /* rounded-xl */
+  padding: 0.625rem 0.875rem !important; /* px-3.5 py-2.5 */
+  margin: 2px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  transition: all 0.15s ease-in-out !important;
+  background-color: transparent !important;
+}
+
+/* Light mode normal hover state (non-active items only) */
+.dropdown__link:not(.dropdown__link--active):not([aria-current='page']):hover {
+  background-color: rgba(247, 234, 253, 0.7) !important; /* hover:bg-purple-100/60 */
+  color: #5f246b !important; /* hover:text-purple-900 */
+  text-decoration: none !important;
+}
+
+/* Active item (Light & Dark mode): solid purple background with bold white text in ALL states */
+.dropdown__link--active,
+.dropdown__link[aria-current='page'],
+.dropdown__link--active:hover,
+.dropdown__link--active:focus,
+.dropdown__link[aria-current='page']:hover,
+.dropdown__link[aria-current='page']:focus {
+  background-color: #892ca0 !important; /* bg-purple-700 */
+  color: #ffffff !important; /* text-white */
+  font-weight: 700 !important; /* font-bold */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important; /* shadow-sm */
+  text-decoration: none !important;
+}
+
+/* Dark mode normal state */
+[data-theme='dark'] .dropdown__link {
+  color: #d3cddf !important; /* text-gray-100 */
+  background-color: transparent !important;
+  text-decoration: none !important;
+}
+
+/* Dark mode hover state (non-active items only) */
+[data-theme='dark'] .dropdown__link:not(.dropdown__link--active):not([aria-current='page']):hover {
+  background-color: #2a2933 !important; /* dark:hover:bg-[#2a2933] */
+  color: #ffffff !important; /* dark:hover:text-white */
+  text-decoration: none !important;
+}
+
+/* Dark mode active item: solid purple background with bold white text in ALL states */
+[data-theme='dark'] .dropdown__link--active,
+[data-theme='dark'] .dropdown__link[aria-current='page'],
+[data-theme='dark'] .dropdown__link--active:hover,
+[data-theme='dark'] .dropdown__link--active:focus,
+[data-theme='dark'] .dropdown__link[aria-current='page']:hover,
+[data-theme='dark'] .dropdown__link[aria-current='page']:focus {
+  background-color: #892ca0 !important; /* bg-purple-700 */
+  color: #ffffff !important; /* text-white */
+  font-weight: 700 !important; /* font-bold */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important; /* shadow-sm */
+  text-decoration: none !important;
+}
+
 /* ------------------ */
 /* Font Configuration */
 /* ------------------ */
