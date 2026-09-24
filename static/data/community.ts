@@ -48,7 +48,7 @@ const communityChat = {
 const communityMeetings = {
   title: 'Podman Community Meetings',
   subtitle:
-    "Many of the maintainers for the Podman project attend both of these meetings, so it's a great chance for community members like you to ask them questions or address concerns directly. If you have a topic that you’d like to propose for either meeting, please send a note to the [Mailing List]().",
+    'Join the Podman maintainers and community to discuss upcoming features, share feedback, or propose topics on the [Mailing List](#mailing-list).',
   image: {
     path: 'images/optimized/community-call-554w-219h.webp',
     alt: 'An image of podman team members in a virtual meeting',

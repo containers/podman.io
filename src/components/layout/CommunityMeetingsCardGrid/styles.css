@@ -38,3 +38,187 @@ dialog {
   display: inline-flex;
   justify-content: space-between;
 }
+
+/* ========================================================
+   Meeting Card Design System — Official Brand Purple (#892CA0)
+   ======================================================== */
+
+/* Card Container */
+.meeting-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.meeting-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+}
+
+[data-theme='dark'] .meeting-card {
+  background-color: #242328 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme='dark'] .meeting-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Badge — Official Brand Purple (#892CA0) */
+.meeting-badge {
+  background-color: #892ca0;
+  color: #ffffff;
+}
+
+[data-theme='dark'] .meeting-badge {
+  background-color: #892ca0 !important;
+  color: #ffffff !important;
+}
+
+/* Time Indicator */
+.meeting-time-indicator {
+  color: #892ca0;
+}
+
+[data-theme='dark'] .meeting-time-indicator {
+  color: #e3b4f3 !important;
+}
+
+/* Cadence / Date */
+.meeting-cadence {
+  color: #892ca0;
+}
+
+[data-theme='dark'] .meeting-cadence {
+  color: #e3b4f3 !important;
+}
+
+/* Body text & Markdown */
+.meeting-card-body,
+.meeting-card-body p {
+  font-size: 13.5px !important;
+  line-height: 1.65 !important;
+  margin-bottom: 0 !important;
+  text-align: justify !important;
+  color: #4b5563;
+}
+
+[data-theme='dark'] .meeting-card-body,
+[data-theme='dark'] .meeting-card-body p {
+  color: #e2e8f0 !important;
+}
+
+/* Body Links — Brand Purple */
+.meeting-card-body a {
+  font-size: 13.5px !important;
+  line-height: 1.6 !important;
+  font-weight: 600 !important;
+  color: #892ca0 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+  text-decoration-thickness: 1px !important;
+  text-decoration-color: rgba(137, 44, 160, 0.4) !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+.meeting-card-body a:hover {
+  color: #5f246b !important;
+  text-decoration-color: #5f246b !important;
+}
+
+[data-theme='dark'] .meeting-card-body a {
+  color: #e3b4f3 !important;
+  text-decoration-color: rgba(227, 180, 243, 0.45) !important;
+}
+
+[data-theme='dark'] .meeting-card-body a:hover {
+  color: #f7eafd !important;
+  text-decoration-color: #f7eafd !important;
+}
+
+/* Join Meeting Button — Brand Purple (#892CA0) */
+.meeting-btn-join {
+  background-color: #892ca0;
+  color: #ffffff !important;
+  transition: all 0.15s ease-in-out;
+}
+
+.meeting-btn-join:hover {
+  background-color: #77248c;
+  color: #ffffff !important;
+}
+
+[data-theme='dark'] .meeting-btn-join {
+  background-color: #892ca0 !important;
+  color: #ffffff !important;
+}
+
+[data-theme='dark'] .meeting-btn-join:hover {
+  background-color: #bd58dd !important;
+  color: #ffffff !important;
+}
+
+/* Meeting Agenda Button — Brand Purple Tints & Glassmorphic Dark */
+.meeting-btn-agenda {
+  background-color: #f7eafd;
+  color: #892ca0 !important;
+  border: 1px solid rgba(137, 44, 160, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.meeting-btn-agenda:hover {
+  background-color: #ebd5ff;
+  border-color: #892ca0;
+  color: #5f246b !important;
+}
+
+[data-theme='dark'] .meeting-btn-agenda {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(227, 180, 243, 0.35) !important;
+}
+
+[data-theme='dark'] .meeting-btn-agenda svg {
+  color: #e3b4f3 !important;
+}
+
+[data-theme='dark'] .meeting-btn-agenda:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(227, 180, 243, 0.6) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+/* Meeting Archive Banner CTA Button — Always White Text & Icon */
+.meeting-archive-cta,
+.meeting-archive-cta span,
+.meeting-archive-cta svg,
+[data-theme='dark'] .meeting-archive-cta,
+[data-theme='dark'] .meeting-archive-cta span,
+[data-theme='dark'] .meeting-archive-cta svg {
+  color: #ffffff !important;
+}
+
+.meeting-archive-cta {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  text-decoration: none !important;
+}
+
+.meeting-archive-cta:hover,
+[data-theme='dark'] .meeting-archive-cta:hover {
+  border-color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+}
+
+.meeting-archive-cta:hover span,
+.meeting-archive-cta:hover svg,
+[data-theme='dark'] .meeting-archive-cta:hover span,
+[data-theme='dark'] .meeting-archive-cta:hover svg {
+  color: #ffffff !important;
+}

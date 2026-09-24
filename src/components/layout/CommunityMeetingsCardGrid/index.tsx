@@ -1,10 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React from 'react';
 import Link from '@docusaurus/Link';
 import { Icon } from '@iconify/react';
-import CustomCard from '@site/src/components/ui/CustomCard';
-import SectionHeader from '@site/src/components/layout/SectionHeader';
-import FilmIcon from '@site/src/components/shapes/FilmIcon';
-import { getAllMeetings, getCabalMeetings, getCommunityMeetings } from '@site/src/utils/communityMeetings';
+import Markdown from '@site/src/components/utilities/Markdown';
+import './styles.css';
 
 type CommunityMeetingsCardProps = {
   title: string;
@@ -17,211 +15,126 @@ type CommunityMeetingsCardProps = {
   }>;
 };
 
-type RecentMeetingCardProps = {
-  date: string;
-  day: string;
-  isCabal: boolean;
-  recordingUrl?: string;
-  notesUrl: string;
-};
+const CARD_META = [
+  { icon: 'material-symbols:groups-rounded', label: 'Community Meeting' },
+  { icon: 'material-symbols:shield-rounded', label: 'Cabal Meeting' },
+];
 
-const RecentMeetingCard = React.memo(function RecentMeetingCard({
-  date,
-  day,
-  isCabal,
-  notesUrl,
-}: RecentMeetingCardProps): JSX.Element {
+/** Converts **bold** markdown to inline <strong> — avoids block-level <p> breaking flex layouts */
+function parseBold(text: string): JSX.Element {
+  const parts = text.split(/(\*\*.*?\*\*)/g);
   return (
-    <article className="recent-meeting-card flex min-h-[450px] w-full flex-col items-center justify-between rounded-lg border border-black/[0.08] bg-white p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-gray-900 dark:shadow-none">
-      <div className="pt-2 text-center">
-        <span className="shadow-xs mb-3 inline-block rounded-md bg-purple-700 px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-white dark:bg-purple-700 dark:text-white">
-          {isCabal ? 'Cabal' : 'Community'}
-        </span>
-        <h3 className="text-gray-800 text-xl font-bold tracking-tight dark:text-gray-100 sm:text-2xl">{date}</h3>
-        <p className="dark:text-gray-400 mt-1 text-sm font-medium text-gray-500">{day}</p>
-      </div>
-
-      <div className="my-8 flex flex-1 items-center justify-center">
-        <FilmIcon />
-      </div>
-
-      <div className="flex w-full justify-center pb-2">
-        <Link
-          to={notesUrl}
-          style={{ textDecoration: 'none' }}
-          className="hover:bg-purple-800 dark:hover:bg-purple-600 inline-flex w-full max-w-[220px] items-center justify-center gap-2 rounded-md bg-purple-700 px-5 py-2.5 text-center text-sm font-semibold text-white !no-underline shadow-sm transition duration-150 ease-in-out hover:text-white hover:!no-underline hover:shadow-md dark:bg-purple-700 dark:text-white">
-          <span>View meeting</span>
-          <Icon icon="material-symbols:arrow-forward-rounded" className="text-base" />
-        </Link>
-      </div>
-    </article>
+    <>
+      {parts.map((part, i) =>
+        part.startsWith('**') && part.endsWith('**') ? (
+          <strong key={i} className="font-bold">
+            {part.slice(2, -2)}
+          </strong>
+        ) : (
+          <span key={i}>{part}</span>
+        ),
+      )}
+    </>
   );
-});
+}
+
+function MeetingCard({ card, index }: { card: CommunityMeetingsCardProps; index: number }) {
+  const meta = CARD_META[index] ?? CARD_META[0];
+
+  return (
+    <div className="meeting-card flex w-full max-w-[540px] flex-1 flex-col rounded-2xl p-6 sm:p-7">
+      {/* Top Row: Badge on left, Time on right top */}
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-2.5">
+        <div className="meeting-badge shadow-xs inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold">
+          <Icon icon={meta.icon} className="text-sm" />
+          <span>{meta.label}</span>
+        </div>
+
+        {/* Time at top right — clean text & icon without container */}
+        <div className="meeting-time-indicator inline-flex items-center gap-1.5 text-xs font-semibold">
+          <Icon icon="material-symbols:schedule-rounded" className="shrink-0 text-sm" />
+          <span>{card.timeZone}</span>
+        </div>
+      </div>
+
+      {/* Title */}
+      <h3 className="mb-2 text-xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-2xl">
+        {card.title}
+      </h3>
+
+      {/* Cadence / Date */}
+      <div className="meeting-cadence mb-4 flex items-center gap-2">
+        <Icon icon="material-symbols:calendar-today-rounded" className="shrink-0 text-base" />
+        <p className="text-sm font-semibold">{parseBold(card.date)}</p>
+      </div>
+
+      {/* Description — compact typography with subtle purple links and underline */}
+      <div className="meeting-card-body flex-1">
+        <Markdown text={card.subtitle} styles="meeting-card-body" />
+      </div>
+
+      {/* Buttons — guaranteed breathing room above and pinned to bottom */}
+      <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-6">
+        {/* Join Meeting — solid brand purple button */}
+        {card.buttons[0] && (
+          <Link
+            to={card.buttons[0].path}
+            style={{ textDecoration: 'none' }}
+            className="meeting-btn-join inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-bold !no-underline shadow-sm">
+            <Icon icon="material-symbols:video-camera-front-rounded" className="text-sm" />
+            <span>{card.buttons[0].text}</span>
+          </Link>
+        )}
+
+        {/* Meeting Agenda — light lavender in light mode, translucent purple in dark mode */}
+        {card.buttons[1] && (
+          <Link
+            to={card.buttons[1].path}
+            style={{ textDecoration: 'none' }}
+            className="meeting-btn-agenda shadow-xs inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-bold !no-underline">
+            <Icon icon="material-symbols:article-outline-rounded" className="text-sm" />
+            <span>{card.buttons[1].text}</span>
+          </Link>
+        )}
+      </div>
+    </div>
+  );
+}
 
 function CommunityMeetingsCardGrid({ cards }: { cards: CommunityMeetingsCardProps[] }): JSX.Element {
-  const [activeFilter, setActiveFilter] = useState<'all' | 'community' | 'cabal'>('all');
-
-  const allMeetings = useMemo(() => getAllMeetings(), []);
-  const communityMeetings = useMemo(() => getCommunityMeetings(), []);
-  const cabalMeetings = useMemo(() => getCabalMeetings(), []);
-
-  const containerRef = useRef<HTMLDivElement>(null);
-  const buttonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
-  const [sliderStyle, setSliderStyle] = useState<{ left: number; width: number }>({ left: 0, width: 0 });
-  const [hasMeasured, setHasMeasured] = useState(false);
-
-  const updateSlider = () => {
-    const container = containerRef.current;
-    const activeButton = buttonRefs.current[activeFilter];
-    if (container && activeButton) {
-      setSliderStyle({
-        left: activeButton.offsetLeft,
-        width: activeButton.offsetWidth,
-      });
-      setHasMeasured(true);
-    }
-  };
-
-  useEffect(() => {
-    updateSlider();
-  }, [activeFilter]);
-
-  useEffect(() => {
-    window.addEventListener('resize', updateSlider);
-    return () => window.removeEventListener('resize', updateSlider);
-  }, [activeFilter]);
-
-  const displayedMeetings = useMemo(() => {
-    if (activeFilter === 'community') return communityMeetings.slice(0, 4);
-    if (activeFilter === 'cabal') return cabalMeetings.slice(0, 4);
-    return allMeetings.slice(0, 4);
-  }, [activeFilter, allMeetings, communityMeetings, cabalMeetings]);
-
-  const viewAllLink = useMemo(() => {
-    if (activeFilter === 'community') return '/community/meetings?type=community';
-    if (activeFilter === 'cabal') return '/community/meetings?type=cabal';
-    return '/community/meetings';
-  }, [activeFilter]);
-
-  const filterOptions = [
-    { id: 'all' as const, label: 'All Meetings' },
-    { id: 'community' as const, label: 'Community Meetings' },
-    { id: 'cabal' as const, label: 'Cabal Meetings' },
-  ];
-
   return (
-    <div className="custom-card-grid-root w-full">
-      {/* Top 2 Primary Cards: Community Meeting & Cabal Meeting side-by-side */}
-      <div className="mb-14 flex flex-col justify-center gap-8 lg:flex-row lg:gap-10">
-        {cards.map((card: CommunityMeetingsCardProps, index: number) => (
-          <div key={`primary-card-${index}`} className="flex flex-1 justify-center">
-            <CustomCard
-              title={card?.title}
-              subtitle={card?.date}
-              details={card?.timeZone}
-              text={card?.subtitle}
-              data={card?.buttons}
-              primary={true}
-            />
-          </div>
+    <div className="mt-4 w-full md:mt-6">
+      {/* 2 Primary Meeting Cards Side by Side */}
+      <div className="mb-12 flex flex-col items-center justify-center gap-6 lg:flex-row lg:items-stretch lg:gap-8">
+        {cards.map((card, index) => (
+          <MeetingCard key={index} card={card} index={index} />
         ))}
       </div>
 
-      {/* ONE Single Unified Heading */}
-      <div className="mb-4 text-center">
-        <SectionHeader
-          title=""
-          description="Most Recent meetings"
-          textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
-          textGradient={false}
-        />
-      </div>
-
-      {/* Meeting Filters (All, Community, Cabal) - Subtle Sliding Tab Bar */}
-      <div className="relative mx-auto mb-10 flex max-w-7xl items-center justify-center px-4">
-        <div
-          ref={containerRef}
-          role="tablist"
-          aria-label="Filter meeting archive"
-          className="relative inline-flex items-center rounded-xl border border-black/[0.08] bg-white p-1.5 shadow-sm dark:border-white/10 dark:bg-gray-900">
-          {/* Animated Sliding Indicator */}
-          <div
-            className="pointer-events-none absolute bottom-1.5 top-1.5 rounded-lg bg-purple-700 shadow-sm transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
-            style={{
-              left: `${sliderStyle.left}px`,
-              width: `${sliderStyle.width}px`,
-              opacity: hasMeasured ? 1 : 0,
-            }}
-          />
-
-          {filterOptions.map(option => {
-            const isActive = activeFilter === option.id;
-            return (
-              <button
-                key={option.id}
-                ref={el => {
-                  buttonRefs.current[option.id] = el;
-                }}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => setActiveFilter(option.id)}
-                style={{ border: 'none', outline: 'none', textDecoration: 'none' }}
-                className={`relative z-10 cursor-pointer rounded-lg px-6 py-2.5 text-sm font-semibold !no-underline transition-colors duration-200 hover:!no-underline ${
-                  isActive
-                    ? 'text-white'
-                    : 'text-gray-600 hover:text-purple-700 dark:text-gray-300 dark:hover:text-white'
-                }`}>
-                {option.label}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Top-Right "View All" link with black arrow turning brand purple on hover */}
-        <div className="absolute right-4 hidden sm:block">
+      {/* Integrated CTA Archive Callout — directs users to full meeting archive */}
+      <div className="mx-auto mb-10 w-full max-w-4xl overflow-hidden rounded-2xl bg-gradient-to-r from-purple-700 to-purple-900 shadow-md">
+        <div className="flex flex-col items-start justify-between gap-5 p-6 md:flex-row md:items-center md:px-8">
+          <div>
+            <div className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-0.5 text-xs font-bold text-white">
+              <Icon icon="material-symbols:history-edu" className="text-sm" />
+              <span>Full Meeting Archive</span>
+            </div>
+            <h3 className="text-lg font-bold text-white">Previous meetings, transcripts &amp; minutes</h3>
+            <p className="mt-0.5 text-sm text-white/80">
+              Recordings, notes and searchable transcripts from all past sessions.
+            </p>
+          </div>
           <Link
-            to={viewAllLink}
-            style={{ textDecoration: 'none' }}
-            className="dark:hover:text-purple-400 group inline-flex items-center gap-1.5 text-sm font-semibold text-black !no-underline transition-colors duration-200 hover:text-purple-700 hover:!no-underline dark:text-white">
-            <span className="dark:group-hover:text-purple-400 transition-colors duration-200 group-hover:text-purple-700">
-              View All
-            </span>
+            to="/community/meetings"
+            style={{ textDecoration: 'none', color: '#ffffff', borderColor: 'rgba(255,255,255,0.7)' }}
+            className="meeting-archive-cta group inline-flex shrink-0 items-center gap-2 rounded-xl border-2 bg-transparent px-5 py-2.5 text-sm font-bold !text-white text-white !no-underline transition-all duration-150 hover:border-white hover:bg-white/10 hover:text-white hover:!no-underline">
+            <span className="!text-white text-white">Explore Old Meetings</span>
             <Icon
               icon="material-symbols:arrow-forward-rounded"
-              className="dark:group-hover:text-purple-400 text-base text-black transition-all duration-200 group-hover:translate-x-1 group-hover:text-purple-700 dark:text-white"
+              className="text-base !text-white text-white transition-transform duration-150 group-hover:translate-x-1"
             />
           </Link>
         </div>
-      </div>
-
-      {/* Mobile-only View All link */}
-      <div className="mx-auto -mt-6 mb-6 flex max-w-7xl justify-end px-4 sm:hidden">
-        <Link
-          to={viewAllLink}
-          style={{ textDecoration: 'none' }}
-          className="dark:hover:text-purple-400 group inline-flex items-center gap-1.5 text-sm font-semibold text-black !no-underline transition-colors duration-200 hover:text-purple-700 hover:!no-underline dark:text-white">
-          <span className="dark:group-hover:text-purple-400 transition-colors duration-200 group-hover:text-purple-700">
-            View All
-          </span>
-          <Icon
-            icon="material-symbols:arrow-forward-rounded"
-            className="dark:group-hover:text-purple-400 text-base text-black transition-all duration-200 group-hover:translate-x-1 group-hover:text-purple-700 dark:text-white"
-          />
-        </Link>
-      </div>
-
-      {/* 4 Cards Grid Across */}
-      <div className="mx-auto mb-12 grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {displayedMeetings.map(meeting => (
-          <RecentMeetingCard
-            key={meeting.id}
-            date={meeting.date}
-            day={meeting.day}
-            isCabal={meeting.isCabal}
-            notesUrl={`/community/meetings?date=${meeting.id}&type=${meeting.isCabal ? 'cabal' : 'community'}`}
-          />
-        ))}
       </div>
     </div>
   );
