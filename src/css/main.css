@@ -287,6 +287,24 @@
   text-decoration: none !important;
 }
 
+/* ======================================================== */
+/* Mobile Meeting Accordion Animation                       */
+/* ======================================================== */
+@keyframes accordionSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.meeting-accordion-content {
+  animation: accordionSlideDown 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* ------------------ */
 /* Font Configuration */
 /* ------------------ */
@@ -609,4 +627,26 @@
 .chat-log-list {
   -ms-overflow-style: none !important;
   scrollbar-width: none !important;
+}
+
+/* ─── Search keyword highlight ─── */
+mark.search-highlight {
+  background-color: #fef08a; /* yellow-200 */
+  color: #713f12; /* yellow-900 text */
+  border-radius: 0.2rem;
+  padding: 0 0.15rem;
+  font-weight: 700;
+  /* Remove default browser mark styling */
+  text-decoration: none;
+}
+
+[data-theme='dark'] mark.search-highlight {
+  background-color: #713f12; /* amber-900 */
+  color: #fef08a; /* yellow-200 text */
+}
+
+/* When a session card is active (purple bg), make the highlight pop differently */
+.session-card-active mark.search-highlight {
+  background-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
 }

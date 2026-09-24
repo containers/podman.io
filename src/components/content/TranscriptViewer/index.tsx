@@ -42,6 +42,32 @@ function getSpeakerColor(speaker: string) {
   return AVATAR_PALETTES[index];
 }
 
+/**
+ * Splits `text` on case-insensitive matches of `query` and wraps each match
+ * in a <mark class="search-highlight"> for CSS-driven highlighting.
+ */
+function HighlightedText({ text, query }: { text: string; query: string }): JSX.Element {
+  if (!query.trim()) return <>{text}</>;
+  const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // Split regex uses `g` flag; test regex uses no `g` to avoid lastIndex side effects
+  const splitRegex = new RegExp(`(${escapedQuery})`, 'gi');
+  const testRegex = new RegExp(`^${escapedQuery}$`, 'i');
+  const parts = text.split(splitRegex);
+  return (
+    <>
+      {parts.map((part, i) =>
+        testRegex.test(part) ? (
+          <mark key={i} className="search-highlight">
+            {part}
+          </mark>
+        ) : (
+          <React.Fragment key={i}>{part}</React.Fragment>
+        ),
+      )}
+    </>
+  );
+}
+
 function getSpeakerInitials(speaker: string): string {
   const parts = speaker.trim().split(/\s+/);
   if (parts.length >= 2) {
@@ -497,6 +523,7 @@ interface TurnRowProps {
   copied: boolean;
   onTimestampClick: (turn: TranscriptTurn) => void;
   onCopyQuote: (turn: TranscriptTurn) => void;
+  searchQuery?: string;
 }
 
 const TurnRow = React.memo(function TurnRow({
@@ -505,6 +532,7 @@ const TurnRow = React.memo(function TurnRow({
   copied,
   onTimestampClick,
   onCopyQuote,
+  searchQuery = '',
 }: TurnRowProps): JSX.Element {
   const colors = getSpeakerColor(turn.speaker);
   const initials = getSpeakerInitials(turn.speaker);
@@ -539,7 +567,9 @@ const TurnRow = React.memo(function TurnRow({
               className={`flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold ${colors.bg} ${colors.text}`}>
               {initials}
             </span>
-            <span className="text-sm font-bold text-gray-900 dark:text-white">{turn.speaker}</span>
+            <span className="text-sm font-bold text-gray-900 dark:text-white">
+              <HighlightedText text={turn.speaker} query={searchQuery} />
+            </span>
             {turn.affiliation && (
               <span className="border-gray-200 shadow-xs rounded-md border bg-white px-2 py-0.5 text-[11px] font-medium text-gray-700 dark:border dark:border-[#4d465c] dark:bg-[#2d2c35] dark:text-gray-100">
                 {turn.affiliation}
@@ -562,7 +592,9 @@ const TurnRow = React.memo(function TurnRow({
         </div>
 
         {/* Spoken Text */}
-        <p className="m-0 mt-1.5 text-sm leading-relaxed text-gray-700 dark:text-gray-100">{turn.text}</p>
+        <p className="m-0 mt-1.5 text-sm leading-relaxed text-gray-700 dark:text-gray-100">
+          <HighlightedText text={turn.text} query={searchQuery} />
+        </p>
       </div>
     </div>
   );
@@ -628,6 +660,11 @@ export function TranscriptViewer({ rawText, onSeekTimestamp }: TranscriptViewerP
         className="flex flex-col gap-3 p-3.5 sm:flex-row sm:items-center sm:justify-between">
         <div className="text-xs font-semibold text-white/90">
           {turns.length} turns &bull; {speakerStats.length} speakers
+          {searchQuery.trim() && (
+            <span className="ml-2 rounded-full bg-white/20 px-2 py-0.5 text-white">
+              {filteredTurns.length} match{filteredTurns.length !== 1 ? 'es' : ''}
+            </span>
+          )}
         </div>
 
         {/* Controls: Search and Speaker Filter */}
@@ -690,6 +727,7 @@ export function TranscriptViewer({ rawText, onSeekTimestamp }: TranscriptViewerP
               copied={copiedId === turn.id}
               onTimestampClick={handleTimestampClick}
               onCopyQuote={handleCopyQuote}
+              searchQuery={searchQuery}
             />
           ))
         )}

@@ -80,6 +80,8 @@ function MeetingsPage(): JSX.Element {
     });
   }, [currentList, selectedYear, searchQuery]);
 
+  const [mobileExpandedId, setMobileExpandedId] = useState<string | null>(null);
+
   // Synchronize state from URL query parameters on mount
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -93,6 +95,7 @@ function MeetingsPage(): JSX.Element {
 
     if (dateParam) {
       setSelectedMeetingId(dateParam);
+      setMobileExpandedId(dateParam);
     }
   }, []);
 
@@ -125,24 +128,43 @@ function MeetingsPage(): JSX.Element {
     [activeType],
   );
 
-  // Switch category type and reset year filter
+  // Handle mobile accordion toggle: click to expand, click again to collapse
+  const handleMobileCardClick = useCallback(
+    (meeting: MeetingItem) => {
+      setMobileExpandedId(prev => (prev === meeting.id ? null : meeting.id));
+      handleSelectMeeting(meeting);
+    },
+    [handleSelectMeeting],
+  );
+
+  // Switch category type and reset year filter & mobile expanded state
   const handleSelectType = useCallback((type: MeetingCategory) => {
     setActiveType(type);
     setSelectedYear('all');
+    setMobileExpandedId(null);
+  }, []);
+
+  const handleSelectYear = useCallback((year: string) => {
+    setSelectedYear(year);
+    setMobileExpandedId(null);
   }, []);
 
   // Copy shareable link to clipboard
-  const handleCopyLink = useCallback(() => {
-    if (typeof window === 'undefined' || !activeMeeting) return;
-    const url = new URL(window.location.href);
-    url.searchParams.set('date', activeMeeting.id);
-    url.searchParams.set('type', activeType);
-    navigator.clipboard.writeText(url.toString()).then(() => {
-      setCopiedLink(true);
-      if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
-      copyTimerRef.current = setTimeout(() => setCopiedLink(false), 2000);
-    });
-  }, [activeMeeting, activeType]);
+  const handleCopyLink = useCallback(
+    (meeting?: MeetingItem) => {
+      const target = meeting || activeMeeting;
+      if (typeof window === 'undefined' || !target) return;
+      const url = new URL(window.location.href);
+      url.searchParams.set('date', target.id);
+      url.searchParams.set('type', activeType);
+      navigator.clipboard.writeText(url.toString()).then(() => {
+        setCopiedLink(true);
+        if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
+        copyTimerRef.current = setTimeout(() => setCopiedLink(false), 2000);
+      });
+    },
+    [activeMeeting, activeType],
+  );
 
   return (
     <Layout
@@ -234,7 +256,7 @@ function MeetingsPage(): JSX.Element {
               <div className="flex flex-wrap items-center gap-4">
                 <YearDropdown
                   selectedYear={selectedYear}
-                  onSelectYear={setSelectedYear}
+                  onSelectYear={handleSelectYear}
                   availableYears={availableYears}
                   countPerYear={countPerYear}
                   totalCount={currentList.length}
@@ -251,12 +273,83 @@ function MeetingsPage(): JSX.Element {
           </div>
         </div>
 
-        {/* Main Workspace: Left List + Right Reader */}
-        <div className="container mx-auto mt-8 px-4 lg:px-8 xl:max-w-[1440px]">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-            {/* Left Column: Meeting Selection Sidebar */}
-            <div className="lg:col-span-4 xl:col-span-3">
-              <div className="sticky top-20">
+        {/* Meeting Content Reader Component */}
+        {(() => {
+          const renderMeetingContent = (meeting: MeetingItem, isMobile = false) => (
+            <div
+              className={
+                isMobile
+                  ? 'meeting-accordion-content mb-3 rounded-b-xl border border-t-0 border-purple-700 bg-white p-4 shadow-lg dark:border-purple-700 dark:bg-[#201f27] sm:p-6'
+                  : 'rounded-md border border-black/[0.06] bg-white p-6 shadow-sm dark:border-white/10 dark:bg-[#201f27] md:p-10'
+              }>
+              {/* Top Header Card */}
+              <div className="mb-6 flex flex-col justify-between gap-4 pb-4 sm:flex-row sm:items-center">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-md bg-purple-700 px-3 py-1.5 text-xs font-bold text-white">
+                    <Icon
+                      icon={meeting.isCabal ? 'material-symbols:shield' : 'material-symbols:groups'}
+                      className="text-sm text-white"
+                    />
+                    <span>{meeting.isCabal ? 'Podman Cabal Meeting' : 'Podman Community Meeting'}</span>
+                  </div>
+                  <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
+                    {meeting.date}
+                  </h2>
+                  <p className="dark:text-gray-400 mt-1 text-sm text-gray-500">{meeting.fullDate}</p>
+                </div>
+
+                {/* Header Actions */}
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <button
+                    type="button"
+                    onClick={() => handleCopyLink(meeting)}
+                    aria-label="Copy link to this meeting"
+                    style={{ outline: 'none', textDecoration: 'none' }}
+                    className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-black/[0.08] bg-white px-4 py-2 text-sm font-bold text-gray-900 !no-underline shadow-sm transition-all duration-150 hover:border-black/[0.16] hover:bg-gray-50/80 hover:text-gray-900 hover:!no-underline hover:shadow dark:border-white/10 dark:bg-[#282732] dark:text-white dark:hover:border-white/20 dark:hover:bg-[#32313e] dark:hover:text-white">
+                    <Icon
+                      icon={copiedLink ? 'material-symbols:check-rounded' : 'material-symbols:share-outline'}
+                      className={`shrink-0 text-base ${copiedLink ? 'text-green-600 dark:text-green-400' : 'text-gray-700 dark:text-white'}`}
+                    />
+                    <span>{copiedLink ? 'Link Copied!' : 'Share'}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Embedded Video Player */}
+              <MeetingVideoPlayer meeting={meeting} />
+
+              {/* View Selector — sits between video and content for natural flow */}
+              <div className="mt-8 flex flex-wrap items-center justify-between gap-3 sm:flex-nowrap">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#892ca0] dark:text-[#a542c3] sm:text-sm">
+                  Select Reading View
+                </span>
+                <div className="hidden h-px flex-1 bg-black/[0.06] dark:bg-white/10 sm:block" />
+                <MeetingViewDropdown
+                  activeTab={activeTab}
+                  onSelectTab={setActiveTab}
+                  hasTranscript={meeting.hasTranscript}
+                />
+              </div>
+
+              {/* Render Markdown Content with MDX Provider */}
+              <MeetingTabContext.Provider value={{ activeTab }}>
+                <div className="meeting-notes-content mt-6 max-w-none">
+                  {meeting.Component ? (
+                    <MDXProvider components={meetingMdxComponents}>
+                      <meeting.Component />
+                    </MDXProvider>
+                  ) : (
+                    <p className="dark:text-gray-400 text-gray-500">No notes available for this meeting.</p>
+                  )}
+                </div>
+              </MeetingTabContext.Provider>
+            </div>
+          );
+
+          return (
+            <div className="container mx-auto mt-8 px-4 lg:px-8 xl:max-w-[1440px]">
+              {/* Mobile View (< lg): Collapsible Accordion Cards */}
+              <div className="block space-y-3 lg:hidden">
                 <div className="mb-3 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">
                   <span>Sessions ({filteredMeetings.length})</span>
                   {selectedYear !== 'all' && (
@@ -266,114 +359,93 @@ function MeetingsPage(): JSX.Element {
                   )}
                 </div>
 
-                <div className="relative">
-                  <div
-                    onScroll={handleSidebarScroll}
-                    className="meetings-sessions-container no-scrollbar max-h-[calc(100vh-140px)] space-y-3 overflow-y-auto px-1 pb-14 pt-1"
-                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                    {filteredMeetings.length === 0 ? (
-                      <div className="rounded-md border border-black/[0.06] bg-white p-8 text-center text-sm text-gray-500 shadow-sm dark:border-white/10 dark:bg-[#24232a] dark:text-gray-300">
-                        No meetings match your filter.
-                      </div>
-                    ) : (
-                      filteredMeetings.map(meeting => (
-                        <SessionCard
-                          key={meeting.id}
-                          meeting={meeting}
-                          isSelected={activeMeeting?.id === meeting.id}
-                          onSelect={handleSelectMeeting}
-                        />
-                      ))
-                    )}
+                {filteredMeetings.length === 0 ? (
+                  <div className="rounded-xl border border-black/[0.06] bg-white p-8 text-center text-sm text-gray-500 shadow-sm dark:border-white/10 dark:bg-[#24232a] dark:text-gray-300">
+                    No meetings match your filter.
                   </div>
+                ) : (
+                  filteredMeetings.map(meeting => {
+                    const isExpanded = mobileExpandedId === meeting.id;
+                    return (
+                      <div key={meeting.id} className="transition-all duration-200">
+                        <SessionCard
+                          meeting={meeting}
+                          isSelected={isExpanded}
+                          isMobileAccordion={true}
+                          isExpanded={isExpanded}
+                          onSelect={() => handleMobileCardClick(meeting)}
+                          searchQuery={searchQuery}
+                        />
+                        {isExpanded && renderMeetingContent(meeting, true)}
+                      </div>
+                    );
+                  })
+                )}
+              </div>
 
-                  {/* Elegant bottom fade dissolve indicator so cards never look abruptly cut off */}
-                  {filteredMeetings.length > 3 && (
-                    <div
-                      aria-hidden="true"
-                      className={`pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white via-white/80 to-transparent transition-opacity duration-200 dark:from-gray-900 dark:via-gray-900/80 ${
-                        isSidebarAtBottom ? 'opacity-0' : 'opacity-100'
-                      }`}
-                    />
+              {/* Desktop View (>= lg): Split Sidebar + Document Reader */}
+              <div className="hidden grid-cols-1 gap-8 lg:grid lg:grid-cols-12">
+                {/* Left Column: Meeting Selection Sidebar */}
+                <div className="lg:col-span-4 xl:col-span-3">
+                  <div className="sticky top-20">
+                    <div className="mb-3 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+                      <span>Sessions ({filteredMeetings.length})</span>
+                      {selectedYear !== 'all' && (
+                        <span className="rounded bg-purple-100 px-2 py-0.5 text-purple-900 dark:bg-purple-700 dark:text-white">
+                          {selectedYear}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="relative">
+                      <div
+                        onScroll={handleSidebarScroll}
+                        className="meetings-sessions-container no-scrollbar max-h-[calc(100vh-140px)] space-y-3 overflow-y-auto px-1 pb-14 pt-1"
+                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                        {filteredMeetings.length === 0 ? (
+                          <div className="rounded-md border border-black/[0.06] bg-white p-8 text-center text-sm text-gray-500 shadow-sm dark:border-white/10 dark:bg-[#24232a] dark:text-gray-300">
+                            No meetings match your filter.
+                          </div>
+                        ) : (
+                          filteredMeetings.map(meeting => (
+                            <SessionCard
+                              key={meeting.id}
+                              meeting={meeting}
+                              isSelected={activeMeeting?.id === meeting.id}
+                              onSelect={handleSelectMeeting}
+                              searchQuery={searchQuery}
+                            />
+                          ))
+                        )}
+                      </div>
+
+                      {/* Bottom fade dissolve indicator */}
+                      {filteredMeetings.length > 3 && (
+                        <div
+                          aria-hidden="true"
+                          className={`pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white via-white/80 to-transparent transition-opacity duration-200 dark:from-gray-900 dark:via-gray-900/80 ${
+                            isSidebarAtBottom ? 'opacity-0' : 'opacity-100'
+                          }`}
+                        />
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: Active Meeting Document & Embedded Video */}
+                <div className="lg:col-span-8 xl:col-span-9">
+                  {activeMeeting ? (
+                    renderMeetingContent(activeMeeting, false)
+                  ) : (
+                    <div className="dark:text-gray-400 rounded-2xl border border-dashed border-black/10 p-16 text-center text-gray-500 dark:border-white/10">
+                      Select a meeting session from the list to view notes and video recording.
+                    </div>
                   )}
                 </div>
               </div>
             </div>
-
-            {/* Right Column: Active Meeting Document & Embedded Video */}
-            <div className="lg:col-span-8 xl:col-span-9">
-              {activeMeeting ? (
-                <div className="rounded-md border border-black/[0.06] bg-white p-6 shadow-sm dark:border-white/10 dark:bg-[#201f27] md:p-10">
-                  {/* Top Header Card */}
-                  <div className="mb-6 flex flex-col justify-between gap-4 pb-6 sm:flex-row sm:items-center">
-                    <div>
-                      <div className="inline-flex items-center gap-2 rounded-md bg-purple-700 px-3 py-1.5 text-xs font-bold text-white">
-                        <Icon
-                          icon={activeMeeting.isCabal ? 'material-symbols:shield' : 'material-symbols:groups'}
-                          className="text-sm text-white"
-                        />
-                        <span>{activeMeeting.isCabal ? 'Podman Cabal Meeting' : 'Podman Community Meeting'}</span>
-                      </div>
-                      <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
-                        {activeMeeting.date}
-                      </h2>
-                      <p className="dark:text-gray-400 mt-1 text-sm text-gray-500">{activeMeeting.fullDate}</p>
-                    </div>
-
-                    {/* Header Actions */}
-                    <div className="flex flex-wrap items-center gap-2.5">
-                      <button
-                        type="button"
-                        onClick={handleCopyLink}
-                        aria-label="Copy link to this meeting"
-                        style={{ outline: 'none', textDecoration: 'none' }}
-                        className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-black/[0.08] bg-white px-4 py-2 text-sm font-bold text-gray-900 !no-underline shadow-sm transition-all duration-150 hover:border-black/[0.16] hover:bg-gray-50/80 hover:text-gray-900 hover:!no-underline hover:shadow dark:border-white/10 dark:bg-[#282732] dark:text-white dark:hover:border-white/20 dark:hover:bg-[#32313e] dark:hover:text-white">
-                        <Icon
-                          icon={copiedLink ? 'material-symbols:check-rounded' : 'material-symbols:share-outline'}
-                          className={`shrink-0 text-base ${copiedLink ? 'text-green-600 dark:text-green-400' : 'text-gray-700 dark:text-white'}`}
-                        />
-                        <span>{copiedLink ? 'Link Copied!' : 'Share'}</span>
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Embedded Video Player */}
-                  <MeetingVideoPlayer meeting={activeMeeting} />
-
-                  {/* View Selector — sits between video and content for natural flow */}
-                  <div className="mt-8 flex items-center gap-4">
-                    <span className="text-sm font-bold uppercase tracking-widest text-[#892ca0] dark:text-[#a542c3]">
-                      Select Reading View
-                    </span>
-                    <div className="h-px flex-1 bg-black/[0.06] dark:bg-white/10" />
-                    <MeetingViewDropdown
-                      activeTab={activeTab}
-                      onSelectTab={setActiveTab}
-                      hasTranscript={activeMeeting.hasTranscript}
-                    />
-                  </div>
-
-                  {/* Render Markdown Content with MDX Provider */}
-                  <MeetingTabContext.Provider value={{ activeTab }}>
-                    <div className="meeting-notes-content mt-6 max-w-none">
-                      {activeMeeting.Component ? (
-                        <MDXProvider components={meetingMdxComponents}>
-                          <activeMeeting.Component />
-                        </MDXProvider>
-                      ) : (
-                        <p className="text-gray-500">No notes available for this meeting.</p>
-                      )}
-                    </div>
-                  </MeetingTabContext.Provider>
-                </div>
-              ) : (
-                <div className="dark:text-gray-400 rounded-2xl border border-dashed border-black/10 p-16 text-center text-gray-500 dark:border-white/10">
-                  Select a meeting session from the list to view notes and video recording.
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+          );
+        })()}
       </main>
     </Layout>
   );
