@@ -1,12 +1,7 @@
-import type { ReactNode } from 'react';
-import React, { useEffect, useRef, useState } from 'react';
-import CustomCard from '@site/src/components/ui/CustomCard';
-import SubcardGrid from '@site/src/components/layout/SubcardGrid';
-import SectionHeader from '@site/src/components/layout/SectionHeader';
-import Dropdown from '@site/src/components/utilities/DropDown';
-import CloseIcon from '@site/src/components/shapes/CloseIcon';
-import * as markDownFiles from '@site/static/data/meetings/notes/index'; // ToDo: Lazy load these files
-
+import React from 'react';
+import Link from '@docusaurus/Link';
+import { Icon } from '@iconify/react';
+import Markdown from '@site/src/components/utilities/Markdown';
 import './styles.css';
 
 type CommunityMeetingsCardProps = {
@@ -14,227 +9,152 @@ type CommunityMeetingsCardProps = {
   subtitle: string;
   date: string;
   timeZone: string;
-  buttons: [
-    {
-      text: string;
-      path: string;
-    },
-  ];
-};
-
-type DropdownOptionProps = {
-  date: string;
-  meeting_recording: {
+  isPaused?: boolean;
+  statusNote?: string;
+  buttons: Array<{
     text: string;
-    link: string;
-  };
-  meeting_minutes: {
-    text: string;
-    markDown: ReactNode;
-    modalHeaderData?: string;
-  };
+    path: string;
+  }>;
 };
 
-type SubcardButtonProps = {
-  text: string;
-  path?: string;
-  markDown?: ReactNode;
-  modalHeaderData?: string;
-};
+const CARD_META = [
+  { icon: 'material-symbols:groups-rounded', label: 'Community Meeting' },
+  { icon: 'material-symbols:shield-rounded', label: 'Cabal Meeting' },
+];
 
-type SubcardGridProps = {
-  buttons: SubcardButtonProps[];
-  icon: string;
-  date: string;
-};
-
-function toggleModalOpen(ref, handler) {
-  useEffect(() => {
-    const listener = event => {
-      if (ref?.current?.contains(event.target)) {
-        return;
-      }
-      handler(event);
-    };
-    document.addEventListener('mousedown', listener);
-    document.addEventListener('touchstart', listener);
-    return () => {
-      document.removeEventListener('mousedown', listener);
-      document.removeEventListener('touchstart', listener);
-    };
-  }, [ref, handler]);
+/** Converts **bold** markdown to inline <strong> — avoids block-level <p> breaking flex layouts */
+function parseBold(text: string): JSX.Element {
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.startsWith('**') && part.endsWith('**') ? (
+          <strong key={i} className="font-bold">
+            {part.slice(2, -2)}
+          </strong>
+        ) : (
+          <span key={i}>{part}</span>
+        ),
+      )}
+    </>
+  );
 }
 
-function CommunityMeetingsCardGrid({ cards }) {
-  const cabalDropdownOptions: DropdownOptionProps[] = [];
-  const MeetingDropdownOptions: DropdownOptionProps[] = [];
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalHeader, setModalHeader] = useState<ReactNode | undefined>(undefined);
-  const [meetinNotesMD, setMeetinNotesMD] = useState<ReactNode | undefined>(undefined);
-  const meetingMinutesRef = [useRef(), useRef()];
-  const modalRef = useRef();
-
-  toggleModalOpen(modalRef, () => setIsModalOpen(false));
-
-  const prepareModalHeader = (text: string, date: string) => {
-    const modalHeader: ReactNode = (
-      <div className="modal-header dark:bg-gray-500 dark:shadow-none">
-        <h3 className="modal-header-title dark:text-gray-900">{text}</h3>
-        <h3 className="modal-header-date dark:text-gray-900">{date}</h3>
-        <div className="cursor-pointer" onClick={() => setIsModalOpen(false)}>
-          <CloseIcon />
-        </div>
-      </div>
-    );
-    setModalHeader(modalHeader);
-  };
-
-  const populateMeetings = (): void => {
-    Object.values(markDownFiles)?.forEach(mdFile => {
-      const mdReader = mdFile?.default(useRef());
-      mdReader?.props?.children?.forEach(child => {
-        const field1: string = child?.props?.children?.[0];
-        const field2: any = child?.props?.children?.[1];
-        if (typeof field1 == 'string' && (field1.includes('BlueJeans') || field1.includes('Video'))) {
-          if (mdFile?.contentTitle?.includes('Cabal')) {
-            cabalDropdownOptions.unshift({
-              date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
-              meeting_minutes: {
-                markDown: mdReader,
-                modalHeaderData: mdFile['contentTitle'],
-                text: 'Meeting Minutes',
-              },
-              meeting_recording: {
-                link: field2?.props?.href,
-                text: 'Watch Recording',
-              },
-            });
-          } else {
-            MeetingDropdownOptions.unshift({
-              date: (mdFile?.toc?.[0]?.value as string).split(/[0-9]{2}:[0-9]{2}/)[0],
-              meeting_minutes: {
-                markDown: mdReader,
-                modalHeaderData: mdFile['contentTitle'],
-                text: 'Meeting Minutes',
-              },
-              meeting_recording: {
-                link: field2?.props?.href,
-                text: 'Watch Recording',
-              },
-            });
-          }
-        }
-      });
-    });
-  };
-
-  const toggleIsModalOpen = (...modalData) => {
-    modalData && setMeetinNotesMD(modalData[0].markDown);
-    prepareModalHeader(modalData[0].modalHeaderData, modalData[1]);
-    setIsModalOpen(true);
-  };
-
-  function DropDownOption(props: DropdownOptionProps) {
-    const { meeting_minutes, meeting_recording, date } = props;
-
-    return (
-      <div className="inline-flex justify-around bg-white px-8 py-1 dark:bg-gray-700 dark:shadow-none">
-        <h3 className="flex-1 pl-1 text-base text-gray-700 dark:text-gray-50">{date}</h3>
-        <a className="flex-1 no-underline hover:no-underline" href={meeting_recording?.link}>
-          {meeting_recording?.text}
-        </a>
-        <a
-          onClick={() => {
-            toggleIsModalOpen(meeting_minutes, date);
-          }}
-          className="cursor-pointer">
-          {meeting_minutes?.text}
-        </a>
-      </div>
-    );
-  }
-
-  function getDropdownOption(options: DropdownOptionProps[]) {
-    return options.map(option => <DropDownOption {...option} />);
-  }
-
-  populateMeetings();
-
-  const communityMeetingsData: SubcardGridProps[] = [];
-  const CabalMeetingsData: SubcardGridProps[] = [];
-
-  // get top 2 CommunityMeetings & CabalMeetings for subcards
-  for (let i = 0; i < 2; i++) {
-    let meeting = MeetingDropdownOptions.shift();
-    communityMeetingsData.push({
-      date: meeting?.date,
-      icon: 'film-icon',
-      buttons: [
-        {
-          path: meeting?.meeting_recording?.link,
-          text: meeting?.meeting_recording?.text,
-        },
-        { ...meeting?.meeting_minutes },
-      ],
-    });
-    meeting = cabalDropdownOptions.shift();
-    CabalMeetingsData.push({
-      date: meeting?.date,
-      icon: 'film-icon',
-      buttons: [
-        {
-          path: meeting?.meeting_recording?.link,
-          text: meeting?.meeting_recording?.text,
-        },
-        { ...meeting?.meeting_minutes },
-      ],
-    });
-  }
+function MeetingCard({
+  card,
+  index,
+  isSingle,
+}: {
+  card: CommunityMeetingsCardProps;
+  index: number;
+  isSingle?: boolean;
+}) {
+  const meta = CARD_META[index] ?? CARD_META[0];
 
   return (
-    <div className="justify-content-center align-items-center custom-card-grid-root flex">
-      {cards.map((card: CommunityMeetingsCardProps, index: number) => {
-        const meetingsData = index == 1 ? CabalMeetingsData : communityMeetingsData;
-        return (
-          <div
-            key={`card-container-${index}`}
-            className="align-items-center card-container mb-4 flex flex-1 flex-col flex-wrap justify-center transition duration-150 ease-linear lg:mb-6">
-            <CustomCard
-              key={`custom-card-${index}`}
-              title={card?.title}
-              subtitle={card?.date}
-              details={card?.timeZone}
-              text={card?.subtitle}
-              data={card?.buttons}
-              primary={true}
+    <div
+      className={`meeting-card flex w-full flex-1 flex-col rounded-2xl p-6 sm:p-7 ${isSingle ? 'max-w-4xl' : 'max-w-[540px]'}`}>
+      {/* Top Row: Badge on left, Time on right top */}
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-2.5">
+        <div className="meeting-badge shadow-xs inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold">
+          <Icon icon={meta.icon} className="text-sm" />
+          <span>{meta.label}</span>
+        </div>
+
+        {/* Time at top right — clean text & icon without container */}
+        <div className="meeting-time-indicator inline-flex items-center gap-1.5 text-xs font-semibold">
+          <Icon icon="material-symbols:schedule-rounded" className="shrink-0 text-sm" />
+          <span>{card.timeZone}</span>
+        </div>
+      </div>
+
+      {/* Title */}
+      <h3 className="mb-2 text-xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-2xl">
+        {card.title}
+      </h3>
+
+      {/* Cadence / Date */}
+      <div className="meeting-cadence mb-4 flex items-center gap-2">
+        <Icon
+          icon={card.isPaused ? 'material-symbols:hourglass-empty-rounded' : 'material-symbols:calendar-today-rounded'}
+          className={`shrink-0 text-base ${card.isPaused ? 'text-amber-600 dark:text-amber-400' : ''}`}
+        />
+        <p className="text-sm font-semibold">{parseBold(card.date)}</p>
+      </div>
+
+      {/* Description — compact typography with subtle purple links and underline */}
+      <div className="meeting-card-body flex-1">
+        <Markdown text={card.subtitle} styles="meeting-card-body" />
+      </div>
+
+      {/* Buttons — guaranteed breathing room above and pinned to bottom */}
+      <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-6">
+        {/* Join Meeting / Action buttons */}
+        {card.buttons.map((btn, i) => (
+          <Link
+            key={i}
+            to={btn.path}
+            style={{ textDecoration: 'none' }}
+            className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-bold !no-underline ${
+              i === 0 && !card.isPaused ? 'meeting-btn-join shadow-sm' : 'meeting-btn-agenda shadow-xs'
+            }`}>
+            <Icon
+              icon={
+                btn.text.toLowerCase().includes('join')
+                  ? 'material-symbols:video-camera-front-rounded'
+                  : 'material-symbols:article-outline-rounded'
+              }
+              className="text-sm"
             />
-            <SectionHeader
-              title=""
-              description="Most Recent meetings"
-              textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
-              textGradient={false}
-            />
-            <SubcardGrid key={`subcard-grid-${index}`} cards={meetingsData} toggleIsModalOpen={toggleIsModalOpen} />
-            <Dropdown
-              options={getDropdownOption(index == 1 ? [...cabalDropdownOptions] : [...MeetingDropdownOptions])}
-              dropdownRef={meetingMinutesRef[index]}
-              text="Older meeting details"
-            />
-            <dialog
-              className="bg-stone-200 w-90-screen h-80-screen fixed top-20 z-50 max-h-screen w-fit border-4 border-purple-100"
-              open={isModalOpen}
-              ref={modalRef}>
-              <div className="modal-content flex flex-col">
-                {modalHeader}
-                <div className="md-wrapper overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 dark:bg-gray-700 dark:text-gray-50 dark:shadow-none">
-                  {meetinNotesMD}
-                </div>
-              </div>
-            </dialog>
+            <span>{btn.text}</span>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CommunityMeetingsCardGrid({ cards }: { cards: CommunityMeetingsCardProps[] }): JSX.Element {
+  const isSingle = cards.length === 1;
+  return (
+    <div className="mt-4 w-full md:mt-6">
+      {/* Meeting Cards */}
+      <div
+        className={`mb-12 flex flex-col items-center justify-center gap-6 ${isSingle ? 'lg:flex-row' : 'lg:flex-row lg:items-stretch lg:gap-8'}`}>
+        {cards.map((card, index) => (
+          <MeetingCard key={index} card={card} index={index} isSingle={isSingle} />
+        ))}
+      </div>
+
+      {/* Integrated CTA Archive Callout — directs users to full meeting archive */}
+      <div className="mx-auto mb-10 w-full max-w-4xl overflow-hidden rounded-2xl bg-gradient-to-r from-purple-700 to-purple-900 shadow-md">
+        <div className="flex flex-col items-start justify-between gap-5 p-6 md:flex-row md:items-center md:px-8">
+          <div>
+            <div className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-0.5 text-xs font-bold text-white">
+              <Icon icon="material-symbols:history-edu" className="text-sm" />
+              <span>Full Meeting Archive</span>
+            </div>
+            <h3 style={{ color: '#ffffff' }} className="meeting-archive-title text-lg font-bold !text-white text-white">
+              Previous meetings, transcripts &amp; minutes
+            </h3>
+            <p
+              style={{ color: 'rgba(255, 255, 255, 0.85)' }}
+              className="meeting-archive-desc mt-0.5 text-sm !text-white/85 text-white/85">
+              Recordings, notes and searchable transcripts from all past sessions.
+            </p>
           </div>
-        );
-      })}
+          <Link
+            to="/community/meetings"
+            style={{ textDecoration: 'none', color: '#ffffff', borderColor: 'rgba(255,255,255,0.7)' }}
+            className="meeting-archive-cta group inline-flex shrink-0 items-center gap-2 rounded-xl border-2 bg-transparent px-5 py-2.5 text-sm font-bold !text-white text-white !no-underline transition-all duration-150 hover:border-white hover:bg-white/10 hover:text-white hover:!no-underline">
+            <span className="!text-white text-white">Explore Old Meetings</span>
+            <Icon
+              icon="material-symbols:arrow-forward-rounded"
+              className="text-base !text-white text-white transition-transform duration-150 group-hover:translate-x-1"
+            />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

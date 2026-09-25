@@ -48,7 +48,7 @@ const communityChat = {
 const communityMeetings = {
   title: 'Podman Community Meetings',
   subtitle:
-    "Many of the maintainers for the Podman project attend both of these meetings, so it's a great chance for community members like you to ask them questions or address concerns directly. If you have a topic that you’d like to propose for either meeting, please send a note to the [Mailing List]().",
+    'Join the Podman maintainers and community to discuss upcoming features, share feedback, or propose topics on the [Mailing List](#mailing-list).',
   image: {
     path: 'images/optimized/community-call-554w-219h.webp',
     alt: 'An image of podman team members in a virtual meeting',
@@ -67,14 +67,12 @@ const communityMeetings = {
     },
     {
       title: 'Podman Community Cabal',
+      isPaused: true,
       subtitle:
-        'The focus of the cabal meeting is the planning and discussion of possible future changes to Podman or the [related Containers projects](https://github.com/containers) and discussing any outstanding issues that might need solving.',
-      date: '**1st Tuesday** of odd numbered months',
-      timeZone: '11 AM US ET /5 PM CET',
-      buttons: [
-        { text: 'Join Meeting', path: CABAL_MEETING_URL },
-        { text: 'Meeting Agenda', path: 'https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both' },
-      ],
+        'The focus of the cabal meeting was planning and discussion of future architectural changes to Podman and related Containers projects. Note: Cabal sessions are currently paused and covered in regular community stand-ups.',
+      date: '**(Paused)** formerly 1st Tuesday of odd numbered months',
+      timeZone: '11 AM US ET / 5 PM CET',
+      buttons: [{ text: 'Meeting Agenda', path: 'https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both' }],
     },
   ],
 };

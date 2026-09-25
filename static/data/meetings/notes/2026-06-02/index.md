@@ -1,15 +1,19 @@
 # Podman Community Meeting Notes
+
 ## June 2, 2026 11:00 a.m. Eastern (UTC-4)
 
 ### Attendees
-TomSweeney, Kevin Clevenger, Nalin Dahyabhai, Miloslav Trmac, Matt Heon, Martin Beckert, Neils Smith, Lokesh Madvekhar, Nicola Sella, Ashley Cui, Paul Holzinger, Simon Brauner, Marek Simek, Jan Roday 
+
+TomSweeney, Kevin Clevenger, Nalin Dahyabhai, Miloslav Trmac, Matt Heon, Martin Beckert, Neils Smith, Lokesh Madvekhar, Nicola Sella, Ashley Cui, Paul Holzinger, Simon Brauner, Marek Simek, Jan Roday
 
 ### Meeting Notes
+
 Video [Recording](https://www.youtube.com/watch?v=d0XEeePqzag)
 
 Meeting start: 11:03 a.m. EDT (UTC-5)
 
 #### Quick Recap
+
 The Podman Community Meeting focused on the migration of GitHub repositories to CNCF ownership and the transition to GitHub Actions for CI. Matthew explained that Podman, Buildah, and Skopeo have been moved to the new "podman-container-tool" organization under CNCF, along with core container libraries and other related projects. The team discussed how GitHub automatically redirects users to the new repository locations, though it's recommended to update to the new URLs. Paul then demonstrated the new GitHub Actions-based CI system, showing how tests run in VMs with a similar testing matrix to the previous CirrusCI setup, including API tests, bindings, Docker, unit, system, and integration tests across different Linux distributions. The conversation ended with Paul noting that GitHub team permissions were recreated after the repository move, and users need to accept new invites to regain access.
 
 #### Next Steps
@@ -20,17 +24,19 @@ Paul: Continue addressing and tracking follow-up work for the new CI, including 
 Team: Update usage of new repository locations and import paths as appropriate, especially when working with Podman 6 and related projects.
 
 ### Topics
+
 #### Podman and Friends moving to CNCF status - Matt Heon ([01:10](https://www.youtube.com/watch?v=d0XEeePqzag&t=70s) in the video)
 
 Matt explained the migration from CirrusCI to GitHub Actions due to CirrusCI's shutdown, and the relocation of the Podman project to a new CNCF-owned organization called "Podman-container-tool." He detailed that core technology repositories, including container libs and Podman Machine OS, have been moved to CNCF, with additional projects like websites and automation images in progress. Matthew confirmed that end users will not need to take any action as GitHub provides automatic redirects to the new locations, and Podman 6 RC1 release is pending CI stabilization.
 
 #### CNCF CI changes for Podman - Paul Holzinger - ([07:30](https://www.youtube.com/watch?v=d0XEeePqzag&t=450s) in the video)
 
-Paul demonstrated the new GitHub Actions-based CI system, explaining how it works with a YAML file defining all tasks and runs on VMs for various tests including API, unit, system, and integration tests across different distributions. He showed how to view test logs, debug failures, and rerun specific jobs rather than all jobs, with the system set to wait for total success before allowing merge. Paul noted to be careful when rerunning tests to NOT rerun ALL by default, but to use the pull-down to get to "Rerun Failing Tests".  Paul mentioned some follow-up work was tracked in issues for those interested in helping out, and noted that similar CI systems are used on Buildah, Skopeo, and Container Libs.
+Paul demonstrated the new GitHub Actions-based CI system, explaining how it works with a YAML file defining all tasks and runs on VMs for various tests including API, unit, system, and integration tests across different distributions. He showed how to view test logs, debug failures, and rerun specific jobs rather than all jobs, with the system set to wait for total success before allowing merge. Paul noted to be careful when rerunning tests to NOT rerun ALL by default, but to use the pull-down to get to "Rerun Failing Tests". Paul mentioned some follow-up work was tracked in issues for those interested in helping out, and noted that similar CI systems are used on Buildah, Skopeo, and Container Libs.
 
 (Note: Known issues with the move to CNCF are being tracked in Podman's Issues at [#28824](https://github.com/podman-container-tools/podman/issues/28824))
 
-#### Open discussion - ([17:30](https://www.youtube.com/watch?v=d0XEeePqzag&t=450s) in the video)
+#### Open discussion - ([17:30](https://www.youtube.com/watch?v=d0XEeePqzag&t=1050s) in the video)
+
 ##### Possible CNCF Repository Permission issues
 
 The team discussed the recent repository move to GitHub, with Paul explaining that some maintainers and reviewers temporarily lost access due to the migration. Paul recreated the Teams based on the maintainers.md file and sent new invitations, which team members need to accept to regain their permissions.
@@ -38,16 +44,16 @@ The team discussed the recent repository move to GitHub, with Paul explaining th
 ### Next Community Meeting: Tuesday, August 4, 2026, 11:00 a.m. EST (UTC-4)
 
 #### Possible Topics:
- 1. None Discussed
 
+1.  None Discussed
 
 Meeting finished 11:22 a.m.
 
-The first 4  minutes and 16 seconds of the meeting's recording were cut, so the timestamps in the next two sections are off by that amount compared to the YouTube video.
+The first 4 minutes and 16 seconds of the meeting's recording were cut, so the timestamps in the next two sections are off by that amount compared to the YouTube video.
 
 ### Raw Meeting Chat:
 
-``` 
+```
 Martin Beckert: There's a new Podlet release v0.3.2
 ```
 

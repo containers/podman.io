@@ -1,10 +1,13 @@
 # Podman Community Meeting Notes
+
 ## April 7, 2026 11:00 a.m. Eastern (UTC-4)
 
 ### Attendees
+
 Tom Sweeney, Martin Beckett, Kevin Clevenger, Gerald Seidman, Matt Heon, Dave Darrah, Nicola Sella, Suraj, Tim Zhou, Nalin Dahyabhai, Paul Holzinger, Brno, Ashley Cui, Laura Santamander, Giuseppe, Scrivano, Steve Ryan, Tomas, Miloslav, Simone, Jan Rodak, Mark Russell
 
 ### Meeting Notes
+
 Video [Recording](https://www.youtube.com/watch?v=wm8IB0GcAso)
 
 Meeting start: 11:03 a.m. EDT (UTC-5)
@@ -14,10 +17,11 @@ Meeting start: 11:03 a.m. EDT (UTC-5)
 The Podman Community meeting on April 7th covered several key updates and discussions. Paul presented upcoming configuration changes in Podman 6, including unification of how different configuration files are parsed, with registry.conf still in development and expected completion in two weeks before RC1 release. Matt and Ashley reported on Podman's attendance at KubeCon two weeks prior, where they delivered two talks and participated in Project Pavilion discussions. Matt announced plans to open up development processes with more frequent, shorter weekly meetings replacing the current bi-monthly format, while maintaining core maintainers meetings as closed sessions. Martin shared updates about Flatcar OS's Podman extension lacking documentation and the recent release of Podlet 8. Steve provided a comprehensive update on the Materia project, highlighting new features including OCI image support, remote components, dynamic timeouts, and improved resource management capabilities, with plans for future rollbacks and expanded remote component systems.
 
 #### Next Steps
-    * Paul: Write documentation and a blog post detailing the Podman 6 config file changes, including migration instructions, expected in the next two weeks.
-    * Matthew: Add more project meetings (including sprint demos) to the CNCF calendar within the next 2 weeks, with the goal of opening up more meetings to the community and moving to a more frequent, shorter meeting schedule.
-    * Steve: Send presentation slides (including email contact) to Tom after the meeting.
-    * Martin: Initiate documentation for Podman integration/extension in the Flatcar project on GitHub to help the community better use Podman with Flatcar.
+
+- Paul: Write documentation and a blog post detailing the Podman 6 config file changes, including migration instructions, expected in the next two weeks.
+- Matthew: Add more project meetings (including sprint demos) to the CNCF calendar within the next 2 weeks, with the goal of opening up more meetings to the community and moving to a more frequent, shorter meeting schedule.
+- Steve: Send presentation slides (including email contact) to Tom after the meeting.
+- Martin: Initiate documentation for Podman integration/extension in the Flatcar project on GitHub to help the community better use Podman with Flatcar.
 
 ### Topics
 
@@ -35,28 +39,29 @@ Matthew announced plans to open up the development process by making meetings mo
 
 #### Open discussion - ([11:06](https://www.youtube.com/watch?v=wm8IB0GcAso&t=666s) in the video)
 
-Editors note.  No real discussion topics, but Martin Beckett and then Steve Ryan presented updates on their projects.
+Editors note. No real discussion topics, but Martin Beckett and then Steve Ryan presented updates on their projects.
 
 #### Flatpack and Podlets updates - Martin Beckett - ([11:06](https://www.youtube.com/watch?v=wm8IB0GcAso&t=666s) in the video)
 
-Martin presented two topics: an update on the [Flatcar](https://www.flatcar.org) project, which now includes a Podman extension, and an update on the [Podlet](https://github.com/containers/podlet) project's recent release. 
+Martin presented two topics: an update on the [Flatcar](https://www.flatcar.org) project, which now includes a Podman extension, and an update on the [Podlet](https://github.com/containers/podlet) project's recent release.
 
 #### Materia Updates - Steve Ryan - ([13:45](https://www.youtube.com/watch?v=wm8IB0GcAso&t=825s) in the video)
 
 Steve presented ([Slides](./Materia-April2026.pdf)) an update on the [Materia](https://primamateria.systems/) Project, a GitOps tool for installing Podman Quadlets, highlighting new features including support for OCI images, remote components, setup/cleanup scripts, dynamic timeouts, and improved Podman resource management. He discussed upcoming plans to implement rollbacks and expand the remote component system, as well as his work on Athanor, a backup tool using Materia's packages. When asked about handling Docker Compose files, Steve explained that while Compose is outside Materia's direct scope, he has been experimenting with converting Compose files to Quadlet files for use with Materia.
 
-Tom reviewed upcoming meeting dates, including a Podman community meeting on June 2nd and a Cabal meeting on May 5th. 
+Tom reviewed upcoming meeting dates, including a Podman community meeting on June 2nd and a Cabal meeting on May 5th.
 
 ### Next Cabal Meeting: Tuesday, May 5, 2026, 11:00 a.m. EDT (UTC-5)
 
 #### Possible Topics
- 1. None Discussed.
+
+1.  None Discussed.
 
 ### Next Community Meeting: Tuesday, June 2, 2026, 11:00 a.m. EST (UTC-5)
 
 #### Possible Topics:
- 1. None Discussed
 
+1.  None Discussed
 
 Meeting finished 11:31 a.m.
 
@@ -64,19 +69,19 @@ The first 6 minutes and 15 seconds of the meeting's recording were cut, so the t
 
 ### Raw Meeting Chat:
 
-``` 
+```
 00:17:51	Martin Beckert:	https://www.flatcar.org/docs/latest/provisioning/sysext/#flatcar-release-extensions-official
 00:18:01	Martin Beckert:	https://github.com/flatcar/Flatcar/issues/1663#issuecomment-4193264690
 00:27:45	Tom Sweeney (Red Hat LLC):	June Topic?
 00:28:58	Tom Sweeney (Red Hat LLC):	tsweeney@redhat.com for slides please.
 00:29:06	Martin Beckert:	https://github.com/mikkovihonen/quadletman
 00:31:27	Martin Beckert:	https://github.com/containers/podlet/issues/201
-00:32:15	Gerald Seidman (AuriStor Inc.):	I didn't see Steve Ryan's email on the meeting ICS file, 
+00:32:15	Gerald Seidman (AuriStor Inc.):	I didn't see Steve Ryan's email on the meeting ICS file,
 
 I may have a question later on.
 Steve: Can you share your email so I can follow up directly
 00:32:41	Gerald Seidman (AuriStor Inc.):	Thanks
-00:33:17	Steve Ryan:	stryan@stryan.net @stryan:saintnet.tech on matrix!   
+00:33:17	Steve Ryan:	stryan@stryan.net @stryan:saintnet.tech on matrix!
 ```
 
 ### Raw Zoom Meet Transcript

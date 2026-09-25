@@ -1,6 +1,6 @@
 name: Feature proposal
 description: Propose a feature
-title: "[Feature]: "
+title: '[Feature]: '
 body:
   - type: textarea
     attributes:

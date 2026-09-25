@@ -1,58 +1,65 @@
 # Podman Community Meeting Notes
+
 ## February 6, 2024 11:00 a.m. Eastern (UTC-5)
 
-
 ### Attendees ( total)
+
 Anders F Björklund, Ashley Cui, Brent Baude, Christopher Evich, Daniel Walsh, Ed Santiago Munoz, Giuseppe Scrivano, Jake Correnti, Jhon Honce, Jon Masters, Lokesh Mandvekar, Mario Loriedo, Matt Heon, Miloslav Trmac, Mohan Boddu, Nalin Dahyabhai, Neil Smith, Paul Holzinger, Thiago Mendes, Tim deBoer, Tom Sweeney, Urvashi Mohnani, Vivek Goyal, Zeh Ninguem
 
 ### Topics
 
- 1) Podman at Home - Jon Masters
- 2) Podman `build farm` demo - Urvashi Mohnani
- 3) Apple Hypervisor - Brent Baude
- 4) Podman 5.0 changes - Matt Heon
+1.  Podman at Home - Jon Masters
+2.  Podman `build farm` demo - Urvashi Mohnani
+3.  Apple Hypervisor - Brent Baude
+4.  Podman 5.0 changes - Matt Heon
 
 ## Meeting Start: 11:02 a.m. EST
+
 ### Video [Recording](https://youtu.be/soxBbexH_VA)
 
 ## Podman at Home
+
 ### Jon Masters
+
 #### (1:10 in the video)
-Working with Podman for his home automation.  Basically, his home automation journey with a bunch of smart assistants.  You can do a lot of services to run stuff in your system.  Or you can run stuff by yourself, with onprem automation.  Using [Zigbee](https://www.techtarget.com/iotagenda/definition/ZigBee) or [Zwave](https://www.z-wave.com/) devices, in a low-range mesh network.  
 
-He's replaced every light switch with a Zigbee light switch.  When you're trying to deploy something, you want it to just work.  So Jon needed something robust to make sure it stayed up.  This is where containerization and Podman comes in.
+Working with Podman for his home automation. Basically, his home automation journey with a bunch of smart assistants. You can do a lot of services to run stuff in your system. Or you can run stuff by yourself, with onprem automation. Using [Zigbee](https://www.techtarget.com/iotagenda/definition/ZigBee) or [Zwave](https://www.z-wave.com/) devices, in a low-range mesh network.
 
-He's gone a bit overboard with 200 endpoints.  He has a container with a Zigbee daemon running in it.  He has a contingency broker, a home assistant, and others in containers.  
+He's replaced every light switch with a Zigbee light switch. When you're trying to deploy something, you want it to just work. So Jon needed something robust to make sure it stayed up. This is where containerization and Podman comes in.
 
-What he's found useful with Podman is being able to do a test container and not have to deal with his production.  He hasn't looked into monitoring but is using Selinux with enforcement.  That took some effort but is secure.  He's also added cameras using Frigate.  He's looking to offload image recognition.
+He's gone a bit overboard with 200 endpoints. He has a container with a Zigbee daemon running in it. He has a contingency broker, a home assistant, and others in containers.
 
-His biggest challenge to do is hardware passthrough.  Especially so since he wanted to run Virtual Machines with the containers within.  
+What he's found useful with Podman is being able to do a test container and not have to deal with his production. He hasn't looked into monitoring but is using Selinux with enforcement. That took some effort but is secure. He's also added cameras using Frigate. He's looking to offload image recognition.
+
+His biggest challenge to do is hardware passthrough. Especially so since he wanted to run Virtual Machines with the containers within.
 
 He also has to work a bit to map from Docker containers to Podman containers based on info on the web.
 
-He's doing this as rootless.  Not using quadlets yet but is thinking about it.  He also runs home assistants, not just the Google variety, and it all works without the internet being available.
+He's doing this as rootless. Not using quadlets yet but is thinking about it. He also runs home assistants, not just the Google variety, and it all works without the internet being available.
 
-He knows about [Matter](https://csa-iot.org/all-solutions/matter/), a new standard.  He has not tried it himself but might migrate to it.
+He knows about [Matter](https://csa-iot.org/all-solutions/matter/), a new standard. He has not tried it himself but might migrate to it.
 
 He went with Zigbee 3.0, which can be secured. He used it, given it's been out for a while.
 
-He went with Zigbee instead of Zwave, as Zwave started as a proprietary interface.  He'd also heard of Zigbee more and likes the 3.0 encryption available with it.
-
+He went with Zigbee instead of Zwave, as Zwave started as a proprietary interface. He'd also heard of Zigbee more and likes the 3.0 encryption available with it.
 
 ## Podman `build farm` demo
+
 ### Urvashi Mohnani
+
 #### (14:59 in the video)
 
-New command in Podman.  Can do builds locally, but emulation slows them down.  So thought about how to do them on the appropriate machines.  This is where farm comes in.  It uses SSH connections to "native" machines to build a farm which you can send the builds out to.
+New command in Podman. Can do builds locally, but emulation slows them down. So thought about how to do them on the appropriate machines. This is where farm comes in. It uses SSH connections to "native" machines to build a farm which you can send the builds out to.
 
-You can do build, create, list, remove and update.  This builds much more quickly than emulating.
+You can do build, create, list, remove and update. This builds much more quickly than emulating.
 
 If you build on farm nodes, you must first ensure the authentication is set on those nodes.
 
 #### Demo - (16:56 in the video)
+
 Showed a farm build command, setting local to false, ensuring the build would not happen locally, but on the "farm nodes".
 
-After all the builds are successful, the machine will push the images to the registry.  So locally, the images that were built on the farm nodes are not present.
+After all the builds are successful, the machine will push the images to the registry. So locally, the images that were built on the farm nodes are not present.
 
 The second build created an image locally and on the farm node.
 
@@ -60,18 +67,21 @@ Then Urvashi showed [quay.io](https://www.quay.io) with the images that came dow
 
 Showed a diagram of the architecture.
 
-What's the biggest buy for doing farm vs on each machine?  Not much for just two, but for three, four or more.  
+What's the biggest buy for doing farm vs on each machine? Not much for just two, but for three, four or more.
 
 Working on getting this into Desktop now.
 
-The initial connection login sets up the authentication.  The pre-config steps is just setting up the Podman socket on each of the machines.
+The initial connection login sets up the authentication. The pre-config steps is just setting up the Podman socket on each of the machines.
 
-Can you do multi arch on the local machine, and then farm out more to other machines?   One machine arm, x86, second machine in s390, can you do this with emulation on the first machine?  Maybe, but not tested now.
+Can you do multi arch on the local machine, and then farm out more to other machines? One machine arm, x86, second machine in s390, can you do this with emulation on the first machine? Maybe, but not tested now.
 
-##  Apple Hypervisor
+## Apple Hypervisor
+
 ### Brent Baude
+
 #### (28:25 in the video)
-Podman [#21351](https://github.com/containers/podman/pull/21351) PR shown.	
+
+Podman [#21351](https://github.com/containers/podman/pull/21351) PR shown.
 
 Using code in the machine-dev-5 branch off Podman GitHub.
 
@@ -79,59 +89,61 @@ For Apple, it starts with `podman machine init`.
 
 It's pulling form quay.io for now, still working on where the pull will come from.
 
-Then `podman machine start` and the machine started running.  With Apple it uses virt-fs, which is relatively fast.  He showed and old and a new config file, the new one is a lot smaller and less detail required.
+Then `podman machine start` and the machine started running. With Apple it uses virt-fs, which is relatively fast. He showed and old and a new config file, the new one is a lot smaller and less detail required.
 
-There's a stanza for AppleHypervisor.  Note, we will be deprecating qemu for Macs.
+There's a stanza for AppleHypervisor. Note, we will be deprecating qemu for Macs.
 
-Difference between AppleHypervisor and qemu.  Network communications use vsock with AppleHyperVisor is one of the primary reasons.
+Difference between AppleHypervisor and qemu. Network communications use vsock with AppleHyperVisor is one of the primary reasons.
 
 Qcow images are handled a bit better with AppleHV.
 
-Mounts are a lot faster in AppleHypervisor.  
+Mounts are a lot faster in AppleHypervisor.
 
-The Podman team would love to have VirtFS on Windows, but it's not, at least at the moment.   The biggest priority for Podman v5 was working on the configuration files.
+The Podman team would love to have VirtFS on Windows, but it's not, at least at the moment. The biggest priority for Podman v5 was working on the configuration files.
 
-Qemu on Mac hasn't been as stable as we'd like and upstream wasn't very mac-centric.  
-
+Qemu on Mac hasn't been as stable as we'd like and upstream wasn't very mac-centric.
 
 ## Podman 5.0 Changes
+
 ### Matt Heon
+
 #### (45:10 in the video)
-V5 is a breaking change release due to a number of API changes.  cgroups v1 will be deprecated, likely gone in Podman 6.  The BoltDB database will be usable if you upgrade, but new installs won't allow it.
 
-RC1 out likely tomorrow, an early preview.   He expects a long RC cycle.   Hoping to get a release out in early March for Fedora 40.
+V5 is a breaking change release due to a number of API changes. cgroups v1 will be deprecated, likely gone in Podman 6. The BoltDB database will be usable if you upgrade, but new installs won't allow it.
 
-If you're dependent upon Podman, you might want to wait a release or two for bubbling of issues that may come out.  Very heavily under development.
+RC1 out likely tomorrow, an early preview. He expects a long RC cycle. Hoping to get a release out in early March for Fedora 40.
 
-Matt feels very confident in the core Podman code.  The instablity will most likely be in the `podman machine` area.
+If you're dependent upon Podman, you might want to wait a release or two for bubbling of issues that may come out. Very heavily under development.
 
-Dan thinks the breaking changes won't be seen for folks outside of Mac folks.	The API changes will emulate Dockers, but should not out right break as it did between 3.0 and 4.0.  We will check to see if we have a check to disallow 4.0 to 5.0 API and will soften those.  
+Matt feels very confident in the core Podman code. The instablity will most likely be in the `podman machine` area.
+
+Dan thinks the breaking changes won't be seen for folks outside of Mac folks. The API changes will emulate Dockers, but should not out right break as it did between 3.0 and 4.0. We will check to see if we have a check to disallow 4.0 to 5.0 API and will soften those.
 
 Podman info will have changes.
 
-How to get Podman v5 when it comes out?   Still being considered.
-
+How to get Podman v5 when it comes out? Still being considered.
 
 ## Open Forum/Questions?
-#### 
 
- 1) None
+####
+
+1.  None
 
 ## Topics for Next Meeting
 
- 1) Deploy LLMs with Podman and K8s - Steffen Röcker
- 2) podman manifest support for artifacts.
- 3) Podman Desktop update demo
-
+1.  Deploy LLMs with Podman and K8s - Steffen Röcker
+2.  podman manifest support for artifacts.
+3.  Podman Desktop update demo
 
 ## Next Meeting: Tuesday, April 2, 2024, 11:00 a.m. Eastern (UTC-4)
+
 ## Next Cabal Meeting: Tuesday, February 20, 2024, 11:00 a.m. Eastern (UTC-5)
 
 ### Meeting End: 11:58 p.m. Eastern (UTC-5)
 
-
 ## Google Meet Chat copy/paste:
- ```
+
+```
  Daniel Walsh
  11:09 AM
  Are you using quadlets to run  your services?
@@ -184,10 +196,11 @@ How to get Podman v5 when it comes out?   Still being considered.
  11:57 AM
  discussion on podman machine for linux: https://github.com/containers/podman-desktop/discussions/5762
  xrq-uemd-bzy
- ```
+```
 
 ## Raw Google Meet Transcription
- ```
+
+```
 to replacing the cellscript with the single command click.
 Urvashi Mohnani: Yeah.
 Urvashi Mohnani: Yeah.

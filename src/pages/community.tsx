@@ -56,18 +56,13 @@ const CommunityChatSection = (): JSX.Element => {
 
 const CommunityMeetingSection = (): JSX.Element => {
   return (
-    <section className="bg-gradient-to-b from-white via-gray-50 to-gray-100 pb-8 dark:from-gray-900 dark:to-gray-900">
+    <section className="bg-white pb-8 dark:bg-gray-900">
       <div className="container flex flex-col">
         <SectionHeader
           title={communityMeetings.title}
           description={communityMeetings.subtitle}
           textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
           textGradient={true}
-        />
-        <img
-          src={communityMeetings.image.path}
-          alt={communityMeetings.image.alt}
-          className="order-first mx-auto object-cover lg:max-w-lg"
         />
         <CommunityMeetingsCardGrid cards={communityMeetings.cards} />
       </div>
@@ -77,7 +72,7 @@ const CommunityMeetingSection = (): JSX.Element => {
 
 const MailingListSection = (): JSX.Element => {
   return (
-    <section>
+    <section id="mailing-list">
       <div className="container grid gap-4 lg:grid-cols-2">
         <SectionHeader
           title={mailingList.title}
