@@ -34,10 +34,12 @@ const BlogArticlesList: React.FC<BlogArticlesListProps> = ({
   }
 
   const containerClasses =
-    containerLayout === 'vertical' ? 'flex flex-col gap-4' : 'flex flex-wrap justify-center gap-4';
+    containerLayout === 'vertical'
+      ? 'mt-6 flex flex-col gap-6 sm:mt-8'
+      : 'container mx-auto mt-6 max-w-4xl grid grid-cols-1 gap-6 px-4 sm:mt-8 sm:px-6 md:grid-cols-2 lg:px-8';
 
   return (
-    <section className={sectionClassName}>
+    <section className={sectionClassName || 'my-12 xl:my-20'}>
       <SectionHeader title={title} textColor={titleColor} />
       <div className={containerClasses}>
         {data.slice(0, actualDisplayCount).map((card, index) => (
@@ -47,7 +49,7 @@ const BlogArticlesList: React.FC<BlogArticlesListProps> = ({
             author_link={card.author_info.author_link}
             display_name={card.author_info.display_name}
             subtitle={card.excerpt.rendered}
-            date={card.wbDate}
+            date={card.date || card.wbDate}
             imgSrc={card.jetpack_featured_media_url}
             path={card.link}
             altLayout={altLayout}
