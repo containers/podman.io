@@ -2,20 +2,22 @@
 
 ## September 21, 2023 11:00 a.m. Eastern (UTC-5)
 
-## Attendees: 
+## Attendees:
+
 Aditya Rajan, Anders F Björklund, Ashley Cui, Ed Santiago Munoz, Jake Correnti, Justin Jereza, Lokesh Mandvekar, Martin Jackson, Matt Heon, Miloslav Trmac, Mohan Boddu, Nalin Dahyabhai, Paul Holzinger, Tom Sweeney, Valentin Rothberg
 
 ## September 21, 2023 Topics
 
 1. Default settings for Podman 4.7
-    * zstd:chunked + gzip by default
-    * default_rootless_network_cmd = "pasta" by default
-    * Deprecate podman generate systemd
-    * Deprecate CNI
-    * Others
-    
+
+- zstd:chunked + gzip by default
+- default_rootless_network_cmd = "pasta" by default
+- Deprecate podman generate systemd
+- Deprecate CNI
+- Others
 
 ### Meeting Notes
+
 Video [Recording](https://youtu.be/By7wb1tOvLc)
 
 Meeting start 11:02 a.m. Thursday, September 21, 2023
@@ -23,25 +25,25 @@ Meeting start 11:02 a.m. Thursday, September 21, 2023
 #### Default settings for Podman 4.7
 
 RC1 is out now, possibly RC2 this week, and Podman v4.7 final next week.  
-Configuration changes discussion.  SQLite DB is not default but is available.  Matt would like to swap the default DB to SQLite for the v4.7 code.  Not currently in the main branch, but can be done easily.
+Configuration changes discussion. SQLite DB is not default but is available. Matt would like to swap the default DB to SQLite for the v4.7 code. Not currently in the main branch, but can be done easily.
 
-Tom asked if it could be done for RC2.  Might be too soon to release. Could we do Podman v4.8 in late Fall, then v4.9 in January 2024?
+Tom asked if it could be done for RC2. Might be too soon to release. Could we do Podman v4.8 in late Fall, then v4.9 in January 2024?
 
 OK for 4.8, maybe to do for late November/Early December and then target RHEL 4.9 for RHEL.
 
 For 4.8 we will do SQLite, and then plan around what else will fit in there.
 
-Valentin brought up that there is work to be done before just flipping it.  He also thinks we should not merge "features" into any RC.  Can be toggled by containers.conf setting.
+Valentin brought up that there is work to be done before just flipping it. He also thinks we should not merge "features" into any RC. Can be toggled by containers.conf setting.
 
 Podman v4.7 has branched, and changes to main can be done now with SQLite being the default.
 
-zstd:chunked not ready for primetime.  Giuseppe says to push out for now and not deliver.  Hopefully to be completed in the next few weeks.  Maybe in time for RHEL 4.8.  However, Valentin is concerned this might break existing images and it should be pushed to Podman v5.0.  Risk management needs to be completed before we add it in.
+zstd:chunked not ready for primetime. Giuseppe says to push out for now and not deliver. Hopefully to be completed in the next few weeks. Maybe in time for RHEL 4.8. However, Valentin is concerned this might break existing images and it should be pushed to Podman v5.0. Risk management needs to be completed before we add it in.
 
-zstd:chunked needs a lot of soak before we deliver for RHEL.  It won't be ready by Podman v4.8.  A meeting to be held later to discuss delivery in more detail.
+zstd:chunked needs a lot of soak before we deliver for RHEL. It won't be ready by Podman v4.8. A meeting to be held later to discuss delivery in more detail.
 
-Default network to "pasta".  Paul doesn't think this is stable enough now.  He wants to wait for networking stuff to get working.  Mostly work to do in Podman, a little from the pasta project folks.  We will need to get a prioritized card for pasta development.  
+Default network to "pasta". Paul doesn't think this is stable enough now. He wants to wait for networking stuff to get working. Mostly work to do in Podman, a little from the pasta project folks. We will need to get a prioritized card for pasta development.
 
-About a week of coding for Paul, then dealing with port forwarding and adjusting from there.  That's harder to estimate the time necessary.  The team needs to prioritize this.  Matt would like to see this in Podman v5.0.  Users are using it now, and are fixing bugs and stabilizing.
+About a week of coding for Paul, then dealing with port forwarding and adjusting from there. That's harder to estimate the time necessary. The team needs to prioritize this. Matt would like to see this in Podman v5.0. Users are using it now, and are fixing bugs and stabilizing.
 
 Podman v5.0 delivery sometime in early summer is current thinking, but not a commitment.
 
@@ -49,34 +51,36 @@ A lot of the breaking changes anticipated for Podman v5.0 are 'podman machine' r
 
 Podman v5.0 list of features doc to be put together by Matt in the next week or two.
 
-Deprecate podman generate systemd is deprecated, but not dropped.  A warning is issued now, no new features only.  It could be kept as deprecated for Podman v5.0.
+Deprecate podman generate systemd is deprecated, but not dropped. A warning is issued now, no new features only. It could be kept as deprecated for Podman v5.0.
 
-Matt talked about dropping CNI in Podman v4.8, Tom questioned if it should be Podman v5.0.  Matt will put a deprecated notice in soon.  Then Brent is fine with dropping on Podman v5.0, Brent to put it together.
+Matt talked about dropping CNI in Podman v4.8, Tom questioned if it should be Podman v5.0. Matt will put a deprecated notice in soon. Then Brent is fine with dropping on Podman v5.0, Brent to put it together.
 
-Ideally, Brent thinks Podman v5.0 in the early Spring 2024, then v5.1 before Summit in May 2024.   Paul is concerned about showing too many warnings during runtime for CNI but is good with documenting.
+Ideally, Brent thinks Podman v5.0 in the early Spring 2024, then v5.1 before Summit in May 2024. Paul is concerned about showing too many warnings during runtime for CNI but is good with documenting.
 
 Tom to run down the deprecation notice of CNI in RHEL 9.3.
 
-Anything else to be changed in Podman v4.8?  Brent would like a containers.conf version 2.  Brent would like JSON.config to be the same for all providers in podman machine.  Also, a transition from v4 to v5 of podman machine would not be a thing, to be debated.
+Anything else to be changed in Podman v4.8? Brent would like a containers.conf version 2. Brent would like JSON.config to be the same for all providers in podman machine. Also, a transition from v4 to v5 of podman machine would not be a thing, to be debated.
 
 Brent is looking to not overtax the team on machine migration issues.
 
-Specgen work is also being considered for remote capabilities.  We may also need code refactoring between "local" and "remote" within the code.
+Specgen work is also being considered for remote capabilities. We may also need code refactoring between "local" and "remote" within the code.
 
-A discussion to be put into GitHub after the initial changes are identified by Brent, Mark, and Matt for what changes should be in Podman v5.0.  So the community can add their own thoughts and requests there.
+A discussion to be put into GitHub after the initial changes are identified by Brent, Mark, and Matt for what changes should be in Podman v5.0. So the community can add their own thoughts and requests there.
 
 #### Open discussion
+
 1. None
- 
+
 ### Next Meeting: Thursday, October 19, 2023, 11:00 a.m. EDT (UTC-5)
 
 #### Possible Topics
-1. None discussed
 
+1. None discussed
 
 ### Next Community Meeting: Tuesday, October 4, 2023, 11:00 a.m. EDT (UTC-5)
 
 #### Possible Topics:
+
 1. None discussed
 
 Meeting finished 11:54 a.m.

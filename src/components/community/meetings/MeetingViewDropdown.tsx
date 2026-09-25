@@ -88,7 +88,7 @@ export const MeetingViewDropdown: React.FC<MeetingViewDropdownProps> = ({ active
           role="menu"
           aria-orientation="vertical"
           style={{ backgroundColor: '#892ca0' }}
-          className="absolute left-0 top-full z-30 mt-2 w-56 overflow-hidden rounded-xl p-1.5 shadow-xl">
+          className="absolute right-0 top-full z-50 mt-2 w-56 max-w-[calc(100vw-48px)] overflow-hidden rounded-xl p-1.5 shadow-2xl">
           {/* "View" label */}
           <div style={{ color: '#ffffff' }} className="px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-widest">
             View

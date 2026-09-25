@@ -9,6 +9,8 @@ type CommunityMeetingsCardProps = {
   subtitle: string;
   date: string;
   timeZone: string;
+  isPaused?: boolean;
+  statusNote?: string;
   buttons: Array<{
     text: string;
     path: string;
@@ -73,7 +75,10 @@ function MeetingCard({
 
       {/* Cadence / Date */}
       <div className="meeting-cadence mb-4 flex items-center gap-2">
-        <Icon icon="material-symbols:calendar-today-rounded" className="shrink-0 text-base" />
+        <Icon
+          icon={card.isPaused ? 'material-symbols:hourglass-empty-rounded' : 'material-symbols:calendar-today-rounded'}
+          className={`shrink-0 text-base ${card.isPaused ? 'text-amber-600 dark:text-amber-400' : ''}`}
+        />
         <p className="text-sm font-semibold">{parseBold(card.date)}</p>
       </div>
 
@@ -84,27 +89,26 @@ function MeetingCard({
 
       {/* Buttons — guaranteed breathing room above and pinned to bottom */}
       <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-6">
-        {/* Join Meeting — solid brand purple button */}
-        {card.buttons[0] && (
+        {/* Join Meeting / Action buttons */}
+        {card.buttons.map((btn, i) => (
           <Link
-            to={card.buttons[0].path}
+            key={i}
+            to={btn.path}
             style={{ textDecoration: 'none' }}
-            className="meeting-btn-join inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-bold !no-underline shadow-sm">
-            <Icon icon="material-symbols:video-camera-front-rounded" className="text-sm" />
-            <span>{card.buttons[0].text}</span>
+            className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-bold !no-underline ${
+              i === 0 && !card.isPaused ? 'meeting-btn-join shadow-sm' : 'meeting-btn-agenda shadow-xs'
+            }`}>
+            <Icon
+              icon={
+                btn.text.toLowerCase().includes('join')
+                  ? 'material-symbols:video-camera-front-rounded'
+                  : 'material-symbols:article-outline-rounded'
+              }
+              className="text-sm"
+            />
+            <span>{btn.text}</span>
           </Link>
-        )}
-
-        {/* Meeting Agenda — light lavender in light mode, translucent purple in dark mode */}
-        {card.buttons[1] && (
-          <Link
-            to={card.buttons[1].path}
-            style={{ textDecoration: 'none' }}
-            className="meeting-btn-agenda shadow-xs inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-bold !no-underline">
-            <Icon icon="material-symbols:article-outline-rounded" className="text-sm" />
-            <span>{card.buttons[1].text}</span>
-          </Link>
-        )}
+        ))}
       </div>
     </div>
   );

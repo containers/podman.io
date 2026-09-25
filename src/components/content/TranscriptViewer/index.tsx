@@ -1,6 +1,8 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, useContext } from 'react';
 import { Icon } from '@iconify/react';
 import { SpeakerDropdown } from './SpeakerDropdown';
+import { VideoOffsetContext } from '@site/src/utils/VideoOffsetContext';
+import { formatVideoOffsetDisplay, dispatchSeekMeetingVideo } from '@site/src/utils/communityMeetings';
 
 export type TranscriptTurn = {
   id: string;
@@ -539,6 +541,7 @@ const TurnRow = React.memo(function TurnRow({
 
   return (
     <div
+      id={`turn-${turn.id}`}
       className={`group flex items-start gap-4 p-4 transition-colors duration-150 ${
         isSelected ? 'bg-purple-100/60 dark:bg-purple-900/30' : 'hover:bg-gray-50/70 dark:hover:bg-[#25242b]/80'
       }`}>
@@ -639,21 +642,112 @@ export function TranscriptViewer({ rawText, onSeekTimestamp }: TranscriptViewerP
     setTimeout(() => setCopiedId(null), 2000);
   }, []);
 
+  const videoOffset = useContext(VideoOffsetContext);
+
   const handleTimestampClick = useCallback(
     (turn: TranscriptTurn) => {
       setActiveTurnId(turn.id);
+      const seekSeconds = Math.max(0, turn.timeSeconds - videoOffset);
       if (onSeekTimestamp) {
-        onSeekTimestamp(turn.timeSeconds);
+        onSeekTimestamp(seekSeconds);
       } else {
-        // Broadcast custom event in case YouTube player is listening
-        window.dispatchEvent(new CustomEvent('seekMeetingVideo', { detail: { seconds: turn.timeSeconds } }));
+        // Broadcast seek event with scrollPlayer=true to scroll up to YouTube video
+        dispatchSeekMeetingVideo(turn.timeSeconds, videoOffset, true);
       }
     },
-    [onSeekTimestamp],
+    [onSeekTimestamp, videoOffset],
   );
 
+  // Subscribe to external scroll-to-transcript events (e.g. from the timeline offset notice button)
+  React.useEffect(() => {
+    const handleScrollToSeconds = (e: Event) => {
+      const customEvent = e as CustomEvent<{ seconds: number }>;
+      const targetSec = customEvent.detail?.seconds;
+      if (typeof targetSec === 'number' && turns.length > 0) {
+        // 1. Exact match
+        let targetTurn: TranscriptTurn | null = turns.find(t => t.timeSeconds === targetSec) || null;
+
+        // 2. Nearest preceding turn (<= targetSec)
+        if (!targetTurn) {
+          const precedingTurns = turns.filter(t => t.timeSeconds <= targetSec);
+          if (precedingTurns.length > 0) {
+            targetTurn = precedingTurns.reduce((prev, curr) => (curr.timeSeconds > prev.timeSeconds ? curr : prev));
+          }
+        }
+
+        // 3. Fallback: closest overall turn if no preceding turn exists
+        if (!targetTurn) {
+          let minDiff = Infinity;
+          for (const t of turns) {
+            const diff = Math.abs(t.timeSeconds - targetSec);
+            if (diff < minDiff) {
+              minDiff = diff;
+              targetTurn = t;
+            }
+          }
+        }
+
+        if (targetTurn) {
+          const turnId = targetTurn.id;
+          setActiveTurnId(turnId);
+          setTimeout(() => {
+            const el = document.getElementById(`turn-${turnId}`);
+            if (el) {
+              const listContainer = el.closest('.transcript-dialogue-list') as HTMLElement | null;
+              if (listContainer) {
+                // 1. Scroll inner transcript dialogue list to target turn
+                listContainer.scrollTo({
+                  top: Math.max(0, el.offsetTop - 12),
+                  behavior: 'smooth',
+                });
+              }
+
+              // 2. Scroll main window DOWN to transcript container ONLY if it's not yet in view
+              const transcriptContainer = document.getElementById('transcript-viewer-container');
+              if (transcriptContainer) {
+                const rect = transcriptContainer.getBoundingClientRect();
+                if (rect.top > 80) {
+                  // Transcript is below current viewport — scroll down to it
+                  window.scrollTo({
+                    top: window.pageYOffset + rect.top - 80,
+                    behavior: 'smooth',
+                  });
+                }
+                // Already in view (or above) — don't touch window scroll
+              }
+            }
+          }, 80);
+        }
+      }
+    };
+
+    window.addEventListener('scrollToTranscriptSeconds', handleScrollToSeconds);
+    return () => window.removeEventListener('scrollToTranscriptSeconds', handleScrollToSeconds);
+  }, [turns]);
+
+  // Subscribe to real-time YouTube video playback updates to sync highlighted transcript turn live
+  React.useEffect(() => {
+    const handleVideoTimeUpdate = (e: Event) => {
+      const customEvent = e as CustomEvent<{ videoSeconds: number }>;
+      const videoSec = customEvent.detail?.videoSeconds;
+      if (typeof videoSec === 'number' && turns.length > 0) {
+        const currentTranscriptSec = videoSec + videoOffset;
+        const precedingTurns = turns.filter(t => t.timeSeconds <= currentTranscriptSec);
+        if (precedingTurns.length > 0) {
+          const activeTurn = precedingTurns.reduce((prev, curr) => (curr.timeSeconds > prev.timeSeconds ? curr : prev));
+          setActiveTurnId(activeTurn.id);
+        }
+      }
+    };
+
+    window.addEventListener('youtubeVideoTimeUpdate', handleVideoTimeUpdate);
+    return () => window.removeEventListener('youtubeVideoTimeUpdate', handleVideoTimeUpdate);
+  }, [turns, videoOffset]);
+
   return (
-    <div className="my-6 w-full overflow-hidden rounded-xl border border-black/[0.08] bg-white shadow-sm transition-all duration-200 dark:border-white/10 dark:bg-[#1b1b1d]">
+    <div
+      id="transcript-viewer-container"
+      className="my-6 w-full overflow-hidden rounded-xl border border-black/[0.08] bg-white shadow-sm transition-all duration-200 dark:border-white/10 dark:bg-[#1b1b1d]">
       {/* Controls Bar: Stats, Search, Speaker Filter — brand purple banner */}
       <div
         style={{ backgroundColor: '#892ca0' }}
@@ -734,13 +828,29 @@ export function TranscriptViewer({ rawText, onSeekTimestamp }: TranscriptViewerP
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between border-t border-black/[0.06] bg-gray-50/50 px-4 py-2 text-xs text-gray-500 dark:border-t dark:border-white/10 dark:bg-[#212027] dark:text-gray-300">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-black/[0.06] bg-gray-50/50 px-4 py-2 text-xs text-gray-500 dark:border-t dark:border-white/10 dark:bg-[#212027] dark:text-gray-300">
         <span>
           Showing {filteredTurns.length} of {turns.length} utterances
         </span>
-        <span className="text-[11px] italic text-gray-500 dark:text-gray-300">
-          💡 Click any timestamp to jump the video recording to that exact moment
-        </span>
+        {videoOffset > 0 ? (
+          <button
+            type="button"
+            onClick={() => {
+              window.dispatchEvent(
+                new CustomEvent('seekMeetingVideo', { detail: { seconds: 0, scrollPlayer: false } }),
+              );
+              window.dispatchEvent(new CustomEvent('scrollToTranscriptSeconds', { detail: { seconds: videoOffset } }));
+            }}
+            title={`Start video at 00:00 and jump to transcript at ${formatVideoOffsetDisplay(videoOffset)}`}
+            style={{ border: 'none', outline: 'none', background: 'transparent' }}
+            className="cursor-pointer text-[11px] font-semibold text-[#892ca0] hover:underline dark:text-[#a542c3]">
+            ⏱️ Timestamps offset by -{formatVideoOffsetDisplay(videoOffset)} for video sync (click to jump)
+          </button>
+        ) : (
+          <span className="text-[11px] italic text-gray-500 dark:text-gray-300">
+            💡 Click any timestamp to jump the video recording to that exact moment
+          </span>
+        )}
       </div>
     </div>
   );

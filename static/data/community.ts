@@ -67,14 +67,12 @@ const communityMeetings = {
     },
     {
       title: 'Podman Community Cabal',
+      isPaused: true,
       subtitle:
-        'The focus of the cabal meeting is the planning and discussion of possible future changes to Podman or the [related Containers projects](https://github.com/containers) and discussing any outstanding issues that might need solving.',
-      date: '**1st Tuesday** of odd numbered months',
-      timeZone: '11 AM US ET /5 PM CET',
-      buttons: [
-        { text: 'Join Meeting', path: CABAL_MEETING_URL },
-        { text: 'Meeting Agenda', path: 'https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both' },
-      ],
+        'The focus of the cabal meeting was planning and discussion of future architectural changes to Podman and related Containers projects. Note: Cabal sessions are currently paused and covered in regular community stand-ups.',
+      date: '**(Paused)** formerly 1st Tuesday of odd numbered months',
+      timeZone: '11 AM US ET / 5 PM CET',
+      buttons: [{ text: 'Meeting Agenda', path: 'https://hackmd.io/gQCfskDuRLm7iOsWgH2yrg?both' }],
     },
   ],
 };

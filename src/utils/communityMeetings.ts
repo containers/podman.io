@@ -15,7 +15,131 @@ export type MeetingItem = {
   Component?: ComponentType<unknown>;
   topics: string[];
   hasTranscript: boolean;
+  /**
+   * How many seconds the Zoom/Meet transcript timestamps are ahead of the
+   * YouTube recording start.  YouTube sometimes cuts the first N minutes of a
+   * meeting, so transcript time 0:07:37 corresponds to video time 0:00:00.
+   * Leave undefined (or omit from the map below) to use 0 — no adjustment.
+   */
+  videoOffset: number;
 };
+
+/**
+ * Per-meeting video offset registry.
+ *
+ * KEY  — meeting id in "YYYY-MM-DD" format
+ * VALUE — offset in SECONDS (transcript time − this value = YouTube seek time)
+ *
+ * Example: the 2024-04-16 Cabal meeting transcript starts ~7 min 37 s before
+ * the YouTube recording, so we set 457 (= 7*60 + 37).
+ *
+ * How to add a new entry:
+ *   '2026-06-03': 7 * 60 + 37,   // 7 min 37 s
+ */
+export const MEETING_VIDEO_OFFSETS: Record<string, number> = {
+  // Cabal
+  '2025-09-02': 12 * 60 + 57, // 12 min 57 s
+  '2025-11-04': 10 * 60 + 58, // 10 min 58 s
+  '2026-03-03': 7 * 60 + 15, // 7 min 15 s
+  '2026-05-05': 10 * 60 + 15, // 10 min 15 s
+
+  // Community
+  '2025-10-07': 10 * 60 + 55, // 10 min 55 s
+  '2025-12-02': 7 * 60 + 36, // 7 min 36 s
+  '2026-02-03': 7 * 60 + 14, // 7 min 14 s
+  '2026-04-07': 6 * 60 + 2, // 6 min 2 s
+  '2026-06-02': 4 * 60 + 24, // 4 min 24 s
+  '2026-08-04': 10 * 60 + 52, // 10 min 52 s
+};
+
+/**
+ * Frontmatter shape written at the top of each meeting .md file.
+ * New meetings should declare these; old ones are handled by the MDX tree fallback.
+ */
+type MeetingFrontMatter = {
+  recording?: string;
+  recordingText?: string;
+  isCabal?: boolean;
+};
+
+type RecordingInfo = {
+  url: string;
+  text: string;
+};
+
+/** Typed shape of an imported MDX/MD module from Docusaurus. */
+type MdxModule = {
+  contentTitle?: string;
+  toc?: Array<{ value?: string }>;
+  frontMatter?: MeetingFrontMatter;
+  /** Some Docusaurus MDX pipelines nest front matter here */
+  metadata?: { frontMatter?: MeetingFrontMatter };
+  default?: (ref: unknown) => unknown;
+};
+
+const RECORDING_HREF_RE = /(?:youtube\.com|youtu\.be|bluejeans\.com|drive\.google\.com)/i;
+
+/** Read recording info directly from frontmatter — fast and reliable. */
+function extractRecordingFromFrontMatter(fm?: MeetingFrontMatter): RecordingInfo | undefined {
+  if (!fm?.recording) return undefined;
+  return { url: fm.recording, text: fm.recordingText || 'Watch Recording' };
+}
+
+/** Recursively collect all text from a React-like node tree. */
+function collectText(node: unknown): string {
+  if (node == null || typeof node === 'boolean') return '';
+  if (typeof node === 'string' || typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(collectText).join('');
+  if (typeof node === 'object' && node !== null && 'props' in node) {
+    const props = (node as { props?: { children?: unknown } }).props;
+    return collectText(props?.children);
+  }
+  return '';
+}
+
+/**
+ * Fallback for meetings without frontmatter: recursively walk the rendered MDX
+ * tree and return the first <a href> pointing at a known recording host.
+ * Unlike the old children[0]/children[1] walk, this is structure-agnostic and
+ * will not break if someone formats the paragraph differently.
+ */
+export function extractRecordingFromMdxTree(root: unknown): RecordingInfo | undefined {
+  const visit = (node: unknown): RecordingInfo | undefined => {
+    if (node == null) return undefined;
+    if (Array.isArray(node)) {
+      for (const child of node) {
+        const found = visit(child);
+        if (found) return found;
+      }
+      return undefined;
+    }
+    if (typeof node !== 'object' || !('props' in node)) return undefined;
+    const el = node as { props?: { href?: string; children?: unknown } };
+    const href = el.props?.href;
+    if (typeof href === 'string' && href) {
+      const label = collectText(el.props?.children).trim() || 'Watch Recording';
+      if (RECORDING_HREF_RE.test(href) || /recording|bluejeans|video/i.test(label)) {
+        return { url: href, text: label };
+      }
+    }
+    return visit(el.props?.children);
+  };
+  return visit(root);
+}
+
+/** Resolve recording info: frontmatter first, MDX tree walk as fallback. */
+function resolveRecording(file: MdxModule): RecordingInfo | undefined {
+  const fm = file.frontMatter ?? file.metadata?.frontMatter;
+  const fromFrontMatter = extractRecordingFromFrontMatter(fm);
+  if (fromFrontMatter) return fromFrontMatter;
+
+  if (typeof file.default !== 'function') return undefined;
+  try {
+    return extractRecordingFromMdxTree(file.default({ current: null }));
+  } catch {
+    return undefined;
+  }
+}
 
 /**
  * Extract clean, reader-friendly discussion topic titles from MDX table-of-contents headings.
@@ -86,11 +210,8 @@ export function getAllMeetings(): MeetingItem[] {
   Object.entries(markDownFiles).forEach(([key, mdFile]: [string, unknown]) => {
     if (!mdFile) return;
 
-    const file = mdFile as {
-      contentTitle?: string;
-      toc?: Array<{ value?: string }>;
-      default?: (ref: unknown) => { props?: { children?: Array<{ props?: { children?: unknown[]; href?: string } }> } };
-    };
+    const file = mdFile as MdxModule;
+    const frontMatter = file.frontMatter ?? file.metadata?.frontMatter;
 
     // key is like "F20260804"
     const rawDateStr = key.replace(/^F/, '');
@@ -101,7 +222,7 @@ export function getAllMeetings(): MeetingItem[] {
     const year = parseInt(yearStr, 10);
 
     const title: string = file.contentTitle || 'Podman Community Meeting Notes';
-    const isCabal = title.toLowerCase().includes('cabal');
+    const isCabal = frontMatter?.isCabal ?? title.toLowerCase().includes('cabal');
 
     const tocVal: string = (file.toc?.[0]?.value as string) || '';
     const datePart = tocVal.split(/[0-9]{1,2}:[0-9]{2}/)[0].trim() || id;
@@ -117,32 +238,10 @@ export function getAllMeetings(): MeetingItem[] {
       // fallback
     }
 
-    // Extract recording link
-    let recordingUrl: string | undefined = undefined;
-    let recordingText = 'Watch Recording';
-
-    try {
-      const dummyRef = { current: null };
-      const mdReader = typeof file.default === 'function' ? file.default(dummyRef) : null;
-      if (mdReader?.props?.children) {
-        for (const child of mdReader.props.children) {
-          const field1 = child?.props?.children?.[0];
-          const field2 = child?.props?.children?.[1] as { props?: { href?: string; children?: string } } | undefined;
-          if (
-            typeof field1 === 'string' &&
-            (field1.includes('BlueJeans') || field1.includes('Video') || field1.includes('Recording'))
-          ) {
-            if (field2?.props?.href) {
-              recordingUrl = field2.props.href;
-              recordingText = field2.props.children || 'Watch Recording';
-              break;
-            }
-          }
-        }
-      }
-    } catch {
-      // ignore
-    }
+    // Prefer frontmatter; fall back to a structure-agnostic MDX link walk.
+    const recording = resolveRecording(file);
+    const recordingUrl = recording?.url;
+    const recordingText = recording?.text || 'Watch Recording';
 
     const tocHeadings = Array.isArray(file.toc)
       ? file.toc.map(item => (typeof item?.value === 'string' ? item.value : '')).filter(Boolean)
@@ -165,6 +264,7 @@ export function getAllMeetings(): MeetingItem[] {
       Component: file.default as ComponentType<unknown> | undefined,
       topics,
       hasTranscript,
+      videoOffset: MEETING_VIDEO_OFFSETS[id] ?? 0,
     });
   });
 
@@ -296,16 +396,38 @@ export const SEEK_MEETING_VIDEO_EVENT = 'seekMeetingVideo';
 
 export interface SeekMeetingVideoDetail {
   seconds: number;
+  scrollPlayer?: boolean;
 }
 
 /**
  * Dispatches a typed custom event to seek the active embedded video player.
+ *
+ * @param transcriptSeconds — raw timestamp from the transcript (in seconds)
+ * @param videoOffset       — how many seconds the transcript is ahead of the
+ *                            YouTube recording (from MeetingItem.videoOffset).
+ *                            Defaults to 0 (no adjustment).
+ * @param scrollPlayer      — whether to scroll the video player into view (default: true)
+ *
+ * The player will seek to max(0, transcriptSeconds − videoOffset).
  */
-export function dispatchSeekMeetingVideo(seconds: number): void {
+export function dispatchSeekMeetingVideo(transcriptSeconds: number, videoOffset = 0, scrollPlayer = true): void {
   if (typeof window === 'undefined') return;
+  const targetSeconds = Math.max(0, Math.floor(transcriptSeconds - videoOffset));
   window.dispatchEvent(
     new CustomEvent<SeekMeetingVideoDetail>(SEEK_MEETING_VIDEO_EVENT, {
-      detail: { seconds: Math.max(0, Math.floor(seconds)) },
+      detail: { seconds: targetSeconds, scrollPlayer },
     }),
   );
+}
+
+/**
+ * Formats a video offset in seconds into a human-readable duration like "10 min 55 sec".
+ */
+export function formatVideoOffsetDisplay(totalSeconds: number): string {
+  if (!totalSeconds || totalSeconds <= 0) return '0 sec';
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  if (m > 0 && s > 0) return `${m} min ${s} sec`;
+  if (m > 0) return `${m} min`;
+  return `${s} sec`;
 }

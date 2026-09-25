@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Icon } from '@iconify/react';
 import type { MeetingItem } from '@site/src/utils/communityMeetings';
 import {
@@ -13,14 +13,8 @@ export interface MeetingVideoPlayerProps {
 
 export const MeetingVideoPlayer: React.FC<MeetingVideoPlayerProps> = ({ meeting }) => {
   const youtubeId = extractYouTubeId(meeting.recordingUrl);
-  const [videoSeekAction, setVideoSeekAction] = useState<{ seconds: number; reqId: number } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
-
-  // Reset seek state when meeting changes
-  useEffect(() => {
-    setVideoSeekAction(null);
-  }, [meeting.id]);
 
   // Subscribe to timestamp seek events
   useEffect(() => {
@@ -28,9 +22,10 @@ export const MeetingVideoPlayer: React.FC<MeetingVideoPlayerProps> = ({ meeting 
       const customEvent = e as CustomEvent<SeekMeetingVideoDetail>;
       if (typeof customEvent.detail?.seconds === 'number') {
         const targetSeconds = Math.max(0, Math.floor(customEvent.detail.seconds));
+        const shouldScrollPlayer = Boolean(customEvent.detail?.scrollPlayer);
 
-        // Smoothly scroll the video player into view
-        if (containerRef.current) {
+        // Smoothly scroll the video player into view only if explicitly requested
+        if (shouldScrollPlayer && containerRef.current) {
           containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
@@ -54,12 +49,9 @@ export const MeetingVideoPlayer: React.FC<MeetingVideoPlayerProps> = ({ meeting 
               '*',
             );
           } catch {
-            // Handled via state fallback
+            // ignore
           }
         }
-
-        // Trigger iframe URL start parameter update
-        setVideoSeekAction({ seconds: targetSeconds, reqId: Date.now() });
       }
     };
 
@@ -67,16 +59,81 @@ export const MeetingVideoPlayer: React.FC<MeetingVideoPlayerProps> = ({ meeting 
     return () => window.removeEventListener(SEEK_MEETING_VIDEO_EVENT, handleSeek);
   }, []);
 
+  // Poll YouTube video currentTime every 500ms and dispatch youtubeVideoTimeUpdate
+  useEffect(() => {
+    if (!youtubeId) return;
+
+    const handleWindowMessage = (e: MessageEvent) => {
+      if (!e.data) return;
+      try {
+        let data = e.data;
+        if (typeof data === 'string') {
+          data = JSON.parse(data);
+        }
+        if (data.event === 'infoDelivery' && typeof data.info?.currentTime === 'number') {
+          const videoSeconds = data.info.currentTime;
+          window.dispatchEvent(
+            new CustomEvent('youtubeVideoTimeUpdate', {
+              detail: { videoSeconds },
+            }),
+          );
+        }
+      } catch {
+        // ignore non-JSON messages
+      }
+    };
+
+    window.addEventListener('message', handleWindowMessage);
+
+    const sendListening = () => {
+      if (iframeRef.current && iframeRef.current.contentWindow) {
+        try {
+          iframeRef.current.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 1 }), '*');
+        } catch {
+          // ignore
+        }
+      }
+    };
+
+    const timer = setTimeout(sendListening, 800);
+
+    const interval = setInterval(() => {
+      if (iframeRef.current && iframeRef.current.contentWindow) {
+        try {
+          iframeRef.current.contentWindow.postMessage(
+            JSON.stringify({
+              event: 'command',
+              func: 'getCurrentTime',
+              args: [],
+            }),
+            '*',
+          );
+        } catch {
+          // ignore
+        }
+      }
+    }, 400);
+
+    return () => {
+      window.removeEventListener('message', handleWindowMessage);
+      clearTimeout(timer);
+      clearInterval(interval);
+    };
+  }, [youtubeId]);
+
   if (youtubeId) {
+    const origin = typeof window !== 'undefined' ? window.location.origin : '';
+    const iframeSrc = `https://www.youtube-nocookie.com/embed/${youtubeId}?enablejsapi=1&rel=0${
+      origin ? `&origin=${encodeURIComponent(origin)}` : ''
+    }`;
+
     return (
       <div className="mb-8" ref={containerRef}>
         <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-black/[0.08] bg-black shadow-md dark:border-white/10">
           <iframe
             ref={iframeRef}
-            key={`${youtubeId}-${videoSeekAction?.reqId ?? 'init'}`}
-            src={`https://www.youtube-nocookie.com/embed/${youtubeId}?enablejsapi=1&rel=0${
-              videoSeekAction !== null ? `&start=${videoSeekAction.seconds}&autoplay=1` : ''
-            }`}
+            key={youtubeId}
+            src={iframeSrc}
             title={`Recording for ${meeting.title} - ${meeting.date}`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen

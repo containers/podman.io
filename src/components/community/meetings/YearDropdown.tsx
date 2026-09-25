@@ -79,7 +79,7 @@ export const YearDropdown: React.FC<YearDropdownProps> = ({
       {isOpen && (
         <div
           role="listbox"
-          className="no-scrollbar meetings-year-menu absolute right-0 z-50 mt-2 max-h-80 w-56 overflow-y-auto rounded-2xl border border-[#d0ccd8] bg-white p-2 shadow-2xl dark:border-[#443e50] dark:bg-[#1e1d24]"
+          className="no-scrollbar meetings-year-menu absolute left-0 z-50 mt-2 max-h-80 w-56 max-w-[calc(100vw-32px)] overflow-y-auto rounded-2xl border border-[#d0ccd8] bg-white p-2 shadow-2xl dark:border-[#443e50] dark:bg-[#1e1d24] sm:left-auto sm:right-0"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           <button
             type="button"

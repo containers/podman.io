@@ -6,6 +6,7 @@ import { MDXProvider } from '@mdx-js/react';
 import WaveBorder from '@site/src/components/shapes/WaveBorder';
 import type { MeetingItem } from '@site/src/utils/communityMeetings';
 import { getCabalMeetings, getCommunityMeetings } from '@site/src/utils/communityMeetings';
+import { VideoOffsetContext } from '@site/src/utils/VideoOffsetContext';
 import {
   MeetingCategory,
   MeetingTypeSwitcher,
@@ -18,7 +19,20 @@ import {
   meetingMdxComponents,
 } from '@site/src/components/community/meetings';
 
+function useIsMobileLayout(): boolean {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+  return isMobile;
+}
+
 function MeetingsPage(): JSX.Element {
+  const isMobileLayout = useIsMobileLayout();
   const communityMeetings = useMemo(() => getCommunityMeetings(), []);
   const cabalMeetings = useMemo(() => getCabalMeetings(), []);
 
@@ -315,8 +329,8 @@ function MeetingsPage(): JSX.Element {
                 </div>
               </div>
 
-              {/* Embedded Video Player */}
-              <MeetingVideoPlayer meeting={meeting} />
+              {/* Embedded Video Player — only render in the active viewport layout to prevent duplicate audio */}
+              {isMobile === isMobileLayout && <MeetingVideoPlayer meeting={meeting} />}
 
               {/* View Selector — sits between video and content for natural flow */}
               <div className="mt-8 flex flex-wrap items-center justify-between gap-3 sm:flex-nowrap">
@@ -332,17 +346,19 @@ function MeetingsPage(): JSX.Element {
               </div>
 
               {/* Render Markdown Content with MDX Provider */}
-              <MeetingTabContext.Provider value={{ activeTab }}>
-                <div className="meeting-notes-content mt-6 max-w-none">
-                  {meeting.Component ? (
-                    <MDXProvider components={meetingMdxComponents}>
-                      <meeting.Component />
-                    </MDXProvider>
-                  ) : (
-                    <p className="dark:text-gray-400 text-gray-500">No notes available for this meeting.</p>
-                  )}
-                </div>
-              </MeetingTabContext.Provider>
+              <VideoOffsetContext.Provider value={meeting.videoOffset}>
+                <MeetingTabContext.Provider value={{ activeTab }}>
+                  <div className="meeting-notes-content mt-6 max-w-none">
+                    {meeting.Component ? (
+                      <MDXProvider components={meetingMdxComponents}>
+                        <meeting.Component />
+                      </MDXProvider>
+                    ) : (
+                      <p className="dark:text-gray-400 text-gray-500">No notes available for this meeting.</p>
+                    )}
+                  </div>
+                </MeetingTabContext.Provider>
+              </VideoOffsetContext.Provider>
             </div>
           );
 

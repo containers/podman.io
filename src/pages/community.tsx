@@ -64,7 +64,7 @@ const CommunityMeetingSection = (): JSX.Element => {
           textGradientStops="from-purple-500 to-purple-700 dark:text-purple-500"
           textGradient={true}
         />
-        <CommunityMeetingsCardGrid cards={communityMeetings.cards.slice(0, 1)} />
+        <CommunityMeetingsCardGrid cards={communityMeetings.cards} />
       </div>
     </section>
   );

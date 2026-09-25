@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Icon } from '@iconify/react';
 import TranscriptViewer, {
   ChatLogViewer,
@@ -6,7 +6,12 @@ import TranscriptViewer, {
   isChatContent,
   isNotCapturedContent,
 } from '@site/src/components/content/TranscriptViewer';
-import { extractTimestampSeconds, dispatchSeekMeetingVideo } from '@site/src/utils/communityMeetings';
+import {
+  extractTimestampSeconds,
+  dispatchSeekMeetingVideo,
+  formatVideoOffsetDisplay,
+} from '@site/src/utils/communityMeetings';
+import { VideoOffsetContext } from '@site/src/utils/VideoOffsetContext';
 
 /**
  * Extracts plain text recursively from React nodes (used for MDX code blocks).
@@ -37,15 +42,19 @@ const MeetingAnchor: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement>> = (
       .trim();
   }
 
+  const videoOffset = useContext(VideoOffsetContext);
   const timestampSeconds = extractTimestampSeconds(href, textContent);
-  const isTimestamp = timestampSeconds !== null;
+  const isYouTubeLink = href ? /(?:youtube\.com|youtu\.be)/i.test(href) : false;
+  const isTimestamp = timestampSeconds !== null || isYouTubeLink;
+  const targetSeconds = timestampSeconds ?? 0;
   const isTimeString = Boolean(textContent && /\b\d{1,2}:\d{2}(?::\d{2})?\b/.test(textContent));
 
   if (isTimestamp) {
     const handleSeekClick = (e: React.MouseEvent) => {
       e.preventDefault();
       e.stopPropagation();
-      dispatchSeekMeetingVideo(timestampSeconds);
+      // Note timestamps (e.g. "[00:35] in the video") are already relative to the YouTube video start
+      dispatchSeekMeetingVideo(targetSeconds, 0, true);
     };
 
     if (isTimeString) {
@@ -195,6 +204,7 @@ export const meetingMdxComponents = {
   },
   wrapper: ({ children }: { children?: React.ReactNode }) => {
     const { activeTab } = React.useContext(MeetingTabContext);
+    const videoOffset = React.useContext(VideoOffsetContext);
     const childArray = React.Children.toArray(children);
 
     const notesElements: React.ReactNode[] = [];
@@ -252,7 +262,68 @@ export const meetingMdxComponents = {
           </div>
         );
       }
-      return <div className="meeting-transcript-section space-y-6">{transcriptElements}</div>;
+      return (
+        <div className="meeting-transcript-section space-y-6">
+          {videoOffset > 0 &&
+            (() => {
+              const mins = Math.floor(videoOffset / 60);
+              const secs = videoOffset % 60;
+              const timestampLabel =
+                mins > 0 && secs > 0
+                  ? `${mins}:${String(secs).padStart(2, '0')}`
+                  : mins > 0
+                    ? `${mins}:00`
+                    : `0:${String(secs).padStart(2, '0')}`;
+              const handleNoticeClick = (e: React.MouseEvent) => {
+                e.preventDefault();
+                dispatchSeekMeetingVideo(0, 0, false);
+                window.dispatchEvent(
+                  new CustomEvent('scrollToTranscriptSeconds', { detail: { seconds: videoOffset } }),
+                );
+                setTimeout(() => {
+                  const el = document.getElementById('transcript-viewer-container');
+                  if (el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top > 80) {
+                      window.scrollTo({ top: window.pageYOffset + rect.top - 80, behavior: 'smooth' });
+                    }
+                  }
+                }, 60);
+              };
+              return (
+                <div className="mb-6 rounded-xl bg-white p-4 shadow dark:bg-[#1a1025] dark:shadow-[0_1px_6px_rgba(0,0,0,0.4)]">
+                  <div className="flex items-start gap-3.5">
+                    <div className="shadow-xs flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#892ca0] text-white">
+                      <Icon icon="material-symbols:schedule-outline-rounded" className="text-xl text-white" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="mb-1 text-xs font-bold uppercase tracking-wide text-[#892ca0] dark:text-[#a542c3]">
+                        Recording Timeline Offset
+                      </p>
+                      <p className="mb-3 text-xs leading-relaxed text-gray-700 dark:text-gray-300 sm:text-sm">
+                        <span className="font-semibold text-gray-900 dark:text-white">
+                          {formatVideoOffsetDisplay(videoOffset)}
+                        </span>{' '}
+                        of this meeting were not captured in the YouTube recording — the video was cut short at the
+                        start.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={handleNoticeClick}
+                        title={`Start video at 0:00 and jump to transcript at ${timestampLabel}`}
+                        style={{ border: 'none', outline: 'none', textDecoration: 'none' }}
+                        className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[#892ca0] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#722387] dark:bg-[#892ca0] dark:hover:bg-[#a542c3]">
+                        <Icon icon="material-symbols:play-circle-outline-rounded" className="text-base" />
+                        Start video from 0:00 and jump to transcript at {timestampLabel}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+          {transcriptElements}
+        </div>
+      );
     }
 
     return <div className="meeting-notes-section">{notesElements}</div>;
