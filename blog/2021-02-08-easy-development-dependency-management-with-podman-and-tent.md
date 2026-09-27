@@ -52,7 +52,7 @@ Tent assumes that you're running the service in non-root mode, hence the `--user
 
 ## Installation
 
-Visit the [tent release page](https://github.com/fhsinchy/tent/releases/) and download the `tent` binary to your computer. Open up your terminal where you've donwloaded the file and execute following commands:
+Visit the [tent release page](https://github.com/fhsinchy/tent/releases/) and download the `tent` binary to your computer. Open up your terminal where you've downloaded the file and execute following commands:
 
 ```bash
 chmod +x ./tent
@@ -144,7 +144,7 @@ tent stop mysql --all
 ## prompts you if multiple containers are found for any of the given services.
 tent stop redis mongo
 
-## stops all redis and mongo conainers and then removes them
+## stops all redis and mongo containers and then removes them
 tent stop redis mongo --all
 ```
 

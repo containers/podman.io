@@ -12,4 +12,4 @@ tags: [containers, podman, networking, pod, api, kubernetes, kube, v2, hpc, wind
 
 ## By Tom Sweeney [GitHub](https://github.com/TomSweeneyRedhat)
 
-In a recent blog post on the [Red Hat Enable Sysadmin](https://www.redhat.com/sysadmin/) site, [The history of an API: GitLab Runner and Podman](https://www.redhat.com/sysadmin/history-api), Pablo Greco from the CentOS QA team in Buenos Aires, Argentia documented his journey through a Podman and GitLab Runner integration. When Podman v2.2 arrives, GitLab Runner will be able to run with Podman right out of the box. Give the article a read to see how he got there.
+In a recent blog post on the [Red Hat Enable Sysadmin](https://www.redhat.com/sysadmin/) site, [The history of an API: GitLab Runner and Podman](https://www.redhat.com/sysadmin/history-api), Pablo Greco from the CentOS QA team in Buenos Aires, Argentina documented his journey through a Podman and GitLab Runner integration. When Podman v2.2 arrives, GitLab Runner will be able to run with Podman right out of the box. Give the article a read to see how he got there.
