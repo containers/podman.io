@@ -68,7 +68,7 @@ function Testimonial(props: TestimonialProps) {
       <div className="mb-4 mt-2 truncate">
         <p className="mb-2 whitespace-normal leading-snug text-gray-900 dark:text-gray-300">{props.description}</p>
         {props.featuredlink && (
-          <a target="_blank" href={props.featuredlink}>
+          <a target="_blank" rel="noopener noreferrer" href={props.featuredlink}>
             {props.featuredlink}
           </a>
         )}
