@@ -35,7 +35,7 @@ export default function NotFound(): JSX.Element {
   const Messages = [
     "Oh no! We can't seal the deal!",
     "We can't seal with it!",
-    'This is seal-iously embarassing...',
+    'This is seal-iously embarrassing...',
     "Seal-ly us! We can't find that page.",
     "Don't flip, but we can't find that.",
     "We don't sea that page.",
