@@ -519,26 +519,27 @@ sudo apt-get install -y \
 
 ### Get Source Code
 
-First, ensure that the `go version` that is found first on the $PATH is 1.23.x or higher. Instruction [above](#golang) will help you compile newer version of Go if needed. Then we can build Podman:
+First, ensure that the `go version` that is found first on the $PATH is new enough. The instruction [above](#golang) will help you compile a newer version of Go if needed. Then we can build Podman:
 
 ```bash
 git clone https://github.com/podman-container-tools/podman/
 cd podman
-make BUILDTAGS="selinux seccomp" PREFIX=/usr
+make PREFIX=/usr
 sudo env PATH=$PATH make install PREFIX=/usr
 ```
 
 #### Build Tags
 
-Otherwise, if you do not want to build Podman with seccomp or selinux support you can add `BUILDTAGS=""` when running make.
+Podman supports optional build tags for compiling support of various features.
+By default, the Makefile picks the right build tags based on the installed dependencies.
+Otherwise, if you want to build Podman with specific features turned on or off, you can pass `BUILDTAGS="<TAG1> <TAG2>"` when running make, or no build tags at all like this:
 
 ```bash
 make BUILDTAGS=""
 sudo make install
 ```
 
-Podman supports optional build tags for compiling support of various features.
-To add build tags to the make option the `BUILDTAGS` variable must be set, for example:
+To pass the build tags `seccomp` and `apparmor` use:
 
 ```bash
 make BUILDTAGS='seccomp apparmor'
@@ -546,21 +547,22 @@ make BUILDTAGS='seccomp apparmor'
 
 If you are building on RHEL8 you'll need to build without btrfs support due to [it being removed](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/file-systems-and-storage_considerations-in-adopting-rhel-8#btrfs-has-been-removed_file-systems-and-storage):
 ```
-make BUILDTAGS="btrfs_noversion exclude_graphdriver_btrfs"
+make BUILDTAGS="exclude_graphdriver_btrfs"
 ```
 
 | Build Tag                        | Feature                            | Dependency  |
 | -------------------------------- | ---------------------------------- | ----------- |
 | apparmor                         | apparmor support                   | libapparmor |
-| cni                              | CNI networking                     |             |
 | exclude_graphdriver_btrfs        | exclude btrfs                      | libbtrfs    |
-| exclude_graphdriver_devicemapper | exclude device-mapper              | libdm       |
-| libdm_no_deferred_remove         | exclude deferred removal in libdm  | libdm       |
+| libsqlite3                       | dynamically link sqlite            | libsqlite3  |
+| libsubid                         | enable network subuid/gid support  | libsubid    |
 | seccomp                          | syscall filtering                  | libseccomp  |
 | selinux                          | selinux process and mount labeling |             |
 | systemd                          | journald logging                   | libsystemd  |
 
-Note that Podman does not officially support device-mapper. Thus, the `exclude_graphdriver_devicemapper` tag is mandatory.
+Note: Running without the `seccomp` build tag set is not supported and is insecure, as all containers must then be run with `--security-opt seccomp=unconfined` set.
+When running on a systemd system using the `systemd` tag is recommended for proper integration such as journald logging.
+On a SELinux system, the `selinux` tag is recommended, and the same applies to an AppArmor system with the `apparmor` tag.
 
 ### Vendoring - Dependency Management
 
