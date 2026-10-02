@@ -1,96 +1,98 @@
 # Podman Community Cabal Meeting Notes
+
 ## April 16, 2024 11:00 a.m. Eastern (UTC-4)
 
 ### Attendees
+
 Ashley Cui, Brent Baude, Ed Santiago Munoz, Gerry Seidman, Kevin Clevenger, Lokesh Mandvekar, Matt Heon, Mohan Boddu, Nalin Dahyabhai, Neil Smith, Nicola Sella, Paul Holzinger, Shion Tanaka (田中 司恩), Tom Sweeney, Urvashi Mohnani, Vikas Goel
 
 ### April 16, 2024 Topics
 
 ### Meeting Notes
+
 Video [Recording](https://www.youtube.com/watch?v=aLKET_3loWw&t=4s)
 
 Meeting start 11:02 a.m. Tuesday, April 16, 2024
 
- 1. Data production for appliances backup application - Vikas Goel
+1.  Data production for appliances backup application - Vikas Goel
 
+#### Data production for appliances backup application - Vikas Goel - (0:29 in the video)
 
-#### Data production for appliances backup application - Vikas Goel - (0:29 in the video) 
+Data production appliance, a black box for Veritas customers. It's a platform that is specialized for their customers. There are multiple applications that can be used, and they're securely signed. Appliance customers can upload their own particular software and version.
 
-Data production appliance, a black box for Veritas customers.  It's a platform that is specialized for their customers.   There are multiple applications that can be used, and they're securely signed.  Appliance customers can upload their own particular software and version.
+Data production application runs in non-root containers in a hardened environment. Some of them applications expose the luns. Customers can also decide which ports they want to access.
 
-Data production application runs in non-root containers in a hardened environment.  Some of them applications expose the luns.  Customers can also decide which ports they want to access.  
-
-Luns are exported as devices so the application can access them.  The application can't create a device inside of the container.  VMware can change the devices in the environment.  For Veritas, making these new devices available inside of the container has been problematic.  This has caused problems.
+Luns are exported as devices so the application can access them. The application can't create a device inside of the container. VMware can change the devices in the environment. For Veritas, making these new devices available inside of the container has been problematic. This has caused problems.
 
 Can we make new devices exposed to a running container?
 
-Matt was working on podman update, and he ran across code that had stopped that from happening.  Podman could potentially mount up the devices if the devices were specified in a known folder.  Matt doesn't know if we can do without restarting a container.  He thinks it might be best to manage this through a directory that's opened at the container start time.
+Matt was working on podman update, and he ran across code that had stopped that from happening. Podman could potentially mount up the devices if the devices were specified in a known folder. Matt doesn't know if we can do without restarting a container. He thinks it might be best to manage this through a directory that's opened at the container start time.
 
-In the past, Veritas had been moving the devices to a separate folder.  They ran into issues when systemd restarted any service, it made the devices invalid.
+In the past, Veritas had been moving the devices to a separate folder. They ran into issues when systemd restarted any service, it made the devices invalid.
 
-Dan asked if a process outside of the container to monitor the devices on the host and add it to the container once the device shows up,  Dan and Vikas discussed and decided it would be possible in a rootful environment, but would probably not work in rootles due to the bind mount.
+Dan asked if a process outside of the container to monitor the devices on the host and add it to the container once the device shows up, Dan and Vikas discussed and decided it would be possible in a rootful environment, but would probably not work in rootles due to the bind mount.
 
 Vikas thinks they tried that, but ran into problems, he needs to check.
 
-Toolbox is playing around in this area where they escape the container and add devices.  You need to be careful to do this securely.  You have to make sure the SELinux labels are all lined up.  Dan offered to act as a contact.
+Toolbox is playing around in this area where they escape the container and add devices. You need to be careful to do this securely. You have to make sure the SELinux labels are all lined up. Dan offered to act as a contact.
 
 They had been using a directory in RHEL 7, but not working now.
 
-The other issue is similar, working with volumes.  They'd like to be able to increase the volume size.  The problem is when you add a new volume, you need to restart.
+The other issue is similar, working with volumes. They'd like to be able to increase the volume size. The problem is when you add a new volume, you need to restart.
 
-You could join the mount namespace, then you should be able to mount.  However, you'd only be able to see the volumes within the container.
+You could join the mount namespace, then you should be able to mount. However, you'd only be able to see the volumes within the container.
 
-Vikas asked if there could be a cleaner interface.  The supported way would be to do autofs or something similar where you could add volumes to that.  For instance, create a container with a volume under /mount, then if you create a /mount/foo or /mount/bar, you could see the device.
+Vikas asked if there could be a cleaner interface. The supported way would be to do autofs or something similar where you could add volumes to that. For instance, create a container with a volume under /mount, then if you create a /mount/foo or /mount/bar, you could see the device.
 
-Vikas had looked at this but believes there is a security issue with that approach that he discovered.  So Veritas didn't go that way.
+Vikas had looked at this but believes there is a security issue with that approach that he discovered. So Veritas didn't go that way.
 
 Vikas wonders if they could do a volume mount into the container. When Podman starts a container, we create a mount namespace and then start mounting there, but after that, we can't mount ontop of it at the moment. So we can't see new mounts on the host unless the host mounts something into a namespace the container already has mounted.
 
-Paul thinks the new mount API's might help in this area.  But that doesn't help with the current software.  Paul says this is part of OSCI mounting and not really something a container can change or manipulate.  
+Paul thinks the new mount API's might help in this area. But that doesn't help with the current software. Paul says this is part of OSCI mounting and not really something a container can change or manipulate.
 
-Dan thinks if we can do something, it should be done as a tool outside of Podman itself.  In RHEL 9+, you can open a file descriptor to a mount, then you can join that later.  This is a new feature.
+Dan thinks if we can do something, it should be done as a tool outside of Podman itself. In RHEL 9+, you can open a file descriptor to a mount, then you can join that later. This is a new feature.
 
-Security issues here include leaking files from the host into the container, which is the main challenge in this space.  
+Security issues here include leaking files from the host into the container, which is the main challenge in this space.
 
 You could possibly create a process to inject a new mount point, but the admin doing this needs to be sure it's done correctly.
 
 RHEL 9 has the kernel changes to make this happen more easily, Vikas will go investigate further.
 
-Vikas also had a question on iSCSI support on the kernel.  Podman depends mostly on bind mounts, and Dan would prefer to keep iSCSI outside of the containers.
+Vikas also had a question on iSCSI support on the kernel. Podman depends mostly on bind mounts, and Dan would prefer to keep iSCSI outside of the containers.
 
 The Linux Kernel only allows a small subset of filesystems, and that's all that's allowed in rootless mode.
 
-Vikas noted that someone from SUSE had looked into adding an iSCSI namespace and was wondering what the challenges are?  Dan's not sure, but noted that dealing with API's not being aware of namespaces outside of the container.
+Vikas noted that someone from SUSE had looked into adding an iSCSI namespace and was wondering what the challenges are? Dan's not sure, but noted that dealing with API's not being aware of namespaces outside of the container.
 
 Vikas thinks a number of containers can each have iSCSI namespace, but the containers keep their own setup, and can't see outside.
 
-Vikas had seen a patch, but it didn't go through.  Dan suggested contacting the developer.  Dan also suggested touching base with the Red Hat Kernel team.
+Vikas had seen a patch, but it didn't go through. Dan suggested contacting the developer. Dan also suggested touching base with the Red Hat Kernel team.
 
-#### Dan Walsh - emulation mode  - (33:48 in the video)
+#### Dan Walsh - emulation mode - (33:48 in the video)
 
-Running the commands, Podman, Buildah, Skopeo in emulation mode is not working at the moment due to a reexec issue with argv0.  Emulation mode runs argv1 inside of argv0.  I.e., can't touch `/` with Skopeo in emulation.  Dan doesn't know what the fix is.  This is a QEMU issue that has had a bug on it since 2020.
-
-
+Running the commands, Podman, Buildah, Skopeo in emulation mode is not working at the moment due to a reexec issue with argv0. Emulation mode runs argv1 inside of argv0. I.e., can't touch `/` with Skopeo in emulation. Dan doesn't know what the fix is. This is a QEMU issue that has had a bug on it since 2020.
 
 #### Open discussion -
- 1. None
+
+1.  None
 
 ### Next Cabal Meeting: Tuesday, May 21, 2024, 11:00 a.m. EDT (UTC-5)
 
 #### Possible Topics
- 1. None
+
+1.  None
 
 ### Next Community Meeting: Tuesday, June 4, 2024, 11:00 a.m. EDT (UTC-5)
 
 #### Possible Topics:
 
- bootc demo
+bootc demo
 
 Meeting finished 11:41 a.m.
 
 ### Raw Meeting Chat:
 
- ```
+```
  You
  11:12 AM
  Vikas, fyi, that's Dan Walsh talking
@@ -100,12 +102,13 @@ Meeting finished 11:41 a.m.
  Paul Holzinger
  11:25 AM
  https://brauner.io/2023/02/28/mounting-into-mount-namespaces.html
- ```
+```
 
 ### Raw Google Meet Transcript
-#### Note: Dan Walsh and Nalin Dahyabhai shared a video link as “Nalin Dahyabhai” in the transcript 
 
- ```
+#### Note: Dan Walsh and Nalin Dahyabhai shared a video link as “Nalin Dahyabhai” in the transcript
+
+```
 Transcript
 This editable transcript was computer generated and might contain errors. People can also change the text after it was created.
 Tom Sweeney: So if you have some thing that you want to talk about afterwards, that would be great. Currently we're gonna have vikascal goal talking about data production for appliance backup applications. And before we get into that I'm going to put in a quick word for devcon. oops gonna click my actual window that shine abstracts for that for call for papers is coming up next Monday. So if you're interested, please get those in and just confused itself is happening on August 14th and 16th in Boston, Mass us. hope to see a bunch of you there. And with that I'm going to stop presenting and hand it over to vikas.
@@ -137,7 +140,7 @@ Nalin Dahyabhai: Correct.
 Vikas Goel: that part also and I think somehow we felt that there was some challenges in that respect now. I need to go back and see that in worse than edues. It was a problem.
 Vikas Goel: But there were some difficulties in that doing.
 Nalin Dahyabhai: Yeah, we don't have it. I mean in a normal case podman's not even running at that point. So you have a little process card line that's waiting for exit code. So there's nothing running inside of the container. if you're running a privilege container, you can also do stuff like escaping from which is what I think toolbox is doing so toolbox is playing around a little bit in this area but they escaped the container and add devices on the Fly. But in this case I think now you have to be real careful with this because you're sticking your published process into the container that you have to make sure that you want to make sure that the container processes can get access to your privilege process. That's why I said potentially you just had to the mountain namespace and don't into the pit name space to correct the great advice.
-Vikas Goel: 
+Vikas Goel:
 Vikas Goel: Yeah sure, I think. as I said I need to go back and see what the challenges with this approach. and not in ours anyway,…
 Nalin Dahyabhai: Yeah.
 Vikas Goel: but there were scenarios when the devices were not getting were not usable after creating inside that but
@@ -192,7 +195,7 @@ Nalin Dahyabhai: Yeah, so you would have to ride this through the oci if you wan
 Nalin Dahyabhai: Because we would have an issue. Obviously we used other types of Obviously. This would not work who was them? It wouldn't work with someone like he run VM or caught a containers things like that. So be very difficult for us to special cases. So I would say this is probably be best to be a tool outside about man.
 Vikas Goel: You just talked about. having relate kernel having ability to do that. So is that some system calls?
 Nalin Dahyabhai: Yeah, there's new system calls and I think they don't even know if they're in real nine, but probably in real nine and Beyond there's a syscall where you it basically open a file descriptor to a mountain. And then have that mount point then join the mountain namespace. So you're doing in two steps, rather than one step which currently I don't believe it would work. So if you have an open file descriptor that points to the previous Mountain namespace. Then you use it inside the new Mountain namespace.
-Vikas Goel: 
+Vikas Goel:
 Vikas Goel: Is there a reason why it's not? implemented in
 Vikas Goel: The container engine technology not just podman, but other if you consider Docker Etc.
 Nalin Dahyabhai: I think it's brand new. I mean all it's within the last year. So that this feature showed up.

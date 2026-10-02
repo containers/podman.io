@@ -1,50 +1,56 @@
 # Podman Community Cabal Meeting Notes
+
 ## May 5, 2026 11:00 a.m. Eastern (UTC-5)
 
 ### Attendees
+
 Tom Sweeney, Simon Brauner, Nicola Sella, Tomas Sedlacek, Ashley Cui, Neil Smith, Miloslav Trmac, Brent Baude, Tim Zhou, Matt Heon, Nalin Dahyabhai, Mario Loriedo, Paul Holzinger, Kevin Clevenger, Jan Rodak, Dave Darrah, Gerry Seidman.
 
 ### Topics
 
- 1. Podman 6.0 update - Delayed! - Matt Heon
- 2. The last Podman Cabal Meeting! - Tom Sweeney
+1.  Podman 6.0 update - Delayed! - Matt Heon
+2.  The last Podman Cabal Meeting! - Tom Sweeney
 
 ### Meeting Notes
+
 Video [Recording](https://www.youtube.com/watch?v=drwPTQj-dy0)
 
 Meeting start: 11:03 a.m. EDT (UTC-5)
 
 #### Quick Recap
+
 The Podman Community Cabal meeting, led by Tom Sweeney, focused on two main topics: the delay of Podman 6.0 release and the future of Cabal meetings. Matt reported that Podman 6.0 has been delayed from its original target of May 2025, with the new preliminary release window set for May 25-29, due to ongoing work on breaking changes and the need for sufficient release candidates. Tom announced that the Cabal meetings would be discontinued after this session, with Podman stand-up meetings being opened to the community on Mondays at 10 a.m. Eastern and Thursdays at 11 a.m. Eastern. The conversation ended with brief discussions about upcoming events, including Red Hat Summit and a Kubernetes Community Day in New York City.
 
 #### Next Steps
-  * None Identified 
+
+- None Identified
 
 #### Podman v6.0 Update - Matt Heon - ([00:17](https://www.youtube.com/watch?v=drwPTQj-dy0&t=17s) in the video)
 
 Matt announced that Podman 6 has been delayed from its original target of the second week of May due to incomplete work on breaking change features. The new preliminary release target is May 25-29, though this may be delayed further if release candidate testing takes longer than expected. Matt noted that this will be a significant release with many backend changes affecting advanced users, and preliminary release notes are being prepared.
 
-#### Cabal and Standup Meetings  - Tom Sweeney - ([02:45](https://www.youtube.com/watch?v=drwPTQj-dy0&t=165s) in the video
+#### Cabal and Standup Meetings - Tom Sweeney - ([02:45](https://www.youtube.com/watch?v=drwPTQj-dy0&t=165s) in the video
 
 Tom announced that Podman stand-up meetings will be held on Mondays and Thursdays and will be opened to the entire community. These meetings will take place at 10 a.m. Eastern on Mondays and 11 a.m. Eastern on Thursdays via Zoom. Tom also mentioned that the current Cabal meeting will be the last one, as the discussions will now be covered in the regular stand-up meetings at a more frequent cadence.
 
-    * Details: [here](https://blog.podman.io/2026/05/podman-standups/)
-        * Monday at 10:00 a.m. Eastern
-        * Thursday at 11:00 a.m. Eastern
-        * Open to anyone, via Zoom at CNCF/Linux Foundation
+- Details: [here](https://blog.podman.io/2026/05/podman-standups/)
+  - Monday at 10:00 a.m. Eastern
+  - Thursday at 11:00 a.m. Eastern
+  - Open to anyone, via Zoom at CNCF/Linux Foundation
 
 #### Open discussion - ([04:58](https://www.youtube.com/watch?v=drwPTQj-dy0&t=298s) in the video)
 
-1. Gerry talked about Summit in Atlanta in a few weeks, and NYC Kubernetes Day [kcd](https://kcdnewyork.com/) in NYC later this summer and hopes to run into folks from the meeting there. 
+1. Gerry talked about Summit in Atlanta in a few weeks, and NYC Kubernetes Day [kcd](https://kcdnewyork.com/) in NYC later this summer and hopes to run into folks from the meeting there.
 
 #### Possible Topics
- 1. None Discussed.
+
+1.  None Discussed.
 
 ### Next Community Meeting: Tuesday, June 2, 2026, 11:00 a.m. EST (UTC-4)
 
 #### Possible Topics:
- 1. None Discussed
 
+1.  None Discussed
 
 Meeting finished 11:09 a.m.
 
@@ -66,7 +72,7 @@ Neil Smith
 Matthew Heon (Red Hat LLC)
 17:07
 
-https://kcdnewyork.com/    
+https://kcdnewyork.com/
 ```
 
 ### Raw Zoom Meet Transcript

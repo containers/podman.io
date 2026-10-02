@@ -62,7 +62,7 @@ function CardInfoButtons(cardInfoButtonProps: CardInfoButtonProps) {
                 <Button as="link" outline={true} {...button} />
               ) : (
                 <Button
-                  as="button"
+                  as={button.path ? 'link' : 'button'}
                   method={() => {
                     method(button);
                   }}
