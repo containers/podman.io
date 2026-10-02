@@ -5,7 +5,7 @@ import './styles.css';
 
 type DropdownProps = {
   text: string;
-  options: any[];
+  options: React.ReactNode[];
   dropdownRef: React.MutableRefObject<undefined>;
 };
 
