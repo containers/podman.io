@@ -1,111 +1,124 @@
 # Podman Community Meeting Notes
+
 ## April 2, 2024 11:00 a.m. Eastern (UTC-4)
 
 ### Attendees
-Ashley Cui, Brent Baude, Ed Santiago Munoz, Giuseppe Scrivano, Jake Correnti, Jhon Honce, Kevin Clevenger, Lokesh Mandvekar, Mark Russell, Matt Heon, Miloslav Trmac, Mohan Boddu, Nalin Dahyabhai, Neil Smith, Paul Holzinger, Rahil Bhimjiani, Steffen Röcker,  Tim deBoer, Tim deBoer's Presentation, Tom Sweeney, Tom Sweeney's Presentation, Urvashi Mohnani
+
+Ashley Cui, Brent Baude, Ed Santiago Munoz, Giuseppe Scrivano, Jake Correnti, Jhon Honce, Kevin Clevenger, Lokesh Mandvekar, Mark Russell, Matt Heon, Miloslav Trmac, Mohan Boddu, Nalin Dahyabhai, Neil Smith, Paul Holzinger, Rahil Bhimjiani, Steffen Röcker, Tim deBoer, Tim deBoer's Presentation, Tom Sweeney, Tom Sweeney's Presentation, Urvashi Mohnani
 
 ### Topics
 
-1) Deploy LLMs with Podman and K8s - Steffen Röcker
-2) podman manifest support for artifacts - Nalin Dahyabhai
-3) Podman Desktop update demo - Steve deBoer
-4) Podman v5.0 Update - Matt Heon
+1. Deploy LLMs with Podman and K8s - Steffen Röcker
+2. podman manifest support for artifacts - Nalin Dahyabhai
+3. Podman Desktop update demo - Steve deBoer
+4. Podman v5.0 Update - Matt Heon
 
-## Meeting Start: 11:02  a.m. EDT
+## Meeting Start: 11:02 a.m. EDT
+
 ### Video [Recording](https://www.youtube.com/watch?v=-8l3vGcT3fo)
 
-DEVCONF.US is happening on August 14-16, 2024 in Boston, MA.  Proposals for talks are being accepted: now through April 22, 2024 [HERE](https://pretalx.com/devconf-us-2024/cfp).
+DEVCONF.US is happening on August 14-16, 2024 in Boston, MA. Proposals for talks are being accepted: now through April 22, 2024 [HERE](https://pretalx.com/devconf-us-2024/cfp).
 
 ## Podman Desktop update demo
+
 ### Tim deBoer
+
 #### ([2:50](https://www.youtube.com/watch?v=-8l3vGcT3fo&t=170s) in the video)
 
-Podman Desktop v1.8 release just out.  Includes Podman v4.9.3 and works with Podman v5.0.
-It includes Global onboarding.  If you haven't used Podman Desktop before, it will walk you through the setup process, Podman itself, and Docker Compose.
+Podman Desktop v1.8 release just out. Includes Podman v4.9.3 and works with Podman v5.0.
+It includes Global onboarding. If you haven't used Podman Desktop before, it will walk you through the setup process, Podman itself, and Docker Compose.
 
 A learning center has been added for things like Spring Boot, Kubernetes, and more, which includes links to documentation for each.
 
-Also, added support for Kubernetes.  He used Kind to apply a YAML to standup resources and worked through a couple of them.  You can edit the YAML directly and then apply it.
+Also, added support for Kubernetes. He used Kind to apply a YAML to standup resources and worked through a couple of them. You can edit the YAML directly and then apply it.
 
 Blog post on Podman.io with screenshot. (https://podman-desktop.io/blog)
 
-The Podman Desktop V1.9 release is imminent and will include an offer to install v5.0 if Podman is not installed and an update button to go from v4.9.3 to v5.0.  The upgrade is still experimental and will be ironed out in the next release.
+The Podman Desktop V1.9 release is imminent and will include an offer to install v5.0 if Podman is not installed and an update button to go from v4.9.3 to v5.0. The upgrade is still experimental and will be ironed out in the next release.
 
 V5.0 is showing better Performance.
 
 ## Deploy LLMs with Podman and K8s
+
 ### Steffen Röcker
+
 #### ([8:55](https://www.youtube.com/watch?v=-8l3vGcT3fo&t=535s) in the video)
 
 He's refound his love for containers while using [LLM](https://github.com/sroecker/LLM_AppDev-HandsOn/tree/main).
 
-He's using Llama to work with model files.  The models have templates and parameters that are explained within the workshop.
+He's using Llama to work with model files. The models have templates and parameters that are explained within the workshop.
 
-He uses a container base on UBI9 Python 3.11.   One thing he has found a problem is containers are often created by non-software folks and the resulting container can be problematic.  He created his own for the example.  It's not fancy, but he thinks there is a big demand for learning how to build a container.
+He uses a container base on UBI9 Python 3.11. One thing he has found a problem is containers are often created by non-software folks and the resulting container can be problematic. He created his own for the example. It's not fancy, but he thinks there is a big demand for learning how to build a container.
 
-He built on the Mac, and found you want to create for AMD 64, and specify the network correctly.   He is happy to take PR's to make things better.
+He built on the Mac, and found you want to create for AMD 64, and specify the network correctly. He is happy to take PR's to make things better.
 
 One learning is making sure enough memory was specified for the Podman run.
 
-Demo - [15.43](https://www.youtube.com/watch?v=-8l3vGcT3fo&t=941s)
+Demo - [15:43](https://www.youtube.com/watch?v=-8l3vGcT3fo&t=941s)
 
-He ran on Fedora.  A lot of tutorials are outdated he found.  Suggests using the `--device. nvidia.com/gpu-all` and to disable security slightly with `--security-opt-label-disable ollama`.  Documented in GitHub.
+He ran on Fedora. A lot of tutorials are outdated he found. Suggests using the `--device. nvidia.com/gpu-all` and to disable security slightly with `--security-opt-label-disable ollama`. Documented in GitHub.
 
 He's hoping to open up the LLM work for others and to lower the bar for the learning.
 
-There are ready made containers that are useful, and has a number of notes in his cheatsheet page.  Such as fine tunings for axolotl, and he has a `podman_axolotl.sh` file in his repo.  This helped to find tune and made the running of the models faster.
+There are ready made containers that are useful, and has a number of notes in his cheatsheet page. Such as fine tunings for axolotl, and he has a `podman_axolotl.sh` file in his repo. This helped to find tune and made the running of the models faster.
 
 He showed a container from Christian Hines (@tiran), and it's obvious in the Containerfile how quickly it becomes complicated.
 
 Steffen thinks using containers for Machine Learning is ideal.
 
-You can also deploy to Kubernetes, and he has a premade container that you can use.  Both a Containerfile, and also on Quay.io.
+You can also deploy to Kubernetes, and he has a premade container that you can use. Both a Containerfile, and also on Quay.io.
 
 He'd love further community support in this area.
 
 ## `podman manifest` support for artifacts
+
 ### Nalin Dahyabhai
-#### ([25:08(https://www.youtube.com/watch?v=-8l3vGcT3fo&t=1508s) in the video)
 
+#### ([25:08](https://www.youtube.com/watch?v=-8l3vGcT3fo&t=1508s) in the video)
 
-Podman manifest and oci artifact support.  We wanted to distribut the disk images along with the container images to registries.  That abaility has been added.
+Podman manifest and oci artifact support. We wanted to distribut the disk images along with the container images to registries. That abaility has been added.
 
-Demo - [25:26(https://www.youtube.com/watch?v=-8l3vGcT3fo&t=1526s)
+Demo - [25:26](https://www.youtube.com/watch?v=-8l3vGcT3fo&t=1526s)
 
-Showed a manifest via Skopeo and explained what was found in it.  He then inspected an OCI image artifact.
+Showed a manifest via Skopeo and explained what was found in it. He then inspected an OCI image artifact.
 
 He then create a manifest, and showed the help for manifest which includes a number on artifact options now.
 
-He added a manifest, and then pushed it to quay.io.  He used skopeo inspect and showed the manifest, and then ispected the digest to show that it was image.
+He added a manifest, and then pushed it to quay.io. He used skopeo inspect and showed the manifest, and then ispected the digest to show that it was image.
 
-This in v5.0 and Buildah v1.35.  Nalin would love any and all feedback.
+This in v5.0 and Buildah v1.35. Nalin would love any and all feedback.
 
-## podman v5.0.1 Update 
+## podman v5.0.1 Update
+
 ### Matt Heon
+
 #### ([33:12](https://www.youtube.com/watch?v=-8l3vGcT3fo&t=1992s) in the video)
-V5.0 went out a few weeks ago.  Focusing on stbility issues.  v5.0.1 went out yesterday, mostly with fixes with rootless network, Pasta.
+
+V5.0 went out a few weeks ago. Focusing on stbility issues. v5.0.1 went out yesterday, mostly with fixes with rootless network, Pasta.
 
 v5.0.2 in a few weeks.
 
 v5.1 probably late May 2024.
 
 ## Open Forum/Questions?
+
 ####
 
-1) None
+1. None
 
 ## Topics for Next Meeting
 
-1) None
-
+1. None
 
 ## Next Meeting: Tuesday, June 4, 2024, 11:00 a.m. Eastern (UTC-4)
+
 ## Next Cabal Meeting: Tuesday, April 16, 2024, 11:00 a.m. Eastern (UTC-5)
 
 ### Meeting End: 11:39 a.m. Eastern (UTC-5)
 
-## Google Meet Chat copy/paste:
- ```
+## Raw Google Meet Transcription
+
+```
 Tom Sweeney: Good morning folks. This is April 2nd 2024. This is the podman community meeting. In this meeting, we generally do demos of interests for things related to Paul man, generally, but oftentimes Builders scopio and other container projects as well. So we're always happy to take any kind of discussion topics that you may have for the future. Please let me know you have eating notes inside of a heck MD which you can go ahead and update it more time that you want to go ahead and add a topic although I do appreciate having noticed to me also. And so for today, we have a number of topics. We have deploying llms with podman and kubernetes with Stefan roecker and Stefan my messing up your name.
 Tom Sweeney: I misspelling it. At least I see.
 Steffen Roecker: That's fine. No.
@@ -217,10 +230,11 @@ Meeting ended after 00:37:04 👋
 
 
 
- ```
+```
 
- ## Raw Google Meet Transcription
- ```
+## Google Meet Chat copy/paste:
+
+```
  Tim deBoer
  11:03 AM
  If it's possible, I'd like to present in the first 30min
@@ -239,4 +253,4 @@ Meeting ended after 00:37:04 👋
  Rahil Bhimjiani
  11:39 AM
  Thank you all
- ```
+```
