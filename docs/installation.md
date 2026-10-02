@@ -17,7 +17,7 @@ programmatic access from your language of choice.
 
 ### macOS
 
-On Mac, each Podman machine is backed by a virtual machine. 
+On Mac, each Podman machine is backed by a virtual machine.
 Once installed, the podman command can run directly from
 the Unix shell in `Terminal`, where it remotely communicates with the `podman`
 service running in the Machine VM.
@@ -30,7 +30,7 @@ service running in the Machine VM.
      <summary>Use the Installer (Recommended)</summary>
 
      Podman can be downloaded from the [Podman.io](https://podman.io) website.
-     You can get binaries and a pkg installer from our [GitHub release page](https://github.com/containers/podman/releases).
+     You can get binaries and a pkg installer from our [GitHub release page](https://github.com/podman-container-tools/podman/releases).
 
      </details>
 
@@ -69,7 +69,7 @@ communicates with the podman service running in the WSL environment.
 Alternatively, you can access Podman directly from the WSL instance if you
 prefer a Linux prompt and Linux tooling.
 
-See the [Podman for Windows guide](https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md) for setup and usage instructions.
+See the [Podman for Windows guide](https://github.com/podman-container-tools/podman/blob/main/docs/tutorials/podman-for-windows.md) for setup and usage instructions.
 
 ## Installing on Linux
 
@@ -81,7 +81,7 @@ See the [Podman for Windows guide](https://github.com/containers/podman/blob/mai
 sudo pacman -S podman
 ```
 
-If you have problems when running Podman in [rootless](https://github.com/containers/podman/blob/main/README.md#rootless) mode follow the instructions [here](<https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional)>)
+If you have problems when running Podman in [rootless](https://github.com/podman-container-tools/podman/blob/main/README.md#rootless) mode follow the instructions [here](<https://wiki.archlinux.org/index.php/Linux_Containers#Enable_support_to_run_unprivileged_containers_(optional)>)
 
 For more information on Podman on ArchLinux [click here](https://wiki.archlinux.org/title/Podman)
 
@@ -447,7 +447,7 @@ This will mainly affect Debian, Ubuntu, and related distributions, or RHEL where
 #### golang
 
 Be careful to double-check that the version of golang is new enough (i.e. `go version`), as of August 2025 version is 1.23.x or higher is required.
-The current minimum required version can always be found in the [go.mod](https://github.com/containers/podman/blob/main/go.mod) file.
+The current minimum required version can always be found in the [go.mod](https://github.com/podman-container-tools/podman/blob/main/go.mod) file.
 If needed, golang kits are available at https://golang.org/dl/. Alternatively, go can be built from source as follows
 (it's helpful to leave the system-go installed, to avoid having to [bootstrap go](https://golang.org/doc/install/source):
 
@@ -519,26 +519,27 @@ sudo apt-get install -y \
 
 ### Get Source Code
 
-First, ensure that the `go version` that is found first on the $PATH is 1.23.x or higher. Instruction [above](#golang) will help you compile newer version of Go if needed. Then we can build Podman:
+First, ensure that the `go version` that is found first on the $PATH is new enough. The instruction [above](#golang) will help you compile a newer version of Go if needed. Then we can build Podman:
 
 ```bash
-git clone https://github.com/containers/podman/
+git clone https://github.com/podman-container-tools/podman/
 cd podman
-make BUILDTAGS="selinux seccomp" PREFIX=/usr
+make PREFIX=/usr
 sudo env PATH=$PATH make install PREFIX=/usr
 ```
 
 #### Build Tags
 
-Otherwise, if you do not want to build Podman with seccomp or selinux support you can add `BUILDTAGS=""` when running make.
+Podman supports optional build tags for compiling support of various features.
+By default, the Makefile picks the right build tags based on the installed dependencies.
+Otherwise, if you want to build Podman with specific features turned on or off, you can pass `BUILDTAGS="<TAG1> <TAG2>"` when running make, or no build tags at all like this:
 
 ```bash
 make BUILDTAGS=""
 sudo make install
 ```
 
-Podman supports optional build tags for compiling support of various features.
-To add build tags to the make option the `BUILDTAGS` variable must be set, for example:
+To pass the build tags `seccomp` and `apparmor` use:
 
 ```bash
 make BUILDTAGS='seccomp apparmor'
@@ -546,21 +547,22 @@ make BUILDTAGS='seccomp apparmor'
 
 If you are building on RHEL8 you'll need to build without btrfs support due to [it being removed](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/file-systems-and-storage_considerations-in-adopting-rhel-8#btrfs-has-been-removed_file-systems-and-storage):
 ```
-make BUILDTAGS="btrfs_noversion exclude_graphdriver_btrfs"
+make BUILDTAGS="exclude_graphdriver_btrfs"
 ```
 
 | Build Tag                        | Feature                            | Dependency  |
 | -------------------------------- | ---------------------------------- | ----------- |
 | apparmor                         | apparmor support                   | libapparmor |
-| cni                              | CNI networking                     |             |
 | exclude_graphdriver_btrfs        | exclude btrfs                      | libbtrfs    |
-| exclude_graphdriver_devicemapper | exclude device-mapper              | libdm       |
-| libdm_no_deferred_remove         | exclude deferred removal in libdm  | libdm       |
+| libsqlite3                       | dynamically link sqlite            | libsqlite3  |
+| libsubid                         | enable network subuid/gid support  | libsubid    |
 | seccomp                          | syscall filtering                  | libseccomp  |
 | selinux                          | selinux process and mount labeling |             |
 | systemd                          | journald logging                   | libsystemd  |
 
-Note that Podman does not officially support device-mapper. Thus, the `exclude_graphdriver_devicemapper` tag is mandatory.
+Note: Running without the `seccomp` build tag set is not supported and is insecure, as all containers must then be run with `--security-opt seccomp=unconfined` set.
+When running on a systemd system using the `systemd` tag is recommended for proper integration such as journald logging.
+On a SELinux system, the `selinux` tag is recommended, and the same applies to an AppArmor system with the `apparmor` tag.
 
 ### Vendoring - Dependency Management
 
@@ -585,9 +587,9 @@ molecule verify
 
 ## Configuration files
 
-### [registries.conf](https://raw.githubusercontent.com/containers/image/main/registries.conf)
+### [registries.conf](https://raw.githubusercontent.com/podman-container-tools/container-libs/main/image/registries.conf)
 
-#### Man Page: [registries.conf.5](https://github.com/containers/image/blob/main/docs/containers-registries.conf.5.md)
+#### Man Page: [registries.conf.5](https://github.com/podman-container-tools/container-libs/blob/main/image/docs/containers-registries.conf.5.md)
 
 `/etc/containers/registries.conf`
 
@@ -677,7 +679,7 @@ location="localhost:5000"
 insecure=true
 ```
 
-### [mounts.conf](https://raw.githubusercontent.com/containers/common/main/pkg/subscriptions/mounts.conf)
+### [mounts.conf](https://github.com/podman-container-tools/container-libs/blob/main/common/docs/containers-mounts.conf.5.md)
 
 `/usr/share/containers/mounts.conf` and optionally `/etc/containers/mounts.conf`
 
@@ -696,7 +698,7 @@ cat /usr/share/containers/mounts.conf
 /usr/share/rhel/secrets:/run/secrets
 ```
 
-### [seccomp.json](https://raw.githubusercontent.com/containers/common/main/pkg/seccomp/seccomp.json)
+### [seccomp.json](https://raw.githubusercontent.com/podman-container-tools/container-libs/main/common/pkg/seccomp/seccomp.json)
 
 `/usr/share/containers/seccomp.json`
 
@@ -705,11 +707,11 @@ containers. This file is usually provided by the containers-common package.
 
 The link above takes you to the seccomp.json
 
-### [policy.json](https://raw.githubusercontent.com/containers/image/main/default-policy.json)
+### [policy.json](https://raw.githubusercontent.com/podman-container-tools/container-libs/main/image/default-policy.json)
 
 `/etc/containers/policy.json`
 
-#### Man Page: [policy.json.5](https://github.com/containers/image/blob/main/docs/containers-policy.json.5.md)
+#### Man Page: [policy.json.5](https://github.com/podman-container-tools/container-libs/blob/main/image/docs/containers-policy.json.5.md)
 
 #### Example from the Fedora `containers-common` package:
 
