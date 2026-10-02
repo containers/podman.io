@@ -1,4 +1,5 @@
-# Podman Community Cabal Meeting Notes 
+# Podman Community Cabal Meeting Notes
+
 ## Mar 19, 2024 11:00 a.m. Eastern (UTC-4)
 
 ### Attendees
@@ -10,18 +11,18 @@ Ashley Cui, Brent Baude, Ed Santiago Munoz, Gerry, Giuseppe Scrivano, Jake Corre
 1. Podman reverse-dependency testing in Containers/Common - Matt Heon, Paul Holzinger
 
 ### Meeting Notes
- Video [Recording](https://youtu.be/XW43y97V6kU)
+
+Video [Recording](https://youtu.be/XW43y97V6kU)
 
 Meeting start 11:02 a.m. Tuesday, March 19, 2024
 
 #### Podman reverse-dependency testing in Containers/Common - Matt Heon, Paul Holzinger - (0:51 in the video)
 
-We have a couple repositories such as c/common, c/storage, c/image, and then c/buildah.  The thought was to add a test in c/common to test Podman before the change was pushed up.
+We have a couple repositories such as c/common, c/storage, c/image, and then c/buildah. The thought was to add a test in c/common to test Podman before the change was pushed up.
 
-Lokesh Mandvekar is working on testing this out.  The biggest issue is the dependency issues.  He is planning to add Podman, and Bulidah build tests too.  Look for updates in the future.
+Lokesh Mandvekar is working on testing this out. The biggest issue is the dependency issues. He is planning to add Podman, and Bulidah build tests too. Look for updates in the future.
 
-
-#### Podman rootless containers do not populate the IP  - Paul Holzinger for Deepesh Verma - (4:22 in the video) 
+#### Podman rootless containers do not populate the IP - Paul Holzinger for Deepesh Verma - (4:22 in the video)
 
 The default rootless container is in a separate namespace and can't be reached. Paul believes adding this would be more confusing. We do support `--network-bridge,` which can help in many use cases in this space.
 
@@ -30,31 +31,34 @@ The default rootless container is in a separate namespace and can't be reached. 
 Release PRs have been made and we suspect a v5.0 tag will be ready mid-afternoon East Coast.
 
 #### Open discussion
- 1. None
+
+1.  None
 
 ### Next Cabal Meeting: Tuesday, April 16, 2024, 11:00 a.m. EDT (UTC-4)
 
 #### Possible Topics
- 1. Data production for appliances backup application - Vikas Goel
- 2. Quay namespace maintenance: Consider dropping/redirecting quay.io/containers - Tom Sweeney
- 3. Podman rootless containers do not populate the IP - Deepesh Verma ?
+
+1.  Data production for appliances backup application - Vikas Goel
+2.  Quay namespace maintenance: Consider dropping/redirecting quay.io/containers - Tom Sweeney
+3.  Podman rootless containers do not populate the IP - Deepesh Verma ?
 
 ### Next Community Meeting: Tuesday, April 2, 2024, 11:00 a.m. EDT (UTC-4)
 
 #### Possible Topics:
- 1. LLM
+
+1.  LLM
 
 Meeting finished 11:09 a.m.
 
 ### Raw Meeting Chat:
 
- ```
- None
- ```
+```
+None
+```
 
 ### Raw Google Meet Transcript
 
- ```
+```
 Tom Sweeney: Good morning, It's Tuesday, March 19th. 2024. This is the Pod man Community cabal eating today. We have three topics. However, a couple of our folks aren't here yet. So may have to delay on some of these the first one up for today was Data production for appliance backup application pick a school Goyle and seeing vicas. Did anybody hear from him?
 Kevin Clevenger: I have not.
 Tom Sweeney: And then the next was podman rootless containers do not populate the IP by Depeche Verma, and I did not hear about this one. So just about five minutes ago. Has anybody talked with the pastor and recommended that he joined for this or she I should say?

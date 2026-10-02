@@ -1,7 +1,9 @@
 # Podman Community Cabal Meeting Notes
+
 ## March 4, 2025 11:00 a.m. Eastern (UTC-5)
 
 ### Attendees
+
 Ashley Cui, Brent Baude, Gerry Seidman, Giuseppe Scrivano, James Cassell, Jan Rodak, Kevin Clevenger, Lokesh Mandvekar, Mario Loriedo, Mark Russell, Matt Heon, Miloslav Trmac, Mohan Boddu, Nalin Dahyabhai, Neil Smith, Nicola Sella, Paul Holzinger, Tom Sweeney, Zack Zlotnik
 
 ### March 4, 2025 Topics
@@ -12,14 +14,14 @@ Ashley Cui, Brent Baude, Gerry Seidman, Giuseppe Scrivano, James Cassell, Jan Ro
 4. Backlog Management - Neil Smith
 
 ### Meeting Notes
+
 Video [Recording](https://www.youtube.com/watch?v=WfDmgNFaX2I)
 
 Meeting start 11:02 a.m. EDT (UTC-5) Tuesday, March 4, 2025
 
-
 #### CNCF Governance - Matt Heon - (0:42 in the video)
 
-Governance PR: https://github.com/containers/podman/pull/25398.  This covers how we add code and how one can become a maintainer.  It is up for a PR review now.  Hoping to have a draft version by early next week.  We hope to get it out of draft status by the end of March and will start enforcing it then.
+Governance PR: https://github.com/containers/podman/pull/25398. This covers how we add code and how one can become a maintainer. It is up for a PR review now. Hoping to have a draft version by early next week. We hope to get it out of draft status by the end of March and will start enforcing it then.
 
 Break down:
 
@@ -28,48 +30,46 @@ A Reviewer just reviews codes, and once approved, you can mark the request as me
 Maintainers are Reviewers for some time and, after voting, can then merge into a particular project.
 
 Core Maintainers are maintainers who are maintainers across several projects.
-They can merge into multiple projects.  They, too, are voted on.
+They can merge into multiple projects. They, too, are voted on.
 
 Based on the CNCF contributor letter.
 
-
 #### Better ways to build images - Zack Zlotnik- (5:25 in the video)
 
-Looking into templatizing a container file.  Is there a better way to think of this?
+Looking into templatizing a container file. Is there a better way to think of this?
 
-His idea is that Buildah has a lot of APIs that can be used, even though there are a lot of dials and knobs due to the complexity in the arena.  He's wondering if we can make it a bit more straightforward.
+His idea is that Buildah has a lot of APIs that can be used, even though there are a lot of dials and knobs due to the complexity in the arena. He's wondering if we can make it a bit more straightforward.
 
 Maybe have better building blocks that we could put together.
 
-There have been some thoughts of chunking layers together as a possible way to make this happen.  
+There have been some thoughts of chunking layers together as a possible way to make this happen.
 
-He doesn't want to replace Containerfiles but thinks something could be built outside of Buildah or Podman.  It could create a series of building blocks to put ontop of the Buildah API.
+He doesn't want to replace Containerfiles but thinks something could be built outside of Buildah or Podman. It could create a series of building blocks to put ontop of the Buildah API.
 
-He's hoping to get more control over the build process.  Paused to see if we could tie in Jonathan Lebon.
+He's hoping to get more control over the build process. Paused to see if we could tie in Jonathan Lebon.
 
 #### CNCF Update - Neil Smith - (: in the video) - 15
 
-We were accepted into a sandbox in January, moving to on boarding officially.  It's an issue in Podman's Issues, CNCF Onboarding Tracking.
-https://github.com/containers/podman/issues/25329.  The Governanace was the first step.  Moving art, and then communications to CNCF's Slack Workspace.  We'll be adding the initial list of maintainers, contributors, owners.
+We were accepted into a sandbox in January, moving to on boarding officially. It's an issue in Podman's Issues, CNCF Onboarding Tracking.
+https://github.com/containers/podman/issues/25329. The Governanace was the first step. Moving art, and then communications to CNCF's Slack Workspace. We'll be adding the initial list of maintainers, contributors, owners.
 
 Then we'll start the work for moving the project locations.
 
+#### Backlog Management - Neil Smith - (16:55 in the video)
 
-#### Backlog Management  - Neil Smith - (16:55 in the video)
+We have looked at the open prs and issues in the projects that we care about. In particular, Podman, Buildah, common, conmon, container-selinux, Skopeo, storage, image, and more.
 
-We have looked at the open prs and issues in the projects that we care about.  In particular, Podman, Buildah, common, conmon, container-selinux, Skopeo, storage, image, and more.
+We have some issues that are old. Average is 24 days in Skopeo. Showed a graph of open issues over time. Since 2022, there has been a huge growth of open issues. Open PRs are growing, up to about 190 right now.
 
-We have some issues that are old.  Average is 24 days in Skopeo.  Showed a graph of open issues over time.  Since 2022, there has been a huge growth of open issues.  Open PRs are growing, up to about 190 right now.
+Is there anything we should be doing with these? Should we be closing, or should we be keeping them open?
 
-Is there anything we should be doing with these?  Should we be closing, or should we be keeping them open?
-
-Brent noted that the Red Hat team has wanted to keep them open, in case we can fix them.  However, it might not be realistic, given there are 700 issues on Podman.  Would doing a mass purge help us manage our backlog?
+Brent noted that the Red Hat team has wanted to keep them open, in case we can fix them. However, it might not be realistic, given there are 700 issues on Podman. Would doing a mass purge help us manage our backlog?
 
 Paul doesn't like the term of backlog, and is concerned that others might still be a problem, even though we have not found the time to work on them to date.
 
-Neil is concerned that we keep looking at issues over and over again.  Neil thinks that after some point in time, we should just say we won't get to it.
+Neil is concerned that we keep looking at issues over and over again. Neil thinks that after some point in time, we should just say we won't get to it.
 
-Miloslav looks at the old ones during the Red Hat bug weeks.  For closing feature requests, he'd be strongly opposed.
+Miloslav looks at the old ones during the Red Hat bug weeks. For closing feature requests, he'd be strongly opposed.
 
 Matt thinks the question is will a user be more upset to have a bug closed without a solution, or to keep it open for 3 years without progress.
 
@@ -79,27 +79,29 @@ Tom thought about add some label warning that the issue would be closed in 60 da
 
 Paul notes that the stale bot creates angst in some users.
 
-We'll keep considering.  James noted he'd prefer to keep open.  Maybe adding a "triaged" lable so we won't have to keep looking.
-
+We'll keep considering. James noted he'd prefer to keep open. Maybe adding a "triaged" lable so we won't have to keep looking.
 
 #### Open discussion - (33:10 in the video)
+
 1. No Topics
 
 ### Next Cabal Meeting: Tuesday, May 6, 2025, 11:00 a.m. EDT (UTC-4)
 
 #### Possible Topics
+
 1. None suggested.
 
 ### Next Community Meeting: Tuesday, April 1, 2025, 11:00 a.m. EST (UTC-4)
 
 #### Possible Topics:
+
 1. None suggested
 
 Meeting finished 11:38 a.m.
 
 ### Raw Meeting Chat:
 
- ```
+```
  Matt Heon
  11:04 AM
  Governance PR: https://github.com/containers/podman/pull/25398
@@ -118,11 +120,11 @@ Meeting finished 11:38 a.m.
  James Cassell
  11:38 AM
  recordings are usually easy to find on YouTube
- ```
+```
 
- ### Raw Google Meet Transcript
+### Raw Google Meet Transcript
 
- ```
+```
 Tom Sweeney: Good morning folks. Welcome to the pond man community cabal meeting. Today is Tuesday, March 4th, 2025. Today we have four topics to talk about. a lot of them are to deal with the new upcoming CNCF change that we're having with our projects. First one off the bat there will be Matt Han talking about CNCF governance. Then we'll have Zach and Zach I'm going to butcher your name I'm sure is Lotnik. Am I close?
 Zack Zlotnik: That's it. Yeah.
 Tom Sweeney: He'll be talking about better ways to build images and then Neil Smith will have a general CNCF update where we're going and then Neil will also follow that up with a backlog management. So with that all said I'm going to hand it over to Matt
@@ -291,7 +293,7 @@ Gerry Seidman: That's really the use case that I'm coming in from. correct.
 Brent Baude: Yeah. a tarball of a directory that's…
 00:40:00
 Brent Baude: then been compressed?
-Gerry Seidman: 
+Gerry Seidman:
 Gerry Seidman: Yeah. because they…
 Brent Baude: And what we're Yeah.
 Gerry Seidman: if they want to load store a model in an OCI registry the model isn't a single file it's a tree of
@@ -346,7 +348,7 @@ Brent Baude: No.
 Brent Baude: If I didn't want to know things, then I wouldn't have bothered. I just left it with the email. but really
 Gerry Seidman: Yeah, I can't tell you…
 Gerry Seidman: how many times I have clients that say, "We want it." And they gave me no requirements and restrictions of what they want. Mhm. Right.
-Gerry Seidman: 
+Gerry Seidman:
 Brent Baude: Yep. Yeah.
 Brent Baude: And there is no emerging standard. This has been the problem with it. There's just no emerging standard way to I mean we got to write it programmatically. So there has to be some rules and we just haven't really nailed down other than some basic OCI standards we got to follow with. But how it's going to be used and how it should be implemented is, we're just not dead And AI comes up as the predominant use case right now,…
 Gerry Seidman: Mhm. Yeah.
@@ -357,7 +359,7 @@ Brent Baude: There must be a dozen and…
 Brent Baude: a half projects in Red Hat essentially doing what's already been done for months by us, but now we're going to write it in Python and now we're going to write it in Rust. So, it's just one of these or no, we want to be able to process the file, outbound, do something with it. And, yeah, it's the which beast do you satisfy? I don't know.
 Gerry Seidman: so let me give you share some explicit client stuff, being that, we're under NDA with Red Hat and you're Red Hat. not that I'm saying anything Goldman is the customer that's driving a lot of the stuff we're doing in containers and…
 Brent Baude: Mhm.
-Gerry Seidman: 
+Gerry Seidman:
 Gerry Seidman: open shift. and this whole, container accelerator thing I did came from requirements from Golden because they thought distributing container images was very inefficient and they have whole systems that actually use technology to deploy software. every application in Goldman is deployed using our software. Forget about containers.  And they get a lot of benefit from that because if you're distributing to 200,000 machines, you don't really want to send the full application every time to every node if it's not going to use it. So that's historically what they built around our technology. And they then came to us and said, "Look, we don't like the container how containers work. Can you do the same thing in containers?"
 00:50:00
 Gerry Seidman: And that's where the ALS stuff led to the thing that we wrote. Full stop.
@@ -417,7 +419,7 @@ Brent Baude: You're going to name the artifact in question and then you're going
 Brent Baude: So to follow the same host h posts inside like you say colon approach that we have today.
 Gerry Seidman: Yeah. I mean there's two colon so you have a Yeah.
 Brent Baude: It'll always be read only.
-Gerry Seidman: 
+Gerry Seidman:
 Gerry Seidman: Yeah. Of course it has to be. and I assume so you in the -v you give a directory and the annotation you give a file name
 Brent Baude: No. the way that PR works is there's a couple pieces of intelligence going on here I guess you call it.
 Brent Baude: One is if it's a s single object artifact, we will then you give it the name of the artifact in the volume mount and the directory in which you want it mounted and…
