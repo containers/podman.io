@@ -7,6 +7,16 @@ type ImageSectionProps = LayoutProps & {
   image?: Image;
 };
 
+type InstructionDetails = {
+  title?: string;
+  subtitle?: string;
+  button?: {
+    path?: string;
+    text?: string;
+    icon?: string;
+  };
+};
+
 type PageHeaderProps = LayoutProps &
   HeaderProps & {
     image?: Image;
@@ -14,7 +24,7 @@ type PageHeaderProps = LayoutProps &
     darkColor?: string;
     lightColor?: string;
     basicResources?: boolean;
-    instructions?: { [key: string]: any };
+    instructions?: InstructionDetails;
   };
 
 type PageHeaderSupplementalInfoProps = PageHeaderProps & {
@@ -23,7 +33,7 @@ type PageHeaderSupplementalInfoProps = PageHeaderProps & {
 };
 
 type InstructionsProps = PageHeaderProps & {
-  instructions?: { [key: string]: any };
+  instructions?: InstructionDetails;
 };
 
 const TextBox = ({ grid, display, layout, title, description }: PageHeaderProps): JSX.Element => {
